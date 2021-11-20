@@ -5,7 +5,7 @@
 # Grupal Project - Subi Que Te Llevo
 
 <p align="left">
-  <img height="200" src="./car.png" />
+  <img height="200" src="./car.jpg" />
 </p>
 
 ## Objetivos del Proyecto
