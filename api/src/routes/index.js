@@ -10,6 +10,6 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.use('/maps', mapsRoute)  //TODAS LAS RUTAS VAN A TENER /MAPS ADELANTE
 router.get('/', (req, res) => {
-    res.send('hola')
+    res.send('Hola Mundo')
 })
 module.exports = router;
