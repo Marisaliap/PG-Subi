@@ -1,5 +1,5 @@
 .landingpage {
-    /* background-image: url("../assets/background_dog_2.jpg");
+    /* background-image: url("../assets/background_dog_4.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
@@ -8,7 +8,9 @@
     left: 0;
     right: 0; */
 
-    background-image: url("../assets/background_2.jpeg");
+   /*  D:\Henry\PG-Subi-main\PG-Subi-main\client\src\assets\background_4.jpeg */
+
+    background-image: url("../assets/background_4.jpeg");
     background-position: center; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -32,7 +34,7 @@
     height: 90vh;
     margin: 5vh 5vw;    
     top: 0;
-    background-image: url("../assets/background_dog_2.png");
+   /*  background-image: url("../assets/background_dog_2.png"); */
     background-position: center; 
     background-size: cover; 
     border-radius: 1.5rem;
