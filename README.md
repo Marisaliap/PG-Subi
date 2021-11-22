@@ -5,7 +5,7 @@
 # Group Project - Subi Que Te Llevo
 
 <p align="left">
-  <img height="200" src="./car.jpg" />
+  <img height="200" src="./car_8.jpg" />
 </p>
 
 ## Objetivos del Proyecto
@@ -39,6 +39,10 @@ El contenido de `client` fue creado usando: Create React App.
 La idea general es crear una aplicación de viaje compartido. Las aplicaciones móviles ofrecen no solo comodidad, sino más claridad y seguridad que simplemente tomar un automóvil en la calle. 
 
 Al revisar la lista de características, hay tres partes que participan en el viaje: un conductor, un pasajero y un mediador (administrador).
+
+<p align="left">
+  <img height="200" src="./routes_2.jpg" />
+</p>
 
 ### Aplicación de pasajeros
 
