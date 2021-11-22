@@ -108,6 +108,17 @@ Se puede ganar dinero con una aplicación de viaje compartido. Hay tres modelos 
 - Publicidad. Poner algunos anuncios en distintos lugares en la aplicación puede ser una fuente de ingresos adicional. Pero por encima de todo debe estar la experiencia del usuario y ser cuidadoso y discreto con cada banner publicitario.
 - Asociaciones. Una plataforma con prestigio puede elegir algunas empresas de transporte con las que asociarse para ampliar la oferta y brindar a los usuarios una alternativa de transporte durante los tiempos de COVID. Pero se pueden crear más asociaciones, con determinadas Estaciones de Servicio o incluso hoteles o hosterías cuando se realizan viajes de larga distancia.
 
+### Funciones avanzadas de las aplicaciones de viaje compartido que se podrían evaluar y añadir a futuro
+
+Implementar una o dos de las siguientes características pueden ser una ventaja para atraer nuevos clientes.
+
+- Modo offline. A veces los conductores pueden pasar por lugares con una mala conexión a Internet, o los pasajeros pueden querer usar una aplicación en el sótano. El modo sin conexión es un respaldo para estas situaciones.
+- Lugares favoritos. La dirección de la casa, la oficina, los lugares de amigos o familiares: todos estos son los lugares favoritos de los pasajeros. Guardarlos en la aplicación eventualmente ahorrará algunos minutos preciosos para el usuario.
+- Programación de un viaje. ¿De inmediato o en varias horas? Si los usuarios tienen un viaje al aeropuerto, es mejor contratar un viaje de antemano. La programación de viajes es una herramienta extremadamente útil para tales situaciones.
+- Descuentos para usuarios. Existen muchas formas de aprovechar los descuentos y los códigos de promoción para beneficio de los propietarios de la app, así que, ¿por qué no convertirlo en parte del esfuerzo de marketing? Informe a sus clientes nuevos y leales sobre los beneficios de precio con su servicio de viaje compartido.
+- Propinas. Cualquier pago adicional es una motivación para hacer mejor el trabajo. Dejar propinas es una opción para que los pasajeros agradezcan a los conductores por un gran servicio y un incentivo para que los propietarios de automóviles mejoren sus habilidades (tanto de conducción como de comunicación).
+- Interfaz multilingüe. Cuantos más idiomas incorporados tenga la aplicación, más usuarios obtendrá. Incluso dentro de una ciudad, se pueden encontrar personas de diversos grupos étnicos, por lo que agregar varios idiomas a la aplicación es algo bien interesante y valioso. 
+
 ### Endpoints utilizados serán:
 
   - GET https://api. completar
