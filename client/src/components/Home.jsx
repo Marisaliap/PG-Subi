@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRoutes, getCities } from "../actions";
+/* import { getRoutes, getCities } from "../actions"; */
 import styles from "../styles/Home.module.css";
 import RouteDetails from "./RouteDetails";
 
@@ -12,17 +12,17 @@ export default function Home() {
 const dispatch = useDispatch()   //declaro una constante para despachar mis acciones
 const allRoutes = useSelector((state) => state.routes) // me traigo desde el reducer el estado routes donde están todas las rutas 
 
-useEffect(() => {
+/* useEffect(() => {
     dispatch(getRoutes());
 },[])
 
 useEffect(() => {
     dispatch(getCities());
-},[])
+},[]) */
 
 function handleClick(e) {
     e.preventDefault();
-    dispatch(getRoutes());
+   /*  dispatch(getRoutes()); */
 }
     return (
         <div className={styles.home}>
