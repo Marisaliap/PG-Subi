@@ -56,5 +56,12 @@ module.exports = (sequelize) => {
     instagram: {
       type: DataTypes.STRING,
     },
+    calification: {
+      type: DataTypes.INTEGER,
+    },
+    password:{
+      type:DataTypes.STRING,
+      allowNull:true
+    }
   });
 };
