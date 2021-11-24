@@ -10,7 +10,7 @@
 
    /*  D:\Henry\PG-Subi-main\PG-Subi-main\client\src\assets\background_4.jpeg */
 
-    background-image: url("../assets/background_4.jpeg");
+    background-image: url("../assets/background_6.jpeg");
     background-position: center; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -42,10 +42,9 @@
 
 .container {
     position: absolute;
-    width: 99vw;
-    height: 99vh;
+    width: 90vw;
+    height: 90vh;
     margin: 1vh 1vw;    
-    top: 0;
 }
 
 .title {
@@ -82,6 +81,12 @@
     transition: 0.8s;
 }
 
+.centrador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
   
  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');

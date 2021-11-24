@@ -58,6 +58,10 @@ module.exports = (sequelize) => {
     },
     calification: {
       type: DataTypes.INTEGER,
+    },
+    password:{
+      type:DataTypes.STRING,
+      allowNull:true
     }
   });
 };
