@@ -10,5 +10,9 @@ module.exports = (sequelize) => {
     calification:{
       type: DataTypes.DECIMAL
     }
-  });
+  },
+  {
+    timestamps: false,
+  }
+  );
 };

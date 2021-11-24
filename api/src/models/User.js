@@ -6,7 +6,8 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true
+      primaryKey: true,
+      allowNull: false
     },
     name: {
       type: DataTypes.STRING,
@@ -17,10 +18,13 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     genre:{
-      type:DataTypes.STRING
+      type:DataTypes.STRING,
+      allowNull:false,
+
     },
     about: {
-      type:DataTypes.TEXT
+      type:DataTypes.TEXT,
+      allowNull:true,
     },
     age: {
       type: DataTypes.INTEGER,
@@ -47,21 +51,33 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     telephone: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     facebook: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     instagram: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     calification: {
       type: DataTypes.INTEGER,
+      allowNull: true,
     },
     password:{
       type:DataTypes.STRING,
-      allowNull:true
-    }
-  });
+      allowNull:false
+    },
+    email:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    timestamps: false,
+  }
+  );
 };
+

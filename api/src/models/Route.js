@@ -35,5 +35,9 @@ module.exports = (sequelize) => {
     passengers: {
       type: DataTypes.INTEGER
     }
-  });
+  },
+  {
+    timestamps: false,
+  }
+  );
 };
