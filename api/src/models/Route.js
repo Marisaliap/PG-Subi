@@ -32,9 +32,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    passengers: {
-      type: DataTypes.INTEGER
-    }
+
   },
   {
     timestamps: false,

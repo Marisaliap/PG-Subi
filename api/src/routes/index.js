@@ -7,7 +7,7 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.use('/maps', mapsRoute)  //TODAS LAS RUTAS VAN A TENER /MAPS ADELANTE
-router.use('/user', userRoute)  //TODAS LAS RUTAS VAN A TENER /MAPS ADELANTE
+router.use('/maps', mapsRoute)  
+router.use('/user', userRoute)  
 
 module.exports = router;

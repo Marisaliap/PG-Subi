@@ -74,6 +74,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    photo:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    photoDni:{
+      type: DataTypes.ARRAY(DataTypes.STRING),
+    }
   },
   {
     timestamps: false,
