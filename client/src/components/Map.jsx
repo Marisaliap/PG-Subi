@@ -14,7 +14,7 @@ export default function Mapping() {
   const city2 = useSelector(state => state.suggestions2)
   console.log(city, 'SOY CITY')
   const dispatch = useDispatch()
-  const {data} = useSelector(state => state.route)
+  const data = useSelector(state => state.route)
   console.log(data, 'SOY ROUTE')
   const Map = ReactMapboxGl({
     accessToken:
@@ -27,8 +27,8 @@ export default function Mapping() {
     }
   }
 
-  useEffect(() => city.length === 1 && city2.length === 1 ? dispatch(getRoute(city[0].coordinates[0], city[0].coordinates[1],city2[0].coordinates[0], city2[0].coordinates[1])): console.log('no se'), [])
-
+  // useEffect(() => city.length === 1 && city2.length === 1 ? dispatch(getRoute(city[0].coordinates[0], city[0].coordinates[1],city2[0].coordinates[0], city2[0].coordinates[1])): console.log('no se'), [])
+  
     return <div>
         <Map
     style="mapbox://styles/mapbox/streets-v9"
@@ -37,18 +37,18 @@ export default function Mapping() {
       width: '70vw',
       zoom: 1
     }}
-    // center={ [city[0].coordinates[0],city[0].coordinates[1]]}
+    center={ (Object.keys(city) || city.length > 0) ? city[0].coordinates : [-57.95,-34.93333]}
   >
  
 
-    {city.length === 1 && <Marker coordinates={city[0].coordinates} style={{color:'red', anchor:'center'}}>
+    {city.length === 1 && <Marker coordinates={city[0].coordinates} style={{color:'red'}}>
       <img src='https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png' style={{height:'30px'}}></img>
     </Marker>}
     {city2.length === 1 && <Marker coordinates={city2[0].coordinates} >
       <img src='https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png' style={{height:'30px'}}></img>
     </Marker>}
     <GeoJSONLayer
-  data= {data}
+  data= {data.coordinates && data.coordinates.data}
   linePaint= {{
     'line-color': '#00FF03',
     'line-width': 4
