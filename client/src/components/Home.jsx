@@ -23,6 +23,7 @@ function handleClick(e) {
         <Link to="/route"><button className={styles.createButton} >Post a Trip</button></Link>
         </div>
     </div>
+    <hr className={styles.line}/>
             <h1> SUBI QUE TE LLEVO</h1>
             <Link to="/route">Post a Trip</Link>
             <Link to="/register">Register as User</Link>
