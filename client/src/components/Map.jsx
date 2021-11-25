@@ -1,13 +1,13 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux"
 import ReactMapboxGl, { Layer, Feature, Marker, GeoJSONLayer, MapContext } from 'react-mapbox-gl';
 import { useEffect } from "react";
-import { getRoute } from "../Actions";
+import { getRoute } from "../actions";
 const layout2 = {
     'line-color': '#100000',
     'line-width': '10px'
 }
 
-const MapboxDirections = require('@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions')
 
 export default function Mapping() {
   const city = useSelector(state => state.suggestions1)
@@ -28,6 +28,7 @@ export default function Mapping() {
   }
 
   useEffect(() => city.length === 1 && city2.length === 1 ? dispatch(getRoute(city[0].coordinates[0], city[0].coordinates[1],city2[0].coordinates[0], city2[0].coordinates[1])): console.log('no se'), [])
+
     return <div>
         <Map
     style="mapbox://styles/mapbox/streets-v9"
@@ -36,7 +37,7 @@ export default function Mapping() {
       width: '70vw',
       zoom: 1
     }}
-    center={ [city[0].coordinates[0],city[0].coordinates[1]]}
+    // center={ [city[0].coordinates[0],city[0].coordinates[1]]}
   >
  
 
