@@ -15,6 +15,14 @@ function handleClick(e) {
 }
     return (
         <div className={styles.home}>
+        <div className={styles.searchContainer}>
+    <div>
+        {/*  <SearchBar />  */}
+         </div>
+         <div>
+        <Link to="/route"><button className={styles.createButton} >Post a Trip</button></Link>
+        </div>
+    </div>
             <h1> SUBI QUE TE LLEVO</h1>
             <Link to="/route">Post a Trip</Link>
             <Link to="/register">Register as User</Link>
