@@ -37,7 +37,7 @@ export default function Mapping() {
       width: '70vw',
       zoom: 1
     }}
-    center={ (Object.keys(city) || city.length > 0) ? city[0].coordinates : [-57.95,-34.93333]}
+    center={ city.length > 0 ? city[0].coordinates : [-57.95,-34.93333]}
   >
  
 

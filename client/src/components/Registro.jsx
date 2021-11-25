@@ -248,7 +248,7 @@ export default function Registro() {
         </div>
         <div>
           <label>About:</label>
-          <input
+          <textarea
             type="text"
             name="about"
             value={input.about}
