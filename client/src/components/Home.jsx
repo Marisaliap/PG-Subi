@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 /* import { getRoutes, getCities } from "../actions"; */
 import styles from "../styles/Home.module.css";
 import RouteDetails from "./RouteDetails";
+import SearchBar from "../components/SearchBar"
 
 
 export default function Home() {
@@ -26,8 +27,18 @@ function handleClick(e) {
 }
     return (
         <div className={styles.home}>
+            <div className={styles.searchContainer}>
+    <div>
+        {/*  <SearchBar />  */}
+         </div>
+         <div>
+        <Link to="/route"><button className={styles.createButton} >Publicar un viaje</button></Link>
+        </div>
+    </div>
+    <hr className={styles.line}/>
+    <div className={styles.title}>
             <h1> SUBI QUE TE LLEVO</h1>
-            <Link to="/route">Publicar un viaje </Link>
+            </div>
             <button onClick={e => {handleClick(e)}}> Refresh Routes </button>
             <div> 
                 <select> 

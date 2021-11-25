@@ -5,7 +5,7 @@ import {
   getSuggestions,
   getSuggestions2,
   matchedCity,
-} from "../Actions";
+} from "../actions";
 import { Link } from "react-router-dom";
 const inputs = {};
 export default function SearchBar() {
