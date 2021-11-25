@@ -26,9 +26,10 @@ const getRouteInfo = async (req, res, next) => {
                 }
             ))
 
- 
+                
             city = cities.filter(city => city.name.toLowerCase() === name)
-           
+            
+            if (city.length === 1) {cities = city};
 
         }
 
@@ -41,6 +42,11 @@ const getRouteInfo = async (req, res, next) => {
             cordenadas = {
                 distance: kilometers(distance),
                 time: hours(time),
+                "type": "geojson",
+                "data": {
+                    "type": "Feature",
+                    "geometry": data.routes[0].geometry
+                }
             }
         }
 

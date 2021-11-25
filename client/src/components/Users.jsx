@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Users({ name, lastName, genre, age, image}) {
+export default function Users({name, lastName, genre, age, image, calification}) {
   return (
     <div>
       <img src={image} alt={name} />
@@ -8,6 +8,7 @@ export default function Users({ name, lastName, genre, age, image}) {
         <h2>{lastName}</h2>
         <h2>{genre}</h2>
         <h2>{age}</h2>
+        <h2>{calification}</h2>
     </div>
   );
 }

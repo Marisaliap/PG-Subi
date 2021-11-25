@@ -6,6 +6,7 @@ import {
   getSuggestions2,
   matchedCity,
 } from "../actions";
+import Map from './Map.jsx';
 import { Link } from "react-router-dom";
 const inputs = {};
 export default function SearchBar() {
@@ -17,8 +18,8 @@ export default function SearchBar() {
   function handleChange(e) {
     inputs[e.target.name] = e.target.value;
 
-    dispatch(getSuggestions(inputs.input1));
-    dispatch(getSuggestions2(inputs.input2));
+    dispatch(getSuggestions(inputs.Origin));
+    dispatch(getSuggestions2(inputs.Destination));
   }
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,7 +32,8 @@ export default function SearchBar() {
           type="text"
           list="cities"
           onChange={handleChange}
-          name="input1"
+          name="Origin"
+          placeholder="Origin"
           style={{ width: "800px" }}
         />
         <datalist id="cities">
@@ -44,7 +46,8 @@ export default function SearchBar() {
           type="text"
           list="cities2"
           onChange={handleChange}
-          name="input2"
+          name="Destination"
+          placeholder="Destination"
           style={{ width: "800px" }}
         />
         <datalist id="cities2">
@@ -52,10 +55,13 @@ export default function SearchBar() {
             <option>{city.name}</option>
           ))}
         </datalist>
+        <div>
+        <Map/>
         <Link to="/map">
           <button>Entrar</button>
         </Link>
         <button onClick={handleSubmit}>submit</button>
+        </div>
       </form>
     </div>
   );
