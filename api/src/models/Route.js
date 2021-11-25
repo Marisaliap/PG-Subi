@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     date: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     hours: {
@@ -30,11 +30,9 @@ module.exports = (sequelize) => {
     },
     restriction: {
       type: DataTypes.STRING,
-      allowNull: false,
+      
     },
-    passengers: {
-      type: DataTypes.INTEGER
-    }
+    
   },
   {
     timestamps: false,

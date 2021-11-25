@@ -31,13 +31,10 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     dni: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    patent: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
     street: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -51,20 +48,20 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     telephone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     facebook: {
       type: DataTypes.STRING,
-      allowNull: true,
+
     },
     instagram: {
       type: DataTypes.STRING,
-      allowNull: true,
+
     },
     calification: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+
     },
     password:{
       type:DataTypes.STRING,
@@ -80,4 +77,3 @@ module.exports = (sequelize) => {
   }
   );
 };
-
