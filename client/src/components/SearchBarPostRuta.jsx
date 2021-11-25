@@ -23,7 +23,7 @@ export default function SearchBar() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(deleteRoute());
+    dispatch(getRoute(cities[0].coordinates[0], cities[0].coordinates[1],cities2[0].coordinates[0], cities2[0].coordinates[1]));
   }
   return (
     <div>
@@ -37,7 +37,7 @@ export default function SearchBar() {
           style={{ width: "800px" }}
         />
         <datalist id="cities">
-          {cities.map((city) => (
+          {cities && cities.map((city) => (
             <option>{city.name}</option>
           ))}
         </datalist>
@@ -51,7 +51,7 @@ export default function SearchBar() {
           style={{ width: "800px" }}
         />
         <datalist id="cities2">
-          {cities2.map((city) => (
+          {cities2 && cities2.map((city) => (
             <option>{city.name}</option>
           ))}
         </datalist>

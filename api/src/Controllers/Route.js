@@ -13,11 +13,12 @@ const getRouteInfo = async (req, res, next) => {
             lat2,
             name,
         } = req.query
-        name = name.toLowerCase()
+        
 
 
-        var distance, time, cordenadas, cities, info, city
+        var distance, time, coordinates, cities, info, city
         if (name) {
+            name = name.toLowerCase()
             info = (await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name}.json?country=ar&access_token=${TOKEN}`)).data.features
             cities = info.map(city => (
                 {
@@ -35,24 +36,24 @@ const getRouteInfo = async (req, res, next) => {
 
 
         else if (long1 && lat1 && long2 && lat2) {
-            info = (await axios.get(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${long1}%2C${lat1}%3B${long2}%2C${lat2}?alternatives=false&geometries=geojson&overview=simplified&steps=false&access_token=${TOKEN}`)).data
+            info = (await axios.get(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${long1}%2C${lat1}%3B${long2}%2C${lat2}?alternatives=false&geometries=geojson&overview=full&steps=false&access_token=${TOKEN}`)).data
             distance = info.routes[0].distance
             time = info.routes[0].duration
 
-            cordenadas = {
+            coordinates = {
                 distance: kilometers(distance),
                 time: hours(time),
                 "type": "geojson",
                 "data": {
                     "type": "Feature",
-                    "geometry": data.routes[0].geometry
+                    "geometry": info.routes[0].geometry
                 }
             }
         }
 
         return res.send({
             cities,
-            cordenadas,
+            coordinates,
             city
         })
 
