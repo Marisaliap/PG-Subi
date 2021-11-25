@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { postUser } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 
-
 export default function Registro() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -28,36 +27,30 @@ export default function Registro() {
       errors.city = "City is required";
     } else if (!input.street) {
       errors.street = "Street is required";
-    } else if (!input.patent) {
-      errors.patent = "Licence Plate is required";
     } else if (!input.dni) {
       errors.dni = "DNI is required";
     } else if (!input.age) {
       errors.age = "Age is required";
-    } else if (!input.genre) {
-      errors.genre = "Genre is required";
     }
     return errors;
   }
 
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
-    name: isAuthenticated ? user.given_name : '',
-    lastName: isAuthenticated ? user.family_name : '',
-    email: isAuthenticated ? user.email : '',
+    name: isAuthenticated ? user.given_name : "",
+    lastName: isAuthenticated ? user.family_name : "",
+    email: isAuthenticated ? user.email : "",
     telephone: "",
     facebook: "",
     instagram: "",
-    // password: "",
+    password: "a",
     province: "",
     city: "",
     street: "",
-    patent: "",
     dni: "",
     age: "",
     about: "",
     genre: "",
-    // calification: "",
   });
 
   useEffect(() => {
@@ -77,10 +70,21 @@ export default function Registro() {
     );
   }
 
-  
+  function handleCheckGenre(e) {
+    if (e.target.checked) {
+      setInput({
+        ...input,
+        genre: e.target.value,
+      });
+    }
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    if(Object.keys(errors).length === 0){
+    console.log(user);
+    console.log(input);
+    console.log(errors);
+    if (Object.keys(errors).length === 0) {
       dispatch(postUser(input));
       console.log(input);
       setInput({
@@ -90,23 +94,20 @@ export default function Registro() {
         telephone: "",
         facebook: "",
         instagram: "",
-        // password: "",
         province: "",
         city: "",
         street: "",
-        patent: "",
         dni: "",
         age: "",
         about: "",
         genre: "",
-        // calification: "",
       });
-      history.push("/home");  
+      alert("User created correctly");
+      history.push("/home");
     } else {
       alert("All mandatory fields must be filled to continue");
     }
   }
-
 
   return (
     <>
@@ -119,68 +120,71 @@ export default function Registro() {
           handleSubmit(e);
         }}
       >
-        {!isAuthenticated ? 
-        <div> 
+        {!isAuthenticated ? (
+          <div>
+            <div>
+              <label>Name*:</label>
+              <input
+                type="text"
+                name="name"
+                value={input.name}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+            <div>
+              <label>Last Name*:</label>
+              <input
+                type="text"
+                name="lastName"
+                value={input.lastName}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+            <div>
+              <label>Email*:</label>
+              <input
+                type="text"
+                name="email"
+                value={input.email}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+          </div>
+        ) : (
+          user.name.includes("@") && (
+            <div>
+              <div>
+                <label>Name*:</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={input.name}
+                  onChange={(e) => handleChange(e)}
+                />
+              </div>
+              <div>
+                <label>Last Name*:</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={input.lastName}
+                  onChange={(e) => handleChange(e)}
+                />
+              </div>
+            </div>
+          )
+        )}
         <div>
-          <label>Name*</label>
+          <label>Telephone*:</label>
           <input
-            type="text"
-            name="name"
-            value={input.name}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Last Name*</label>
-          <input
-            type="text"
-            name="lastName"
-            value={input.lastName}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Email*</label>
-          <input
-            type="text"
-            name="email"
-            value={input.email}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        </div>
-        : (user.name.includes('@') && 
-        <div>  
-                <div>
-        <label>Name*</label>
-        <input
-          type="text"
-          name="name"
-          value={input.name}
-          onChange={(e) => handleChange(e)}
-        />
-      </div>
-      <div>
-        <label>Last Name*</label>
-        <input
-          type="text"
-          name="lastName"
-          value={input.lastName}
-          onChange={(e) => handleChange(e)}
-        />
-      </div></div>)
-}
-        <div>
-          <label>Telephone*</label>
-          <input
-            type="text"
+            type="number"
             name="telephone"
             value={input.telephone}
             onChange={(e) => handleChange(e)}
           />
         </div>
         <div>
-          <label>Facebook</label>
+          <label>Facebook:</label>
           <input
             type="text"
             name="facebook"
@@ -189,7 +193,7 @@ export default function Registro() {
           />
         </div>
         <div>
-          <label>Instagram</label>
+          <label>Instagram:</label>
           <input
             type="text"
             name="instagram"
@@ -198,7 +202,7 @@ export default function Registro() {
           />
         </div>
         <div>
-          <label>Province*</label>
+          <label>Province*:</label>
           <input
             type="text"
             name="province"
@@ -207,7 +211,7 @@ export default function Registro() {
           />
         </div>
         <div>
-          <label>City*</label>
+          <label>City*:</label>
           <input
             type="text"
             name="city"
@@ -216,7 +220,7 @@ export default function Registro() {
           />
         </div>
         <div>
-          <label>Street*</label>
+          <label>Street*:</label>
           <input
             type="text"
             name="street"
@@ -225,34 +229,25 @@ export default function Registro() {
           />
         </div>
         <div>
-          <label>Licence Plate*</label>
+          <label>DNI*:</label>
           <input
-            type="text"
-            name="patent"
-            value={input.patent}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>DNI*</label>
-          <input
-            type="text"
+            type="number"
             name="dni"
             value={input.dni}
             onChange={(e) => handleChange(e)}
           />
         </div>
         <div>
-          <label>Age*</label>
+          <label>Age*:</label>
           <input
-            type="text"
+            type="number"
             name="age"
             value={input.age}
             onChange={(e) => handleChange(e)}
           />
         </div>
         <div>
-          <label>About</label>
+          <label>About:</label>
           <input
             type="text"
             name="about"
@@ -261,17 +256,39 @@ export default function Registro() {
           />
         </div>
         <div>
-          <label>Genre*</label>
-          <input
-            type="text"
-            name="genre"
-            value={input.genre}
-            onChange={(e) => handleChange(e)}
-          />
+          <label>Genre*:</label>
+          <label>
+            Masculine
+            <input
+              type="radio"
+              id="Masculine"
+              name="genre"
+              value="Masculine"
+              onChange={(e) => handleCheckGenre(e)}
+            />
+          </label>
+          <label>
+            Femenine
+            <input
+              type="radio"
+              id="Femenine"
+              name="genre"
+              value="Femenine"
+              onChange={(e) => handleCheckGenre(e)}
+            />
+          </label>
+          <label>
+            Rather not say
+            <input
+              type="radio"
+              id="Rather not say"
+              name="genre"
+              value="Rather not say"
+              onChange={(e) => handleCheckGenre(e)}
+            />
+          </label>
         </div>
-        <button type="submit">
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     </>
   );
