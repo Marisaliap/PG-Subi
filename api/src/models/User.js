@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    
+
     street: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -53,15 +53,15 @@ module.exports = (sequelize) => {
     },
     facebook: {
       type: DataTypes.STRING,
-      
+
     },
     instagram: {
       type: DataTypes.STRING,
-      
+
     },
     calification: {
       type: DataTypes.INTEGER,
-      
+
     },
     password:{
       type:DataTypes.STRING,
@@ -77,4 +77,3 @@ module.exports = (sequelize) => {
   }
   );
 };
-

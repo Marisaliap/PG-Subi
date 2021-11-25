@@ -1,3 +1,4 @@
+
 const { User } = require('../db.js');
 
 
@@ -41,12 +42,12 @@ const postUser = async (req, res,next) => {
           age: age,
           about: about,
           genre: genre,
-          
+
           calification: calification,
         }
     })
 res.send(user)
-  
+
 } catch (error) {
   next(error);
 }
