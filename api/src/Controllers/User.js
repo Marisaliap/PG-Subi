@@ -1,6 +1,6 @@
-const { UUIDV4 } = require('sequelize/types');
+//const { UUIDV4 } = require('sequelize/types');
 const { User } = require('../db.js');
-const { v4: uuidv4 } = require('uuid')
+//const { v4: uuidv4 } = require('uuid')
 
 const postUser = async (req, res,next) => {
   try {
