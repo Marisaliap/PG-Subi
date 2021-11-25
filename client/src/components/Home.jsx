@@ -17,7 +17,6 @@ function handleClick(e) {
         <div className={styles.home}>
         <div className={styles.searchContainer}>
     <div>
-        {/*  <SearchBar />  */}
          </div>
          <div>
         <Link to="/route"><button className={styles.createButton} >Post a Trip</button></Link>

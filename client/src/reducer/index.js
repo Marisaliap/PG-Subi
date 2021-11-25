@@ -12,7 +12,7 @@ function rootReducer(state = initialState, action) {
     case "GET_SUGGESTIONS":
       return {
         ...state,
-        suggestions1: action.payload,
+        suggestions1: action.payload.cities,
       };
     case "MATCHED_CITY":
       return {
@@ -27,7 +27,7 @@ function rootReducer(state = initialState, action) {
     case "GET_SUGGESTIONS2":
       return {
         ...state,
-        suggestions2: action.payload,
+        suggestions2: action.payload.cities,
       };
     case "GET_ROUTE":
       return {
