@@ -32,7 +32,7 @@ function handleClick(e) {
         {/*  <SearchBar />  */}
          </div>
          <div>
-        <Link to="/route"><button className={styles.createButton} >Publicar un viaje</button></Link>
+        <Link to="/route"><button className={styles.createButton} >Post a Trip</button></Link>
         </div>
     </div>
     <hr className={styles.line}/>
