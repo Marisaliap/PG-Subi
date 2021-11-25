@@ -1,4 +1,4 @@
-const { Car } = require('../db.js');
+const { Car, User } = require('../db.js');
 
 const getCar = async (req, res, next) => {
   try{
@@ -14,7 +14,7 @@ const getCar = async (req, res, next) => {
 const postCar = async (req, res, next) => {
   try{
     const {
-      manejante,
+      id,
       patent,
       brand,
       model,
@@ -22,7 +22,8 @@ const postCar = async (req, res, next) => {
     } = req.body;
 
     const car = await Car.findOrCreate({where: {patent,brand,model,cylinder}});
-    //await car.addUser(manejante);
+    const user = await User.findByPk(id)
+    await user.addCar(patent);
     res.send(car);
   }
   catch(err) {

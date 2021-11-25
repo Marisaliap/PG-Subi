@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     dni: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     patent: {
@@ -80,4 +80,3 @@ module.exports = (sequelize) => {
   }
   );
 };
-

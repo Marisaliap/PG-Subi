@@ -23,8 +23,7 @@ const postUser = async (req, res,next) => {
       calification,
 
     } = req.body
-    console.log(req.body)
-    console.log(dni)
+    
 
     //created = true --> lo creo
     //createf = false --> lo encontro
