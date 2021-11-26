@@ -14,7 +14,6 @@ const postUser = async (req, res, next) => {
       province,
       city,
       street,
-      patent,
       dni,
       age,
       about,
@@ -42,12 +41,11 @@ const postUser = async (req, res, next) => {
           province: province,
           city: city,
           street: street,
-          patent: city,
           dni: dni,
           age: age,
           about: about,
           genre: genre,
-          patent: patent,
+
           calification: calification,
         }
 

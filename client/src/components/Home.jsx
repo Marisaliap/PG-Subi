@@ -2,32 +2,31 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-/* import { getRoutes, getCities } from "../actions"; */
 import styles from "../styles/Home.module.css";
 import RouteDetails from "./RouteDetails";
 
-
 export default function Home() {
 
-const dispatch = useDispatch()   //declaro una constante para despachar mis acciones
-const allRoutes = useSelector((state) => state.routes) // me traigo desde el reducer el estado routes donde están todas las rutas 
-
-/* useEffect(() => {
-    dispatch(getRoutes());
-},[])
-
-useEffect(() => {
-    dispatch(getCities());
-},[]) */
+const dispatch = useDispatch()   
+const allRoutes = useSelector((state) => state.route) 
 
 function handleClick(e) {
     e.preventDefault();
-   /*  dispatch(getRoutes()); */
 }
     return (
         <div className={styles.home}>
+        <div className={styles.searchContainer}>
+    <div>
+        {/*  <SearchBar />  */}
+         </div>
+         <div>
+        <Link to="/route"><button className={styles.createButton} >Post a Trip</button></Link>
+        </div>
+    </div>
+    <hr className={styles.line}/>
             <h1> SUBI QUE TE LLEVO</h1>
-            <Link to="/route">Publicar un viaje </Link>
+            <Link to="/route">Post a Trip</Link>
+            <Link to="/register">Register as User</Link>
             <button onClick={e => {handleClick(e)}}> Refresh Routes </button>
             <div> 
                 <select> 
