@@ -1,4 +1,4 @@
-const { Route } = require("../db.js");
+const { Route,User,Car } = require("../db.js");
 const axios = require("axios");
 const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
 //const { where } = require('sequelize/types');
@@ -58,8 +58,17 @@ const getRouteInfo = async (req, res, next) => {
 
 const postRoute = async (req, res, next) => {
   try {
-    const { origin, destiny, price, date, hours, place, restriction } =
-      req.body;
+    const {
+      idUser,
+      origin,
+      destiny,
+      price,
+      date,
+      hours,
+      place,
+      restriction
+    } = req.body;
+
     const route = await Route.findOrCreate({
       where: {
         origin,
@@ -71,6 +80,8 @@ const postRoute = async (req, res, next) => {
         restriction,
       },
     });
+
+    await route.addUser(idUser);
 
     res.send(route);
   } catch (error) {
@@ -84,10 +95,27 @@ const getRoute = async (req, res, next) => {
     const { id } = req.params;
     let routes;
     if (id) {
-      routes = await Route.findByPk(id);
+      routes = await Route.findByPk(id,{ include: [User, Car] });
       return res.send(routes);
     }
-    routes = await Route.findAll();
+
+    routes = await Route.findAll({
+      include: [{
+        model: User,
+        attributes: ["name","photo","lastName","genre","age","calification"],
+        through: {
+          attributes: []
+        }
+      },
+        {
+          model: Car,
+          attributes: ["patent","color","brand","model"],
+          through: {
+            attributes: []
+        }
+      }]
+    });
+
 
     if (restriction) {
       //Filtro de restricciones
