@@ -103,7 +103,6 @@ const getRoute = async (req, res, next) => {
       return res.send(routes);
     }
 
-<<<<<<< HEAD
     routes = await Route.findAll({
       attributes: ["origin","destiny","date","hours","place","id"],
       include:
@@ -116,10 +115,6 @@ const getRoute = async (req, res, next) => {
           },
         }
     });
-=======
-    if(restriction){ 
-      restriction = restriction.split(',');
->>>>>>> rami
 
 
     if (restriction) {
