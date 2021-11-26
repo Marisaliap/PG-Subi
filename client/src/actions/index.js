@@ -44,20 +44,20 @@ export function getRoute(long1, lat1, long2, lat2) {
   };
 }
 
-// export function getUser(payload) {
-//   return async function (dispatch) {
-//     try {
-//       const response = await axios.get(`http://localhost:3001/user/${id}`, payload);
-//       return dispatch({
-//           type: "GET_USER_DETAIL",
-//           payload: response.data,
-//         });
-//       }
-//     catch (error) {
-//       console.log(error)
-//     }  
-//   }
-// }
+export function getUserDetail(id) {
+  return async function (dispatch) {
+    try {
+     const response = await axios.get(`http://localhost:3001/user/${id}`+ id);
+     return dispatch({
+         type: "GET_USER_DETAIL",
+         payload: response.data,
+      });
+     }
+   catch (error) {
+    console.log(error)
+  }  
+  }
+}
 
 export function postUser(payload) {
   return async function (dispatch) {

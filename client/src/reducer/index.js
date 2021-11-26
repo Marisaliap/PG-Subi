@@ -19,11 +19,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         matched: action.payload,
       };
-    case "GET_USER_DETAIL":
-      return {
-        ...state,
-        matched: action.payload,
-      };
     case "GET_SUGGESTIONS2":
       return {
         ...state,

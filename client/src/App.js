@@ -3,8 +3,13 @@ import './Sass/Styles/App.scss';
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import LandingPage from "./components/LandingPage"
 import Home from "./components/Home"
+import Faq from "./components/Faq"
+import TermsAndConditions from "./components/TermsAndConditions"
+import Aboutus from "./components/Aboutus"
+import Recommendations from "./components/Recommendations"
 import CreateRoute from "./components/CreateRoute"
 import UserDetails from "./components/UserDetails"
+import allInfoRoute from "./components/allInfoRoute"
 import { useAuth0 } from "@auth0/auth0-react";
 import Registro from './components/Registro';
 import Footer from './components/Footer';
@@ -24,6 +29,11 @@ function App() {
     <Route path="/route" component= { CreateRoute }/>
     <Route path='/register' component = { Registro }/>
     <Route path="/user/:id" component= { UserDetails }/>
+    <Route path="/faq" component= { Faq }/>
+    <Route path="/terms-and-conditions" component= { TermsAndConditions }/>
+    <Route path="/recommendations" component= { Recommendations }/>
+    <Route path="/aboutus" component= { Aboutus }/>
+    <Route path="/route-list" component= { allInfoRoute }/>
       </Switch>}
     <Route  component= { Footer }/></>):( <h1>Logueate Capo</h1>)
     }
