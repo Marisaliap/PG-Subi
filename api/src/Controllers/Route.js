@@ -1,70 +1,65 @@
-const { Route } = require('../db.js');
-const axios = require('axios');
-const { kilometers, hours } = require('./Function'); // ME TRAIGO LAS FUNCTIONS
+const { Route } = require("../db.js");
+const axios = require("axios");
+const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
 //const { where } = require('sequelize/types');
 const { TOKEN } = process.env;
 
 const getRouteInfo = async (req, res, next) => {
   try {
+    let { long1, lat1, long2, lat2, name } = req.query;
 
-    let {
-      long1,
-      lat1,
-      long2,
-      lat2,
-      name,
-    } = req.query
-    name = name.toLowerCase()
-
-    var distance, time, cordenadas, cities, info, city
+    var distance, time, coordinates, cities, info, city;
     if (name) {
-      info = (await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name}.json?country=ar&access_token=${TOKEN}`)).data.features
-      cities = info.map(city => (
-        {
-          name: city.place_name,
-          coordinates: city.center
-        }
-      ))
+      name = name.toLowerCase();
+      info = (
+        await axios.get(
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${name}.json?country=ar&access_token=${TOKEN}`
+        )
+      ).data.features;
+      cities = info.map((city) => ({
+        name: city.place_name,
+        coordinates: city.center,
+      }));
 
-      city = cities.filter(city => city.name.toLowerCase() === name)
+      city = cities.filter((city) => city.name.toLowerCase() === name);
 
-    }
+      if (city.length === 1) {
+        cities = city;
+      }
+    } else if (long1 && lat1 && long2 && lat2) {
+      info = (
+        await axios.get(
+          `https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${long1}%2C${lat1}%3B${long2}%2C${lat2}?alternatives=false&geometries=geojson&overview=full&steps=false&access_token=${TOKEN}`
+        )
+      ).data;
+      distance = info.routes[0].distance;
+      time = info.routes[0].duration;
 
-    else if (long1 && lat1 && long2 && lat2) {
-      info = (await axios.get(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${long1}%2C${lat1}%3B${long2}%2C${lat2}?alternatives=false&geometries=geojson&overview=simplified&steps=false&access_token=${TOKEN}`)).data
-      distance = info.routes[0].distance
-      time = info.routes[0].duration
-
-      cordenadas = {
+      coordinates = {
         distance: kilometers(distance),
         time: hours(time),
-      }
+        type: "geojson",
+        data: {
+          type: "Feature",
+          geometry: info.routes[0].geometry,
+        },
+      };
     }
 
     return res.send({
       cities,
-      cordenadas,
-      city
-    })
+      coordinates,
+      city,
+    });
+  } catch (error) {
+    next(error);
   }
+};
 
-  catch (error) {
-    next(error)
-  }
-}
-
-
-const postRoute= async (req, res, next) => {
-  try{
-    const {
-      origin,
-      destiny,
-      price,
-      date,
-      hours,
-      place,
-      restriction,
-    }=req.body;
+const postRoute = async (req, res, next) => {
+  try {
+    const { origin, destiny, price, date, hours, place, restriction } =
+      req.body;
     const route = await Route.findOrCreate({
       where: {
         origin,
@@ -74,84 +69,77 @@ const postRoute= async (req, res, next) => {
         hours,
         place,
         restriction,
-      }
-    })
+      },
+    });
 
-    res.send(route)
-
-  }catch(error){
-    next(error)
+    res.send(route);
+  } catch (error) {
+    next(error);
   }
-}
-
+};
 
 const getRoute = async (req, res, next) => {
   try {
-    let {restriction} = req.query;
-    const {id} = req.params;
+    let { restriction } = req.query;
+    const { id } = req.params;
     let routes;
-    if(id){
+    if (id) {
       routes = await Route.findByPk(id);
       return res.send(routes);
     }
     routes = await Route.findAll();
 
-    if(restriction){ //Filtro de restricciones
-      restriction = restriction.split(',');
+    if (restriction) {
+      //Filtro de restricciones
+      restriction = restriction.split(",");
 
-      routes = routes.filter(route => {
-        let restricRoute = route.restriction.split(',');
-        restricRoute = restriction.map(r => restricRoute.includes(r))
+      routes = routes.filter((route) => {
+        let restricRoute = route.restriction.split(",");
+        restricRoute = restriction.map((r) => restricRoute.includes(r));
 
-        if(restricRoute.includes(false)) return false;
-        else return true
-      })
+        if (restricRoute.includes(false)) return false;
+        else return true;
+      });
     }
 
     return res.send(routes);
-
   } catch (e) {
     next(e);
   }
-}
+};
 
-
-
-
-  const putRoute = async (req, res) => {
-      try {
-          const {id} = req.params;
-          const {date, hours, restriction, place} = req.body;
-          const route = await Route.findByPk(id);
-          route.update(
-              {
-               date,
-               hours,
-               restriction,
-               place
-              }
-         )
-         res.send(route);
-      } catch (error) {
-          res.send(error)
-      }
+const putRoute = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { date, hours, restriction, place } = req.body;
+    const route = await Route.findByPk(id);
+    route.update({
+      date,
+      hours,
+      restriction,
+      place,
+    });
+    res.send(route);
+  } catch (error) {
+    res.send(error);
   }
+};
 
-  const deleteRoute = async (req, res, next) => {
-      try {
-          const {id} = req.params;
-          const route = await Route.findByPk(id);
-          await route.destroy();
-          res.send("Registro Eliminado")
-      } catch (error) {
-          next(error);
-      }
+const deleteRoute = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const route = await Route.findByPk(id);
+    await route.destroy();
+    res.send("Registro Eliminado");
+  } catch (error) {
+    next(error);
   }
+};
 
 module.exports = {
-    getRouteInfo,
-    postRoute,
-    getRoute,
-    putRoute,
-    deleteRoute,
-}
+  getRouteInfo,
+  postRoute,
+  getRoute,
+  putRoute,
+  deleteRoute,
+};
