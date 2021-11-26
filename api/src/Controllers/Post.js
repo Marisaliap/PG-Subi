@@ -29,7 +29,7 @@ const setPost = async (req, res, next) => {
 
 
 
-        var posts = Post.findOrCreate({
+        const posts = Post.findOrCreate({
             where: {
                 title,
                 date,
@@ -39,7 +39,7 @@ const setPost = async (req, res, next) => {
             
             },
         })
-        let users = await User.findByPk(id)
+        const users = await User.findByPk(id)
         await users.addPost(author);
         res.send(posts);
 

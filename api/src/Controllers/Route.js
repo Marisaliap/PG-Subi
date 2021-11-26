@@ -96,7 +96,7 @@ const getRoute = async (req, res, next) => {
     }
     routes = await Route.findAll();
 
-    if(restriction){ //Filtro de restricciones
+    if(restriction){ 
       restriction = restriction.split(',');
 
       routes = routes.filter(route => {
