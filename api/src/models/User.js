@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     dni: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
 
@@ -72,7 +72,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     photo:{
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     photoDni:{
