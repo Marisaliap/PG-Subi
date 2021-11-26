@@ -81,10 +81,7 @@ export default function TermsAndConditions() {
             N°43/2016, de la CNRT N°1025/2016 y concordantes. El Usuario será el
             encargado exclusivo de hacer cumplir estas disposiciones y el
             responsable absoluto por su incumplimiento, sin perjuicio de las
-            medidas que pueda tomar Subi que te Llevo respecto a su suspensión temporal
-            o permanente. El uso del servicio es individual y propio del usuario
-            que cargó sus datos personales en el perfil Subi que te Llevo. Sólo es
-            posible tener crear un único usuario por persona física, cualquier
+            medidas que pueda tomar Subi que te Llevo respecto a su suspensión temporal o permanente. El uso del servicio es individual y propio del usuario que cargó sus datos personales en el perfil Subi que te Llevo. Sólo es posible tener crear un único usuario por persona física, cualquier
             persona física que se detecte con múltiples cuentas de usuario serán
             suspendidas, dejando un único usuario asociado a la persona física.
             La persona que usa el servicio debe ser la persona que comparte el
