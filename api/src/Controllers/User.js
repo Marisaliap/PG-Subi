@@ -1,4 +1,4 @@
-const { User, Op } = require('../db.js');
+const { User,Post,Car,Op } = require('../db.js');
 
 
 const postUser = async (req, res, next) => {
@@ -69,7 +69,7 @@ const getUser = async (req, res, next) => {
           name: {
             [Op.iLike]: `%${name}%`
           }
-        }
+        },
       });
 
       data = data.map(user => {
@@ -86,7 +86,13 @@ const getUser = async (req, res, next) => {
       })
     }
     else if (id) {
-      data = await User.findByPk(id);
+      data = await User.findByPk(id,
+        {
+        
+          include:[Post,Car]
+        }
+   
+      );
     }
     res.send(data);
   } catch (error) {
