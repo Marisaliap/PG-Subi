@@ -13,7 +13,7 @@ const getRouteInfo = async (req, res, next) => {
       name = name.toLowerCase();
       info = (
         await axios.get(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${name}.json?country=ar&access_token=${TOKEN}`
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${name}.json?country=ar&types=place&access_token=${TOKEN}`
         )
       ).data.features;
       cities = info.map((city) => ({
