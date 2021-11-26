@@ -7,6 +7,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       primaryKey: true
     },
+    color:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     brand: {
       type: DataTypes.STRING,
       allowNull: false,

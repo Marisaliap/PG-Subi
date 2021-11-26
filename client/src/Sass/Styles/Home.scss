@@ -1,0 +1,22 @@
+@import '../Variables/Variables.scss';
+
+.Home {
+  .searchContainer {
+    height: 5vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.5rem 3rem;
+
+    .searchContainerItem {
+      text-decoration: none;
+      margin-left: 3rem;
+    }
+  }
+
+  .divider {
+    border-top: 2px solid #220f0020;
+    margin: 0.5rem auto;
+  }
+}

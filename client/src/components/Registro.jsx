@@ -1,9 +1,10 @@
-import react from "react";
-import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { postUser } from "../actions";
-import { useAuth0 } from "@auth0/auth0-react";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { postUser } from '../actions';
+import { useAuth0 } from '@auth0/auth0-react';
+import '../Sass/Styles/RegisterForm.scss';
 
 export default function Registro() {
   const dispatch = useDispatch();
@@ -14,43 +15,45 @@ export default function Registro() {
   function validate(input) {
     let errors = {};
     if (!input.name) {
-      errors.name = "Name is required";
+      errors.name = 'Name is required';
     } else if (!input.lastName) {
-      errors.lastName = "Last name is required";
+      errors.lastName = 'Last name is required';
     } else if (!input.email) {
-      errors.email = "Email is required";
+      errors.email = 'Email is required';
     } else if (!input.telephone) {
-      errors.telephone = "Telephone is required";
+      errors.telephone = 'Telephone is required';
     } else if (!input.province) {
-      errors.province = "Province is required";
+      errors.province = 'Province is required';
     } else if (!input.city) {
-      errors.city = "City is required";
+      errors.city = 'City is required';
     } else if (!input.street) {
-      errors.street = "Street is required";
+      errors.street = 'Street is required';
     } else if (!input.dni) {
-      errors.dni = "DNI is required";
+      errors.dni = 'DNI is required';
     } else if (!input.age) {
-      errors.age = "Age is required";
+      errors.age = 'Age is required';
     }
+
+    // AGREGAR VALIDACIÓN DE GÉNEROS
     return errors;
   }
 
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
-    name: isAuthenticated ? user.given_name : "",
-    lastName: isAuthenticated ? user.family_name : "",
-    email: isAuthenticated ? user.email : "",
-    telephone: "",
-    facebook: "",
-    instagram: "",
-    password: "a",
-    province: "",
-    city: "",
-    street: "",
-    dni: "",
-    age: "",
-    about: "",
-    genre: "",
+    name: isAuthenticated ? user.given_name : '',
+    lastName: isAuthenticated ? user.family_name : '',
+    email: isAuthenticated ? user.email : '',
+    telephone: '',
+    facebook: '',
+    instagram: '',
+    password: 'a',
+    province: '',
+    city: '',
+    street: '',
+    dni: '',
+    age: '',
+    about: '',
+    genre: '',
   });
 
   useEffect(() => {
@@ -88,24 +91,24 @@ export default function Registro() {
       dispatch(postUser(input));
       console.log(input);
       setInput({
-        name: "",
-        lastName: "",
-        email: "",
-        telephone: "",
-        facebook: "",
-        instagram: "",
-        province: "",
-        city: "",
-        street: "",
-        dni: "",
-        age: "",
-        about: "",
-        genre: "",
+        name: '',
+        lastName: '',
+        email: '',
+        telephone: '',
+        facebook: '',
+        instagram: '',
+        province: '',
+        city: '',
+        street: '',
+        dni: '',
+        age: '',
+        about: '',
+        genre: '',
       });
-      alert("User created correctly");
-      history.push("/home");
+      alert('User created correctly');
+      history.push('/home');
     } else {
-      alert("All mandatory fields must be filled to continue");
+      alert('All mandatory fields must be filled to continue');
     }
   }
 
@@ -114,44 +117,15 @@ export default function Registro() {
       <Link to="/home">
         <button>Home</button>
       </Link>
-      <h1>Create your User</h1>
-      <form
-        onSubmit={(e) => {
-          handleSubmit(e);
-        }}
-      >
-        {!isAuthenticated ? (
-          <div>
-            <div>
-              <label>Name*:</label>
-              <input
-                type="text"
-                name="name"
-                value={input.name}
-                onChange={(e) => handleChange(e)}
-              />
-            </div>
-            <div>
-              <label>Last Name*:</label>
-              <input
-                type="text"
-                name="lastName"
-                value={input.lastName}
-                onChange={(e) => handleChange(e)}
-              />
-            </div>
-            <div>
-              <label>Email*:</label>
-              <input
-                type="text"
-                name="email"
-                value={input.email}
-                onChange={(e) => handleChange(e)}
-              />
-            </div>
-          </div>
-        ) : (
-          user.name.includes("@") && (
+      <div className="formContainer">
+        <h1>Create your User</h1>
+        <form
+          className="Form"
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
+          {!isAuthenticated ? (
             <div>
               <div>
                 <label>Name*:</label>
@@ -161,6 +135,7 @@ export default function Registro() {
                   value={input.name}
                   onChange={(e) => handleChange(e)}
                 />
+                {errors.name && <p className="error">{errors.name}</p>}
               </div>
               <div>
                 <label>Last Name*:</label>
@@ -170,126 +145,172 @@ export default function Registro() {
                   value={input.lastName}
                   onChange={(e) => handleChange(e)}
                 />
+                {errors.lastName && <p className="error">{errors.lastName}</p>}
+              </div>
+              <div>
+                <label>Email*:</label>
+                <input
+                  type="text"
+                  name="email"
+                  value={input.email}
+                  onChange={(e) => handleChange(e)}
+                />
+                {errors.email && <p className="error">{errors.email}</p>}
               </div>
             </div>
-          )
-        )}
-        <div>
-          <label>Telephone*:</label>
-          <input
-            type="number"
-            name="telephone"
-            value={input.telephone}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Facebook:</label>
-          <input
-            type="text"
-            name="facebook"
-            value={input.facebook}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Instagram:</label>
-          <input
-            type="text"
-            name="instagram"
-            value={input.instagram}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Province*:</label>
-          <input
-            type="text"
-            name="province"
-            value={input.province}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>City*:</label>
-          <input
-            type="text"
-            name="city"
-            value={input.city}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Street*:</label>
-          <input
-            type="text"
-            name="street"
-            value={input.street}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>DNI*:</label>
-          <input
-            type="number"
-            name="dni"
-            value={input.dni}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Age*:</label>
-          <input
-            type="number"
-            name="age"
-            value={input.age}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>About:</label>
-          <input
-            type="text"
-            name="about"
-            value={input.about}
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Genre*:</label>
-          <label>
-            Masculine
+          ) : (
+            user.name.includes('@') && (
+              <div>
+                <div>
+                  <label>Name*:</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={input.name}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  {errors.name && <p className="error">{errors.name}</p>}
+                </div>
+                <div>
+                  <label>Last Name*:</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={input.lastName}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  {errors.lastName && (
+                    <p className="error">{errors.lastName}</p>
+                  )}
+                </div>
+              </div>
+            )
+          )}
+          <div>
+            <label>Telephone*:</label>
             <input
-              type="radio"
-              id="Masculine"
-              name="genre"
-              value="Masculine"
-              onChange={(e) => handleCheckGenre(e)}
+              type="number"
+              name="telephone"
+              value={input.telephone}
+              onChange={(e) => handleChange(e)}
             />
-          </label>
-          <label>
-            Femenine
+            {errors.telephone && <p className="error">{errors.telephone}</p>}
+          </div>
+          <div>
+            <label>Facebook:</label>
             <input
-              type="radio"
-              id="Femenine"
-              name="genre"
-              value="Femenine"
-              onChange={(e) => handleCheckGenre(e)}
+              type="text"
+              name="facebook"
+              value={input.facebook}
+              onChange={(e) => handleChange(e)}
             />
-          </label>
-          <label>
-            Rather not say
+          </div>
+          <div>
+            <label>Instagram:</label>
             <input
-              type="radio"
-              id="Rather not say"
-              name="genre"
-              value="Rather not say"
-              onChange={(e) => handleCheckGenre(e)}
+              type="text"
+              name="instagram"
+              value={input.instagram}
+              onChange={(e) => handleChange(e)}
             />
-          </label>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+          </div>
+          <div>
+            <label>Province*:</label>
+            <input
+              type="text"
+              name="province"
+              value={input.province}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.province && <p className="error">{errors.province}</p>}
+          </div>
+          <div>
+            <label>City*:</label>
+            <input
+              type="text"
+              name="city"
+              value={input.city}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.city && <p className="error">{errors.city}</p>}
+          </div>
+          <div>
+            <label>Street*:</label>
+            <input
+              type="text"
+              name="street"
+              value={input.street}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.street && <p className="error">{errors.street}</p>}
+          </div>
+          <div>
+            <label>DNI*:</label>
+            <input
+              type="number"
+              name="dni"
+              value={input.dni}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.dni && <p className="error">{errors.dni}</p>}
+          </div>
+          <div>
+            <label>Age*:</label>
+            <input
+              type="number"
+              name="age"
+              value={input.age}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.age && <p className="error">{errors.age}</p>}
+          </div>
+          <div>
+            <label>About:</label>
+            <textarea
+              type="text"
+              name="about"
+              value={input.about}
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <div className="Genres">
+            <label>Genre*:</label>
+            <label>
+              Masculine
+              <input
+                type="radio"
+                id="Masculine"
+                name="genre"
+                value="Masculine"
+                onChange={(e) => handleCheckGenre(e)}
+              />
+            </label>
+            <label>
+              Femenine
+              <input
+                type="radio"
+                id="Femenine"
+                name="genre"
+                value="Femenine"
+                onChange={(e) => handleCheckGenre(e)}
+              />
+            </label>
+            <label>
+              Rather not say
+              <input
+                type="radio"
+                id="Rather not say"
+                name="genre"
+                value="Rather not say"
+                onChange={(e) => handleCheckGenre(e)}
+              />
+            </label>
+          </div>
+          <button className="button" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
     </>
   );
 }

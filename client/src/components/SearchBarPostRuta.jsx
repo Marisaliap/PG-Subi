@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteRoute,
@@ -6,6 +7,7 @@ import {
   getSuggestions2,
   matchedCity,
 } from "../actions";
+import Map from './Map.jsx';
 import { Link } from "react-router-dom";
 const inputs = {};
 export default function SearchBar() {
@@ -17,12 +19,12 @@ export default function SearchBar() {
   function handleChange(e) {
     inputs[e.target.name] = e.target.value;
 
-    dispatch(getSuggestions(inputs.input1));
-    dispatch(getSuggestions2(inputs.input2));
+    dispatch(getSuggestions(inputs.Origin));
+    dispatch(getSuggestions2(inputs.Destination));
   }
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(deleteRoute());
+    dispatch(getRoute(cities[0].coordinates[0], cities[0].coordinates[1],cities2[0].coordinates[0], cities2[0].coordinates[1]));
   }
   return (
     <div>
@@ -31,11 +33,12 @@ export default function SearchBar() {
           type="text"
           list="cities"
           onChange={handleChange}
-          name="input1"
+          name="Origin"
+          placeholder="Origin"
           style={{ width: "800px" }}
         />
         <datalist id="cities">
-          {cities.map((city) => (
+          {cities && cities.map((city) => (
             <option>{city.name}</option>
           ))}
         </datalist>
@@ -44,18 +47,22 @@ export default function SearchBar() {
           type="text"
           list="cities2"
           onChange={handleChange}
-          name="input2"
+          name="Destination"
+          placeholder="Destination"
           style={{ width: "800px" }}
         />
         <datalist id="cities2">
-          {cities2.map((city) => (
+          {cities2 && cities2.map((city) => (
             <option>{city.name}</option>
           ))}
         </datalist>
+        <div>
+        <Map/>
         <Link to="/map">
           <button>Entrar</button>
         </Link>
         <button onClick={handleSubmit}>submit</button>
+        </div>
       </form>
     </div>
   );

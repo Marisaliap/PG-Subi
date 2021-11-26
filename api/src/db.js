@@ -67,10 +67,13 @@ Car.belongsTo(User);
 User.hasMany(Post);
 Post.belongsTo(User);
 
+//Car UM Route
+Car.hasMany(Route);
+Route.belongsTo(Car);
 
 //User MM Route
-User.belongsToMany(Route, { through: 'UserRoutes' });
-Route.belongsToMany(User, { through: 'UserRoutes' });
+User.belongsToMany(Route, { through: 'UserRoutes', timestamps: false });
+Route.belongsToMany(User, { through: 'UserRoutes', timestamps: false });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
