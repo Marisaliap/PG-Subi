@@ -104,20 +104,16 @@ const getRoute = async (req, res, next) => {
     }
 
     routes = await Route.findAll({
-      include: [{
-        model: User,
-        attributes: ["name","photo","lastName","genre","age","calification"],
-        through: {
-          attributes: []
-        }
-      },
+      attributes: ["origin","destiny","date","hours","place","id"],
+      include:
         {
-          model: Car,
-          attributes: ["patent","color","brand","model"],
-          through: {
-            attributes: []
+          model: User,
+          attributes: ["name","photo","lastName","genre","age","calification"],
+          include: {
+            model: Car,
+            attributes: ["patent","color","brand","model"],
+          },
         }
-      }]
     });
 
 
