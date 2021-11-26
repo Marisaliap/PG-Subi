@@ -1,4 +1,4 @@
-const { User,Post,Car,Op } = require('../db.js');
+const { User,Post,Car,Route,Op } = require('../db.js');
 
 
 const postUser = async (req, res, next) => {
@@ -89,7 +89,7 @@ const getUser = async (req, res, next) => {
       data = await User.findByPk(id,
         {
         
-          include:[Post,Car]
+          include:[Post,Car,Route]
         }
    
       );
