@@ -60,6 +60,7 @@ const postRoute = async (req, res, next) => {
   try {
     const {
       idUser,
+      patentCar,
       origin,
       destiny,
       price,
@@ -69,8 +70,8 @@ const postRoute = async (req, res, next) => {
       restriction
     } = req.body;
 
-    const route = await Route.findOrCreate({
-      where: {
+    const route = await Route.create(
+      {
         origin,
         destiny,
         price,
@@ -78,10 +79,13 @@ const postRoute = async (req, res, next) => {
         hours,
         place,
         restriction,
-      },
-    });
+      });
+
 
     await route.addUser(idUser);
+    const car = await Car.findByPk(patentCar)
+    await car.addRoute(route);
+
 
     res.send(route);
   } catch (error) {

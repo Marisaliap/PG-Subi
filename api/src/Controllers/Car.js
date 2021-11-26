@@ -18,10 +18,11 @@ const postCar = async (req, res, next) => {
       patent,
       brand,
       model,
-      cylinder
+      cylinder,
+      color
     } = req.body;
 
-    const car = await Car.findOrCreate({where: {patent,brand,model,cylinder}});
+    let car = await Car.create({patent,brand,model,cylinder,color});
     const user = await User.findByPk(id)
     await user.addCar(patent);
     res.send(car);
