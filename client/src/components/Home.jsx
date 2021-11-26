@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Sass/Styles/Home.scss';
 import RouteDetails from './RouteDetails';
-import SearchBar from './SearchBar';
+//import SearchBar from './SearchBar';
 
 export default function Home() {
   const dispatch = useDispatch();
