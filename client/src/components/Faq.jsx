@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Faq() {
     return (
-        <div>
+        <div className='Faq'>
             <div>
               <h2>Preguntas Frecuentes</h2><h3>Uso de Subi que te Llevo</h3>
               <p>Tenés dudas de cómo usar Subi que te Llevo? Escribinos a nuestro <a href="https://facebook.com/subiqueteLlevo" target="_blank">Facebook</a> o <a href="mailto:subiquetellevo@grupo10.com.ar" target="_top">subiquetellevo@grupo10.com.ar</a>.</p>
