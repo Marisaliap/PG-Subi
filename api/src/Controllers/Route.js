@@ -1,6 +1,7 @@
 const { Route } = require('../db.js');
 const axios = require('axios');
 const { kilometers, hours } = require('./Function'); // ME TRAIGO LAS FUNCTIONS
+//const { where } = require('sequelize/types');
 const { TOKEN } = process.env;
 
 const getRouteInfo = async (req, res, next) => {
@@ -104,8 +105,40 @@ const getRoute = async (req, res, next) => {
     }
   }
 
+  const putRoute = async (req, res) => {
+      try {
+          const {id} = req.params;
+          const {date, hours, restriction, place} = req.body;
+          const route = await Route.findByPk(id);
+          route.update(
+              {
+               date,
+               hours,
+               restriction,
+               place
+              }
+         )
+         res.send(route);
+      } catch (error) {
+          res.send(error)
+      }
+  }
+
+  const deleteRoute = async (req, res, next) => {
+      try {
+          const {id} = req.params;
+          const route = await Route.findByPk(id);
+          await route.destroy();
+          res.send("Registro Eliminado")
+      } catch (error) {
+          next(error);
+      }
+  }
+
 module.exports = {
     getRouteInfo,
     postRoute,
     getRoute,
+    putRoute,
+    deleteRoute,
 }
