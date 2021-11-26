@@ -1,0 +1,53 @@
+@import '../Variables/Variables.scss';
+
+.formContainer {
+  outline: none;
+  border-radius: 15px;
+
+  //   &:hover {
+  //     box-shadow: 0 0 10px rgba(44, 11, 34, 0.404),
+  //       0 0 10px rgba(44, 11, 34, 0.404), 0 0 10px rgba(44, 11, 34, 0.404);
+  //     transition-delay: 0.2s;
+  //     transition: 0.8s;
+
+  .Form {
+    font-size: 0.8em;
+    color: $text;
+    font-weight: bolder;
+
+    label {
+      text-align: left;
+    }
+
+    input {
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      margin-top: 5px;
+      border-radius: 5px;
+      width: 160px;
+      margin: 7px;
+
+      &:hover {
+        background-color: #ffffcc73;
+      }
+    }
+
+    .Genres {
+      display: flex;
+      flex-direction: column;
+      border-radius: 3px;
+      font-size: 14px;
+      color: #311601;
+      font-weight: bolder;
+      margin-top: 7px;
+      width: 180px;
+      height: 150px;
+      margin-left: 160px;
+    }
+
+    .error {
+      color: red;
+    }
+  }
+}
