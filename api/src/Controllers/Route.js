@@ -89,28 +89,25 @@ const getRoute = async (req, res, next) => {
     let {restriction} = req.query;
     const {id} = req.params;
     let routes;
-    let arr = []
     if(id){
       routes = await Route.findByPk(id);
       return res.send(routes);
     }
     routes = await Route.findAll();
 
-    restriction = restriction.split(',');
-    routes.filter(route => {
-      var result = route.restriction.split(',');
-      console.log(result, 'result1')
-      var resRoute = restriction.map(r => {
-        if(result.includes(r)) return result;
-        arr.push(false);
-        return false
-      })/*
-      console.log(result, 'result2')
-      if(arr.includes(false)) return false;
-      else return true*/
-    })
-    console.log(arr, 'arr')
-    return res.send(resRoute);
+    if(restriction){ //Filtro de restricciones
+      restriction = restriction.split(',');
+
+      routes = routes.filter(route => {
+        let restricRoute = route.restriction.split(',');
+        restricRoute = restriction.map(r => restricRoute.includes(r))
+
+        if(restricRoute.includes(false)) return false;
+        else return true
+      })
+    }
+
+    return res.send(routes);
 
   } catch (e) {
     next(e);
