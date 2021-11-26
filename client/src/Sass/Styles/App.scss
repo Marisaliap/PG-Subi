@@ -1,0 +1,56 @@
+@import '../Variables/Variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.App {
+  background-color: $background;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $headline;
+}
+
+p {
+  color: $text;
+}
+
+.button {
+  margin: 0.5rem;
+  border: none;
+  font-family: inherit;
+  border-radius: 9999px;
+  font-weight: bolder;
+  padding: 1rem 3rem;
+  background-color: $buttonColor;
+  color: $background;
+  transition: background-color 0.5s ease-in-out;
+
+  &:hover {
+    background-color: $buttonColorHovered;
+    cursor: pointer;
+  }
+}
+
+.buttonBlue {
+  margin: 0.5rem;
+  border: none;
+  font-family: inherit;
+  border-radius: 9999px;
+  font-weight: bolder;
+  padding: 1rem 3rem;
+  background-color: #51c4d3;
+  color: $background;
+  transition: background-color 0.5s ease-in-out;
+
+  &:hover {
+    background-color: #126e82;
+    cursor: pointer;
+  }
+}
