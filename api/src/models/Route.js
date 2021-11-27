@@ -8,6 +8,14 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
+    originName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    destinyName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     origin: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
@@ -17,7 +25,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     price:{
-      type:DataTypes.STRING,
+      type:DataTypes.INTEGER,
       alloowNull: false,
     },
     date: {
