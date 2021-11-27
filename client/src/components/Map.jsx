@@ -28,7 +28,7 @@ function handlePost (e) {
     {
       idUser: user.email,
       origin: city[0].coordinates,
-      originName: city2[0].name,
+      originName: city[0].name,
       destiny: city2[0].coordinates,
       destinyName: city2[0].name,
       price: routeInfo.price,
@@ -52,7 +52,7 @@ function handlePost (e) {
       </Link>
 
         <Map
-    style="mapbox://styles/mapbox/streets-v9"
+    style="mapbox://styles/mapbox/streets-v11"
     containerStyle={{
       height:'50vh',
       width: '50vw'
