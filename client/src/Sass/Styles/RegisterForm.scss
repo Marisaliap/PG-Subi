@@ -1,8 +1,19 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 
 .formContainer {
   outline: none;
   border-radius: 15px;
+  background-color: #78c64433;
+  padding: 1rem;
+  margin: auto 25rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.5s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
 
   .Form {
     font-size: 0.8em;
@@ -10,6 +21,7 @@
     font-weight: bolder;
 
     label {
+      font-size: 1.2em;
       text-align: left;
       position: absolute;
       left: 5vw;
@@ -21,7 +33,7 @@
       }
 
       @media only screen and (min-width: 1200px) {
-        margin-left: 8rem;
+        margin-left: 30rem;
       }
     }
 
@@ -36,6 +48,8 @@
       color: $text;
       font-family: inherit;
       transition: background-color 0.5s ease-in-out;
+      margin-top: 1rem;
+      border-radius: 5px;
 
       &:focus {
         outline: none;
@@ -43,6 +57,10 @@
 
       &:hover {
         background-color: $buttonColor-33;
+      }
+
+      @media only screen and (min-width: 1200px) {
+        width: 20vw;
       }
     }
 
@@ -57,6 +75,8 @@
       font-weight: bold;
       font-family: inherit;
       transition: background-color 0.5s ease-in-out;
+      margin-top: 1rem;
+      border-radius: 5px;
 
       &:hover {
         background-color: $buttonColor-33;
@@ -65,10 +85,14 @@
       &:focus {
         outline: none;
       }
+
+      @media only screen and (min-width: 1200px) {
+        width: 20vw;
+      }
     }
 
     select {
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       width: 60vw;
       margin-left: 5rem;
       text-align: center;
@@ -76,6 +100,8 @@
       color: $buttonColor;
       font-weight: bold;
       transition: background-color 0.5s ease-in-out;
+      border-radius: 5px;
+      padding: 0.5rem;
 
       &:focus {
         outline: none;
@@ -87,6 +113,10 @@
 
       .options {
         font-weight: bold;
+      }
+
+      @media only screen and (min-width: 1200px) {
+        width: 20vw;
       }
     }
 
