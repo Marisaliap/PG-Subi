@@ -35,10 +35,6 @@ function App() {
     <Route path='/route/finish' component={ Map } />
     <Route path='/register' component = { Registro }/>
     <Route path="/user/:id" component= { UserDetails }/>
-    <Route path="/faq" component= { Faq }/>
-    <Route path="/terms-and-conditions" component= { TermsAndConditions }/>
-    <Route path="/recommendations" component= { Recommendations }/>
-    <Route path="/aboutus" component= { Aboutus }/>
     <Route path="/route-list" component= { allInfoRoute }/>
     <Route path="/car" component= { FormCar }/>
     <Route path="/users" component= { Users } />
@@ -46,6 +42,10 @@ function App() {
       }
     </>):( <h1 className='signInAlert'>Logueate Capo</h1>)
     }
+    <Route path="/faq" component= { Faq }/>
+    <Route path="/terms-and-conditions" component= { TermsAndConditions }/>
+    <Route path="/recommendations" component= { Recommendations }/>
+    <Route path="/aboutus" component= { Aboutus }/>
     <Route  component= { Footer }/>
     </div>
     </BrowserRouter>
