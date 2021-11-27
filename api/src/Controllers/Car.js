@@ -14,7 +14,7 @@ const getCar = async (req, res, next) => {
 const postCar = async (req, res, next) => {
   try{
     const {
-      id,
+      idUser,
       patent,
       brand,
       model,
@@ -23,7 +23,7 @@ const postCar = async (req, res, next) => {
     } = req.body;
 
     let car = await Car.create({patent,brand,model,cylinder,color});
-    const user = await User.findByPk(id)
+    const user = await User.findByPk(idUser)
     await user.addCar(patent);
     res.send(car);
   }
