@@ -15,7 +15,8 @@ import Registro from './components/Registro';
 import Footer from './components/Footer';
 import FormCar from './components/FormCar';
 import Auth from './components/Auth';
-import Map from "./components/Map";
+import Map from "./components/Map"
+import Users from "./components/Users"
 
 function App() {
   const { isAuthenticated } = useAuth0()
@@ -39,6 +40,7 @@ function App() {
     <Route path="/aboutus" component= { Aboutus }/>
     <Route path="/route-list" component= { allInfoRoute }/>
     <Route path="/car" component= { FormCar }/>
+    <Route path="/users" component= { Users } />
     </Switch>
       }
     </>):( <h1 className='signInAlert'>Logueate Capo</h1>)

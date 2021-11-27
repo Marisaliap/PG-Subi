@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../Sass/Styles/Home.scss';
-//import SearchBar from './SearchBar';
+import SearchUserByName from './SearchUserByName';
 
 export default function Home() {
   
@@ -11,12 +11,12 @@ export default function Home() {
     <div className="Home">
       <ul className="searchContainer">
         <NavLink className="searchContainerItem" to="/">
-          {/* <SearchBar /> */}
           <h3>🔍 Buscar</h3>
         </NavLink>
         <NavLink className="searchContainerItem" to="/route">
           <button className="button">Post a Trip</button>
         </NavLink>
+        <SearchUserByName /> 
       </ul>
       <hr className="divider" />
       <h1>subiquetellevo</h1>

@@ -49,7 +49,7 @@ function rootReducer(state = initialState, action) {
     case "GET_USER_BY_NAME":
       return {
         ...state,
-        user: action.payload,
+        users: action.payload,
       };
     case "FILTER_BY_SMOKE":
       return {
