@@ -1,54 +1,93 @@
-import React from "react";
+import React from 'react';
 import { useEffect } from 'react';
-import { Link } from "react-router-dom";
-import Post from "./Post"; 
-import { getUserDetail } from "../actions";
+import { Link } from 'react-router-dom';
+import Post from './Post';
+import { getUserDetail } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+  BsFillTelephoneFill,
+  BsGenderFemale,
+  BsGenderMale,
+  BsInstagram,
+  BsFacebook,
+  BsStarFill,
+  BsMap,
+  BsEnvelope,
+} from 'react-icons/bs';
+import '../Sass/Styles/UserDetails.scss';
 
+export default function UserDetails(props) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
-export default function UserDetails(props){
-const dispatch = useDispatch()
-const user = useSelector((state) => state.user)
-console.log(user)
+  console.log(user);
 
+  function genderIcon(gender) {
+    if (gender === 'Male') {
+      return <BsGenderMale className="maleGender" />;
+    } else if (gender === 'Female') {
+      return <BsGenderFemale className="femaleGender" />;
+    }
+  }
 
-useEffect (() => {
-dispatch(getUserDetail(props.match.params.id)) 
-}, [dispatch, props.match.params.id])
+  useEffect(() => {
+    dispatch(getUserDetail(props.match.params.id));
+  }, [dispatch, props.match.params.id]);
 
-
-// falta condicion de pago para mostrar toda la info o primeara parte
+  // falta condicion de pago para mostrar toda la info o primeara parte
 
   return (
     <>
       <div>
-        { user ? 
-        <div>
-        <h1>User Info</h1>
-        <img src={user.photo} alt="Img not found" />
-        <h2> Name: {user.name}</h2>
-        <h2> Last Name: {user.lastName}</h2>
-        <h2> Genre: {user.genre}</h2>
-        <h2> Age: {user.age}</h2>
-        <h2> Phone number: {user.telephone}</h2>
-        <h2> Email: {user.email}</h2>
-        <h2> Street: {user.street}</h2>
-        <h2> City: {user.city}</h2>
-        <h2> State: {user.province}</h2>
-        <h2> Facebook: {user.facebook}</h2>
-        <h2> Instagram: {user.instagram}</h2>
-        <h2> About: {user.about}</h2>
-        <h2> Calification: {user.calification}</h2>
-      {<div>
-        <Post/>
-      </div>}
-      </div> : <p> Loading...</p>
-      }
-      <Link to="/home">
-        <button className="buttonBlue">Back</button>
-      </Link>
+        {user ? (
+          <div className="UserDetails">
+            <img
+              src="https://techcommunity.microsoft.com/t5/image/serverpage/image-id/217078i525F6A9EF292601F/image-size/large?v=v2&px=999"
+              alt="User Image"
+            />
+            <h2>
+              {user.name} {user.lastName} {genderIcon(user.genre)}
+            </h2>
+            <p className="age">{user.age} years old</p>
+
+            <p className="about">{user.about}</p>
+            <hr />
+            <div className="moreInfo">
+              <h4>
+                <BsStarFill className="icon" /> {user.calification} / 5
+              </h4>
+              <h4>
+                <BsFillTelephoneFill className="icon" /> {user.telephone}
+              </h4>
+              <h4>
+                {' '}
+                <BsEnvelope className="icon" /> {user.email}
+              </h4>
+              <h4>
+                <BsFacebook className="icon" /> {user.facebook}
+              </h4>
+              <h4>
+                {' '}
+                <BsInstagram className="icon" /> {user.instagram}
+              </h4>
+              <h4>
+                <BsMap className="icon" /> {user.street}, {user.city},{' '}
+                {user.province}
+              </h4>
+            </div>
+            {
+              <div>
+                <Post />
+              </div>
+            }
+          </div>
+        ) : (
+          <p> Loading...</p>
+        )}
+        <Link to="/home">
+          <button className="buttonBlue">Back</button>
+        </Link>
       </div>
     </>
-  )
+  );
 }
-
