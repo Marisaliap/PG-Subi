@@ -7,12 +7,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function UserDetails(props){
 const dispatch = useDispatch()
+const [user] = useSelector((state) => state)
 
 useEffect (() => {
 dispatch(getUserDetail(props.match.params.id)) 
 }, [dispatch, props.match.params.id])
 
-const [user] = useSelector((state) => state)
 
 // falta condicion de pago para mostrar toda la info o primeara parte
 {
