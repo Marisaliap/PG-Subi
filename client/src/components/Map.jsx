@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux"
 import ReactMapboxGl, { Layer, Feature, Marker, GeoJSONLayer, MapContext, ZoomControl, ScaleControl, RotationControl } from 'react-mapbox-gl';
 import { useEffect } from "react";
 import { getRoute } from "../actions";
+import { Link, useHistory } from "react-router-dom";
+
+
 const layout2 = {
     'line-color': '#100000',
     'line-width': '10px'
@@ -28,9 +31,16 @@ export default function Map() {
     }
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    history.push("/home");
+  }
   // useEffect(() => city.length === 1 && city2.length === 1 ? dispatch(getRoute(city[0].coordinates[0], city[0].coordinates[1],city2[0].coordinates[0], city2[0].coordinates[1])): console.log('no se'), [])
   
     return <div>
+    <Link to="/home">
+        <button>Home</button>
+      </Link>
         <Map
     style="mapbox://styles/mapbox/streets-v9"
     containerStyle={{
