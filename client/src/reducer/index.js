@@ -5,6 +5,7 @@ const initialState = {
   route: [],
   user: [],
   users: [],
+  userDetail: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -30,15 +31,50 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: action.payload,
       };
-    case "GET_USER_DETAIL":
+    case "GET_USER_DETAIL":  
       return {
         ...state,
-        user: action.payload,
+        userDetail: action.payload,
       };
     case "POST_USER":
       return {
         ...state,
         user: action.payload,
+      };
+    case "GET_USER_BY_NAME":
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case "FILTER_BY_SMOKE":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "FILTER_BY_PETS":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "FILTER_BY_PEOPLE_BEHIND":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "ORDER_BY_TIME":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "ORDER_BY_PRICE":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "ORDER_BY_DISTANCE":
+      return {
+        ...state,
+        route: action.payload,
       };
     case "DELETE_ROUTE":
       return {
