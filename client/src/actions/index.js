@@ -62,7 +62,8 @@ export function getUserDetail(id) {
  export function getUserByName(name) {
   return async function (dispatch) {
     try {
-     const response = (await axios.get(`http://localhost:3001/user/?=name` + name)).data;
+     const response = (await axios.get(`http://localhost:3001/user/?name=` + name)).data;
+     console.log(response)
      return dispatch({
          type: "GET_USER_BY_NAME",
          payload: response,

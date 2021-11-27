@@ -7,7 +7,7 @@ import { getUserByName } from "../actions";
 export default function SearchUserByName() {
     const dispatch = useDispatch();
     const [ name, setName ] = useState(""); //lo que está tipeando el usuario es mi estado local name
-
+    
     function handleInput(e) {
         e.preventDefault();
         setName(e.target.value)  //el value del input que ingresa por búsqueda va a setear el value del estado
