@@ -150,7 +150,7 @@ export default function Aboutus() {
                 </li>
                 <li>
                   <img
-                    src="https://avatars.githubusercontent.com/u/18233937?v=4"
+                    src="https://avatars.githubusercontent.com/u/58148471?v=4"
                     width="100"
                     height="100"
                     alt="Foto POF"

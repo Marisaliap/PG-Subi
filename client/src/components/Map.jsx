@@ -13,7 +13,7 @@ const layout2 = {
 
 
 export default function Map() {
-  
+  const history = useHistory()
   const city = useSelector(state => state.suggestions1)
   const city2 = useSelector(state => state.suggestions2)
   console.log(city, city2, 'SOY CITY')
