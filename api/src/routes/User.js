@@ -2,17 +2,11 @@ const { Router } = require('express');
 const router = Router();
 const express = require('express');
 router.use(express.json());
-const { postUser,getUser, } = require('../Controllers/User');
-// const { allPost} = require('../Controllers/Post');
-const { getPost, setPost } = require('../Controllers/Post');
-// ---------------------> rutas de los users <---------------------
+const { postUser,getUser,putUser, deleteUser } = require('../Controllers/User');
+
 router.get('/',getUser);
 router.get('/:id',getUser);
-router.post('/add',postUser);
-// ------------------> rutas de los comentarios <------------------
-router.get('/post',getPost);
-router.post('/post',setPost);
-// router.get('/post/:id',allPost);
-// router.post('/post',allPost);
-
+router.post('/add',postUser)
+router.put('/:id',putUser)
+router.delete('/:id', deleteUser)
 module.exports = router

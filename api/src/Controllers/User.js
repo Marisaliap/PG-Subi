@@ -27,22 +27,21 @@ const postUser = async (req, res, next) => {
       {
         where: {email},
         defaults: {
-          photo:photo || 'https://i.pinimg.com/564x/c4/34/d8/c434d8c366517ca20425bdc9ad8a32de.jpg',
-          name,
-          lastName,
-          email,
-          telephone,
-          facebook,
-          instagram,
-          password,
-          province,
-          city,
-          street,
-          dni,
-          age,
-          about,
-          genre,
-          calification,
+          name: name,
+          lastName: lastName,
+          email: email,
+          telephone: telephone,
+          facebook: facebook,
+          instagram: instagram,
+          password: password,
+          province: province,
+          city: city,
+          street: street,
+          dni: dni,
+          age: age,
+          about: about,
+          genre: genre,
+          calification: calification,
         }
       })
     res.send(user)
@@ -94,4 +93,38 @@ const getUser = async (req, res, next) => {
   }
 }
 
-module.exports = { postUser, getUser }
+const putUser = async (req,res,next) => {
+  try {
+    const {id} = req.params;
+    const {about,age,street,city,province,telephone,facebook,instagram,password,email,photo} = req.body;
+    const user = await User.findByPk(id);
+    user.update({
+      about,
+      age,
+      street,
+      city,
+      province,
+      telephone,
+      facebook,
+      instagram,
+      password,
+      email,
+      photo,
+    });
+    res.send(user);
+  } catch (error) {
+    next(error);
+  }
+}
+
+const deleteUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByPk(id);
+    await user.destroy();
+    res.send("Registro elminado");
+  } catch (error) {
+    next(error);
+  }
+}
+module.exports = { postUser, getUser, putUser, deleteUser}
