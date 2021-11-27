@@ -20,6 +20,7 @@ const postUser = async (req, res, next) => {
       genre,
       calification,
       photo,
+      photoDni,
     } = req.body
 
 
@@ -27,21 +28,23 @@ const postUser = async (req, res, next) => {
       {
         where: {email},
         defaults: {
-          name: name,
-          lastName: lastName,
-          email: email,
-          telephone: telephone,
-          facebook: facebook,
-          instagram: instagram,
-          password: password,
-          province: province,
-          city: city,
-          street: street,
-          dni: dni,
-          age: age,
-          about: about,
-          genre: genre,
-          calification: calification,
+          name,
+          photo: photo || 'https://i.pinimg.com/564x/4f/94/9d/4f949d2210e1fe0f62bcc404e54fda45.jpg',
+          lastName,
+          email,
+          telephone,
+          facebook,
+          instagram,
+          password,
+          province,
+          city,
+          street,
+          dni,
+          age,
+          about,
+          genre,
+          calification,
+          photoDni,
         }
       })
     res.send(user)
@@ -86,6 +89,11 @@ const getUser = async (req, res, next) => {
         }
       );
     }
+
+    else{
+      data = await User.findAll();
+    }
+
     res.send(data);
 
   } catch (error) {
@@ -127,4 +135,5 @@ const deleteUser = async (req, res, next) => {
     next(error);
   }
 }
+
 module.exports = { postUser, getUser, putUser, deleteUser}
