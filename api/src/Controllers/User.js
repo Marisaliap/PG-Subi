@@ -20,20 +20,16 @@ const postUser = async (req, res, next) => {
       genre,
       calification,
       photo,
+      photoDni,
     } = req.body
-
-
 
 
     const user = await User.findOrCreate(
       {
-        where: {
-          dni: dni,
-        },
-
+        where: {email},
         defaults: {
-          photo:photo ||"C:\Users\USER\Desktop\subi\PG-Subi\api\src\img\istockphoto-1125710832-1024x1024.jpg",
           name,
+          photo: photo || 'https://i.pinimg.com/564x/4f/94/9d/4f949d2210e1fe0f62bcc404e54fda45.jpg',
           lastName,
           email,
           telephone,
@@ -47,10 +43,9 @@ const postUser = async (req, res, next) => {
           age,
           about,
           genre,
-
           calification,
+          photoDni,
         }
-
       })
     res.send(user)
 
@@ -82,8 +77,7 @@ const getUser = async (req, res, next) => {
           age: user.age,
           calification: user.calification,
           photo: user.photo,
-          id: user.id,
-
+          email: user.email,
         }
       })
     }
@@ -91,18 +85,55 @@ const getUser = async (req, res, next) => {
     else if (id) {
       data = await User.findByPk(id,
         {
-
           include:[Post,Car,Route]
-       }
-
+        }
       );
     }
 
+    else{
+      data = await User.findAll();
+    }
+
     res.send(data);
-    
+
   } catch (error) {
     next(error);
   }
 }
 
-module.exports = { postUser, getUser }
+const putUser = async (req,res,next) => {
+  try {
+    const {id} = req.params;
+    const {about,age,street,city,province,telephone,facebook,instagram,password,email,photo} = req.body;
+    const user = await User.findByPk(id);
+    user.update({
+      about,
+      age,
+      street,
+      city,
+      province,
+      telephone,
+      facebook,
+      instagram,
+      password,
+      email,
+      photo,
+    });
+    res.send(user);
+  } catch (error) {
+    next(error);
+  }
+}
+
+const deleteUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByPk(id);
+    await user.destroy();
+    res.send("Registro elminado");
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { postUser, getUser, putUser, deleteUser}

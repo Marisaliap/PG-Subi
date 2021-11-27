@@ -1,7 +1,6 @@
 const { Route, User, Car } = require("../db.js");
 const axios = require("axios");
 const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
-//const { where } = require('sequelize/types');
 const { TOKEN } = process.env;
 
 const getRouteInfo = async (req, res, next) => {
@@ -57,90 +56,102 @@ const getRouteInfo = async (req, res, next) => {
 };
 
 const postRoute = async (req, res, next) => {
-    try {
-        const {
-            idUser,
-            patentCar,
-            origin,
-            destiny,
-            price,
-            date,
-            hours,
-            place,
-            restriction
-        } = req.body;
+  try {
+    const {
+      idUser,
+      //patentCar,
+      originName,
+      destinyName,
+      origin,
+      destiny,
+      price,
+      date,
+      hours,
+      place,
+      restriction
+    } = req.body;
 
-        const route = await Route.create(
-            {
-                origin,
-                destiny,
-                price,
-                date,
-                hours,
-                place,
-                restriction,
-            });
+    const route = await Route.create(
+      {
+        originName,
+        destinyName,
+        origin,
+        destiny,
+        price,
+        date,
+        hours,
+        place,
+        restriction,
+      });
 
 
-        await route.addUser(idUser);
-        const car = await Car.findByPk(patentCar)
-        await car.addRoute(route);
+    await route.addUser(idUser);
+    //const car = await Car.findByPk(patentCar)
+    //await car.addRoute(route);
 
 
-        res.send(route);
-    } catch (error) {
-        next(error);
-    }
+    res.send(route);
+  } catch (error) {
+    next(error);
+  }
 };
 
 const getRoute = async (req, res, next) => {
-    try {
-        let { restriction, price } = req.query;
-        const { id } = req.params;
-        let routes;
-        if (id) {
-            routes = await Route.findByPk(id, { include: [User, Car] });
-            return res.send(routes);
+  try {
+    let { restriction,price,time,date} = req.query;
+    const { id } = req.params;
+    let routes;
+
+    if (id) {
+      routes = await Route.findByPk(id,{
+        include: {
+          model: User,
+          include: Car
         }
-
-        routes = await Route.findAll({
-            attributes: ["origin", "destiny", "date", "hours", "place", "id"],
-            include:
-            {
-                model: User,
-                attributes: ["name", "photo", "lastName", "genre", "age", "calification"],
-                include: {
-                    model: Car,
-                    attributes: ["patent", "color", "brand", "model"],
-                },
-            }
-        });
-
-
-        if (restriction) {
-            //Filtro de restricciones
-            restriction = restriction.split(",");
-
-            routes = routes.filter((route) => {
-                let restricRoute = route.restriction.split(",");
-                restricRoute = restriction.map((r) => restricRoute.includes(r));
-
-                if (restricRoute.includes(false)) return false;
-                else return true;
-            });
-        }
-
-        if (price === "desc" || !price || price == "") {
-            price = price.parseInt();
-            routes = routes.sort((a, b) => b.price - a.price);
-        }
-
-        
-
-        return res.send(routes);
-    } catch (e) {
-        next(e);
+      });
+      return res.send(routes);
     }
+
+    routes = await Route.findAll({
+      attributes: ["origin","destiny","date","hours","place","id","price","originName","destinyName"],
+      include:
+        {
+          model: User,
+          attributes: ["name","photo","lastName","genre","age","calification"],
+          include: {
+            model: Car,
+            attributes: ["patent","color","brand","model"],
+          },
+        }
+
+    });
+
+    if (date) {
+      routes = routes.filter((route) => {
+        if (route.date == date) return true;
+        else return false;
+      });
+    }
+
+
+    if (price === "desc" || !price || price === "") {
+      routes = routes.sort((a, b) => b.price - a.price);
+    } else if (price === "asc") {
+      routes = routes.sort((a, b) => a.price - b.price);
+    }
+
+
+    if (time === "desc" || !time || time === "") {
+      routes = routes.sort((a, b) => b.hours - a.hours);
+    } else if (time === "asc") {
+      routes = routes.sort((a, b) => a.hours - b.hours);
+    }
+
+
+    return res.send(routes);
+  } catch (e) {
+    next(e);
+  }
 };
 
 const putRoute = async (req, res) => {

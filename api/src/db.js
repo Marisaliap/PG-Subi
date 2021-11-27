@@ -68,8 +68,8 @@ User.hasMany(Post);
 Post.belongsTo(User);
 
 //Car UM Route
-Car.hasMany(Route);
-Route.belongsTo(Car);
+// Car.hasMany(Route);
+// Route.belongsTo(Car);
 
 //User MM Route
 User.belongsToMany(Route, { through: 'UserRoutes', timestamps: false });
