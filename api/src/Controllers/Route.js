@@ -60,6 +60,8 @@ const postRoute = async (req, res, next) => {
     const {
       idUser,
       //patentCar,
+      originName,
+      destinyName,
       origin,
       destiny,
       price,
@@ -72,6 +74,8 @@ const postRoute = async (req, res, next) => {
 
     const route = await Route.create(
       {
+        originName,
+        destinyName,
         origin,
         destiny,
         price,
@@ -95,21 +99,22 @@ const postRoute = async (req, res, next) => {
 
 const getRoute = async (req, res, next) => {
   try {
-    let { restriction } = req.query;
+    let { restriction,price,time,date} = req.query;
     const { id } = req.params;
     let routes;
+
     if (id) {
       routes = await Route.findByPk(id,{
         include: {
           model: User,
-          include: Car  
+          include: Car
         }
       });
       return res.send(routes);
     }
 
     routes = await Route.findAll({
-      attributes: ["origin","destiny","date","hours","place","id"],
+      attributes: ["origin","destiny","date","hours","place","id","price","originName","destinyName"],
       include:
         {
           model: User,
@@ -134,6 +139,29 @@ const getRoute = async (req, res, next) => {
         else return true;
       });
     }
+
+
+    if (date) {
+      routes = routes.filter((route) => {
+        if (route.date == date) return true;
+        else return false;
+      });
+    }
+
+
+    if (price === "desc" || !price || price === "") {
+      routes = routes.sort((a, b) => b.price - a.price);
+    } else if (price === "asc") {
+      routes = routes.sort((a, b) => a.price - b.price);
+    }
+
+
+    if (time === "desc" || !time || time === "") {
+      routes = routes.sort((a, b) => b.hours - a.hours);
+    } else if (time === "asc") {
+      routes = routes.sort((a, b) => a.hours - b.hours);
+    }
+
 
     return res.send(routes);
   } catch (e) {
