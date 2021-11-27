@@ -10,7 +10,7 @@ function Nav() {
     <>
       <nav className="NavBar">
         <div className="logs">
-          <Auth />
+         {/* <Auth /> */}
         </div>
         <div className="toito">
           <div className="izquierda">
