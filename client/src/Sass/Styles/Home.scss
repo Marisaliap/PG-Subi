@@ -1,4 +1,13 @@
 @import "../Variables/Variables.scss";
 
 .Home {
+  .fotoHeader {
+    width: 80vw;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin-left: 10vw;
+  }
 }

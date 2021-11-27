@@ -14,7 +14,7 @@ export const Profile = () => {
     isAuthenticated && (
       <div className="Profile">
         {/*en el link to de abajo deberiamos poner el detalle de usuario */}
-        <Link to="">
+        <Link to={"/user/" + user.email}>
           <img className="fotoPerfil" src={user.picture} alt={user.name} />
         </Link>
         {/* <h2 className="nombreUsuario">{user.name}</h2>

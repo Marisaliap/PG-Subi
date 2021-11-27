@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../img/logoNegro.png";
 import { Profile } from "./Profile";
 import Auth from "./Auth";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../Sass/Styles/NavBar.scss";
 
 function Nav() {
@@ -14,7 +14,9 @@ function Nav() {
         </div>
         <div className="toito">
           <div className="izquierda">
-            <img className="logoSubi" src={Logo} alt="" />
+            <Link to="/home">
+              <img className="logoSubi" src={Logo} alt="" />
+            </Link>
             <span className="nombreSubi">Subi que te llevo</span>
           </div>
           <div className="derecha">
