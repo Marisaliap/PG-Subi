@@ -1,7 +1,7 @@
 const initialState = {
   suggestions1: [],
   suggestions2: [],
-  matched: [],
+  routePostInfo: {},
   route: [],
   user: [],
   users: [],
@@ -85,6 +85,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         route: [],
+      };
+    case "ROUTE_POST_INFO":
+      return {
+        ...state,
+        routePostInfo: action.payload,
       };
     default:
       return state;

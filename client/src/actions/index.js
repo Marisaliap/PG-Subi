@@ -131,11 +131,26 @@ export function postUser(payload) {
   }
 }
 
-export function matchedCity([city]) {
+export function postRoute(routeInfo) {
+  console.log(routeInfo)
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`http://localhost:3001/maps/route/add`, routeInfo);
+      return dispatch({
+          type: "POST_ROUTE",
+          payload: response.data,
+        });
+      }
+    catch (error) {
+      console.log(error)
+    }  
+  }
+}
+export function RoutePostInfo (info) {
   return {
-    type: "MATCHED_CITY",
-    payload: city,
-  };
+    type: 'ROUTE_POST_INFO',
+    payload: info
+  }
 }
 
 export function deleteRoute() {

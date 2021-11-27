@@ -15,6 +15,7 @@ import Registro from './components/Registro';
 import Footer from './components/Footer';
 import FormCar from './components/FormCar';
 import Auth from './components/Auth';
+import Map from "./components/Map";
 
 function App() {
   const { isAuthenticated } = useAuth0()
@@ -28,7 +29,8 @@ function App() {
     {isAuthenticated ? (<>
      { 
     <Switch>                                               
-    <Route path="/route" component= { CreateRoute }/>
+    <Route exact path="/route" component= { CreateRoute }/>
+    <Route path='/route/finish' component={ Map } />
     <Route path='/register' component = { Registro }/>
     <Route path="/user/:id" component= { UserDetails }/>
     <Route path="/faq" component= { Faq }/>

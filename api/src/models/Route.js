@@ -25,15 +25,15 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     price:{
-      type:DataTypes.INTEGER,
-      alloowNull: false,
+      type:DataTypes.STRING,
+      allowNull: false,
     },
     date: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     hours: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     place: {
