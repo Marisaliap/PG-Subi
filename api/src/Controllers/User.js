@@ -45,7 +45,7 @@ const postUser = async (req, res, next) => {
           age: age,
           about: about,
           genre: genre,
-
+          
           calification: calification,
         }
 
@@ -94,4 +94,38 @@ const getUser = async (req, res, next) => {
   }
 }
 
-module.exports = { postUser, getUser }
+const putUser = async (req,res,next) => {
+  try {
+    const {id} = req.params;
+    const {about,age,street,city,province,telephone,facebook,instagram,password,email,photo} = req.body;
+    const user = await User.findByPk(id);
+    user.update({
+      about,
+      age,
+      street,
+      city,
+      province,
+      telephone,
+      facebook,
+      instagram,
+      password,
+      email,
+      photo,
+    });
+    res.send(user);
+  } catch (error) {
+    next(error);
+  }
+}
+
+const deleteUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByPk(id);
+    await user.destroy();
+    res.send("Registro elminado");
+  } catch (error) {
+    next(error);
+  }
+}
+module.exports = { postUser, getUser, putUser, deleteUser}
