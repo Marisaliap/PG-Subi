@@ -267,11 +267,11 @@ export default function Registro() {
           <div className="Genres">
             <label for="genre">Genre*:</label>
             <select name="genre" id="genre">
-              <option className="options" value="Masculine">
-                Masculine
+              <option className="options" value="Male">
+                Male
               </option>
-              <option className="options" value="Femenine">
-                Femenine
+              <option className="options" value="Female">
+                Female
               </option>
               <option className="options" value="Rather not say">
                 Rather not say
