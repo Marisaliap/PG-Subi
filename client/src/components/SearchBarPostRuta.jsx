@@ -100,8 +100,6 @@ export default function SearchBar() {
         <input type="time" id="hours" name="hours"
        min="09:00" max="18:00" required onChange={handleChange} />
         </div>
-      <div className={styles.landingpage}>
-        <h1 className={styles.title}>Crear una ruta </h1>
         <div className={styles.back}>
 
           <Link to="/">
@@ -115,6 +113,9 @@ export default function SearchBar() {
           </button>
          
         </div>
+      <div className={styles.landingpage}>
+        <h1 className={styles.title}>Crear una ruta </h1>
+        
       </div>
     
       </form>
