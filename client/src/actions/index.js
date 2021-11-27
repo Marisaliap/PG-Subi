@@ -62,10 +62,10 @@ export function getUserDetail(id) {
  export function getUserByName(name) {
   return async function (dispatch) {
     try {
-     const response = await axios.get(`http://localhost:3001/user/?=name` + name);
+     const response = (await axios.get(`http://localhost:3001/user/?=name` + name)).data;
      return dispatch({
          type: "GET_USER_BY_NAME",
-         payload: response.data,
+         payload: response,
       });
      }
    catch (error) {
@@ -74,12 +74,47 @@ export function getUserDetail(id) {
   }
 }
 
-/* export function filterUser(payload) {
+export function filterBySmoke(payload) {
   return {
-    type: "FILTER_USER",
+    type: "FILTER_BY_SMOKE",
     payload
   }
-}; */
+};
+
+export function filterByPets(payload) {
+  return {
+    type: "FILTER_BY_PETS",
+    payload
+  }
+};
+
+export function filterByTwoPeopleBehind(payload) {
+  return {
+    type: "FILTER_BY_PEOPLE_BEHIND",
+    payload
+  }
+};
+
+export function orderByTime(payload) {
+  return {
+    type: "ORDER_BY_TIME",
+    payload
+  }
+};
+
+export function orderByPrice(payload) {
+  return {
+    type: "ORDER_BY_PRICE",
+    payload
+  }
+};
+
+export function orderByDistance(payload) {
+  return {
+    type: "ORDER_BY_DISTANCE",
+    payload
+  }
+};
 
 export function postUser(payload) {
   return async function (dispatch) {

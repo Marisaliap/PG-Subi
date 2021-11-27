@@ -46,10 +46,35 @@ function rootReducer(state = initialState, action) {
         ...state,
         user: action.payload,
       };
-    case "FILTER_USER":
+    case "FILTER_BY_SMOKE":
       return {
         ...state,
-        user: action.payload,
+        route: action.payload,
+      };
+    case "FILTER_BY_PETS":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "FILTER_BY_PEOPLE_BEHIND":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "ORDER_BY_TIME":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "ORDER_BY_PRICE":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "ORDER_BY_DISTANCE":
+      return {
+        ...state,
+        route: action.payload,
       };
     case "DELETE_ROUTE":
       return {
