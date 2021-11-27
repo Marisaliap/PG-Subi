@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getUserByName } from "../actions";
+import { Link } from "react-router-dom";
 
 
 export default function SearchUserByName() {
@@ -23,7 +24,7 @@ export default function SearchUserByName() {
     return (
         <div> 
             <input type="text" value={name} placeholder="Find user..." onChange={(e) => handleInput(e)} />
-            <button type="submit" onClick={(e) => handleSubmit(e)} >Search</button>
+            <button type="submit" onClick={(e) => handleSubmit(e)} ><Link to="/users">Search</Link> </button>
         </div>
     )
 }

@@ -14,6 +14,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Registro from './components/Registro';
 import Footer from './components/Footer';
 import Auth from './components/Auth';
+import Users from "./components/Users"
 
 function App() {
   const { isAuthenticated } = useAuth0()
@@ -35,6 +36,7 @@ function App() {
     <Route path="/recommendations" component= { Recommendations }/>
     <Route path="/aboutus" component= { Aboutus }/>
     <Route path="/route-list" component= { allInfoRoute }/>
+    <Route path="/users" component= { Users } />
     </Switch>
       }
     </>):( <h1 className='signInAlert'>Logueate Capo</h1>)
