@@ -5,7 +5,6 @@ const initialState = {
   route: [],
   user: [],
   users: [],
-  userDetail: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -34,7 +33,7 @@ function rootReducer(state = initialState, action) {
     case "GET_USER_DETAIL":  
       return {
         ...state,
-        userDetail: action.payload,
+        user: action.payload,
       };
     case "POST_USER":
       return {
