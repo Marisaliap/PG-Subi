@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import { store } from "./store";
 
+const auth0Domain = process.env.REACT_APP_AUTH0_DOMAIN;
+const auth0Client = process.env.REACT_APP_AUTH0_CLIENT;
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>

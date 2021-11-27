@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   
   return (
-    <div>
+    <div className='Footer'>
     <br/>
     <br/>
       <Link to="/Faq">Faq</Link>

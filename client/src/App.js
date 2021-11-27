@@ -25,7 +25,8 @@ function App() {
     <Route  component= { Auth }/>
     <Route path= "/home" component= { Home }/>
     {isAuthenticated ? (<>
-     { <Switch>                                               
+     { 
+    <Switch>                                               
     <Route path="/route" component= { CreateRoute }/>
     <Route path='/register' component = { Registro }/>
     <Route path="/user/:id" component= { UserDetails }/>
@@ -34,9 +35,11 @@ function App() {
     <Route path="/recommendations" component= { Recommendations }/>
     <Route path="/aboutus" component= { Aboutus }/>
     <Route path="/route-list" component= { allInfoRoute }/>
-      </Switch>}
-    <Route  component= { Footer }/></>):( <h1>Logueate Capo</h1>)
+    </Switch>
+      }
+    </>):( <h1 className='signInAlert'>Logueate Capo</h1>)
     }
+    <Route  component= { Footer }/>
     </div>
     </BrowserRouter>
   );

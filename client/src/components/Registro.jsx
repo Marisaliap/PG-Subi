@@ -1,10 +1,10 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { postUser } from '../actions';
-import { useAuth0 } from '@auth0/auth0-react';
-import '../Sass/Styles/RegisterForm.scss';
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { postUser } from "../actions";
+import { useAuth0 } from "@auth0/auth0-react";
+import "../Sass/Styles/RegisterForm.scss";
 
 export default function Registro() {
   const dispatch = useDispatch();
@@ -15,23 +15,23 @@ export default function Registro() {
   function validate(input) {
     let errors = {};
     if (!input.name) {
-      errors.name = 'Name is required';
+      errors.name = "Name is required";
     } else if (!input.lastName) {
-      errors.lastName = 'Last name is required';
+      errors.lastName = "Last name is required";
     } else if (!input.email) {
-      errors.email = 'Email is required';
+      errors.email = "Email is required";
     } else if (!input.telephone) {
-      errors.telephone = 'Telephone is required';
+      errors.telephone = "Telephone is required";
     } else if (!input.province) {
-      errors.province = 'Province is required';
+      errors.province = "Province is required";
     } else if (!input.city) {
-      errors.city = 'City is required';
+      errors.city = "City is required";
     } else if (!input.street) {
-      errors.street = 'Street is required';
+      errors.street = "Street is required";
     } else if (!input.dni) {
-      errors.dni = 'DNI is required';
+      errors.dni = "DNI is required";
     } else if (!input.age) {
-      errors.age = 'Age is required';
+      errors.age = "Age is required";
     }
 
     // AGREGAR VALIDACIÓN DE GÉNEROS
@@ -40,20 +40,20 @@ export default function Registro() {
 
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
-    name: isAuthenticated ? user.given_name : '',
-    lastName: isAuthenticated ? user.family_name : '',
-    email: isAuthenticated ? user.email : '',
-    telephone: '',
-    facebook: '',
-    instagram: '',
-    password: 'a',
-    province: '',
-    city: '',
-    street: '',
-    dni: '',
-    age: '',
-    about: '',
-    genre: '',
+    name: isAuthenticated ? user.given_name : "",
+    lastName: isAuthenticated ? user.family_name : "",
+    email: isAuthenticated ? user.email : "",
+    telephone: "",
+    facebook: "",
+    instagram: "",
+    password: "a",
+    province: "",
+    city: "",
+    street: "",
+    dni: "",
+    age: "",
+    about: "",
+    genre: "",
   });
 
   useEffect(() => {
@@ -73,42 +73,33 @@ export default function Registro() {
     );
   }
 
-  function handleCheckGenre(e) {
-    if (e.target.checked) {
-      setInput({
-        ...input,
-        genre: e.target.value,
-      });
-    }
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(user);
-    console.log(input);
-    console.log(errors);
+    console.log(user, "SOY USER");
+    console.log(input, "SOY INPUT");
+    console.log(errors, "SOY ERRORS");
     if (Object.keys(errors).length === 0) {
       dispatch(postUser(input));
       console.log(input);
       setInput({
-        name: '',
-        lastName: '',
-        email: '',
-        telephone: '',
-        facebook: '',
-        instagram: '',
-        province: '',
-        city: '',
-        street: '',
-        dni: '',
-        age: '',
-        about: '',
-        genre: '',
+        name: "",
+        lastName: "",
+        email: "",
+        telephone: "",
+        facebook: "",
+        instagram: "",
+        province: "",
+        city: "",
+        street: "",
+        dni: "",
+        age: "",
+        about: "",
+        genre: "",
       });
-      alert('User created correctly');
-      history.push('/home');
+      alert("User created correctly");
+      history.push("/home");
     } else {
-      alert('All mandatory fields must be filled to continue');
+      alert("All mandatory fields must be filled to continue");
     }
   }
 
@@ -159,7 +150,7 @@ export default function Registro() {
               </div>
             </div>
           ) : (
-            user.name.includes('@') && (
+            user.name.includes("@") && (
               <div>
                 <div>
                   <label>Name*:</label>
@@ -274,37 +265,18 @@ export default function Registro() {
             />
           </div>
           <div className="Genres">
-            <label>Genre*:</label>
-            <label>
-              Masculine
-              <input
-                type="radio"
-                id="Masculine"
-                name="genre"
-                value="Masculine"
-                onChange={(e) => handleCheckGenre(e)}
-              />
-            </label>
-            <label>
-              Femenine
-              <input
-                type="radio"
-                id="Femenine"
-                name="genre"
-                value="Femenine"
-                onChange={(e) => handleCheckGenre(e)}
-              />
-            </label>
-            <label>
-              Rather not say
-              <input
-                type="radio"
-                id="Rather not say"
-                name="genre"
-                value="Rather not say"
-                onChange={(e) => handleCheckGenre(e)}
-              />
-            </label>
+            <label for="genre">Genre*:</label>
+            <select name="genre" id="genre">
+              <option className="options" value="Masculine">
+                Masculine
+              </option>
+              <option className="options" value="Femenine">
+                Femenine
+              </option>
+              <option className="options" value="Rather not say">
+                Rather not say
+              </option>
+            </select>
           </div>
           <button className="button" type="submit">
             Submit

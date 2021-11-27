@@ -11,8 +11,8 @@ export default function Faq() {
   }
 
     return (
-        <div>
-            <Link to="/home">
+        <div className='Faq'>
+         <Link to="/home">
         <button>Home</button>
       </Link>
             <div>
