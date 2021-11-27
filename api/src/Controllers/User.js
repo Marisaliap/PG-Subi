@@ -1,4 +1,4 @@
-const { User, Op } = require('../db.js');
+const { User, Post, Car, Route, Op } = require('../db.js');
 
 
 const postUser = async (req, res, next) => {
@@ -19,6 +19,7 @@ const postUser = async (req, res, next) => {
       about,
       genre,
       calification,
+      photo,
     } = req.body
 
 
@@ -31,22 +32,23 @@ const postUser = async (req, res, next) => {
         },
 
         defaults: {
-          name: name,
-          lastName: lastName,
-          email: email,
-          telephone: telephone,
-          facebook: facebook,
-          instagram: instagram,
-          password: password,
-          province: province,
-          city: city,
-          street: street,
-          dni: dni,
-          age: age,
-          about: about,
-          genre: genre,
+          photo:photo ||"C:\Users\USER\Desktop\subi\PG-Subi\api\src\img\istockphoto-1125710832-1024x1024.jpg",
+          name,
+          lastName,
+          email,
+          telephone,
+          facebook,
+          instagram,
+          password,
+          province,
+          city,
+          street,
+          dni,
+          age,
+          about,
+          genre,
 
-          calification: calification,
+          calification,
         }
 
       })
@@ -69,7 +71,7 @@ const getUser = async (req, res, next) => {
           name: {
             [Op.iLike]: `%${name}%`
           }
-        }
+        },
       });
 
       data = data.map(user => {
@@ -85,10 +87,19 @@ const getUser = async (req, res, next) => {
         }
       })
     }
+
     else if (id) {
-      data = await User.findByPk(id);
+      data = await User.findByPk(id,
+        {
+
+          include:[Post,Car,Route]
+       }
+
+      );
     }
+
     res.send(data);
+    
   } catch (error) {
     next(error);
   }
