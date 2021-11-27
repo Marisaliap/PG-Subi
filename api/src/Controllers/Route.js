@@ -1,7 +1,6 @@
 const { Route,User,Car } = require("../db.js");
 const axios = require("axios");
 const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
-//const { where } = require('sequelize/types');
 const { TOKEN } = process.env;
 
 const getRouteInfo = async (req, res, next) => {
@@ -60,7 +59,7 @@ const postRoute = async (req, res, next) => {
   try {
     const {
       idUser,
-      patentCar,
+      //patentCar,
       origin,
       destiny,
       price,
@@ -83,8 +82,8 @@ const postRoute = async (req, res, next) => {
 
 
     await route.addUser(idUser);
-    const car = await Car.findByPk(patentCar)
-    await car.addRoute(route);
+    //const car = await Car.findByPk(patentCar)
+    //await car.addRoute(route);
 
 
     res.send(route);
@@ -99,7 +98,12 @@ const getRoute = async (req, res, next) => {
     const { id } = req.params;
     let routes;
     if (id) {
-      routes = await Route.findByPk(id,{ include: [User, Car] });
+      routes = await Route.findByPk(id,{
+        include: {
+          model: User,
+          include: Car  
+        }
+      });
       return res.send(routes);
     }
 

@@ -23,16 +23,11 @@ const postUser = async (req, res, next) => {
     } = req.body
 
 
-
-
     const user = await User.findOrCreate(
       {
-        where: {
-          dni: dni,
-        },
-
+        where: {email},
         defaults: {
-          photo:photo ||"C:\Users\USER\Desktop\subi\PG-Subi\api\src\img\istockphoto-1125710832-1024x1024.jpg",
+          photo:photo || 'https://i.pinimg.com/564x/c4/34/d8/c434d8c366517ca20425bdc9ad8a32de.jpg',
           name,
           lastName,
           email,
@@ -47,10 +42,8 @@ const postUser = async (req, res, next) => {
           age,
           about,
           genre,
-
           calification,
         }
-
       })
     res.send(user)
 
@@ -82,8 +75,7 @@ const getUser = async (req, res, next) => {
           age: user.age,
           calification: user.calification,
           photo: user.photo,
-          id: user.id,
-
+          email: user.email,
         }
       })
     }
@@ -91,15 +83,12 @@ const getUser = async (req, res, next) => {
     else if (id) {
       data = await User.findByPk(id,
         {
-
           include:[Post,Car,Route]
-       }
-
+        }
       );
     }
-
     res.send(data);
-    
+
   } catch (error) {
     next(error);
   }
