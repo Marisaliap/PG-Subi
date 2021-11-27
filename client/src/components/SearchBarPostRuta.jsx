@@ -7,14 +7,13 @@ import {
   getSuggestions2,
   matchedCity,
   RoutePostInfo,
-} from "../actions";
-import Map from "./Map";
+} from "../actions"
 import { Link } from "react-router-dom";
 import styles from "../styles/LandingPage.module.css";
 
 
 const inputs = {};
-const info = {}
+const info = {pasajeros: '1'}
 
 export default function SearchBar() {
 
@@ -97,7 +96,10 @@ export default function SearchBar() {
         <div>
         <div><input name='price' type="text" placeholder='price' onChange={handleChange} /></div>
         </div>
-
+        <div>
+        <input type="time" id="hours" name="hours"
+       min="09:00" max="18:00" required onChange={handleChange} />
+        </div>
       <div className={styles.landingpage}>
         <h1 className={styles.title}>Crear una ruta </h1>
         <div className={styles.back}>

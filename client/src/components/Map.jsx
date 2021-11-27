@@ -15,28 +15,30 @@ export default function Map() {
   const data = useSelector(state => state.route)
   const { user, isAuthenticated } = useAuth0();
   console.log(data)
-  const timearray = data.coordinates.time.split(' ')
-  const time = timearray[0]
 
-  let postInfo = {
-    idUser: user.email,
-    origin: city[0].name,
-    destiny: city2[0].name,
-    price: routeInfo.price,
-    date: routeInfo.date,
-    hours: time,
-    place: routeInfo.pasajeros,
-    restriction: ''
-  }
-  console.log(postInfo)
+
 function handleClick (e) {
   e.preventDefault()
   history.push('/route')
 }
-console.log(user, 'soy user')
+
 function handlePost (e) {
   e.preventDefault()
-  dispatch(postRoute(postInfo))
+  dispatch(postRoute(
+    {
+      idUser: user.email,
+      origin: city[0].coordinates,
+      originName: city2[0].name,
+      destiny: city2[0].coordinates,
+      destinyName: city2[0].name,
+      price: routeInfo.price,
+      date: routeInfo.date,
+      hours: routeInfo.hours,
+      place: routeInfo.pasajeros,
+      restriction: ''
+    }
+
+  ))
   
 }
   const Map = ReactMapboxGl({
@@ -89,10 +91,10 @@ function handlePost (e) {
     <h2>Destiny: {city2[0].name}</h2>
   </div>
   <div>
-    <h2>Distance: {data.coordinates.distance}</h2>
+    <h2>Distance: {data.coordinates  && data.coordinates.distance}</h2>
   </div>
   <div>
-    <h2>Time: {data.coordinates.time}</h2>
+    <h2>Time: {data.coordinates && data.coordinates.time}</h2>
   </div>
   <div>
     <h3>Passengers: {routeInfo.pasajeros}</h3>
