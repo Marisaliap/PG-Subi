@@ -73,6 +73,14 @@ export default function Registro() {
     );
   }
 
+  function handleSelect(e) {
+    e.preventDefault();
+    setInput({
+      ...input,
+      genre: [...input.genre, e.target.value][0],
+    });
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     console.log(user, 'SOY USER');
@@ -266,7 +274,11 @@ export default function Registro() {
           </div>
           <div className="Genres">
             <label for="genre">Genre*:</label>
-            <select name="genre" id="genre">
+            <select name="genre" id="genre" onChange={(e) => handleSelect(e)}>
+              <option disabled selected value>
+                {" "}
+                -- Select an option --{" "}
+              </option>
               <option className="options" value="Male">
                 Male
               </option>

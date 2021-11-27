@@ -1,15 +1,15 @@
-import React from "react"
-import './Sass/Styles/App.scss';
-import { BrowserRouter, Route, Switch } from "react-router-dom"
-import LandingPage from "./components/LandingPage"
-import Home from "./components/Home"
-import Faq from "./components/Faq"
-import TermsAndConditions from "./components/TermsAndConditions"
-import Aboutus from "./components/Aboutus"
-import Recommendations from "./components/Recommendations"
-import CreateRoute from "./components/CreateRoute"
-import UserDetails from "./components/UserDetails"
-import allInfoRoute from "./components/allInfoRoute"
+import React from "react";
+import "./Sass/Styles/App.scss";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
+import Home from "./components/Home";
+import Faq from "./components/Faq";
+import TermsAndConditions from "./components/TermsAndConditions";
+import Aboutus from "./components/Aboutus";
+import Recommendations from "./components/Recommendations";
+import CreateRoute from "./components/CreateRoute";
+import UserDetails from "./components/UserDetails";
+import allInfoRoute from "./components/allInfoRoute";
 import { useAuth0 } from "@auth0/auth0-react";
 import Registro from './components/Registro';
 import Footer from './components/Footer';
@@ -17,15 +17,16 @@ import FormCar from './components/FormCar';
 import Auth from './components/Auth';
 import Map from "./components/Map"
 import Users from "./components/Users"
+import NavBar from "./components/NavBar";
 
 function App() {
-  const { isAuthenticated } = useAuth0()
-  
+  const { isAuthenticated } = useAuth0();
+
   return (
     <BrowserRouter>
     <div className="App">
+    <NavBar />
     <Route exact path= "/" component= { LandingPage }/>
-    <Route  component= { Auth }/>
     <Route path= "/home" component= { Home }/>
     {isAuthenticated ? (<>
      { 

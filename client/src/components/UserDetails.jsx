@@ -42,7 +42,7 @@ export default function UserDetails(props) {
         {user ? (
           <div className="UserDetails">
             <img
-              src="https://techcommunity.microsoft.com/t5/image/serverpage/image-id/217078i525F6A9EF292601F/image-size/large?v=v2&px=999"
+              src={user.photo}
               alt="User Image"
             />
             <h2>
