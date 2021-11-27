@@ -143,4 +143,18 @@ export function deleteRoute() {
     type: "DELETE-ROUTE",
   };
 }
+export function allRoutes() {
+  return async function (dispatch) {
+    try {
+     const response = (await axios.get(`http://localhost:3001/map/route`)).data;
+     return dispatch({
+         type: "GET_ALL_ROUTE_INFO",
+         payload: response,
+      });
+     }
+   catch (error) {
+    console.log(error)
+  }  
+  }
+}
 

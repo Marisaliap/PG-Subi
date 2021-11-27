@@ -1,6 +1,6 @@
 import React from "react";
-//import { useDispatch, useSelector } from 'react-redux';
-//import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 import { Link, NavLink } from "react-router-dom";
 import  CardRoute  from "./CardRoute.jsx";
 import  CardUser  from "./CardUser.jsx";
@@ -8,11 +8,15 @@ import  CardCar  from "./CardCar.jsx";
 
 export default function AllInfoRoute() {
   
-  //const dispatch = useDispatch();
- // const user = useSelector((state) => state.user);
+//   const dispatch = useDispatch();
+//  const user = useSelector((state) => state.allRoutes);
 
- const user = [
-  {
+//  useEffect (() => {
+//   dispatch(getUserDetail()) 
+//   }, [dispatch])
+
+  const user = 
+   {
       origin: [
           "4565456",
           "4564546"
@@ -48,7 +52,7 @@ export default function AllInfoRoute() {
           }
       ]
   }
-]
+
   
   function handleClick(e) {
     e.preventDefault();
@@ -79,39 +83,37 @@ export default function AllInfoRoute() {
         </select>
       </div>
 
-     {user?.map((el) => {
-        return (
+    { user?
           <div>
             <Link>
               <CardRoute
-                origin={el.origin}
-                destiny={el.destiny}
-                date={el.date}
-                hours={el.hours}
-                place={el.place}
+                origin={user.origin[0]}
+                destiny={user.destiny[0]}
+                date={user.date}
+                hours={user.hours}
+                place={user.place}
               />
             </Link>
             <Link>
               <CardUser
-                photo={el.users.photo}
-                name={el.users.name}
-                lastName={el.users.lastName}
-                genre={el.users.genre}
-                age={el.users.age}
-                calification={el.users.calification}
+                photo={user.users[0].photo}
+                name={user.users[0].name}
+                lastName={user.users[0].lastName}
+                genre={user.users[0].genre}
+                age={user.users[0].age}
+                calification={user.users[0].calification}
               />
             </Link>
             <Link>
               <CardCar
-                patent={el.users.cars.patent}
-                brand={el.users.cars.brand}
-                model={el.users.cars.model}
-                color={el.users.cars.color}
+                patent={user.users[0].cars[0].patent}
+                brand={user.users[0].cars[0].brand}
+                model={user.users[0].cars[0].model}
+                color={user.users[0].cars[0].color}
               />
             </Link>
           </div>
-        );
-      })}
+    :(<h3>Loading...</h3>)}
     </div>
   );
 }
