@@ -1,46 +1,54 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux"
-import ReactMapboxGl, { Layer, Feature, Marker, GeoJSONLayer, MapContext, ZoomControl, ScaleControl, RotationControl } from 'react-mapbox-gl';
-import { useEffect } from "react";
-import { getRoute } from "../actions";
+import ReactMapboxGl, { Marker, GeoJSONLayer, ZoomControl} from 'react-mapbox-gl';
 import { Link, useHistory } from "react-router-dom";
-
-
-const layout2 = {
-    'line-color': '#100000',
-    'line-width': '10px'
-}
+import { useAuth0 } from "@auth0/auth0-react";
+import { postRoute } from "../actions";
 
 
 export default function Map() {
+  const dispatch = useDispatch()
+  const routeInfo = useSelector(state => state.routePostInfo)
   const history = useHistory()
   const city = useSelector(state => state.suggestions1)
   const city2 = useSelector(state => state.suggestions2)
-  console.log(city, city2, 'SOY CITY')
-  const dispatch = useDispatch()
   const data = useSelector(state => state.route)
-  console.log(data, 'SOY ROUTE')
+  const { user, isAuthenticated } = useAuth0();
+  console.log(data)
+  const timearray = data.coordinates.time.split(' ')
+  const time = timearray[0]
+
+  let postInfo = {
+    idUser: user.email,
+    origin: city[0].name,
+    destiny: city2[0].name,
+    price: routeInfo.price,
+    date: routeInfo.date,
+    hours: time,
+    place: routeInfo.pasajeros,
+    restriction: ''
+  }
+  console.log(postInfo)
+function handleClick (e) {
+  e.preventDefault()
+  history.push('/route')
+}
+console.log(user, 'soy user')
+function handlePost (e) {
+  e.preventDefault()
+  dispatch(postRoute(postInfo))
+  
+}
   const Map = ReactMapboxGl({
     accessToken:
       'pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg'
   });
 
-  function handleClick () {
-    return {
-      zoom: 5
-    }
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    history.push("/home");
-  }
-  // useEffect(() => city.length === 1 && city2.length === 1 ? dispatch(getRoute(city[0].coordinates[0], city[0].coordinates[1],city2[0].coordinates[0], city2[0].coordinates[1])): console.log('no se'), [])
-  
-    return <div>
+    return <div style={{display:'flex'}}>
     <Link to="/home">
         <button>Home</button>
       </Link>
+
         <Map
     style="mapbox://styles/mapbox/streets-v9"
     containerStyle={{
@@ -49,7 +57,6 @@ export default function Map() {
     }}
     center={(city && city.length === 1) ? city[0].coordinates : [-57.95,-34.93333]}
   >
-   
 
     { (city && city.length === 1 )&& <Marker coordinates={city[0].coordinates} style={{color:'red'}}>
       <img src='https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png' style={{height:'30px'}}></img>
@@ -58,9 +65,7 @@ export default function Map() {
       <img src='https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png' style={{height:'30px'}}></img>
     </Marker>}
 
-    {/* <Layer type='line' layout={lineLayout} paint={linePaint}>
-      <Feature></Feature>
-      </Layer> */}
+
      <GeoJSONLayer
       data= {data.coordinates && data.coordinates.data}
       linePaint= {{
@@ -72,10 +77,38 @@ export default function Map() {
         'line-cap' : 'round'
       }}
       />
-          <ZoomControl />
+     <ZoomControl />
   </Map>
-<br />
-          <button onClick={e => e.preventDefault()} >Crear Ruta</button>
+ <br/>
+
+  <div style={{border:'3px solid #78c644', borderRadius:'5px'}}>
+  <div>
+    <h2>Origin:{city[0].name}</h2>
+  </div>
+  <div>
+    <h2>Destiny: {city2[0].name}</h2>
+  </div>
+  <div>
+    <h2>Distance: {data.coordinates.distance}</h2>
+  </div>
+  <div>
+    <h2>Time: {data.coordinates.time}</h2>
+  </div>
+  <div>
+    <h3>Passengers: {routeInfo.pasajeros}</h3>
+  </div>
+  <div>
+    <h2>Date: {routeInfo.date}</h2>
+  </div>
+  <div>
+    <button onClick={handlePost}>Crear Ruta</button>
+  </div>
+  <div>
+  <button onClick={handleClick}>Quiero hacer un cambio</button>
+  </div>
+  </div>
+  
+ 
       </div>
 
     

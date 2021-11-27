@@ -69,6 +69,7 @@ const postRoute = async (req, res, next) => {
       place,
       restriction
     } = req.body;
+    console.log(idUser)
 
     const route = await Route.create(
       {
