@@ -29,7 +29,7 @@ const postUser = async (req, res, next) => {
         where: {email},
         defaults: {
           name,
-          photo: photo || 'https://i.pinimg.com/564x/4f/94/9d/4f949d2210e1fe0f62bcc404e54fda45.jpg',
+          photo: photo || '../img/photoDefault.jpg',
           lastName,
           email,
           telephone,

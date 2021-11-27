@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     hours: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     place: {

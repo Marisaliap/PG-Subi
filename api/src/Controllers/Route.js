@@ -156,9 +156,9 @@ const getRoute = async (req, res, next) => {
 
 
     if (time === "desc" || !time || time === "") {
-      routes = routes.sort((a, b) => b.hours - a.hours);
+      routes = routes.sort((a, b) => parseInt(b.hours.split(':').join('')) - parseInt(a.hours.split(':').join('')));
     } else if (time === "asc") {
-      routes = routes.sort((a, b) => a.hours - b.hours);
+      routes = routes.sort((a, b) => parseInt(a.hours.split(':').join('')) - parseInt(b.hours.split(':').join('')));
     }
 
 
