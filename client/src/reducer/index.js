@@ -5,6 +5,7 @@ const initialState = {
   route: [],
   user: [],
   users: [],
+  userDetail: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -30,10 +31,10 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: action.payload,
       };
-    case "GET_USER_DETAIL":  //está duplicado, ver línea 22
+    case "GET_USER_DETAIL":  
       return {
         ...state,
-        user: action.payload,
+        userDetail: action.payload,
       };
     case "POST_USER":
       return {
