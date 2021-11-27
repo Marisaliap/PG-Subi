@@ -19,11 +19,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         matched: action.payload,
       };
-    case "GET_USER_DETAIL":
-      return {
-        ...state,
-        matched: action.payload,
-      };
     case "GET_SUGGESTIONS2":
       return {
         ...state,
@@ -35,12 +30,22 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: action.payload,
       };
-    case "GET_USER_DETAIL":
+    case "GET_USER_DETAIL":  //está duplicado, ver línea 22
       return {
         ...state,
         user: action.payload,
       };
     case "POST_USER":
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case "GET_USER_BY_NAME":
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case "FILTER_USER":
       return {
         ...state,
         user: action.payload,

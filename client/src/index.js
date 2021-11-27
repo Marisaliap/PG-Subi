@@ -11,8 +11,8 @@ ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>
     <Auth0Provider 
-    domain="dev-7ns7-dlh.us.auth0.com" 
-    clientId="NwzPdkkxgS5CYe2U61vk2NePw0JUxbjV" 
+    domain="dev-ldy8yn3a.us.auth0.com" 
+    clientId="UeNorZxq5mET0n5RaFSKS4E6Y6SCm2i6" 
     redirectUri={window.location.origin} >
     {/* redirectUri={"http://localhost:3000/register"} > */}
     <App />
