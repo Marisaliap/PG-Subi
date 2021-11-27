@@ -1,4 +1,4 @@
-const { Route,User,Car } = require("../db.js");
+const { Route, User, Car } = require("../db.js");
 const axios = require("axios");
 const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
 const { TOKEN } = process.env;
@@ -45,14 +45,14 @@ const getRouteInfo = async (req, res, next) => {
       };
     }
 
-    return res.send({
-      cities,
-      coordinates,
-      city,
-    });
-  } catch (error) {
-    next(error);
-  }
+        return res.send({
+            cities,
+            coordinates,
+            city,
+        });
+    } catch (error) {
+        next(error);
+    }
 };
 
 const postRoute = async (req, res, next) => {
@@ -124,22 +124,8 @@ const getRoute = async (req, res, next) => {
             attributes: ["patent","color","brand","model"],
           },
         }
+
     });
-
-
-    if (restriction) {
-      //Filtro de restricciones
-      restriction = restriction.split(",");
-
-      routes = routes.filter((route) => {
-        let restricRoute = route.restriction.split(",");
-        restricRoute = restriction.map((r) => restricRoute.includes(r));
-
-        if (restricRoute.includes(false)) return false;
-        else return true;
-      });
-    }
-
 
     if (date) {
       routes = routes.filter((route) => {
@@ -170,37 +156,37 @@ const getRoute = async (req, res, next) => {
 };
 
 const putRoute = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { date, hours, restriction, place } = req.body;
-    const route = await Route.findByPk(id);
-    route.update({
-      date,
-      hours,
-      restriction,
-      place,
-    });
-    res.send(route);
-  } catch (error) {
-    res.send(error);
-  }
+    try {
+        const { id } = req.params;
+        const { date, hours, restriction, place } = req.body;
+        const route = await Route.findByPk(id);
+        route.update({
+            date,
+            hours,
+            restriction,
+            place,
+        });
+        res.send(route);
+    } catch (error) {
+        res.send(error);
+    }
 };
 
 const deleteRoute = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const route = await Route.findByPk(id);
-    await route.destroy();
-    res.send("Registro Eliminado");
-  } catch (error) {
-    next(error);
-  }
+    try {
+        const { id } = req.params;
+        const route = await Route.findByPk(id);
+        await route.destroy();
+        res.send("Registro Eliminado");
+    } catch (error) {
+        next(error);
+    }
 };
 
 module.exports = {
-  getRouteInfo,
-  postRoute,
-  getRoute,
-  putRoute,
-  deleteRoute,
+    getRouteInfo,
+    postRoute,
+    getRoute,
+    putRoute,
+    deleteRoute,
 };

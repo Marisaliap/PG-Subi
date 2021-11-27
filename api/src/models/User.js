@@ -59,7 +59,7 @@ module.exports = (sequelize) => {
 
     },
     calification: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
 
     },
     password:{
