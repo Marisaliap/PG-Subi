@@ -25,7 +25,9 @@ export default function App() {
   return (
     <BrowserRouter>
     <div className="App">
+    <Switch>
     <Route exact path= "/" component= { LandingPage }/>
+    <div>
     <NavBar />
     <Route path= "/home" component= { Home }/>
     {isAuthenticated ? (<div>
@@ -47,6 +49,12 @@ export default function App() {
     <Route path="/recommendations" component= { Recommendations }/>
     <Route path="/aboutus" component= { Aboutus }/>
     <Footer/>
+
+    </div>
+  
+    </Switch>
+
+    
     </div>
     </BrowserRouter>
   );
