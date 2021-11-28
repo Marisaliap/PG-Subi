@@ -7,12 +7,12 @@ export default function LandingPage() {
   return (
     <div className="LandingPage">
       <div className="LandingPageContainer">
-        <img className="logo" src={img} />
-        {/* <h1 className="title">Give me a ride</h1> */}
-        <p className="paragraph">Travel with all of us</p>
-        <NavLink to="/home">
-          <button className="button">Enter</button>
-        </NavLink>
+        <div className="cosas">
+          <img className="logo" src={img} />
+          <NavLink to="/home">
+            <button className="button">Enter</button>
+          </NavLink>
+        </div>
       </div>
     </div>
   );
