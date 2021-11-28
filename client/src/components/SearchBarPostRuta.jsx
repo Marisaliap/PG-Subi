@@ -1,45 +1,93 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  deleteRoute,
   getRoute,
   getSuggestions,
   getSuggestions2,
-  matchedCity,
   RoutePostInfo,
 } from "../actions"
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "../styles/LandingPage.module.css";
+import "../Sass/Styles/Home.scss";
 
+let inputs = {Origin: '' , Destination: ''};
+let info = {pasajeros: 1, date: '', hours: '', price: ''}
 
-const inputs = {};
-const info = {pasajeros: '1'}
+const validateInputs = (input) => {
+  const errors = {}
+  let inputs = Object.keys(input)
+  for (let i = 0; i < inputs.length; i++) {
+    if (!input[inputs[i]]) {
+      errors[inputs[i]] = inputs[i] + ' is required.'
+    }
+  }
+  return errors
+}
+const validateInfo = (routeInfo) => {
+  const errors = {}
+  let info = Object.keys(routeInfo)
+ 
+  for (let i = 0; i < info.length; i++) {
+    if (!routeInfo[info[i]]) {
+      errors[info[i]] = info[i] + ' is required.'
+    }
+  }
+  return errors
+}
 
 export default function SearchBar() {
 
   const cities = useSelector((state) => state.suggestions1);
   const cities2 = useSelector((state) => state.suggestions2);
   const dispatch = useDispatch();
-
+  const [errors, setErrors] = useState({validations: {}})
 
   function inputHandleChange(e) {
     inputs[e.target.name] = e.target.value;
     dispatch(getSuggestions(inputs.Origin));
     dispatch(getSuggestions2(inputs.Destination));
+    const validations = validateInputs(inputs)
+    console.log(validations, 'soy input')
+    setErrors(() => {
+      const errorState = {...errors, validations} 
+      return errorState
+  })
+    console.log(errors)
   }
 
+  const { validations } = errors
 
+  const checkInputs = Object.values(inputs)
+  const checkInfo = Object.values(info)
+
+  // const checkValidations = Object.keys(validations)
   function handleChange(e) {
     info[e.target.name] = e.target.value;
-    console.log(info)
+    const validations = validateInfo(info)
+    
+    setErrors(() => {
+      const errorState = {...errors, validations} 
+      return errorState
+  })
+  
   }
 
-
+const checkAllInfo = inputs.Origin.length > 6 && inputs.Destination.length > 6  && info.price.length > 1 && info.date.length > 1 && info.hours.length > 1 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getRoute(cities[0].coordinates[0], cities[0].coordinates[1],cities2[0].coordinates[0], cities2[0].coordinates[1]));
-    dispatch(RoutePostInfo(info))
-  }
+
+      if (checkAllInfo ) {
+        dispatch(getRoute(cities[0].coordinates[0], cities[0].coordinates[1],cities2[0].coordinates[0], cities2[0].coordinates[1]));
+       
+        dispatch(RoutePostInfo(info))
+       inputs = {Origin: '' , Destination: ''};
+        info = {pasajeros: 1, date: '', hours: '', price: ''}
+      }
+    
+ 
+    }
+   
+
 
   
   return (
@@ -59,8 +107,8 @@ export default function SearchBar() {
             <option>{city.name}</option>
           ))}
         </datalist>
-
-        <br />
+          <p>{validations && validations.Origin}</p>
+   
 
         <input
           type="text"
@@ -76,9 +124,10 @@ export default function SearchBar() {
             <option>{city.name}</option>
           ))}
         </datalist>
-       
+        <p>{validations && validations.Destination}</p>
         <div>
-        <input type="date" name='date' onChange={handleChange} /> 
+        <input type="date" name='date' min="2021-11-28" onChange={handleChange} /> 
+        <p>{validations && validations.date}</p>
         </div>
 
         <div>
@@ -95,29 +144,35 @@ export default function SearchBar() {
 
         <div>
         <div><input name='price' type="text" placeholder='price' onChange={handleChange} /></div>
+        <p>{validations && validations.price}</p>
         </div>
         <div>
         <input type="time" id="hours" name="hours"
        min="09:00" max="18:00" required onChange={handleChange} />
+       <p>{validations && validations.hours}</p>
         </div>
         <div className={styles.back}>
 
-          <Link to="/">
+          <NavLink to="/">
             <button className={styles.backButton}>Back</button>
-          </Link>
+          </NavLink>
+            
+          
+           
+             <div>
+            
+          {checkAllInfo ? <button onClick={handleSubmit}  className='button' disabled={checkInfo.length !== 4 && checkInputs.length !== 2}>
+          <NavLink to='/route/finish' style={{textDecoration:' none', width:'60px', color:'white'}}>
+           Submit
+          </NavLink>
+           </button> : <button className='button' disabled='true'>Submit</button>}
 
-          <button onClick={handleSubmit} className={styles.back}> 
-           <Link to='/route/finish'>
-            submit
-           </Link>
-          </button>
+            
+             </div>
+          
          
+             
         </div>
-      <div className={styles.landingpage}>
-        <h1 className={styles.title}>Crear una ruta </h1>
-        
-      </div>
-    
       </form>
      
     </div>
