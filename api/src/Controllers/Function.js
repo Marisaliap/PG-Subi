@@ -7,12 +7,13 @@ const kilometers = (distance) => { //PASA LA DISTANCIA A KMS
 const hours = (num) => {    // TRANSFORMA EL TIEMPO EN HRS/HRS-MIN
     const timeArray = (num/3600).toString().split('.')
     const decimals = timeArray[1].slice(0,2)
-    const minutes = Math.floor(decimals / 60)
+    const minutes = Math.floor((0 + '.' + decimals) * 60)
 
-    if (timeArray > 0 && minutes > 0) {
+
+    if (timeArray[0] > 0 && minutes > 0) {
         return parseInt(timeArray[0]) + ' hrs ' + parseInt(minutes) + ' mins.'
     }
-    if (timeArray <= 0 && minutes > 0) {
+    if (timeArray[0] <= 0 && minutes > 0) {
         return parseInt(minutes) + ' mins.'
     }
     
