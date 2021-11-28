@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../img/logoNegro.png";
 import { Profile } from "./Profile";
 import SearchUserByName from './SearchUserByName';
-//import Auth from "./Auth";
+import Auth from "./Auth";
 import { Link, NavLink } from "react-router-dom";
 import "../Sass/Styles/NavBar.scss";
 
@@ -11,7 +11,7 @@ function Nav() {
     <>
       <nav className="NavBar">
         <div className="logs">
-         {/* <Auth /> */}
+         <Auth />
         </div>
         <div className="toito">
           <div className="izquierda">

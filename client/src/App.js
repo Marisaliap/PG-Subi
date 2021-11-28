@@ -25,11 +25,11 @@ export default function App() {
   return (
     <BrowserRouter>
     <div className="App">
-    <NavBar />
     <Route exact path= "/" component= { LandingPage }/>
+    <NavBar />
     <Route path= "/home" component= { Home }/>
     {isAuthenticated ? (<div>
-     { 
+     {
     <Switch>                                               
     <Route exact path="/route" component= { CreateRoute }/>
     <Route path='/route/finish' component={ Map } />
@@ -40,13 +40,13 @@ export default function App() {
     <Route path="/users" component= { Users } />
     </Switch>
       }
-    </div>):( <h1 className='signInAlert'>Logueate Capo</h1>)
+    </div>):( <h1 className='signInAlert'>Login Please</h1>)
     }
     <Route path="/faq" component= { Faq }/>
     <Route path="/terms-and-conditions" component= { TermsAndConditions }/>
     <Route path="/recommendations" component= { Recommendations }/>
     <Route path="/aboutus" component= { Aboutus }/>
-    <Route  component= { Footer }/>
+    <Footer/>
     </div>
     </BrowserRouter>
   );
