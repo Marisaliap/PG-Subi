@@ -125,11 +125,11 @@ export default function Map() {
         </p>
       </div>
       <div className="buttonContainer">
-        <button className="button" onClick={handlePost}>
-          Create Trip
-        </button>
         <button className="buttonBlue" onClick={handleClick}>
           I want to change something!
+        </button>
+        <button className="button" onClick={handlePost}>
+          Create Trip
         </button>
       </div>
     </div>
