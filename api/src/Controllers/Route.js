@@ -114,7 +114,7 @@ const getRoute = async (req, res, next) => {
     }
 
     routes = await Route.findAll({
-      attributes: ["origin","destiny","date","hours","place","id","price","originName","destinyName"],
+      attributes: ["origin","destiny","date","hours","place","id","price","originName","destinyName","restriction"],
       include:
         {
           model: User,
@@ -126,6 +126,18 @@ const getRoute = async (req, res, next) => {
         }
 
     });
+
+    if (restriction) {
+      restriction = restriction.split(",");
+
+      routes = routes.filter((route) => {
+        let restricRoute = route.restriction.split(",");
+        restricRoute = restriction.map((r) => restricRoute.includes(r));
+
+        if (restricRoute.includes(false)) return false;
+        else return true;
+      });
+    }
 
     if (date) {
       routes = routes.filter((route) => {
