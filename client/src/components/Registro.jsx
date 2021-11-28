@@ -83,12 +83,8 @@ export default function Registro() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(user, 'SOY USER');
-    console.log(input, 'SOY INPUT');
-    console.log(errors, 'SOY ERRORS');
     if (Object.keys(errors).length === 0) {
       dispatch(postUser(input));
-      console.log(input);
       setInput({
         name: '',
         lastName: '',
