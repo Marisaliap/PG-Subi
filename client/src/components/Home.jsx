@@ -7,8 +7,7 @@ import header from "../img/header.jpg";
 export default function Home() {
   return (
     <div className="Home">
-      <h1>subiquetellevo</h1>
-      {/* <Auth/> */}
+      <h1>Give me a ride</h1>
       <img className="fotoHeader" src={header} alt="header" />
       <Link to="/register">Register as User</Link>
       <Link to="/route-list">Route List</Link>
