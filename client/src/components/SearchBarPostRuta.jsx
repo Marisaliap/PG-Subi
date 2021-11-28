@@ -7,10 +7,11 @@ import {
   getSuggestions2,
   matchedCity,
 } from "../actions";
-import Map from './Map.jsx';
+import Map from "./Map";
 import { Link } from "react-router-dom";
 const inputs = {};
 export default function SearchBar() {
+
   const cities = useSelector((state) => state.suggestions1);
   const cities2 = useSelector((state) => state.suggestions2);
   const matchCity = useSelector((state) => state.matched);
@@ -57,11 +58,9 @@ export default function SearchBar() {
           ))}
         </datalist>
         <div>
-        <Map/>
-        <Link to="/map">
-          <button>Entrar</button>
-        </Link>
-        <button onClick={handleSubmit}>submit</button>
+        <Map />
+        
+        <button onClick={handleSubmit} >submit</button>
         </div>
       </form>
     </div>

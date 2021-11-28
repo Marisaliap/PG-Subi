@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Car({ patent, brand, model, color }) {
+export default function CardCar({ patent, brand, model, color }) {
   return (
     <div>
       <h1>Car Data</h1>

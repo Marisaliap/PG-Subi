@@ -19,11 +19,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         matched: action.payload,
       };
-    case "GET_USER_DETAIL":
-      return {
-        ...state,
-        matched: action.payload,
-      };
     case "GET_SUGGESTIONS2":
       return {
         ...state,
@@ -35,7 +30,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: action.payload,
       };
-    case "GET_USER_DETAIL":
+    case "GET_USER_DETAIL":  
       return {
         ...state,
         user: action.payload,
@@ -44,6 +39,41 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload,
+      };
+    case "GET_USER_BY_NAME":
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case "FILTER_BY_SMOKE":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "FILTER_BY_PETS":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "FILTER_BY_PEOPLE_BEHIND":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "ORDER_BY_TIME":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "ORDER_BY_PRICE":
+      return {
+        ...state,
+        route: action.payload,
+      };
+    case "ORDER_BY_DISTANCE":
+      return {
+        ...state,
+        route: action.payload,
       };
     case "DELETE_ROUTE":
       return {

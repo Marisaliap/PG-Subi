@@ -1,14 +1,8 @@
-@import '../Variables/Variables.scss';
+@import "../Variables/Variables.scss";
 
 .formContainer {
   outline: none;
   border-radius: 15px;
-
-  //   &:hover {
-  //     box-shadow: 0 0 10px rgba(44, 11, 34, 0.404),
-  //       0 0 10px rgba(44, 11, 34, 0.404), 0 0 10px rgba(44, 11, 34, 0.404);
-  //     transition-delay: 0.2s;
-  //     transition: 0.8s;
 
   .Form {
     font-size: 0.8em;
@@ -17,37 +11,91 @@
 
     label {
       text-align: left;
-    }
+      position: absolute;
+      left: 5vw;
+      padding-top: 1.5rem;
+      color: $headline;
 
-    input {
-      border: none;
-      cursor: pointer;
-      padding: 5px;
-      margin-top: 5px;
-      border-radius: 5px;
-      width: 160px;
-      margin: 7px;
+      @media only screen and (min-width: 768px) {
+        margin-left: 3.5rem;
+      }
 
-      &:hover {
-        background-color: #ffffcc73;
+      @media only screen and (min-width: 1200px) {
+        margin-left: 8rem;
       }
     }
 
-    .Genres {
-      display: flex;
-      flex-direction: column;
-      border-radius: 3px;
-      font-size: 14px;
-      color: #311601;
-      font-weight: bolder;
-      margin-top: 7px;
-      width: 180px;
-      height: 150px;
-      margin-left: 160px;
+    input {
+      border: 0;
+      border-bottom: 2px solid $buttonColor;
+      cursor: pointer;
+      padding-top: 1.5rem;
+      width: 60vw;
+      margin-left: 5rem;
+      font-weight: bold;
+      color: $text;
+      font-family: inherit;
+      transition: background-color 0.5s ease-in-out;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        background-color: $buttonColor-33;
+      }
+    }
+
+    textarea {
+      border: 0;
+      border-bottom: 2px solid $buttonColor;
+      cursor: pointer;
+      padding-top: 0.5rem;
+      width: 60vw;
+      margin-left: 5rem;
+      color: $text;
+      font-weight: bold;
+      font-family: inherit;
+      transition: background-color 0.5s ease-in-out;
+
+      &:hover {
+        background-color: $buttonColor-33;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    select {
+      margin-top: 1.5rem;
+      width: 60vw;
+      margin-left: 5rem;
+      text-align: center;
+      border: none;
+      color: $buttonColor;
+      font-weight: bold;
+      transition: background-color 0.5s ease-in-out;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        background-color: $buttonColor-33;
+      }
+
+      .options {
+        font-weight: bold;
+      }
     }
 
     .error {
       color: red;
+    }
+
+    .button {
+      margin-top: 2.5rem;
     }
   }
 }
