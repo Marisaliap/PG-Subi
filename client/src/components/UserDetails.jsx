@@ -41,10 +41,7 @@ export default function UserDetails(props) {
       <div>
         {user ? (
           <div className="UserDetails">
-            <img
-              src={user.photo}
-              alt="User Image"
-            />
+            <img src={user.photo} alt="User Image" />
             <h2>
               {user.name} {user.lastName} {genderIcon(user.genre)}
             </h2>
