@@ -129,6 +129,23 @@ export function postUser(payload) {
   };
 }
 
+export function postCar(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/car/add`,
+        payload
+      );
+      return dispatch({
+        type: "POST_CAR",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 export function postRoute(routeInfo) {
   console.log(routeInfo)
   return async function (dispatch) {
