@@ -3,7 +3,6 @@ import axios from "axios";
 export function getSuggestions(input) {
   return function (dispatch) {
     axios.get("http://localhost:3001/maps?name=" + input).then((cities) => {
-      console.log(cities);
       dispatch({
         type: "GET_SUGGESTIONS",
         payload: cities.data,
@@ -15,7 +14,6 @@ export function getSuggestions(input) {
 export function getSuggestions2(input) {
   return function (dispatch) {
     axios.get("http://localhost:3001/maps?name=" + input).then((cities) => {
-      console.log(cities);
       dispatch({
         type: "GET_SUGGESTIONS2",
         payload: cities.data,

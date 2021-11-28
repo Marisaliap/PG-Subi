@@ -83,7 +83,7 @@ function handlePost (e) {
   </Map>
  <br/>
 
-  <div style={{border:'3px solid #78c644', borderRadius:'5px'}}>
+  <div style={{border:'5px solid #78c644', borderRadius:'3px'}}>
   <div>
     <h2>Origin:{city[0].name}</h2>
   </div>
@@ -100,7 +100,7 @@ function handlePost (e) {
     <h3>Passengers: {routeInfo.pasajeros}</h3>
   </div>
   <div>
-    <h2>Date: {routeInfo.date}</h2>
+    <h2>Date: {routeInfo.date.split('-').reverse().join('-')}</h2>
   </div>
   <div>
     <button onClick={handlePost}>Crear Ruta</button>
