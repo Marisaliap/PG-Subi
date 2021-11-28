@@ -18,6 +18,7 @@ import Auth from './components/Auth';
 import Map from "./components/Map"
 import Users from "./components/Users"
 import NavBar from "./components/NavBar";
+import RouteDetails from "./components/RouteDetails";
 
 export default function App() {
   const { isAuthenticated } = useAuth0();
@@ -37,7 +38,7 @@ export default function App() {
     <Route path='/route/finish' component={ Map } />
     <Route path='/register' component = { Registro }/>
     <Route path="/user/:id" component= { UserDetails }/>
-    <Route path="/route-list" component= { allInfoRoute }/>
+    <Route path="/route-list" component= {RouteDetails}/>
     <Route path="/car" component= { FormCar }/>
     <Route path="/users" component= { Users } />
     </Switch>

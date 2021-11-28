@@ -51,16 +51,16 @@ export default function Registro() {
     return true;
   }
 
-  function validateCheck() {
-    var elements = document.getElementsByName("terminos");
-    var statusText = "<br />";
+  // function validateCheck() {
+  //   var elements = document.getElementsByName("terminos");
+  //   var statusText = "<br />";
 
-    for (var index = 0; index < elements.length; index++) {
-      statusText +=
-        elements[index].value + "-" + elements[index].checked + "<br />";
-    }
-    document.getElementById("status").innerHTML = statusText;
-  }
+  //   for (var index = 0; index < elements.length; index++) {
+  //     statusText +=
+  //       elements[index].value + "-" + elements[index].checked + "<br />";
+  //   }
+  //   document.getElementById("status").innerHTML = statusText;
+  // }
 
   const [errors, setErrors] = useState({
     algo: "asd",
@@ -338,7 +338,7 @@ export default function Registro() {
                 type="checkbox"
                 name="terminos"
                 value="1"
-                onChange={validateCheck()}
+                // onChange={validateCheck()}
               />
               {errors.terms && <p className="error">{errors.terms}</p>}
             </div>

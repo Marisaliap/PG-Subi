@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/LandingPage.scss";
 import img from "../img/logoNegro.png";
+import { allRoutes } from "../actions";
+
 
 export default function LandingPage() {
+  const dispatch = useDispatch();
+  useEffect(() =>dispatch(allRoutes()), []);
+
   return (
     <div className="LandingPage">
       <div className="LandingPageContainer">
