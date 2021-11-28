@@ -5,6 +5,7 @@
   width: 100vw;
   display: grid;
   place-items: center;
+  
 
   h1 {
     font-size: 2em;
@@ -12,6 +13,10 @@
 
   p {
     font-size: 1em;
+  }
+
+  navbar {
+    display: none;
   }
 
   @media only screen and (min-width: 768px) {

@@ -1,15 +1,24 @@
 import React from "react";
+import { useSelector } from 'react-redux';
+import CardUser  from "./CardUser";
 
-export default function Users({name, lastName, genre, age, image, calification}) {
+export default function Users() {
+const { users } = useSelector(state => state )
   return (
     <div>
-    <h1>Users Data</h1>
-      <img src={image} alt={name} />
-        <h2>{name}</h2>
-        <h2>{lastName}</h2>
-        <h2>{genre}</h2>
-        <h2>{age}</h2>
-        <h2>{calification}</h2>
+      { users.map(user => {
+        return(
+          <CardUser  
+          name = { user.name }
+          lastName = { user.lastName }
+          genre = { user.genre } 
+          age = { user.age } 
+          photo = { user.photo }
+          calification = { user.calification }
+          />
+        )
+      }) }
+    
     </div>
   );
 }

@@ -1,10 +1,11 @@
 const initialState = {
   suggestions1: [],
   suggestions2: [],
-  matched: [],
+  routePostInfo: {},
   route: [],
   user: [],
   users: [],
+  allRoutes: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -35,6 +36,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         user: action.payload,
       };
+    case "GET_ALL_ROUTE_INFO":  
+      return {
+        ...state,
+        allRoutes: action.payload,
+      };
     case "POST_USER":
       return {
         ...state,
@@ -43,7 +49,7 @@ function rootReducer(state = initialState, action) {
     case "GET_USER_BY_NAME":
       return {
         ...state,
-        user: action.payload,
+        users: action.payload,
       };
     case "FILTER_BY_SMOKE":
       return {
@@ -79,6 +85,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         route: [],
+      };
+    case "ROUTE_POST_INFO":
+      return {
+        ...state,
+        routePostInfo: action.payload,
       };
     default:
       return state;

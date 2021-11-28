@@ -1,4 +1,4 @@
-const { Route,User,Car } = require("../db.js");
+const { Route, User, Car } = require("../db.js");
 const axios = require("axios");
 const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
 const { TOKEN } = process.env;
@@ -45,14 +45,14 @@ const getRouteInfo = async (req, res, next) => {
       };
     }
 
-    return res.send({
-      cities,
-      coordinates,
-      city,
-    });
-  } catch (error) {
-    next(error);
-  }
+        return res.send({
+            cities,
+            coordinates,
+            city,
+        });
+    } catch (error) {
+        next(error);
+    }
 };
 
 const postRoute = async (req, res, next) => {
@@ -70,6 +70,7 @@ const postRoute = async (req, res, next) => {
       place,
       restriction
     } = req.body;
+    console.log(idUser)
 
     const route = await Route.create(
       {
@@ -113,7 +114,7 @@ const getRoute = async (req, res, next) => {
     }
 
     routes = await Route.findAll({
-      attributes: ["origin","destiny","date","hours","place","id","price","originName","destinyName"],
+      attributes: ["origin","destiny","date","hours","place","id","price","originName","destinyName","restriction"],
       include:
         {
           model: User,
@@ -123,11 +124,10 @@ const getRoute = async (req, res, next) => {
             attributes: ["patent","color","brand","model"],
           },
         }
+
     });
 
-
     if (restriction) {
-      //Filtro de restricciones
       restriction = restriction.split(",");
 
       routes = routes.filter((route) => {
@@ -138,7 +138,6 @@ const getRoute = async (req, res, next) => {
         else return true;
       });
     }
-
 
     if (date) {
       routes = routes.filter((route) => {
@@ -156,9 +155,9 @@ const getRoute = async (req, res, next) => {
 
 
     if (time === "desc" || !time || time === "") {
-      routes = routes.sort((a, b) => b.hours - a.hours);
+      routes = routes.sort((a, b) => parseInt(b.hours.split(':').join('')) - parseInt(a.hours.split(':').join('')));
     } else if (time === "asc") {
-      routes = routes.sort((a, b) => a.hours - b.hours);
+      routes = routes.sort((a, b) => parseInt(a.hours.split(':').join('')) - parseInt(b.hours.split(':').join('')));
     }
 
 
@@ -169,37 +168,37 @@ const getRoute = async (req, res, next) => {
 };
 
 const putRoute = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { date, hours, restriction, place } = req.body;
-    const route = await Route.findByPk(id);
-    route.update({
-      date,
-      hours,
-      restriction,
-      place,
-    });
-    res.send(route);
-  } catch (error) {
-    res.send(error);
-  }
+    try {
+        const { id } = req.params;
+        const { date, hours, restriction, place } = req.body;
+        const route = await Route.findByPk(id);
+        route.update({
+            date,
+            hours,
+            restriction,
+            place,
+        });
+        res.send(route);
+    } catch (error) {
+        res.send(error);
+    }
 };
 
 const deleteRoute = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const route = await Route.findByPk(id);
-    await route.destroy();
-    res.send("Registro Eliminado");
-  } catch (error) {
-    next(error);
-  }
+    try {
+        const { id } = req.params;
+        const route = await Route.findByPk(id);
+        await route.destroy();
+        res.send("Registro Eliminado");
+    } catch (error) {
+        next(error);
+    }
 };
 
 module.exports = {
-  getRouteInfo,
-  postRoute,
-  getRoute,
-  putRoute,
-  deleteRoute,
+    getRouteInfo,
+    postRoute,
+    getRoute,
+    putRoute,
+    deleteRoute,
 };

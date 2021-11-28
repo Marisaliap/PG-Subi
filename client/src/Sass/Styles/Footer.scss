@@ -1,0 +1,13 @@
+@import "../Variables/Variables.scss";
+
+.Footer {
+  .cosasAbajo {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 30vw;
+    margin-left: 35vw;
+  }
+}
