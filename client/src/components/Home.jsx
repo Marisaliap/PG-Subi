@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../Sass/Styles/Home.scss";
-import SearchUserByName from './SearchUserByName';
+
 import header from "../img/header.jpg";
 import Auth from "./Auth"
 

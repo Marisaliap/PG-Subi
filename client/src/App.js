@@ -19,7 +19,7 @@ import Map from "./components/Map"
 import Users from "./components/Users"
 import NavBar from "./components/NavBar";
 
-function App() {
+export default function App() {
   const { isAuthenticated } = useAuth0();
 
   return (
@@ -28,7 +28,7 @@ function App() {
     <NavBar />
     <Route exact path= "/" component= { LandingPage }/>
     <Route path= "/home" component= { Home }/>
-    {isAuthenticated ? (<>
+    {isAuthenticated ? (<div>
      { 
     <Switch>                                               
     <Route exact path="/route" component= { CreateRoute }/>
@@ -40,7 +40,7 @@ function App() {
     <Route path="/users" component= { Users } />
     </Switch>
       }
-    </>):( <h1 className='signInAlert'>Logueate Capo</h1>)
+    </div>):( <h1 className='signInAlert'>Logueate Capo</h1>)
     }
     <Route path="/faq" component= { Faq }/>
     <Route path="/terms-and-conditions" component= { TermsAndConditions }/>
@@ -52,4 +52,3 @@ function App() {
   );
 }
 
-export default App;

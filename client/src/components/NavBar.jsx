@@ -1,7 +1,8 @@
 import React from "react";
 import Logo from "../img/logoNegro.png";
 import { Profile } from "./Profile";
-import Auth from "./Auth";
+import SearchUserByName from './SearchUserByName';
+//import Auth from "./Auth";
 import { Link, NavLink } from "react-router-dom";
 import "../Sass/Styles/NavBar.scss";
 
@@ -23,12 +24,12 @@ function Nav() {
             <div>
               <ul className="searchContainer">
                 <NavLink className="searchContainerItem" to="/">
-                  {/* <SearchBar /> */}
                   <h3>🔍 Buscar</h3>
                 </NavLink>
                 <NavLink className="searchContainerItem" to="/route">
                   <button className="button">Post a Trip</button>
                 </NavLink>
+                 <SearchUserByName /> 
               </ul>
             </div>
             <div>

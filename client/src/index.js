@@ -13,8 +13,8 @@ ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <Auth0Provider
-        useRefreshTokens={true}
-        cacheLocation="localstorage"
+        //useRefreshTokens={true}
+        //cacheLocation="localstorage"
         domain="dev-ldy8yn3a.us.auth0.com"
         clientId="UeNorZxq5mET0n5RaFSKS4E6Y6SCm2i6"
         // redirectUri={window.location.origin} >
