@@ -127,5 +127,22 @@
     .button {
       margin-top: 2.5rem;
     }
+
+    .buttondisabled {
+      margin-top: 2.5rem;
+      margin: 0.5rem;
+      border: none;
+      font-family: inherit;
+      border-radius: 9999px;
+      font-weight: bolder;
+      padding: 1rem 3rem;
+      background-color: $buttonDisabled;
+      color: $background;
+      transition: background-color 0.5s ease-in-out;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }

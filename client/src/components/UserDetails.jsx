@@ -15,6 +15,7 @@ import {
   BsEnvelope,
 } from 'react-icons/bs';
 import '../Sass/Styles/UserDetails.scss';
+import img from '../img/photoDefault.jpg'
 
 export default function UserDetails(props) {
   const dispatch = useDispatch();
@@ -41,9 +42,14 @@ export default function UserDetails(props) {
       <div>
         {user ? (
           <div className="UserDetails">
-            <img
+            {/* <img
               src={user.photo}
               alt="User Image"
+            /> */}
+            <img
+              src={img}
+              alt="User Image"
+              style={{width:'250px'}}
             />
             <h2>
               {user.name} {user.lastName} {genderIcon(user.genre)}

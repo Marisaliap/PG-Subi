@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="Home">
       <h1>subiquetellevo</h1>
-      <Auth/>
+     {/*  <Auth/> */}
       <img className="fotoHeader" src={header} alt="header" />
       <Link to="/register">Register as User</Link>
       <Link to="/route-list">Route List</Link>
