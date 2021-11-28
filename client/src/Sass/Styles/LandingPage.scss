@@ -5,7 +5,11 @@
   width: 100vw;
   display: grid;
   place-items: center;
-  
+
+  .cosas {
+    display: flex;
+    flex-direction: column;
+  }
 
   h1 {
     font-size: 2em;
@@ -15,8 +19,8 @@
     font-size: 1em;
   }
 
-  navbar {
-    display: none;
+  .logo {
+    margin-top: -10vh;
   }
 
   @media only screen and (min-width: 768px) {

@@ -5,7 +5,8 @@ const initialState = {
   route: [],
   user: [],
   users: [],
-  allRoutes: []
+  allRoutes: [],
+  car:[]
 };
 
 function rootReducer(state = initialState, action) {
@@ -40,6 +41,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         allRoutes: action.payload,
+      };
+    case "POST_CAR":
+      return {
+        ...state,
+        car: action.payload,
       };
     case "POST_USER":
       return {

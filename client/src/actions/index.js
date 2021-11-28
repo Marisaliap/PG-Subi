@@ -3,7 +3,6 @@ import axios from "axios";
 export function getSuggestions(input) {
   return function (dispatch) {
     axios.get("http://localhost:3001/maps?name=" + input).then((cities) => {
-      console.log(cities);
       dispatch({
         type: "GET_SUGGESTIONS",
         payload: cities.data,
@@ -15,7 +14,6 @@ export function getSuggestions(input) {
 export function getSuggestions2(input) {
   return function (dispatch) {
     axios.get("http://localhost:3001/maps?name=" + input).then((cities) => {
-      console.log(cities);
       dispatch({
         type: "GET_SUGGESTIONS2",
         payload: cities.data,
@@ -121,6 +119,23 @@ export function postUser(payload) {
       );
       return dispatch({
         type: "POST_USER",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function postCar(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/car/add`,
+        payload
+      );
+      return dispatch({
+        type: "POST_CAR",
         payload: response.data,
       });
     } catch (error) {
