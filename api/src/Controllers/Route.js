@@ -68,7 +68,8 @@ const postRoute = async (req, res, next) => {
       date,
       hours,
       place,
-      restriction
+      restriction,
+      infoRoute,
     } = req.body;
     console.log(idUser)
 
@@ -83,6 +84,7 @@ const postRoute = async (req, res, next) => {
         hours,
         place,
         restriction,
+        infoRoute,
       });
 
 
