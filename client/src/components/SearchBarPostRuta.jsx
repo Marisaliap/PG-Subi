@@ -9,8 +9,8 @@ import {
 import { NavLink } from 'react-router-dom';
 import '../Sass/Styles/SearchBarPostRuta.scss';
 
-let inputs = { Origin: '', Destination: '' };
-let info = { pasajeros: 1, date: '', hours: '', price: '' };
+let inputs = {Origin: '' , Destination: ''};
+let info = {pasajeros: 1, date: '', hours: ''}
 
 const validateInputs = (input) => {
   const errors = {};
@@ -69,28 +69,19 @@ export default function SearchBar() {
     });
   }
 
-  const checkAllInfo =
-    inputs.Origin.length > 6 &&
-    inputs.Destination.length > 6 &&
-    info.price.length > 1 &&
-    info.date.length > 1 &&
-    info.hours.length > 1;
+const checkAllInfo = inputs.Origin.length > 6 && inputs.Destination.length > 6  && info.date.length > 1 && info.hours.length > 1 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (checkAllInfo) {
-      dispatch(
-        getRoute(
-          cities[0].coordinates[0],
-          cities[0].coordinates[1],
-          cities2[0].coordinates[0],
-          cities2[0].coordinates[1]
-        )
-      );
-
-      dispatch(RoutePostInfo(info));
-      inputs = { Origin: '', Destination: '' };
-      info = { pasajeros: 1, date: '', hours: '', price: '' };
+      if (checkAllInfo ) {
+        dispatch(getRoute(cities[0].coordinates[0], cities[0].coordinates[1],cities2[0].coordinates[0], cities2[0].coordinates[1]));
+       
+        dispatch(RoutePostInfo(info))
+       inputs = {Origin: '' , Destination: ''};
+        info = {pasajeros: 1, date: '', hours: ''}
+      }
+    
+ 
     }
   }
 
@@ -146,18 +137,6 @@ export default function SearchBar() {
             <option value="6">6</option>
           </select>
         </div>
-
-        <div>
-          <div>
-            <input
-              name="price"
-              type="text"
-              placeholder="price"
-              onChange={handleChange}
-            />
-          </div>
-          <p>{validations && validations.price}</p>
-        </div>
         <div>
           <input
             type="time"
@@ -172,7 +151,16 @@ export default function SearchBar() {
         </div>
         <div>
           <NavLink to="/">
-            <button className="buttonBlue">Back</button>
+            <button className={styles.backButton}>Back</button>
+          </NavLink>
+            
+          
+           
+             <div>
+            
+          {checkAllInfo ? <button onClick={handleSubmit}  className='button' disabled={checkInfo.length !== 3 && checkInputs.length !== 2}>
+          <NavLink to='/route/finish' style={{textDecoration:' none', width:'60px', color:'white'}}>
+           Submit
           </NavLink>
 
           <div>

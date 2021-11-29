@@ -174,7 +174,7 @@ export function deleteRoute() {
 export function allRoutes() {
   return async function (dispatch) {
     try {
-     const response = (await axios.get(`http://localhost:3001/map/route`)).data;
+     const response = (await axios.get(`http://localhost:3001/maps/route`)).data;
      return dispatch({
          type: "GET_ALL_ROUTE_INFO",
          payload: response,

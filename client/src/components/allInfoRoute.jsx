@@ -4,11 +4,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import  CardRoute  from "./CardRoute.jsx";
 import  CardUser  from "./CardUser.jsx";
-import  CardCar  from "./CardCar.jsx";
+import NavBarFiltre from "./NavBarFiltre.jsx";
+
 
 export default function AllInfoRoute() {
   
-//   const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 //  const user = useSelector((state) => state.allRoutes);
 
 //  useEffect (() => {
@@ -57,6 +58,7 @@ export default function AllInfoRoute() {
   function handleClick(e) {
     e.preventDefault();
   }
+  <NavBarFiltre />
   
   
   
@@ -70,18 +72,6 @@ export default function AllInfoRoute() {
         {" "}
         Refresh Routes{" "}
       </button>
-      <div>
-        <select>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
-        </select>
-        <select>
-          <option value="opcion1">Opción Uno</option>
-          <option value="opcion2">Opción Dos</option>
-          <option value="opcion3">Opción Tres</option>
-          <option value="opcion4">Opción Cuatro</option>
-        </select>
-      </div>
 
     { user?
           <div>
@@ -93,23 +83,10 @@ export default function AllInfoRoute() {
                 hours={user.hours}
                 place={user.place}
               />
-            </Link>
-            <Link>
               <CardUser
                 photo={user.users[0].photo}
                 name={user.users[0].name}
-                lastName={user.users[0].lastName}
-                genre={user.users[0].genre}
-                age={user.users[0].age}
                 calification={user.users[0].calification}
-              />
-            </Link>
-            <Link>
-              <CardCar
-                patent={user.users[0].cars[0].patent}
-                brand={user.users[0].cars[0].brand}
-                model={user.users[0].cars[0].model}
-                color={user.users[0].cars[0].color}
               />
             </Link>
           </div>

@@ -43,6 +43,9 @@ module.exports = (sequelize) => {
     restriction: {
       type: DataTypes.STRING,
     },
+    infoRoute: {
+      type: DataTypes.TEXT,
+    }
   },
   {
     timestamps: false,
