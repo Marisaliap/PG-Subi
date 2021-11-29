@@ -9,6 +9,11 @@
     width: 30vw;
   }
 
+  pre{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
   .postRouteForm {
     padding: 1rem;
 

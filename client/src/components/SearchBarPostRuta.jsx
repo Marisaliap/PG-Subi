@@ -159,36 +159,37 @@ export default function SearchBar() {
           />
           <p>{validations && validations.hours}</p>
         </div>
+        <pre>
+        <div>
+          {checkAllInfo ? (
+            <button
+              onClick={handleSubmit}
+              className="button"
+              disabled={checkInfo.length !== 3 && checkInputs.length !== 2}
+            >
+              <NavLink
+                to="/route/finish"
+                style={{
+                  textDecoration: " none",
+                  width: "60px",
+                  color: "white",
+                }}
+              >
+                Submit
+              </NavLink>
+            </button>
+          ) : (
+            <button className="button" disabled="true">
+              Submit
+            </button>
+          )}
+        </div>
         <div>
           <NavLink to="/">
             <button className="buttonBlue">Back</button>
           </NavLink>
-
-          <div>
-            {checkAllInfo ? (
-              <button
-                onClick={handleSubmit}
-                className="button"
-                disabled={checkInfo.length !== 3 && checkInputs.length !== 2}
-              >
-                <NavLink
-                  to="/route/finish"
-                  style={{
-                    textDecoration: " none",
-                    width: "60px",
-                    color: "white",
-                  }}
-                >
-                  Submit
-                </NavLink>
-              </button>
-            ) : (
-              <button className="button" disabled="true">
-                Submit
-              </button>
-            )}
-          </div>
         </div>
+        </pre>
       </form>
     </div>
   );
