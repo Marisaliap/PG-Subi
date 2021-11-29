@@ -33,11 +33,11 @@ export default function Registro() {
     } else if (!input.city) {
       errors.city = 'City is required';
     } else if (!input.province) {
-      errors.province = "Province is required";
-    // } else if (chequeado === 0) {
-    //   errors.terms = "You must agree to our terms and conditions";
+      errors.province = 'Province is required';
+      // } else if (chequeado === 0) {
+      //   errors.terms = "You must agree to our terms and conditions";
     } else if (validateGenre() === false) {
-      errors.genre = "Genre is required";
+      errors.genre = 'Genre is required';
     }
     return errors;
   }
@@ -341,24 +341,6 @@ export default function Registro() {
               />
               {errors.terms && <p className="error">{errors.terms}</p>}
             </div>
-          </div>
-          <div className="Genres">
-            <label for="genre">Genre*:</label>
-            <select name="genre" id="genre" onChange={(e) => handleSelect(e)}>
-              <option disabled selected value>
-                {" "}
-                -- Select an option --{" "}
-              </option>
-              <option className="options" value="Male">
-                Male
-              </option>
-              <option className="options" value="Female">
-                Female
-              </option>
-              <option className="options" value="Rather not say">
-                Rather not say
-              </option>
-            </select>
           </div>
           <button className="button" type="submit">
             Submit

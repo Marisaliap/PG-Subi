@@ -2,26 +2,43 @@
 
 .Footer {
   display: grid;
-  grid-template-columns: 10% 20% 20% 20% 20% 10% ;
+  grid-template-columns: 10% 16% 5% 16% 5% 16% 5% 17% 10%;
   justify-content: space-around;
-  padding: 0;
+  padding-bottom: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(82, 81, 81);
   margin: 0;
   text-align: left;
-  margin-bottom: 2rem;
-  
-  
-  
+  background-color: $footer;
+  justify-items: center;
+  align-content: space-evenly;
+
   .cosasAbajo {
     display: row;
-    
-    
   }
-  
-  .Link{
+
+  .Link {
     text-decoration: none;
   }
-  
-  .Info{
+
+  .Info {
     align-self: center;
+  }
+
+  .help {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .helpcita {
+    width: 100%;
+  }
+
+  .titulo {
+    justify-content: center;
+    display: flex;
   }
 }
