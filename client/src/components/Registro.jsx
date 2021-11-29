@@ -34,8 +34,8 @@ export default function Registro() {
       errors.city = "City is required";
     } else if (!input.province) {
       errors.province = "Province is required";
-    } else if (chequeado === 0) {
-      errors.terms = "You must agree to our terms and conditions";
+    // } else if (chequeado === 0) {
+    //   errors.terms = "You must agree to our terms and conditions";
     } else if (validateGenre() === false) {
       errors.genre = "Genre is required";
     }

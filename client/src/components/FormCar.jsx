@@ -3,21 +3,23 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { postCar } from "../actions";
 import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function FormCar() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { user, isAuthenticated } = useAuth0();
 
   const [errors, setErrors] = useState();
   const [input, setInput] = useState({
+    email: isAuthenticated ? user.email : "",
     patent: "",
     color: "",
     brand: "",
     model: "",
     cylinder: "",
   });
-console.log(input
-  )
+
   function validate(input) {
     let errors = {};
     if (!input.patent) {
@@ -36,9 +38,10 @@ console.log(input
 
   useEffect(() => {
     dispatch(postCar());
-  }, []);
+  }, [dispatch]);
 
   function handleChange(e) {
+    console.log(input)
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -63,7 +66,7 @@ console.log(input
         cylinder: "",
       });
       alert("Car created correctly");
-      history.push("/home");
+      //history.push("/home");
     } else {
       alert("All mandatory fields must be filled to continue");
     }
@@ -84,6 +87,7 @@ console.log(input
           value={input.patent}
           onChange={(e) => handleChange(e)}
         />
+        
         <label>Color</label>
         <input
           type="text"
@@ -98,6 +102,7 @@ console.log(input
           value={input.brand}
           onChange={(e) => handleChange(e)}
         />
+
         <label>Model</label>
         <input
           type="text"
