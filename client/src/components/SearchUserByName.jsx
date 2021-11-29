@@ -1,8 +1,10 @@
-import React from 'react';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { getUserByName } from '../actions';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getUserByName } from "../actions";
+import { NavLink } from "react-router-dom";
+import "../Sass/Styles/SearchUserByName.scss";
+
 
 export default function SearchUserByName() {
   const dispatch = useDispatch();
@@ -20,17 +22,10 @@ export default function SearchUserByName() {
     setName('');
   }
 
-  return (
-    <div>
-      <input
-        type="text"
-        value={name}
-        placeholder="Find user..."
-        onChange={(e) => handleInput(e)}
-      />
-      <button type="submit" onClick={(e) => handleSubmit(e)}>
-        <Link to="/users">Search</Link>{' '}
-      </button>
-    </div>
-  );
+    return (
+        <div className="SearchUserByName"> 
+            <input type="text" value={name} placeholder=" 🔍  Find user..." onChange={(e) => handleInput(e)} />
+            <button type="submit" onClick={(e) => handleSubmit(e)} > <NavLink className="Navlink" to="/users"> Search</NavLink> </button>
+        </div>
+    )
 }

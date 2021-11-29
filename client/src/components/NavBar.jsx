@@ -22,9 +22,9 @@ function Nav() {
         <div className="derecha">
           <div>
             <ul className="searchContainer">
-              <NavLink className="searchContainerItem" to="/">
+             {/*  <NavLink className="searchContainerItem" to="/">
                 <h3>🔍 Search</h3>
-              </NavLink>
+              </NavLink> */}
               <NavLink className="searchContainerItem" to="/route">
                 <button className="button">Post a Trip</button>
               </NavLink>

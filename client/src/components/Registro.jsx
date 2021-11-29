@@ -214,21 +214,21 @@ export default function Registro() {
             )
           )}
           <div>
-            <label>DNI*:</label>
+            <label>Telephone*:</label>
             <input
               type="number"
-              name="dni"
-              value={input.dni}
+              name="telephone"
+              value={input.telephone}
               onChange={(e) => handleChange(e)}
             />
-            {errors.dni && <p className="error">{errors.dni}</p>}
+            {errors.telephone && <p className="error">{errors.telephone}</p>}
           </div>
           <div>
-            <label>Age*:</label>
+            <label>Facebook:</label>
             <input
-              type="number"
-              name="age"
-              value={input.age}
+              type="text"
+              name="facebook"
+              value={input.facebook}
               onChange={(e) => handleChange(e)}
             />
             {errors.age && <p className="error">{errors.age}</p>}
@@ -253,34 +253,13 @@ export default function Registro() {
             {errors.genre && <p className="error">{errors.genre}</p>}
           </div>
           <div>
-            <label>Telephone*:</label>
-            <input
-              type="number"
-              name="telephone"
-              value={input.telephone}
-              onChange={(e) => handleChange(e)}
-            />
-            {errors.telephone && <p className="error">{errors.telephone}</p>}
-          </div>
-          <div>
-            <label>Street*:</label>
+            <label>Instagram:</label>
             <input
               type="text"
-              name="street"
-              value={input.street}
+              name="instagram"
+              value={input.instagram}
               onChange={(e) => handleChange(e)}
             />
-            {errors.street && <p className="error">{errors.street}</p>}
-          </div>
-          <div>
-            <label>City*:</label>
-            <input
-              type="text"
-              name="city"
-              value={input.city}
-              onChange={(e) => handleChange(e)}
-            />
-            {errors.city && <p className="error">{errors.city}</p>}
           </div>
           <div>
             <label>Province*:</label>
@@ -293,29 +272,51 @@ export default function Registro() {
             {errors.province && <p className="error">{errors.province}</p>}
           </div>
           <div>
+            <label>City*:</label>
+            <input
+              type="text"
+              name="city"
+              value={input.city}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.city && <p className="error">{errors.city}</p>}
+          </div>
+          <div>
+            <label>Street*:</label>
+            <input
+              type="text"
+              name="street"
+              value={input.street}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.street && <p className="error">{errors.street}</p>}
+          </div>
+          <div>
+            <label>DNI*:</label>
+            <input
+              type="number"
+              name="dni"
+              value={input.dni}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.dni && <p className="error">{errors.dni}</p>}
+          </div>
+          <div>
+            <label>Age*:</label>
+            <input
+              type="number"
+              name="age"
+              value={input.age}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.age && <p className="error">{errors.age}</p>}
+          </div>
+          <div>
             <label>About:</label>
             <textarea
               type="text"
               name="about"
               value={input.about}
-              onChange={(e) => handleChange(e)}
-            />
-          </div>
-          <div>
-            <label>Facebook:</label>
-            <input
-              type="text"
-              name="facebook"
-              value={input.facebook}
-              onChange={(e) => handleChange(e)}
-            />
-          </div>
-          <div>
-            <label>Instagram:</label>
-            <input
-              type="text"
-              name="instagram"
-              value={input.instagram}
               onChange={(e) => handleChange(e)}
             />
             <div>
@@ -341,15 +342,27 @@ export default function Registro() {
               {errors.terms && <p className="error">{errors.terms}</p>}
             </div>
           </div>
-          {Object.keys(errors).length === 0 ? (
-            <button className="button" type="submit">
-              Submit
-            </button>
-          ) : (
-            <button className="buttondisabled" disabled>
-              Submit
-            </button>
-          )}
+          <div className="Genres">
+            <label for="genre">Genre*:</label>
+            <select name="genre" id="genre" onChange={(e) => handleSelect(e)}>
+              <option disabled selected value>
+                {" "}
+                -- Select an option --{" "}
+              </option>
+              <option className="options" value="Male">
+                Male
+              </option>
+              <option className="options" value="Female">
+                Female
+              </option>
+              <option className="options" value="Rather not say">
+                Rather not say
+              </option>
+            </select>
+          </div>
+          <button className="button" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     </>
