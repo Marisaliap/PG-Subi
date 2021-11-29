@@ -12,9 +12,13 @@
 
   .perfylog {
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-  }
+    align-items: center;
+    align-content: space-around;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+  
 
   .giveMeARide {
     display: flex;

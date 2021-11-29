@@ -36,11 +36,11 @@ function Nav() {
           <SearchUserByName />
         </div>
         <div className="perfylog">
-          <div className="logs">
-            <Auth />
-          </div>
           <div className="profile">
             <Profile />
+          </div>
+          <div className="logs">
+            <Auth />
           </div>
         </div>
       </nav>

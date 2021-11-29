@@ -15,6 +15,7 @@ export default function Footer() {
           </Link>
         </div>
       </div>
+      <hr/>
       <div className="helpcita">
         <h4 className="titulo">Help</h4>
         <div className="help">
@@ -22,12 +23,14 @@ export default function Footer() {
             Faq
           </Link>
           <br />
+          <hr />
           <br />
           <Link to="/recommendations" className="Link">
             Recommendations
           </Link>
         </div>
       </div>
+      <hr/>
       <div>
         <h4 className="titulo">Legal information</h4>
         <div>
@@ -36,7 +39,7 @@ export default function Footer() {
           </Link>
         </div>
       </div>
-
+      <hr/>
       <div className="Info">
         <h3>
           Grupo 10 © |{" "}
@@ -47,6 +50,9 @@ export default function Footer() {
           | 2021{" "}
         </h3>
       </div>
+      <br/>
+      <br/>
+      <br/>
     </div>
   );
 }
