@@ -1,83 +1,126 @@
-// import React from "react";
-// import { useState, useEffect } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { postCar } from "../actions";
+import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 
-// export default function FormCar() {
-//   const [error, setError] = useState();
-//   const [input, setInput] = useState({
-//     patent: "",
-//     color: "",
-//     brand: "",
-//     model: "",
-//     cylinder: "",
-//   });
+export default function FormCar() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { user, isAuthenticated } = useAuth0();
 
-//   function handleChange(e) {
-//     setInput({
-//       ...input,
-//       [e.target.name]: e.target.value,
-//     });
-//   }
+  const [errors, setErrors] = useState();
+  const [input, setInput] = useState({
+    email: isAuthenticated ? user.email : "",
+    patent: "",
+    color: "",
+    brand: "",
+    model: "",
+    cylinder: "",
+  });
 
-//   function handleSubmit(e) {
-//     e.preventDefault();
-//     if (Object.keys(errors).length === 0) {
-//       dispatch(postUser(input));
-//       setInput({
-//         patent: "",
-//         color: "",
-//         brand: "",
-//         model: "",
-//         cylinder: "",
-//       });
-//       alert("Car created correctly");
-//       history.push("/home");
-//     } else {
-//       alert("All mandatory fields must be filled to continue");
-//     }
-//   }
+  function validate(input) {
+    let errors = {};
+    if (!input.patent) {
+      errors.patent = 'Patent is required';
+    } else if (!input.color) {
+      errors.color = 'Color is required';
+    } else if (!input.brand) {
+      errors.brand = 'Brand is required';
+    } else if (!input.model) {
+      errors.model = 'Model is required';
+    } else if (!input.cyinder) {
+      errors.cyinder = 'Cylinder is required';
+    }
+    return errors;
+  }
 
-//   return (
-//     <div>
-//       <form>
-//         <label>Patent</label>
-//         <input
-//           type="text"
-//           name="name"
-//           value={input.name}
-//           onChange={(e) => handleChange(e)}
-//         />
-//         <label>Color</label>
-//         <input
-//           type="text"
-//           name="name"
-//           value={input.name}
-//           onChange={(e) => handleChange(e)}
-//         />
-//         <label>Brand</label>
-//         <input
-//           type="text"
-//           name="name"
-//           value={input.name}
-//           onChange={(e) => handleChange(e)}
-//         />
-//         <label>Model</label>
-//         <input
-//           type="text"
-//           name="name"
-//           value={input.name}
-//           onChange={(e) => handleChange(e)}
-//         />
-//         <label>Cylinder</label>
-//         <input
-//           type="text"
-//           name="name"
-//           value={input.name}
-//           onChange={(e) => handleChange(e)}
-//         />
-//         <button className="button" type="submit">
-//           Submit
-//         </button>
-//       </form>
-//     </div>
-//   );
-// }
+  useEffect(() => {
+    dispatch(postCar());
+  }, [dispatch]);
+
+  function handleChange(e) {
+    console.log(input)
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+    setErrors(
+      validate({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (true) {
+      dispatch(postCar(input));
+      setInput({
+        patent:"",
+        color: "",
+        brand: "",
+        model: "",
+        cylinder: "",
+      });
+      alert("Car created correctly");
+      //history.push("/home");
+    } else {
+      alert("All mandatory fields must be filled to continue");
+    }
+  }
+
+  return (
+    <div>
+    <h1>Create your Car</h1>
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
+        <label>Patent</label>
+        <input
+          type="text"
+          name="patent"
+          value={input.patent}
+          onChange={(e) => handleChange(e)}
+        />
+        
+        <label>Color</label>
+        <input
+          type="text"
+          name="color"
+          value={input.color}
+          onChange={(e) => handleChange(e)}
+        />
+        <label>Brand</label>
+        <input
+          type="text"
+          name="brand"
+          value={input.brand}
+          onChange={(e) => handleChange(e)}
+        />
+
+        <label>Model</label>
+        <input
+          type="text"
+          name="model"
+          value={input.model}
+          onChange={(e) => handleChange(e)}
+        />
+        <label>Cylinder</label>
+        <input
+          type="text"
+          name="cylinder"
+          value={input.cylinder}
+          onChange={(e) => handleChange(e)}
+        />
+        <button className="button" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+}
