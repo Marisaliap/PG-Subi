@@ -1,0 +1,9 @@
+@import '../Variables/Variables.scss';
+
+.Faq{
+    article{
+        display:grid;
+        grid-template-columns: 20% 60% 20%;
+        text-align: left
+    }
+}

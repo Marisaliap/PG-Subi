@@ -2,7 +2,7 @@
 
 .NavBar {
   display: grid;
-  grid-template-columns: 10% 35% 10% 10% 25% 10%;
+  grid-template-columns: 10% 20% 15% 25% 20% 10%;
 
   .logs {
     display: flex;
@@ -32,24 +32,33 @@
     margin-left: 1rem;
   }
 
-  .derecha {
+  .profile{
+    
     display: flex;
-    flex-direction: row;
-    position: absolute;
-    right: 2rem;
+    justify-content: flex-end;
+
+    a{
+      padding-right: 1.5rem;
+    }
   }
+  // .derecha {
+  //   display: flex;
+  //   flex-direction: row;
+  //   position: absolute;
+  //   right: 2rem;
+  // }
 
   .searchContainer {
     height: 5vh;
-    position: relative;
+    //position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 0.5rem 3rem;
+    //justify-content: flex-end;
+    padding-top: 1rem;
 
     .searchContainerItem {
       text-decoration: none;
-      margin-left: 3rem;
+      //margin-left: 3rem;
     }
   }
 }
