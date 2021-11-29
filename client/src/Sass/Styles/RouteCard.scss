@@ -1,0 +1,11 @@
+.RouteCard {
+    display:flex;
+    width:400px;
+    height:250px;
+    border: 5px solid black;
+    border-radius: 20px;
+    border-color: #78c644;
+    justify-content: center;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+}

@@ -1,23 +1,25 @@
-import React from "react";
-import { NavLink } from 'react-router-dom'; 
-import styles from "../styles/LandingPage.module.css";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import "../Sass/Styles/LandingPage.scss";
+import img from "../img/logoNegro.png";
+import { allRoutes } from "../actions";
 
 
 export default function LandingPage() {
-    return (
-      <div className={styles.landingpage}>
-          <div className={styles.bkg}>
-         <div className={styles.containerAll}>
-         <div className={styles.container}>
-            <h1  className={styles.title}> Bienvenidos a Subí que te Llevo!</h1>
-            <div className={styles.buttonPosition}>
-            <NavLink to ="/home">
-                <button className={styles.button}>Ingresar</button>
-            </NavLink>
-            </div>
-            </div>
-            </div>
+  const dispatch = useDispatch();
+  useEffect(() =>dispatch(allRoutes()), []);
+
+  return (
+    <div className="LandingPage">
+      <div className="LandingPageContainer">
+        <div className="cosas">
+          <img className="logo" src={img} />
+          <NavLink to="/home">
+            <button className="button">Enter</button>
+          </NavLink>
         </div>
-        </div> 
-    )
-} 
+      </div>
+    </div>
+  );
+}

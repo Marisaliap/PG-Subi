@@ -1,15 +1,42 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize,Op} = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const {
-  DB_USER, DB_PASSWORD, DB_HOST,
-} = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME} = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/subiquetellevo`, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+let sequelize =
+  process.env.NODE_ENV === "subiquetellevo"
+    ? new Sequelize({
+        database: DB_NAME,
+        dialect: "postgres",
+        host: DB_HOST,
+        port: 5432,
+        username: DB_USER,
+        password: DB_PASSWORD,
+        pool: {
+          max: 3,
+          min: 1,
+          idle: 10000,
+        },
+        dialectOptions: {
+          ssl: {
+            require: true,
+            // Ref.: https://github.com/brianc/node-postgres/issues/2009
+            rejectUnauthorized: false,
+          },
+          keepAlive: true,
+        },
+        ssl: true,
+      })
+    : new Sequelize(
+        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/subiquetellevo`,
+        { logging: false, native: false }
+      );
+
+// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/subiquetellevo`, {
+//   logging: false, // set to console.log to see the raw SQL queries
+//   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+// });
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -30,13 +57,26 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Users, Routes } = sequelize.models;
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
+const { User, Route, Car, Post } = sequelize.models;
 
+//User UM Car
+User.hasMany(Car);
+Car.belongsTo(User);
 
+//User UM Post
+User.hasMany(Post);
+Post.belongsTo(User);
+
+//Car UM Route
+// Car.hasMany(Route);
+// Route.belongsTo(Car);
+
+//User MM Route
+User.belongsToMany(Route, { through: 'UserRoutes', timestamps: false });
+Route.belongsToMany(User, { through: 'UserRoutes', timestamps: false });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+  conn: sequelize,
+  Op     // para importart la conexión { conn } = require('./db.js');
 };
