@@ -49,6 +49,8 @@ export default function Map() {
         restriction: '',
       })
     );
+    alert('Trip Created')
+    history.push('/route-list')
   }
   const Map = ReactMapboxGl({
     accessToken:
