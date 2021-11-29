@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getUserByName } from "../actions";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "../Sass/Styles/SearchUserByName.scss";
 
 
 export default function SearchUserByName() {
@@ -22,9 +23,9 @@ export default function SearchUserByName() {
     }
 
     return (
-        <div> 
-            <input type="text" value={name} placeholder="Find user..." onChange={(e) => handleInput(e)} />
-            <button type="submit" onClick={(e) => handleSubmit(e)} ><Link to="/users">Search</Link> </button>
+        <div className="SearchUserByName"> 
+            <input type="text" value={name} placeholder=" 🔍  Find user..." onChange={(e) => handleInput(e)} />
+            <button type="submit" onClick={(e) => handleSubmit(e)} > <NavLink className="Navlink" to="/users"> Search</NavLink> </button>
         </div>
     )
 }
