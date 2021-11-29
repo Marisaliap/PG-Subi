@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import "../Sass/Styles/TermsAndConditions.scss"
+import "../Sass/Styles/TermsAndConditions.scss";
 
-export default function TermsAndConditions() {
+export default function TermsAndConditions() { 
   const history = useHistory();
 
   function handleSubmit(e) {
@@ -11,6 +11,7 @@ export default function TermsAndConditions() {
   }
 
   return (
+
     <div className="TermsAndConditions">
       <Link to="/home">
         <button>Home</button>
@@ -19,384 +20,346 @@ export default function TermsAndConditions() {
       <div></div>
       <div>
         <p>
-        <strong>Términos y condiciones de Subi que te Llevo</strong>
+          <strong className="big">Give a Ride Terms and Conditions</strong>
         </p>
-
         <p>
-          <span>Última revisión: </span>
-          <span>3 de abril de 2021</span>
+          <strong>Last review: </strong>
+          <span>November 28, 2021 </span>
         </p>
-
         <p>
           <span>
-            En este documento se describen los Términos y Condiciones generales
-            aplicables al uso de los servicios ofrecidos por Subi que te Llevo®
-            <a href="http://www.subiquetellevo.com.ar/">
-              www.subiquetellevo.com.ar/app
-            </a>
-            y la aplicaciòn Subi que te Llevo (en adelante “Subi que te Llevo®”). Cualquier
-            persona (en adelante "Usuario") que desee usar o utilizar
-            Subi que te Llevo® podrá hacerlo sujetándose a los Términos y Condiciones
-            respectivos, junto con todas las demás políticas y principios.
+            This document describes the General Terms and Conditions
+             applicable to the use of the services offered by Give me a ride®  
+             &nbsp; <a href="http://www.givemearide.com/">www.givemearide.com/app</a>
+            &nbsp; and the Give me a ride® application (hereinafter “Give me a ride®”). Any
+             person (hereinafter "User") who wishes to use
+             Give me a ride® can do so subject to the Terms and Conditions
+             respective, along with all other policies and principles. 
           </span>
         </p>
-
         <p>
           <span>
-            Cualquier persona que no acepte estos términos y condiciones
-            generales, los cuales tienen un carácter obligatorio y vinculante,
-            no podrá utilizar Subi que te Llevo®
+          Anyone who does not accept these terms and conditions
+             general, which are mandatory and binding,
+             You will not be able to use Give me a ride® 
           </span>
         </p>
-
         <p>
           <span>
-            El Usuario debe leer, entender y aceptar todas las condiciones
-            establecidas en los Términos y Condiciones Generales previo a su
-            registración como Usuario de Subi que te Llevo®. De continuar, está
-            aceptando expresamente y sin renunciar a ninguna cláusula los
-            presentes Términos y Condiciones.
+          The User must read, understand and accept all the conditions
+             established in the General Terms and Conditions prior to its
+             registration as a User of Give me a ride®. If you continue, you are
+             expressly accepting and without waiving any clause the
+             these Terms and Conditions. 
           </span>
         </p>
-
         <p>
           <span>
-            Subi que te Llevo podrá modificar los Términos y Condiciones en cualquier
-            momento y serán vinculantes desde su publicación en la web
-            www.Subi que te Llevo.com.ar&nbsp;
+          Give me a ride® may modify the Terms and Conditions at any time
+             moment and will be binding from their publication on the web
+             www.Give me a ride®.com 
           </span>
         </p>
-
         <p>
-          <strong>Usuarios</strong>
+          <strong>Users</strong>
         </p>
-
         <p>
           <span>
-            Los Servicios sólo están disponibles para personas que tengan
-            capacidad legal para contratar conforme la legislación argentina. No
-            podrán utilizar Subi que te Llevo® las personas que no tengan esa
-            capacidad, los menores de edad o Usuarios de Subi que te Llevo® que hayan
-            sido suspendidos temporalmente, indefinidamente o permanentemente.
-            El usuario reconoce ser mayor de 18 años cuando se inscribe para
-            usar Subi que te Llevo® . Respecto a Usuarios que se transporten con
-            menores de edad, deberán cumplir con las disposiciones de la SGT
-            N°43/2016, de la CNRT N°1025/2016 y concordantes. El Usuario será el
-            encargado exclusivo de hacer cumplir estas disposiciones y el
-            responsable absoluto por su incumplimiento, sin perjuicio de las
-            medidas que pueda tomar Subi que te Llevo respecto a su suspensión temporal o permanente. El uso del servicio es individual y propio del usuario que cargó sus datos personales en el perfil Subi que te Llevo. Sólo es posible tener crear un único usuario por persona física, cualquier
-            persona física que se detecte con múltiples cuentas de usuario serán
-            suspendidas, dejando un único usuario asociado a la persona física.
-            La persona que usa el servicio debe ser la persona que comparte el
-            viaje, sea como conductor o pasajero, y no puede de ninguna forma
-            representar a otra persona que realizará el viaje como conductor o
-            pasajero. Cada persona debe tener un usuario para crear un viaje
-            como conductor o subirse a un viaje como pasajero y debe compartir
-            ese viaje en el rol asentado en el viaje cargado en la plataforma.
-            Está prohibido pasar o publicar datos personales de otra persona a
-            través de la plataforma. El Usuario será responsable absoluto de
-            todas las consecuencias derivadas del incumplimiento contractual de
-            estos Términos y Condiciones, sobre las cosas a su cargo y/o las
-            personas a su cuidado y por cualquier daño y/o perjuicio, sea
-            mediante culpa o dolo.
+            The Services are only available to people who have
+            legal capacity to contract according to Argentine legislation. No
+            Give me a ride® can be used by people who do not have this
+            capacity, minors or Give me a ride® Users who have
+            been suspended temporarily, indefinitely or permanently.
+            The user acknowledges being over 18 years of age when registering for
+            use Give me a ride®. Regarding Users who are transported with
+            minors, must comply with the provisions of the SGT
+            N ° 43/2016, of the CNRT N ° 1025/2016 and concordant. The User will be the
+            exclusively responsible for enforcing these provisions and the
+            absolute responsible for the breach of it, without prejudice to the
+            actions that Give me a ride® can take regarding your temporary or permanent suspension. The use of the service is individual and proper to the user who uploaded their personal data in the Give me a ride® profile. It is only possible to create a single user per individual, any
+            natural person that is detected with multiple user accounts will be
+            suspended, leaving a single user associated with the natural person.
+            The person using the service must be the person sharing the
+            travel, either as a driver or a passenger, and cannot in any way
+            represent another person who will carry out the trip as a driver or
+            passenger. Each person must have a user to create a trip
+            as a driver or get on a trip as a passenger and you must share
+            that trip in the role seated in the trip loaded on the platform.
+            Passing or posting personal data of another person to
+            through the platform. The User will be fully responsible for
+            all the consequences derived from the contractual breach of
+            these Terms and Conditions, on the things in your charge and / or the
+            persons in their care and for any damage and / or injury, be it
+            through guilt or fraud. 
           </span>
         </p>
-
-        <p>&nbsp;</p>
-
         <p>
-          <strong>El servicio</strong>
+          <strong>The service</strong>
         </p>
-
         <p>
           <span>
-            El servicio de punto de encuentro entre conductores y pasajeros
-            ofrecido por Subi que te Llevo® es gratuito. Subi que te Llevo® se reserva el
-            derecho de implementar nuevos servicios gratis o pagos, los cuales
-            serán publicados en la web www.Subi que te Llevo.com.ar y los cuales el
-            Usuario tendrá la posibilidad de aceptar o no. El servicio consiste
-            en una plataforma que permite encontrar personas para compartir un
-            viaje en auto sin fin de lucro para ninguna de las personas. El auto
-            debe ser aportado para el viaje de forma desinteresada por alguna de
-            las personas que compartirán el viaje. Quien conduce no puede pedir
-            retribución o pago por esa acción. De esta forma queda expresamente
-            prohibido utilizar la plataforma para fines lucrativos de cualquier
-            índole y/o como medio de servicio de transporte de pasajeros público
-            o privado.
+             The meeting point service between drivers and passengers
+             offered by Give me a ride® is free. Give me a ride® reserves the
+             right to implement new free or paid services, which
+             will be published on the web www.Give me a ride®.com.ar and which the
+             User will have the possibility to accept or not. The service consists
+             on a platform that allows you to find people to share a
+             non-profit car ride for none of the people. The car
+             must be contributed for the trip in a disinterested way by any of
+             the people who will share the journey. Who drives can not ask
+             remuneration or payment for that action. In this way it is expressly
+             Forbidden to use the platform for profit of any
+             nature and / or as a means of public passenger transport service
+             or private. 
           </span>
         </p>
-
         <p>
           <span>
-            La aceptación de cualquier nuevo servicio, gratuito o pago,
-            constituye una condición excluyente para seguir siendo Usuario
-            activo de Subi que te Llevo®&nbsp;
+             Acceptance of any new service, free or paid,
+             constitutes an exclusive condition to remain a User
+             Give me a ride® asset  
           </span>
         </p>
-
-        <p>&nbsp;</p>
-
         <p>
           <span>
-            Subi que te Llevo® se reserva el derecho de inhabilitar o suspender
-            usuarios, sin que esté obligado a comunicar o exponer las razones de
-            su decisión y sin que ello genere algún derecho a indemnización,
-            resarcimiento o reparación.
+          Give me a ride® reserves the right to disable or suspend
+             users, without being obliged to communicate or state the reasons for
+             your decision and without generating any right to compensation,
+             redress or repair. 
           </span>
         </p>
-
         <p>
           <span>
-            Sin perjuicio de otras medidas, Subi que te Llevo® podrá advertir,
-            suspender en forma temporal o permanente, inhabilitar un Usuario y/o
-            una publicación, iniciar las acciones que estime pertinentes y/o
-            suspender la prestación de sus Servicios si : (1) se quebrantara
-            alguna ley, o cualquiera de las estipulaciones de los Términos y
-            Condiciones y demás políticas de Subi que te Llevo®; (2) si incumpliera sus
-            compromisos como Usuario; (3) si se incurriera, a criterio de
-            Subi que te Llevo® que fueren en contra del ordenamiento jurídico o el que
-            excede los límites impuestos por la buena fe, la moral y las buenas
-            costumbres y/o actos dolosos o fraudulentos tendientes a perjudicar
-            tanto a los demás Usuarios como a Subi que te Llevo®; (4) no pudiera
-            verificarse la identidad del Usuario o cualquier información
-            proporcionada por el mismo fuere errónea; (5) Subi que te Llevo® entendiera
-            que las publicaciones u otras acciones pueden ser causa de
-            responsabilidad para el Usuario que las publicó, para Subi que te Llevo®
-            correspondientemente y según la legislación en materia de
-            privacidad, todos aquellos datos que Subi que te Llevo esté obligado a
-            brindar para coadyuvar en el avance de cualquier investigación
-            civil, penal o de cualquier índole.
+          Without prejudice to other measures, Give me a ride® may warn,
+            suspend temporarily or permanently, disable a User and / or
+            a publication, initiate the actions it deems pertinent and / or
+            suspend the provision of its Services if: (1) it is broken
+            any law, or any of the stipulations of the Terms and
+            Conditions and other policies of Give me a ride®; (2) if you breach your
+            commitments as a User; (3) if incurred, at the discretion of
+            Give me a ride® that go against the legal system or that which
+            exceeds the limits imposed by good faith, morals and good
+            customs and / or malicious or fraudulent acts tending to harm
+            both to the other Users and to Give me a ride®; (4) could not
+            Verify the identity of the User or any information
+            provided by the same is erroneous; (5) Give me a ride® understand
+            that postings or other actions may be the cause of
+            responsibility for the User who published them, for Give me a ride®
+            correspondingly and according to the legislation on
+            privacy, all data that Give me a ride® is obliged to
+            provide to assist in the advancement of any investigation
+            civil, criminal or of any kind. 
           </span>
         </p>
-
         <p>
           <span>
-            La reactivación de la cuenta en caso de suspensión, tendrá un costo
-            monetario asociado que deberá ser abonado por el usuario suspendido
-            y/o sancionado. Esto sólo en casos que sea posible luego de haber
-            cumplido el tiempo de suspensión y sanciones vinculadas. En caso de
-            que la suspensión sea de gravedad para Subi que te Llevo, puede suspender
-            permanentemente y en ese supuesto, no habrá posibilidad de
-            reactivación de cuenta.
+          The reactivation of the account in case of suspension, will have a cost
+             associated monetary that must be paid by the suspended user
+             and / or sanctioned. This only in cases where it is possible after having
+             the suspension time and related sanctions have been fulfilled. In case of
+             that the suspension is gravity for Give me a ride®, you can suspend
+             permanently and in that case, there will be no possibility of
+             account reactivation. 
           </span>
         </p>
-
         <p>
-          <strong>El uso del servicio</strong>
+          <strong>Use of service</strong>
         </p>
-
         <p>
           <span>
-            Un viaje en el que los usuarios comparten un automóvil, es el
-            resultado de un acuerdo previo entre un conductor y los pasajeros,
-            los usuarios del servicio (tanto conductor como pasajeros mayores de
-            edad) actúan bajo su plena responsabilidad. Como tal, Subi que te Llevo® no
-            se responsabiliza por el cumplimiento real del viaje ni de las
-            condiciones propuestas por los usuarios o conductores, ni de
-            cualquier consecuencia, prevista o imprevista, que surgiera del
-            mismo. El servicio brindado por Subi que te Llevo® se limita a conectar a
-            usuarios (quienes pueden actuar como pasajeros o conductores
-            indistintamente) por intermedio de la aplicación puesta a
-            disposición de los mismos.
+          A journey in which users share a car is the
+             result of a prior agreement between a driver and passengers,
+             service users (both driver and passengers over
+             age) act under their full responsibility. As such, Give me a ride® no
+             is responsible for the actual fulfillment of the trip or the
+             conditions proposed by users or drivers, or
+             any consequence, foreseen or unforeseen, arising from the
+             same. The service provided by Give me a ride® is limited to connecting to
+             users (who can act as passengers or drivers
+             indistinctly) through the application put to
+             disposition of the same. 
           </span>
         </p>
-
         <p>
           <span>
-            Subi que te Llevo no asume la realización, titularidad, ni responsabilidad
-            de la prestación de los servicios que intermedia, ni frente a los
-            usuarios de los mismos, ni frente a terceros.
+          Give me a ride® does not assume the realization, ownership, or responsibility
+             of the provision of the services that it intermediates, nor against
+             users of the same, nor in front of third parties. 
           </span>
         </p>
-
         <p>
-          <span>Seguro automotor correspondiente</span>
+          <strong>Corresponding auto insurance </strong>
         </p>
-
         <p>
           <span>
-            Previamente a que el Usuario proponga un viaje como conductor,
-            primero debe comprobar que la vigencia de su seguro automotor
-            abarque toda la duración del viaje. La ley de tránsito indica como
-            requisito para circular con automotor que lleve el comprobante de
-            seguro en vigencia, entre otras cosas. Un conductor sin seguro es
-            plenamente responsable de los daños causados a sus pasajeros en caso
-            de accidente. Subi que te Llevo® no se responsabiliza por las
-            consecuencias, tanto para el conductor como para los pasajeros o
-            cualquier tercero, que tenga un viaje no asegurado por el conductor;
-            como así tampoco se responsabiliza de forma parcial o total por
-            cualquier daño y/o perjuicio físico, psicológico, material, o de
-            cualquier índole a las personas o cosas que deriven de esas
-            consecuencias, ni se constituye en garante, fiador o responsable
-            solidario de los responsables principales que por su impericia,
-            negligencia, falta de observancia a sus deberes, culpa o dolo hayan
-            generado dichos daños y/o perjuicios. Los pasajeros tendrán la
-            responsabilidad absoluta de controlar el estado del automóvil, del
-            conductor y del automóvil en el que viajarán, sin posibilidad de
-            reclamo alguna a Subi que te Llevo® o a sus miembros.
+          Prior to the User proposing a trip as a driver,
+            You must first check that the validity of your auto insurance
+            span the entire duration of the trip. The traffic law indicates how
+            requirement to circulate with a car that carries the proof of
+            insurance in force, among other things. An uninsured driver is
+            fully responsible for the damages caused to its passengers in case
+            of accident. Give me a ride® is not responsible for
+            consequences, both for the driver and the passengers or
+            any third party, who has a trip not insured by the driver;
+            nor is it partially or totally responsible for
+            any damage and / or physical, psychological, material, or
+            any kind of people or things derived from those
+            consequences, nor does it constitute a guarantor, guarantor or responsible
+            solidarity with the main responsible who, due to their lack of skill,
+            negligence, lack of observance of their duties, fault or fraud have
+            generated such damages and / or losses. Passengers will have the
+            absolute responsibility to control the condition of the car,
+            driver and the car in which they will travel, without the possibility of
+            claim any to Give me a ride® or its members.
           </span>
         </p>
-
         <p>
           <span>
-            Se informa a los usuarios que las compañías de seguros pueden
-            negarse a cubrir cualquier daño ocurrido en un viaje durante el cual
-            el conductor hubiera pedido a los pasajeros una participación
-            económica mayor que la establecida por la división de gastos del
-            viaje (a los efectos de la interpretación de éstos Términos y
-            Condiciones, y de ahora en adelante, gastos de viaje se consideran
-            solamente combustible y peaje/s). El conductor que solicitara que
-            los demás usuarios de un viaje contribuyan sumas mayores a las
-            resultantes de la división de los gastos del viaje entre todos los
-            integrantes de dicho viaje, incurre en falta grave a estos Términos
-            y Condiciones, bajo apercibimiento de ser dado de baja
-            definitivamente de la aplicaciòn a criterio exclusivo de
-            Subi que te Llevo®, no obstante las sanciones legales correspondientes por
-            transporte ilegal de pasajeros y/o la falta de cobertura de su
-            seguro contratado.
+          Users are informed that insurance companies may
+            refuse to cover any damage incurred on a trip during which
+            the driver would have asked the passengers for a share
+            greater than that established by the division of expenses of the
+            travel (for the purposes of interpreting these Terms and
+            Conditions, and from now on, travel expenses are considered
+            only fuel and toll / s). The driver requesting that
+            other users of a trip contribute greater sums to the
+            resulting from the division of travel expenses among all
+            members of said trip, incurs a serious breach of these Terms
+            and Conditions, under warning of being discharged
+            definitively from the application at the sole discretion of
+            Give me a ride®, notwithstanding the corresponding legal sanctions for
+            illegal transportation of passengers and / or the lack of coverage of their
+            contracted insurance. 
           </span>
         </p>
-
         <p>
           <span>
-            El Conductor de un viaje podrá solicitar una colaboraciòn a los
-            gastos de viaje a los demás Usuarios en la coordinación previa.
-            Siendo la colaboración máxima igual a gastos de viaje divididos por
-            la cantidad de personas total en viaje. Asimismo, los Usuarios
-            pueden solicitar que la división de gastos de viaje se realicen con
-            la presentación de los tickets o facturas asociados al mismo en la
-            coordinación previa del viaje. Dicha solicitud no puede ser negada o
-            no respondida por ningún otro Usuario, so pena de incurrir en falta
-            a estos Términos y Condiciones y posterior sanción que podrá aplicar
-            Subi que te Llevo según la gravedad de la acción o la repetición de la
-            misma por el mismo Usuario como usuario de Subi que te Llevo®.
+          The Driver of a trip may request a collaboration to the
+             travel expenses to other Users in prior coordination.
+             The maximum collaboration being equal to travel expenses divided by
+             the total number of people traveling. Likewise, Users
+             can request that the division of travel expenses be carried out with
+             the presentation of the tickets or invoices associated with it in the
+             prior coordination of the trip. Such request cannot be denied or
+             not answered by any other User, under penalty of incurring a fault
+             to these Terms and Conditions and subsequent sanction that he may apply
+             Give me a ride® according to the severity of the action or repetition of the
+             same by the same User as a Give me a ride® user. 
           </span>
         </p>
-
         <p>
           <span>
-            Está prohibido y se considera una falta a estos Términos y
-            Condiciones que el Usuario quien conduce solicite previo al viaje un
-            adelanto de gastos de viaje en concepto de seña, en dicho caso
-            Subi que te Llevo podrá sancionar y suspender al usuario de la plataforma
-            impidiendole usar la plataforma Subi que te Llevo.
+          It is prohibited and is considered a violation of these Terms and
+             Conditions that the User who drives requests prior to the trip a
+             advance travel expenses as a down payment, in that case
+             Give me a ride® may sanction and suspend the user from the platform
+             preventing you from using the Give me a ride® platform. 
           </span>
         </p>
-
         <p>
           <span>
-            Subi que te Llevo no tiene responsabilidad en la definición de los gastos
-            del viaje. Es responsabilidad exclusiva de los usuarios
-            participantes del viaje, tanto pasajeros como conductor, que en caso
-            de haber participación económica no sea mayor a la establecida por
-            la división de gastos del viaje para mantener la validez del seguro
-            asociado al vehículo con el que se realizó el viaje compartido y no
-            incumplir con la normativa vigente en materia de transporte en la
-            República Argentina.
+          Give me a ride® has no responsibility in the definition of expenses
+             From the trip. It is the sole responsibility of the users
+             participants of the trip, both passengers and driver, who in case
+             if there is an economic participation, it is not greater than that established by
+             the division of travel expenses to maintain the validity of the insurance
+             associated with the vehicle with which the shared trip was made and not
+             Failure to comply with current regulations on transport in the
+             Argentinian republic. 
           </span>
         </p>
-
-        <p>&nbsp;</p>
-
         <p>
-          <span>Interrupciones y fallas del servicio</span>
+          <strong>Service interruptions and failures </strong>
         </p>
-
         <p>
           <span>
-            Subi que te Llevo® pretende ofrecer el servicio de forma ininterrumpida. No
-            obstante, puede ocurrir que el acceso a la web o al servicio se
-            interrumpa en el curso de operaciones de mantenimiento,
-            actualizaciones hardware y software, de reparaciones de emergencia
-            de la web, o debido a circunstancias fuera del control de
-            Subi que te Llevo® como falla de Internet o problemas de Facebook). Es por
-            eso que Subi que te Llevo® no garantiza el acceso y uso continuado o
-            ininterrumpido de su servicio. Los Usuarios reconocen y aceptan que
-            Subi que te Llevo® no asume ninguna responsabilidad hacia él por cualquier
-            falta, suspensión o interrupción de la web o del servicio.
+          Give me a ride® aims to offer the service uninterrupted. No
+             However, it may happen that access to the website or the service is
+             interrupt in the course of maintenance operations,
+             hardware and software updates, emergency repairs
+             of the web, or due to circumstances beyond the control of
+             Give me a ride® like Internet failure or Facebook problems). Is by
+             that Give me a ride® does not guarantee access and continued use or
+             uninterrupted service. Users acknowledge and accept that
+             Give me a ride® assumes no responsibility to him for any
+             lack, suspension or interruption of the website or the service. 
           </span>
         </p>
-
         <p>
           <span>
-            Subi que te Llevo® no se responsabiliza por cualquier daño, perjuicio o
-            pérdida al Usuario causados por fallas en el sistema, en el servidor
-            o en Internet. Subi que te Llevo® tampoco será responsable por cualquier
-            virus que pudiera infectar el equipo de los Usuarios como
-            consecuencia del acceso, uso o examen de su aplicación o a raíz de
-            cualquier transferencia de datos, archivos, imágenes, textos, o
-            audio contenidos en el mismo. Los Usuarios no podrán adjudicarle a
-            Subi que te Llevo responsabilidad alguna ni exigir pago por lucro cesante,
-            en virtud de perjuicios resultantes de dificultades técnicas o
-            fallas en los sistemas o en Internet.
+          ive me a ride® is not responsible for any damage, loss or
+             loss to the User caused by failures in the system, in the server
+             or on the internet. Give me a ride® will also not be responsible for any
+             virus that could infect Users' equipment such as
+             consequence of the access, use or examination of its application or as a result of
+             any transfer of data, files, images, texts, or
+             audio contained therein. Users may not award
+             Give me a ride® any responsibility or demand payment for lost profits,
+             by virtue of damages resulting from technical difficulties or
+             failures in the systems or on the Internet. 
           </span>
         </p>
-
         <p>
-          <span>Violaciones del sistema</span>
+          <strong>System violations </strong>
         </p>
-
         <p>
           <span>
-            Está terminantemente prohibida cualquier acción, uso de dispositivo,
-            software, u otro medio tendiente a interferir tanto en las
-            actividades y operatoria de Subi que te Llevo® como en descripciones o
-            bases de datos asociadas a Subi que te Llevo®. Cualquier intromisión,
-            tentativa o actividad violatoria o contraria a las leyes sobre
-            derecho de propiedad intelectual y/o a las prohibiciones estipuladas
-            en este contrato harán pasible a su responsable de las acciones
-            legales penales y civiles de daños y perjuicios pertinentes, y a las
-            sanciones previstas por este acuerdo, así como lo hará responsable
-            de indemnizar los daños ocasionados.
+          Any action, use of device, is strictly prohibited.
+             software, or other means tending to interfere with both the
+             Give me a ride® activities and operations as in descriptions or
+             databases associated with Give me a ride®. Any meddling
+             attempt or activity violating or contrary to the laws on
+             intellectual property rights and / or stipulated prohibitions
+             in this contract they will make their person responsible for the actions
+             criminal and civil laws for pertinent damages, and to the
+             sanctions provided for by this agreement, as well as will make you responsible
+             to compensate the damages caused. 
           </span>
         </p>
-
         <p>
-          <span>Propiedad intelectual</span>
+          <strong>Intellectual property</strong>
         </p>
-
         <p>
           <span>
-            Subi que te Llevo® es un proyecto sin fines de lucro propiedad de la
-            Asociación Civil Soluciones Tecnológicas Sustentables Rosario (en
-            adelante “STS Rosario”) bajo Licencia Nº 2.850.394. Prohibido todo
-            uso indebido y/o uso con fines de lucro y/o reproducción y por
-            cualquier medio de su imagen, logo, programas, bases de datos,
-            aplicaciòn, redes, archivos que permiten al Usuario hacer uso de
-            Subi que te Llevo ®, contenido audiovisual digital, sin la autorización
-            debida de STS Rosario quien es propietaria absoluta de dichos
-            activos y derechos sobre los mismos.Los mismos están protegidas por
-            las leyes y los tratados internacionales de derecho de autor,
-            marcas, patentes, modelos y diseños industriales.&nbsp;
+          Give me a ride® is a non-profit project owned by the
+             Rosario Civil Association Sustainable Technological Solutions (en
+             hereinafter "STS Rosario") under License No. 2,850,394. All forbidden
+             misuse and / or use for profit and / or reproduction and for
+             any medium of your image, logo, programs, databases,
+             application, networks, files that allow the User to make use of
+             Give me a ride® ®, digital audiovisual content, without authorization
+             due from STS Rosario who is the absolute owner of said
+             assets and rights over them; they are protected by
+             international copyright laws and treaties,
+             trademarks, patents, models and industrial designs.  
           </span>
         </p>
-
         <p>
-          <span>Clausula Arbitral</span>
+          <strong>Arbitration Clause </strong>
         </p>
-
         <p>
           <span>
-            Toda cuestión que se suscitare entre las partes por cualquier motivo
-            relacionado con estos Términos y Condiciones, incluyendo, entre
-            otras cuestiones, su validez, interpretación, alcances,
-            cumplimiento, resolución o, asimismo, los reclamos a los que diere
-            lugar su incumplimiento, se resolverán definitivamente por el
-            Tribunal de Arbitraje del Colegio de Abogados de Rosario, de acuerdo
-            con el Reglamento y las Normas Complementarias aplicables al
-            arbitraje de derecho aprobados por la Institución, que las partes
-            declaran conocer.
+          Any question that arises between the parties for any reason
+             related to these Terms and Conditions, including, between
+             other issues, its validity, interpretation, scope,
+             compliance, resolution or, likewise, the claims to which it gives
+             place its non-compliance, will be definitively resolved by the
+             Arbitration Court of the ... , in accordance with
+             with the Regulations and Complementary Standards applicable to
+             arbitration of law approved by the Institution, that the parties
+             they claim to know. 
           </span>
         </p>
-
         <p>
-          <span>
-            Copyright © 2017 Asociación Civil Soluciones Tecnológicas
-            Sustentables Rosario. Todos los derechos reservados.
-          </span>
+          <strong>
+          Copyright © 2021 - The Henry Solutions. 
+          </strong>
+          </p>
+          <p>
+          <strong>
+            All rights reserved. 
+            </strong>
         </p>
-
-        <p>&nbsp;</p>
         </div>
       </article>
     </div>

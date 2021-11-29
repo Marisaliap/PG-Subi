@@ -16,18 +16,18 @@ export default function Recommendations() {
       </Link>
             <div>
 
-<h2>Recomendaciones a la hora de Subi que te Llevo</h2>
+<h2>Recomendaciones a la hora de Give me a ride®</h2>
 
-<p>Compartir es una gran experiencia pero debemos tener en cuenta algunas consideraciones para poder Subi que te Llevo sin inconvenientes.</p>
+<p>Compartir es una gran experiencia pero debemos tener en cuenta algunas consideraciones para poder Give me a ride® sin inconvenientes.</p>
 
 <h3>Origen y destino</h3>
 <p>Al crear un viaje que tenga origen y destino con direcciones precisas, nunca tenés que cargar direcciones de tu casa o similar. Siempre usar una Ciudad o un cruce de calles.</p>
 
 <h3>Comunicación entre usuarios</h3>
-<p>Según como hayas ingresado a la plataforma, recibirás notificaciones vía correo o notificaciones vía red social cuando hayan solicitudes, aceptaciones o rechazos para Subi que te Llevo, cuando se modifique o cancele un viaje, cuando te envíen mensajes, etc. </p>
+<p>Según como hayas ingresado a la plataforma, recibirás notificaciones vía correo o notificaciones vía red social cuando hayan solicitudes, aceptaciones o rechazos para Give me a ride®, cuando se modifique o cancele un viaje, cuando te envíen mensajes, etc. </p>
 
 <h3>Carpooleando con desconocidos</h3>
-<p>Previo a Subi que te Llevo con usuarios de los que no tengas referencias (o sea, que no sean “amigos” o “amigos de tus amigos”), te recomendamos que te tomes unos minutos para revisar el perfil de Subi que te Llevo de esa persona y su perfil en distintas redes sociales. De esa forma podrás contar con información acerca de la persona. También sugerimos conversar antes de viajar. Siempre es importante compartir con alguien que te genere confianza.</p>
+<p>Previo a Give me a ride® con usuarios de los que no tengas referencias (o sea, que no sean “amigos” o “amigos de tus amigos”), te recomendamos que te tomes unos minutos para revisar el perfil de Give me a ride® de esa persona y su perfil en distintas redes sociales. De esa forma podrás contar con información acerca de la persona. También sugerimos conversar antes de viajar. Siempre es importante compartir con alguien que te genere confianza.</p>
 
 <h3>Acuerdos previos al viaje</h3>
 <p>Acordá previamente con el conductor el recorrido del viaje, si van a compartir los costos asociados al mismo, y cuánto deberá contribuir cada uno. Recordá que el conductor no puede lucrar con el viaje, ver <strong>“Seguro Automotor y la importancia de calcular el costo del viaje”</strong> (más abajo)</p>
@@ -46,7 +46,7 @@ export default function Recommendations() {
 <h3>Seguro Automotor y la importancia de calcular el costo del viaje </h3>
 <p>En caso de acordar compartir gastos, el costo total del viaje se calculará como la suma del <strong>costo del combustible + los peajes</strong>. El conductor podrá pedir una contribución máxima a cada pasajero del costo total del viaje dividido la cantidad de ocupantes del vehículo al momento del viaje (conductor y pasajeros). Esto debe ser respetado pues de no ser así se estaría cometiendo una actividad ilegal.</p>
 
-<p>Remarcamos que el conductor no debe obtener ganancia económica en sus viajes. Para más información, revisá los <a href="https://http://localhost:3000//tyc">Términos y Condiciones Generales de Subi que te Llevo.</a></p>
+<p>Remarcamos que el conductor no debe obtener ganancia económica en sus viajes. Para más información, revisá los <a href="https://http://localhost:3000//tyc">Términos y Condiciones Generales de Give me a ride®.</a></p>
 
 </div>
         </div>
