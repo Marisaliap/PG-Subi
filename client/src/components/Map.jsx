@@ -42,11 +42,11 @@ export default function Map() {
         originName: city[0].name,
         destiny: city2[0].coordinates,
         destinyName: city2[0].name,
-        price: routeInfo.price,
-        date: routeInfo.date,
+        date: routeInfo.date.split('-').reverse().join('-'),
         hours: routeInfo.hours,
         place: routeInfo.pasajeros,
         restriction: '',
+        km: data.coordinates.distance
       })
     );
     alert('Trip Created')

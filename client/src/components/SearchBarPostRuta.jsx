@@ -11,7 +11,7 @@ import styles from "../styles/LandingPage.module.css";
 import "../Sass/Styles/Home.scss";
 
 let inputs = {Origin: '' , Destination: ''};
-let info = {pasajeros: 1, date: '', hours: '', price: ''}
+let info = {pasajeros: 1, date: '', hours: ''}
 
 const validateInputs = (input) => {
   const errors = {}
@@ -72,7 +72,7 @@ export default function SearchBar() {
   
   }
 
-const checkAllInfo = inputs.Origin.length > 6 && inputs.Destination.length > 6  && info.price.length > 1 && info.date.length > 1 && info.hours.length > 1 
+const checkAllInfo = inputs.Origin.length > 6 && inputs.Destination.length > 6  && info.date.length > 1 && info.hours.length > 1 
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -81,7 +81,7 @@ const checkAllInfo = inputs.Origin.length > 6 && inputs.Destination.length > 6  
        
         dispatch(RoutePostInfo(info))
        inputs = {Origin: '' , Destination: ''};
-        info = {pasajeros: 1, date: '', hours: '', price: ''}
+        info = {pasajeros: 1, date: '', hours: ''}
       }
     
  
@@ -141,11 +141,6 @@ const checkAllInfo = inputs.Origin.length > 6 && inputs.Destination.length > 6  
                 <option value='6'>6</option>
             </select>
         </div>
-
-        <div>
-        <div><input name='price' type="text" placeholder='price' onChange={handleChange} /></div>
-        <p>{validations && validations.price}</p>
-        </div>
         <div>
         <input type="time" id="hours" name="hours"
        min="09:00" max="18:00" required onChange={handleChange} />
@@ -161,7 +156,7 @@ const checkAllInfo = inputs.Origin.length > 6 && inputs.Destination.length > 6  
            
              <div>
             
-          {checkAllInfo ? <button onClick={handleSubmit}  className='button' disabled={checkInfo.length !== 4 && checkInputs.length !== 2}>
+          {checkAllInfo ? <button onClick={handleSubmit}  className='button' disabled={checkInfo.length !== 3 && checkInputs.length !== 2}>
           <NavLink to='/route/finish' style={{textDecoration:' none', width:'60px', color:'white'}}>
            Submit
           </NavLink>
