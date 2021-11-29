@@ -1,8 +1,8 @@
 import React from 'react'
 import img from '../img/photoDefault.jpg'
-export default function CardUser({photo, name, lastName, genre, age, calification}) {
+export default function CardUser({photo, name, lastName, genre, age, calification,...props }) {
     return (
-        <div>
+      <div {...props}>
         <h4>User Data</h4>
         <img src={img} style={{width:'150px'}} alt=''/>  {/*agregar url de img*/}
         <h5>{name}</h5>
