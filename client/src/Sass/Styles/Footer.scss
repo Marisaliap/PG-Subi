@@ -1,13 +1,27 @@
 @import "../Variables/Variables.scss";
 
 .Footer {
+  display: grid;
+  grid-template-columns: 10% 20% 20% 20% 20% 10% ;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  margin-bottom: 2rem;
+  
+  
+  
   .cosasAbajo {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-between;
-    align-items: center;
-    width: 30vw;
-    margin-left: 35vw;
+    display: row;
+    
+    
+  }
+  
+  .Link{
+    text-decoration: none;
+  }
+  
+  .Info{
+    align-self: center;
   }
 }

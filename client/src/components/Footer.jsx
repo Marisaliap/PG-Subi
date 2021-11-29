@@ -7,23 +7,46 @@ export default function Footer() {
     <div className="Footer">
       <br />
       <br />
-      <div className="cosasAbajo">
-        <Link to="/Faq">Faq</Link>
-        <div>{" - "}</div>
-        <Link to="/terms-and-conditions">Terms and Conditions</Link>
-        <div>{" - "}</div>
-        <Link to="/recommendations">Recommendations</Link>
-        <div>{" - "}</div>
-        <Link to="/aboutus">About Us</Link>
+      <div>
+        <h4>About</h4>
+        <div className="cosasAbajo">
+          <Link to="/aboutus" className="Link">
+            About Us
+          </Link>
+        </div>
       </div>
-      <h3>
-        Grupo 10 © |{" "}
-        <a href="https://www.soyhenry.com/" target="_blank">
-          {" "}
-          Soy Henry ©
-        </a>{" "}
-        | 2021{" "}
-      </h3>
+      <div>
+        <h4>Help</h4>
+        <div>
+          <Link to="/Faq" className="Link">
+            Faq
+          </Link>
+          <br />
+          <br />
+          <Link to="/recommendations" className="Link">
+            Recommendations
+          </Link>
+        </div>
+      </div>
+      <div>
+        <h4>Legal information</h4>
+        <div>
+          <Link to="/terms-and-conditions" className="Link">
+            Terms and Conditions
+          </Link>
+        </div>
+      </div>
+
+      <div className="Info">
+        <h3>
+          Grupo 10 © |{" "}
+          <a href="https://www.soyhenry.com/" target="_blank">
+            {" "}
+            Soy Henry ©
+          </a>{" "}
+          | 2021{" "}
+        </h3>
+      </div>
     </div>
   );
 }

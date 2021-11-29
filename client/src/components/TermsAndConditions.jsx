@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import "../Sass/Styles/TermsAndConditions.scss"
 
 export default function TermsAndConditions() {
   const history = useHistory();
@@ -10,13 +11,15 @@ export default function TermsAndConditions() {
   }
 
   return (
-    <div>
+    <div className="TermsAndConditions">
       <Link to="/home">
         <button>Home</button>
       </Link>
+      <article>
+      <div></div>
       <div>
         <p>
-          <span>Términos y condiciones de Subi que te Llevo</span>
+        <strong>Términos y condiciones de Subi que te Llevo</strong>
         </p>
 
         <p>
@@ -65,7 +68,7 @@ export default function TermsAndConditions() {
         </p>
 
         <p>
-          <span>Usuarios</span>
+          <strong>Usuarios</strong>
         </p>
 
         <p>
@@ -102,7 +105,7 @@ export default function TermsAndConditions() {
         <p>&nbsp;</p>
 
         <p>
-          <span>El servicio</span>
+          <strong>El servicio</strong>
         </p>
 
         <p>
@@ -179,7 +182,7 @@ export default function TermsAndConditions() {
         </p>
 
         <p>
-          <span>El uso del servicio</span>
+          <strong>El uso del servicio</strong>
         </p>
 
         <p>
@@ -394,7 +397,8 @@ export default function TermsAndConditions() {
         </p>
 
         <p>&nbsp;</p>
-      </div>
+        </div>
+      </article>
     </div>
   );
 }
