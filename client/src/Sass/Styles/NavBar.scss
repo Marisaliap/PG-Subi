@@ -22,17 +22,19 @@
 
   .giveMeARide {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    align-content: space-around;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
     width: 80%;
-    margin-left: 10%;
-    justify-content: space-evenly;
     align-items: center;
   }
 
   .logoSubi {
     width: 6rem;
-    margin-top: 1.5rem;
-    margin-left: 1vw;
+    margin-top: 1rem;
+   // margin-left: 1vw;
   }
 
   .nombreSubi {
@@ -43,7 +45,7 @@
     align-content: center;
     align-items: center;
     text-decoration: none;
-    margin-top: 2.25vh;
+    margin: 0;
   }
 
   .izquierda {
