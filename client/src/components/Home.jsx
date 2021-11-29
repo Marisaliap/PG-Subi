@@ -63,11 +63,6 @@ export default function Home() {
           </p>
         </article>
       </div>
-      <div>
-        <Link to="/">
-          <button className="buttonBlue">Back</button>
-        </Link>
-      </div>
     </div>
   );
 }
