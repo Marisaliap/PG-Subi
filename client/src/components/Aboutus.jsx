@@ -18,7 +18,7 @@ export default function Aboutus() {
           <h2>Nosotros</h2>
 
           <p>
-            Subi que te Llevo empezó como un sueño en el año 2010 y fue creciendo paso
+            Give me a ride® empezó como un sueño en el año 2010 y fue creciendo paso
             a paso...
           </p>
           <p>
@@ -32,7 +32,7 @@ export default function Aboutus() {
             fundamentales para que el proyecto avance.
           </p>
 
-          <p>Te presentamos al equipo de Subi que te Llevo:</p>
+          <p>Te presentamos al equipo de Give me a ride®:</p>
 
           <div>
             <div>
