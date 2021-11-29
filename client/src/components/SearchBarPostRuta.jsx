@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getRoute,
   getSuggestions,
   getSuggestions2,
   RoutePostInfo,
-} from '../actions';
-import { NavLink } from 'react-router-dom';
-import '../Sass/Styles/SearchBarPostRuta.scss';
+} from "../actions";
+import { NavLink } from "react-router-dom";
+import "../Sass/Styles/SearchBarPostRuta.scss";
+import "../Sass/Styles/App.scss";
 
-let inputs = {Origin: '' , Destination: ''};
-let info = {pasajeros: 1, date: '', hours: ''}
+let inputs = { Origin: "", Destination: "" };
+let info = { pasajeros: 1, date: "", hours: "" };
 
 const validateInputs = (input) => {
   const errors = {};
   let inputs = Object.keys(input);
   for (let i = 0; i < inputs.length; i++) {
     if (!input[inputs[i]]) {
-      errors[inputs[i]] = inputs[i] + ' is required.';
+      errors[inputs[i]] = inputs[i] + " is required.";
     }
   }
   return errors;
@@ -28,7 +29,7 @@ const validateInfo = (routeInfo) => {
 
   for (let i = 0; i < info.length; i++) {
     if (!routeInfo[info[i]]) {
-      errors[info[i]] = info[i] + ' is required.';
+      errors[info[i]] = info[i] + " is required.";
     }
   }
   return errors;
@@ -45,7 +46,7 @@ export default function SearchBar() {
     dispatch(getSuggestions(inputs.Origin));
     dispatch(getSuggestions2(inputs.Destination));
     const validations = validateInputs(inputs);
-    console.log(validations, 'soy input');
+    console.log(validations, "soy input");
     setErrors(() => {
       const errorState = { ...errors, validations };
       return errorState;
@@ -69,19 +70,28 @@ export default function SearchBar() {
     });
   }
 
-const checkAllInfo = inputs.Origin.length > 6 && inputs.Destination.length > 6  && info.date.length > 1 && info.hours.length > 1 
+  const checkAllInfo =
+    inputs.Origin.length > 6 &&
+    inputs.Destination.length > 6 &&
+    info.date.length > 1 &&
+    info.hours.length > 1;
+
   function handleSubmit(e) {
     e.preventDefault();
 
-      if (checkAllInfo ) {
-        dispatch(getRoute(cities[0].coordinates[0], cities[0].coordinates[1],cities2[0].coordinates[0], cities2[0].coordinates[1]));
-       
-        dispatch(RoutePostInfo(info))
-       inputs = {Origin: '' , Destination: ''};
-        info = {pasajeros: 1, date: '', hours: ''}
-      }
-    
- 
+    if (checkAllInfo) {
+      dispatch(
+        getRoute(
+          cities[0].coordinates[0],
+          cities[0].coordinates[1],
+          cities2[0].coordinates[0],
+          cities2[0].coordinates[1]
+        )
+      );
+
+      dispatch(RoutePostInfo(info));
+      inputs = { Origin: "", Destination: "" };
+      info = { pasajeros: 1, date: "", hours: "" };
     }
   }
 
@@ -151,16 +161,7 @@ const checkAllInfo = inputs.Origin.length > 6 && inputs.Destination.length > 6  
         </div>
         <div>
           <NavLink to="/">
-            <button className={styles.backButton}>Back</button>
-          </NavLink>
-            
-          
-           
-             <div>
-            
-          {checkAllInfo ? <button onClick={handleSubmit}  className='button' disabled={checkInfo.length !== 3 && checkInputs.length !== 2}>
-          <NavLink to='/route/finish' style={{textDecoration:' none', width:'60px', color:'white'}}>
-           Submit
+            <button className="buttonBlue">Back</button>
           </NavLink>
 
           <div>
@@ -168,14 +169,14 @@ const checkAllInfo = inputs.Origin.length > 6 && inputs.Destination.length > 6  
               <button
                 onClick={handleSubmit}
                 className="button"
-                disabled={checkInfo.length !== 4 && checkInputs.length !== 2}
+                disabled={checkInfo.length !== 3 && checkInputs.length !== 2}
               >
                 <NavLink
                   to="/route/finish"
                   style={{
-                    textDecoration: ' none',
-                    width: '60px',
-                    color: 'white',
+                    textDecoration: " none",
+                    width: "60px",
+                    color: "white",
                   }}
                 >
                   Submit
