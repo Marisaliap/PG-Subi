@@ -12,7 +12,7 @@ export default function Aboutus() {
   return (
     <div>
       <Link to="/home">
-        <button>Home</button>
+        <button className="buttonBlue">Home</button>
       </Link>
       <div className="aboutus">
         <div>

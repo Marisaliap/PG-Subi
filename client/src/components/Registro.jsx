@@ -142,7 +142,7 @@ export default function Registro() {
   return (
     <>
       <Link to="/home">
-        <button>Home</button>
+        <button className="buttonBlue">Home</button>
       </Link>
       <div className="formContainer">
         <h1>Create your User</h1>

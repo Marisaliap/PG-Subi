@@ -16,6 +16,9 @@ function Nav() {
           </Link>
           <span className="nombreSubi">Give me a ride</span>
         </div>
+        <div>
+          <h2>Give me a ride</h2>
+        </div>
         <div className="logs">
           <Auth />
         </div>

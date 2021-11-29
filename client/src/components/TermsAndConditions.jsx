@@ -14,7 +14,7 @@ export default function TermsAndConditions() {
 
     <div className="TermsAndConditions">
       <Link to="/home">
-        <button>Home</button>
+        <button className="buttonBlue">Home</button>
       </Link>
       <article>
       <div></div>

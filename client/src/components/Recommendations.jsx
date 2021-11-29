@@ -12,7 +12,7 @@ export default function Recommendations() {
     return (
         <div>
         <Link to="/home">
-        <button>Home</button>
+        <button className="buttonBlue">Home</button>
       </Link>
             <div>
 

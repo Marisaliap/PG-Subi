@@ -13,7 +13,7 @@ export default function Faq() {
     return (
         <div className='Faq'>
          <Link to="/home">
-        <button>Home</button>
+        <button className="buttonBlue">Home</button>
       </Link>
             <div>
               <h2>Preguntas Frecuentes</h2><h3>Uso de Give me a ride®</h3>
