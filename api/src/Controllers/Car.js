@@ -19,6 +19,7 @@ const postCar = async (req, res, next) => {
       brand,
       model,
       cylinder,
+      color
     } = req.body;
 
     let car = await Car.create({patent,brand,model,cylinder,color});
