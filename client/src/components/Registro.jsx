@@ -1,10 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { postUser } from "../actions";
-import { useAuth0 } from "@auth0/auth0-react";
-import "../Sass/Styles/RegisterForm.scss";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { postUser } from '../actions';
+import { useAuth0 } from '@auth0/auth0-react';
+import '../Sass/Styles/RegisterForm.scss';
 
 export default function Registro() {
   const dispatch = useDispatch();
@@ -15,72 +15,72 @@ export default function Registro() {
   function validate(input) {
     let errors = {};
     if (!input.name) {
-      errors.name = "Name is required";
+      errors.name = 'Name is required';
     } else if (!input.lastName) {
-      errors.lastName = "Last name is required";
+      errors.lastName = 'Last name is required';
       /* } else if ("^[^!@#$^&%*()+=[\]\/{}|:<>?,.\t]+$") {
       errors.email = 'The last name cannot contain symbols'; */
     } else if (!input.email) {
-      errors.email = "Email is required";
+      errors.email = 'Email is required';
     } else if (!input.dni) {
-      errors.dni = "DNI is required";
+      errors.dni = 'DNI is required';
     } else if (!input.age) {
-      errors.age = "Age is required";
+      errors.age = 'Age is required';
     } else if (!input.telephone) {
-      errors.telephone = "Telephone is required";
+      errors.telephone = 'Telephone is required';
     } else if (!input.street) {
-      errors.street = "Street is required";
+      errors.street = 'Street is required';
     } else if (!input.city) {
-      errors.city = "City is required";
+      errors.city = 'City is required';
     } else if (!input.province) {
-      errors.province = "Province is required";
+      errors.province = 'Province is required';
     }
     // } else if (chequeado === 0) {
     //   errors.terms = "You must agree to our terms and conditions";
     // }
-     else if (validateGenre() === false) {
-      errors.genre = "Genre is required";
+    else if (validateGenre() === false) {
+      errors.genre = 'Genre is required';
     }
     return errors;
   }
 
   function validateGenre() {
-    if (document.getElementById("genre").value == "1") {
+    if (document.getElementById('genre').value == '1') {
       return false;
     }
     return true;
   }
 
   function validateCheck() {
-    var elements = document.getElementsByName("terminos");
-    var statusText = "<br />";
+    var elements = document.getElementsByName('terminos');
+    var statusText = '<br />';
 
     for (var index = 0; index < elements.length; index++) {
       statusText +=
-        elements[index].value + "-" + elements[index].checked + "<br />";
+        elements[index].value + '-' + elements[index].checked + '<br />';
     }
-    document.getElementById("status").innerHTML = statusText;
+    document.getElementById('status').innerHTML = statusText;
   }
 
   const [errors, setErrors] = useState({
-    algo: "asd",
+    algo: 'asd',
   });
 
   const [input, setInput] = useState({
-    name: isAuthenticated ? user.given_name : "",
-    lastName: isAuthenticated ? user.family_name : "",
-    email: isAuthenticated ? user.email : "",
-    telephone: "",
-    facebook: "",
-    instagram: "",
-    password: "a",
-    province: "",
-    city: "",
-    street: "",
-    dni: "",
-    age: "",
-    about: "",
-    genre: "",
+    name: isAuthenticated ? user.given_name : '',
+    lastName: isAuthenticated ? user.family_name : '',
+    email: isAuthenticated ? user.email : '',
+    telephone: '',
+    facebook: '',
+    instagram: '',
+    password: 'a',
+    province: '',
+    city: '',
+    street: '',
+    dni: '',
+    age: '',
+    about: '',
+    genre: '',
   });
 
   useEffect(() => {
@@ -107,37 +107,37 @@ export default function Registro() {
       genre: e.target.value,
     });
     setErrors({
-      algo: "",
+      algo: '',
     });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(user, "SOY USER");
-    console.log(input, "SOY INPUT");
-    console.log(errors, "SOY ERRORS");
+    console.log(user, 'SOY USER');
+    console.log(input, 'SOY INPUT');
+    console.log(errors, 'SOY ERRORS');
     if (Object.keys(errors).length === 0) {
       dispatch(postUser(input));
       console.log(input);
       setInput({
-        name: "",
-        lastName: "",
-        email: "",
-        telephone: "",
-        facebook: "",
-        instagram: "",
-        province: "",
-        city: "",
-        street: "",
-        dni: "",
-        age: "",
-        about: "",
-        genre: "",
+        name: '',
+        lastName: '',
+        email: '',
+        telephone: '',
+        facebook: '',
+        instagram: '',
+        province: '',
+        city: '',
+        street: '',
+        dni: '',
+        age: '',
+        about: '',
+        genre: '',
       });
-      alert("User created correctly");
-      history.push("/home");
+      alert('User created correctly');
+      history.push('/home');
     } else {
-      alert("All mandatory fields must be filled to continue");
+      alert('All mandatory fields must be filled to continue');
     }
   }
 
@@ -188,7 +188,7 @@ export default function Registro() {
               </div>
             </div>
           ) : (
-            user.name.includes("@") && (
+            user.name.includes('@') && (
               <div>
                 <div>
                   <label>Name*:</label>
@@ -239,8 +239,8 @@ export default function Registro() {
             <label for="genre">Genre*:</label>
             <select name="genre" id="genre" onChange={(e) => handleSelect(e)}>
               <option disabled selected value="1">
-                {" "}
-                -- Select an option --{" "}
+                {' '}
+                -- Select an option --{' '}
               </option>
               <option className="options" value="Male">
                 Male
@@ -324,13 +324,13 @@ export default function Registro() {
               <label>
                 By continuing, you agree to our
                 <a target="_blank" href="/terms-and-conditions">
-                  {" "}
+                  {' '}
                   Terms of Use
                 </a>
                 <span> and </span>
                 <a target="_blank" href="/privacy-policy">
-                  {" "}
-                  Privacy Policy{" "}
+                  {' '}
+                  Privacy Policy{' '}
                 </a>
               </label>
               <p>&nbsp;</p>
@@ -338,7 +338,7 @@ export default function Registro() {
                 type="checkbox"
                 name="terminos"
                 value="1"
-                onChange={validateCheck()}
+                // onChange={validateCheck()}
               />
               {errors.terms && <p className="error">{errors.terms}</p>}
             </div>
