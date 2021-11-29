@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import "../Sass/Styles/Faq.scss"
 
 export default function Faq() {
 
@@ -15,6 +16,8 @@ export default function Faq() {
          <Link to="/home">
         <button className="buttonBlue">Home</button>
       </Link>
+      <article>
+      <div></div>
             <div>
               <h2>Preguntas Frecuentes</h2><h3>Uso de Give me a ride®</h3>
               <p>Tenés dudas de cómo usar Give me a ride®? Escribinos a nuestro <a href="https://facebook.com/subiqueteLlevo" target="_blank">Facebook</a> o <a href="mailto:subiquetellevo@grupo10.com.ar" target="_top">subiquetellevo@grupo10.com.ar</a>.</p>
@@ -180,6 +183,7 @@ export default function Faq() {
                 <p>¡Buen viaje!</p>
             </h3>
             </div>
+            </article>
         </div>
     )
 }

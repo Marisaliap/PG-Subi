@@ -8,39 +8,39 @@ import "../Sass/Styles/NavBar.scss";
 
 function Nav() {
   return (
-    <>
+    <div>
       <nav className="NavBar">
         <div className="izquierda">
           <Link to="/home">
             <img className="logoSubi" src={Logo} alt="" />
           </Link>
-          <span className="nombreSubi">Give me a ride</span>
+          <p className="nombreSubi">Give me a ride</p>
         </div>
         <div>
           <h2>Give me a ride</h2>
         </div>
-        <div className="logs">
-          <Auth />
-        </div>
-        <div className="derecha">
-          <div>
-            <ul className="searchContainer">
-             {/*  <NavLink className="searchContainerItem" to="/">
+          {/* <div>
+             <NavLink className="searchContainerItem" to="/">
                 <h3>🔍 Search</h3>
-              </NavLink> */}
-              <NavLink className="searchContainerItem" to="/route">
-                <button className="button">Post a Trip</button>
               </NavLink>
-              <SearchUserByName />
-            </ul>
+          </div> */}
+          <div className="searchContainer">
+            <NavLink className="searchContainerItem" to="/route">
+              <button className="button">Post a Trip</button>
+            </NavLink>
+            </div>
+            <div>
+            <SearchUserByName />
           </div>
-          <div>
+          <div className="logs">
+            <Auth />
+          </div>
+          <div className="profile">
             <Profile />
           </div>
-        </div>
       </nav>
       <hr className="divider" />
-    </>
+    </div>
   );
 }
 
