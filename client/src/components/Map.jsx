@@ -112,7 +112,7 @@ export default function Map() {
           <BsPinMapFill /> {city2[0].name}
         </p>
         <p>
-          <BsFillCalendarCheckFill /> {routeInfo.date}
+          <BsFillCalendarCheckFill /> {routeInfo.date.split('-').reverse().join('-')}
         </p>
         <p>
           <RiPinDistanceFill /> {data.coordinates && data.coordinates.distance}.
