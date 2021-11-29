@@ -64,14 +64,15 @@ const postRoute = async (req, res, next) => {
       destinyName,
       origin,
       destiny,
-      price,
+      km,
       date,
       hours,
       place,
       restriction,
       infoRoute,
     } = req.body;
-    console.log(idUser)
+
+    let price = km * 7 + km * 10/100;
 
     const route = await Route.create(
       {
@@ -79,8 +80,8 @@ const postRoute = async (req, res, next) => {
         destinyName,
         origin,
         destiny,
-        price,
         date,
+        price,
         hours,
         place,
         restriction,
