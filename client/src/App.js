@@ -19,6 +19,8 @@ import Map from "./components/Map"
 import Users from "./components/Users"
 import NavBar from "./components/NavBar";
 import RouteDetails from "./components/RouteDetails";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import CookiesPolicy from "./components/CookiesPolicy";
 
 export default function App() {
   const { isAuthenticated } = useAuth0();
@@ -49,6 +51,8 @@ export default function App() {
     <Route path="/terms-and-conditions" component= { TermsAndConditions }/>
     <Route path="/recommendations" component= { Recommendations }/>
     <Route path="/aboutus" component= { Aboutus }/>
+    <Route path="/privacy-policy" component= { PrivacyPolicy }/>
+    <Route path="/cookies-policy" component= { CookiesPolicy }/>
     <Footer/>
 
     </div>
