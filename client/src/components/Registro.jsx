@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postUser } from '../actions';
 import { useAuth0 } from '@auth0/auth0-react';
 import '../Sass/Styles/RegisterForm.scss';
+import swal from 'sweetalert';
+
 
 export default function Registro() {
   const dispatch = useDispatch();
@@ -111,9 +113,6 @@ export default function Registro() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(user, 'SOY USER');
-    console.log(input, 'SOY INPUT');
-    console.log(errors, 'SOY ERRORS');
     if (Object.keys(errors).length === 0) {
       dispatch(postUser(input));
       console.log(input);
@@ -132,10 +131,20 @@ export default function Registro() {
         about: '',
         genre: '',
       });
-      alert('User created correctly');
+      swal({
+        title: "Good job!",
+        text: 'User created correctly',
+        icon: "success",
+        button: "Aww yiss!",
+      });
       history.push('/home');
     } else {
-      alert('All mandatory fields must be filled to continue');
+      swal({
+        title: "Sorry",
+        text: 'All mandatory fields must be filled to continue',
+        icon: "warning",
+        button: "Ok",
+      });
     }
   }
 
