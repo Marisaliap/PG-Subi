@@ -25,7 +25,7 @@ const setPost = async (req, res, next) => {
             author,
             description,
             calification,
-            idUser
+            email
         } = req.body;
 
 
@@ -38,7 +38,7 @@ const setPost = async (req, res, next) => {
                 calification,
             },
         })
-        const users = await User.findByPk(idUser)
+        const users = await User.findByPk(email)
         await users.addPost(author);
         res.send(posts);
 
