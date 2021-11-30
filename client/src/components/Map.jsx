@@ -17,6 +17,8 @@ import {
 } from 'react-icons/bs';
 import { RiPinDistanceFill } from 'react-icons/ri';
 import '../Sass/Styles/Map.scss';
+import swal from 'sweetalert';
+
 
 export default function Map() {
   const dispatch = useDispatch();
@@ -50,7 +52,12 @@ export default function Map() {
         points: data.coordinates.data
       })
     );
-    alert('Trip Created')
+    swal({
+      title: "Good job!",
+      text: "Created!",
+      icon: "success",
+      button: "Go to Trip!",
+    });
     history.push('/route-list')
   }
   const Map = ReactMapboxGl({
