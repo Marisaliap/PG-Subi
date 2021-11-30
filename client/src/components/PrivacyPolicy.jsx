@@ -10,7 +10,7 @@ export default function PoliticaCookies() {
     history.push("/home");
   }
   return (
-    <div className="Cookies">
+    {/* <div className="Cookies">
       <article>
         <div></div>
         <div>
@@ -87,7 +87,8 @@ referred to as "cookies" in this Cookie Policy. </p>
   dataprotecion@blablacar.com. </p>
         </div>
       </article>
-    </div>
+    </div> */}
+    
   );
 }
 
