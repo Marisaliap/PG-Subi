@@ -46,7 +46,8 @@ export default function Map() {
         hours: routeInfo.hours,
         place: routeInfo.pasajeros,
         restriction: '',
-        km: data.coordinates.distance
+        km: data.coordinates.distance,
+        points: data.coordinates.data
       })
     );
     alert('Trip Created')

@@ -6,7 +6,8 @@ const initialState = {
   user: [],
   users: [],
   getRoutes: [],
-  car:[]
+  car:[],
+  routeById: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -96,6 +97,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         routePostInfo: action.payload,
+      };
+      case "GET_ROUTE_BY_ID":
+      return {
+        ...state,
+        routeById: action.payload,
       };
     default:
       return state;
