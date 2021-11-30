@@ -70,6 +70,7 @@ const postRoute = async (req, res, next) => {
       place,
       restriction,
       infoRoute,
+      points
     } = req.body;
 
     let price = km * 7 + km * 10/100;
@@ -86,6 +87,7 @@ const postRoute = async (req, res, next) => {
         place,
         restriction,
         infoRoute,
+        points
       });
 
 
@@ -117,7 +119,7 @@ const getRoute = async (req, res, next) => {
     }
 
     routes = await Route.findAll({
-      attributes: ["origin","destiny","date","hours","place","id","price","originName","destinyName","restriction"],
+      attributes: ["origin","destiny","date","hours","place","id","price","originName","destinyName","restriction","points"],
       include:
         {
           model: User,

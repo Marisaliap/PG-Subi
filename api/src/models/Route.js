@@ -24,6 +24,10 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
+    points:{
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allownull: false,
+    },
     price:{
       type:DataTypes.STRING,
       allowNull: false,
