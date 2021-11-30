@@ -3,7 +3,7 @@ const { User, Post, Car, Route, Op } = require('../db.js');
 
 const postUser = async (req, res, next) => {
   try {
-    const {
+    let {
       name,
       lastName,
       email,
@@ -23,8 +23,14 @@ const postUser = async (req, res, next) => {
       photoDni,
     } = req.body
 
+    
+  
+    
+  let re= await calification
+  console.log(re)
 
     const user = await User.findOrCreate(
+    
       {
         where: {email},
         defaults: {
@@ -75,7 +81,7 @@ const getUser = async (req, res, next) => {
           lastName: user.lastName,
           genre: user.genre,
           age: user.age,
-          calification: user.calification,
+          calification: user.calification.reduce((a,b)=>a+b)/user.calification.length,
           photo: user.photo,
           email: user.email,
         }
@@ -104,7 +110,7 @@ const getUser = async (req, res, next) => {
 const putUser = async (req,res,next) => {
   try {
     const {id} = req.params;
-    const {about,age,street,city,province,telephone,facebook,instagram,password,email,photo} = req.body;
+    const {about,age,street,city,province,telephone,facebook,instagram,password,email,photo, ...calification} = req.body;
     const user = await User.findByPk(id);
     user.update({
       about,
@@ -118,6 +124,7 @@ const putUser = async (req,res,next) => {
       password,
       email,
       photo,
+      calification,
     });
     res.send(user);
   } catch (error) {

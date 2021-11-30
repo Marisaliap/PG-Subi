@@ -8,6 +8,11 @@ export default function Footer() {
       <br />
       <br />
       <div>
+        <h4 className="titulo">Language:</h4>
+        <div className="cosasAbajo">SELECT idiomas</div>
+      </div>
+      <hr classname="lineahr" />
+      <div>
         <h4 className="titulo">About</h4>
         <div className="cosasAbajo">
           <Link to="/aboutus" className="Link">
@@ -15,31 +20,28 @@ export default function Footer() {
           </Link>
         </div>
       </div>
-      <hr/>
+      <hr classname="lineahr" />
       <div className="helpcita">
         <h4 className="titulo">Help</h4>
         <div className="help">
           <Link to="/Faq" className="Link">
-            Faq
+            FAQs
           </Link>
-          <br />
-          <hr />
-          <br />
           <Link to="/recommendations" className="Link">
             Recommendations
           </Link>
         </div>
       </div>
-      <hr/>
+      <hr classname="lineahr" />
       <div>
         <h4 className="titulo">Legal information</h4>
-        <div>
+        <div className="cosasAbajo">
           <Link to="/terms-and-conditions" className="Link">
             Terms and Conditions
           </Link>
         </div>
       </div>
-      <hr/>
+      <hr classname="lineahr" />
       <div className="Info">
         <h3>
           Grupo 10 © |{" "}
@@ -50,9 +52,6 @@ export default function Footer() {
           | 2021{" "}
         </h3>
       </div>
-      <br/>
-      <br/>
-      <br/>
     </div>
   );
 }
