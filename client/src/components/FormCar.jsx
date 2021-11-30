@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { postCar } from "../actions";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
+import swal from 'sweetalert';
 
 export default function FormCar() {
   const history = useHistory();
@@ -65,10 +66,19 @@ export default function FormCar() {
         model: "",
         cylinder: "",
       });
-      alert("Car created correctly");
-      //history.push("/home");
+      swal({
+        title: "Good job!",
+        text: 'Car created correctly',
+        icon: "success",
+        button: "Aww yiss!",
+      });
     } else {
-      alert("All mandatory fields must be filled to continue");
+      swal({
+        title: "Sorry",
+        text: 'All mandatory fields must be filled to continue',
+        icon: "warning",
+        button: "Ok",
+      });
     }
   }
 
