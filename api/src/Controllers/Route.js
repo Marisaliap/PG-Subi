@@ -70,9 +70,10 @@ const postRoute = async (req, res, next) => {
       place,
       restriction,
       infoRoute,
+      points
     } = req.body;
 
-    let price = km * 7 + km * 10/100;
+    let price = km * 7 + (km * 7 * (10/100));
 
     const route = await Route.create(
       {
@@ -86,6 +87,7 @@ const postRoute = async (req, res, next) => {
         place,
         restriction,
         infoRoute,
+        points
       });
 
 
@@ -102,7 +104,7 @@ const postRoute = async (req, res, next) => {
 
 const getRoute = async (req, res, next) => {
   try {
-    let { restriction,price,time,date} = req.query;
+    let {restriction,price,time,date,from,to,place} = req.query;
     const { id } = req.params;
     let routes;
 
@@ -117,7 +119,7 @@ const getRoute = async (req, res, next) => {
     }
 
     routes = await Route.findAll({
-      attributes: ["origin","destiny","date","hours","place","id","price","originName","destinyName","restriction"],
+      attributes: ["origin","destiny","date","hours","place","id","price","originName","destinyName","restriction","points"],
       include:
         {
           model: User,
@@ -129,6 +131,20 @@ const getRoute = async (req, res, next) => {
         }
 
     });
+
+    if (from) {
+      routes = routes.filter((route) => {
+        if (route.originName === from) return true;
+        else return false;
+      });
+    }
+
+    if (to) {
+      routes = routes.filter((route) => {
+        if (route.destinyName === to) return true;
+        else return false;
+      });
+    }
 
     if (restriction) {
       restriction = restriction.split(",");
@@ -149,6 +165,12 @@ const getRoute = async (req, res, next) => {
       });
     }
 
+    if (place) {
+      routes = routes.filter((route) => {
+        if (route.place >= place) return true;
+        else return false;
+      })
+    }
 
     if (price === "desc" || !price || price === "") {
       routes = routes.sort((a, b) => b.price - a.price);
