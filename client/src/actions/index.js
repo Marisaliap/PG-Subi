@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function getSuggestions(input) {
   return function (dispatch) {
-    axios.get("http://localhost:3001/maps?name=" + input).then((cities) => {
+    axios.get("/maps?name=" + input).then((cities) => {
       dispatch({
         type: "GET_SUGGESTIONS",
         payload: cities.data,
@@ -13,7 +13,7 @@ export function getSuggestions(input) {
 
 export function getSuggestions2(input) {
   return function (dispatch) {
-    axios.get("http://localhost:3001/maps?name=" + input).then((cities) => {
+    axios.get("/maps?name=" + input).then((cities) => {
       dispatch({
         type: "GET_SUGGESTIONS2",
         payload: cities.data,
@@ -26,7 +26,7 @@ export function getRoute(long1, lat1, long2, lat2) {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/maps/?long1=${long1}&lat1=${lat1}&long2=${long2}&lat2=${lat2}`
+        `/maps/?long1=${long1}&lat1=${lat1}&long2=${long2}&lat2=${lat2}`
       );
 
       return dispatch({
@@ -42,7 +42,7 @@ export function getRoute(long1, lat1, long2, lat2) {
 export function getUserDetail(id) {
    return async function (dispatch) {
      try {
-      const response = (await axios.get(`http://localhost:3001/user/${id}`)).data;
+      const response = (await axios.get(`/user/${id}`)).data;
       return dispatch({
         type: "GET_USER_DETAIL",
         payload: response,
@@ -56,7 +56,7 @@ export function getUserDetail(id) {
 export function getUserByName(name) {
   return async function (dispatch) {
     try {
-     const response = (await axios.get(`http://localhost:3001/user/?name=` + name)).data;
+     const response = (await axios.get(`/user/?name=` + name)).data;
      console.log(response)
      return dispatch({
          type: "GET_USER_BY_NAME",
@@ -114,7 +114,7 @@ export function postUser(payload) {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        `http://localhost:3001/user/add`,
+        `/user/add`,
         payload
       );
       return dispatch({
@@ -131,7 +131,7 @@ export function postCar(payload) {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        `http://localhost:3001/car/add`,
+        `/car/add`,
         payload
       );
       return dispatch({
@@ -148,7 +148,7 @@ export function postRoute(routeInfo) {
   console.log(routeInfo)
   return async function (dispatch) {
     try {
-      const response = await axios.post(`http://localhost:3001/maps/route/add`, routeInfo);
+      const response = await axios.post(`/maps/route/add`, routeInfo);
       return dispatch({
           type: "POST_ROUTE",
           payload: response.data,
@@ -174,7 +174,7 @@ export function deleteRoute() {
 export function allRoutes() {
   return async function (dispatch) {
     try {
-     const response = (await axios.get(`http://localhost:3001/maps/route`)).data;
+     const response = (await axios.get(`/maps/route`)).data;
      return dispatch({
          type: "GET_ALL_ROUTE_INFO",
          payload: response,
