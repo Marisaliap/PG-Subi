@@ -25,7 +25,9 @@ export default function Registro() {
     } else if (!input.dni) {
       errors.dni = 'DNI is required';
     } else if (!input.age) {
-      errors.age = 'Age is required';
+      errors.age = 'Age required';
+    } else if (!input.age < 18) {
+      errors.age = 'Age must be greater than 18';
     } else if (!input.telephone) {
       errors.telephone = 'Telephone is required';
     } else if (!input.street) {
