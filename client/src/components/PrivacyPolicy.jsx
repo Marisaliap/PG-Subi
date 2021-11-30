@@ -10,7 +10,7 @@ export default function PoliticaCookies() {
     history.push("/home");
   }
   return (
-    {/* <div className="Cookies">
+    <div className="Cookies">
       <article>
         <div></div>
         <div>
@@ -44,7 +44,9 @@ referred to as "cookies" in this Cookie Policy. </p>
 
 <p>Essential cookies: </p>
 
-<p>These cookies allow you to easily navigate BlaBlaCar and use basic functions such as logging in or booking trips. They also allow you to avoid potential security risks. These cookies are essential for BlaBlaCar and cannot be deactivated.
+<p>These cookies allow you to easily navigate BlaBlaCar and use basic functions such as 
+  logging in or booking trips. They also allow you to avoid potential security risks. 
+  These cookies are essential for BlaBlaCar and cannot be deactivated.</p>
 
 <p>Performance cookies: </p>
 
@@ -81,14 +83,14 @@ referred to as "cookies" in this Cookie Policy. </p>
   and display the date of the last update. If you are a registered user on our platforms, we will 
   contact you and notify you of these changes. This Cookie Policy was last updated on April 1, 2021. </p>
 
-<p>6. Who can you contact for additional questions?V
+<p>6. Who can you contact for additional questions?</p>
 
 <p>If you have questions regarding our Cookie Policy, do not hesitate to contact us by email at 
   dataprotecion@blablacar.com. </p>
         </div>
       </article>
-    </div> */}
-    
+    </div> 
   );
 }
+
 
