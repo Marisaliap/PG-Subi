@@ -8,7 +8,7 @@ import "../Sass/Styles/NavBar.scss";
 
 function Nav() {
   return (
-    <div>
+    <>
       <nav className="NavBar">
         <div className="giveMeARide">
           <div className="izquierda">
@@ -22,11 +22,6 @@ function Nav() {
             </Link>
           </div>
         </div>
-        {/* <div>
-             <NavLink className="searchContainerItem" to="/">
-                <h3>🔍 Search</h3>
-              </NavLink>
-          </div> */}
         <div className="searchContainer">
           <NavLink className="searchContainerItem" to="/route">
             <button className="button">Post a Trip</button>
@@ -44,8 +39,7 @@ function Nav() {
           </div>
         </div>
       </nav>
-      <hr className="divider" />
-    </div>
+    </>
   );
 }
 

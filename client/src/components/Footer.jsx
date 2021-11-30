@@ -15,7 +15,7 @@ export default function Footer() {
       <div>
         <h4 className="titulo">About</h4>
         <div className="cosasAbajo">
-          <Link to="/aboutus" className="Link">
+          <Link to="/aboutus" className="Link" target="_blank">
             About Us
           </Link>
         </div>
@@ -24,10 +24,10 @@ export default function Footer() {
       <div className="helpcita">
         <h4 className="titulo">Help</h4>
         <div className="help">
-          <Link to="/Faq" className="Link">
+          <Link to="/Faq" className="Link" target="_blank">
             FAQs
           </Link>
-          <Link to="/recommendations" className="Link">
+          <Link to="/recommendations" className="Link" target="_blank">
             Recommendations
           </Link>
         </div>
@@ -36,7 +36,7 @@ export default function Footer() {
       <div>
         <h4 className="titulo">Legal information</h4>
         <div className="cosasAbajo">
-          <Link to="/terms-and-conditions" className="Link">
+          <Link to="/terms-and-conditions" className="Link" target="_blank">
             Terms and Conditions
           </Link>
         </div>
@@ -45,7 +45,7 @@ export default function Footer() {
       <div className="Info">
         <h3>
           Grupo 10 © |{" "}
-          <a href="https://www.soyhenry.com/" target="_blank">
+          <a href="https://www.soyhenry.com/" className="Link" target="_blank">
             {" "}
             Soy Henry ©
           </a>{" "}

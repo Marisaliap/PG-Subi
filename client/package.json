@@ -12,6 +12,7 @@
     "mercadopago": "^0.5.0",
     "npkill": "^0.8.2",
     "react": "^17.0.1",
+    "react-cookie": "^4.1.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.3.1",
     "react-mapbox-gl": "^5.1.1",
