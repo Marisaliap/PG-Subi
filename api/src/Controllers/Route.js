@@ -173,7 +173,7 @@ const getRoute = async (req, res, next) => {
 const putRoute = async (req, res) => {
     try {
         const { id } = req.params;
-        const { date, hours, restriction, place } = req.body;
+        const { date, hours, restriction, place, idUser } = req.body;
         const route = await Route.findByPk(id);
         route.update({
             date,
@@ -181,6 +181,7 @@ const putRoute = async (req, res) => {
             restriction,
             place,
         });
+        idUser && await route.addUser(idUser);
         res.send(route);
     } catch (error) {
         res.send(error);
