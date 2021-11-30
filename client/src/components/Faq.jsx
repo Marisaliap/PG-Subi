@@ -165,30 +165,25 @@ export default function Faq() {
                    Soon you will be able to configure the alert conditions, being able to have a range of time and distance. You can collaborate with Give me a ride® so that we can incorporate these functions soon <a href="https://givemearide.com/donar"> --- & gt; Donate! </a> </p> 
                    <h3> How does the travel ‘matcher’ work? </h3>
                    <p> To see the search matches (or matches) with published trips, you have to go to "my trips" enter the one you created and you will see the matches. The match has a range of days. Soon you will be able to configure the "match" conditions, being able to have a range of time and distance. You can collaborate with Give me a ride® so that we can incorporate these functions soon <a href="https://subiquetellevo.com.ar/donar"> --- & gt; Donate! </a> </p> 
-              {/* <h3>¿Puedo invitar a mis amigos a Give me a ride®? :D</h3>
-              <p>¡Claro que sí! Contales del proyecto e invitalos a sumarse a la aplicación mediante el botón “Invitar amigos” en el menú principal. También podés incentivarlos compartir en tu muro de Facebook los viajes que cargues a la plataforma. </p>
+              <h3> Can I invite my friends to Give me a ride®? : D </h3>
+               <p> Of course I do! Tell them about the project and invite them to join the application using the "Invite friends" button in the main menu. You can also encourage them to share the trips you upload to the platform on your Facebook wall. </p>
 
 
-              <h3>¿Puedo crear viajes frecuentes u ocasionales para Give me a ride® dentro de mi ciudad?</h3>
-              <p>Lamentablemente el sistema aún no está desarrollado para gestionar este tipo de viajes pero estamos trabajando en el desarrollo de una versión que también sea útil para compartir viajes dentro de la misma ciudad.</p>
+               <h3> Can I create frequent or occasional trips for Give me a ride® within my city? </h3>
+               <p> Unfortunately the system has not yet been developed to manage this type of trip but we are working on developing a version that is also useful for sharing trips within the same city. </p> 
+               <h3> How do I share trips through social networks? </h3>
+               <p> To share your trip or one that you have seen on the platform through social networks, you have to use the buttons with the symbol of the social network. You can find them in the list of trips or in the detail of each one. This feature is only available for the downloadable version for mobile phones. </p> 
 
-              <h3>¿Cómo comparto viajes por las redes sociales?</h3>
-              <p>Para compartir tu viaje o alguno que hayas visto en la plataforma a través de las redes sociales, tenés que usar los botones con el símbolo de la red social. Los podés encontrar en el listado de viajes o dentro del detalle de cada uno. Esta función sólo está disponible para la versión descargable para celulares.  </p>
+               <h3> How was Give me a ride® born? Who do it? </h3>
+               <p> Give me a ride® is a network of people who share car rides. It is a non-profit and open source collective management project that emerged from the civil association STS Rosario in 2013 in order to contribute to a more rational use of the car.
+                 The idea is that when we have to travel by car because there is no bus or it does not suit us for some reason, we always try to fill the car to make better use of fossil resources and pollution associated with the trip. Beyond environmental motivation, Give me a ride® also seems very important to us because it helps to generate bonds between people, who many times would not have met otherwise. </p> 
+                 <h3> How can I contribute to Give me a ride®? </h3>
+                 <p> Great that you want to collaborate! You can contribute to Give me a ride® with volunteer work and also dissemination / contacts. <a href="https://givemearide.com/howtocooperate"> Here you can find all the information to help Give me a ride® go further </a>. </p> 
+                 <p> You can also donate once or monthly here <a href="https://givemearide.com/donate"> --- & gt; Donate! </a> </p>
 
-
-              <h3>¿Cómo nace Give me a ride®? ¿Quiénes lo hacen? </h3>
-              <p>Give me a ride® es una red de personas que comparten viajes en auto. Es un proyecto de gestión colectiva sin fines de lucro y de código libre que surge de la asociación civil STS Rosario en 2013 con el fin de aportar a un uso más racional del auto. 
-                La idea es que cuando tengamos que viajar en auto porque no hay colectivo o no nos conviene por algún motivo, siempre busquemos de llenar el auto para hacer un mejor aprovechamiento de los recursos fósiles y contaminación asociada al viaje. Más allá de la motivación ambiental, también Give me a ride® nos parece muy importante porque ayuda a generar vínculos entre las personas, quienes muchas veces no se hubieran encontrado de otra forma. </p>
-
-                <h3>¿Cómo puedo contribuir con Give me a ride®?  </h3>
-                <p>¡Genial que quieras colaborar! Se puede aportar a Give me a ride® con tareas de voluntariado y también difusión/contactos. <a href="https://subiquetellevo.com.ar/colabora-como-colaborar">Acá podés encontrar toda la información para ayudar a que Give me a ride® llegue más lejos</a>.  </p>
-
-              <p>También podés donar por única vez o mensualmente acá <a href="https://subiquetellevo.com.ar/donar"> ---&gt; ¡Donar!</a></p>
-
-              <h3>Ante cualquier comentario, consulta o propuesta de mejora, escribinos a nuestras redes Facebook, Instagram, Twitter o <a href="mailto:subiquetellevo@grupo10.com.ar" target="_top">Give me a ride®@grupo10.com.ar</a>.<p></p>
-
-                <p>¡Buen viaje!</p>
-            </h3> */}
+<h3> If you have any comments, questions or proposals for improvement, write to our networks Facebook, Instagram, Twitter or <a href="mailto:grupo10.soyhenry@gmail.com" target="_top"> Give me a ride® @ group10.com.ar </a>. <p> </p> 
+                <p>Have a nice trip!</p>
+            </h3>
             </div>
             </article>
         </div>
