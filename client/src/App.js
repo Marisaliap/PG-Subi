@@ -60,6 +60,8 @@ export default function App() {
             />
             <Route path="/recommendations" component={Recommendations} />
             <Route path="/aboutus" component={Aboutus} />
+            <Route path="/privacy-policy" component={ PrivacyPolicy } />
+            <Route path="/cookies-policy" component={ CookiesPolicy } />
             <Footer />
             <SubFooter />
           </div>
