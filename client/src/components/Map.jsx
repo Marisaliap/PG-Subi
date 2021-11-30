@@ -1,23 +1,22 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactMapboxGl, {
   Marker,
   GeoJSONLayer,
   ZoomControl,
-} from "react-mapbox-gl";
-import { Link, useHistory } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
-import { postRoute } from "../actions";
+} from 'react-mapbox-gl';
+import { Link, useHistory } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import { postRoute } from '../actions';
 import {
   BsFillCalendarCheckFill,
   BsWatch,
   BsPinMap,
   BsPinMapFill,
   BsFillPersonFill,
-} from "react-icons/bs";
-import { RiPinDistanceFill } from "react-icons/ri";
-import "../Sass/Styles/Map.scss";
-import swal from "sweetalert";
+} from 'react-icons/bs';
+import { RiPinDistanceFill } from 'react-icons/ri';
+import '../Sass/Styles/Map.scss';
 
 export default function Map() {
   const dispatch = useDispatch();
@@ -31,7 +30,7 @@ export default function Map() {
 
   function handleClick(e) {
     e.preventDefault();
-    history.push("/route");
+    history.push('/route');
   }
 
   function handlePost(e) {
@@ -43,25 +42,20 @@ export default function Map() {
         originName: city[0].name,
         destiny: city2[0].coordinates,
         destinyName: city2[0].name,
-        date: routeInfo.date.split("-").reverse().join("-"),
+        date: routeInfo.date.split('-').reverse().join('-'),
         hours: routeInfo.hours,
         place: routeInfo.pasajeros,
-        restriction: "",
+        restriction: '',
         km: data.coordinates.distance,
+        points: data.coordinates.data
       })
     );
-    swal({
-      title: "Good job!",
-      text: "Created!",
-      icon: "success",
-      button: "Go to Trip!",
-    });
-
-    history.push("/route-list");
+    alert('Trip Created')
+    history.push('/route-list')
   }
   const Map = ReactMapboxGl({
     accessToken:
-      "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
+      'pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg',
   });
 
   return (
@@ -73,8 +67,8 @@ export default function Map() {
       <Map
         style="mapbox://styles/mapbox/streets-v11"
         containerStyle={{
-          height: "50vh",
-          width: "50vw",
+          height: '50vh',
+          width: '50vw',
         }}
         className="mapbox"
         center={
@@ -82,10 +76,10 @@ export default function Map() {
         }
       >
         {city && city.length === 1 && (
-          <Marker coordinates={city[0].coordinates} style={{ color: "red" }}>
+          <Marker coordinates={city[0].coordinates} style={{ color: 'red' }}>
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
-              style={{ height: "30px" }}
+              style={{ height: '30px' }}
             ></img>
           </Marker>
         )}
@@ -93,7 +87,7 @@ export default function Map() {
           <Marker coordinates={city2[0].coordinates}>
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
-              style={{ height: "30px" }}
+              style={{ height: '30px' }}
             ></img>
           </Marker>
         )}
@@ -101,12 +95,12 @@ export default function Map() {
         <GeoJSONLayer
           data={data.coordinates && data.coordinates.data}
           linePaint={{
-            "line-color": "#78c644",
-            "line-width": 5,
+            'line-color': '#78c644',
+            'line-width': 5,
           }}
           lineLayout={{
-            "line-join": "miter",
-            "line-cap": "round",
+            'line-join': 'miter',
+            'line-cap': 'round',
           }}
         />
         <ZoomControl />
@@ -121,8 +115,7 @@ export default function Map() {
           <BsPinMapFill /> {city2[0].name}
         </p>
         <p>
-          <BsFillCalendarCheckFill />{" "}
-          {routeInfo.date.split("-").reverse().join("-")}
+          <BsFillCalendarCheckFill /> {routeInfo.date.split('-').reverse().join('-')}
         </p>
         <p>
           <RiPinDistanceFill /> {data.coordinates && data.coordinates.distance}.
