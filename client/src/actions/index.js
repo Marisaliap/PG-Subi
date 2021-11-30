@@ -52,6 +52,20 @@ export function getUserDetail(id) {
     }
   };
 }
+export function getRouteById(id) {
+  return async function (dispatch) {
+    try {
+     const response = (await axios.get(`http://localhost:3001/maps/route/` + id)).data;
+     console.log(response)
+     return dispatch({
+         type: "GET_ROUTE_BY_ID",
+         payload: response,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 
 export function getUserByName(name) {
   return async function (dispatch) {
@@ -168,7 +182,7 @@ export function RoutePostInfo (info) {
 
 export function deleteRoute() {
   return {
-    type: "DELETE-ROUTE",
+    type: "DELETE_ROUTE",
   };
 }
 export function allRoutes() {

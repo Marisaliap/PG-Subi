@@ -6,7 +6,7 @@ import CardUser from "./CardUser";
 import "../Sass/Styles/RouteCardContainer.scss"
 import "../Sass/Styles/RouteCard.scss"
 // import {CardCar} from "./CardCar";
-
+import { Link } from "react-router-dom"
 
 const RouteDetails = () => {
     const dispatch = useDispatch();
@@ -18,7 +18,10 @@ const RouteDetails = () => {
 
         <div className='RouteCardContainer'>
         {getRoutes.map((route,i) => (
+           <Link to={`/route/${route.id}`}  style={{textDecoration:'none'}}>
             <div className='RouteCard'>
+               
+            
             <CardUser
                 photo={route.users[0].photo}
                 name={route.users[0].name}
@@ -35,8 +38,9 @@ const RouteDetails = () => {
             place = {route.place}
             key={i+1}
             />
+    
             </div>
-            
+            </Link>
         ))
         }
         </div>

@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function CardRoute({origin, destiny, date, hours, place, price,infoRoute }) {
+export default function CardRoute({origin, destiny, date, hours, place, price,infoRoute, ...props }) {
     return (
-        <div>
+      <div {...props}>
        
         <h5>From: {origin}</h5>
         <h5>To: {destiny}</h5>

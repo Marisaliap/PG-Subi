@@ -8,20 +8,6 @@ import car_8 from "../img/car_8.jpg";
 export default function Home() {
   return (
     <div className="Home">
-      <div className="Links">
-        <div></div>
-        <div className="InLink">
-          <Link to="/register" className="Link">
-            Register as User
-          </Link>
-        </div>
-        <div className="InLink">
-          <Link to="/route-list" className="Link">
-            Route List
-          </Link>
-        </div>
-        <div></div>
-      </div>
       <div>
         <img className="fotoHeader" src={header} alt="header" />
       </div>
@@ -62,11 +48,6 @@ export default function Home() {
             velit pellentesque venenatis varius.
           </p>
         </article>
-      </div>
-      <div>
-        <Link to="/">
-          <button className="buttonBlue">Back</button>
-        </Link>
       </div>
     </div>
   );
