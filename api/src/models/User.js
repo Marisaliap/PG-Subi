@@ -19,7 +19,6 @@ module.exports = (sequelize) => {
     genre:{
       type:DataTypes.STRING,
       allowNull:false,
-
     },
     about: {
       type:DataTypes.TEXT,
@@ -33,7 +32,6 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-
     street: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -52,19 +50,12 @@ module.exports = (sequelize) => {
     },
     facebook: {
       type: DataTypes.STRING,
-
     },
     instagram: {
       type: DataTypes.STRING,
-
     },
     calification: {
       type: DataTypes.ARRAY(DataTypes.FLOAT),
-
-    },
-    password:{
-      type:DataTypes.STRING,
-      allowNull:false
     },
     photo:{
       type: DataTypes.STRING,
