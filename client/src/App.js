@@ -1,6 +1,7 @@
 import React from "react";
 import "./Sass/Styles/App.scss";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useEffect, useState } from "react";
 import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
 import Faq from "./components/Faq";
@@ -27,6 +28,26 @@ import RoutesFromSearch from "./components/RoutesFromSearch"
 export default function App() {
   const { isAuthenticated } = useAuth0();
 
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    });
+  }, []);
+
+  // This function will scroll the window to the top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // for smoothly scrolling
+    });
+  };
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -45,7 +66,7 @@ export default function App() {
                     <Route path="/user/:id" component={UserDetails} />
                     <Route path="/route-list" component={RouteDetails} />
                     <Route path="/routes-found" component={RoutesFromSearch} />
-                    <Route path="/route/:id" component= {AllInfoRoute}/>
+                    <Route path="/route/:id" component={AllInfoRoute} />
                     <Route path="/car" component={FormCar} />
                     <Route path="/users" component={Users} />
                   </Switch>
@@ -61,6 +82,13 @@ export default function App() {
             />
             <Route path="/recommendations" component={Recommendations} />
             <Route path="/aboutus" component={Aboutus} />
+            <Route path="/privacy-policy" component={PrivacyPolicy} />
+            <Route path="/cookies-policy" component={CookiesPolicy} />
+            {showButton && (
+              <button onClick={scrollToTop} className="back-to-top">
+                &#8679;
+              </button>
+            )}
             <Footer />
             <SubFooter />
           </div>

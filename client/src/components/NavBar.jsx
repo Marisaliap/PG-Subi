@@ -31,7 +31,7 @@ function Nav() {
   console.log(" esto es cars", users.cars)
 
   return (
-    <div>
+    <>
       <nav className="NavBar">
         <div className="giveMeARide">
           <div className="izquierda">
@@ -45,11 +45,6 @@ function Nav() {
             </Link>
           </div>
         </div>
-        {/* <div>
-             <NavLink className="searchContainerItem" to="/">
-                <h3>🔍 Search</h3>
-              </NavLink>
-          </div> */}
         <div className="searchContainer">
         {null&&!users&&users.cars[0]? 
          <NavLink className="searchContainerItem" to="/route">
@@ -71,8 +66,7 @@ function Nav() {
           </div>
         </div>
       </nav>
-      <hr className="divider" />
-    </div>
+    </>
   );
 }
 
