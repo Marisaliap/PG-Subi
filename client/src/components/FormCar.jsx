@@ -11,7 +11,7 @@ export default function FormCar() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     email: isAuthenticated ? user.email : "",
     patent: "",
@@ -31,8 +31,8 @@ export default function FormCar() {
       errors.brand = 'Brand is required';
     } else if (!input.model) {
       errors.model = 'Model is required';
-    } else if (!input.cyinder) {
-      errors.cyinder = 'Cylinder is required';
+    } else if (!input.cylinder) {
+      errors.cylinder = 'Cylinder is required';
     }
     return errors;
   }
@@ -97,7 +97,11 @@ export default function FormCar() {
           value={input.patent}
           onChange={(e) => handleChange(e)}
         />
-        
+        {
+          errors.patent && (
+            <p>{errors.patent}</p>
+          )
+        }     
         <label>Color</label>
         <input
           type="text"
@@ -105,6 +109,11 @@ export default function FormCar() {
           value={input.color}
           onChange={(e) => handleChange(e)}
         />
+        {
+          errors.color && (
+            <p>{errors.color}</p>
+          )
+        }        
         <label>Brand</label>
         <input
           type="text"
@@ -112,7 +121,11 @@ export default function FormCar() {
           value={input.brand}
           onChange={(e) => handleChange(e)}
         />
-
+        {
+          errors.brand && (
+            <p>{errors.brand}</p>
+          )
+        }        
         <label>Model</label>
         <input
           type="text"
@@ -120,6 +133,11 @@ export default function FormCar() {
           value={input.model}
           onChange={(e) => handleChange(e)}
         />
+        {
+          errors.model && (
+            <p>{errors.model}</p>
+          )
+        }        
         <label>Cylinder</label>
         <input
           type="text"
@@ -127,6 +145,11 @@ export default function FormCar() {
           value={input.cylinder}
           onChange={(e) => handleChange(e)}
         />
+        {
+          errors.cylinder && (
+            <p>{errors.cylinder}</p>
+          )
+        }        
         <button className="button" type="submit">
           Submit
         </button>
