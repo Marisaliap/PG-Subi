@@ -7,7 +7,9 @@ const initialState = {
   users: [],
   getRoutes: [],
   car:[],
-  routeById: []
+  routeById: [],
+  restriction:"",
+  
 };
 
 function rootReducer(state = initialState, action) {
@@ -58,6 +60,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         users: action.payload,
       };
+  // -----------------------------< filters >----------------------------------
     case "FILTER_BY_SMOKE":
       return {
         ...state,
@@ -87,6 +90,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         route: action.payload,
+        // ----------------------------------------------------------------------------
       };
     case "DELETE_ROUTE":
       return {
