@@ -13,8 +13,9 @@ export default function PoliticaCookies() {
     <div className="Cookies">
       <article>
         <div>
+        <p ><a href="/terms-and-conditions">Condiciones Generales de Uso</a> | <a href="/privacy-policy">Política de Privacidad</a> | Política de cookies</p>
           <p>
-            GMAR SA ("Give me a ride", "we", "us" or "our") uses cookies and
+            Give SA ("Give me a ride", "we", "us" or "our") uses cookies and
             similar tracking technologies on our website and in our mobile
             applications (individually referred to as "platform" or collectively
             "platforms"). In this policy (the "Cookie Policy"), we provide you
