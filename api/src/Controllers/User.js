@@ -43,7 +43,7 @@ const postUser = async (req, res, next) => {
           age,
           about,
           genre,
-          calification,
+          calification: [0],
           photoDni,
         }
       })
@@ -75,7 +75,7 @@ const getUser = async (req, res, next) => {
           lastName: user.lastName,
           genre: user.genre,
           age: user.age,
-          calification: user.calification.reduce((a,b)=>a+b)/user.calification.length,
+          calification: user.calification.reduce((a,b)=>a+b)/user.calification.length ,
           photo: user.photo,
           email: user.email,
         }
