@@ -3,13 +3,16 @@ import { Link, NavLink } from "react-router-dom";
 import "../Sass/Styles/Home.scss";
 import header from "../img/header.jpg";
 import car_8 from "../img/car_8.jpg";
-//import Auth from "./Auth"
+import SearchBarHome from "./SearchBarHome";
 
 export default function Home() {
   return (
     <div className="Home">
       <div>
         <img className="fotoHeader" src={header} alt="header" />
+      </div>
+      <div>
+        <SearchBarHome />
       </div>
       <div className="Article">
         <div></div>

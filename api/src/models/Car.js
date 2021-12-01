@@ -16,14 +16,14 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     cylinder: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
     color: {
       type: DataTypes.STRING,
     }
   },
-  
+
   {
     timestamps: false,
   }

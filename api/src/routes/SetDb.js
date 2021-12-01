@@ -5,7 +5,7 @@ router.use(express.json());
 const {setDb} = require('../Controllers/SetDb') //IMPORTO FUNCIONES
 
 
-router.get('/', setDb)
+router.post('/', setDb)
 
 
 module.exports = router
