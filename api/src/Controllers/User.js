@@ -23,14 +23,8 @@ const postUser = async (req, res, next) => {
       photoDni,
     } = req.body
 
-    
-  
-    
-  let re= await calification
-  console.log(re)
-
     const user = await User.findOrCreate(
-    
+
       {
         where: {email},
         defaults: {

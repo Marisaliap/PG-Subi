@@ -49,7 +49,7 @@ export default function Map() {
         place: routeInfo.pasajeros,
         restriction: '',
         km: data.coordinates.distance,
-        points: data.coordinates.data
+        points: data.coordinates.data.geometry.coordinates
       })
     );
     swal({

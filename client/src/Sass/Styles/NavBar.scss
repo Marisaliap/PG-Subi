@@ -5,6 +5,22 @@
   grid-template-columns: 25% 25% 25% 25%;
   align-items: center;
   justify-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding-bottom: 1rem;
+  // background-color: $navbar;
+  background-color: $background;
+  border-bottom: 1px solid $footer;
+  -webkit-box-shadow: 0px 2px 10px 1px rgba(100, 100, 100, 0.33);
+  box-shadow: 0px 8px 18px 1px rgba(100, 100, 100, 0.33);
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+
+  &:hover {
+    -webkit-box-shadow: 0px 5px 15px 1px rgba(25, 25, 25, 0.5);
+    box-shadow: 0px 8px 18px 1px rgba(25, 25, 25, 0.5);
+    transition: box-shadow 0.5s ease-in-out;
+  }
 
   .logs {
     display: flex;
@@ -17,8 +33,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
-}
-  
+  }
 
   .giveMeARide {
     display: flex;
@@ -32,14 +47,13 @@
   }
 
   .logoSubi {
-    width: 6rem;
-    margin-top: 1rem;
-   // margin-left: 1vw;
+    margin-top: 1.5rem;
+    width: 10rem;
   }
 
   .nombreSubi {
     font-family: "Inter", sans-serif;
-    display: flex;
+    display: none;
     justify-items: center;
     justify-content: center;
     align-content: center;
@@ -61,19 +75,12 @@
 
   .searchContainer {
     height: 5vh;
-    //position: relative;
     display: flex;
     align-items: center;
-    //justify-content: flex-end;
     padding-top: 1rem;
 
     .searchContainerItem {
       text-decoration: none;
-      //margin-left: 3rem;
     }
   }
-}
-
-.divider {
-  border-top: 2px solid #220f0020;
 }

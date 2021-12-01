@@ -1,33 +1,28 @@
 @import "../Variables/Variables.scss";
 
 .Home {
-  .Article{
+  .Article {
     display: grid;
     grid-template-columns: 10% 40% 40% 10%;
     text-align: center;
     align-items: center;
     text-align: left;
 
-    p{
+    p {
       text-align: left;
     }
   }
-  .Link{
+
+  .Link {
     text-decoration: none;
-  
   }
 
-  .InLink{
-   
-  }
-  
-  .Links{
+  .Links {
     text-align: center;
-    display:grid;
+    display: grid;
     grid-template-columns: 20% 30% 30% 20%;
     padding-bottom: 1rem;
   }
-
 
   .fotoHeader {
     width: 80vw;

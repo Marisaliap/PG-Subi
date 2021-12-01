@@ -38,6 +38,22 @@ export function getRoute(long1, lat1, long2, lat2) {
     }
   };
 }
+export function getRouteFromDb(originName, destinyName, date, place) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}`
+      );
+
+      return dispatch({
+        type: "GET_ROUTE_FROM_DB",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 
 export function getUserDetail(id) {
    return async function (dispatch) {

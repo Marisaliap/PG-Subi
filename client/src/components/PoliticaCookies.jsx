@@ -15,11 +15,12 @@ export default function PoliticaCookies() {
       <article>
         <div></div>
         <div>
-        Comuto SA (“BlaBlaCar”, “nosotros”, “nos” o “nuestro”) utiliza cookies y tecnologías de seguimiento similares en nuestro sitio web y en nuestras aplicaciones móviles (individualmente denominadas “plataforma” o conjuntamente “plataformas”). En esta política (la “Política de cookies”), te proporcionamos más información relacionada con estas tecnologías y sobre las decisiones que puedes tomar al respecto.
+        <p ><a href="/terms-and-conditions">Condiciones Generales de Uso</a> | <a href="/privacy-policy">Política de Privacidad</a> | Política de cookies</p>
+       <p> Give SA (“GiveMeaRide”, “nosotros”, “nos” o “nuestro”) utiliza cookies y tecnologías de seguimiento similares en nuestro sitio web y en nuestras aplicaciones móviles (individualmente denominadas “plataforma” o conjuntamente “plataformas”). En esta política (la “Política de cookies”), te proporcionamos más información relacionada con estas tecnologías y sobre las decisiones que puedes tomar al respecto.</p>
 
 1. ¿Qué es una “cookie” y cuáles son las “tecnologías de seguimiento similares”?
 
-Una “cookie” es un pequeño archivo de texto que es almacenado y/o leído por tu navegador web en el disco duro del dispositivo que estás utilizando (por ejemplo, un ordenador de escritorio, un portátil o un teléfono inteligente) extraído de los sitios web que visitas. Además de las cookies, BlaBlaCar también utiliza tecnologías similares para el seguimiento, incluidos “píxeles”, “scripts de seguimiento” o “kits de desarrollo de software” (conocidos como SDK). Son pequeños archivos de imagen transparentes o líneas de código contenidas en nuestro sitio web, correos electrónicos y aplicaciones móviles, que registran la forma en la que interactúas con ellos. Todas estas tecnologías de seguimiento se denominan “cookies” en esta Política de cookies.
+Una “cookie” es un pequeño archivo de texto que es almacenado y/o leído por tu navegador web en el disco duro del dispositivo que estás utilizando (por ejemplo, un ordenador de escritorio, un portátil o un teléfono inteligente) extraído de los sitios web que visitas. Además de las cookies, GiveMeaRide también utiliza tecnologías similares para el seguimiento, incluidos “píxeles”, “scripts de seguimiento” o “kits de desarrollo de software” (conocidos como SDK). Son pequeños archivos de imagen transparentes o líneas de código contenidas en nuestro sitio web, correos electrónicos y aplicaciones móviles, que registran la forma en la que interactúas con ellos. Todas estas tecnologías de seguimiento se denominan “cookies” en esta Política de cookies.
 
 2. ¿Quién coloca cookies en nuestras plataformas?
 
@@ -33,11 +34,11 @@ Los siguientes tipos de cookies que se utilizan en nuestras plataformas son:
 
     Cookies esenciales:
 
-Estas cookies te permiten navegar con facilidad en BlaBlaCar y usar funciones básicas como el inicio de sesión o la reserva de viajes. También permiten evitar posibles riesgos de seguridad. Estas cookies son esenciales para BlaBlaCar y no pueden desactivarse.
+Estas cookies te permiten navegar con facilidad en GiveMeaRide y usar funciones básicas como el inicio de sesión o la reserva de viajes. También permiten evitar posibles riesgos de seguridad. Estas cookies son esenciales para GiveMeaRide y no pueden desactivarse.
 
     Cookies de rendimiento:
 
-Estas cookies nos ayudan a saber cuáles de nuestras páginas son más (y menos) populares, así como el contenido que resulta más útil para los usuarios. Nos ayudan a mejorar el rendimiento de BlaBlaCar, ya que nos permiten verificar, por ejemplo, que los usuarios encuentran lo que buscan con facilidad. Estas cookies pueden ser nuestras o de nuestros socios de análisis. Si no aceptas estas cookies, ni nosotros ni nuestros socios sabremos cuándo has accedido a BlaBlaCar.
+Estas cookies nos ayudan a saber cuáles de nuestras páginas son más (y menos) populares, así como el contenido que resulta más útil para los usuarios. Nos ayudan a mejorar el rendimiento de GiveMeaRide, ya que nos permiten verificar, por ejemplo, que los usuarios encuentran lo que buscan con facilidad. Estas cookies pueden ser nuestras o de nuestros socios de análisis. Si no aceptas estas cookies, ni nosotros ni nuestros socios sabremos cuándo has accedido a GiveMeaRide.
 
     Cookies de marketing y segmentación:
 
@@ -58,7 +59,7 @@ Esta Política de cookies se actualizó por última vez el 1 de abril de 2021.
 
 6. ¿Con quién puedes ponerte en contacto en caso de preguntas adicionales?
 
-Si tienes preguntas con respecto a nuestra Política de cookies, no dudes en ponerte en contacto con nosotros por correo electrónico a dataprotecion@blablacar.com.
+Si tienes preguntas con respecto a nuestra Política de cookies, no dudes en ponerte en contacto con nosotros por correo electrónico a dataprotecion@GiveMeaRide.com.
         </div>
       </article>
     </div>

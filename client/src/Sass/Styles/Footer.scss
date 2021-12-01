@@ -35,6 +35,11 @@
     text-decoration: none;
   }
 
+  .Link:hover {
+    text-decoration: underline;
+    transition: text-decoration 0.5s ease-in-out;
+  }
+
   .Info {
     align-self: center;
   }

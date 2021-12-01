@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 import { postCar } from "../actions";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import swal from 'sweetalert';
+import swal from "sweetalert";
+import "../Sass/Styles/FormCar.scss";
 
 export default function FormCar() {
   const history = useHistory();
@@ -20,19 +21,20 @@ export default function FormCar() {
     model: "",
     cylinder: "",
   });
+  console.log(input);
 
   function validate(input) {
     let errors = {};
     if (!input.patent) {
-      errors.patent = 'Patent is required';
+      errors.patent = "Patent is required";
     } else if (!input.color) {
-      errors.color = 'Color is required';
+      errors.color = "Color is required";
     } else if (!input.brand) {
-      errors.brand = 'Brand is required';
+      errors.brand = "Brand is required";
     } else if (!input.model) {
-      errors.model = 'Model is required';
+      errors.model = "Model is required";
     } else if (!input.cyinder) {
-      errors.cyinder = 'Cylinder is required';
+      errors.cyinder = "Cylinder is required";
     }
     return errors;
   }
@@ -42,7 +44,7 @@ export default function FormCar() {
   }, [dispatch]);
 
   function handleChange(e) {
-    console.log(input)
+    console.log(input);
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -60,7 +62,7 @@ export default function FormCar() {
     if (true) {
       dispatch(postCar(input));
       setInput({
-        patent:"",
+        patent: "",
         color: "",
         brand: "",
         model: "",
@@ -68,14 +70,15 @@ export default function FormCar() {
       });
       swal({
         title: "Good job!",
-        text: 'Car created correctly',
+        text: "Car created correctly",
         icon: "success",
         button: "Aww yiss!",
       });
+      history.push("/route");
     } else {
       swal({
         title: "Sorry",
-        text: 'All mandatory fields must be filled to continue',
+        text: "All mandatory fields must be filled to continue",
         icon: "warning",
         button: "Ok",
       });
@@ -83,53 +86,61 @@ export default function FormCar() {
   }
 
   return (
-    <div>
-    <h1>Create your Car</h1>
+    <div className="FormCar">
+      <h1>Create your Car</h1>
       <form
+        className="Form"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
       >
-        <label>Patent</label>
-        <input
-          type="text"
-          name="patent"
-          value={input.patent}
-          onChange={(e) => handleChange(e)}
-        />
-        
-        <label>Color</label>
-        <input
-          type="text"
-          name="color"
-          value={input.color}
-          onChange={(e) => handleChange(e)}
-        />
-        <label>Brand</label>
-        <input
-          type="text"
-          name="brand"
-          value={input.brand}
-          onChange={(e) => handleChange(e)}
-        />
+        <div>
+          <div>
+            <label>Patent</label>
+            <input
+              type="text"
+              name="patent"
+              value={input.patent}
+              onChange={(e) => handleChange(e)}
+            />
+            <br />
+            <label>Color</label>
+            <input
+              type="text"
+              name="color"
+              value={input.color}
+              onChange={(e) => handleChange(e)}
+            />
+            <br />
+            <label>Brand</label>
+            <input
+              type="text"
+              name="brand"
+              value={input.brand}
+              onChange={(e) => handleChange(e)}
+            />
 
-        <label>Model</label>
-        <input
-          type="text"
-          name="model"
-          value={input.model}
-          onChange={(e) => handleChange(e)}
-        />
-        <label>Cylinder</label>
-        <input
-          type="text"
-          name="cylinder"
-          value={input.cylinder}
-          onChange={(e) => handleChange(e)}
-        />
-        <button className="button" type="submit">
-          Submit
-        </button>
+            <br />
+            <label>Model</label>
+            <input
+              type="text"
+              name="model"
+              value={input.model}
+              onChange={(e) => handleChange(e)}
+            />
+            <br />
+            <label>Cylinder</label>
+            <input
+              type="text"
+              name="cylinder"
+              value={input.cylinder}
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <button className="button" type="submit">
+            Charge Car
+          </button>
+        </div>
       </form>
     </div>
   );
