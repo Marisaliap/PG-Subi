@@ -105,7 +105,8 @@ const postRoute = async (req, res, next) => {
 
 const getRoute = async (req, res, next) => {
   try {
-    let {restriction,price,time,date,from,to,place} = req.query;
+    // let {restriction,price,time,date,from,to,place} = req.query;
+    let {restriction,order,date,from,to,place} = req.query;
     const { id } = req.params;
     let routes;
 
@@ -157,6 +158,8 @@ const getRoute = async (req, res, next) => {
         if (restricRoute.includes(false)) return false;
         else return true;
       });
+    }else if (!restriction||restriction === ""){
+      routes = routes
     }
 
     if (date) {
@@ -173,17 +176,23 @@ const getRoute = async (req, res, next) => {
       })
     }
 
-    if (price === "desc" || !price || price === "") {
-      routes = routes.sort((a, b) => b.price - a.price);
-    } else if (price === "asc") {
-      routes = routes.sort((a, b) => a.price - b.price);
-    }
+    // if (price === "desc" || !price || price === "") {
+    //   routes = routes.sort((a, b) => b.price - a.price);
+    // } else if (price === "asc") {
+    //   routes = routes.sort((a, b) => a.price - b.price);
+    // }
 
 
-    if (time === "desc") {
+    // if (time === "desc") {
+    //   routes = routes.sort((a, b) => parseInt(b.hours.split(':').join('')) - parseInt(a.hours.split(':').join('')));
+    // } else if (time === "asc") {
+    //   routes = routes.sort((a, b) => parseInt(a.hours.split(':').join('')) - parseInt(b.hours.split(':').join('')));
+    // }
+
+    if (order === "time" || !order || order === "") {
       routes = routes.sort((a, b) => parseInt(b.hours.split(':').join('')) - parseInt(a.hours.split(':').join('')));
-    } else if (time === "asc") {
-      routes = routes.sort((a, b) => parseInt(a.hours.split(':').join('')) - parseInt(b.hours.split(':').join('')));
+    } else if (order === "price") {
+      routes = routes.sort((a, b) => b.price - a.price);
     }
 
 
