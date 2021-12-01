@@ -31,7 +31,7 @@ export default function App() {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
         setShowButton(true);
       } else {
@@ -44,7 +44,7 @@ export default function App() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // for smoothly scrolling
+      behavior: 'smooth', // for smoothly scrolling
     });
   };
 
