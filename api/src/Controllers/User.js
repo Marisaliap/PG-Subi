@@ -21,13 +21,7 @@ const postUser = async (req, res, next) => {
       calification,
       photo,
       photoDni,
-    } = req.body
-
-    
-  
-    
-  let re= await calification
-  console.log(re)
+    } = req.body;
 
     const user = await User.findOrCreate(
     
@@ -81,7 +75,8 @@ const getUser = async (req, res, next) => {
           lastName: user.lastName,
           genre: user.genre,
           age: user.age,
-          calification: user.calification.reduce((a,b)=>a+b)/user.calification.length,
+          calification,
+          // calification: user.calification.reduce((a,b)=>a+b)/user.calification.length,
           photo: user.photo,
           email: user.email,
         }
@@ -110,7 +105,7 @@ const getUser = async (req, res, next) => {
 const putUser = async (req,res,next) => {
   try {
     const {id} = req.params;
-    const {about,age,street,city,province,telephone,facebook,instagram,password,email,photo, ...calification} = req.body;
+    const {about,age,street,city,province,telephone,facebook,instagram,password,email,photo,calification} = req.body;
     const user = await User.findByPk(id);
     user.update({
       about,
@@ -124,7 +119,8 @@ const putUser = async (req,res,next) => {
       password,
       email,
       photo,
-      calification,
+      // calification:[...user.calification,calification],
+       calification,
     });
     res.send(user);
   } catch (error) {
@@ -134,8 +130,8 @@ const putUser = async (req,res,next) => {
 
 const deleteUser = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const user = await User.findByPk(id);
+    const { email } = req.params;
+    const user = await User.findByPk(email);
     await user.destroy();
     res.send("Registro elminado");
   } catch (error) {

@@ -58,7 +58,6 @@ const getRouteInfo = async (req, res, next) => {
 const postRoute = async (req, res, next) => {
   try {
     const {
-      idUser,
       //patentCar,
       originName,
       destinyName,
@@ -89,9 +88,12 @@ const postRoute = async (req, res, next) => {
       });
 
 
-    await route.addUser(idUser);
-    //const car = await Car.findByPk(patentCar)
-    //await car.addRoute(route);
+    // await route.addUser(email);
+    // const car = await Car.findByPk(patentCar)
+    // //await car.addRoute(route);
+    // const users = await User.findByPk(email)
+    // await users.addPost();
+    res.send(route);
 
 
     res.send(route);
@@ -144,7 +146,7 @@ const getRoute = async (req, res, next) => {
 
     if (date) {
       routes = routes.filter((route) => {
-        if (route.date == date) return true;
+        if (route.date === date) return true;
         else return false;
       });
     }

@@ -10,35 +10,35 @@ module.exports = (sequelize) => {
     },
     originName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     destinyName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     origin: {
       type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
+      // allowNull: false,
     },
     destiny: {
       type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
+      // allowNull: false,
     },
     price:{
       type:DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     date: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     hours: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     place: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
     },
     restriction: {
       type: DataTypes.STRING,
