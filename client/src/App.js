@@ -23,7 +23,7 @@ import RouteDetails from "./components/RouteDetails";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiesPolicy from "./components/CookiesPolicy";
 import AllInfoRoute from "./components/allInfoRoute";
-
+import RoutesFromSearch from "./components/RoutesFromSearch"
 export default function App() {
   const { isAuthenticated } = useAuth0();
 
@@ -44,6 +44,7 @@ export default function App() {
                     <Route path="/register" component={Registro} />
                     <Route path="/user/:id" component={UserDetails} />
                     <Route path="/route-list" component={RouteDetails} />
+                    <Route path="/routes-found" component={RoutesFromSearch} />
                     <Route path="/route/:id" component= {AllInfoRoute}/>
                     <Route path="/car" component={FormCar} />
                     <Route path="/users" component={Users} />
