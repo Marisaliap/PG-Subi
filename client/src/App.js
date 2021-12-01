@@ -21,7 +21,7 @@ import Map from "./components/Map";
 import Users from "./components/Users";
 import NavBar from "./components/NavBar";
 import RouteDetails from "./components/RouteDetails";
-import PrivacyPolicy from "./components/PrivacyPolicy";
+import PoliticaPrivacidad from "./components/PoliticaPrivacidad";
 import CookiesPolicy from "./components/CookiesPolicy";
 import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch"
@@ -82,7 +82,7 @@ export default function App() {
             />
             <Route path="/recommendations" component={Recommendations} />
             <Route path="/aboutus" component={Aboutus} />
-            <Route path="/privacy-policy" component={PrivacyPolicy} />
+            <Route path="/privacy-policy" component={PoliticaPrivacidad} />
             <Route path="/cookies-policy" component={CookiesPolicy} />
             {showButton && (
               <button onClick={scrollToTop} className="back-to-top">

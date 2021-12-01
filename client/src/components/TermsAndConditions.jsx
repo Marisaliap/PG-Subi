@@ -19,7 +19,8 @@ export default function TermsAndConditions() {
         <div></div>
         <div>
           <p>
-            <strong className="big">Give a Ride Terms and Conditions</strong>
+          <p> Terms and Conditions | <a href="/privacy-policy">Privacy Policy </a>| <a href="/cookies-policy"> Cookies Policy </a></p>
+            
           </p>
           <p>
             <strong>Last review: </strong>
