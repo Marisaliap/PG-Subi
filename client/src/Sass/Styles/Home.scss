@@ -6,7 +6,11 @@
     grid-template-columns: 10% 40% 40% 10%;
     text-align: center;
     align-items: center;
+    text-align: left;
 
+    p{
+      text-align: left;
+    }
   }
   .Link{
     text-decoration: none;

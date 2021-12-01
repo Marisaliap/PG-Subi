@@ -1,169 +1,447 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import "../Sass/Styles/Faq.scss";
 
 export default function Faq() {
-
   const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
-    history.push('/home');
+    history.push("/home");
   }
 
-    return (
-        <div className='Faq'>
-         <Link to="/home">
+  return (
+    <div className="Faq">
+      <Link to="/home">
         <button className="buttonBlue">Home</button>
       </Link>
-            <div>
-              <h2>Preguntas Frecuentes</h2><h3>Uso de Give me a ride®</h3>
-              <p>Tenés dudas de cómo usar Give me a ride®? Escribinos a nuestro <a href="https://facebook.com/subiqueteLlevo" target="_blank">Facebook</a> o <a href="mailto:subiquetellevo@grupo10.com.ar" target="_top">subiquetellevo@grupo10.com.ar</a>.</p>
+      <article>
+        <div></div>
+        <div>
+          <h2>Frequently asked questions</h2>
+          <h3>Using Give me a ride® </h3>
+          <p>
+            Do you have questions about how to use Give me a ride®? Write to our
+            <a
+              href="https://www.facebook.com/people/Give-me-a-ride/100075632223946/?sk=about"
+              target="_blank"
+            >
+              Facebook
+            </a>
+            o{" "}
+            <a href="mailto:grupo10.soyhenry@gmail.com" target="_top">
+              grupo10.soyhenry@gmail.com
+            </a>
+            .
+          </p>
 
-              <h3>¿Qué es Give me a ride®?</h3>
-              <p>Es una red de personas que comparten viajes en auto entre ciudades, haciendo una división equitativa de costos entre todos los viajeros o una contribución convenida. Give me a ride® no es un sistema de transporte de pasajeros ni público ni privado.</p>
-              <p>Es un proyecto de gestión colectiva sin fines de lucro y de <a href="http://www.github.com/grupo10">código libre</a> que surge de la asociación civil <a href="http://www.grupo10.com.ar">Grupo 10</a>. </p>
+          <h3>What is Give me a ride®? </h3>
+          <p>
+            It is a network of people who share car trips between cities, making
+            an equitable division of costs among all travelers or an agreed
+            contribution. Give me a ride® is not a public or private passenger
+            transportation system.{" "}
+          </p>
 
-              <h3>¿Qué tipos de viaje puedo hacer con Give me a ride®?</h3>
-              <p>En Give me a ride® podés crear o encontrar viajes a media y larga distancia, desde comunas aledañas a destinos internacionales. </p>
-              <p>Los viajes los crean los mismos usuarios según su destino y disponibilidad horario. En base a esa propuesta de viaje, otros usuarios pueden solicitarle al conductor acompañarlo en trayecto. </p>
+          <h3>What types of trips can I do with Give me a ride®? </h3>
+          <p>
+            In Give me a ride® you can create or find medium and long-distance
+            trips. Drivers who organize their long or short distance trips
+            publish their free seats on the app, specifying in their
+            advertisement the route and the price for each seat and section.
+            <p>
+              The trips are created by the same users according to their
+              destination and time availability. In base to that travel
+              proposal, other users can ask the driver to accompany them in
+              journey.{" "}
+            </p>
+            Passengers interested in the trip can contact the drivers through
+            the public messaging system.If they decide to travel together, the
+            passenger makes the reservation and pays online the price stipulated
+            for the contracted place.{" "}
+          </p>
 
-              <h3>¿Tienen costo los viajes en Give me a ride®? ¿Qué costo tiene un viaje de Give me a ride®?</h3>
-              <p>Give me a ride® -al ser una red de personas que comparten viajes- sólo permite contribuciones monetarias para combustible utilizado y peajes o división equitativa de gastos entre todos los partícipes. No existe una tarifa fija ni un valor de pasaje. La contribución no puede superar el valor de una división equitativa de gastos de combustible y peajes ya que de ser así podría ser considerado como un transporte ilegal de pasajeros. <u>Give me a ride® es una red colaborativa, no un servicio.</u></p>
+          <h3>
+            Do the rides on Give me a ride® have a cost? How much does a Give me
+            a ride® ride cost?{" "}
+          </h3>
+          <p>
+            Give me a ride® -being a network of people who share trips- only
+            allows monetary contributions for used fuel and tolls or equitable
+            division of expenses among all participants. There is no fixed rate
+            or ticket value. The contribution cannot exceed the value of an
+            equitable division of fuel expenses and tolls since if so it could
+            be considered illegal passenger transport.
+            <u>Give me a ride® is a collaborative network, not a service. </u>
+          </p>
 
+          <h3>How is the contribution for a trip calculated? </h3>
+          <p>
+            The maximum monetary contribution accepted in Give me a ride® is the
+            fuel used + tolls divided by the number of people traveling in the
+            car. It must be defined before the trip, before or during the prior
+            coordination. Unless it is decided to make a division of expenses
+            with fuel and toll tickets in hand, at the end of it. In the event
+            that a person requests a monetary value that leaves in evidence that
+            exceeds the accepted maximum, they will be warned by the
+            administrators and suspended from the platform until accepting the
+            rules. In case of recidivism, suspended for months until reaching a
+            definitive suspension.{" "}
+          </p>
 
-              <h3>¿Cómo se calcula la contribución para un viaje?</h3>
-              <p>La contribución monetaria máxima aceptada en Give me a ride® es la de combustible utilizado + peajes dividido la cantidad de personas que viajan en el auto. La misma se debe definir antes del viaje, antes o durante la coordinaciòn previa. A menos que se decida hacer una división de gastos con los tickets de combustible y peaje en mano, al finalizar el mismo.En caso de que una persona pida un valor monetario que deje en evidencia que supera la máxima aceptada, será advertido por los administradores y suspendido de la plataforma hasta aceptar las reglas.En caso de reincidencia, suspendido por meses hasta llegar a una suspensiòn definitiva.</p>
+          <h3>Why are only the cost of fuel used and tolls considered? </h3>
+          <p>
+            They are the only verifiable expenses in a trip through tickets (in
+            case their verification is required). The rest of the expenses that
+            may exist (car wear or insurance) are borne by the driver since he
+            contributes his car in a disinterested way for the trip and is not
+            professionally dedicated to the transport of people.{" "}
+          </p>
+          <p>
+            {" "}
+            In the event of a possible inconvenience in the trip, if it is found
+            that there has been a profit in favor of the driver, the same could
+            face legal problems for offering a service and not being registered
+            to carry out that activity and charge it. In contrast, in a fuel and
+            toll division there is no illicit activity.{" "}
+          </p>
+          <p>
+            {" "}
+            Beyond the contribution of fuel and tolls, people who share a trip
+            can contribute monetarily for the reason they consider necessary to
+            another person with whom they shared the trip -for example for the
+            cookies they shared- It must be completely voluntary and The reason
+            cannot be for having shared the trip.{" "}
+          </p>
 
+          <h3>
+            {" "}
+            Is it essential to present fuel and toll tickets to request the
+            monetary contribution to passengers?{" "}
+          </h3>
+          <p>
+            {" "}
+            They are not obligatory but they are a way of clarifying the
+            accounts between the driver and his companions. Some people make the
+            same trip frequently and already know the amounts, so they do not
+            usually divide the expenses at each opportunity but use the
+            reference value of the previous trip.
+          </p>
+          <p>
+            {" "}
+            In any case, anyone during the pre-trip coordination can request in
+            advance to define the contribution by presenting fuel and toll
+            tickets in hand. No driver can refuse this request or leave it
+            unanswered, nor can they cancel a passenger for this request. The
+            division of expenses with fuel tickets and tolls is the most direct
+            way to establish the maximum contribution for a trip and is
+            recommended by Give me a ride®. (*){" "}
+          </p>
+          <p>
+            {" "}
+            (*) To calculate fuel costs and tolls with tickets, Give me a ride®
+            recommends filling the tank before leaving and refilling it at the
+            destination. This last load (or the amount of fuel loads that are
+            made once the trip has started) will be the fuel expense + the toll
+            tickets.{" "}
+          </p>
 
-              <h3>¿Por qué sólo se consideran el gasto de combustible utilizado y peajes?</h3>
-              <p>Son los únicos gastos comprobables en un viaje a través de tickets (en caso de requerirse su verificación). El resto de los gastos que pudiesen existir (desgaste del auto o seguros) corren a cuenta del conductor ya que aporta su automóvil de forma desinteresada para el viaje y no se dedica profesionalmente al transporte de personas. </p>
-              <p>En caso de un posible inconveniente en el viaje, si se constata que ha existido un lucro en favor del conductor, el mismo podría enfrentar problemas legales por ofrecer un servicio y no estar inscripto para realizar esa actividad y cobrarla. En cambio, en una división de combustible y peaje no hay actividad ilícita. </p>
-              <p>Más allá del aporte de combustible y peaje, las personas que comparten viaje pueden contribuir monetariamente por el motivo que consideren necesario a otra persona con quien compartieron el viaje -por ejemplo por las galletitas que compartieron- La misma debe ser completamente voluntaria y el motivo no puede ser por haber compartido el viaje.</p>
-              <p><a href="https://docs.google.com/document/d/1sz_p3LS5AbcADtxxRByYTYAK3DGB73arvMRryF_SvAs/edit">Más informaciòn sobre la regla de contribuciòn màxima</a></p>
+          <h3> Can contributions be made in a way other than monetary? </h3>
+          <p>
+            {" "}
+            It will be an arrangement between driver and passenger. Some may
+            request or offer another type of contribution, such as having
+            someone pay for meals during a long trip or asking the passenger to
+            stay awake to keep the driver attentive to the road, among other
+            examples.
+          </p>
 
+          <h3> How do I coordinate a trip? </h3>
+          <p>
+            {" "}
+            <strong> Drivers: </strong>
+          </p>
+          <p>
+            {" "}
+            When you load the trip, we recommend that you detail the information
+            as much as possible to avoid repetitive inquiries from those
+            interested in your trip. To do this, use the "Comment for
+            passengers" field. There you can inform what is the contribution for
+            the trip and the amount, the space available for luggage, what is
+            the maximum number of passengers that you will take in your car,
+            where it begins and ends and any other additional information that
+            you consider relevant. <br /> It is important that you communicate
+            with your passengers via message to finish coordinating details and
+            conditions of the trip. We suggest that in this instance you ask for
+            a telephone contact for a more precise communication when the date
+            of the trip. <br /> Remember that both must agree and be aware of
+            the conditions of the trip to avoid misunderstandings regarding
+            schedules, meeting and arrival points, luggage, fuel and toll
+            contribution and other essential information. <br /> You We
+            recommend coordinating and boarding your passengers using the Give
+            me a ride® platform to then access the possibility of qualifying
+            them at the end of the trip.
+          </p>
+          <p>
+            {" "}
+            <strong> Drivers: Passenger search engine: </strong>
+          </p>
+          <p>
+            {" "}
+            In addition to posting your trip as a Driver and waiting for others
+            to contact you, you can also search for passengers using Give me a
+            ride®. From the PC, by clicking on the "I'm looking for passengers"
+            button, you complete the origin and destination fields and press
+            "Search". From the cell phone: on the main screen by clicking on the
+            magnifying glass symbol and selecting "I'm looking for a passenger"
+            as the search criteria.
+          </p>
+          <p>
+            {" "}
+            <strong> Passengers: </strong>
+          </p>
+          <p>
+            {" "}
+            Once you find a trip that works for you, send a message via the
+            platform to the driver to clarify the terms of the trip and
+            coordinate the details. In this message you can make inquiries if
+            you see that the trip description does not have all the information
+            you need, or you can leave a telephone contact with the driver so
+            that he or she has another alternative of communication with you.
+            Once the queries have been satisfied and that you both agree with
+            the conditions of the trip, you ask the driver for the seat and he
+            accepts your request.
+            <br /> It is important that both agree on the conditions and details
+            of the trip when confirming it. Make sure that there are no doubts
+            about the meeting point, the schedule, the availability of luggage
+            space, the total number of passengers and the contribution for fuel
+            and toll expenses. We also suggest you ask for the driver's phone
+            number for more accurate communication on the date of travel.
+            <br /> We recommend that you always get on the trip using the Give
+            me a ride® platform and then access the possibility of rating it at
+            the end of the trip. Remember that for that, you must request a seat
+            with the corresponding button and that the other person accepts the
+            request. When they accept you, you will receive a notification that
+            you can see verify within "My trips".
+            <br /> Once everything is coordinated and the driver confirms you to
+            share the trip, you just have to wait until the day of the trip!
+          </p>
 
+          <h3>
+            {" "}
+            Who sees the trips you posted ?: Personalized trip visibility.{" "}
+          </h3>
+          <p>
+            {" "}
+            When creating a trip, you can define its privacy and choose who will
+            be the Give me a ride® users who will be able to contact you. <br />
+            There are three types of visibility: <br />
+            "Public trip" <br />
+            "Visible trip for friends of friends" <br />
+            "Visible trip for friends" <br />
+            <br /> You can create your list of friends by sending friend
+            requests within the platform or by linking your account with that of
+            Facebook, so that the platform also takes into account your friends
+            from that social network who are on Give me a ride® .
+          </p>
+          <p> Following this, the three types of travel comprise: </p>
+          <ul>
+            <li>
+              {" "}
+              “Public ride” → ALL Give me a ride® users will be able to view and
+              request this ride.{" "}
+            </li>
+            <li>
+              {" "}
+              “Visible trip for friends of friends” → your friends and their
+              friends from Give me a ride® and Facebook (if you logged in with
+              this social network) will be able to see and request this trip.{" "}
+            </li>
+            <li>
+              {" "}
+              “Visible trip for friends” → only your Give me a ride® and
+              Facebook friends (if you logged in with this social network) who
+              use Give me a ride® will be able to see and request this trip.{" "}
+            </li>
+          </ul>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th> If you are a friend</th>{" "}
+                <th> If you have a friend in common </th>
+                <th> If you are not a friend </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th> Someone creates a "Public" trip </th>
+                <td> you see it ✔ </td>
+                <td> you see it ✔ </td>
+                <td> you see it ✔ </td>
+              </tr>
+              <tr>
+                <th> Someone creates a trip for "Friends of friends" </th>
+                <td> you see it ✔ </td>
+                <td> you see it ✔ </td>
+                <td> you don't see it ✘ </td>
+              </tr>
+              <tr>
+                <th> Someone creates a trip for "Friends" </th>
+                <td> you see it ✔ </td>
+                <td> you don't see it ✘ </td>
+                <td> you don't see it ✘ </td>
+              </tr>
+            </tbody>
+          </table>
 
-              <h3>¿Es fundamental presentar tickets de combustible y peaje para pedir la contribución monetaria a los pasajeros?</h3>
-              <p>No son obligatorios pero son una forma de dejar claras las cuentas entre el conductor y sus acompañantes. Algunas personas realizan el mismo viaje con frecuencia y ya conocen los montos, así que no acostumbran a dividir los gastos en cada oportunidad sino que usan el valor de referencia del viaje anterior. 
-              </p>
-              <p>De todas formas, cualquier persona durante la coordinación previa al viaje puede pedir anticipadamente definir la contribución presentando tickets de combustible y peaje en mano. Ningún conductor puede negarse a este pedido ni dejarlo sin responder, tampoco puede dar de baja a un pasajero por esta solicitud. La división de gastos con tickets de combustible y peajes, es la vía más directa para establecer la contribución máxima para un viaje y es la recomendada por Give me a ride®.(*)</p>
-              <p>(*) Para calcular el gasto de combustible y peajes con los tickets, Give me a ride® recomienda llenar el tanque antes de salir y volverlo a llenar en el destino. Esta última carga (o la cantidad de cargas de combustible que se hagan una vez comenzado el viaje) será el gasto del combustible + los tickets de los peajes. </p>
+          <h3> I had problems with my trip, what do I do? </h3>
+          <p>
+            {" "}
+            If you had a bad experience with your trip (irresponsible drivers,
+            lack of passenger commitment, among other problems) or the
+            conditions of the trip did not occur as they were established, tell
+            about your experience when you can rate the other person. That is
+            why it is important that you maintain the coordination of the trips
+            within the Give me a ride® platform.{" "}
+          </p>
+          <p>
+            {" "}
+            If the bad experience involves violence by messages, verbal or
+            physical. Also road violence (dangerous driving, cell phone use,
+            etc). Not respecting the maximum contribution or some other
+            illegality. Beyond leaving a rating to the person, also write to
+            Give me at ride®@stsrosario.org.ar or via Private Message on our
+            Facebook, Instagram or Tweeter page and tell us what happened. If we
+            consider that it warrants it and that there is evidence of the
+            incident, we can warn, suspend the person for some time or
+            indefinitely.
+          </p>
 
+          <h3> How does the grading system work? </h3>
+          <p>
+            {" "}
+            You can rate your driver or passengers through our rating system
+            after 24 hours from the start of the trip. <br />
+            To be able to do so, whether in the role of driver or passenger,
+            enter the platform in the 'My Trips' section. A dialog box will
+            appear in which you can comment on your experience indicating
+            whether or not you recommend sharing a trip with the person (thumbs
+            up / down according to your experience) and add a text that
+            justifies that rating. <br /> The comment about your experience is
+            very important for the rest of the community to understand why you
+            recommend or not to share trips with that person. Share everything
+            that you think is important for others to know. Remember that once
+            the grade has been sent, it cannot be modified. <br />
+            Ratings are published once the other person has also left their
+            rating on you, both references appearing at the same time in their
+            profiles on the platform. In the event that 14 days pass without
+            someone qualifying, the system will publish the qualification that
+            has been made and the person who has not left a reference in that
+            time will no longer be able to do so. <br /> For the system to
+            enable the qualification, it is It is necessary to record that both
+            users shared a trip. For this, it is necessary that the passenger
+            has sent a travel request to the driver and the latter has accepted
+            it. If you only communicated via message but they did not accept the
+            seat request (as a passenger) or you did not accept the request (as
+            a driver), they will not be able to qualify.
+          </p>
 
-              <h3>¿Se puede hacer contribuciones de otra forma, que no sea monetaria?</h3>
-              <p>Será un arreglo entre conductor y pasajero. Algunos pueden solicitar u ofrecer otro tipo de contribución, como que alguien se encargue de pagar las comidas durante un viaje de larga duración o solicitarle al pasajero que acompañe despierto para mantener al conductor atento al camino, entre otros ejemplos. 
-              </p>
+          <h3>
+            {" "}
+            If I got on a trip as a passenger and then had to get off or as a
+            driver I had to cancel the trip, is it scored the same?{" "}
+          </h3>
+          <p>
+            {" "}
+            The system records the pending rating once both (driver and
+            passengers) confirm that they will share a ride. If a passenger is
+            canceled or the driver cancels for any reason, both can still
+            qualify. In that case, we recommend that you clarify that the trip
+            did not take place and that you tell how your experience was when
+            interacting with the other person.{" "}
+          </p>
+          <h3> Can I Give me a ride® without having a car? </h3>
+          <p>
+            {" "}
+            Sure, generating a trip as a passenger looking for a driver. You can
+            create a trip as such and the app will notify drivers when they load
+            a trip similar to the one you generated as a passenger. If you do
+            not create your trip, you can also search among the already
+            published drivers and request a seat.{" "}
+          </p>
 
-              <h3>¿Cómo coordino un viaje? </h3>
-              <p><strong>Conductores:</strong>
-              </p>
-              <p>Cuando cargues el viaje te recomendamos que detallar lo mejor posible la información sobre para evitar consultas repetitivas de parte de los interesados en tu viaje. Para ello utilizá el campo “Comentario para los pasajeros”. Ahí podrás informar cuál es la contribución por el viaje y el monto, el espacio disponible para equipaje, cuál es el máximo de pasajeros que llevarás en tu auto, dónde comienza y finaliza el mismo y cualquier otro dato adicional que consideres relevante. <br/>Es importante que te comuniques con tus pasajeros vía mensaje para terminar de coordinar detalles y las condiciones del viaje. Te sugerimos que en esta instancia les pidas un contacto telefónico para una comunicación más precisa llegada la fecha del viaje. <br/>Recordá que ambos deben estar de acuerdo y al tanto de las condiciones del viaje para evitar malentendidos con respecto a horarios, puntos de encuentro y llegada, equipaje, contribución para combustible y peaje y demás información fundamental.<br/>Te recomendamos coordinar y subir a tus pasajeros utilizando la plataforma de Give me a ride® para luego acceder a la posibilidad de calificarlos al terminar el viaje. 
-                </p>
-                <p><strong>Conductores: Buscador de pasajeros:</strong>
-                </p>
-                <p>Además de publicar tu viaje como Conductor y esperar que otros te contacten, también podés buscar pasajeros usando Give me a ride®. Desde la PC, haciendo click en el botón “Busco pasajeros”, completás los campos de origen y destino y presionás “Buscar”. 
-                  Desde el celular: en la pantalla principal apretando sobre el símbolo de la lupa y seleccionando “busco pasajero” como criterio de búsqueda. 
-                  </p>
-              
-                  <p><strong>Pasajeros: </strong>
-                  </p>
-                  <p>Una vez que encontraste un viaje que te sirve, enviá un mensaje vía la plataforma al conductor para aclarar los términos del mismo y coordinar los detalles. En ese mensaje podrás hacer consultas si ves que la descripción del viaje no tiene toda la información que precisás, o podés dejarle un contacto telefónico al conductor para que tenga otra alternativa de comunicación con vos. Una vez satisfechas las consultas y que ambos están de acuerdo con las condiciones del viaje, le solicitás el asiento al conductor y él acepta tu solicitud. 
-                    <br/>Es importante que ambos estén de acuerdo en las condiciones y detalles del viaje a la hora de confirmarlo. Asegurate de que no hay dudas sobre el punto de encuentro, el horario, la disponibilidad de espacio para equipaje, la cantidad total de pasajeros y la contribución por los gastos de combustible y peaje. También te sugerimos pedir el número de teléfono del conductor para una comunicación más precisa llegada la fecha del viaje. 
-                    <br/>Te recomendamos siempre subirte al viaje utilizando la plataforma de Give me a ride® para luego acceder a la posibilidad de calificarlo al terminar el viaje. Recordá que para eso, debés solicitar asiento con el botón correspondiente y que la otra persona te acepte la solicitud. Cuando te acepten, te llegará una notificación que podés ver verificar dentro de “Mis viajes".
-                    <br/>Una vez que está todo coordinado y el conductor te confirma para compartir el viaje ¡ya sólo hay que esperar hasta el día del viaje!
-                    </p>
+          <h3>
+            {" "}
+            Can I use Give me a ride® to connect with another transport and
+            continue my journey? (Example: to go to Ezeiza International
+            Airport){" "}
+          </h3>
+          <p>
+            {" "}
+            Sure yes, but keep in mind that trips may be subject to
+            modifications by the driver of the car. To guarantee your arrival at
+            an airport or bus station, we recommend using public transport.{" "}
+          </p>
 
-              <h3>¿Quiénes ven los viajes que publicó?: Visibilidad personalizada de viajes.</h3>
-              <p>Al momento de crear un viaje podés definir la privacidad del mismo y elegir quiénes serán los usuarios de Give me a ride® que podrán contactarse con vos. <br/>
-                Hay tres tipos de visibilidad: <br/>
-                “Viaje público” <br/>
-                “Viaje visible para amigos de amigos” <br/>
-                “Viaje visible para amigos” <br/>
-                <br/>Podés crear tu lista de amigos enviando solicitudes de amistad dentro de la plataforma o vinculando tu cuenta con la de Facebook, para que la plataforma tenga en cuenta también a tus amigos de esa red social que están en Give me a ride®. 
-              </p>
-              <p>Siguiendo esto los tres tipos de viaje comprenden: </p>
-              <ul>
-                <li>“Viaje público” → TODOS los usuarios de Give me a ride® podrán ver y solicitar este viaje.</li>
-                <li>“Viaje visible para amigos de amigos” →  tus amigos y sus amigos de Give me a ride® y Facebook (si te loggeaste con esta red social) podrán ver y solicitar este viaje.</li>
-                <li>“Viaje visible para amigos” → sólo tus amigos de Give me a ride® y Facebook (si te loggeaste con esta red social)  que utilicen Give me a ride® podrán ver y solicitar este viaje.</li>
-              </ul>
+          <h3> Can I search for a particular trip? </h3>
+          <p>
+            {" "}
+            Yes, using the travel search engine. On the main screen of the
+            platform you will be able to enter "Origin", "Destination" and / or
+            "Date". They all work as optional since it is not necessary to
+            complete all three. <br /> Example: If you want to travel for a long
+            weekend but you do not have a defined destination, you can enter
+            your place of origin and the date you want to leave. The search
+            engine will be in charge of showing you all the trips that leave
+            that place on that date. In addition, it will show you trips related
+            to alternative dates in case you have flexible plans. <br /> We
+            invite you to browse the app and see the infinite travel options,
+            such as joining one with free seats or finding fellow travelers on
+            the list of passengers looking for a car.
+          </p>
 
-              <table>
-                <thead>
-                  <tr>
-                      <th></th>
-                      <th>Si sos amigo
-                      </th><th>Si tenés algún amigo en común</th>
-                      <th>Si no sos amigo</th>
-                  </tr>
-                </thead>
-                  <tbody><tr>
-                      <th>Alguien crea un viaje "Público"</th>
-                      <td>lo ves ✔</td>
-                      <td>lo ves ✔</td>
-                      <td>lo ves ✔</td>
-                  </tr>
-                  <tr>
-                      <th>Alguien crea un viaje para "Amigos de amigos"</th>
-                      <td>lo ves ✔</td>
-                      <td>lo ves ✔</td>
-                      <td>no lo ves ✘</td>
-                  </tr>
-                  <tr>
-                      <th>Alguien crea un viaje para "Amigos"</th>
-                      <td>lo ves ✔</td>
-                      <td>no lo ves ✘</td>
-                      <td>no lo ves ✘</td>
-                  </tr>
-              </tbody></table>
-
-              <h3>Tuve problemas con mi viaje, ¿qué hago? </h3>
-              <p>Si tuviste una mala experiencia con tu viaje (conductores irresponsables, falta de compromiso del pasajero, entre otros problemas) o las condiciones del mismo no se dieron tal como fueron pautadas, contá sobre tu experiencia cuando puedas calificar a la otra persona. Es por eso que es importante que mantengas la coordinación de los viajes dentro de la plataforma de Give me a ride®.</p>
-              <p>Si la mala experiencia implica violencia por mensajes, verbal o física. También violencia vial (conducción peligrosa, uso de teléfono celular, etc). No respetar la contribución máxima o alguna otra ilegalidad. Más allá de dejar una calificación a la persona, también escribinos a Give me a ride®@stsrosario.org.ar o vía Mensaje Privado en nuestra página de Facebook, Instagram o Tweeter y contanos qué pasó. 
-                Si consideramos que lo amerita y que hay pruebas del incidente, podemos advertir, suspender a la persona por algún tiempo o de forma indeterminada.
-                </p>
-
-              <h3>¿Cómo funciona el sistema de calificaciones? </h3>
-              <p>Podés calificar a tu conductor o pasajeros a través de nuestro sistema de calificaciones pasadas las 24hs desde el horario de inicio del viaje. <br/>
-                Para poder hacerlo -ya sea en el rol de conductor o pasajero- ingresá en la plataforma dentro de la sección ‘Mis Viajes’. Aparecerá un cuadro de diálogo en el cual podrás comentar tu experiencia indicando si recomendás o no compartir viaje con la persona (pulgar arriba/abajo según corresponda tu experiencia) y sumar un texto que justifique esa calificación. <br/>El comentario sobre tu experiencia es muy importante para que el resto de la comunidad entienda porque recomendás o no compartir viajes con esa persona. Contá todo lo que te parezca importante que sepan los demás. Recordá que una vez enviada la calificación, la misma no puede modificarse. <br/>
-                Las calificaciones se publican una vez que la otra persona también haya dejado su calificación sobre vos, apareciendo ambas referencias al mismo tiempo en sus perfiles en la plataforma. En caso de que pasen 14 días sin que alguien califique, el sistema publicará la calificación que haya sido realizada y la persona que no haya dejado referencia en ese tiempo ya no podrá hacerlo.<br/>Para que el sistema habilite la calificación, es necesario que se registre que ambos usuarios compartieron un viaje. Para eso es necesario que el pasajero haya enviado una solicitud de viaje al conductor y este último la haya aceptado. Si tan solamente te comunicaste vía mensaje pero no te aceptaron la solicitud de asiento (como pasajero) o no aceptaste la solicitud (como conductor), no se podrán calificar. 
-                
-                </p>
-
-              <h3>Si me subí a un viaje como pasajero y luego tuve que bajarme o siendo conductor tuve que cancelar el viaje ¿se califica igual? </h3>
-              <p>El sistema registra la calificación pendiente una vez que ambos (conductor y pasajeros) confirman que compartirán un viaje. Si un pasajero se diera de baja o conductor cancelara por algún motivo, igualmente ambos podrán calificarse. En ese caso te recomendamos aclarar que el viaje no se concretó y que cuentes cómo fue tu experiencia al interactuar con la otra persona.</p>
-
-
-              <h3>¿Puedo Give me a ride® sin tener auto?</h3>
-              <p>Claro, generando un viaje como pasajero que busca conductor. Podés crear un viaje como tal y la app le avisará a los conductores cuando carguen un viaje similar al que vos generaste como pasajero. Si no creás tu viaje, también podés buscar entre los ya publicados de los conductores y solicitar un asiento.  </p>
-
-
-              <h3>¿Puedo usar Give me a ride® para empalmar con otro transporte y continuar mi viaje? (Ejemplo: para ir al Aeropuerto Internacional de Ezeiza)   </h3>
-              <p>Claro que sí, pero tené en cuenta que los viajes pueden estar sujetos a modificaciones por parte del conductor del auto. Para garantizar tu llegada a un aeropuerto o estación de ómnibus, te recomendamos usar transportes públicos. </p>
-
-
-
-              <h3>¿Puedo buscar un viaje en particular?</h3>
-              <p>Sí, usando el buscador de viajes. En la pantalla principal de la plataforma vas a poder ingresar “Origen”, “Destino” y/o “Fecha”. Todas funcionan como opcionales ya que no es necesario completar las tres.  <br/>Ejemplo: Si querés irte un fin de semana largo de viaje pero no tenés destino definido, podés ingresar tu lugar de origen y la fecha en la que deseás salir. El buscador se encargará de mostrarte todos los viajes que salgan de ese lugar en esa fecha. Además, te mostrará viajes relacionados con fechas alternativas por si tenés planes flexibles. <br/>Te invitamos a navegar la app y ver las infinitas opciones de viajes, como sumarte a alguno con asientos libres o encontrar compañeros viajeros en la lista de pasajeros que buscan auto. 
-                </p>
-
-                <h3>¿Cómo funciona la alerta de viaje?</h3>
-                <p>Luego de realizar una búsqueda de viaje, al final del listado de resultados encontrarás un botón para crear una alerta con los datos de viajes que cargaste en la búsqueda.
-                  La alerta te llega cuando alguien crea un nuevo viaje que coincide con la búsqueda desde la cual se originó la alerta. 
-                  Próximamente podrás configurar las condiciones de la alerta pudiendo tener un rango de tiempo y distancia. Podés colaborar con Give me a ride® para que podamos incorporar estas funciones pronto <a href="https://subiquetellevo.com.ar/donar"> ---&gt; ¡Donar!</a></p>
-
-                  <h3>¿Cómo funciona el ‘matcheador’ de viajes?</h3>
-                  <p>Para ver los matchs (o coincidencias) de búsqueda con viajes publicados, tenés que ir a “mis viajes” entrar al que creaste y vas a ver las coincidencias. El “match” tiene un rango de días. Próximamente podrás configurar las condiciones de “match” pudiendo tener un rango de tiempo y distancia. Podés colaborar con Give me a ride® para que podamos incorporar estas funciones pront <a href="https://subiquetellevo.com.ar/donar"> ---&gt; ¡Donar!</a></p>
-
-              <h3>¿Puedo invitar a mis amigos a Give me a ride®? :D</h3>
+          <h3> How does the travel alert work? </h3>
+          <p>
+            {" "}
+            After carrying out a trip search, at the end of the results list you
+            will find a button to create an alert with the trip data that you
+            loaded in the search. The alert comes to you when someone creates a
+            new trip that matches the search from which the alert originated.
+            Soon you will be able to configure the alert conditions, being able
+            to have a range of time and distance. You can collaborate with Give
+            me a ride® so that we can incorporate these functions soon{" "}
+            <a href="https://givemearide.com/donar"> --- & gt; Donate! </a>{" "}
+          </p>
+          <h3> How does the travel ‘matcher’ work? </h3>
+          <p>
+            {" "}
+            To see the search matches (or matches) with published trips, you
+            have to go to "my trips" enter the one you created and you will see
+            the matches. The match has a range of days. Soon you will be able to
+            configure the "match" conditions, being able to have a range of time
+            and distance. You can collaborate with Give me a ride® so that we
+            can incorporate these functions soon{" "}
+            <a href="https://subiquetellevo.com.ar/donar">
+              {" "}
+              --- & gt; Donate!{" "}
+            </a>{" "}
+          </p>
+          {/* <h3>¿Puedo invitar a mis amigos a Give me a ride®? :D</h3>
               <p>¡Claro que sí! Contales del proyecto e invitalos a sumarse a la aplicación mediante el botón “Invitar amigos” en el menú principal. También podés incentivarlos compartir en tu muro de Facebook los viajes que cargues a la plataforma. </p>
 
 
-              <h3>¿Puedo crear viajes frecuentes u ocasionales para Give me a ride® dentro de mi ciudad?</h3>
-              <p>Lamentablemente el sistema aún no está desarrollado para gestionar este tipo de viajes pero estamos trabajando en el desarrollo de una versión que también sea útil para compartir viajes dentro de la misma ciudad.</p>
+               <h3> Can I create frequent or occasional trips for Give me a ride® within my city? </h3>
+               <p> Unfortunately the system has not yet been developed to manage this type of trip but we are working on developing a version that is also useful for sharing trips within the same city. </p> 
+               <h3> How do I share trips through social networks? </h3>
+               <p> To share your trip or one that you have seen on the platform through social networks, you have to use the buttons with the symbol of the social network. You can find them in the list of trips or in the detail of each one. This feature is only available for the downloadable version for mobile phones. </p> 
 
-              <h3>¿Cómo comparto viajes por las redes sociales?</h3>
-              <p>Para compartir tu viaje o alguno que hayas visto en la plataforma a través de las redes sociales, tenés que usar los botones con el símbolo de la red social. Los podés encontrar en el listado de viajes o dentro del detalle de cada uno. Esta función sólo está disponible para la versión descargable para celulares.  </p>
+               <h3> How was Give me a ride® born? Who do it? </h3>
+               <p> Give me a ride® is a network of people who share car rides. It is a non-profit and open source collective management project that emerged from the civil association STS Rosario in 2013 in order to contribute to a more rational use of the car.
+                 The idea is that when we have to travel by car because there is no bus or it does not suit us for some reason, we always try to fill the car to make better use of fossil resources and pollution associated with the trip. Beyond environmental motivation, Give me a ride® also seems very important to us because it helps to generate bonds between people, who many times would not have met otherwise. </p> 
+                 <h3> How can I contribute to Give me a ride®? </h3>
+                 <p> Great that you want to collaborate! You can contribute to Give me a ride® with volunteer work and also dissemination / contacts. <a href="https://givemearide.com/howtocooperate"> Here you can find all the information to help Give me a ride® go further </a>. </p> 
+                 <p> You can also donate once or monthly here <a href="https://givemearide.com/donate"> --- & gt; Donate! </a> </p>
 
 
               <h3>¿Cómo nace Give me a ride®? ¿Quiénes lo hacen? </h3>
@@ -178,10 +456,9 @@ export default function Faq() {
               <h3>Ante cualquier comentario, consulta o propuesta de mejora, escribinos a nuestras redes Facebook, Instagram, Twitter o <a href="mailto:subiquetellevo@grupo10.com.ar" target="_top">Give me a ride®@grupo10.com.ar</a>.<p></p>
 
                 <p>¡Buen viaje!</p>
-            </h3>
-            </div>
+            </h3> */}
         </div>
-    )
+      </article>
+    </div>
+  );
 }
-
-

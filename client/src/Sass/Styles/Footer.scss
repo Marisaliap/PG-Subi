@@ -1,27 +1,62 @@
 @import "../Variables/Variables.scss";
 
 .Footer {
+  font-weight: normal;
   display: grid;
-  grid-template-columns: 10% 20% 20% 20% 20% 10% ;
-  justify-content: space-around;
-  padding: 0;
+  grid-template-columns: 4% 8% 4% 15% 4% 18% 4% 15% 4% 20% 4%;
   margin: 0;
   text-align: left;
-  margin-bottom: 2rem;
-  
-  
-  
+  background-color: $footer;
+  justify-items: center;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  transition: background-color 0.5s ease-in-out;
+
+  &:hover {
+    background-color: $footerhover;
+  }
+
   .cosasAbajo {
     display: row;
-    
-    
+    margin-top: -1rem;
   }
-  
-  .Link{
+
+  a {
+    text-decoration: underline;
+    color: $links;
+  }
+
+  .lineahr {
+    height: 100%;
+  }
+
+  .Link {
     text-decoration: none;
   }
-  
-  .Info{
+
+  .Info {
     align-self: center;
+  }
+
+  .help {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: -1rem;
+  }
+
+  .helpcita {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .titulo {
+    justify-content: center;
+    display: flex;
+    margin-top: 0.5rem;
   }
 }

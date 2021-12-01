@@ -2,60 +2,78 @@
 
 .NavBar {
   display: grid;
-  grid-template-columns: 10% 35% 10% 10% 25% 10%;
+  grid-template-columns: 25% 25% 25% 25%;
+  align-items: center;
+  justify-items: center;
 
   .logs {
     display: flex;
-    justify-items: center;
+  }
+
+  .perfylog {
+    display: flex;
     align-items: center;
-    justify-content: flex-end;
+    align-content: space-around;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+  
+
+  .giveMeARide {
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 80%;
+    align-items: center;
   }
 
   .logoSubi {
     width: 6rem;
-    margin-top: 1.5rem;
-    margin-left: 1vw;
+    margin-top: 1rem;
+   // margin-left: 1vw;
   }
 
   .nombreSubi {
     font-family: "Inter", sans-serif;
-    display: none;
+    display: flex;
     justify-items: center;
     justify-content: center;
     align-content: center;
     align-items: center;
+    text-decoration: none;
+    margin: 0;
   }
 
   .izquierda {
     display: flex;
     flex-direction: row;
-    margin-left: 1rem;
   }
 
-  .derecha {
+  .profile {
     display: flex;
-    flex-direction: row;
-    position: absolute;
-    right: 2rem;
+    justify-content: flex-end;
+    margin-top: 1vh;
   }
 
   .searchContainer {
     height: 5vh;
-    position: relative;
+    //position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 0.5rem 3rem;
+    //justify-content: flex-end;
+    padding-top: 1rem;
 
     .searchContainerItem {
       text-decoration: none;
-      margin-left: 3rem;
+      //margin-left: 3rem;
     }
   }
 }
 
 .divider {
   border-top: 2px solid #220f0020;
-  margin: 1rem auto;
-  margin-top: 1rem;
 }

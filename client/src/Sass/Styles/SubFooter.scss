@@ -1,0 +1,28 @@
+@import "../Variables/Variables.scss";
+
+.SubFooter {
+  background-color: $subfooter;
+
+  .info {
+    display: grid;
+    grid-template-columns: 5% 70% 20% 5%;
+    justify-items: start;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+  }
+
+  .redesSociales {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+
+    a {
+      text-decoration: none;
+      color: $links;
+    }
+  }
+}
