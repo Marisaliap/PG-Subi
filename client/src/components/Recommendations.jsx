@@ -17,7 +17,124 @@ export default function Recommendations() {
       <article>
         <div></div>
         <div>
-          <h2>Recomendaciones a la hora de Give me a ride®</h2>
+          <h2> Recommendations - Give me a ride® </h2>
+
+          <p>
+            Sharing a trip is a great experience but we must take into account
+            some considerations in order to avoid drawbacks.
+          </p>
+
+          <h3> Origin and destination </h3>
+          <p>
+            When creating a trip that has an origin and destination with precise
+            directions, you never have to load addresses of your house or
+            similar. Always use a City or a street junction.
+          </p>
+
+          {/* <h3> Communication between users </h3>
+<p>
+  Depending on how you have entered the platform, you will receive
+  notifications via email or notifications via social network when
+  there are requests, acceptances or rejections for Give me a ride®,
+  when modified or cancel a trip, when they send you messages, etc.
+</p> */}
+
+          <h3> Give me a ride® with strangers </h3>
+          <p>
+            Before Give me a ride® with users you don't have references we
+            recommend that you take a few minutes to review the profile of Give
+            me a ride® of that person and their profile in different social
+            networks. We also suggest talking to them before you travel. It is
+            important to always share with someone you trust.
+          </p>
+          {/* 
+          <h3> Pre-trip agreements </h3>
+          <p>
+            Arrange in advance with the driver the route of the trip, if you are
+            going to share the costs associated with it, and how much you will
+            have to contribute each. Remember that the driver cannot profit from
+            the trip, see {""}
+            <strong>
+              "Auto Insurance and the importance of calculating the cost of the
+              trip"
+            </strong>{" "}
+            {""}
+            (below)
+          </p>
+          <p>
+            We recommend that payment be made directly to the driver at finish
+            the trip and without intermediaries.
+          </p> */}
+
+          <h3> Before getting into a car or someone getting into your car </h3>
+          <ul>
+            <li>
+              <i> </i> Check the DNI to verify if the identity of the people
+              correspond with the one who told you.
+            </li>
+            <li>
+              <i> </i> At the time of the meeting, check that the car model and
+              plate match the data provided by the driver.
+            </li>
+            <li>
+              <i> </i> Ask the driver to show you his driving license, the
+              vehicle's green card and the {""}
+              <strong> vehicle insurance </strong> updated to date. The car must
+              also have mandatory technical inspection done.
+            </li>
+            <li>
+              <i> </i> Visually verify that the car you are traveling in is in
+              good condition.
+            </li>
+            <li>
+              <i> </i> Check that there is a seat belt for each passenger
+            </li>
+            <li>
+              <i> </i> Remember that you are not obliged to get into any car or
+              get anyone in your car. If the people you agreed to trip generate
+              distrust at the time of the meeting, if you consider any attitude
+              as suspicious, or if the documentation or the status of the car is
+              not in condition, you can express it in the best terms and not
+              make the trip. If you think that your mistrust or suspicion is
+              based on prejudice, you can express that an unforeseen event arose
+              or that you do not feel well physically to travel. You can also
+              get out of the car if at any moment, if it seems to you that the
+              driver is driving recklessly or that it doesn't make you feel
+              comfortable. When you get in the car, you are responsible for
+              exercising your own security. After the date of the trip you can
+              leave a negative rating. {""}
+            </li>
+          </ul>
+
+          {/* <h3>
+            Auto Insurance and the importance of calculating the cost of the
+            trip {""}
+          </h3>
+          <p>
+            In case of agreeing to share expenses, the total cost of the trip
+            will be will be calculated as the sum of the {""}
+            <strong> cost of fuel + tolls </strong>. Driver may request a
+            maximum contribution to each passenger of the total cost of the trip
+            divided by the number of occupants of the vehicle at the time of the
+            trip (driver and passengers). This must be respected since
+            otherwise, an illegal activity would be committed.
+          </p> */}
+
+          <p>
+            We emphasize that the driver should not obtain economic profit in
+            travel from him. For more information, check the {""}
+            <a href="http://localhost:3000/terms-and-conditions">
+              Give me a ride® General Terms and Conditions.
+            </a>
+          </p>
+        </div>
+      </article>
+    </div>
+  );
+}
+
+{
+  /* <h2>Recomendaciones a la hora de Give me a ride®</h2>
 
           <p>
             Compartir es una gran experiencia pero debemos tener en cuenta
@@ -118,8 +235,10 @@ export default function Recommendations() {
             podrá pedir una contribución máxima a cada pasajero del costo total
             del viaje dividido la cantidad de ocupantes del vehículo al momento
             del viaje (conductor y pasajeros). Esto debe ser respetado pues de
-            no ser así se estaría cometiendo una actividad ilegal.
-          </p>
+            no ser así se estaría cometiendo una actividad ilegal. */
+}
+{
+  /* </p>
 
           <p>
             Remarcamos que el conductor no debe obtener ganancia económica en
@@ -127,9 +246,8 @@ export default function Recommendations() {
             <a href="https://http://localhost:3000//tyc">
               Términos y Condiciones Generales de Give me a ride®.
             </a>
-          </p>
-        </div>
-      </article>
-    </div>
-  );
+          </p> */
+}
+{
+  /* </div> */
 }

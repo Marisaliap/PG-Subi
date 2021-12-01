@@ -1,14 +1,37 @@
 import React from "react";
+import { useEffect } from 'react';
 import Logo from "../img/logoNegro.png";
 import { Profile } from "./Profile";
 import SearchUserByName from "./SearchUserByName";
+import { useSelector, useDispatch } from "react-redux";
 import Auth from "./Auth";
+import { useAuth0 } from "@auth0/auth0-react";
 import { Link, NavLink } from "react-router-dom";
+import { getUserDetail } from "../actions";
 import "../Sass/Styles/NavBar.scss";
 
 function Nav() {
+ const dispatch = useDispatch();
+  const  users = useSelector(state => state.user);
+  const { user, isAuthenticated } = useAuth0();
+  const id = isAuthenticated? user.email: "";
+
+
+  console.log("esto es users",users);
+  //console.log("esto es user",user);
+ // console.log("esto es id",id);
+  //console.log("esto es AUth",isAuthenticated);
+
+
+  useEffect(() => {
+    dispatch(getUserDetail(id));
+  }, [dispatch, id]);
+
+  //console.log(" esto es cars/mail", users.cars.userEmail)
+  console.log(" esto es cars", users.cars)
+
   return (
-    <div>
+    <>
       <nav className="NavBar">
         <div className="giveMeARide">
           <div className="izquierda">
@@ -22,16 +45,15 @@ function Nav() {
             </Link>
           </div>
         </div>
-        {/* <div>
-             <NavLink className="searchContainerItem" to="/">
-                <h3>🔍 Search</h3>
-              </NavLink>
-          </div> */}
         <div className="searchContainer">
-          <NavLink className="searchContainerItem" to="/route">
+        {null&&!users&&users.cars[0]? 
+         <NavLink className="searchContainerItem" to="/route">
             <button className="button">Post a Trip</button>
-          </NavLink>
-        </div>
+          </NavLink>: 
+          <NavLink className="searchContainerItem" to="/car">
+            <button className="button">Post a Trip</button>
+          </NavLink>}
+          </div>
         <div>
           <SearchUserByName />
         </div>
@@ -44,8 +66,7 @@ function Nav() {
           </div>
         </div>
       </nav>
-      <hr className="divider" />
-    </div>
+    </>
   );
 }
 

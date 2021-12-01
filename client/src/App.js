@@ -1,6 +1,7 @@
 import React from "react";
 import "./Sass/Styles/App.scss";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useEffect, useState } from "react";
 import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
 import Faq from "./components/Faq";
@@ -20,12 +21,32 @@ import Map from "./components/Map";
 import Users from "./components/Users";
 import NavBar from "./components/NavBar";
 import RouteDetails from "./components/RouteDetails";
-import PrivacyPolicy from "./components/PrivacyPolicy";
+import PoliticaPrivacidad from "./components/PoliticaPrivacidad";
 import CookiesPolicy from "./components/CookiesPolicy";
 import AllInfoRoute from "./components/allInfoRoute";
-
+import RoutesFromSearch from "./components/RoutesFromSearch"
 export default function App() {
   const { isAuthenticated } = useAuth0();
+
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    });
+  }, []);
+
+  // This function will scroll the window to the top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // for smoothly scrolling
+    });
+  };
 
   return (
     <BrowserRouter>
@@ -44,7 +65,8 @@ export default function App() {
                     <Route path="/register" component={Registro} />
                     <Route path="/user/:id" component={UserDetails} />
                     <Route path="/route-list" component={RouteDetails} />
-                    <Route path="/route/:id" component= {AllInfoRoute}/>
+                    <Route path="/routes-found" component={RoutesFromSearch} />
+                    <Route path="/route/:id" component={AllInfoRoute} />
                     <Route path="/car" component={FormCar} />
                     <Route path="/users" component={Users} />
                   </Switch>
@@ -60,6 +82,13 @@ export default function App() {
             />
             <Route path="/recommendations" component={Recommendations} />
             <Route path="/aboutus" component={Aboutus} />
+            <Route path="/privacy-policy" component={PoliticaPrivacidad} />
+            <Route path="/cookies-policy" component={CookiesPolicy} />
+            {showButton && (
+              <button onClick={scrollToTop} className="back-to-top">
+                &#8679;
+              </button>
+            )}
             <Footer />
             <SubFooter />
           </div>

@@ -28,7 +28,7 @@ export default function Faq() {
             >
               Facebook
             </a>
-            o{" "}
+            or{" "}
             <a href="mailto:grupo10.soyhenry@gmail.com" target="_top">
               grupo10.soyhenry@gmail.com
             </a>
@@ -411,7 +411,7 @@ export default function Faq() {
             Soon you will be able to configure the alert conditions, being able
             to have a range of time and distance. You can collaborate with Give
             me a ride® so that we can incorporate these functions soon{" "}
-            <a href="https://givemearide.com/donar"> --- & gt; Donate! </a>{" "}
+            <a href="https://givemearide.com/donar"> Donate! </a>{" "}
           </p>
           <h3> How does the travel ‘matcher’ work? </h3>
           <p>
@@ -422,10 +422,7 @@ export default function Faq() {
             configure the "match" conditions, being able to have a range of time
             and distance. You can collaborate with Give me a ride® so that we
             can incorporate these functions soon{" "}
-            <a href="https://subiquetellevo.com.ar/donar">
-              {" "}
-              --- & gt; Donate!{" "}
-            </a>{" "}
+            <a href="https://subiquetellevo.com.ar/donar"> Donate! </a>{" "}
           </p>
           {/* <h3>¿Puedo invitar a mis amigos a Give me a ride®? :D</h3>
               <p>¡Claro que sí! Contales del proyecto e invitalos a sumarse a la aplicación mediante el botón “Invitar amigos” en el menú principal. También podés incentivarlos compartir en tu muro de Facebook los viajes que cargues a la plataforma. </p>
