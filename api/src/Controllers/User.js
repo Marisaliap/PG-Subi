@@ -24,9 +24,9 @@ const postUser = async (req, res, next) => {
     } = req.body;
 
     const user = await User.findOrCreate(
-    
+
       {
-        where: {email},
+        where: { email },
         defaults: {
           name,
           photo,
@@ -67,16 +67,17 @@ const getUser = async (req, res, next) => {
             [Op.iLike]: `%${name}%`
           }
         },
-      });
-
+        include: Post
+      }); 
+  // console.log(data.map(user =>user.posts.map(c=>parseInt(c.calification)))),
       data = data.map(user => {
         return {
           name: user.name,
           lastName: user.lastName,
           genre: user.genre,
           age: user.age,
-          calification,
-          // calification: user.calification.reduce((a,b)=>a+b)/user.calification.length,
+          calification: user.posts.map(c=>parseInt(c.calification)).reduce((a,b)=>a+b)/user.posts.length,
+          // calification: user.calification.flat().reduce((a, b) => a + b,) / user.calification.length,
           photo: user.photo,
           email: user.email,
         }
@@ -86,12 +87,12 @@ const getUser = async (req, res, next) => {
     else if (id) {
       data = await User.findByPk(id,
         {
-          include:[Post,Car,Route]
+          include: [Post, Car, Route]
         }
       );
     }
 
-    else{
+    else {
       data = await User.findAll();
     }
 
@@ -102,10 +103,10 @@ const getUser = async (req, res, next) => {
   }
 }
 
-const putUser = async (req,res,next) => {
+const putUser = async (req, res, next) => {
   try {
-    const {id} = req.params;
-    const {about,age,street,city,province,telephone,facebook,instagram,password,email,photo,calification} = req.body;
+    const { id } = req.params;
+    const { about, age, street, city, province, telephone, facebook, instagram, password, email, photo, calification } = req.body;
     const user = await User.findByPk(id);
     user.update({
       about,
@@ -119,8 +120,7 @@ const putUser = async (req,res,next) => {
       password,
       email,
       photo,
-      // calification:[...user.calification,calification],
-       calification,
+      calification: [calification, ...user.calification],
     });
     res.send(user);
   } catch (error) {
@@ -139,4 +139,4 @@ const deleteUser = async (req, res, next) => {
   }
 }
 
-module.exports = { postUser, getUser, putUser, deleteUser}
+module.exports = { postUser, getUser, putUser, deleteUser }
