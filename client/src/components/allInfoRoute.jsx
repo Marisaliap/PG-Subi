@@ -23,10 +23,10 @@ export default  function AllInfoRoute({match}) {
   const [datos, setDatos] = useState("")
   useEffect(() => {
     dispatch(getRouteById(match.params.id))
-    axios.get("http://localhost:3001/mercadopago",{
+    axios.post("http://localhost:3001/mercadopago",{
       idRoute:route.id,
       title:'hola',
-      price:route.price,
+      price:320,
       quantity:1,
     })
     .then((info)=> setDatos(info.data))

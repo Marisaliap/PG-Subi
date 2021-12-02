@@ -5,7 +5,7 @@ router.use(express.json());
 const {getMP,getMPById,getMPPayment} = require('../Controllers/MercadoPago');
 
 
-router.get('/', getMP);
+router.post('/', getMP);
 router.get('/payment/:id', getMPById);
 router.get('/payment', getMPPayment);
 

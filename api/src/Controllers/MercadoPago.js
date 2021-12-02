@@ -13,7 +13,10 @@ const getMP = async (req,res,next) => {
       quantity,
     } = req.body
 
-
+    console.log(idRoute)
+    console.log(title)
+    console.log(price)
+    console.log(quantity)
 
     let orden = await Order.create({status:'processing'});
     //const route = await Route.findByPk(idRoute);

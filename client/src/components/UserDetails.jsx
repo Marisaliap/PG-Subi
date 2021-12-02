@@ -21,7 +21,7 @@ export default function UserDetails(props) {
   // falta condicion de pago para mostrar toda la info o primeara parte
 
   return (
-    
+
       <div>
       <div>
         <div>
@@ -51,7 +51,7 @@ export default function UserDetails(props) {
         </div>
         <hr />
         <div>
-          {user.cars?(
+          {user.cars[0].patent !== undefined ?(
             <CardCar
               patent={user.cars[0].patent}
               brand={user.cars[0].brand}
@@ -63,12 +63,12 @@ export default function UserDetails(props) {
           )}
         </div>
         {/* <p> Loading...</p> */}
-      
+
 </div>
         <Link to="/home">
           <button className="buttonBlue">Back</button>
         </Link>
       </div>
-  
+
   );
 }
