@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../Sass/Styles/CookiesPolicy.scss";
+import { IntlProvider, FormattedMessage } from "react-intl";
+import MensajesIngles from "../lang/en-US.json";
+import MensajesEspanol from "../lang/es-Ar.json";
 
 export default function PoliticaCookies() {
   const history = useHistory();
@@ -10,12 +13,14 @@ export default function PoliticaCookies() {
     history.push("/home");
   }
   return (
+    <IntlProvider locale="en-US" messages={ MensajesIngles }>
     <div className="Cookies">
      
       <article>
         <div></div>
         <div>
-        <p ><a href="/terms-and-conditions">Condiciones Generales de Uso</a> | <a href="/privacy-policy">Política de Privacidad</a> | Política de cookies</p>
+        <p ><a href="/terms-and-conditions"><FormattedMessage id="cookies.conditions" 
+        defaultMessage="Terms and Conditions"/></a> | <a href="/privacy-policy">Política de Privacidad</a> | Política de cookies</p>
        <p> Give SA (“GiveMeaRide”, “nosotros”, “nos” o “nuestro”) utiliza cookies y tecnologías de seguimiento similares en nuestro sitio web y en nuestras aplicaciones móviles (individualmente denominadas “plataforma” o conjuntamente “plataformas”). En esta política (la “Política de cookies”), te proporcionamos más información relacionada con estas tecnologías y sobre las decisiones que puedes tomar al respecto.</p>
 
 1. ¿Qué es una “cookie” y cuáles son las “tecnologías de seguimiento similares”?
@@ -63,5 +68,6 @@ Si tienes preguntas con respecto a nuestra Política de cookies, no dudes en pon
         </div>
       </article>
     </div>
+    </IntlProvider>
   );
 }
