@@ -56,9 +56,10 @@ export function getRouteFromDb(originName, destinyName, date, place) {
 }
 
 export function getUserDetail(id) {
-   return async function (dispatch) {
-     try {
-      const response = (await axios.get(`http://localhost:3001/user/${id}`)).data;
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user/${id}`))
+        .data;
       return dispatch({
         type: "GET_USER_DETAIL",
         payload: response,
@@ -71,11 +72,13 @@ export function getUserDetail(id) {
 export function getRouteById(id) {
   return async function (dispatch) {
     try {
-     const response = (await axios.get(`http://localhost:3001/maps/route/` + id)).data;
-     console.log(response)
-     return dispatch({
-         type: "GET_ROUTE_BY_ID",
-         payload: response,
+      const response = (
+        await axios.get(`http://localhost:3001/maps/route/` + id)
+      ).data;
+      console.log(response);
+      return dispatch({
+        type: "GET_ROUTE_BY_ID",
+        payload: response,
       });
     } catch (error) {
       console.log(error);
@@ -86,11 +89,13 @@ export function getRouteById(id) {
 export function getUserByName(name) {
   return async function (dispatch) {
     try {
-     const response = (await axios.get(`http://localhost:3001/user/?name=` + name)).data;
-     console.log(response)
-     return dispatch({
-         type: "GET_USER_BY_NAME",
-         payload: response,
+      const response = (
+        await axios.get(`http://localhost:3001/user/?name=` + name)
+      ).data;
+      console.log(response);
+      return dispatch({
+        type: "GET_USER_BY_NAME",
+        payload: response,
       });
     } catch (error) {
       console.log(error);
@@ -174,26 +179,45 @@ export function postCar(payload) {
   };
 }
 
-export function postRoute(routeInfo) {
-  console.log(routeInfo)
+export function postMejorasYReclamos(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(`http://localhost:3001/maps/route/add`, routeInfo);
+      const response = await axios.post(
+        `http://localhost:3001/suggestionbox/add`,
+        payload
+      );
       return dispatch({
-          type: "POST_ROUTE",
-          payload: response.data,
-        });
-      }
-    catch (error) {
-      console.log(error)
-    }  
-  }
+        type: "POST_RECLAMOSYMEJORAS",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
-export function RoutePostInfo (info) {
+
+export function postRoute(routeInfo) {
+  console.log(routeInfo);
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/maps/route/add`,
+        routeInfo
+      );
+      return dispatch({
+        type: "POST_ROUTE",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+export function RoutePostInfo(info) {
   return {
-    type: 'ROUTE_POST_INFO',
-    payload: info
-  }
+    type: "ROUTE_POST_INFO",
+    payload: info,
+  };
 }
 
 export function deleteRoute() {
@@ -204,15 +228,14 @@ export function deleteRoute() {
 export function allRoutes() {
   return async function (dispatch) {
     try {
-     const response = (await axios.get(`http://localhost:3001/maps/route`)).data;
-     return dispatch({
-         type: "GET_ALL_ROUTE_INFO",
-         payload: response,
+      const response = (await axios.get(`http://localhost:3001/maps/route`))
+        .data;
+      return dispatch({
+        type: "GET_ALL_ROUTE_INFO",
+        payload: response,
       });
-     }
-   catch (error) {
-    console.log(error)
-  }  
-  }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
-

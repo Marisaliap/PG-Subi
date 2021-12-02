@@ -5,7 +5,6 @@ import "../Sass/Styles/Profile.scss";
 
 export const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
-  console.log(user);
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -13,7 +12,7 @@ export const Profile = () => {
   return (
     isAuthenticated && (
       <div className="Profile">
-        <Link to={"/user/" + user.email}>
+        <Link to={"/user/" + user.email.slice(0, user.email.lastIndexOf("@"))}>
           <img className="fotoPerfil" src={user.picture} alt={user.name} />
         </Link>
       </div>

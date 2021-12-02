@@ -17,7 +17,7 @@ export default function Recommendations() {
       <article>
         <div></div>
         <div>
-          <h2> Recommendations - Give me a ride® </h2>
+          <h2> Recommendations - Gimme A Ride® </h2>
 
           <p>
             Sharing a trip is a great experience but we must take into account
@@ -35,13 +35,13 @@ export default function Recommendations() {
 <p>
   Depending on how you have entered the platform, you will receive
   notifications via email or notifications via social network when
-  there are requests, acceptances or rejections for Give me a ride®,
+  there are requests, acceptances or rejections for Gimme A Ride®,
   when modified or cancel a trip, when they send you messages, etc.
 </p> */}
 
-          <h3> Give me a ride® with strangers </h3>
+          <h3> Gimme A Ride® with strangers </h3>
           <p>
-            Before Give me a ride® with users you don't have references we
+            Before Gimme A Ride® with users you don't have references we
             recommend that you take a few minutes to review the profile of Give
             me a ride® of that person and their profile in different social
             networks. We also suggest talking to them before you travel. It is
@@ -124,7 +124,7 @@ export default function Recommendations() {
             We emphasize that the driver should not obtain economic profit in
             travel from him. For more information, check the {""}
             <a href="http://localhost:3000/terms-and-conditions">
-              Give me a ride® General Terms and Conditions.
+              Gimme A Ride® General Terms and Conditions.
             </a>
           </p>
         </div>
@@ -134,11 +134,11 @@ export default function Recommendations() {
 }
 
 {
-  /* <h2>Recomendaciones a la hora de Give me a ride®</h2>
+  /* <h2>Recomendaciones a la hora de Gimme A Ride®</h2>
 
           <p>
             Compartir es una gran experiencia pero debemos tener en cuenta
-            algunas consideraciones para poder Give me a ride® sin
+            algunas consideraciones para poder Gimme A Ride® sin
             inconvenientes.
           </p>
 
@@ -153,16 +153,16 @@ export default function Recommendations() {
           <p>
             Según como hayas ingresado a la plataforma, recibirás notificaciones
             vía correo o notificaciones vía red social cuando hayan solicitudes,
-            aceptaciones o rechazos para Give me a ride®, cuando se modifique o
+            aceptaciones o rechazos para Gimme A Ride®, cuando se modifique o
             cancele un viaje, cuando te envíen mensajes, etc.{" "}
           </p>
 
           <h3>Carpooleando con desconocidos</h3>
           <p>
-            Previo a Give me a ride® con usuarios de los que no tengas
+            Previo a Gimme A Ride® con usuarios de los que no tengas
             referencias (o sea, que no sean “amigos” o “amigos de tus amigos”),
             te recomendamos que te tomes unos minutos para revisar el perfil de
-            Give me a ride® de esa persona y su perfil en distintas redes
+            Gimme A Ride® de esa persona y su perfil en distintas redes
             sociales. De esa forma podrás contar con información acerca de la
             persona. También sugerimos conversar antes de viajar. Siempre es
             importante compartir con alguien que te genere confianza.
@@ -244,7 +244,7 @@ export default function Recommendations() {
             Remarcamos que el conductor no debe obtener ganancia económica en
             sus viajes. Para más información, revisá los{" "}
             <a href="https://http://localhost:3000//tyc">
-              Términos y Condiciones Generales de Give me a ride®.
+              Términos y Condiciones Generales de Gimme A Ride®.
             </a>
           </p> */
 }

@@ -6,9 +6,10 @@ const initialState = {
   user: [],
   users: [],
   getRoutes: [],
-  car:[],
+  car: [],
   routeById: [],
-  routeFromDb: []
+  routeFromDb: [],
+  reclamosymejoras: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -29,17 +30,17 @@ function rootReducer(state = initialState, action) {
         suggestions2: action.payload.cities,
       };
     case "GET_ROUTE":
-      console.log(action.payload, 'SOY PAYLOAD')
+      console.log(action.payload, "SOY PAYLOAD");
       return {
         ...state,
         route: action.payload,
       };
-    case "GET_USER_DETAIL":  
+    case "GET_USER_DETAIL":
       return {
         ...state,
         user: action.payload,
       };
-    case "GET_ALL_ROUTE_INFO":  
+    case "GET_ALL_ROUTE_INFO":
       return {
         ...state,
         getRoutes: action.payload,
@@ -53,6 +54,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload,
+      };
+    case "POST_RECLAMOSYMEJORAS":
+      return {
+        ...state,
+        reclamosymejoras: action.payload,
       };
     case "GET_USER_BY_NAME":
       return {
@@ -99,16 +105,16 @@ function rootReducer(state = initialState, action) {
         ...state,
         routePostInfo: action.payload,
       };
-      case "GET_ROUTE_BY_ID":
+    case "GET_ROUTE_BY_ID":
       return {
         ...state,
         routeById: action.payload,
       };
-      case "GET_ROUTE_FROM_DB":
-        return {
-          ...state,
-          routeFromDb: action.payload,
-        };
+    case "GET_ROUTE_FROM_DB":
+      return {
+        ...state,
+        routeFromDb: action.payload,
+      };
     default:
       return state;
   }

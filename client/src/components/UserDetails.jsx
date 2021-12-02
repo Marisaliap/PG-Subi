@@ -47,7 +47,7 @@ export default function UserDetails(props) {
               src={user.photo}
               alt="User Image"
             /> */}
-            <img src={img} alt="User Image" style={{ width: "250px" }} />
+            <img src={img} alt="User" style={{ width: "250px" }} />
             <h2>
               {user.name} {user.lastName} {genderIcon(user.genre)}
             </h2>
@@ -86,7 +86,7 @@ export default function UserDetails(props) {
             <hr />
             {
               <div>
-                {user.cars && user.cars.length === 0 ? (
+                {user.cars && user.cars.length > 0 ? (
                   <CardCar
                     patent={user.cars[0].patent}
                     brand={user.cars[0].brand}
