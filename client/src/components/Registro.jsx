@@ -57,7 +57,7 @@ export default function Registro() {
   }
 
   const [errors, setErrors] = useState({
-    about: "",
+    algo: "asd",
   });
 
   const [input, setInput] = useState({
@@ -96,6 +96,9 @@ export default function Registro() {
       ...input,
       [e.target.name]: e.target.value,
     });
+    setErrors({
+      algo: "",
+    });
   }
 
   function handleSelectTerms(e) {
@@ -105,10 +108,13 @@ export default function Registro() {
       [e.target.name]: e.target.value,
     });
     setErrors({});
+    // HAY QUE ARREGLAR ESTO PORQUE SI LE DAS QUE SI BORRA TODOS LOS ERRORES.
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(errors);
+    console.log(input);
     if (Object.keys(errors).length === 0) {
       dispatch(postUser(input));
       setInput({
@@ -152,7 +158,7 @@ export default function Registro() {
       <div className="formContainer">
         <h1>Create your User</h1>
         <form
-          className="Form"
+          className="FormRegistro"
           onSubmit={(e) => {
             handleSubmit(e);
           }}
@@ -358,8 +364,6 @@ export default function Registro() {
                 {" "}
                 Privacy Policy
               </a>
-            </div>
-            <div>
               <select
                 name="terms"
                 id="terms"
@@ -375,7 +379,7 @@ export default function Registro() {
                 </option>
               </select>
             </div>
-            {errors.terms && <p className="error">{errors.terms}</p>}
+            {errors.terms && <p className="errorterms">{errors.terms}</p>}
           </div>
           <div>
             <button className="button" type="submit">
