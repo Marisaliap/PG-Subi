@@ -1,11 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { postCar } from "../actions";
-import { useDispatch } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
-import swal from "sweetalert";
-import "../Sass/Styles/FormCar.scss";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { postCar } from '../actions';
+import { useDispatch } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
+import swal from 'sweetalert';
+import '../Sass/Styles/FormCar.scss';
 
 export default function FormCar() {
   const history = useHistory();
@@ -14,27 +14,27 @@ export default function FormCar() {
 
   const [errors, setErrors] = useState();
   const [input, setInput] = useState({
-    email: isAuthenticated ? user.email : "",
-    patent: "",
-    color: "",
-    brand: "",
-    model: "",
-    cylinder: "",
+    email: isAuthenticated ? user.email : '',
+    patent: '',
+    color: '',
+    brand: '',
+    model: '',
+    cylinder: '',
   });
   console.log(input);
 
   function validate(input) {
     let errors = {};
     if (!input.patent) {
-      errors.patent = "Patent is required";
+      errors.patent = 'Patent is required';
     } else if (!input.color) {
-      errors.color = "Color is required";
+      errors.color = 'Color is required';
     } else if (!input.brand) {
-      errors.brand = "Brand is required";
+      errors.brand = 'Brand is required';
     } else if (!input.model) {
-      errors.model = "Model is required";
+      errors.model = 'Model is required';
     } else if (!input.cyinder) {
-      errors.cyinder = "Cylinder is required";
+      errors.cyinder = 'Cylinder is required';
     }
     return errors;
   }
@@ -60,27 +60,27 @@ export default function FormCar() {
   function handleSubmit(e) {
     e.preventDefault();
     if (true) {
-      //dispatch(postCar(input));
+      // dispatch(postCar(input));
       setInput({
-        patent: "",
-        color: "",
-        brand: "",
-        model: "",
-        cylinder: "",
+        patent: '',
+        color: '',
+        brand: '',
+        model: '',
+        cylinder: '',
       });
       swal({
-        title: "Good job!",
-        text: "Car created correctly",
-        icon: "success",
-        button: "Aww yiss!",
+        title: 'Good job!',
+        text: 'Car created correctly',
+        icon: 'success',
+        button: 'Aww yiss!',
       });
-      history.push("/route");
+      history.push('/route');
     } else {
       swal({
-        title: "Sorry",
-        text: "All mandatory fields must be filled to continue",
-        icon: "warning",
-        button: "Ok",
+        title: 'Sorry',
+        text: 'All mandatory fields must be filled to continue',
+        icon: 'warning',
+        button: 'Ok',
       });
     }
   }
