@@ -12,9 +12,9 @@ export default function FormCar() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
-    email: isAuthenticated ? user.email : "",
+    idUser: isAuthenticated ? user.email : "",
     patent: "",
     color: "",
     brand: "",
@@ -32,9 +32,9 @@ export default function FormCar() {
     } else if (!input.brand) {
       errors.brand = "Brand is required";
     } else if (!input.model) {
-      errors.model = "Model is required";
-    } else if (!input.cyinder) {
-      errors.cyinder = "Cylinder is required";
+      errors.model = 'Model is required';
+    } else if (!input.cylinder) {
+      errors.cylinder = 'Cylinder is required';
     }
     return errors;
   }
@@ -56,10 +56,10 @@ export default function FormCar() {
       })
     );
   }
-
+console.log(errors);
   function handleSubmit(e) {
     e.preventDefault();
-    if (true) {
+    if (Object.keys(errors).length === 0) {
       dispatch(postCar(input));
       setInput({
         patent: "",
@@ -94,53 +94,69 @@ export default function FormCar() {
           handleSubmit(e);
         }}
       >
-        <div>
-          <div>
-            <label>Patent</label>
-            <input
-              type="text"
-              name="patent"
-              value={input.patent}
-              onChange={(e) => handleChange(e)}
-            />
-            <br />
-            <label>Color</label>
-            <input
-              type="text"
-              name="color"
-              value={input.color}
-              onChange={(e) => handleChange(e)}
-            />
-            <br />
-            <label>Brand</label>
-            <input
-              type="text"
-              name="brand"
-              value={input.brand}
-              onChange={(e) => handleChange(e)}
-            />
-
-            <br />
-            <label>Model</label>
-            <input
-              type="text"
-              name="model"
-              value={input.model}
-              onChange={(e) => handleChange(e)}
-            />
-            <br />
-            <label>Cylinder</label>
-            <input
-              type="text"
-              name="cylinder"
-              value={input.cylinder}
-              onChange={(e) => handleChange(e)}
-            />
-          </div>
-          <button className="button" type="submit">
-            Charge Car
-          </button>
-        </div>
+        <label>Patent</label>
+        <input
+          type="text"
+          name="patent"
+          value={input.patent}
+          onChange={(e) => handleChange(e)}
+        />
+        {
+          errors.patent && (
+            <p>{errors.patent}</p>
+          )
+        }     
+        <label>Color</label>
+        <input
+          type="text"
+          name="color"
+          value={input.color}
+          onChange={(e) => handleChange(e)}
+        />
+        {
+          errors.color && (
+            <p>{errors.color}</p>
+          )
+        }        
+        <label>Brand</label>
+        <input
+          type="text"
+          name="brand"
+          value={input.brand}
+          onChange={(e) => handleChange(e)}
+        />
+        {
+          errors.brand && (
+            <p>{errors.brand}</p>
+          )
+        }        
+        <label>Model</label>
+        <input
+          type="text"
+          name="model"
+          value={input.model}
+          onChange={(e) => handleChange(e)}
+        />
+        {
+          errors.model && (
+            <p>{errors.model}</p>
+          )
+        }        
+        <label>Cylinder</label>
+        <input
+          type="text"
+          name="cylinder"
+          value={input.cylinder}
+          onChange={(e) => handleChange(e)}
+        />
+        {
+          errors.cylinder && (
+            <p>{errors.cylinder}</p>
+          )
+        }        
+        <button className="button" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

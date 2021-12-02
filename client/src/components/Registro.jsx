@@ -11,7 +11,6 @@ export default function Registro() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { user, isAuthenticated } = useAuth0();
-  const terminos = document.getElementsByName("terminos");
 
   function validate(input) {
     let errors = {};
@@ -23,7 +22,7 @@ export default function Registro() {
       errors.email = 'The last name cannot contain symbols'; */
     } else if (!input.dni) {
       errors.dni = "DNI is required";
-    } else if (validateGenre() === false) {
+    } else if (validateGender() === false) {
       errors.genre = "Gender is required";
     } else if (!input.age) {
       errors.age = "Age required";
@@ -37,26 +36,28 @@ export default function Registro() {
       errors.city = "City is required";
     } else if (!input.province) {
       errors.province = "Province is required";
-    } else if (terminos === 0) {
+    } else if (validateTerms() === false) {
       errors.terms = "You must agree to our terms and conditions";
     }
     return errors;
   }
 
-  function validateGenre() {
+  function validateGender() {
     if (document.getElementById("genre").value == "1") {
       return false;
     }
     return true;
   }
 
-  function handleCheck() {
-    if (terminos.checked) return 1;
-    return 0;
+  function validateTerms() {
+    if (document.getElementById("terms").value == "1") {
+      return false;
+    }
+    return true;
   }
 
   const [errors, setErrors] = useState({
-    algo: "asd",
+    about: "",
   });
 
   const [input, setInput] = useState({
@@ -73,11 +74,8 @@ export default function Registro() {
     facebook: "",
     instagram: "",
     about: "",
+    terms: "",
   });
-
-  useEffect(() => {
-    dispatch(postUser());
-  }, []);
 
   function handleChange(e) {
     setInput({
@@ -96,18 +94,23 @@ export default function Registro() {
     e.preventDefault();
     setInput({
       ...input,
-      genre: e.target.value,
+      [e.target.name]: e.target.value,
     });
-    setErrors({
-      algo: "",
+  }
+
+  function handleSelectTerms(e) {
+    e.preventDefault();
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
     });
+    setErrors({});
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
       dispatch(postUser(input));
-      console.log(input);
       setInput({
         name: "",
         lastName: "",
@@ -122,6 +125,7 @@ export default function Registro() {
         facebook: "",
         instagram: "",
         about: "",
+        terms: "",
       });
       swal({
         title: "Good job!",
@@ -145,20 +149,56 @@ export default function Registro() {
       <Link to="/home">
         <button className="buttonBlue">Home</button>
       </Link>
-      <div className="formCuadrado">
-        <div className="formContainer">
-          <h1>Create your User</h1>
-          <form
-            className="Form"
-            onSubmit={(e) => {
-              handleSubmit(e);
-            }}
-          >
-            {!isAuthenticated ? (
+      <div className="formContainer">
+        <h1>Create your User</h1>
+        <form
+          className="Form"
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
+          {!isAuthenticated ? (
+            <div>
+              <div>
+                <p className="label">Name*:</p>
+                <input
+                  className="inputs"
+                  type="text"
+                  name="name"
+                  value={input.name}
+                  onChange={(e) => handleChange(e)}
+                />
+                {errors.name && <p className="error">{errors.name}</p>}
+              </div>
+              <div>
+                <p className="label">Last Name*:</p>
+                <input
+                  className="inputs"
+                  type="text"
+                  name="lastName"
+                  value={input.lastName}
+                  onChange={(e) => handleChange(e)}
+                />
+                {errors.lastName && <p className="error">{errors.lastName}</p>}
+              </div>
+              <div>
+                <p className="label">Email*:</p>
+                <input
+                  className="inputs"
+                  type="text"
+                  name="email"
+                  value={input.email}
+                  onChange={(e) => handleChange(e)}
+                />
+              </div>
+            </div>
+          ) : (
+            user.name.includes("@") && (
               <div>
                 <div>
-                  <label>Name*:</label>
+                  <p className="label">Name*:</p>
                   <input
+                    className="inputs"
                     type="text"
                     name="name"
                     value={input.name}
@@ -167,8 +207,9 @@ export default function Registro() {
                   {errors.name && <p className="error">{errors.name}</p>}
                 </div>
                 <div>
-                  <label>Last Name*:</label>
+                  <p className="label">Last Name*:</p>
                   <input
+                    className="inputs"
                     type="text"
                     name="lastName"
                     value={input.lastName}
@@ -178,184 +219,170 @@ export default function Registro() {
                     <p className="error">{errors.lastName}</p>
                   )}
                 </div>
-                <div>
-                  <label>Email*:</label>
-                  <input
-                    type="text"
-                    name="email"
-                    value={input.email}
-                    onChange={(e) => handleChange(e)}
-                  />
-                </div>
               </div>
-            ) : (
-              user.name.includes("@") && (
-                <div>
-                  <div>
-                    <label>Name*:</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={input.name}
-                      onChange={(e) => handleChange(e)}
-                    />
-                    {errors.name && <p className="error">{errors.name}</p>}
-                  </div>
-                  <div>
-                    <label>Last Name*:</label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={input.lastName}
-                      onChange={(e) => handleChange(e)}
-                    />
-                    {errors.lastName && (
-                      <p className="error">{errors.lastName}</p>
-                    )}
-                  </div>
-                </div>
-              )
-            )}
-            <div className="cadaLinea">
-              <label>DNI*:</label>
-              <input
-                type="number"
-                name="dni"
-                value={input.dni}
-                onChange={(e) => handleChange(e)}
-              />
-              {errors.dni && <p className="error">{errors.dni}</p>}
+            )
+          )}
+          <div className="cadaLinea">
+            <p className="label">DNI*:</p>
+            <input
+              className="inputs"
+              type="number"
+              name="dni"
+              value={input.dni}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.dni && <p className="error">{errors.dni}</p>}
+          </div>
+          <div className="cadaLinea">
+            <p className="label" for="genre">
+              Gender*:
+            </p>
+            <select
+              name="genre"
+              id="genre"
+              className="select"
+              onChange={(e) => handleSelect(e)}
+            >
+              <option disabled selected value="1">
+                {" "}
+                -- Select an option --{" "}
+              </option>
+              <option className="options" value="Male">
+                Male
+              </option>
+              <option className="options" value="Female">
+                Female
+              </option>
+              <option className="options" value="Rather not say">
+                Rather not say
+              </option>
+            </select>
+            {errors.genre && <p className="error">{errors.genre}</p>}
+          </div>
+          <div className="cadaLinea">
+            <p className="label">Age*:</p>
+            <input
+              className="inputs"
+              type="number"
+              name="age"
+              value={input.age}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.age && <p className="error">{errors.age}</p>}
+          </div>
+          <div className="cadaLinea">
+            <p className="label">Telephone*:</p>
+            <input
+              className="inputs"
+              type="number"
+              name="telephone"
+              value={input.telephone}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.telephone && <p className="error">{errors.telephone}</p>}
+          </div>
+          <div className="cadaLinea">
+            <p className="label">Street*:</p>
+            <input
+              className="inputs"
+              type="text"
+              name="street"
+              value={input.street}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.street && <p className="error">{errors.street}</p>}
+          </div>
+          <div className="cadaLinea">
+            <p className="label">City*:</p>
+            <input
+              className="inputs"
+              type="text"
+              name="city"
+              value={input.city}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.city && <p className="error">{errors.city}</p>}
+          </div>
+          <div className="cadaLinea">
+            <p className="label">Province*:</p>
+            <input
+              className="inputs"
+              type="text"
+              name="province"
+              value={input.province}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.province && <p className="error">{errors.province}</p>}
+          </div>
+          <div className="cadaLinea">
+            <p className="label">Facebook:</p>
+            <input
+              className="inputs"
+              type="text"
+              name="facebook"
+              value={input.facebook}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.facebook && <p className="error">{errors.facebook}</p>}
+          </div>
+          <div className="cadaLinea">
+            <p className="label">Instagram:</p>
+            <input
+              className="inputs"
+              type="text"
+              name="instagram"
+              value={input.instagram}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.instagram && <p className="error">{errors.instagram}</p>}
+          </div>
+          <div className="cadaLinea">
+            <p className="label">About:</p>
+            <textarea
+              type="text"
+              name="about"
+              value={input.about}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.about && <p className="error">{errors.about}</p>}
+          </div>
+          <div className="terminosycond">
+            <div className="terminos">
+              By continuing, you agree to our{" "}
+              <a target="_blank" href="/terms-and-conditions">
+                {" "}
+                Terms of Use{" "}
+              </a>{" "}
+              and
+              <a target="_blank" href="/privacy-policy">
+                {" "}
+                Privacy Policy
+              </a>
             </div>
-            <div className="cadaLinea">
-              <label for="genre">Gender*:</label>
-              <select name="genre" id="genre" onChange={(e) => handleSelect(e)}>
+            <div>
+              <select
+                name="terms"
+                id="terms"
+                className="terms"
+                onChange={(e) => handleSelectTerms(e)}
+              >
                 <option disabled selected value="1">
                   {" "}
                   -- Select an option --{" "}
                 </option>
-                <option className="options" value="Male">
-                  Male
-                </option>
-                <option className="options" value="Female">
-                  Female
-                </option>
-                <option className="options" value="Rather not say">
-                  Rather not say
+                <option className="options" value="Yes">
+                  Yes
                 </option>
               </select>
-              {errors.genre && <p className="error">{errors.genre}</p>}
             </div>
-            <div className="cadaLinea">
-              <label>Age*:</label>
-              <input
-                type="number"
-                name="age"
-                value={input.age}
-                onChange={(e) => handleChange(e)}
-              />
-              {errors.age && <p className="error">{errors.age}</p>}
-            </div>
-            <div className="cadaLinea">
-              <label>Telephone*:</label>
-              <input
-                type="number"
-                name="telephone"
-                value={input.telephone}
-                onChange={(e) => handleChange(e)}
-              />
-              {errors.telephone && <p className="error">{errors.telephone}</p>}
-            </div>
-            <div className="cadaLinea">
-              <label>Street*:</label>
-              <input
-                type="text"
-                name="street"
-                value={input.street}
-                onChange={(e) => handleChange(e)}
-              />
-              {errors.street && <p className="error">{errors.street}</p>}
-            </div>
-            <div className="cadaLinea">
-              <label>City*:</label>
-              <input
-                type="text"
-                name="city"
-                value={input.city}
-                onChange={(e) => handleChange(e)}
-              />
-              {errors.city && <p className="error">{errors.city}</p>}
-            </div>
-            <div className="cadaLinea">
-              <label>Province*:</label>
-              <input
-                type="text"
-                name="province"
-                value={input.province}
-                onChange={(e) => handleChange(e)}
-              />
-              {errors.province && <p className="error">{errors.province}</p>}
-            </div>
-            <div className="cadaLinea">
-              <label>Facebook:</label>
-              <input
-                type="text"
-                name="facebook"
-                value={input.facebook}
-                onChange={(e) => handleChange(e)}
-              />
-            </div>
-            <div className="cadaLinea">
-              <label>Instagram:</label>
-              <input
-                type="text"
-                name="instagram"
-                value={input.instagram}
-                onChange={(e) => handleChange(e)}
-              />
-            </div>
-            <div className="cadaLinea">
-              <label>About:</label>
-              <textarea
-                type="text"
-                name="about"
-                value={input.about}
-                onChange={(e) => handleChange(e)}
-              />
-            </div>
-            <div>
-              <label className="">
-                <div className="terminosycond">
-                  <div className="terminos">
-                    By continuing, you agree to our{" "}
-                    <a target="_blank" href="/terms-and-conditions">
-                      {" "}
-                      Terms of Use{" "}
-                    </a>{" "}
-                    and
-                    <a target="_blank" href="/privacy-policy">
-                      {" "}
-                      Privacy Policy
-                    </a>
-                  </div>
-                  <input
-                    className="checkbox"
-                    type="checkbox"
-                    name="terminos"
-                    value="1"
-                    onChange={(e) => handleCheck(e)}
-                  />
-                </div>
-              </label>
-              {errors.terms && <p className="error">{errors.terms}</p>}
-            </div>
-            <div>
-              <br />
-            </div>
+            {errors.terms && <p className="error">{errors.terms}</p>}
+          </div>
+          <div>
             <button className="button" type="submit">
               Submit
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </>
   );

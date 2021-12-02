@@ -6,6 +6,11 @@
   display: grid;
   place-items: center;
 
+  .button {
+    width: 250px;
+    margin-top:70px
+  }
+
   .cosas {
     display: flex;
     flex-direction: column;
@@ -20,6 +25,7 @@
   }
 
   .logo {
+    width: 1250px;
     margin-top: -10vh;
   }
 

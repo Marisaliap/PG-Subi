@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Post from './Post';
+import CardCar from './CardCar';
 import { getUserDetail } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -21,7 +22,7 @@ export default function UserDetails(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  console.log(user);
+  console.log("userdet",user);
 
   function genderIcon(gender) {
     if (gender === 'Male') {
@@ -85,6 +86,18 @@ export default function UserDetails(props) {
               <div>
                 <Post />
               </div>
+            }
+            <hr />
+            {
+          <div>
+          {user.cars[0]?
+              <CardCar 
+               patent={user.cars[0].patent}
+               brand={user.cars[0].brand}
+               model={user.cars[0].model}
+               color={user.cars[0].color}
+              />: ""}
+          </div>
             }
           </div>
         ) : (

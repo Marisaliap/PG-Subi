@@ -3,7 +3,9 @@
 .searchBarPostHome {
   display: grid;
   place-items: center;
-  height: 40vh;
+  height: 20vh;
+  margin-top: 5rem;
+  margin-bottom: 6rem;
 
   .searchbar {
     width: 20vw;
@@ -31,6 +33,9 @@
   .postRouteForm {
     padding: 1rem;
     display:flex;
+    align-items: baseline;
+
+    
     input {
       height:20px;
       width:200px;
