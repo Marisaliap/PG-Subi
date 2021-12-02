@@ -133,6 +133,9 @@ console.log(routeInfo, 'SOY INFO DE POSTROUTE')
         <p>
           <BsFillPersonFill /> {routeInfo.pasajeros} Seats available.
         </p>
+        {routeInfo.restrictions.map(restriction => {
+         return <p>{restriction}</p>
+        })}
       </div>
       <div className="buttonContainer">
         <button className="buttonBlue" onClick={handleClick}>

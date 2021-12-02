@@ -118,7 +118,7 @@ export default function SearchBarHome() {
           placeholder="Destination"
           className="searchbar"
         />
-
+        
         <datalist id="cities2">
           {cities2 && cities2.map((city) => <option>{city.name}</option>)}
         </datalist>
