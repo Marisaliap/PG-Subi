@@ -13,7 +13,11 @@ export default function PoliticaCookies() {
     <div className="Cookies">
       <article>
         <div>
-        <p ><a href="/terms-and-conditions">Condiciones Generales de Uso</a> | <a href="/privacy-policy">Política de Privacidad</a> | Política de cookies</p>
+          <p>
+            <a href="/terms-and-conditions">Condiciones Generales de Uso</a> |{" "}
+            <a href="/privacy-policy">Política de Privacidad</a> | Política de
+            cookies
+          </p>
           <p>
             Give SA ("Give me a ride", "we", "us" or "our") uses cookies and
             similar tracking technologies on our website and in our mobile
@@ -23,9 +27,9 @@ export default function PoliticaCookies() {
             decisions you can make in this regard.
           </p>
 
-          <p>
+          <h3>
             1. What is a “cookie” and what are “similar tracking technologies”?
-          </p>
+          </h3>
 
           <p>
             A "cookie" is a small text file that is stored and / or read by your
@@ -40,7 +44,7 @@ export default function PoliticaCookies() {
             to as "cookies" in this Cookie Policy.
           </p>
 
-          <p>2. Who places cookies on our platforms?</p>
+          <h3>2. Who places cookies on our platforms?</h3>
 
           <p>
             Cookies on our platforms are set by us (so-called "first-party
@@ -53,10 +57,10 @@ export default function PoliticaCookies() {
             are shown to you in the footer of our website.
           </p>
 
-          <p>
+          <h3>
             3. What are the different types of cookies and how are they used on
             our platforms?
-          </p>
+          </h3>
 
           <p>The following types of cookies used on our platforms are:</p>
 
@@ -92,7 +96,7 @@ export default function PoliticaCookies() {
             advertising that is displayed will be less adjusted to your needs.
           </p>
 
-          <p>4. How can you decide which cookies are used?</p>
+          <h3>4. How can you decide which cookies are used?</h3>
 
           <p>
             When you log to our platforms for the first time we show you a
@@ -106,7 +110,7 @@ export default function PoliticaCookies() {
             settings shown in the footer of our website.
           </p>
 
-          <p>5. Updates to our Cookies Policy?</p>
+          <h3>5. Updates to our Cookies Policy?</h3>
 
           <p>
             Every time we change the way we use cookies on our platforms, we
@@ -116,7 +120,7 @@ export default function PoliticaCookies() {
             last updated on December 1, 2021.
           </p>
 
-          <p>6. Who can you contact for additional questions?</p>
+          <h3>6. Who can you contact for additional questions?</h3>
 
           <p>
             If you have questions regarding our Cookie Policy, do not hesitate

@@ -12,7 +12,7 @@ export default function FormCar() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     email: isAuthenticated ? user.email : "",
     patent: "",
@@ -103,6 +103,7 @@ export default function FormCar() {
               value={input.patent}
               onChange={(e) => handleChange(e)}
             />
+            {errors.patent && <p className="error">{errors.patent}</p>}
             <br />
             <label>Color</label>
             <input
@@ -119,7 +120,6 @@ export default function FormCar() {
               value={input.brand}
               onChange={(e) => handleChange(e)}
             />
-
             <br />
             <label>Model</label>
             <input
