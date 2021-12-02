@@ -60,7 +60,7 @@ export default function FormCar() {
   function handleSubmit(e) {
     e.preventDefault();
     if (true) {
-      dispatch(postCar(input));
+      //dispatch(postCar(input));
       setInput({
         patent: "",
         color: "",

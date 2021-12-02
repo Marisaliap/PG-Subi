@@ -38,22 +38,6 @@ export function getRoute(long1, lat1, long2, lat2) {
     }
   };
 }
-export function getRouteFromDb(originName, destinyName, date, place) {
-  return async function (dispatch) {
-    try {
-      const response = await axios.get(
-        `http://localhost:3001/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}`
-      );
-
-      return dispatch({
-        type: "GET_ROUTE_FROM_DB",
-        payload: response.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
 
 export function getUserDetail(id) {
   return async function (dispatch) {
@@ -98,18 +82,49 @@ export function getUserByName(name) {
   };
 }
 
-// -----------------------------< filters >----------------------------------
-export function filterBySmoke(payload) {
-  return {
-    type: "FILTER_BY_SMOKE",
-    payload,
+export function getRouteFromDb(originName, destinyName, date, place) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}`
+      );
+
+      return dispatch({
+        type: "GET_ROUTE_FROM_DB",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
+// -----------------------------< filters >----------------------------------
+// export function filterBySmoke(payload) {
+//   return {
+//     type: "FILTER_BY_SMOKE",
+//     payload,
+//   };
+// }
 
-export function filterByPets(payload) {
+// export function filterByPets(payload) {
+//   return {
+//     type: "FILTER_BY_PETS",
+//     payload,
+//   };
+// }
+
+
+
+export function getOrder(order) {
   return {
-    type: "FILTER_BY_PETS",
-    payload,
+    type: "ORDER",
+    payload: (order),
+  }
+};
+export function orderByRestriction(restriction) {
+  return {
+    type: "FILTER",
+    payload: (restriction)
   };
 }
 
@@ -119,21 +134,6 @@ export function filterByTwoPeopleBehind(payload) {
     payload,
   };
 }
-
-export function orderByTime(payload) {
-  return {
-    type: "ORDER_BY_TIME",
-    payload,
-  };
-}
-
-export function orderByPrice(payload) {
-  return {
-    type: "ORDER_BY_PRICE",
-    payload,
-  };
-}
-
 export function orderByDistance(payload) {
   return {
     type: "ORDER_BY_DISTANCE",
@@ -141,10 +141,10 @@ export function orderByDistance(payload) {
   };
 }
 // ----------------------------------------------------------------------
-export function allRoutes() {
+export function allRoutes(order,) {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`http://localhost:3001/maps/route`)).data;
+      const response = (await axios.get(`http://localhost:3001/maps/route?order=${order ? order : "time"}`)).data;
       return dispatch({
         type: "GET_ALL_ROUTE_INFO",
         payload: response,

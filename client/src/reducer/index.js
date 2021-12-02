@@ -6,9 +6,15 @@ const initialState = {
   user: [],
   users: [],
   getRoutes: [],
-  car:[],
+  car: [],
   routeById: [],
-  routeFromDb: []
+  routeFromDb: [],
+  // ---------------< filters rami>----------------------------------
+
+  restriction: "",
+  order: "",
+  filtersRoute: [],
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -34,12 +40,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: action.payload,
       };
-    case "GET_USER_DETAIL":  
+    case "GET_USER_DETAIL":
       return {
         ...state,
         user: action.payload,
       };
-    case "GET_ALL_ROUTE_INFO":  
+    case "GET_ALL_ROUTE_INFO":
       return {
         ...state,
         getRoutes: action.payload,
@@ -59,28 +65,28 @@ function rootReducer(state = initialState, action) {
         ...state,
         users: action.payload,
       };
-  // -----------------------------< filters >----------------------------------
-    case "FILTER_BY_SMOKE":
+    // -----------------------------< filters >----------------------------------
+
+    case "RESTRICTION":
       return {
         ...state,
-        route: action.payload,
+        restriction: action.payload,
       };
-    case "FILTER_BY_PETS":
+
+    case "ORDER":
       return {
         ...state,
-        route: action.payload,
+        order: action.payload,
       };
+ 
+    case "SET_FILTERS":
+      return {
+        ...state,
+      filtersRoute: action.payload,
+      };
+
+     
     case "FILTER_BY_PEOPLE_BEHIND":
-      return {
-        ...state,
-        route: action.payload,
-      };
-    case "ORDER_BY_TIME":
-      return {
-        ...state,
-        route: action.payload,
-      };
-    case "ORDER_BY_PRICE":
       return {
         ...state,
         route: action.payload,
@@ -89,7 +95,20 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         route: action.payload,
-        // ----------------------------------------------------------------------------
+
+        // case "FILTER_BY_SMOKE":
+        //   return {
+        //     ...state,
+        //     route: action.payload,
+        //   };
+
+        // case "FILTER_BY_PETS":
+        //   return {
+        //     ...state,
+        //     route: action.payload,
+        //   };
+
+// ----------------------------------------------------------------------------
       };
     case "DELETE_ROUTE":
       return {
@@ -101,16 +120,16 @@ function rootReducer(state = initialState, action) {
         ...state,
         routePostInfo: action.payload,
       };
-      case "GET_ROUTE_BY_ID":
+    case "GET_ROUTE_BY_ID":
       return {
         ...state,
         routeById: action.payload,
       };
-      case "GET_ROUTE_FROM_DB":
-        return {
-          ...state,
-          routeFromDb: action.payload,
-        };
+    case "GET_ROUTE_FROM_DB":
+      return {
+        ...state,
+        routeFromDb: action.payload,
+      };
     default:
       return state;
   }
