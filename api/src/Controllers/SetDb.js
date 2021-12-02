@@ -221,7 +221,7 @@ const setDb = async (req,res,next) =>  {
             telephone:arrUsers[i].telephone,
             facebook:arrUsers[i].facebook,
             instagram:arrUsers[i].instagram,
-            password:arrUsers[i].password,
+            //password:arrUsers[i].password,
             province:arrUsers[i].province,
             city:arrUsers[i].city,
             street:arrUsers[i].street,

@@ -10,7 +10,7 @@ const postUser = async (req, res, next) => {
       telephone,
       facebook,
       instagram,
-      password,
+      //password,
       province,
       city,
       street,
@@ -35,7 +35,7 @@ const postUser = async (req, res, next) => {
           telephone,
           facebook,
           instagram,
-          password,
+          //password,
           province,
           city,
           street,
@@ -104,7 +104,7 @@ const getUser = async (req, res, next) => {
 const putUser = async (req,res,next) => {
   try {
     const {id} = req.params;
-    const {about,age,street,city,province,telephone,facebook,instagram,password,email,photo, ...calification} = req.body;
+    const {about,age,street,city,province,telephone,facebook,instagram,email,photo, ...calification} = req.body;
     const user = await User.findByPk(id);
     user.update({
       about,
@@ -115,7 +115,7 @@ const putUser = async (req,res,next) => {
       telephone,
       facebook,
       instagram,
-      password,
+      //password,
       email,
       photo,
       calification,
