@@ -14,174 +14,280 @@ export default function PoliticaPrivacidad() {
       <article>
         <div></div>
         <div>
-        <p ><a href="/terms-and-conditions">Condiciones Generales de Uso</a> | Política de Privacidad | <a href="/cookies-policy">Política de cookies</a></p>
-<p><strong>Versión vigente a partir del 17 de Diciembre de 2021</strong></p>
+        <p ><a href="/terms-and-conditions">Terms &amp; Conditions</a> | Privacy Policy | <a href="/cookies-policy">Cookies Policy</a></p>
+<p><strong>Effective date: 17/12/2021</strong></p>
 <p ></p><h2>1. General</h2><p></p>
-<p>Give SA (con domicilio social en la calle Rivadavia 54678, Buenos Aires, Argentina) (“<strong>GiveMeaRide</strong>”, nosotros o nuestro), interviniendo como responsable del tratamiento de datos, se compromete a proteger y a respetar tu privacidad. Esta política (la “Política de Privacidad”) está diseñado para informarte sobre nuestras prácticas en lo referente a la recopilación, uso y divulgación de la información que nos proporciones a través de nuestra plataforma (la “Plataforma”) accesible desde la página web <a href="http://www.GiveMeaRide.com/" target="_blank" rel="noopener noreferrer"><u><span>www.GiveMeaRide.com</span></u></a> o nuestras aplicaciones móviles. En caso de suscribirte a productos de seguros a través de la Plataforma o productos de seguros distribuidos por GiveMeaRide, el responsable del tratamiento de datos del tratamiento relacionado con los datos recopilados o procesados en el contexto de esta suscripción es GiveMeaRide Insurance, una filial al 100 % de Give SA, cuya oficina registrada se encuentra en la calle Rivadavia 54678, Buenos Aires, Argentina. Give SA o GiveMeaRide Insurance serán designados en este documento como “GiveMeaRide”, “nosotros”, “nuestro” o “nos”.</p>
-<p >Esta Política de Privacidad (junto con nuestros <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer"><u><span >Términos y Condiciones</span></u></a> y el resto de documentos a los que se hace referencia en ellos y en nuestra <a href="/cookies-policy" target="_blank" rel="noopener noreferrer"><u><span >Política de Cookies</span></u></a>) establece el marco según el cual se recogerán y tratarán tus datos personales. Lee detenidamente este texto para que comprendas nuestra posición y prácticas respecto a tus datos personales y cómo los trataremos.</p>
-<p ></p><h2>2. ¿Qué información es la que recogemos?</h2><p></p>
-<p >Podemos recopilar y procesar los siguientes datos sobre ti:</p>
-<p ></p><h3>2.1 Información que tú nos proporcionas</h3><p></p>
-<p >Puede que nos facilites información, incluso información que puede identificarte (“<strong>Datos personales</strong>”), cuando utilizas la Página Web/App al rellenar sus formularios (como, por ejemplo, el formulario de registro), cuando entras en cualquiera de nuestros concursos, promociones o encuestas o cuando te pones en contacto con nosotros por teléfono, correo electrónico o de cualquier otra forma, así como cuando nos informas de algún problema relacionado con el uso de nuestra Página Web/App.</p>
-<p >La información que nos proporcionas puede contener:</p>
-<p ><strong>2.1.1</strong> Información obligatoria necesaria para registrarse en el servicio que proporcionamos en nuestra Plataforma o para acceder a otros de nuestros servicios; estos datos incluyen tu nombre, correo electrónico, fecha de nacimiento, sexo, número de teléfono móvil y, cuando creas una cuenta, una contraseña. Todos estos campos son obligatorios. GiveMeaRide no podrá proporcionarte los servicios ofrecidos en nuestra página y app si no nos das la información necesaria o, si procede, no podrás crearte una cuenta de usuario en nuestra Plataforma;</p>
-<p ><strong>2.1.2</strong> Una fotografía.</p>
-<p ><strong>2.1.3</strong> Una dirección postal.</p> 
-<p><strong>2.1.4 </strong>Tu número de teléfono.</p>
-<p ><strong>2.1.5</strong> Información sobre tu coche.</p>
-<p ><strong>2.1.6</strong> Tu mini-biografía,  tu sexo cuando aceptas proporcionarnos dicha información.</p>
-<p ><strong>2.1.7</strong> Un registro de la correspondencia que hayas mantenido con nosotros , podemos grabar o escuchar las llamadas telefónicas que mantengas con GiveMeaRide (por ejemplo, con los agentes de nuestro servicio de Relaciones con la Comunidad). Te ofrecemos la posibilidad de oponerte a ese tratamiento al principio de la llamada.</p>
-<p ><strong>2.1.8</strong> Un registro de cualquier reserva que realices o cualquier anuncio de viaje que publiques a través de nuestra Plataforma.</p>
-<p ><strong>2.1.8</strong> Detalles sobre las transacciones económicas o contables, incluidas las operaciones efectuadas a través de nuestra Plataforma o de cualquier otro medio. Esto puede incluir información como, por ejemplo, tu tarjeta de pago o datos bancarios, información relativa a viajes o tramos de viaje que hayas reservado u ofrecido a través de nuestra Plataforma.</p>
-<p ><strong>2.1.10</strong> Detalles de tus visitas a nuestra Plataforma y los contenidos a los que accedes.</p>
-<p ><strong>2.1.11</strong> Si procede, tus respuestas a nuestras encuestas o cuestionarios, como tus evaluaciones sobre los viajes realizados a través de nuestra Plataforma. Dicha información puede ser empleada para fines de análisis y estudio de las conductas de los usuarios.</p>
-<p ><strong>2.1.12</strong> Información que podemos solicitarte cuando informes acerca de un problema con nuestra Plataforma o nuestro servicio, como, por ejemplo, la causa de tu solicitud de asistencia.</p>
-<p ><strong>2.1.13</strong> Información sobre tu localización, siempre y cuando hayas dado tu consentimiento a la recopilación y tratamiento de estos datos, para que podamos responder a tu búsqueda de viajes cerca de ti.</p>
-<p ><strong>2.1.14 </strong>Una copia de tu Pasaporte, Licencia de conducir, DNI y otros documentos similares que has acordado brindarnos.</p>
-<p ><strong>2.1.15 </strong>Una copia de tus suscripciones de seguros, ejercicios de retirada (si los hay), declaraciones realizadas y formulario archivado para suscribir o gestionar tu contrato de seguro.</p>
-<p ></p><h3>2.2 Información que recogemos automáticamente</h3><p></p>
-<p ><strong>2.2.1</strong> Si te registras a través de los métodos de autenticación de redes sociales, GiveMeaRide tendrá acceso a ciertos datos personales (p. ej. nombre, apellidos, foto y correo electrónico) de tu cuenta en dicha red social, de acuerdo con los términos y condiciones aplicables. Recogemos algunos de tus datos personales cuando interactúes con las funciones de las redes sociales, como la pestaña Me gusta.</p>
-<p ><strong>2.2.2</strong> Respecto a cada una de tus visitas a nuestra Plataforma, podremos recoger, de acuerdo con la legislación aplicable y, cuando así sea necesario, con tu consentimiento, información referente a los dispositivos que empleas y las redes a las que te conectas cuando haces uso de nuestros servicios. Esto puede incluir la siguiente información: tu dirección IP, información de conexión, tipo y versión de navegador, tipos y versiones de los <em>plugins</em> o complementos de tu navegador, sistema operativo y plataforma, información sobre tu visita incluido el historial detallado de la URL a las diferentes páginas de nuestra Plataforma, contenido que hayas visto o buscado, términos de búsqueda utilizados, errores de descarga, duración de las visitas a determinadas páginas, el identificador publicitario de tu dispositivo, interacciones con la página y número de teléfono desde el que te hayas puesto en contacto con nosotros. Recogemos esta información empleando diversas tecnologías, incluidas las cookies (para más información, ver nuestra <a href="/cookies-policy"><u><span >Política de Cookies</span></u></a>).</p>
-<p ><strong>2.2.3</strong> También recopilamos información global sobre tu actividad en nuestra plataforma (como, por ejemplo, el número de viajes ofrecidos, tu tiempo de respuesta a los mensajes, etc.). Esta información puede ser publicada en tu perfil público en nuestra plataforma, si tienes uno.</p>
-<p ><strong>2.2.4 </strong>Por último, podemos recopilar información sobre ti de nuestros socios de seguros o intermediarios en relación con tu solicitud de elegibilidad para los programas de seguros o tu suscripción a los contratos de seguros propuestos cuando actuemos como representantes de seguros.</p>
-<p><strong>2.3 Conservación de datos</strong></p>
-<p ><strong>2.3.1 </strong>Salvo con relación a las categorías de datos personales mencionadas en las cláusulas 2.3.2 y 2.3.3 más adelante, tus datos personales se archivarán después de los siguientes periodos de retención:</p>
-<p >    5 años después del último uso de nuestra plataforma, si no cerraste tu cuenta;</p>
-<p >    30 días después del cierre de tu cuenta, excepto si recibiste un informe o calificación negativa, en cuyo caso tus datos personales se conservarán durante 2 años después del cierre de tu cuenta.</p>
-<p ><strong>2.3.2</strong> Las siguientes categorías de datos personales pueden conservarse durante periodos diferentes:</p>
-<p >  Los datos financieros (p. ej., pagos, reembolsos, etc.) se conservan durante el tiempo exigido por la legislación contable y fiscal aplicable (por ejemplo, los documentos contables se almacenan durante un máximo de 10 años);</p>
-<p >  Los datos del seguro se guardan durante el término del contrato suscrito y la duración necesaria para gestionar tus reclamaciones, si las hubiera;</p>
-<p >   Todo el contenido generado por el usuario (p. ej. comentarios, retroalimentación y clasificaciones) se anonimiza según las duraciones mencionadas en la sección 2.3.1, aunque sigue estando disponible en nuestras plataformas;</p>
-<p >   Los datos de registro se almacenan durante un máximo de 12 meses a partir de la fecha de su recogida;</p>
-<p >  Las llamadas telefónicas con nuestro servicio de Relaciones con la Comunidad se almacenan durante un máximo de 1 mes y los documentos de análisis (como el tiempo y la duración de la llamada) se almacenan hasta durante 1 año.</p>
-<p ><strong>2.3.3</strong>    En el caso de que tu cuenta sea suspendida o bloqueada, conservaremos tus datos durante un periodo de entre 2 o 10 años, dependiendo de la gravedad del incumplimiento, con el fin de impedir que puedas eludir las normas que se apliquen a nuestras plataformas.</p>
-<p ><strong>2.3.4 </strong>Es posible que archivemos algunos de tus Datos personales durante un período que no exceda cinco (5) años para cumplir con nuestras obligaciones legales y gestionar posibles disputas.</p>
-<p ></p><h2>3. ¿Cómo usamos la información que recogemos?</h2><p></p>
-<p >Usaremos la información recogida con el fin de:</p>
-<table >
+<p >Give SA (whose registered office is at 54678, Rivadavia avenue, Buenos Aires, Argentina) (“<strong>GiveMeaRide</strong>”), acting as data controller, is committed to protecting and respecting your privacy. This notice (the “<strong>Privacy Policy</strong>”) is designed to tell you about our practices regarding the collection, use and disclosure of information that you may provide via our platform  accessible from the website www.GiveMeaRide.com or our mobile applications (the "http://www.GiveMeaRide.com/"<strong>Platform</strong>).</p>
+<p >This Privacy Policy (together with our <a href="/terms-and-conditions">Terms and Conditions</a>, any other documents referred to in it and our <a href="/cookies-policy">Cookie Policy</a>) sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed by us. Please read the following carefully to understand our views and practices regarding your personal data and how we will treat it.</p>
+<p ></p><h2>2. What information do we collect from you and for how long?</h2><p></p>
+<p >We may collect and process the following data about you:</p>
+<h3>2.1. Information you give us</h3>
+<p>You may give us information, including information that can identify you ("http://www.GiveMeaRide.com/"<strong>Personal Data</strong>"http://www.GiveMeaRide.com/"), when you use our Platform, by filling in forms on the Platforms (such as the sign-up form), when you enter into any of our competitions, promotions or surveys, when you correspond with us by phone, e-mail or otherwise, and when you report a problem related to the use of our Platform.</p>
+<p >The information you give us may include:</p>
+<ul >
+<li><strong>2.1.1.</strong> Mandatory information required to register for the service we provide on our Platform or to access other services provided by us, including your name, email address, date of birth and, when you create an account, a password. All these fields are mandatory. GiveMeaRide will not be able to provide you with the services offered on our Platforms if the required information is not provided or, if applicable, you will not be able to register for a user account on our Platform;</li>
+</ul>
+<ul >
+<li><strong>2.1.2.</strong> A photograph;</li>
+</ul>
+<ul >
+<li><strong>2.1.3.</strong> A postal address;</li>
+<li><strong>2.1.4. </strong>Your phone number;</li>
+</ul>
+<ul >
+<li><strong>2.1.5.</strong> Details on your cars;</li>
+</ul>
+<ul >
+<li><strong>2.1.6.</strong> Your mini-biography, your gender when you agree to provide that information;</li>
+</ul>
+<ul >
+<li><strong>2.1.7.</strong> A record of any correspondence between you and GiveMeaRide; we may record and/or listen to the phone calls between you and GiveMeaRide (for example, with the agents of our Community Relations service). We give you the possibility to object to that processing at the beginning of the call;</li>
+</ul>
+<ul >
+<li><strong>2.1.8.</strong> A record of any bookings you have made or trip related advertisements you have placed with or through our Platform;</li>
+</ul>
+<ul >
+<li><strong>2.1.9.</strong> Details of accounting or financial transactions including transactions carried out through our Platform or otherwise. This may include information such as your payment card or bank account details, details of trips or legs you have booked or offered through our Platform;</li>
+</ul>
+<ul >
+<li><strong>2.1.10.</strong> Details of your visits to our Platform and the resources that you access;</li>
+</ul>
+<ul >
+<li><strong>2.1.11.</strong> Your replies to any surveys or questionnaires, such as your reviews on the trips made through our Platform. Such information may be used for analytic &amp; user understanding purposes;</li>
+</ul>
+<ul >
+<li><strong>2.1.12.</strong> Information we may require from you when you report a problem with our Platform or our service, such as the subject of your request for support;</li>
+</ul>
+<ul >
+<li><strong>2.1.13.</strong> Location information when you have given consent to the collection and processing of these data so that we can respond to your search for trips near to you; and</li>
+</ul>
+<ul >
+<li><strong>2.1.14.</strong> A copy of your Passport, Driving Licence, ID Card and such other similar documents that you have agreed to provide to us.</li>
+</ul>
+<h3>2.2. Information we collect automatically</h3>
+<p ><strong>2.2.1.</strong> If you sign up via social media authentication methods, GiveMeaRide will access certain Personal Data (e.g. first name, surname, picture and email) in your social media account pursuant to the applicable terms and conditions of these social media platforms. We may also collect some of your Personal Data when you interact with third party social media features, such as "http://www.GiveMeaRide.com/"Like&#8221; functions.</p>
+<p ><strong>2.2.2.</strong> With regard to each of your visits to our Platform we may collect, in accordance with applicable laws and where required with your consent, information relating to the devices you use and the networks you are connected to when using our services. This may include the following information: your IP address, log-in information, browser type and version, browser plug-in types and versions, operating system and platform, information about your visit including the URL clickstream to the different pages of our Platform, content you viewed or searched for, search terms used, download errors, length of visits to certain pages, the advertising identifier of your device, page interaction and any phone number used to contact us. We collect this information through the use of various technologies including cookies (for further information please refer to our <a href="/cookies-policy">Cookie Policy</a>).</p>
+<p ><strong>2.2.3. </strong>We also collect aggregated information regarding your activity on our Platform (such as the amount of rides offered, your message response rate, etc.). Such information may be published on your public profile, should you have one.</p>
+<h3>2.3. Data retention</h3>
+<p ><strong>2.3.1. </strong>Except regarding the categories of Personal Data mentioned in clauses 2.3.2 and 2.3.3 below, your Personal Data will be archived after the following retention periods:</p>
+<ul >
+<li>5 years after your last use of our Platform, if you did not close your account;</li>
+<li>30 days after the closing of your account, except if you received a negative rating or report, in which case your data is stored for 2 years following the closing of your account.</li>
+</ul>
+<p><strong>2.3.2.</strong>The following categories of Personal Data may be stored for different durations:</p>
+<ul >
+<li>Financial data (e.g. payments, reimbursements, etc.) is stored for the duration required by applicable tax and accounting laws (for example, the accounting documents are stored for up to 10 years);</li>
+<li>All user-generated content (e.g. comments, feedback and ratings) is anonymised according to the durations mentioned in section 2.3.1 but remains available on our Platform;</li>
+<li>Log data are stored for up to 12 months from the date of their collection;</li>
+<li>The phone calls with our Community Relations service are stored for up to 1 month and the analysis documents (such as time and duration of the call) are stored up to 1 year.</li>
+</ul>
+<p ><strong>2.3.3. </strong>In the event that your account is suspended or blocked, we will keep your data for a period of 2 or 10 years depending on the gravity of the breach in order to prevent you from circumventing the rules applying to our Platforms.</p>
+<p ><strong>2.3.4. </strong>We may archive some of your Personal Data for a period that will not exceed five (5) years in order to comply with our legal obligations and to manage potential disputes.</p>
+<p ></p><h2> 3. How do we use the information we collect from you?</h2><p></p>
+<p >We will use the information we collect:</p>
+<table  border="1">
 <tbody>
 <tr>
-<td ><strong>FIN</strong></td>
-<td ><strong>FUNDAMENTO JURÍDICO</strong></td>
+<td  colspan="2">
+<p ><strong>PURPOSES</strong></p>
+</td>
+<td >
+<p ><strong>LEGAL BASIS</strong></p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.1</strong> cumplir con nuestras obligaciones en virtud de los contratos que firmemos entre tú y nosotros, o entre tú y nuestros socios comerciales, y para proporcionarte la información y los servicios que nos solicites;</td>
-<td >Este tratamiento es necesario para poder cumplir con nuestras obligaciones contractuales mutuas.</td>
+<td  colspan="2">
+<p ><strong>3.1. </strong>to carry out our obligations arising from any contracts entered into between you and us or you and our business partners and to provide you with the information and services that you requested;</p>
+</td>
+<td >
+<p >This processing is necessary for the performance of our mutual contractual obligations.</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.2</strong> enviarte información relativa a nuestros servicios por correo electrónico y/o mensaje de texto y/o cualquier otro medio de comunicación (p.ej., tu confirmación de reserva);</td>
-<td >Este tratamiento es necesario para poder cumplir con nuestras obligaciones contractuales mutuas o se lleva a cabo con tu consentimiento.</td>
+<td  colspan="2">
+<p ><strong>3.2. </strong>to send you service-related information by email and/or text message and/or any other communication means (e.g. your booking confirmation);</p>
+</td>
+<td >
+<p >This processing is necessary for the performance of our mutual obligations or carried out with your consent.</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.3</strong> para percibir los pagos que realices o para transferirte a ti los pagos que hayamos cobrado en tu nombre</td>
-<td >Este tratamiento es necesario para poder cumplir con nuestras obligaciones contractuales mutuas).</td>
+<td  colspan="2"><strong>3.3. </strong>to collect payments from you or to transfer to you the payments we collect on your behalf;</td>
+<td >This processing is necessary for the performance of our mutual contractual obligations.</td>
 </tr>
 <tr>
-<td ><strong>3.4</strong> para permitirte personalizar tu perfil de usuario en nuestra plataforma;</td>
-<td >Este tratamiento se lleva a cabo con tu consentimiento.</td>
+<td  colspan="2">
+<p ><strong>3.4. </strong>to enable you to personalize your user profile on our Platform;</p>
+</td>
+<td >This processing is carried out with your consent.</td>
 </tr>
 <tr>
-<td ><strong>3.5</strong> para permitirte comunicarte e interactuar con otros miembros o con operadores de transporte de autobuses distribuidos en la Plataforma acerca de nuestros servicios o de los viajes que vayas a compartir o hayas compartido o compartirás y/o para organizar dichos viajes;</td>
-<td >Este tratamiento es necesario para poder cumplir con nuestras obligaciones contractuales mutuas o se lleva a cabo con tu consentimiento.</td>
+<td  colspan="2">
+<p ><strong>3.5. </strong>to enable you to communicate and interact with other members or with bus transport operators distributed on the Platform about our services or about the trips(s) you have/will do and/or to organise such trips;</p>
+</td>
+<td >
+<p >This processing is necessary for the performance of our mutual contractual obligations or carried out with your consent.</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.6</strong> para darte acceso y para permitirte comunicarte con nuestro servicio de Relaciones con la comunidad;</td>
-<td >Este tratamiento (i) es necesario para poder cumplir con nuestras obligaciones contractuales mutuas, (ii) se lleva a cabo con tu consentimiento o (iii) es necesario para establecer, ejercer o defender derechos legales.</td>
+<td colspan="2"><strong>3.6. </strong>to give you access to and to enable you to communicate with our Community Relations service;</td>
+<td >
+<p >This processing is (i) necessary for the performance of our mutual contractual obligations, (ii) carried out with your consent or (iii) necessary for the establishment, exercise or defence of legal claims.</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.7 </strong>Para mejorar nuestro servicio de Relaciones con la comunidad y formar a nuestros agentes de atención al cliente a través del registro de tus conversaciones telefónicas con nosotros;</td>
-<td >Este tratamiento se basa en nuestro interés legítimo (para ofrecerte un servicio de atención al cliente de alta calidad/para mejorar nuestro servicio de atención al cliente).</td>
+<td  colspan="2"><strong>3.7. </strong>to enhance our Community Relation service and train our customers agents through the record of your phone conversations with us;</td>
+<td >
+<p >This processing is based on our legitimate interest (to provide you a high quality customer support/to enhance our customer support).</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.8</strong> para garantizar el cumplimiento con (i) la legislación aplicable, (ii) nuestros Condiciones Generales de Uso, (iii) Política de Privacidad (iv) y Código de buena Conducta. Determinados incumplimientos que consideremos como inapropiados pueden conducir a la suspensión de tu cuenta en nuestra Plataforma. Para estos fines, podemos utilizar tecnologías para analizar automáticamente tu uso de la Plataforma, incluido el contenido de tus publicaciones, con el fin de detectar cualquier comportamiento que pueda constituir un incumplimiento por tu parte;</td>
-<td >Este tratamiento es necesario para (i) poder cumplir con nuestras obligaciones contractuales mutuas, (ii) se basa en tu consentimiento o (iii) para establecer, ejercer o defender derechos legales.</td>
+<td  colspan="2">
+<p ><strong>3.8. </strong>to ensure compliance with (i) applicable laws, (ii) our Terms and Conditions, and (iii) our Privacy Policy. Certain breaches that we regard as inappropriate may lead to the suspension of your account on our Platform. For these purposes, we may use technologies to automatically analyse your use of the Platform, including the content of your publications, in order to detect any behaviour that may constitute a violation on your part;</p>
+</td>
+<td >
+<p >This processing is necessary (i) for the performance of our mutual contractual obligations, (ii) is based on your consent or (iii) for the establishment, exercise or defence of legal claims.</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.9</strong> para enviarte, de acuerdo con la legislación aplicable y, cuando así sea necesario, con tu consentimiento, mensajes de marketing e información necesaria para facilitar el servicio o el proceso de reservas y para ofrecerte sugerencias y recomendaciones sobre bienes y servicios relacionados que puedan interesarte. También usamos tus datos para enviarte publicidad directa en tus plataformas de redes sociales o sitios de terceros. Para obtener información más detallada sobre su funcionamiento y sobre los datos que obtenemos, visita las secciones correspondientes de las plataformas de las redes sociales;</td>
-<td >Este tratamiento se basa en tu consentimiento, donde así lo exija la ley, o nuestro interés legítimo (es decir, proporcionarte publicidad relevante).</td>
+<td  colspan="2">
+<p ><strong>3.9. </strong>to send you, in accordance with applicable laws and where required, with your consent, marketing materials and information necessary to facilitate the service or the booking process and to make you suggestions and recommendations about goods or services related to our services that may interest you. We also use your data to target you in order to serve our ads on social media platforms or third-party sites. You can learn more about how these features work, and the data that we obtain about you, by visiting the relevant sections of the third party social media platforms or sites;</p>
+</td>
+<td >
+<p >This processing is based on your consent where required by law or our legitimate interest (i.e. providing  you with meaningful advertising).</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.10</strong> para notificarte cualquier cambio en nuestros servicios;</td>
-<td >Este tratamiento es necesario para (i) poder cumplir con nuestras obligaciones contractuales mutuas, (ii) poder cumplir con nuestras obligaciones legales o (iii) para establecer, ejercer o defender derechos legales.</td>
+<td  colspan="2">
+<p ><strong>3.10. </strong>to notify you about changes to our services;</p>
+</td>
+<td >
+<p >This processing is necessary (i) for the performance of our mutual contractual obligations, (ii) for compliance with our legal obligations or (iii) the establishment, exercise or defence of legal claims.</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.11 </strong>para verificar la información contenida en tu Pasaporte, Licencia de conducir, DNI y otros documentos de identidad tuyos que puedan recopilarse en el momento del registro o en cualquier otro momento durante el uso de nuestra Plataforma</td>
-<td >Este tratamiento se basa en (i) tu consentimiento, (ii) se lleva a cabo para el establecimiento, ejercicio o defensa de reclamaciones legales o (iii) para el cumplimiento de nuestras obligaciones legales.</td>
+<td  colspan="2">
+<p ><strong>3.11. </strong>to verify the information contained in your Passport, Driving Licence, ID Card and other identity documents that may be collected from you at the time of registration or at any other time during your use of our Platform;</p>
+</td>
+<td >
+<p >This processing is based on (i) your consent, (ii) carried out for the establishment, exercise or defence of legal claims or (iii) for compliance with our legal obligations.</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.12</strong> para administrar nuestra Plataforma y para operaciones internas, incluida la resolución de problemas, el análisis de datos, pruebas, investigación y encuestas;</td>
-<td >Este tratamiento se basa en nuestro interés legítimo (es decir, garantizar la seguridad de nuestra plataforma y mejorar sus características.</td>
+<td >
+<p ><strong>3.12. </strong>to administer our Platforms and for internal operations, including troubleshooting, data analysis, testing, research, analytic and survey purposes;</p>
+</td>
+<td  colspan="2">
+<p >This processing is based on our legitimate interest (i.e. ensuring the security of our Platform and improving its features).</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.13</strong> para asegurar que el contenido se presente de la manera más eficaz para ti y para tu dispositivo;</td>
-<td >Este tratamiento se basa en nuestro interés legítimo (es decir, proporcionarte contenidos relevantes).</td>
+<td >
+<p ><strong>3.13. </strong>to improve our Platform to ensure that content is presented in the most effective manner for you and for your device;</p>
+</td>
+<td  colspan="2">
+<p >This processing is based on our legitimate interest (i.e. providing  you with meaningful content).</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.14</strong> para permitirte participar en las funciones interactivas de nuestro servicio, cuando así lo solicites, como buscar viajes basados en tu ubicación;</td>
-<td >Este tratamiento (i) es necesario para poder cumplir con nuestras obligaciones contractuales mutuas o (ii) se basa en tu consentimiento, cuando así lo exija la ley.</td>
+<td >
+<p ><strong>3.14. </strong>to allow you to participate in interactive features of our service, when you choose to do so, such as searching for trips around you based on your location;</p>
+</td>
+<td  colspan="2">
+<p >This processing is necessary (i) for the performance of our mutual contractual obligations or (ii) based on your consent, where required by law.</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.15</strong> como parte de nuestros esfuerzos por mantener segura y a salvo nuestra Plataforma;</td>
-<td >Este tratamiento (i) se basa en nuestro interés legítimo (garantizar la seguridad de nuestras plataformas), (ii) se lleva a cabo para establecer, ejercer o defender derechos legales o (iii) para cumplir con nuestras obligaciones legales).</td>
+<td ><strong>3.15. </strong>as part of our efforts to keep our Platform safe and secure; and</td>
+<td  colspan="2">
+<p >This processing is based on (i) our legitimate interest (ensuring the security of our Platform), (ii) carried out for the establishment, exercise or defence of legal claims or (iii) for compliance with our legal obligations.</p>
+</td>
 </tr>
 <tr>
-<td ><strong>3.16</strong> para medir o comprender la eficacia de la publicidad que  enviamos, a nuestros usuarios, y para enviarte información que te pueda interesar.</td>
-<td >Este tratamiento se basa en (i) nuestro interés legítimo (es decir, medir y optimizar la eficacia de nuestras campañas publicitarias) o (ii) tu consentimiento) cuando así lo exija la ley.</td>
+<td ><strong>3.16.    </strong>to measure or understand the effectiveness of advertising we serve, and to deliver relevant advertising to our users.</td>
+<td  colspan="2">This processing is based on (i) our legitimate interest (i.e. measuring and optimising the efficiency of our advertising campaigns) or (ii) your consent where required by law.</td>
 </tr>
 </tbody>
 </table>
-<p ></p><h2>4. ¿Quiénes son los destinatarios de la Información que recogemos sobre ti y con qué propósito?</h2><p></p>
-<p ><strong>4.1</strong> Cuando haces uso de nuestros servicios, cierta información sobre ti es compartida con miembros relevantes de nuestras comunidades o con operadores de transporte de autobuses distribuidos en nuestra Plataforma, tanto en tu perfil público como durante el proceso de reserva, únicamente en lo que resulte necesario para la prestación del servicio (p. ej., damos tu número de teléfono a los miembros con quien vayas a compartir un viaje).</p>
-<p ><strong>4.2</strong> Podemos recibir y enviar información acerca de ti, incluidos tus datos personales, a otras entidades de GiveMeaRide o sociedades afiliadas a la misma, a los efectos estipulados en esta Política de Privacidad.</p>
-<p ><strong>4.3</strong> También trabajamos estrechamente con terceros que puedan ser destinatarios de tus datos personales, por ejemplo:</p>
+<h2>4. Who are the recipients of the Information we collect from you and for which purposes?</h2>
+<p ><strong>4.1. </strong>When you use our services, some information about you is shared with the members of our communities or with bus transport operators distributed on our Platform, either on your public profile or during the booking process (e.g. we give your telephone number to the members with whom you will share a ride).</p>
+<p ><strong>4.2. </strong>We may receive and send information about you, including your Personal Data, with other GiveMeaRide entities and affiliates, for the purposes outlined in this Privacy Policy.</p>
+<p ><strong>4.3.</strong> We are also working closely with third parties which may be the recipients of your Personal Data such as:</p>
 <ul >
-<li>nuestros socios comerciales que son plataformas de redes sociales y que pueden proporcionarte servicios relacionados, tales como la conexión de la información de tu perfil de GiveMeaRide, desde sus plataformas de redes sociales a nuestra plataforma.</li>
-<li>nuestros socios comerciales que pueden anunciar sus servicios en nuestra Página Web y Aplicación y a los cuales puedes decidir suscribirte. Es decir, estos servicios pueden ser servicios de seguros, servicios bancarios y de alquiler.</li>
-<li>nuestros socios comerciales, que pueden anunciar nuestros servicios en sus páginas web.</li>
-<li>nuestros subcontratistas que incluyen servicios técnicos, de pago y envíos, o proveedores de soluciones analíticas.</li>
+<li>our business partners who are social media platforms and which may provide you with connecting services, such as the connection of the information of your GiveMeaRide profile, from their social media platforms to our Platform;</li>
 </ul>
-<p ><strong>4.4</strong> Solo divulgaremos tus datos personales a los terceros mencionados en la sección 4.3. en los siguientes casos:</p>
-<p ><strong>4.4.1</strong> Cuando recurramos otro proveedor de servicios para el cumplimiento de cualquier contrato que suscribamos contigo, con el fin de facilitar o extender nuestros servicios (p. ej., en el marco de los pagos realizados en nuestra Plataforma);</p>
-<p ><strong>4.4.2</strong> Como parte del proceso de reserva y con el fin de proporcionar los servicios solicitados, podremos publicar en la Plataforma y/o transmitir a otro miembro, cierta información, como puede ser tu nombre, fotografía, número de teléfono móvil y/o correo electrónico.</p>
-<p ><strong>4.4.3</strong> Como parte de nuestro sistema de calificación, las valoraciones que escribas serán publicadas en la Plataforma. Estas valoraciones, incluido tu nombre abreviado y tu fotografía, serán visibles para todos los que visiten la Plataforma.</p>
-<p ><strong>4.4.4</strong> Utilizamos proveedores de servicios analíticos y motores de búsqueda para ayudarnos a mejorar y optimizar nuestra Plataforma.</p>
-<p ><strong>4.4.5</strong> Cuando así lo solicites expresamente (por ejemplo, cuando hagas uso de los métodos de autenticación proporcionados por las redes sociales).</p>
-<p ><strong>4.4.6 </strong>Podremos distribuir partes de nuestra plataforma (incluidos los viajes que hayas publicado) para que otras páginas web de nuestros socios comerciales puedan publicarlas a través de API o widgets. En tales casos, en estas páginas web podrán aparecer ciertos datos de tu perfil público;</p>
-<p ><strong>4.4.7</strong> Cuando sea legalmente requerido o cuando consideremos de buena fe que sea algo razonablemente necesario para (i) responder a una reclamación contra GiveMeaRide, (ii) cumplir con procedimientos legales, (iii) obligar al cumplimiento de un contrato con nuestros usuarios, de acuerdo con nuestros Condiciones Generales de Uso, nuestra Política de Privacidad, nuestro Código de Buena Conducta, (iv) en el caso de emergencia que entrañe un peligro para la salud pública, muerte o daño físico a una persona (v) en el marco de una investigación o (vi) para proteger los derechos, la propiedad o la seguridad personal de GiveMeaRide, sus miembros u otras personas;</p>
-<p ><strong>4.4.8</strong> En caso de que vendamos o adquiramos algún negocio o activo, en cuyo caso puede que debamos divulgar tus datos personales al potencial vendedor o comprador, de conformidad con la normativa aplicable</p>
-<p ><strong>4.4.9</strong> Si GiveMeaRide o la totalidad o parte de sus activos es adquirida por un tercero, en cuyo caso los datos personales que mantenemos serán uno de los activos transferidos.</p>
-<p ><strong>4.5</strong> De acuerdo con la legislación aplicable y, cuando sea necesario, con tu consentimiento(en tal caso, mediante la aceptación de esta Política de Privacidad otorgas tu consentimiento a este respecto), podremos combinar información sobre ti, incluidos tus datos personales e información obtenida a través de las cookies y que recibamos o enviemos a nuestros socios comerciales. Podremos emplear dicha información y la información combinada a los efectos establecidos anteriormente.</p>
-<p ><strong>4.6</strong> Cabe destacar que, si decides compartir tu información con nosotros, incluidos tus datos personales, a través de los servicios de conexión puestos a tu disposición por nuestros socios comerciales, sus políticas y/o avisos de privacidad te serán igualmente aplicables, además de esta Política de Privacidad. Nosotros no controlamos la recogida ni el tratamiento de tu información que realicen nuestros socios comerciales en su propia plataforma.</p>
-<p ></p><h2>5. ¿Cómo usamos y moderamos tus mensajes?</h2><p></p>
-<p ><strong>5.1</strong> Podremos leer los mensajes que intercambias con otros miembros de nuestra comunidad a través de nuestra Plataforma, a efectos de prevención de fraude, mejora de servicio, asistencia al cliente y cumplimiento de los contratos suscritos con nuestros miembros (tales como nuestros Condiciones Generales de Uso). Por ejemplo, con el fin de prevenir que un miembro eluda nuestro sistema de reserva online, podremos escanear y analizar los mensajes enviados a través de nuestra plataforma para verificar que no incluyen información de contacto o referencias a otra página web y, si procede, los mensajes pueden bloquearse o filtrarse total o parcialmente.</p>
-<p ><strong>5.2</strong> Nunca escaneamos ni analizamos tus mensajes con otros miembros de nuestra comunidad con fines comerciales o publicitarios. Podremos emplear métodos automáticos con el fin de moderar dichos mensajes, aunque no se llevará a cabo ninguna toma de decisiones individual automática en este sentido.</p>
-<p ></p><h2>6. Publicidad directa y nuestras comunicaciones enviadas por correo electrónico o sms</h2><p></p>
-<p >De acuerdo con la legislación aplicable y, si es necesario, con tu consentimiento, podremos emplear la información que nos proporciones en nuestra Plataforma con fines de marketing directo electrónico (p.ej. (i) para que recibas nuestros boletines de noticias, (ii) para que recibas invitaciones a nuestros eventos u otras comunicaciones que creamos puedan ser de tu interés, o (iii) para enviarte publicidad directa en las plataformas de redes sociales o sitios y aplicaciones de terceros) en base a tu perfil e intereses.</p>
-<p ><span >Por lo que respecta a los correos electrónicos profesionales</span>: puedes retirar tu consentimiento en cualquier momento (i) desactivando la casilla correspondiente en tu cuenta de miembro, (ii) haciendo clic en el enlace de cancelación de suscripción que te proporcionamos en cada una de las comunicaciones que se te envíe o (iii) poniéndote en contacto con nosotros a través de la información de contacto prevista en el apartado 13 siguiente.</p>
-<p ><span >Por lo que respecta a la publicidad directa: </span></p>
-<p >(i) En las plataformas de redes sociales (por ejemplo Facebook): puedes oponerte en todo momento al procesamiento de datos configurando los parámetros relativos a la publicidad de tu cuenta;</p>
-<p >(ii) En los sitios o aplicaciones de terceros: puedes leer nuestra <a href="/cookies-policy">Política de Cookies</a> para entender como retirar tu consentimiento.</p>
-<p ></p><h2>7. ¿Vamos a transferir tu información, cómo y a dónde?</h2><p></p>
-<p>En un principio, mantenemos los datos personales que recogemos sobre ti dentro de la Unión Europea (“UE”). No obstante, dado que, por ejemplo, algunos de nuestros proveedores de servicios se ubican en países fuera de la Unión Europea (“países terceros”), también transferimos algunos de tus datos a países terceros. Esto puede incluir países terceros sobre los que la Comisión Europea no haya decidido que garanticen un nivel de protección adecuado. En ese caso, garantizamos que la transferencia se lleve a cabo de conformidad con la legislación aplicable y que se hayan establecido las garantías oportunas (especialmente, las cláusulas contractuales tipo emitidas por la Comisión Europea), con el fin de garantizar un nivel de protección suficiente de la vida privada y los derechos fundamentales de las personas.</p>
-<p>Si envías una solicitud al Delegado de Protección de Datos del Grupo (<a href="http://dataprotection@GiveMeaRide.com/?" target="_blank" rel="noopener noreferrer" data-saferedirecturl="https://www.google.com/url?q=http://dataprotection@GiveMeaRide.com/?&amp;source=gmail&amp;ust=1592983465896000&amp;usg=AFQjCNHMMCFG5QObKAgrF0h_UaypctJ46Q">dataprotection@GiveMeaRide.com</a>), podremos proporcionarte los detalles sobre esas garantías oportunas (por ejemplo, las cláusulas contractuales tipo emitidas por la Comisión Europea).</p>
-<p ></p><h2>8. ¿Qué derechos puedes ejercer respecto a tus datos personales?</h2><p></p>
-<p ><strong>8.1</strong> Tienes derecho a recibir una copia de los datos personales que tenemos sobre ti (<strong>tu derecho de acceso a los datos</strong>).</p>
-<p ><strong>8.2</strong> Puedes solicitar la supresión de los datos personales o la corrección de los datos personales que sean inexactos (<strong>tu derecho de supresión y rectificación</strong>). Ten en cuenta que podremos conservar determinada información sobre ti, tal como exija la legislación, o cuando tengamos un fundamento jurídico para hacerlo. Por ejemplo, si creemos que has cometido fraude o has incumplido nuestras Condiciones Generales de Uso , y queremos evitar que eludas las reglas aplicables a nuestra comunidad.</p>
-<p>8.3 Tienes derecho a oponerte, en cualquier momento, (i) al tratamiento de tus datos personales con fines de marketing directo, o (ii) a otro tratamiento de tus datos personales  con base en tu legítimo interés (<strong>tu derecho a oponerte al tratamiento</strong>).</p>
-<p><strong>8.4</strong> Tienes derecho a limitar el tratamiento de tus datos personales (<strong>tu derecho a limitar el tratamiento</strong>). Ten en cuenta que esto solo se aplica si (i) has cuestionado la exactitud de tus datos personales y estamos verificando dicha exactitud; (ii) has ejercido tu derecho a oponerte y seguimos valorando, tal como prevé la legislación aplicable, si los motivos legítimos que buscamos priman sobre los tuyos; o (iii) hemos tratado tus datos personales de manera ilegal, y solicitas una restricción en tu tratamiento en lugar de la eliminación ; o (iv) ya no necesitamos los datos personales para los fines de tratamiento, pero todavía son necesarios para que establezcas, ejerzas o defiendas demandas legales.</p>
-<p><strong>8.5</strong> Tienes derecho a la portabilidad de los datos, es decir, el derecho recibir los Datos personales que tú nos hayas proporcionado un formato estructurado, legible por máquinas y de uso común y el derecho a transmitir estos datos a otro responsable (<strong>tu derecho a la portabilidad de los datos</strong>).</p>
-<p><strong>8.6</strong> También tienes derecho a presentar una reclamación a la autoridad de control de protección de datos pertinente, o a solicitar una compensación por la vía judicial, si crees que se han vulnerado tus derechos.</p>
-<p ><strong>8.7 </strong>Para ejercer tus derechos, contacta con el Delegado de Protección de Datos del Grupo (dataprotection@GiveMeaRide.com).</p>
-<p ></p><h2>9. Cookies &amp; tecnologías similares</h2><p></p>
-<p >Para saber más a este respecto, puedes ver nuestra <a href="/cookies-policy" target="_blank" rel="noopener noreferrer"><u><span >Política de Cookies</span></u></a>.</p>
-<p ></p><h2>10. Confidencialidad de tu contraseña</h2><p></p>
-<p >Cuando decidas establecer una contraseña de acceso a tu cuenta en nuestra Plataforma, será tu responsabilidad mantenerla en secreto. Por favor, no reveles tu contraseña a nadie.</p>
-<p ></p><h2>11. Enlaces a otras páginas web y redes sociales</h2><p></p>
-<p >Nuestra Página Plataforma podrá contener, en determinados momentos, enlaces a, y desde, páginas web de nuestras redes asociadas, anunciantes y socios. Si sigues un enlace a cualquiera de dichas páginas web, ten en cuenta que éstas tienen sus propias políticas de privacidad y que nosotros no somos responsables de ellas. Verifica siempre estas políticas antes de proporcionarles ninguna información personal.</p>
-<p ></p><h2>12. Modificaciones en nuestra Política de Privacidad</h2><p></p>
-<p >Cualquier modificación que realicemos en nuestra Política de Privacidad se publicará en esta página. Cuando corresponda, te lo notificaremos o pediremos tu consentimiento. Por favor, comprueba frecuentemente si existe alguna actualización o modificación en nuestra Política de Privacidad.</p>
-<p ></p><h2>13. Contacto y Delegado de Protección de Datos</h2><p></p>
-<p>Si tienes alguna pregunta sobre esta Política de Privacidad o si tienes alguna solicitud con respecto a tus Datos personales, puedes ponerte en contacto con nosotros mediante correo electrónico a nuestro Delegado de Protección de Datos en <a href="mailto:grupo10.soyhenry@gmail.com">dataprotection@GiveMeaRide.com.</a></p>
+<ul >
+<li>our business partners who may advertise their services on our Platforms and to which you may decide to sign up for. Namely, these services may be insurance services, banking services, rental services, etc.;</li>
+</ul>
+<ul >
+<li>our business partners who may advertise our services on their websites;</li>
+</ul>
+<ul >
+<li>our sub-contractors including in technical, payment, identity verification and delivery services, or analytics providers.</li>
+</ul>
+<p><strong>4.4. </strong>We only share  your Personal Data with any of these third parties mentioned in section 4.3 in the following cases:</p>
+<ul>
+<li><strong>4.4.1.</strong> Where we resort a third party service provider, for the performance of any contract we enter into with you in order to facilitate or extend our services (e.g. in the framework of the payments made on our Platform);</li>
+</ul>
+<ul >
+<li><strong>4.4.2.</strong> As part of the booking process and in order to provide the requested services, information such as your name, photography, mobile phone number and/or email address, may be displayed on the Platform and/or passed on to another member;</li>
+</ul>
+<ul >
+<li><strong>4.4.3.</strong> As part of our rating system, the reviews you write will be published on the Platform. The reviews including your abbreviated name and photography are visible to all visitors of the Platform;</li>
+</ul>
+<ul >
+<li><strong>4.4.4. </strong>We use analytics and search engine providers to assist us in the improvement and optimization of our Platforms;</li>
+</ul>
+<ul >
+<li><strong>4.4.5. </strong>It is explicitly requested by you (e.g. with when using social media authentication methods, subscribe to a service provided by one of our partners, request to participate to an offer or a good deal of one of our partners);</li>
+</ul>
+<ul >
+<li><strong>4.4.6. </strong>We may distribute parts of our Platforms (including the trips you have posted) for display on our business partners’ websites through API or widgets. In these cases, some information from your public profile may be displayed on these websites;</li>
+</ul>
+<ul >
+<li><strong>4.4.7. </strong>If required to do so by law or in a good faith we believe that it is reasonably necessary to (i) respond to claims asserted against GiveMeaRide, (ii) to comply with legal proceedings, (iii) to enforce any agreement with our users such as our Terms and Conditions and our Privacy Policy, (iv) in the event of an emergency involving the danger of public health, death or physical injury to a person (v) in the framework of investigation or (vi) to protect the rights, property or personal safety of GiveMeaRide, its members or others ;</li>
+</ul>
+<ul >
+<li><strong>4.4.8. </strong>In the event that we sell or buy any business or assets, in which case we may disclose your Personal Data to the prospective seller or buyer of such business or assets; and</li>
+</ul>
+<ul >
+<li><strong>4.4.9. </strong>If GiveMeaRide or all or part of its assets are acquired by a third party, in which case Personal Data held by it about its members will be one of the transferred assets.</li>
+</ul>
+<p ><strong>4.5.</strong> In accordance with applicable laws and where required with your consent, we may combine information about you, including your Personal Data and cookie information, we send to and receive from our business partners. We may use this information and the combined information for the purposes set out above.</p>
+<p ><strong>4.6. </strong>We draw your attention on the fact that if you decide to share your information, including Personal Data, with us through our business partners&#8217; connecting services, any of our business partners’ privacy policies and/or notices may also be applicable to you, in addition to this Privacy Policy. We do not control the collection and/or the processing of your information eventually made by our business partners on their own platforms.</p>
+<h2>5. How do we use and moderate your messages?</h2>
+<p><strong>5.1.</strong> We may read the messages you exchange with other members of our community through our Platform for fraud prevention, service improvement, customer support purposes, enforcement of the contracts entered into with our members (such as our Terms and Conditions). For example, in order to prevent the circumventing of our online booking system, we may scan and analyse messages sent through our Platform to check that they do not include any contact details or references to other websites and, where applicable, messages can be blocked, or totally or partially filtered.</p>
+<p><strong>5.2. </strong>We never scan or analyse your messages with other members of our community for commercial and advertising purposes. We may use automated methods to carry out the moderation of these messages, but no automated individual decision-making is performed in this regard.</p><h2> 6. Targeted ads and our communications sent by e-mail and/or text messages</h2>
+<p >In accordance with applicable laws and where required with your consent, we may use the information you give us on our Platform for electronic direct marketing purposes (e.g. (i) receiving our newsletters, (ii) receiving invitations to our events or other communications that we think may interest you or (ii) serving you with targeted advertising on social media platforms or third parties websites) based on your profile and interests.</p>
+<p ><u>For electronic marketing communications</u>: You can withdraw your consent at any time by (i) unticking the relevant box in your member account, (ii) clicking on the unsubscribe link we provide in each communication sent to your attention or (iii) contacting us using the contact details provided in section 13 below.</p>
+<p ><u>For targeted ads and content</u>:</p>
+<ul >
+<li>on social media (e.g. Facebook): you can object at any time by configuring your settings regarding advertisement directly via your social media account or by contacting us pursuant article 13 below;</li>
+</ul>
+<ul >
+<li>on third party websites: please refer to our <a href="/cookies-policy">Cookie Policy</a> to see how to object.</li>
+</ul>
+<h2>7. Is your Information being transferred, how and where?</h2>
+<p >In principle, we store the Personal Data that we hold about you in the European Union (“<strong>EU</strong>"http://www.GiveMeaRide.com/"). However, since for example some of our service providers are based in countries outside of the European Union (“third countries”), we also transfer some of your data to third countries. This may include third countries where the European Commission has not taken the decision that such third country ensures an adequate level of protection. In that case, we ensure that the transfer is performed in accordance with the applicable legislation and that appropriate safeguards have been put in place (especially standard contractual clauses as issued by the European Commission) in order to guarantee a sufficient level of protection of individuals’ private life and fundamental rights.</p>
+<p>By sending a request to the Group Data Protection Officer (dataprotection@GiveMeaRide.com), we can provide you with the details regarding such appropriate safeguards (for example, the standard contractual clauses issued by the European Commission).</p>
+<p ></p><h2>8. What are your rights in respect of your personal data?</h2><p></p>
+<p ><strong>8.1. </strong>You are entitled to receive a copy of your personal data that is in our possession (<strong>your right of data access</strong>).</p>
+<p ><strong>8.2</strong> You may request the deletion of personal data or the correction of inaccurate personal data (<strong>your right to erasure and rectification</strong>). Please note that we may keep certain information concerning you, as required by law, or when we have a legal basis to do so. For instance, if we believe you have committed fraud or violated our Terms and Conditions and we want to prevent you from circumventing the rules applicable to our community.</p>
+<p ><strong>8.3</strong> You have the right to object at any time (i) to the processing of your personal data for the purpose of direct marketing, or (ii) other processing of your personal data based on our legitimate interest (<strong>your right to object to processing</strong>).</p>
+<p ><strong>8.4</strong> You have the right to restrict the processing of your personal data (<strong>your right to restriction of processing</strong>). Please note that this only applies if (i) you contested the accuracy of your personal data and we are verifying the accuracy of the personal data, (ii) you exercised your right to object and we are still considering, as foreseen by the applicable law, whether the legitimate reasons we are pursuing prevail over yours; or (iii) your personal data has been processed by us in an unlawful way and you request a restriction on their processing rather than erasure; or (iv) we no longer need the personal data for the purposes of processing, but they are still necessary for you to establish, exercise or defend legal claims.</p>
+<p ><strong>8.5</strong> You have the right to data portability, i.e. the right to receive the Personal Data you have provided us with, in a structured, commonly used and machine-readable format and the right to transmit this data to another controller (<strong>your right to data portability</strong>).</p>
+<p><strong>8.6.</strong><em> </em>You also have the right to make a complaint to the relevant data protection supervisory authority or to seek a remedy through the courts if you believe that your rights have been breached.</p>
+<p><strong>8.7.</strong> To exercise your rights, please contact the Group Data Protection Officer using the contact details provided in section 13 below.</p>
+<p ></p><h2>9. Cookies &amp; similar technologies</h2><p></p>
+<p >To find out more, please see our <a href="/cookies-policy">Cookie Policy</a>.</p>
+<p ></p><h2>10. Confidentiality of your password</h2><p></p>
+<p >Where you have chosen a password which enables you to access your account on our Platform, you are responsible for keeping this password confidential. We ask you not to share a password with anyone.</p>
+<p ></p><h2>11. Links to other websites and social media</h2><p></p>
+<p >Our Platform may, from time to time, contain links to and from the websites of our partner networks, advertisers and affiliates. If you follow a link to any of these websites, please note that these websites have their own privacy practices and that we do not accept any responsibility or liability for these policies. Please check these policies before you submit any Personal Data to these websites.</p>
+<p ></p><h2>12. Changes to our Privacy Policy</h2><p></p>
+<p >Any changes we may make to our Privacy Policy in the future will be posted on this page. Where appropriate, we will notify you or seek your consent. Please check back frequently to see any updates or changes to our Privacy Policy.</p>
+<p ></p><h2>13. Contact &amp; Data Protection Officer</h2><p></p>
+<p >If you have any questions about this Privacy Policy or if you have any requests relating to your Personal Data, you can contact us via email to our Data Protection Officer under <a href="mailto:grupo10.soyhenry@gmail.com">dataprotection@GiveMeaRide.com</a></p>
 <hr />
         </div>
       </article>

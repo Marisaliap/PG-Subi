@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../Sass/Styles/CookiesPolicy.scss";
 
+
 export default function CookiesPolicy() {
   const history = useHistory();
 
