@@ -18,7 +18,7 @@
   }
 }
 
-.Form {
+.FormRegistro {
   font-size: 0.8em;
   color: $text;
   font-weight: bolder;
@@ -43,7 +43,7 @@
   .terms {
     width: auto;
     display: flex;
-    margin-left: 30.75rem;
+    margin-left: 31.25rem;
     border-radius: 9999px;
   }
 
@@ -120,6 +120,7 @@
     transition: background-color 0.5s ease-in-out;
     border-radius: 5px;
     padding: 0.5rem;
+    margin-top: 1rem;
     display: flex;
     margin-left: 0;
 
@@ -140,10 +141,16 @@
     }
   }
 
-  .p {
+  .error {
     color: red;
     position: sticky;
     margin-left: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .errorterms {
+    color: red;
+    position: sticky;
     margin-top: 1.5rem;
   }
 
