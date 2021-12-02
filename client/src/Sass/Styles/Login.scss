@@ -9,12 +9,12 @@
   border-radius: 599px;
   font-weight: bolder;
   padding: 0.45rem 0.75rem;
-  background-color: #51c4d3;
+  background-color: $buttonBlue;
   color: $background;
   transition: background-color 0.5s ease-in-out;
 
   &:hover {
-    background-color: #126e82;
+    background-color: $buttonBlueHover;
     cursor: pointer;
   }
 }

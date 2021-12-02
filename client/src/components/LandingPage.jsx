@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/LandingPage.scss";
-import img from "../img/logoNegro.png";
+import img from "../img/logo.png";
 import { allRoutes } from "../actions";
 
 

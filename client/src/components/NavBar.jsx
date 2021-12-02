@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import Logo from "../img/logoNegro.png";
+import Logo from "../img/logo.png";
 import { Profile } from "./Profile";
 import SearchUserByName from "./SearchUserByName";
 import { useSelector, useDispatch } from "react-redux";
