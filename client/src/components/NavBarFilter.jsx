@@ -9,17 +9,15 @@ export default function NavBarFilter() {
 
   const handleSelect = (e) => {
     e.preventDefault();
+    dispatch(allRoutes(e.target.value, restriction));
     setOrder(e.target.value);
-    dispatch(allRoutes(order, restriction));
   };
 
   const handleSelectFilters = (e) => {
     e.preventDefault();
+    dispatch(allRoutes(order, e.target.value));
     setRestriction(e.target.value);
-    dispatch(allRoutes(order, restriction));
   };
-
-  useEffect(() => allRoutes({}), []);
 
   return (
     <div>
