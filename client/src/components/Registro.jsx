@@ -62,7 +62,7 @@ export default function Registro() {
 
   const [input, setInput] = useState({
     name: isAuthenticated ? user.given_name : "",
-    lastName: isAuthenticated ? user.family_name : "",
+    lastName: isAuthenticated ? (!user.family_name && "Fernandez") : user.family_name,
     email: isAuthenticated ? user.email : "",
     dni: "",
     genre: "",

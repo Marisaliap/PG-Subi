@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 import "../Sass/Styles/SearchBarHome.scss";
 import "../Sass/Styles/App.scss";
 
+
 let inputs = { Origin: "", Destination: "" };
 let info = { pasajeros: 1, date: "" };
 
@@ -117,7 +118,7 @@ export default function SearchBarHome() {
           placeholder="Destination"
           className="searchbar"
         />
-
+        
         <datalist id="cities2">
           {cities2 && cities2.map((city) => <option>{city.name}</option>)}
         </datalist>
@@ -147,6 +148,7 @@ export default function SearchBarHome() {
             <option value="6">6</option>
           </select>
         </div>
+        
         <pre>
           <div>
             {checkAllInfo ? (
