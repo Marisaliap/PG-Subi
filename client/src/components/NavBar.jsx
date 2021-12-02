@@ -32,7 +32,7 @@ function Nav() {
   return (
     <>
       <nav className="NavBar">
-        <div className="giveMeARide">
+        <div className="GimmeARide">
           <div className="izquierda">
             <Link to="/home">
               <img className="logoSubi" src={Logo} alt="" />

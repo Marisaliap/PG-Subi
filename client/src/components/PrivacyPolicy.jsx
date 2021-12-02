@@ -17,15 +17,15 @@ export default function PoliticaPrivacidad() {
         <p ><a href="/terms-and-conditions">Terms &amp; Conditions</a> | Privacy Policy | <a href="/cookies-policy">Cookies Policy</a></p>
 <p><strong>Effective date: 17/12/2021</strong></p>
 <p ></p><h2>1. General</h2><p></p>
-<p >Give SA (whose registered office is at 54678, Rivadavia avenue, Buenos Aires, Argentina) (“<strong>GiveMeaRide</strong>”), acting as data controller, is committed to protecting and respecting your privacy. This notice (the “<strong>Privacy Policy</strong>”) is designed to tell you about our practices regarding the collection, use and disclosure of information that you may provide via our platform  accessible from the website www.GiveMeaRide.com or our mobile applications (the "http://www.GiveMeaRide.com/"<strong>Platform</strong>).</p>
+<p >Give SA (whose registered office is at 54678, Rivadavia avenue, Buenos Aires, Argentina) (“<strong>GimmeARide</strong>”), acting as data controller, is committed to protecting and respecting your privacy. This notice (the “<strong>Privacy Policy</strong>”) is designed to tell you about our practices regarding the collection, use and disclosure of information that you may provide via our platform  accessible from the website www.GimmeARide.com or our mobile applications (the "http://www.GimmeARide.com/"<strong>Platform</strong>).</p>
 <p >This Privacy Policy (together with our <a href="/terms-and-conditions">Terms and Conditions</a>, any other documents referred to in it and our <a href="/cookies-policy">Cookie Policy</a>) sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed by us. Please read the following carefully to understand our views and practices regarding your personal data and how we will treat it.</p>
 <p ></p><h2>2. What information do we collect from you and for how long?</h2><p></p>
 <p >We may collect and process the following data about you:</p>
 <h3>2.1. Information you give us</h3>
-<p>You may give us information, including information that can identify you ("http://www.GiveMeaRide.com/"<strong>Personal Data</strong>"http://www.GiveMeaRide.com/"), when you use our Platform, by filling in forms on the Platforms (such as the sign-up form), when you enter into any of our competitions, promotions or surveys, when you correspond with us by phone, e-mail or otherwise, and when you report a problem related to the use of our Platform.</p>
+<p>You may give us information, including information that can identify you ("http://www.GimmeARide.com/"<strong>Personal Data</strong>"http://www.GimmeARide.com/"), when you use our Platform, by filling in forms on the Platforms (such as the sign-up form), when you enter into any of our competitions, promotions or surveys, when you correspond with us by phone, e-mail or otherwise, and when you report a problem related to the use of our Platform.</p>
 <p >The information you give us may include:</p>
 <ul >
-<li><strong>2.1.1.</strong> Mandatory information required to register for the service we provide on our Platform or to access other services provided by us, including your name, email address, date of birth and, when you create an account, a password. All these fields are mandatory. GiveMeaRide will not be able to provide you with the services offered on our Platforms if the required information is not provided or, if applicable, you will not be able to register for a user account on our Platform;</li>
+<li><strong>2.1.1.</strong> Mandatory information required to register for the service we provide on our Platform or to access other services provided by us, including your name, email address, date of birth and, when you create an account, a password. All these fields are mandatory. GimmeARide will not be able to provide you with the services offered on our Platforms if the required information is not provided or, if applicable, you will not be able to register for a user account on our Platform;</li>
 </ul>
 <ul >
 <li><strong>2.1.2.</strong> A photograph;</li>
@@ -41,7 +41,7 @@ export default function PoliticaPrivacidad() {
 <li><strong>2.1.6.</strong> Your mini-biography, your gender when you agree to provide that information;</li>
 </ul>
 <ul >
-<li><strong>2.1.7.</strong> A record of any correspondence between you and GiveMeaRide; we may record and/or listen to the phone calls between you and GiveMeaRide (for example, with the agents of our Community Relations service). We give you the possibility to object to that processing at the beginning of the call;</li>
+<li><strong>2.1.7.</strong> A record of any correspondence between you and GimmeARide; we may record and/or listen to the phone calls between you and GimmeARide (for example, with the agents of our Community Relations service). We give you the possibility to object to that processing at the beginning of the call;</li>
 </ul>
 <ul >
 <li><strong>2.1.8.</strong> A record of any bookings you have made or trip related advertisements you have placed with or through our Platform;</li>
@@ -65,7 +65,7 @@ export default function PoliticaPrivacidad() {
 <li><strong>2.1.14.</strong> A copy of your Passport, Driving Licence, ID Card and such other similar documents that you have agreed to provide to us.</li>
 </ul>
 <h3>2.2. Information we collect automatically</h3>
-<p ><strong>2.2.1.</strong> If you sign up via social media authentication methods, GiveMeaRide will access certain Personal Data (e.g. first name, surname, picture and email) in your social media account pursuant to the applicable terms and conditions of these social media platforms. We may also collect some of your Personal Data when you interact with third party social media features, such as "http://www.GiveMeaRide.com/"Like&#8221; functions.</p>
+<p ><strong>2.2.1.</strong> If you sign up via social media authentication methods, GimmeARide will access certain Personal Data (e.g. first name, surname, picture and email) in your social media account pursuant to the applicable terms and conditions of these social media platforms. We may also collect some of your Personal Data when you interact with third party social media features, such as "http://www.GimmeARide.com/"Like&#8221; functions.</p>
 <p ><strong>2.2.2.</strong> With regard to each of your visits to our Platform we may collect, in accordance with applicable laws and where required with your consent, information relating to the devices you use and the networks you are connected to when using our services. This may include the following information: your IP address, log-in information, browser type and version, browser plug-in types and versions, operating system and platform, information about your visit including the URL clickstream to the different pages of our Platform, content you viewed or searched for, search terms used, download errors, length of visits to certain pages, the advertising identifier of your device, page interaction and any phone number used to contact us. We collect this information through the use of various technologies including cookies (for further information please refer to our <a href="/cookies-policy">Cookie Policy</a>).</p>
 <p ><strong>2.2.3. </strong>We also collect aggregated information regarding your activity on our Platform (such as the amount of rides offered, your message response rate, etc.). Such information may be published on your public profile, should you have one.</p>
 <h3>2.3. Data retention</h3>
@@ -211,10 +211,10 @@ export default function PoliticaPrivacidad() {
 </table>
 <h2>4. Who are the recipients of the Information we collect from you and for which purposes?</h2>
 <p ><strong>4.1. </strong>When you use our services, some information about you is shared with the members of our communities or with bus transport operators distributed on our Platform, either on your public profile or during the booking process (e.g. we give your telephone number to the members with whom you will share a ride).</p>
-<p ><strong>4.2. </strong>We may receive and send information about you, including your Personal Data, with other GiveMeaRide entities and affiliates, for the purposes outlined in this Privacy Policy.</p>
+<p ><strong>4.2. </strong>We may receive and send information about you, including your Personal Data, with other GimmeARide entities and affiliates, for the purposes outlined in this Privacy Policy.</p>
 <p ><strong>4.3.</strong> We are also working closely with third parties which may be the recipients of your Personal Data such as:</p>
 <ul >
-<li>our business partners who are social media platforms and which may provide you with connecting services, such as the connection of the information of your GiveMeaRide profile, from their social media platforms to our Platform;</li>
+<li>our business partners who are social media platforms and which may provide you with connecting services, such as the connection of the information of your GimmeARide profile, from their social media platforms to our Platform;</li>
 </ul>
 <ul >
 <li>our business partners who may advertise their services on our Platforms and to which you may decide to sign up for. Namely, these services may be insurance services, banking services, rental services, etc.;</li>
@@ -245,13 +245,13 @@ export default function PoliticaPrivacidad() {
 <li><strong>4.4.6. </strong>We may distribute parts of our Platforms (including the trips you have posted) for display on our business partners’ websites through API or widgets. In these cases, some information from your public profile may be displayed on these websites;</li>
 </ul>
 <ul >
-<li><strong>4.4.7. </strong>If required to do so by law or in a good faith we believe that it is reasonably necessary to (i) respond to claims asserted against GiveMeaRide, (ii) to comply with legal proceedings, (iii) to enforce any agreement with our users such as our Terms and Conditions and our Privacy Policy, (iv) in the event of an emergency involving the danger of public health, death or physical injury to a person (v) in the framework of investigation or (vi) to protect the rights, property or personal safety of GiveMeaRide, its members or others ;</li>
+<li><strong>4.4.7. </strong>If required to do so by law or in a good faith we believe that it is reasonably necessary to (i) respond to claims asserted against GimmeARide, (ii) to comply with legal proceedings, (iii) to enforce any agreement with our users such as our Terms and Conditions and our Privacy Policy, (iv) in the event of an emergency involving the danger of public health, death or physical injury to a person (v) in the framework of investigation or (vi) to protect the rights, property or personal safety of GimmeARide, its members or others ;</li>
 </ul>
 <ul >
 <li><strong>4.4.8. </strong>In the event that we sell or buy any business or assets, in which case we may disclose your Personal Data to the prospective seller or buyer of such business or assets; and</li>
 </ul>
 <ul >
-<li><strong>4.4.9. </strong>If GiveMeaRide or all or part of its assets are acquired by a third party, in which case Personal Data held by it about its members will be one of the transferred assets.</li>
+<li><strong>4.4.9. </strong>If GimmeARide or all or part of its assets are acquired by a third party, in which case Personal Data held by it about its members will be one of the transferred assets.</li>
 </ul>
 <p ><strong>4.5.</strong> In accordance with applicable laws and where required with your consent, we may combine information about you, including your Personal Data and cookie information, we send to and receive from our business partners. We may use this information and the combined information for the purposes set out above.</p>
 <p ><strong>4.6. </strong>We draw your attention on the fact that if you decide to share your information, including Personal Data, with us through our business partners&#8217; connecting services, any of our business partners’ privacy policies and/or notices may also be applicable to you, in addition to this Privacy Policy. We do not control the collection and/or the processing of your information eventually made by our business partners on their own platforms.</p>
@@ -268,8 +268,8 @@ export default function PoliticaPrivacidad() {
 <li>on third party websites: please refer to our <a href="/cookies-policy">Cookie Policy</a> to see how to object.</li>
 </ul>
 <h2>7. Is your Information being transferred, how and where?</h2>
-<p >In principle, we store the Personal Data that we hold about you in the European Union (“<strong>EU</strong>"http://www.GiveMeaRide.com/"). However, since for example some of our service providers are based in countries outside of the European Union (“third countries”), we also transfer some of your data to third countries. This may include third countries where the European Commission has not taken the decision that such third country ensures an adequate level of protection. In that case, we ensure that the transfer is performed in accordance with the applicable legislation and that appropriate safeguards have been put in place (especially standard contractual clauses as issued by the European Commission) in order to guarantee a sufficient level of protection of individuals’ private life and fundamental rights.</p>
-<p>By sending a request to the Group Data Protection Officer (dataprotection@GiveMeaRide.com), we can provide you with the details regarding such appropriate safeguards (for example, the standard contractual clauses issued by the European Commission).</p>
+<p >In principle, we store the Personal Data that we hold about you in the European Union (“<strong>EU</strong>"http://www.GimmeARide.com/"). However, since for example some of our service providers are based in countries outside of the European Union (“third countries”), we also transfer some of your data to third countries. This may include third countries where the European Commission has not taken the decision that such third country ensures an adequate level of protection. In that case, we ensure that the transfer is performed in accordance with the applicable legislation and that appropriate safeguards have been put in place (especially standard contractual clauses as issued by the European Commission) in order to guarantee a sufficient level of protection of individuals’ private life and fundamental rights.</p>
+<p>By sending a request to the Group Data Protection Officer (dataprotection@GimmeARide.com), we can provide you with the details regarding such appropriate safeguards (for example, the standard contractual clauses issued by the European Commission).</p>
 <p ></p><h2>8. What are your rights in respect of your personal data?</h2><p></p>
 <p ><strong>8.1. </strong>You are entitled to receive a copy of your personal data that is in our possession (<strong>your right of data access</strong>).</p>
 <p ><strong>8.2</strong> You may request the deletion of personal data or the correction of inaccurate personal data (<strong>your right to erasure and rectification</strong>). Please note that we may keep certain information concerning you, as required by law, or when we have a legal basis to do so. For instance, if we believe you have committed fraud or violated our Terms and Conditions and we want to prevent you from circumventing the rules applicable to our community.</p>
@@ -287,7 +287,7 @@ export default function PoliticaPrivacidad() {
 <p ></p><h2>12. Changes to our Privacy Policy</h2><p></p>
 <p >Any changes we may make to our Privacy Policy in the future will be posted on this page. Where appropriate, we will notify you or seek your consent. Please check back frequently to see any updates or changes to our Privacy Policy.</p>
 <p ></p><h2>13. Contact &amp; Data Protection Officer</h2><p></p>
-<p >If you have any questions about this Privacy Policy or if you have any requests relating to your Personal Data, you can contact us via email to our Data Protection Officer under <a href="mailto:grupo10.soyhenry@gmail.com">dataprotection@GiveMeaRide.com</a></p>
+<p >If you have any questions about this Privacy Policy or if you have any requests relating to your Personal Data, you can contact us via email to our Data Protection Officer under <a href="mailto:grupo10.soyhenry@gmail.com">dataprotection@GimmeARide.com</a></p>
 <hr />
         </div>
       </article>

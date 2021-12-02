@@ -31,7 +31,7 @@ export default function TermsAndConditions() {
               This document describes the General Terms and Conditions
               applicable to the use of the services offered by Gimme a Ride®
               &nbsp;{" "}
-              <a href="http://www.givemearide.com/">www.givemearide.com/app</a>
+              <a href="http://www.gimmearide.com/">www.GimmeARide.com/app</a>
               &nbsp; and the Gimme a Ride® application (hereinafter “Give me a
               ride®”). Any person (hereinafter "User") who wishes to use Give me
               a ride® can do so subject to the Terms and Conditions respective,

@@ -411,7 +411,7 @@ export default function Faq() {
             Soon you will be able to configure the alert conditions, being able
             to have a range of time and distance. You can collaborate with Give
             me a ride® so that we can incorporate these functions soon{" "}
-            <a href="https://givemearide.com/donar"> Donate! </a>{" "}
+            <a href="https://GimmeARide.com/donar"> Donate! </a>{" "}
           </p>
           <h3> How does the travel ‘matcher’ work? </h3>
           <p>
@@ -437,8 +437,8 @@ export default function Faq() {
                <p> Gimme a Ride® is a network of people who share car rides. It is a non-profit and open source collective management project that emerged from the civil association STS Rosario in 2013 in order to contribute to a more rational use of the car.
                  The idea is that when we have to travel by car because there is no bus or it does not suit us for some reason, we always try to fill the car to make better use of fossil resources and pollution associated with the trip. Beyond environmental motivation, Gimme a Ride® also seems very important to us because it helps to generate bonds between people, who many times would not have met otherwise. </p> 
                  <h3> How can I contribute to Gimme a Ride®? </h3>
-                 <p> Great that you want to collaborate! You can contribute to Gimme a Ride® with volunteer work and also dissemination / contacts. <a href="https://givemearide.com/howtocooperate"> Here you can find all the information to help Gimme a Ride® go further </a>. </p> 
-                 <p> You can also donate once or monthly here <a href="https://givemearide.com/donate"> --- & gt; Donate! </a> </p>
+                 <p> Great that you want to collaborate! You can contribute to Gimme a Ride® with volunteer work and also dissemination / contacts. <a href="https://GimmeARide.com/howtocooperate"> Here you can find all the information to help Gimme a Ride® go further </a>. </p> 
+                 <p> You can also donate once or monthly here <a href="https://GimmeARide.com/donate"> --- & gt; Donate! </a> </p>
 
 
               <h3>¿Cómo nace Gimme a Ride®? ¿Quiénes lo hacen? </h3>
