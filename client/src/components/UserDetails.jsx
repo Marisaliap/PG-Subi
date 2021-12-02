@@ -9,6 +9,7 @@ import EditCar from "./EditCar";
 import { getUserDetail } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 
+
 export default function UserDetails(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -51,7 +52,7 @@ export default function UserDetails(props) {
         </div>
         <hr />
         <div>
-          {user.cars?(
+          {user.cars && user.cars.length > 0 ?(
             <CardCar
               patent={user.cars[0].patent}
               brand={user.cars[0].brand}
