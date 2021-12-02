@@ -90,7 +90,7 @@ export default function UserDetails(props) {
             <hr />
             {
           <div>
-          {user.cars[0]?
+          {user.cars&&user.cars.length > 0?
               <CardCar 
                patent={user.cars[0].patent}
                brand={user.cars[0].brand}
