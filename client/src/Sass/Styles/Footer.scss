@@ -31,8 +31,10 @@
     color: $links;
   }
 
-  .lineahr {
-    height: 100%;
+  hr {
+    height: 80%;
+    mix-blend-mode: screen;
+    min-width: min-content;
   }
 
   .Link {

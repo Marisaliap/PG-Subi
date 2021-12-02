@@ -142,9 +142,9 @@
 
   .error {
     color: red;
-    position: absolute;
-    left: 2vw;
-    top: 60vh;
+    position: sticky;
+    margin-left: 2rem;
+    margin-top: 1.5rem;
   }
 
   .button {
