@@ -1,0 +1,15 @@
+@import '../Variables/Variables.scss';
+
+.NavBarFilter {
+  margin: 1rem;
+
+  select {
+    padding: 0.2rem;
+    margin: 0.2rem;
+    font-family: inherit;
+    font-weight: bold;
+    color: $headline;
+    border: 1px solid $buttonColor;
+    border-radius: 5px;
+  }
+}
