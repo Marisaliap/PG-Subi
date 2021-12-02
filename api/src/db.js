@@ -63,7 +63,7 @@ const { User, Route, Car, Post, Order } = sequelize.models;
 User.hasMany(Car);
 Car.belongsTo(User);
 
-//User UM Car
+//User UM Order
 User.hasMany(Order);
 Order.belongsTo(User);
 

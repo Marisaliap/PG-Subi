@@ -20,15 +20,15 @@ const RouteDetails = () => {
         {getRoutes.map((route,i) => (
            <Link to={`/route/${route.id}`}  style={{textDecoration:'none'}}>
             <div className='RouteCard'>
-               
+
             
             <CardUser
-                photo={route.users[0].photo}
-                name={route.users[0].name}
-                calification = { route.users[0].calification }
+                photo={route.users?[0].photo: 'el route.user'}
+                name={route.users?[0].name: 'el route.user'}
+                calification = { route.users?[0].calification: 'el route.user' }
                 key={i}
             />
-           
+
              <CardRoute
             origin={route.originName}
             destiny={route.destinyName}
@@ -38,7 +38,7 @@ const RouteDetails = () => {
             place = {route.place}
             key={i+1}
             />
-    
+
             </div>
             </Link>
         ))

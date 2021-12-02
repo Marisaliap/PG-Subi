@@ -1,15 +1,23 @@
 const mercadopago = require ('mercadopago');
-const { Order } = require('../db.js');
+const { Order, Route } = require('../db.js');
+
 
 const { ACCESS_TOKEN } = process.env;
 
 const getMP = async (req,res,next) => {
   try {
     const {
-      id_orden,
+      idRoute,
       title,
       price,
+      quantity,
     } = req.body
+
+
+
+    let orden = await Order.create({status:'processing'});
+    //const route = await Route.findByPk(idRoute);
+    //await route.addOrder();
 
     mercadopago.configure({access_token: ACCESS_TOKEN});
 
@@ -17,12 +25,12 @@ const getMP = async (req,res,next) => {
       {
         title: title,
         unit_price: price,
-        quantity: 1,
+        quantity: quantity,
       };
 
     let preference = {
       items: [item_ml],
-      external_reference : `${id_orden}`,
+      external_reference : `${orden.id}`,
       back_urls: {
         success: 'http://localhost:3001/mercadopago/payment',
         failure: 'http://localhost:3001/mercadopago/payment',
@@ -33,7 +41,8 @@ const getMP = async (req,res,next) => {
     const response = await mercadopago.preferences.create(preference)
 
     global.id = response.body.id;
-    res.json({id: global.id, init_point: response.body.init_point});
+
+    res.json(global.id);
 
   } catch(err)  {
     next(err)

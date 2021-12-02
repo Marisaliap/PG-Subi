@@ -9,7 +9,6 @@
     "@testing-library/user-event": "^12.2.2",
     "axios": "^0.24.0",
     "mapbox-gl": "^1.13.2",
-    "mercadopago": "^0.5.0",
     "npkill": "^0.8.2",
     "react": "^17.0.1",
     "react-cookie": "^4.1.1",
