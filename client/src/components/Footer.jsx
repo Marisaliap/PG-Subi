@@ -33,11 +33,17 @@ export default function Footer() {
         </div>
       </div>
       <hr classname="lineahr" />
-      <div>
+      <div className="legal">
         <h4 className="titulo">Legal information</h4>
         <div className="cosasAbajo">
           <Link to="/terms-and-conditions" className="Link" target="_blank">
             Terms and Conditions
+          </Link>
+          <Link to="/privacy-policy" className="Link" target="_blank">
+            Privacy Policy
+          </Link>
+          <Link to="/cookies-policy" className="Link" target="_blank">
+            Cookies Policy
           </Link>
         </div>
       </div>

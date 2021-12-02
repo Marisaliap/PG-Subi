@@ -1,8 +1,10 @@
 import React from "react";
+import '../Sass/Styles/CardCar.scss';
+
 
 export default function CardCar({ patent, brand, model, color, ...props }) {
   return (
-    <div {...props}>
+    <div className="CardCar" {...props}>
       <h4>Car Data</h4>
       <h5>{patent}</h5>
       <h5>{brand}</h5>
