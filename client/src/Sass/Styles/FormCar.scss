@@ -24,6 +24,7 @@
   font-weight: bolder;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   .cadaLineaAuto {
     display: flex;
@@ -38,8 +39,9 @@
   .label {
     width: 10rem;
     display: flex;
-    margin-left: 10rem;
+    margin-left: 30rem;
     color: $labelForms;
+
   }
 
   .inputauto {
@@ -86,6 +88,8 @@
   .button {
     margin-top: 2.5rem;
     width: 10rem;
+    margin-left: 30rem;
+
   }
 
   .buttondisabled {
