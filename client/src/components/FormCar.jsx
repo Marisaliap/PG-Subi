@@ -39,10 +39,6 @@ export default function FormCar() {
     return errors;
   }
 
-  useEffect(() => {
-    dispatch(postCar());
-  }, [dispatch]);
-
   function handleChange(e) {
     console.log(input);
     setInput({
@@ -56,7 +52,7 @@ export default function FormCar() {
       })
     );
   }
-  console.log(errors);
+
   function handleSubmit(e) {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {

@@ -29,7 +29,7 @@
   .cadaLinea {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     font-size: 1.2em;
     padding-top: 1rem;
     color: $headline;
@@ -43,13 +43,18 @@
   .terms {
     width: auto;
     display: flex;
-    margin-left: 31.25rem;
     border-radius: 9999px;
+  }
+
+  .selectterminos {
+    display: flex;
+    justify-content: center;
   }
 
   .terminosycond {
     display: grid;
     grid-template-rows: 50% 50%;
+    justify-items: center;
   }
 
   .label {
@@ -157,6 +162,10 @@
   .button {
     margin-top: 2.5rem;
     width: 10rem;
+  }
+
+  .botoncito {
+    display: flex;
   }
 
   .buttondisabled {

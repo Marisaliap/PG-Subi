@@ -30,18 +30,20 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    width: 60vw;
+    width: 50vw;
     font-size: 1.2em;
     padding-top: 1rem;
     color: $headline;
+    margin-left: 0vw;
+    align-items: center;
   }
 
   .label {
     width: 10rem;
     display: flex;
-    margin-left: 30rem;
     color: $labelForms;
-
+    justify-content: center;
+    margin-left: 10vw;
   }
 
   .inputauto {
@@ -49,13 +51,15 @@
     border-bottom: 2px solid $buttonColor;
     cursor: pointer;
     padding-top: 1.5rem;
-    width: 20vw;
+    width: 15vw;
     font-weight: bold;
     color: $text;
     font-family: inherit;
     transition: background-color 0.5s ease-in-out;
     margin-top: 1rem;
     border-radius: 5px;
+    display: flex;
+    position: sticky;
 
     &:focus {
       outline: none;
@@ -64,32 +68,26 @@
     &:hover {
       background-color: $buttonColor-33;
     }
-
-    @media only screen and (min-width: 1200px) {
-      width: 20vw;
-    }
   }
 
   .options {
     font-weight: bold;
   }
 
-  @media only screen and (min-width: 1200px) {
-    width: 20vw;
-  }
-
   .errorcar {
     color: red;
     position: sticky;
-    margin-left: 2rem;
     margin-top: 1.5rem;
+    width: 10rem;
+    display: flex;
+    position: sticky;
+    margin-left: 0;
+    justify-content: flex-end;
   }
 
   .button {
     margin-top: 2.5rem;
     width: 10rem;
-    margin-left: 30rem;
-
   }
 
   .buttondisabled {

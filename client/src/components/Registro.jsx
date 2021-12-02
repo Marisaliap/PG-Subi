@@ -113,8 +113,6 @@ export default function Registro() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(errors);
-    console.log(input);
     if (Object.keys(errors).length === 0) {
       dispatch(postUser(input));
       setInput({
@@ -364,20 +362,22 @@ export default function Registro() {
                 {" "}
                 Privacy Policy
               </a>
-              <select
-                name="terms"
-                id="terms"
-                className="terms"
-                onChange={(e) => handleSelectTerms(e)}
-              >
-                <option disabled selected value="1">
-                  {" "}
-                  -- Select an option --{" "}
-                </option>
-                <option className="options" value="Yes">
-                  Yes
-                </option>
-              </select>
+              <div className="selectterminos">
+                <select
+                  name="terms"
+                  id="terms"
+                  className="terms"
+                  onChange={(e) => handleSelectTerms(e)}
+                >
+                  <option disabled selected value="1">
+                    {" "}
+                    -- Select an option --{" "}
+                  </option>
+                  <option className="options" value="Yes">
+                    Yes
+                  </option>
+                </select>
+              </div>
             </div>
             {errors.terms && <p className="errorterms">{errors.terms}</p>}
           </div>
