@@ -38,7 +38,7 @@ const postUser = async (req, res, next) => {
         age,
         about,
         genre,
-        calification,
+        calification: [0],
         photoDni,
       },
     });
