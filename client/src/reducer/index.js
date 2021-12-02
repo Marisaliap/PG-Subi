@@ -1,8 +1,8 @@
 const initialState = {
-  suggestions1: [],
-  suggestions2: [],
-  routePostInfo: {},
-  route: [],
+  suggestions1: [], // resultados de la primera ciudad del searchbar
+  suggestions2: [], // resultados de la segunda ciudad del searchbar
+  routePostInfo: {}, // información del formulario para crear una ruta
+  route: [], //información de la ruta(coordenadas de todo el viaje)
   user: [],
   users: [],
   getRoutes: [],
