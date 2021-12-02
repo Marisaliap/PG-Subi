@@ -4,8 +4,10 @@ import "../Sass/Styles/Home.scss";
 import header from "../img/header.png";
 import group2 from "../img/group2.png";
 import SearchBarHome from "./SearchBarHome";
+import { useSelector } from "react-redux";
 
 export default function Home() {
+  const  users = useSelector(state => state.user);
   return (
     <div className="Home">
       <div>
@@ -20,36 +22,22 @@ export default function Home() {
           <img className="foto" src={group2} alt="Home" />
         </div>
         <article>
-          <h3>Give me a ride</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            feugiat feugiat enim, non ullamcorper elit malesuada ut. Maecenas id
-            tincidunt est, non finibus metus. Orci varius natoque penatibus et
-            magnis dis parturient montes, nascetur ridiculus mus. Proin in nisl
-            vel risus egestas posuere. Fusce semper, enim consequat elementum
-            lobortis, dui orci porta mauris, auctor faucibus tellus erat at
-            quam. Aliquam tempor sapien a sapien interdum, in venenatis magna
-            tempus. Pellentesque habitant morbi tristique senectus et netus et
-            malesuada fames ac turpis egestas. Integer id sollicitudin erat, at
-            facilisis eros. Etiam et congue ex. Donec id metus arcu. Sed
-            bibendum metus vel lorem ullamcorper, ut blandit massa eleifend.
+          <h1>Save money while driving</h1>
+          <p> Publish your next round trip on GiveMeaRide and get, on average, 80 dollars * 
+            of your passengers. You will only need a couple of minutes to publish your route. 
+            Do we share a trip?
+
+          <p>* Average amount received by drivers in 2021.</p>
           </p>
-          <p>
-            Cras varius neque imperdiet rhoncus malesuada. Sed tortor dolor,
-            pretium eu scelerisque in, tristique vitae purus. Suspendisse mi
-            risus, eleifend at lorem ac, tincidunt sagittis quam. Sed vulputate
-            gravida urna ac convallis. Fusce mattis sem id ultrices dapibus.
-            Etiam urna dolor, consequat vel nibh et, vehicula semper ex. Morbi
-            in nibh nisi.
-          </p>
-          <p>
-            Vivamus fermentum vitae nibh vitae malesuada. Praesent pellentesque
-            sed neque a fringilla. Sed tellus purus, scelerisque dictum enim id,
-            tempor dictum erat. Aenean molestie interdum aliquet. Interdum et
-            malesuada fames ac ante ipsum primis in faucibus. Maecenas nec velit
-            id urna suscipit ultricies non sit amet tortor. Praesent fermentum
-            velit pellentesque venenatis varius.
-          </p>
+          <div className="searchContainer">
+        {null&&!users&&users.cars[0]? 
+         <NavLink className="searchContainerItem" to="/route">
+            <button className="button">Post a Trip</button>
+          </NavLink>: 
+          <NavLink className="searchContainerItem" to="/car">
+            <button className="button">Post a Trip</button>
+          </NavLink>}
+          </div>
         </article>
       </div>
     </div>
