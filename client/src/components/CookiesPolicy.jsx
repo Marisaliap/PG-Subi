@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import "../Sass/Styles/Recommendations.scss";
+import "../Sass/Styles/CookiesPolicy.scss";
 
-export default function PoliticaCookies() {
+export default function CookiesPolicy() {
   const history = useHistory();
 
   function handleSubmit(e) {
@@ -10,22 +10,28 @@ export default function PoliticaCookies() {
     history.push("/home");
   }
   return (
-    <div className="Cookies">
+    <div className="CookiesPolicy">
       <article>
+        <div></div>
         <div>
-        <p ><a href="/terms-and-conditions">Condiciones Generales de Uso</a> | <a href="/privacy-policy">Política de Privacidad</a> | Política de cookies</p>
           <p>
-            Give SA ("Give me a ride", "we", "us" or "our") uses cookies and
-            similar tracking technologies on our website and in our mobile
-            applications (individually referred to as "platform" or collectively
-            "platforms"). In this policy (the "Cookie Policy"), we provide you
-            with more information related to these technologies and about the
-            decisions you can make in this regard.
+            <a href="/terms-and-conditions">Terms and Conditions</a> |{" "}
+            <a href="/privacy-policy">Privacy Policy</a> | Cookies Policy
+          </p>
+          <p>
+            <span>
+              Give SA ("Give me a ride", "we", "us" or "our") uses cookies and
+              similar tracking technologies on our website and in our mobile
+              applications (individually referred to as "platform" or
+              collectively "platforms"). In this policy (the "Cookie Policy"),
+              we provide you with more information related to these technologies
+              and about the decisions you can make in this regard.
+            </span>
           </p>
 
-          <p>
+          <strong>
             1. What is a “cookie” and what are “similar tracking technologies”?
-          </p>
+          </strong>
 
           <p>
             A "cookie" is a small text file that is stored and / or read by your
@@ -40,7 +46,7 @@ export default function PoliticaCookies() {
             to as "cookies" in this Cookie Policy.
           </p>
 
-          <p>2. Who places cookies on our platforms?</p>
+          <strong>2. Who places cookies on our platforms?</strong>
 
           <p>
             Cookies on our platforms are set by us (so-called "first-party
@@ -53,14 +59,14 @@ export default function PoliticaCookies() {
             are shown to you in the footer of our website.
           </p>
 
-          <p>
+          <strong>
             3. What are the different types of cookies and how are they used on
             our platforms?
-          </p>
+          </strong>
 
           <p>The following types of cookies used on our platforms are:</p>
 
-          <p>Essential cookies:</p>
+          <h4>Essential cookies:</h4>
 
           <p>
             These cookies allow you to easily navigate Give me a ride and use
@@ -69,7 +75,7 @@ export default function PoliticaCookies() {
             for Give me a ride and cannot be deactivated.
           </p>
 
-          <p>Performance cookies:</p>
+          <h4>Performance cookies:</h4>
 
           <p>
             These cookies help us to know which of our pages are most (and
@@ -81,7 +87,7 @@ export default function PoliticaCookies() {
             partners will know when you have accessed Give me a ride.
           </p>
 
-          <p>Marketing and segmentation cookies:</p>
+          <h4>Marketing and segmentation cookies:</h4>
 
           <p>
             These cookies tell us when you visit our platform, which pages you
@@ -92,7 +98,7 @@ export default function PoliticaCookies() {
             advertising that is displayed will be less adjusted to your needs.
           </p>
 
-          <p>4. How can you decide which cookies are used?</p>
+          <strong>4. How can you decide which cookies are used?</strong>
 
           <p>
             When you log to our platforms for the first time we show you a
@@ -106,7 +112,7 @@ export default function PoliticaCookies() {
             settings shown in the footer of our website.
           </p>
 
-          <p>5. Updates to our Cookies Policy?</p>
+          <strong>5. Updates to our Cookies Policy?</strong>
 
           <p>
             Every time we change the way we use cookies on our platforms, we
@@ -116,11 +122,11 @@ export default function PoliticaCookies() {
             last updated on December 1, 2021.
           </p>
 
-          <p>6. Who can you contact for additional questions?</p>
+          <strong>6. Who can you contact for additional questions?</strong>
 
           <p>
             If you have questions regarding our Cookie Policy, do not hesitate
-            to contact us by email at
+            to contact us by email at:{" "}
             <a
               href="mailto:grupo10.soyhenry@gmail.com"
               target="_blank"

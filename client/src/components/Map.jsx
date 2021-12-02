@@ -28,7 +28,7 @@ export default function Map() {
   const city2 = useSelector((state) => state.suggestions2);
   const data = useSelector((state) => state.route);
   const { user, isAuthenticated } = useAuth0();
-  console.log(data);
+  //console.log(data);
 
   function handleClick(e) {
     e.preventDefault();
