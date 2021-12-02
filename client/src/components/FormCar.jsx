@@ -94,6 +94,7 @@ console.log(errors);
           handleSubmit(e);
         }}
       >
+      <div>
         <label>Patent</label>
         <input
           type="text"
@@ -103,9 +104,11 @@ console.log(errors);
         />
         {
           errors.patent && (
-            <p>{errors.patent}</p>
+            <p className="errorcar">{errors.patent}</p>
           )
-        }     
+        }
+           </div>
+           <div>
         <label>Color</label>
         <input
           type="text"
@@ -115,9 +118,11 @@ console.log(errors);
         />
         {
           errors.color && (
-            <p>{errors.color}</p>
+            <p className="errorcar">{errors.color}</p>
           )
-        }        
+        }       
+        </div>
+        <div> 
         <label>Brand</label>
         <input
           type="text"
@@ -127,9 +132,11 @@ console.log(errors);
         />
         {
           errors.brand && (
-            <p>{errors.brand}</p>
+            <p className="errorcar">{errors.brand}</p>
           )
-        }        
+        }
+        </div>
+        <div>        
         <label>Model</label>
         <input
           type="text"
@@ -139,9 +146,11 @@ console.log(errors);
         />
         {
           errors.model && (
-            <p>{errors.model}</p>
+            <p className="errorcar">{errors.model}</p>
           )
-        }        
+        }    
+        </div>
+        <div>    
         <label>Cylinder</label>
         <input
           type="text"
@@ -151,11 +160,12 @@ console.log(errors);
         />
         {
           errors.cylinder && (
-            <p>{errors.cylinder}</p>
+            <p className="errorcar">{errors.cylinder}</p>
           )
-        }        
+        }
+        </div>        
         <button className="button" type="submit">
-          Submit
+          Add Car
         </button>
       </form>
     </div>
