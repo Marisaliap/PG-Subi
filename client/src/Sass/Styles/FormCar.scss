@@ -19,15 +19,20 @@
 
 
 .Form {
+  display:flex;
     font-size: 0.8em;
     color: $text;
     font-weight: bolder;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
 
     label {
       font-size: 1.2em;
       text-align: left;
-      position: absolute;
-      left: 15vw;
+      left: 5vw;
+      margin-right: 2rem;
       padding-top: 1.5rem;
       color: $headline;
 
@@ -36,7 +41,7 @@
       }
 
       @media only screen and (min-width: 1200px) {
-        margin-left: 30rem;
+        margin-left: 3rem;
       }
     }
 
@@ -93,9 +98,12 @@
       }
     }
 
-    .error {
-      color: red;
-    }
+    .errorcar {
+    color: red;
+    //position: absolute;
+    left: 2vw;
+    top: 60vh;
+  }
 
     .button {
       margin-top: 2.5rem;
