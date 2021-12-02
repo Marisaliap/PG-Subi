@@ -10,9 +10,9 @@ export default function Home() {
   const  users = useSelector(state => state.user);
   return (
     <div className="Home">
-      <div>
+      {/* <div>
         <img className="fotoHeader" src={header} alt="header" />
-      </div>
+      </div> */}
       <div>
         <SearchBarHome />
       </div>
@@ -30,13 +30,22 @@ export default function Home() {
           <p>* Average amount received by drivers in 2021.</p>
           </p>
           <div className="searchContainer">
-        {null&&!users&&users.cars[0]? 
-         <NavLink className="searchContainerItem" to="/route">
-            <button className="button">Post a Trip</button>
-          </NavLink>: 
-          <NavLink className="searchContainerItem" to="/car">
-            <button className="button">Post a Trip</button>
-          </NavLink>}
+          {
+            <NavLink
+              className="searchContainerItem"
+              to={
+                !users.dni
+                  ? "/register"
+                  : users.name && users.cars.length === 0
+                  ? "/car"
+                  : users.name && users.cars[0].patent
+                  ? "/route"
+                  : ""
+              }
+            >
+              <button className="button">Post a Trip</button>
+            </NavLink>
+          }
           </div>
         </article>
       </div>
