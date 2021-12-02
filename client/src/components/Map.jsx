@@ -29,7 +29,7 @@ export default function Map() {
   const data = useSelector((state) => state.route);
   const { user, isAuthenticated } = useAuth0();
   console.log(data);
-
+console.log(routeInfo, 'SOY INFO DE POSTROUTE')
   function handleClick(e) {
     e.preventDefault();
     history.push('/route');
@@ -47,7 +47,7 @@ export default function Map() {
         date: routeInfo.date.split('-').reverse().join('-'),
         hours: routeInfo.hours,
         place: routeInfo.pasajeros,
-        restriction: '',
+        restriction: routeInfo.restrictions.join(', '),
         km: data.coordinates.distance,
         points: data.coordinates.data.geometry.coordinates
       })
@@ -133,6 +133,9 @@ export default function Map() {
         <p>
           <BsFillPersonFill /> {routeInfo.pasajeros} Seats available.
         </p>
+        {routeInfo.restrictions.map(restriction => {
+         return <p>{restriction}</p>
+        })}
       </div>
       <div className="buttonContainer">
         <button className="buttonBlue" onClick={handleClick}>

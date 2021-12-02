@@ -12,7 +12,7 @@ const RouteDetails = () => {
     const dispatch = useDispatch();
     useEffect(() =>dispatch(allRoutes()), []);
     const { getRoutes} = useSelector(state => state);
-    console.log( getRoutes);
+    //console.log( getRoutes);
 
     return (
 
