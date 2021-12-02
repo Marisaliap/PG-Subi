@@ -46,12 +46,12 @@ export default function SearchBar() {
     dispatch(getSuggestions(inputs.Origin));
     dispatch(getSuggestions2(inputs.Destination));
     const validations = validateInputs(inputs);
-    console.log(validations, "soy input");
+    //console.log(validations, "soy input");
     setErrors(() => {
       const errorState = { ...errors, validations };
       return errorState;
     });
-    console.log(errors);
+   //console.log(errors);
   }
 
   const { validations } = errors;

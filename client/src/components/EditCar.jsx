@@ -5,10 +5,9 @@ import { postCar } from "../actions";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
-import "../Sass/Styles/FormCar.scss";
 
-export default function FormCar() {
-  const history = useHistory();
+export default function EditCar() {
+    const history = useHistory();
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
@@ -66,11 +65,11 @@ export default function FormCar() {
       });
       swal({
         title: "Good job!",
-        text: "Car created correctly",
+        text: "Car modified correctly",
         icon: "success",
         button: "Aww yiss!",
       });
-      history.push("/route");
+      history.push("/user/:id");
     } else {
       swal({
         title: "Sorry",
