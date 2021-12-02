@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import "../Sass/Styles/Recommendations.scss";
+import "../Sass/Styles/CookiesPolicy.scss";
 
 export default function PoliticaCookies() {
   const history = useHistory();

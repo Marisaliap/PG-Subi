@@ -14,7 +14,7 @@ export default function FormCar() {
 
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
-    email: isAuthenticated ? user.email : "",
+    idUser: isAuthenticated ? user.email : "",
     patent: "",
     color: "",
     brand: "",
@@ -56,10 +56,10 @@ export default function FormCar() {
       })
     );
   }
-
+console.log(errors);
   function handleSubmit(e) {
     e.preventDefault();
-    if (true) {
+    if (Object.keys(errors).length === 0) {
       dispatch(postCar(input));
       setInput({
         patent: "",

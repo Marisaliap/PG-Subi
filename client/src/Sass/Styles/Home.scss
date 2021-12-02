@@ -11,6 +11,13 @@
     p {
       text-align: left;
     }
+
+    .foto{
+      width: 35vw;
+      height: 30vh;
+      -webkit-box-shadow: 5px 5px 10px 5px #838282; 
+        box-shadow: 5px 5px 10px 5px #838282;
+    }
   }
 
   .Link {
@@ -26,11 +33,13 @@
 
   .fotoHeader {
     width: 80vw;
-    height: 30vh;
+    height: 40vh;
     display: flex;
     justify-content: center;
     align-content: center;
     align-items: center;
     margin-left: 10vw;
   }
+
+  
 }

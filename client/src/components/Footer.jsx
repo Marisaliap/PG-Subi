@@ -27,6 +27,7 @@ export default function Footer() {
           <Link to="/Faq" className="Link" target="_blank">
             FAQs
           </Link>
+          <br></br>
           <Link to="/recommendations" className="Link" target="_blank">
             Recommendations
           </Link>
@@ -38,6 +39,14 @@ export default function Footer() {
         <div className="cosasAbajo">
           <Link to="/terms-and-conditions" className="Link" target="_blank">
             Terms and Conditions
+          </Link>
+          <br></br>
+          <Link to="/privacy-policy" className="Link" target="_blank">
+            Privacy Policy
+          </Link>
+          <br></br>
+          <Link to="/cookies-policy" className="Link" target="_blank">
+            Cookies Policy
           </Link>
         </div>
       </div>
