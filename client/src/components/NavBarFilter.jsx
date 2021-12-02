@@ -24,7 +24,7 @@ export default function NavBarFilter() {
     <div className="NavBarFilter">
       <div>
         <select onChange={handleSelect} name="sorts">
-          <option value="">Order By...</option>
+          <option value="">Order by...</option>
           <option value="time">Earliest Departure</option>
           <option value="price">Lowest Price</option>
         </select>
