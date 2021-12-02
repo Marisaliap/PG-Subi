@@ -9,7 +9,7 @@ export default function SubFooter() {
       <div className="info">
         <br />
         <div className="left">
-          Give me a ride is an app to share trips between people. Wherever you
+          Gimme a Ride is an app to share trips between people. Wherever you
           go, find your ideal trip.
         </div>
         <div className="redesSociales">

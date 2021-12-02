@@ -40,7 +40,7 @@ function Nav() {
           </div>
           <div>
             <Link to="/home" className="nombreSubi">
-              <h2 className="nombreSubi">Give me a ride</h2>
+              <h2 className="nombreSubi">Gimme a Ride</h2>
             </Link>
           </div>
         </div>
