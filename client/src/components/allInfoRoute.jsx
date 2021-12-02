@@ -36,7 +36,7 @@ export default  function AllInfoRoute({match}) {
   }
   return <div className='Map'>
     {route.length > 0 && route.originName}
-  hola
+  
   <Map
        style="mapbox://styles/mapbox/streets-v11"
        containerStyle={{
