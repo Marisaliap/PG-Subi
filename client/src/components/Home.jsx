@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../Sass/Styles/Home.scss";
-import header from "../img/header.jpg";
-import car_8 from "../img/car_8.jpg";
+import header from "../img/header.png";
+import group2 from "../img/group2.png";
 import SearchBarHome from "./SearchBarHome";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
       <div className="Article">
         <div></div>
         <div>
-          <img src={car_8} alt="Home" className="FotoArticle" />
+          <img className="foto" src={group2} alt="Home" />
         </div>
         <article>
           <h3>Give me a ride</h3>

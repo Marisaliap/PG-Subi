@@ -12,9 +12,9 @@ export default function FormCar() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState({err:"null"});
   const [input, setInput] = useState({
-    email: isAuthenticated ? user.email : "",
+    idUser: isAuthenticated ? user.email : "",
     patent: "",
     color: "",
     brand: "",
@@ -33,8 +33,8 @@ export default function FormCar() {
       errors.brand = "Brand is required";
     } else if (!input.model) {
       errors.model = "Model is required";
-    } else if (!input.cyinder) {
-      errors.cyinder = "Cylinder is required";
+    } else if (!input.cylinder) {
+      errors.cylinder = "Cylinder is required";
     }
     return errors;
   }
@@ -56,10 +56,10 @@ export default function FormCar() {
       })
     );
   }
-
+console.log(errors);
   function handleSubmit(e) {
     e.preventDefault();
-    if (true) {
+    if (Object.keys(errors).length === 0) {
       dispatch(postCar(input));
       setInput({
         patent: "",
@@ -103,6 +103,7 @@ export default function FormCar() {
               value={input.patent}
               onChange={(e) => handleChange(e)}
             />
+            {errors.patent && <p className="error">{errors.patent}</p>}
             <br />
             <label>Color</label>
             <input
@@ -111,6 +112,7 @@ export default function FormCar() {
               value={input.color}
               onChange={(e) => handleChange(e)}
             />
+            {errors.color && <p className="error">{errors.color}</p>}
             <br />
             <label>Brand</label>
             <input
@@ -119,7 +121,7 @@ export default function FormCar() {
               value={input.brand}
               onChange={(e) => handleChange(e)}
             />
-
+            {errors.brand && <p className="error">{errors.brand}</p>}
             <br />
             <label>Model</label>
             <input
@@ -128,6 +130,7 @@ export default function FormCar() {
               value={input.model}
               onChange={(e) => handleChange(e)}
             />
+            {errors.model && <p className="error">{errors.model}</p>}
             <br />
             <label>Cylinder</label>
             <input
@@ -136,6 +139,7 @@ export default function FormCar() {
               value={input.cylinder}
               onChange={(e) => handleChange(e)}
             />
+            {errors.cylinder && <p className="error">{errors.cylinder}</p>}
           </div>
           <button className="button" type="submit">
             Charge Car

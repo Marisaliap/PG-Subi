@@ -1,6 +1,16 @@
 @import "../Variables/Variables.scss";
 
 .aboutus{
+
+    .text{
+        display:grid;
+        grid-template-columns: 10% 80% 10%;
+        font-family: "inter", sans-serif;
+
+        .icon{
+            width: 15px;
+        }
+    }
     
     img{
         border-radius: 50%;

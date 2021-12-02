@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import Logo from "../img/logoNegro.png";
 import { Profile } from "./Profile";
 import SearchUserByName from "./SearchUserByName";
@@ -11,24 +11,23 @@ import { getUserDetail } from "../actions";
 import "../Sass/Styles/NavBar.scss";
 
 function Nav() {
- const dispatch = useDispatch();
-  const  users = useSelector(state => state.user);
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.user);
   const { user, isAuthenticated } = useAuth0();
-  const id = isAuthenticated? user.email: "";
+  const id = isAuthenticated ? user.email : "";
 
-
-  console.log("esto es users",users);
+  console.log("esto es users", users);
   //console.log("esto es user",user);
- // console.log("esto es id",id);
+  // console.log("esto es id",id);
   //console.log("esto es AUth",isAuthenticated);
-
 
   useEffect(() => {
     dispatch(getUserDetail(id));
   }, [dispatch, id]);
 
   //console.log(" esto es cars/mail", users.cars.userEmail)
-  console.log(" esto es cars", users.cars)
+  console.log(" esto es cars", users.cars);
+  console.log(" esto es dni", users.dni);
 
   return (
     <>
@@ -46,14 +45,23 @@ function Nav() {
           </div>
         </div>
         <div className="searchContainer">
-        {null&&!users&&users.cars[0]? 
-         <NavLink className="searchContainerItem" to="/route">
-            <button className="button">Post a Trip</button>
-          </NavLink>: 
-          <NavLink className="searchContainerItem" to="/car">
-            <button className="button">Post a Trip</button>
-          </NavLink>}
-          </div>
+          {
+            <NavLink
+              className="searchContainerItem"
+              to={
+                !users.dni
+                  ? "/register"
+                  : users.name && users.cars.length === 0
+                  ? "/car"
+                  : users.name && users.cars[0].patent
+                  ? "/route"
+                  : ""
+              }
+            >
+              <button className="button">Post a Trip</button>
+            </NavLink>
+          }
+        </div>
         <div>
           <SearchUserByName />
         </div>
