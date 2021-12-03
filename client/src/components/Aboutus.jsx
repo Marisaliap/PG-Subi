@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Sass/Styles/Aboutus.scss";
 import {
   SiSequelize,
@@ -14,12 +14,7 @@ import {
 } from "react-icons/si";
 
 export default function Aboutus() {
-  const history = useHistory();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    history.push("/home");
-  }
   return (
     <div>
       <Link to="/home">

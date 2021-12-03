@@ -16,7 +16,7 @@ import {
   BsPinMapFill,
   BsFillPersonFill,
 } from 'react-icons/bs';
-import { RiContactsBookLine, RiPinDistanceFill } from 'react-icons/ri';
+import { RiPinDistanceFill } from 'react-icons/ri';
 import '../Sass/Styles/Map.scss';
 import swal from 'sweetalert';
 
@@ -28,7 +28,7 @@ export default function Map() {
   const city = useSelector((state) => state.suggestions1);
   const city2 = useSelector((state) => state.suggestions2);
   const data = useSelector((state) => state.route);
-  const { user, isAuthenticated } = useAuth0();
+  const { user } = useAuth0();
 
 
   // const routeCoordinates = Math.floor(data.coordinates.data.geometry.coordinates.length / 2)
@@ -79,7 +79,8 @@ export default function Map() {
       </Link>
 
       <Map
-        style="mapbox://styles/mapbox/streets-v11"
+        style={"mapbox://styles/mapbox/streets-v11"
+        }
         containerStyle={{
           height: '50vh',
           width: '50vw',
@@ -98,6 +99,7 @@ export default function Map() {
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
               style={{ height: '30px' }}
+              alt="marker"
             ></img>
           </Marker>
         )}
@@ -106,6 +108,7 @@ export default function Map() {
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
               style={{ height: '30px' }}
+              alt="marker"
             ></img>
           </Marker>
         )}

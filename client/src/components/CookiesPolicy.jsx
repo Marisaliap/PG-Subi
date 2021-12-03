@@ -1,22 +1,18 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
 import "../Sass/Styles/CookiesPolicy.scss";
 
 export default function CookiesPolicy() {
-  const history = useHistory();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    history.push("/home");
-  }
   return (
     <div className="CookiesPolicy">
       <article>
         <div></div>
         <div>
           <p>
-            <a href="/terms-and-conditions">Terms and Conditions</a> |{" "}
-            <a href="/privacy-policy">Privacy Policy</a> | Cookies Policy
+            <a href="/terms-and-conditions" target="_blank"
+            rel="noreferrer">Terms and Conditions</a> |{" "}
+            <a href="/privacy-policy" target="_blank"
+            rel="noreferrer">Privacy Policy</a> | Cookies Policy
           </p>
           <p>
             <span>

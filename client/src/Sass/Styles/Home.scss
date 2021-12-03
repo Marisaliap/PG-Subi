@@ -41,4 +41,11 @@
     align-items: center;
     margin-left: 10vw;
   }
+
+  .linksdelhome {
+    display: flex;
+    flex-direction: row;
+    width: 16vw;
+    justify-content: space-evenly;
+  }
 }

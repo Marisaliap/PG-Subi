@@ -77,7 +77,7 @@ export default function AllInfoRoute({ match }) {
               alt=""
             ></img>
           </Marker>
-        }
+        )}
 
         {data && (
           <Marker coordinates={route.destiny}>
@@ -122,10 +122,18 @@ export default function AllInfoRoute({ match }) {
           <BsFillPersonFill /> {route.place} Seats available.
         </p>
       </div>
+<<<<<<< HEAD
   <button className='buttonBlue' onClick={handleClick}>Go Back</button>
   { !datos
     ? <p>Wait a moment....</p>
     : <Continue trip={route} data={datos}/>
   }
   </div>
+=======
+      <button className="buttonBlue" onClick={handleClick}>
+        volver
+      </button>
+    </div>
+  );
+>>>>>>> Lolito
 }
