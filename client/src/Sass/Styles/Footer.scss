@@ -3,7 +3,7 @@
 .Footer {
   font-weight: normal;
   display: grid;
-  grid-template-columns: 2% 11% 2% 11% 2% 16% 2% 30% 2% 20% 2%;
+  grid-template-columns: 4% 8% 4% 15% 4% 18% 4% 15% 4% 20% 4%;
   margin: 0;
   text-align: left;
   background-color: $footer;
@@ -18,11 +18,7 @@
   }
 
   .cosasAbajo {
-    width: 100%;
-    margin-left: 0%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    display: row;
     margin-top: -1rem;
   }
 
@@ -31,10 +27,8 @@
     color: $links;
   }
 
-  hr {
-    height: 80%;
-    mix-blend-mode: screen;
-    min-width: min-content;
+  .lineahr {
+    height: 100%;
   }
 
   .Link {
@@ -50,16 +44,12 @@
     align-self: center;
   }
 
-  .legal {
-    width: 100%;
-  }
-
   .help {
-    width: 100%;
-    margin-left: 0%;
+    width: 80%;
+    margin-left: 10%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-top: -1rem;
   }
 

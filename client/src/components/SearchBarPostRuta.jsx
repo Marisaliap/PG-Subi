@@ -175,12 +175,12 @@ export default function SearchBar() {
                   color: "white",
                 }}
               >
-                Search
+                Submit
               </NavLink>
             </button>
           ) : (
             <button className="button" disabled="true">
-              Search
+              Submit
             </button>
           )}
         </div>

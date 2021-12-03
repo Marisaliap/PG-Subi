@@ -31,7 +31,7 @@ export default function Aboutus() {
           <div className="text">
             <div></div>
             <div>
-              <p>Gimme a Ride started with the SoyHenry.com Botcamp</p>
+              <p>Give me a ride started with the SoyHenry.com Botcamp</p>
               <p>
                 The student team that takes it forward is made up of Botcamp
                 soyhenry students who were trained to be Full Stack Developer.
@@ -49,7 +49,7 @@ export default function Aboutus() {
                 Teachers Leader, Product Owner. All are essential for the
                 project to move forward.
               </p>
-              <p>Introducing the Gimme a Ride team :</p>
+              <p>Introducing the Give me a ride team :</p>
             </div>
             <div></div>
           </div>

@@ -18,7 +18,7 @@
   }
 }
 
-.FormRegistro {
+.Form {
   font-size: 0.8em;
   color: $text;
   font-weight: bolder;
@@ -29,7 +29,7 @@
   .cadaLinea {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     font-size: 1.2em;
     padding-top: 1rem;
     color: $headline;
@@ -43,18 +43,13 @@
   .terms {
     width: auto;
     display: flex;
+    margin-left: 30.75rem;
     border-radius: 9999px;
-  }
-
-  .selectterminos {
-    display: flex;
-    justify-content: center;
   }
 
   .terminosycond {
     display: grid;
     grid-template-rows: 50% 50%;
-    justify-items: center;
   }
 
   .label {
@@ -125,7 +120,6 @@
     transition: background-color 0.5s ease-in-out;
     border-radius: 5px;
     padding: 0.5rem;
-    margin-top: 1rem;
     display: flex;
     margin-left: 0;
 
@@ -148,24 +142,14 @@
 
   .error {
     color: red;
-    position: sticky;
-    margin-left: 2rem;
-    margin-top: 1.5rem;
-  }
-
-  .errorterms {
-    color: red;
-    position: sticky;
-    margin-top: 1.5rem;
+    position: absolute;
+    left: 2vw;
+    top: 60vh;
   }
 
   .button {
     margin-top: 2.5rem;
     width: 10rem;
-  }
-
-  .botoncito {
-    display: flex;
   }
 
   .buttondisabled {

@@ -32,12 +32,16 @@ export default function FormCar() {
     } else if (!input.brand) {
       errors.brand = "Brand is required";
     } else if (!input.model) {
-      errors.model = "Model is required";
+      errors.model = 'Model is required';
     } else if (!input.cylinder) {
-      errors.cylinder = "Cylinder is required";
+      errors.cylinder = 'Cylinder is required';
     }
     return errors;
   }
+
+  useEffect(() => {
+    dispatch(postCar());
+  }, [dispatch]);
 
   function handleChange(e) {
     console.log(input);
@@ -52,7 +56,7 @@ export default function FormCar() {
       })
     );
   }
-
+console.log(errors);
   function handleSubmit(e) {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
@@ -85,68 +89,73 @@ export default function FormCar() {
     <div className="FormCar">
       <h1>Create your Car</h1>
       <form
-        className="FormAUTO"
+        className="Form"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
       >
-        <div className="cadaLineaAuto">
-          <p className="label">Patent:</p>
-          <input
-            className="inputauto"
-            type="text"
-            name="patent"
-            value={input.patent}
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.patent && <p className="errorcar">{errors.patent}</p>}
-        </div>
-        <div className="cadaLineaAuto">
-          <p className="label">Color:</p>
-          <input
-            className="inputauto"
-            type="text"
-            name="color"
-            value={input.color}
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.color && <p className="errorcar">{errors.color}</p>}
-        </div>
-        <div className="cadaLineaAuto">
-          <p className="label">Brand:</p>
-          <input
-            className="inputauto"
-            type="text"
-            name="brand"
-            value={input.brand}
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.brand && <p className="errorcar">{errors.brand}</p>}
-        </div>
-        <div className="cadaLineaAuto">
-          <p className="label">Model:</p>
-          <input
-            className="inputauto"
-            type="text"
-            name="model"
-            value={input.model}
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.model && <p className="errorcar">{errors.model}</p>}
-        </div>
-        <div className="cadaLineaAuto">
-          <p className="label">Cylinder:</p>
-          <input
-            className="inputauto"
-            type="text"
-            name="cylinder"
-            value={input.cylinder}
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.cylinder && <p className="errorcar">{errors.cylinder}</p>}
-        </div>
+        <label>Patent</label>
+        <input
+          type="text"
+          name="patent"
+          value={input.patent}
+          onChange={(e) => handleChange(e)}
+        />
+        {
+          errors.patent && (
+            <p>{errors.patent}</p>
+          )
+        }     
+        <label>Color</label>
+        <input
+          type="text"
+          name="color"
+          value={input.color}
+          onChange={(e) => handleChange(e)}
+        />
+        {
+          errors.color && (
+            <p>{errors.color}</p>
+          )
+        }        
+        <label>Brand</label>
+        <input
+          type="text"
+          name="brand"
+          value={input.brand}
+          onChange={(e) => handleChange(e)}
+        />
+        {
+          errors.brand && (
+            <p>{errors.brand}</p>
+          )
+        }        
+        <label>Model</label>
+        <input
+          type="text"
+          name="model"
+          value={input.model}
+          onChange={(e) => handleChange(e)}
+        />
+        {
+          errors.model && (
+            <p>{errors.model}</p>
+          )
+        }        
+        <label>Cylinder</label>
+        <input
+          type="text"
+          name="cylinder"
+          value={input.cylinder}
+          onChange={(e) => handleChange(e)}
+        />
+        {
+          errors.cylinder && (
+            <p>{errors.cylinder}</p>
+          )
+        }        
         <button className="button" type="submit">
-          Add Car
+          Submit
         </button>
       </form>
     </div>

@@ -32,7 +32,7 @@ function Nav() {
   return (
     <>
       <nav className="NavBar">
-        <div className="GimmeARide">
+        <div className="giveMeARide">
           <div className="izquierda">
             <Link to="/home">
               <img className="logoSubi" src={Logo} alt="" />
@@ -40,7 +40,7 @@ function Nav() {
           </div>
           <div>
             <Link to="/home" className="nombreSubi">
-              <h2 className="nombreSubi">Gimme a Ride</h2>
+              <h2 className="nombreSubi">Give me a ride</h2>
             </Link>
           </div>
         </div>
