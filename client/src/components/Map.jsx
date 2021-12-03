@@ -73,7 +73,6 @@ console.log(routeInfo, 'SOY INFO DE POSTROUTE')
 
  
 
-
   return (
     <div className="Map">
       <Link to="/home">

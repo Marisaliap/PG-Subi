@@ -45,6 +45,7 @@ export default  function AllInfoRoute({match}) {
        }}
        className="mapbox"
        center={route.origin}
+       fitBounds={route.origin && [route.origin, route.destiny]}
   >
     
     
