@@ -160,6 +160,8 @@ export default function EditUser() {
           onSubmit={(e) => {
             handleSubmit(e);
           }}
+          // agrego rami para la foto "action"
+          enctyon="multipart/form-data"
         >
           <div className="cadaLinea">
             <p className="label" for="genre">
@@ -278,6 +280,11 @@ export default function EditUser() {
             <button className="button" type="submit">
               Submit
             </button>
+          </div>
+          {/* agrego rami para la foto user */}
+          <div >
+            <input  type="file" name="image"/>
+            <label>choose image</label>
           </div>
         </form>
       </div>

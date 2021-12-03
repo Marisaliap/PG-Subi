@@ -63,6 +63,9 @@ module.exports = (sequelize) => {
     },
     photoDni:{
       type: DataTypes.ARRAY(DataTypes.STRING),
+    },
+    public_id:{
+      type: DataTypes.STRING,
     }
   },
   {

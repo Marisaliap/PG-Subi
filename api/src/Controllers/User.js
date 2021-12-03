@@ -40,6 +40,7 @@ const postUser = async (req, res, next) => {
         genre,
         calification: [0],
         photoDni,
+        public_id,
       },
     });
     res.send(user);
