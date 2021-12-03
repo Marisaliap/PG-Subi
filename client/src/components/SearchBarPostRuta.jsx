@@ -163,13 +163,17 @@ export default function SearchBar() {
           </select>
         </div>
         <div className= 'selectContainer'>
-          <h4 for="restrictions"> Restrictions: </h4>
+          <h4 for="restrictions"> Preferences: </h4>
           <select
             name="restrictions"
             onChange={handleRestrictions}
             id="restrictions"
             className='restrictions'
           >
+          <option disabled selected value="1">
+                {" "}
+                -- Select an option --{" "}
+              </option>
           <option value="petsAllowed">Pets Allowed</option>
           <option value="smokersAllowed">Smoking Allowed</option>
           <option value="foodAllowed">Food Allowed</option>
@@ -197,35 +201,37 @@ export default function SearchBar() {
           <p>{validations && validations.hours}</p>
         </div>
         <pre>
-          <div>
-            {checkAllInfo ? (
-              <button
-                onClick={handleSubmit}
-                className="button"
-                disabled={checkInfo.length !== 3 && checkInputs.length !== 2}
+        <div>
+          <NavLink to="/">
+            <button className="buttonBlue">Back</button>
+          </NavLink>
+        </div>
+        <div>
+          {checkAllInfo ? (
+            <button
+              onClick={handleSubmit}
+              className="button"
+             
+              disabled={checkInfo.length !== 3 && checkInputs.length !== 2}
+            >
+              <NavLink
+                to="/route/finish"
+                style={{
+                  textDecoration: " none",
+                  width: "60px",
+                  color: "white",
+                }}
               >
-                <NavLink
-                  to="/route/finish"
-                  style={{
-                    textDecoration: " none",
-                    width: "60px",
-                    color: "white",
-                  }}
-                >
-                  Search
-                </NavLink>
-              </button>
-            ) : (
-              <button className="button" disabled="true">
-                Search
-              </button>
-            )}
-          </div>
-          <div>
-            <NavLink to="/">
-              <button className="buttonBlue">Back</button>
-            </NavLink>
-          </div>
+                Preview Trip
+              </NavLink>
+            </button>
+          ) : (
+            <button className="button"  style={{backgroundColor:"grey"}} disabled>
+              Preview Trip
+            </button>
+          )}
+        </div>
+       
         </pre>
       </form>
     </div>

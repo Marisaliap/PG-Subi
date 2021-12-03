@@ -29,6 +29,7 @@ import CookiesPolicy from "./components/CookiesPolicy";
 import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
+import UserProfile from "./components/UserProfile";
 export default function App() {
   const { isAuthenticated } = useAuth0();
 
@@ -67,6 +68,7 @@ export default function App() {
                     <Route exact path="/route" component={CreateRoute} />
                     <Route path="/route/finish" component={Map} />
                     <Route path="/register" component={Registro} />
+                    <Route exact path="/profile" component={UserProfile} />
                     <Route path="/user/:id" component={UserDetails} />
                     <Route path="/route-list" component={RouteDetails} />
                     <Route path="/maps/route" component={RouteDetails} />
