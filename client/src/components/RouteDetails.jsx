@@ -26,12 +26,13 @@ const RouteDetails = () => {
         {getRoutes.map((route, i) => (
           <Link to={`/route/${route.id}`} style={{ textDecoration: 'none' }}>
             <div className="RouteCard">
-              <CardUser
+              
+             { route.users && <CardUser
                 photo={route.users[0].photo}
                 name={route.users[0].name}
                 calification={route.users[0].calification}
                 key={i}
-              />
+              />}
 
               <CardRoute
                 origin={route.originName}
