@@ -20,32 +20,7 @@ const postUser = async (req, res, next) => {
       photoDni,
     } = req.body;
 
-    const user = await User.findOrCreate(
-
-      {
-        where: { email },
-        defaults: {
-          name,
-          photo,
-          lastName,
-          email,
-          telephone,
-          facebook,
-          instagram,
-          password,
-          province,
-          city,
-          street,
-          dni,
-          age,
-          about,
-          genre,
-          calification:[0],
-          photoDni,
-        }
-      })
-    res.send(user)
-
+    
     const user = await User.findOrCreate({
       where: { email },
       defaults: {
