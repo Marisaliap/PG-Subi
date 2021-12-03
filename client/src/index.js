@@ -6,12 +6,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import { LangProvider } from "./context/langContext"
 
 const auth0Domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const auth0Client = process.env.REACT_APP_AUTH0_CLIENT;
 ReactDOM.render(
-  <LangProvider>
   <Provider store={store}>
     <React.StrictMode>
       <Auth0Provider
@@ -25,8 +23,7 @@ ReactDOM.render(
         <App />
       </Auth0Provider>
     </React.StrictMode>
-  </Provider>
-  </LangProvider>,
+  </Provider>,
   document.getElementById("root")
 );
 
