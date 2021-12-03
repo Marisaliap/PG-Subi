@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { allRoutes } from '../actions';
+import { allRoutes, getOrder } from '../actions';
 import CardRoute from './CardRoute';
 import CardUser from './CardUser';
 import NavBarFilter from './NavBarFilter';
@@ -13,15 +13,11 @@ const RouteDetails = () => {
   const dispatch = useDispatch();
   useEffect(() => dispatch(allRoutes()), []);
   const { getRoutes } = useSelector((state) => state);
-  console.log(getRoutes);
+  //console.log( getRoutes);
 
-  useEffect(
-    () => {
-      dispatch(allRoutes());
-    },
-    [],
-    getRoutes
-  );
+  useEffect(() => {
+    dispatch(getOrder());
+  }, []);
 
   return (
     <div className="RouteDetails">

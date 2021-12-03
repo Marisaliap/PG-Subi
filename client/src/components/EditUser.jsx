@@ -7,7 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
 import swal from "sweetalert";
 
-export default function Registro() {
+export default function EditUser() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { user, isAuthenticated } = useAuth0();
@@ -62,7 +62,7 @@ export default function Registro() {
 
   const [input, setInput] = useState({
     name: isAuthenticated ? user.given_name : "",
-    lastName: isAuthenticated ? (!user.family_name && "Fernandez") : user.family_name,
+    lastName: isAuthenticated ? user.family_name : "",
     email: isAuthenticated ? user.email : "",
     dni: "",
     genre: "",
@@ -161,82 +161,6 @@ export default function Registro() {
             handleSubmit(e);
           }}
         >
-          {!isAuthenticated ? (
-            <div>
-              <div>
-                <p className="label">Name*:</p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="name"
-                  value={input.name}
-                  onChange={(e) => handleChange(e)}
-                />
-                {errors.name && <p className="error">{errors.name}</p>}
-              </div>
-              <div>
-                <p className="label">Last Name*:</p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="lastName"
-                  value={input.lastName}
-                  onChange={(e) => handleChange(e)}
-                />
-                {errors.lastName && <p className="error">{errors.lastName}</p>}
-              </div>
-              <div>
-                <p className="label">Email*:</p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="email"
-                  value={input.email}
-                  onChange={(e) => handleChange(e)}
-                />
-              </div>
-            </div>
-          ) : (
-            user.name.includes("@") && (
-              <div>
-                <div>
-                  <p className="label">Name*:</p>
-                  <input
-                    className="inputs"
-                    type="text"
-                    name="name"
-                    value={input.name}
-                    onChange={(e) => handleChange(e)}
-                  />
-                  {errors.name && <p className="error">{errors.name}</p>}
-                </div>
-                <div>
-                  <p className="label">Last Name*:</p>
-                  <input
-                    className="inputs"
-                    type="text"
-                    name="lastName"
-                    value={input.lastName}
-                    onChange={(e) => handleChange(e)}
-                  />
-                  {errors.lastName && (
-                    <p className="error">{errors.lastName}</p>
-                  )}
-                </div>
-              </div>
-            )
-          )}
-          <div className="cadaLinea">
-            <p className="label">DNI*:</p>
-            <input
-              className="inputs"
-              type="number"
-              name="dni"
-              value={input.dni}
-              onChange={(e) => handleChange(e)}
-            />
-            {errors.dni && <p className="error">{errors.dni}</p>}
-          </div>
           <div className="cadaLinea">
             <p className="label" for="genre">
               Gender*:
@@ -349,37 +273,6 @@ export default function Registro() {
               onChange={(e) => handleChange(e)}
             />
             {errors.about && <p className="error">{errors.about}</p>}
-          </div>
-          <div className="terminosycond">
-            <div className="terminos">
-              By continuing, you agree to our{" "}
-              <a target="_blank" href="/terms-and-conditions">
-                {" "}
-                Terms of Use{" "}
-              </a>{" "}
-              and
-              <a target="_blank" href="/privacy-policy">
-                {" "}
-                Privacy Policy
-              </a>
-              <div className="selectterminos">
-                <select
-                  name="terms"
-                  id="terms"
-                  className="terms"
-                  onChange={(e) => handleSelectTerms(e)}
-                >
-                  <option disabled selected value="1">
-                    {" "}
-                    -- Select an option --{" "}
-                  </option>
-                  <option className="options" value="Yes">
-                    Yes
-                  </option>
-                </select>
-              </div>
-            </div>
-            {errors.terms && <p className="errorterms">{errors.terms}</p>}
           </div>
           <div>
             <button className="button" type="submit">

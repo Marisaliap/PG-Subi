@@ -1,5 +1,4 @@
-const { User, Post, Car, Route, Op } = require('../db.js');
-
+const { User, Post, Car, Route, Op } = require("../db.js");
 
 const postUser = async (req, res, next) => {
   try {
@@ -10,7 +9,6 @@ const postUser = async (req, res, next) => {
       telephone,
       facebook,
       instagram,
-      password,
       province,
       city,
       street,
@@ -48,23 +46,45 @@ const postUser = async (req, res, next) => {
       })
     res.send(user)
 
+    const user = await User.findOrCreate({
+      where: { email },
+      defaults: {
+        name,
+        photo,
+        lastName,
+        email,
+        telephone,
+        facebook,
+        instagram,
+        province,
+        city,
+        street,
+        dni,
+        age,
+        about,
+        genre,
+        calification: [0],
+        photoDni,
+      },
+    });
+    res.send(user);
   } catch (error) {
     next(error);
   }
-}
+};
 
 const getUser = async (req, res, next) => {
   try {
-    const { name } = req.query
-    const { id } = req.params
-    var data
+    const { name } = req.query;
+    const { id } = req.params;
+    var data;
 
     if (name) {
       data = await User.findAll({
         where: {
           name: {
-            [Op.iLike]: `%${name}%`
-          }
+            [Op.iLike]: `%${name}%`,
+          },
         },
         include: Post
       }); 
@@ -96,11 +116,10 @@ const getUser = async (req, res, next) => {
     }
 
     res.send(data);
-
   } catch (error) {
     next(error);
   }
-}
+};
 
 const putUser = async (req, res, next) => {
   try {
@@ -116,7 +135,6 @@ const putUser = async (req, res, next) => {
       telephone,
       facebook,
       instagram,
-      password,
       email,
       photo,
       calification: [calification, ...user.calification],
@@ -125,7 +143,7 @@ const putUser = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
+};
 
 const deleteUser = async (req, res, next) => {
   try {
@@ -136,6 +154,6 @@ const deleteUser = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
+};
 
 module.exports = { postUser, getUser, putUser, deleteUser }

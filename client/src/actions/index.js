@@ -34,7 +34,7 @@ export function getRoute(long1, lat1, long2, lat2) {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 }
@@ -48,7 +48,7 @@ export function getUserDetail(id) {
         payload: response,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 }
@@ -62,7 +62,7 @@ export function getRouteById(id) {
         payload: response,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 }
@@ -77,7 +77,7 @@ export function getUserByName(name) {
         payload: response,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 }
@@ -94,7 +94,7 @@ export function getRouteFromDb(originName, destinyName, date, place) {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 }
@@ -150,7 +150,7 @@ export function postUser(payload) {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 }
@@ -167,13 +167,13 @@ export function postCar(payload) {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 }
 
 export function postRoute(routeInfo) {
-  console.log(routeInfo);
+  //console.log(routeInfo)
   return async function (dispatch) {
     try {
       const response = await axios.post(
@@ -225,7 +225,7 @@ export function allRoutes(order, restriction) {
         payload: response,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error)
     }
   };
 }

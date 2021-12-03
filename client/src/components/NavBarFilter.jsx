@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { allRoutes } from '../actions';
+import '../Sass/Styles/NavBarFilter.scss';
 
 export default function NavBarFilter() {
   const dispatch = useDispatch();
@@ -9,28 +10,25 @@ export default function NavBarFilter() {
 
   const handleSelect = (e) => {
     e.preventDefault();
+    dispatch(allRoutes(e.target.value, restriction));
     setOrder(e.target.value);
-    dispatch(allRoutes(order, restriction));
   };
 
   const handleSelectFilters = (e) => {
     e.preventDefault();
+    dispatch(allRoutes(order, e.target.value));
     setRestriction(e.target.value);
-    dispatch(allRoutes(order, restriction));
   };
 
-  useEffect(() => allRoutes({}), []);
-
   return (
-    <div>
+    <div className="NavBarFilter">
       <div>
         <select onChange={handleSelect} name="sorts">
-          <option value="">Order By...</option>
+          <option value="">Order by...</option>
           <option value="time">Earliest Departure</option>
           <option value="price">Lowest Price</option>
         </select>
-      </div>
-      <div>
+
         <select onChange={handleSelectFilters} name="filters">
           <option value="">Filter by Amenities</option>
           <option value="petsAllowed">Pets Allowed</option>

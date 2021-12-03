@@ -12,7 +12,7 @@ const RoutesFromSearch = () => {
     const dispatch = useDispatch();
     useEffect(() =>dispatch(allRoutes()), []);
     const { routeFromDb} = useSelector(state => state);
-    console.log(routeFromDb);
+    //console.log(routeFromDb);
 
     return (
 
