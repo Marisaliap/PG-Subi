@@ -64,6 +64,7 @@ export default function AllInfoRoute({ match }) {
               alt=""
             ></img>
           </Marker>
+        )
         }
 
         {data && (
@@ -113,5 +114,5 @@ export default function AllInfoRoute({ match }) {
         volver
       </button>
     </div>
-  
+        )
 }
