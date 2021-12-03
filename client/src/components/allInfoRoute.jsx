@@ -55,7 +55,7 @@ export default function AllInfoRoute({ match }) {
               alt=""
             ></img>
           </Marker>
-        )}
+        }
 
         {data && (
           <Marker coordinates={route.destiny}>
@@ -104,5 +104,5 @@ export default function AllInfoRoute({ match }) {
         volver
       </button>
     </div>
-  );
+  
 }
