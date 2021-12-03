@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
 export function getSuggestions(input) {
   return function (dispatch) {
-    axios.get("http://localhost:3001/maps?name=" + input).then((cities) => {
+    axios.get('http://localhost:3001/maps?name=' + input).then((cities) => {
       dispatch({
-        type: "GET_SUGGESTIONS",
+        type: 'GET_SUGGESTIONS',
         payload: cities.data,
       });
     });
@@ -13,9 +13,9 @@ export function getSuggestions(input) {
 
 export function getSuggestions2(input) {
   return function (dispatch) {
-    axios.get("http://localhost:3001/maps?name=" + input).then((cities) => {
+    axios.get('http://localhost:3001/maps?name=' + input).then((cities) => {
       dispatch({
-        type: "GET_SUGGESTIONS2",
+        type: 'GET_SUGGESTIONS2',
         payload: cities.data,
       });
     });
@@ -30,14 +30,58 @@ export function getRoute(long1, lat1, long2, lat2) {
       );
 
       return dispatch({
-        type: "GET_ROUTE",
+        type: 'GET_ROUTE',
         payload: response.data,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 }
+
+export function getUserDetail(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user/${id}`)).data;
+      return dispatch({
+        type: "GET_USER_DETAIL",
+        payload: response,
+      });
+    } catch (error) {
+      //console.log(error);
+    }
+  };
+}
+export function getRouteById(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/maps/route/` + id)).data;
+      console.log(response)
+      return dispatch({
+        type: "GET_ROUTE_BY_ID",
+        payload: response,
+      });
+    } catch (error) {
+      //console.log(error);
+    }
+  };
+}
+
+export function getUserByName(name) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user/?name=` + name)).data;
+      console.log(response)
+      return dispatch({
+        type: "GET_USER_BY_NAME",
+        payload: response,
+      });
+    } catch (error) {
+      //console.log(error);
+    }
+  };
+}
+
 export function getRouteFromDb(originName, destinyName, date, place) {
   return async function (dispatch) {
     try {
@@ -50,70 +94,32 @@ export function getRouteFromDb(originName, destinyName, date, place) {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 }
+// -----------------------------< filters >----------------------------------
+// export function filterBySmoke(payload) {
+//   return {
+//     type: "FILTER_BY_SMOKE",
+//     payload,
+//   };
+// }
 
-export function getUserDetail(id) {
-  return async function (dispatch) {
-    try {
-      const response = (await axios.get(`http://localhost:3001/user/${id}`))
-        .data;
-      return dispatch({
-        type: "GET_USER_DETAIL",
-        payload: response,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
-export function getRouteById(id) {
-  return async function (dispatch) {
-    try {
-      const response = (
-        await axios.get(`http://localhost:3001/maps/route/` + id)
-      ).data;
-      console.log(response);
-      return dispatch({
-        type: "GET_ROUTE_BY_ID",
-        payload: response,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
+// export function filterByPets(payload) {
+//   return {
+//     type: "FILTER_BY_PETS",
+//     payload,
+//   };
+// }
 
-export function getUserByName(name) {
-  return async function (dispatch) {
-    try {
-      const response = (
-        await axios.get(`http://localhost:3001/user/?name=` + name)
-      ).data;
-      console.log(response);
-      return dispatch({
-        type: "GET_USER_BY_NAME",
-        payload: response,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
 
-export function filterBySmoke(payload) {
+
+
+export function orderByRestriction(restriction) {
   return {
-    type: "FILTER_BY_SMOKE",
-    payload,
-  };
-}
-
-export function filterByPets(payload) {
-  return {
-    type: "FILTER_BY_PETS",
-    payload,
+    type: "FILTER",
+    payload: (restriction)
   };
 }
 
@@ -123,27 +129,14 @@ export function filterByTwoPeopleBehind(payload) {
     payload,
   };
 }
-
-export function orderByTime(payload) {
-  return {
-    type: "ORDER_BY_TIME",
-    payload,
-  };
-}
-
-export function orderByPrice(payload) {
-  return {
-    type: "ORDER_BY_PRICE",
-    payload,
-  };
-}
-
 export function orderByDistance(payload) {
   return {
-    type: "ORDER_BY_DISTANCE",
+    type: 'ORDER_BY_DISTANCE',
     payload,
   };
 }
+// ----------------------------------------------------------------------
+
 
 export function postUser(payload) {
   return async function (dispatch) {
@@ -153,11 +146,11 @@ export function postUser(payload) {
         payload
       );
       return dispatch({
-        type: "POST_USER",
+        type: 'POST_USER',
         payload: response.data,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 }
@@ -170,11 +163,11 @@ export function postCar(payload) {
         payload
       );
       return dispatch({
-        type: "POST_CAR",
+        type: 'POST_CAR',
         payload: response.data,
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 }
@@ -197,7 +190,7 @@ export function postMejorasYReclamos(payload) {
 }
 
 export function postRoute(routeInfo) {
-  console.log(routeInfo);
+  //console.log(routeInfo)
   return async function (dispatch) {
     try {
       const response = await axios.post(
@@ -208,34 +201,48 @@ export function postRoute(routeInfo) {
         type: "POST_ROUTE",
         payload: response.data,
       });
-    } catch (error) {
-      console.log(error);
     }
-  };
+    catch (error) {
+      //console.log(error)
+    }
+  }
 }
 export function RoutePostInfo(info) {
   return {
-    type: "ROUTE_POST_INFO",
+    type: 'ROUTE_POST_INFO',
     payload: info,
   };
 }
 
 export function deleteRoute() {
   return {
-    type: "DELETE_ROUTE",
+    type: 'DELETE_ROUTE',
   };
 }
-export function allRoutes() {
+
+export function getOrder(order) {
+  return {
+    type: 'ORDER',
+    payload: order,
+  };
+}
+
+export function allRoutes(order, restriction) {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`http://localhost:3001/maps/route`))
-        .data;
+      const response = (
+        await axios.get(
+          `http://localhost:3001/maps/route?order=${
+            order ? order : ''
+          }&restriction=${restriction ? restriction : ''}`
+        )
+      ).data;
       return dispatch({
-        type: "GET_ALL_ROUTE_INFO",
+        type: 'GET_ALL_ROUTE_INFO',
         payload: response,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error)
     }
   };
 }

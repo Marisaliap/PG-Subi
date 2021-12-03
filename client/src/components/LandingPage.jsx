@@ -14,7 +14,7 @@ export default function LandingPage() {
     <div className="LandingPage">
       <div className="LandingPageContainer">
         <div className="cosas">
-          <img className="logo" src={img} />
+          <img className="logo" src={img} alt="logo" />
           <NavLink to="/home">
             <button className="button">Enter</button>
           </NavLink>

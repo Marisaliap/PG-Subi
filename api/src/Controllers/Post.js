@@ -29,15 +29,15 @@ const setPost = async (req, res, next) => {
         } = req.body;
 
 
-        const posts = Post.findOrCreate({
-            where: {
+        const posts = Post.create({
+           
                 title,
                 date,
                 author,
                 description,
                 calification,
             },
-        })
+        )
         const users = await User.findByPk(email)
         await users.addPost(author);
         res.send(posts);

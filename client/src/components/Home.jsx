@@ -25,7 +25,7 @@ export default function Home() {
           <h1>Save money while driving</h1>
           <p>
             {" "}
-            Publish your next round trip on GiveMeaRide and get, on average, 80
+            Publish your next round trip on Gimme a Ride and get, on average, 80
             dollars * of your passengers. You will only need a couple of minutes
             to publish your route. Do we share a trip?
             <p>* Average amount received by drivers in 2021.</p>

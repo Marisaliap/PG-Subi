@@ -16,7 +16,7 @@ function Nav() {
   const { user, isAuthenticated } = useAuth0();
   const id = isAuthenticated ? user.email : "";
 
-  console.log("esto es users", users);
+  //console.log("esto es users", users);
   //console.log("esto es user",user);
   // console.log("esto es id",id);
   //console.log("esto es AUth",isAuthenticated);
@@ -26,13 +26,13 @@ function Nav() {
   }, [dispatch, id]);
 
   //console.log(" esto es cars/mail", users.cars.userEmail)
-  console.log(" esto es cars", users.cars);
-  console.log(" esto es dni", users.dni);
+  //console.log(" esto es cars", users.cars);
+  //console.log(" esto es dni", users.dni);
 
   return (
     <>
       <nav className="NavBar">
-        <div className="giveMeARide">
+        <div className="GimmeARide">
           <div className="izquierda">
             <Link to="/home">
               <img className="logoSubi" src={Logo} alt="" />
@@ -40,7 +40,7 @@ function Nav() {
           </div>
           <div>
             <Link to="/home" className="nombreSubi">
-              <h2 className="nombreSubi">Give me a ride</h2>
+              <h2 className="nombreSubi">Gimme a Ride</h2>
             </Link>
           </div>
         </div>

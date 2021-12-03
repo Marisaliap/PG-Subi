@@ -4,6 +4,7 @@ import ReactMapboxGl, {
   Marker,
   GeoJSONLayer,
   ZoomControl,
+  ScaleControl
 } from 'react-mapbox-gl';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -15,7 +16,7 @@ import {
   BsPinMapFill,
   BsFillPersonFill,
 } from 'react-icons/bs';
-import { RiPinDistanceFill } from 'react-icons/ri';
+import { RiContactsBookLine, RiPinDistanceFill } from 'react-icons/ri';
 import '../Sass/Styles/Map.scss';
 import swal from 'sweetalert';
 
@@ -30,6 +31,11 @@ export default function Map() {
   const { user, isAuthenticated } = useAuth0();
   console.log(data);
 
+
+  // const routeCoordinates = Math.floor(data.coordinates.data.geometry.coordinates.length / 2)
+  // const middlePoint = data.coordinates.data.geometry.coordinates[routeCoordinates]
+  
+console.log(routeInfo, 'SOY INFO DE POSTROUTE')
   function handleClick(e) {
     e.preventDefault();
     history.push('/route');
@@ -47,7 +53,7 @@ export default function Map() {
         date: routeInfo.date.split('-').reverse().join('-'),
         hours: routeInfo.hours,
         place: routeInfo.pasajeros,
-        restriction: '',
+        restriction: routeInfo.restrictions.join(', '),
         km: data.coordinates.distance,
         points: data.coordinates.data.geometry.coordinates
       })
@@ -65,6 +71,9 @@ export default function Map() {
       'pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg',
   });
 
+ 
+
+
   return (
     <div className="Map">
       <Link to="/home">
@@ -77,10 +86,14 @@ export default function Map() {
           height: '50vh',
           width: '50vw',
         }}
+        fitBounds={[city[0].coordinates,city2[0].coordinates]}
         className="mapbox"
-        center={
-          city && city.length === 1 ? city[0].coordinates : [-57.95, -34.93333]
-        }
+        // center={middlePoint}
+        
+        
+        // {
+        //   city && city.length === 1 ? city[0].coordinates : [-57.95, -34.93333]
+        // }
       >
         {city && city.length === 1 && (
           <Marker coordinates={city[0].coordinates} style={{ color: 'red' }}>
@@ -111,6 +124,7 @@ export default function Map() {
           }}
         />
         <ZoomControl />
+        <ScaleControl />
       </Map>
       <br />
 
@@ -133,6 +147,9 @@ export default function Map() {
         <p>
           <BsFillPersonFill /> {routeInfo.pasajeros} Seats available.
         </p>
+        {routeInfo.restrictions.map(restriction => {
+         return <p>{restriction}</p>
+        })}
       </div>
       <div className="buttonContainer">
         <button className="buttonBlue" onClick={handleClick}>
