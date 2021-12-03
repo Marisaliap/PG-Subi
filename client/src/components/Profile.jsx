@@ -12,7 +12,7 @@ export const Profile = () => {
   return (
     isAuthenticated && (
       <div className="Profile">
-        <Link to={"/user/" + user.email}>
+        <Link to={"/profile"}>
           <img className="fotoPerfil" src={user.picture} alt={user.name} />
         </Link>
       </div>

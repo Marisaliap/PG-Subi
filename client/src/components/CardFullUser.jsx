@@ -20,7 +20,7 @@ import img from "../img/photoDefault.jpg";
 
 export default function CardFullUser({name, lastName, email, genre, photo, age, about, telephone, facebook, instagram, street, city, province, calification} ) {
 
-
+  
     function genderIcon(gender) {
         if (gender === "Male") {
           return <BsGenderMale className="maleGender" />;
