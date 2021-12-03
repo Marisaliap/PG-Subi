@@ -51,7 +51,7 @@ export default function UserDetails(props) {
         </div>
         <hr />
         <div>
-          {user.cars[0].patent !== undefined ?(
+          {user.cars.length === 0?(
             <CardCar
               patent={user.cars[0].patent}
               brand={user.cars[0].brand}
