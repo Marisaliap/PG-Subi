@@ -21,7 +21,7 @@ export default function FormCar() {
     model: '',
     cylinder: '',
   });
-  //console.log(input);
+
 
   function validate(input) {
     let errors = {};
@@ -40,7 +40,7 @@ export default function FormCar() {
   }
 
   function handleChange(e) {
-    // console.log(input);
+
     setInput({
       ...input,
       [e.target.name]: e.target.value,

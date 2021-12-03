@@ -4,16 +4,12 @@ import { Link } from "react-router-dom";
 import Post from "./Post";
 import CardCar from "./CardCar";
 import CardFullUser from "./CardFullUser";
-import EditUser from "./EditUser";
-import EditCar from "./EditCar";
 import { getUserDetail } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
-
 
 export default function UserDetails(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-
 
   useEffect(() => {
     dispatch(getUserDetail(props.match.params.id));
@@ -22,11 +18,11 @@ export default function UserDetails(props) {
   // falta condicion de pago para mostrar toda la info o primeara parte
 
   return (
-    
-      <div>
+    <div>
+      {/* <button onClick={}>editar</button> */}
       <div>
         <div>
-          { user ? (
+          {user ? (
             <CardFullUser
               name={user.name}
               lastName={user.lastName}
@@ -44,15 +40,13 @@ export default function UserDetails(props) {
               calification={user.calification}
             />
           ) : (
-            <EditUser />
+            ""
           )}
         </div>
-        <div>
-          {<Post />}
-        </div>
+        <div>{<Post />}</div>
         <hr />
         <div>
-          {user.cars && user.cars.length > 0 ?(
+          {user.cars && user.cars.length > 0 ? (
             <CardCar
               patent={user.cars[0].patent}
               brand={user.cars[0].brand}
@@ -60,16 +54,14 @@ export default function UserDetails(props) {
               color={user.cars[0].color}
             />
           ) : (
-            <EditCar />
+            ""
           )}
         </div>
         {/* <p> Loading...</p> */}
-      
-</div>
-        <Link to="/home">
-          <button className="buttonBlue">Back</button>
-        </Link>
       </div>
-  
+      <Link to="/home">
+        <button className="buttonBlue">Back</button>
+      </Link>
+    </div>
   );
 }

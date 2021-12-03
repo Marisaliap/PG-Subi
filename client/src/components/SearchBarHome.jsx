@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getRoute,
-  getRouteFromDb,
-  getSuggestions,
-  getSuggestions2,
-  RoutePostInfo,
-} from "../actions";
+import { getRouteFromDb, getSuggestions, getSuggestions2 } from "../actions";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/SearchBarHome.scss";
 import "../Sass/Styles/App.scss";
@@ -42,26 +36,25 @@ export default function SearchBarHome() {
   const cities2 = useSelector((state) => state.suggestions2);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({ validations: {} });
-  //console.log(cities);
+
   function inputHandleChange(e) {
     inputs[e.target.name] = e.target.value;
     dispatch(getSuggestions(inputs.Origin));
     dispatch(getSuggestions2(inputs.Destination));
     const validations = validateInputs(inputs);
-    //console.log(validations, "soy input");
     setErrors(() => {
       const errorState = { ...errors, validations };
       return errorState;
     });
-    //console.log(errors);
+
   }
 
-  const { validations } = errors;
+
 
   const checkInputs = Object.values(inputs);
   const checkInfo = Object.values(info);
 
-  // const checkValidations = Object.keys(validations)
+
   function handleChange(e) {
     info[e.target.name] = e.target.value;
     const validations = validateInfo(info);

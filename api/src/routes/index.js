@@ -11,6 +11,6 @@ router.use('/maps', mapsRoute)
 router.use('/user', userRoute)
 router.use('/car', carRoute)
 router.use('/suggestionbox', suggestionRoute)
-router.use('/setdb', setDbRoute)
+
 
 module.exports = router;

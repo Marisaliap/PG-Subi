@@ -24,7 +24,6 @@
   font-weight: bolder;
   display: flex;
   flex-direction: column;
-  // grid-template-columns: 30% 70%;
 
   .cadaLinea {
     display: flex;
@@ -161,7 +160,15 @@
 
   .button {
     margin-top: 2.5rem;
-    width: 10rem;
+    margin: 0.5rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 1rem 3rem;
+    background-color: $buttonColor;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
   }
 
   .botoncito {

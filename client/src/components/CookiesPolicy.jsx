@@ -20,7 +20,7 @@ export default function CookiesPolicy() {
           </p>
           <p>
             <span>
-              Give SA ("Give me a ride", "we", "us" or "our") uses cookies and
+              Give SA ("Gimme A Ride", "we", "us" or "our") uses cookies and
               similar tracking technologies on our website and in our mobile
               applications (individually referred to as "platform" or
               collectively "platforms"). In this policy (the "Cookie Policy"),
@@ -37,8 +37,8 @@ export default function CookiesPolicy() {
             A "cookie" is a small text file that is stored and / or read by your
             web browser on the hard drive of the device you are using (for
             example, a desktop computer, a laptop or a smartphone) extracted
-            from the sites you visit. In addition to cookies, Give me a ride
-            also uses similar technologies for tracking, including "pixels",
+            from the sites you visit. In addition to cookies, Gimme A Ride also
+            uses similar technologies for tracking, including "pixels",
             "tracking scripts" or "software development kits" (known as SDKs).
             They are small transparent image files or lines of code contained in
             our website, emails and mobile applications, which record how you
@@ -69,10 +69,10 @@ export default function CookiesPolicy() {
           <h4>Essential cookies:</h4>
 
           <p>
-            These cookies allow you to easily navigate Give me a ride and use
+            These cookies allow you to easily navigate Gimme A Ride and use
             basic functions such as logging in or booking trips. They also allow
             you to avoid potential security risks. These cookies are essential
-            for Give me a ride and cannot be deactivated.
+            for Gimme A Ride and cannot be deactivated.
           </p>
 
           <h4>Performance cookies:</h4>
@@ -80,11 +80,11 @@ export default function CookiesPolicy() {
           <p>
             These cookies help us to know which of our pages are most (and
             least) popular, as well as which content is most useful to users.
-            They help us to improve the performance of Give me a ride, since
-            they allow us to verify, for example, that users find what they are
+            They help us to improve the performance of Gimme A Ride, since they
+            allow us to verify, for example, that users find what they are
             looking for easily. These cookies can be ours or our analytics
             partners. If you do not accept these cookies, neither we nor our
-            partners will know when you have accessed Give me a ride.
+            partners will know when you have accessed Gimme A Ride.
           </p>
 
           <h4>Marketing and segmentation cookies:</h4>
