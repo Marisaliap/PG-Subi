@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import "../Sass/Styles/CookiesPolicy.scss";
-import { IntlProvider, FormattedMessage } from "react-intl";
-import MensajesIngles from "../lang/en-US.json";
-import MensajesEspanol from "../lang/es-Ar.json";
-import langContext from "../context/langContext";
+import { FormattedMessage } from "react-intl";
+/* import MensajesIngles from "../lang/en-US.json";
+import MensajesEspanol from "../lang/es-AR.json"; */
+/* import langContext from "../context/langContext"; */
 import es from "./../img/spain.png"
 import en from "./../img/united-kingdom.png"
 
 export default function PoliticaCookies() {
-  const idioma = useContext(langContext)
-  console.log(idioma.establecerLenguaje());
+  /* const idioma = useContext(langContext)
+  console.log(idioma.establecerLenguaje()); */
 
   const history = useHistory();
 
@@ -19,18 +19,19 @@ export default function PoliticaCookies() {
     history.push("/home");
   }
   return (
-    <IntlProvider locale="en-US" messages={ MensajesIngles }>
       <div>
-      <button onClick={() => idioma.establecerLenguaje("es-Ar")}><img src={es} alt=""></img></button>
-      <button onClick={() => idioma.establecerLenguaje("en-US")}><img src={en} alt=""></img></button>
-      </div>
+     {/*  <button onClick={() => idioma.establecerLenguaje("es-AR")}><img src={es} alt=""></img></button>
+      <button onClick={() => idioma.establecerLenguaje("en-US")}><img src={en} alt=""></img></button> */}
     <div className="Cookies">
      
       <article>
         <div></div>
         <div>
-        <p ><a href="/terms-and-conditions"><FormattedMessage id="cookies.conditions" 
-        defaultMessage="Terms and Conditions"/></a> | <a href="/privacy-policy">Política de Privacidad</a> | Política de cookies</p>
+        <p ><a href="/terms-and-conditions">
+          <FormattedMessage 
+          id="cookies.conditions" 
+        defaultMessage="Terms and Conditions"/>
+        </a> | <a href="/privacy-policy">Política de Privacidad</a> | Política de cookies</p>
        <p> Give SA (“GimmeARide”, “nosotros”, “nos” o “nuestro”) utiliza cookies y tecnologías de seguimiento similares en nuestro sitio web y en nuestras aplicaciones móviles (individualmente denominadas “plataforma” o conjuntamente “plataformas”). En esta política (la “Política de cookies”), te proporcionamos más información relacionada con estas tecnologías y sobre las decisiones que puedes tomar al respecto.</p>
 
 1. ¿Qué es una “cookie” y cuáles son las “tecnologías de seguimiento similares”?
@@ -77,7 +78,7 @@ Esta Política de cookies se actualizó por última vez el 1 de abril de 2021.
 Si tienes preguntas con respecto a nuestra Política de cookies, no dudes en ponerte en contacto con nosotros por correo electrónico a dataprotecion@GimmeARide.com.
         </div>
       </article>
+      </div>
     </div>
-    </IntlProvider>
   );
 }
