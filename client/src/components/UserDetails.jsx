@@ -19,11 +19,15 @@ export default function UserDetails(props) {
     dispatch(getUserDetail(props.match.params.id));
   }, [dispatch, props.match.params.id]);
 
+
+
+
   // falta condicion de pago para mostrar toda la info o primeara parte
 
   return (
     
       <div>
+      {/* <button onClick={}>editar</button> */}
       <div>
         <div>
           { user ? (
@@ -44,7 +48,7 @@ export default function UserDetails(props) {
               calification={user.calification}
             />
           ) : (
-            <EditUser />
+            ""
           )}
         </div>
         <div>
@@ -60,7 +64,7 @@ export default function UserDetails(props) {
               color={user.cars[0].color}
             />
           ) : (
-            <EditCar />
+            ""
           )}
         </div>
         {/* <p> Loading...</p> */}

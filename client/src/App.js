@@ -19,6 +19,7 @@ import FormCar from "./components/FormCar";
 import Auth from "./components/Auth";
 import Map from "./components/Map";
 import Users from "./components/Users";
+import Error404 from "./components/Error404";
 import NavBar from "./components/NavBar";
 import RouteDetails from "./components/RouteDetails";
 import PoliticaPrivacidad from "./components/PoliticaPrivacidad";
@@ -27,6 +28,11 @@ import PoliticaCookies from "./components/PoliticaCookies";
 import CookiesPolicy from "./components/CookiesPolicy";
 import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
+
+
+
+
+
 export default function App() {
   const { isAuthenticated } = useAuth0();
 
@@ -71,6 +77,7 @@ export default function App() {
                     <Route path="/route/:id" component={AllInfoRoute} />
                     <Route path="/car" component={FormCar} />
                     <Route path="/users" component={Users} />
+                    <Route path="/404" component={Error404} />
                   </Switch>
                 }
               </div>
