@@ -41,7 +41,7 @@ export default function Registro() {
   }
 
   function validateGender() {
-    if (document.getElementById("genre").value == "1") {
+    if (document.getElementById("genre").value === "1") {
       return false;
     }
     return true;

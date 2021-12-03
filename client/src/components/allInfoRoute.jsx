@@ -18,7 +18,7 @@ import { RiPinDistanceFill } from "react-icons/ri";
 import "../Sass/Styles/Map.scss";
 
 export default function AllInfoRoute({ match }) {
-  useEffect(() => dispatch(getRouteById(match.params.id)), []);
+  useEffect(() => dispatch(getRouteById(match.params.id)));
   const history = useHistory();
   const dispatch = useDispatch();
   const route = useSelector((state) => state.routeById);
@@ -64,7 +64,7 @@ export default function AllInfoRoute({ match }) {
               alt=""
             ></img>
           </Marker>
-        }
+        )}
 
         {data && (
           <Marker coordinates={route.destiny}>
@@ -113,5 +113,5 @@ export default function AllInfoRoute({ match }) {
         volver
       </button>
     </div>
-  
+  );
 }

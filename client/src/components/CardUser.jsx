@@ -9,13 +9,10 @@ export default function CardUser({
   genre,
   age,
   calification,
-  ...props
-}) {
+  ...props}) { 
   return (
+    <>
     <div {...props}>
-      <h4></h4>
-      <br />
-      <br />
       <img src={img} style={{ width: '150px' }} alt="" />{' '}
       {/*agregar url de img*/}
       <h5>{name}</h5>
@@ -27,5 +24,6 @@ export default function CardUser({
         {calification}
       </h5>
     </div>
+    </>
   );
 }

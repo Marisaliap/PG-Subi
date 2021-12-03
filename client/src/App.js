@@ -10,13 +10,11 @@ import Aboutus from "./components/Aboutus";
 import Recommendations from "./components/Recommendations";
 import CreateRoute from "./components/CreateRoute";
 import UserDetails from "./components/UserDetails";
-import allInfoRoute from "./components/allInfoRoute";
 import { useAuth0 } from "@auth0/auth0-react";
 import Registro from "./components/Registro";
 import Footer from "./components/Footer";
 import SubFooter from "./components/SubFooter";
 import FormCar from "./components/FormCar";
-import Auth from "./components/Auth";
 import Map from "./components/Map";
 import Users from "./components/Users";
 import Error404 from "./components/Error404";
@@ -24,7 +22,6 @@ import NavBar from "./components/NavBar";
 import RouteDetails from "./components/RouteDetails";
 import PoliticaPrivacidad from "./components/PoliticaPrivacidad";
 import PrivacyPolicy from "./components/PrivacyPolicy";
-import PoliticaCookies from "./components/PoliticaCookies";
 import CookiesPolicy from "./components/CookiesPolicy";
 import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
@@ -45,11 +42,10 @@ export default function App() {
     });
   }, []);
 
-  // This function will scroll the window to the top
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // for smoothly scrolling
+      behavior: "smooth", 
     });
   };
 
@@ -91,7 +87,7 @@ export default function App() {
             <Route path="/recommendations" component={Recommendations} />
             <Route path="/aboutus" component={Aboutus} />
             <Route path="/politica-privacidad" component={PoliticaPrivacidad} />
-            <Route path="/privacy-policy" component={ PrivacyPolicy } />
+            <Route path="/privacy-policy" component={PrivacyPolicy} />
             <Route path="/cookies-policy" component={CookiesPolicy} />
             <Route path="/suggestion-box" component={SuggestionBox} />
             {showButton && (

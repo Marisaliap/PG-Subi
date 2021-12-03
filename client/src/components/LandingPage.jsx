@@ -8,7 +8,7 @@ import { allRoutes } from "../actions";
 
 export default function LandingPage() {
   const dispatch = useDispatch();
-  useEffect(() =>dispatch(allRoutes()), []);
+  useEffect(() =>dispatch(allRoutes()));
 
   return (
     <div className="LandingPage">

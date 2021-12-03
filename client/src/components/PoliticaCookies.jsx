@@ -1,17 +1,12 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "../Sass/Styles/CookiesPolicy.scss";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import MensajesIngles from "../lang/en-US.json";
-import MensajesEspanol from "../lang/es-Ar.json";
+// import MensajesEspanol from "../lang/es-Ar.json";
 
 export default function PoliticaCookies() {
-  const history = useHistory();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    history.push("/home");
-  }
   return (
     <IntlProvider locale="en-US" messages={MensajesIngles}>
       <div className="Cookies">
@@ -19,13 +14,15 @@ export default function PoliticaCookies() {
           <div></div>
           <div>
             <p>
-              <a href="/terms-and-conditions">
+              <a href="/terms-and-conditions" target="_blank"
+            rel="noreferrer">
                 <FormattedMessage
                   id="cookies.conditions"
                   defaultMessage="Terms and Conditions"
                 />
               </a>{" "}
-              | <a href="/privacy-policy">Política de Privacidad</a> | Política
+              | <a href="/privacy-policy"target="_blank"
+            rel="noreferrer"> Política de Privacidad</a> | Política
               de cookies
             </p>
             <p>
