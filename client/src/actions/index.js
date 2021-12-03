@@ -81,6 +81,20 @@ export function getUserByName(name) {
     }
   };
 }
+export function editUser(id, info) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.put(`http://localhost:3001/user/` + id, info));
+
+      return dispatch({
+        type: "EDIT_USER",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error)
+    }
+  };
+}
 
 export function getRouteFromDb(originName, destinyName, date, place) {
   return async function (dispatch) {

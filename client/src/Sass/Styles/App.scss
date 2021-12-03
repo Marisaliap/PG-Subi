@@ -42,6 +42,14 @@ p {
   color: $text;
 }
 
+.cadaLinea {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.2em;
+  padding-top: 1rem;
+  color: $headline;
+}
 .button {
   margin: 0.5rem;
   border: none;

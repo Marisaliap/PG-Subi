@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Post from "./Post";
 import CardCar from "./CardCar";
-import { getUserDetail } from "../actions";
+import { editUser, getUserDetail } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 import {
   BsFillTelephoneFill,
@@ -19,33 +19,73 @@ import {
 import "../Sass/Styles/UserDetails.scss";
 import img from "../img/photoDefault.jpg";
 import CardFullUser from "./CardFullUser";
+import "../Sass/Styles/App.scss";
 
 let editInfo = false
 export default function UserProfile() {
+  const { user, isAuthenticated } = useAuth0();
+  const userInfo = useSelector(state => state.user)
+  const [boolean, setBoolean] = useState(false)
   const dispatch = useDispatch()
-    const [input, setInput] = useState({})
-    const userInfo = useSelector(state => state.user)
-    const [boolean, setBoolean] = useState(false)
 
-    useEffect(() => {
-      dispatch(getUserDetail(user.email));
-    }, []);
+  useEffect(() => {
+    dispatch(getUserDetail(user.email));
+  }, []);
+
 
  
-  const { user, isAuthenticated } = useAuth0();
+    const [input, setInput] = useState({
+      street: "",
+      city: "",
+      province: "",
+      telephone: "",
+      facebook: "",
+      instagram: "",
+      about: "",
+      age: ""
+    })
 
+   
 
+ function handleSubmit(e) {
+   e.preventDefault()
+   dispatch(editUser(userInfo.id, input))
 
+  setInput({
+    street: "",
+    city: "",
+    province: "",
+    telephone: "",
+    facebook: "",
+    instagram: "",
+    about: "",
+    age: ""
+})
+}
+
+ function handleChange(e){
+  setInput({
+    ...input,
+    [e.target.name]: e.target.value,
+  });
+ }
+ 
   function handleClick (e) {
-    editInfo = !editInfo
-    console.log(editInfo)
-  }
-  function handleClick2 (e) {
     if (boolean === false){
       setBoolean(true)
     } else {
       setBoolean(false)
     }
+    setInput({
+      street: userInfo.street,
+      city: userInfo.city,
+      province:userInfo.province,
+      telephone:userInfo.telephone,
+      facebook:userInfo.facebook,
+      instagram:userInfo.instagram,
+      about: userInfo.about,
+      age: userInfo.age
+    })
     
   }
   function handleChange (e) {
@@ -64,8 +104,8 @@ export default function UserProfile() {
       
     return (
         <div> 
-           <button onClick={e => handleClick2(e)}>edit</button> 
-           {editInfo === false ? <>
+           <button onClick={e => handleClick(e)}>edit</button> 
+           {boolean === false ? <>
           <div className="UserDetails">
             <img src={userInfo.img} alt="User Image" style={{ width: "250px" }} />
             <h2>
@@ -96,10 +136,65 @@ export default function UserProfile() {
                 {userInfo.province}
               </h4>
             </div>
-          </> : <div>holis</div>
-         
-          
+          </> :  
+          <div>
+          <div className="UserDetails">
+            <img src={input.img} alt="User Image" style={{ width: "250px" }} />
+            <h2>
+              {input.name} {input.lastName} {genderIcon(input.genre)}
+            </h2>
+            <p className="age">{input.age} years old</p>
+            <input type='text'onChange={(e) => handleChange(e)}value={input.age} />
+            <p className="about">{input.about}</p>
+            <input onChange={(e) => handleChange(e)}type='text'value={input.about}/>
+            </div>
+            < br/>
+            <div className="moreInfo">
+              <div className="cadaLinea">
+              <h4>
+                <BsStarFill className="icon" /> {input.calification} / 5
+              </h4>
+              </div>
+              <div className="cadaLinea">
+              <h4>
+                <BsFillTelephoneFill className="icon" /> 
+              </h4>
+              <input onChange={(e) => handleChange(e)}type='text'value={input.telephone}/>
+              </div>
+              <div className="cadaLinea">
+              <h4>
+                <BsEnvelope className="icon" /> 
+               
+              </h4>
+              {userInfo.email}
+              </div>
+              <div className="cadaLinea">
+              <h4>
+                <BsFacebook className="icon" /> 
+              </h4>
+              <input onChange={(e) => handleChange(e)}type='text'value={input.facebook}/>
+              </div>
+              <div className="cadaLinea">
+              <h4>
+                <BsInstagram className="icon" /> 
+              </h4>
+              <input onChange={(e) => handleChange(e)}type='text'value={input.instagram}/>
+              </div>
+              <div className="cadaLinea">
+              <h4>
+                <BsMap className="icon" />
+              </h4>
+              <input onChange={(e) => handleChange(e)}type='text'name='street' value={input.street}/> {/*es eSTO*/}
+              <input onChange={(e) => handleChange(e)}type='text'value={input.city}/>
+              <input onChange={(e) => handleChange(e)}value={input.province}/>
+              
+              </div>
+            </div>
+            <button type='submit' onSubmit={e => handleSubmit(e)}></button>
+          </div>
+
           }
+
         </div>
     )
 }
