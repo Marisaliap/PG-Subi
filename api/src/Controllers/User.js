@@ -20,7 +20,7 @@ const postUser = async (req, res, next) => {
       photoDni,
     } = req.body;
 
-    
+
     const user = await User.findOrCreate({
       where: { email },
       defaults: {
@@ -62,16 +62,14 @@ const getUser = async (req, res, next) => {
           },
         },
         include: Post
-      }); 
-  // console.log(data.map(user =>user.posts.map(c=>parseInt(c.calification)))),
+      });
       data = data.map(user => {
         return {
           name: user.name,
           lastName: user.lastName,
           genre: user.genre,
           age: user.age,
-          calification: user.posts.map(c=>parseInt(c.calification)).reduce((a,b)=>a+b)/user.posts.length,
-          // calification: user.calification.flat().reduce((a, b) => a + b,) / user.calification.length,
+          calification: user.posts.map(c => parseInt(c.calification)).reduce((a, b) => a + b) / user.posts.length,
           photo: user.photo,
           email: user.email,
         }
@@ -99,7 +97,7 @@ const getUser = async (req, res, next) => {
 const putUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { about, age, street, city, province, telephone, facebook, instagram, password, email, photo, calification } = req.body;
+    const { about, age, street, city, province, telephone, facebook, instagram, email, photo, calification } = req.body;
     const user = await User.findByPk(id);
     user.update({
       about,
@@ -112,7 +110,7 @@ const putUser = async (req, res, next) => {
       instagram,
       email,
       photo,
-      calification: [calification, ...user.calification],
+      calification,
     });
     res.send(user);
   } catch (error) {
