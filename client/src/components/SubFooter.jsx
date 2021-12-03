@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../Sass/Styles/SubFooter.scss";
 import { BsTwitter, BsInstagram, BsFacebook } from "react-icons/bs";
-import { Route } from "react-router-dom";
-import SuggestionBox from "./SuggestionBox";
 
 export default function SubFooter() {
   return (
@@ -16,7 +14,7 @@ export default function SubFooter() {
         </div>
         <div>
           {/* <Route path="/suggestionbox" component={SuggestionBox} /> */}
-          <Link to="/sugggestion-box" target="_blank" rel="noreferrer">
+          <Link to="/suggestion-box" target="_blank" rel="noreferrer">
             <button className="buttonSuggestion">Suggestion Box</button>
           </Link>
         </div>

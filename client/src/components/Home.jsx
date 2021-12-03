@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../Sass/Styles/Home.scss";
-import header from "../img/header.png";
+// import header from "../img/header.png";
 import group2 from "../img/group2.png";
 import SearchBarHome from "./SearchBarHome";
 import { useSelector } from "react-redux";

@@ -1,13 +1,6 @@
 @import "../Variables/Variables.scss";
 
-.prueba {
-  position: absolute;
-  left: 50vw;
-  top: 50vh;
-  color: red;
-}
-
-.FormCar {
+.FormSuggestion {
   outline: none;
   border-radius: 15px;
   background-color: #78c64433;
@@ -25,7 +18,7 @@
   }
 }
 
-.FormAUTO {
+.FormRECO {
   font-size: 0.8em;
   color: $text;
   font-weight: bolder;
@@ -33,7 +26,7 @@
   flex-direction: column;
   align-items: center;
 
-  .cadaLineaAuto {
+  .cadaLineasugg {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -53,7 +46,7 @@
     margin-left: 10vw;
   }
 
-  .inputauto {
+  .inputsugg {
     border: 0;
     border-bottom: 2px solid $buttonColor;
     cursor: pointer;

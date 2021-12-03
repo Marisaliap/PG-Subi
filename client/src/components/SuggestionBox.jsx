@@ -69,37 +69,36 @@ export default function SuggestionBox() {
 
   return (
     <>
-      <div className="prueba">Holis</div>
-      <div className="FormCar">
+      <div className="FormSuggestion">
         <h1>Suggestion Box</h1>
         <form
-          className="FormAUTO"
+          className="FormRECO"
           onSubmit={(e) => {
             handleSubmit(e);
           }}
         >
-          <div className="cadaLineaAuto">
+          <div className="cadaLineasugg">
             <p className="label">Name:</p>
             <input
-              className="inputauto"
+              className="inputsugg"
               type="text"
               name="Name"
               value={input.suggestion}
             />
           </div>
-          <div className="cadaLineaAuto">
+          <div className="cadaLineasugg">
             <p className="label">Email:</p>
             <input
-              className="inputauto"
+              className="inputsugg"
               type="text"
               name="Email"
               value={input.suggestion}
             />
           </div>
-          <div className="cadaLineaAuto">
+          <div className="cadaLineasugg">
             <p className="label">Suggestion:</p>
             <input
-              className="inputauto"
+              className="inputsugg"
               type="textarea"
               name="Suggestion"
               value={input.suggestion}
