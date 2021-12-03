@@ -1,6 +1,7 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 
 .Footer {
+  width: 100vw;
   font-weight: normal;
   display: grid;
   grid-template-columns: 4% 8% 4% 15% 4% 18% 4% 15% 4% 20% 4%;

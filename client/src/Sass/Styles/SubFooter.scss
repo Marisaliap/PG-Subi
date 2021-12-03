@@ -1,6 +1,7 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 
 .SubFooter {
+  width: 100vw;
   background-color: $subfooter;
 
   .info {
