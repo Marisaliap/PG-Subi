@@ -138,6 +138,26 @@ export default function Registro() {
       });
     }
   }
+//   const uploadImage = async (e) => {
+//     const files = e.target.files;
+//     console.log(files)
+//     const data = new FormData();
+//     data.append("file", files[0]);
+//     data.append("upload_preset", "htnah6yo");
+//     setLoading(true);
+
+//     const res = await fetch(
+//         "https://api.cloudinary.com/v1_1/djrddcab5/image/upload",
+//         {
+//             method: "POST",
+//             body: data,
+//         }
+//     );
+
+//     const file = await res.json();
+
+// setImage(file.secure_url);
+// };
 
   return (
     <>
@@ -151,6 +171,8 @@ export default function Registro() {
           onSubmit={(e) => {
             handleSubmit(e);
           }}
+          // agrego rami para la foto "action"
+          enctyon="multipart/form-data"
         >
           <div>
             <div className="cadaLinea">
@@ -331,6 +353,17 @@ export default function Registro() {
                 Submit
               </button>
             )}
+          </div>
+          {/* agrego rami para la foto user */}
+          <div >
+            <input 
+            // onChange={(e) => handleChange(e)}
+             type="file" 
+            name="image"
+            required="required"
+            accept="image/png,image/jpeg"
+            />
+            <label>choose image</label>
           </div>
         </form>
       </div>
