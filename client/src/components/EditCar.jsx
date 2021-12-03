@@ -20,7 +20,7 @@ export default function EditCar() {
     model: "",
     cylinder: "",
   });
-  //console.log(input);
+
 
   function validate(input) {
     let errors = {};
@@ -39,7 +39,7 @@ export default function EditCar() {
   }
 
   function handleChange(e) {
-   // console.log(input);
+
     setInput({
       ...input,
       [e.target.name]: e.target.value,

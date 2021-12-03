@@ -44,7 +44,14 @@ export default function Home() {
                     : ""
                 }
               >
-                <button className="button">Post a Trip</button>
+                <p>Post a Trip!!</p>
+              </NavLink>
+            }
+          </div>
+            <div>
+            {
+              <NavLink to="/route-list">
+                <button className="button">Route List</button>
               </NavLink>
             }
           </div>

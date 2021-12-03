@@ -28,7 +28,6 @@ export default function SuggestionBox() {
   }
 
   function handleChange(e) {
-    console.log(input);
     setInput({
       ...input,
       [e.target.name]: e.target.value,

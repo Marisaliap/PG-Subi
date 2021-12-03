@@ -16,18 +16,13 @@ function Nav() {
   const { user, isAuthenticated } = useAuth0();
   const id = isAuthenticated ? user.email : "";
 
-  //console.log("esto es users", users);
-  //console.log("esto es user",user);
-  // console.log("esto es id",id);
-  //console.log("esto es AUth",isAuthenticated);
+
 
   useEffect(() => {
     dispatch(getUserDetail(id));
   }, [dispatch, id]);
 
-  //console.log(" esto es cars/mail", users.cars.userEmail)
-  //console.log(" esto es cars", users.cars);
-  //console.log(" esto es dni", users.dni);
+
 
   return (
     <>

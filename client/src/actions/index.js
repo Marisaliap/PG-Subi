@@ -34,7 +34,7 @@ export function getRoute(long1, lat1, long2, lat2) {
         payload: response.data,
       });
     } catch (error) {
-      //console.log(error);
+
     }
   };
 }
@@ -48,7 +48,7 @@ export function getUserDetail(id) {
         payload: response,
       });
     } catch (error) {
-      //console.log(error);
+
     }
   };
 }
@@ -56,13 +56,13 @@ export function getRouteById(id) {
   return async function (dispatch) {
     try {
       const response = (await axios.get(`http://localhost:3001/maps/route/` + id)).data;
-      console.log(response)
+
       return dispatch({
         type: "GET_ROUTE_BY_ID",
         payload: response,
       });
     } catch (error) {
-      //console.log(error);
+
     }
   };
 }
@@ -71,13 +71,13 @@ export function getUserByName(name) {
   return async function (dispatch) {
     try {
       const response = (await axios.get(`http://localhost:3001/user/?name=` + name)).data;
-      console.log(response)
+
       return dispatch({
         type: "GET_USER_BY_NAME",
         payload: response,
       });
     } catch (error) {
-      //console.log(error);
+
     }
   };
 }
@@ -94,7 +94,7 @@ export function getRouteFromDb(originName, destinyName, date, place) {
         payload: response.data,
       });
     } catch (error) {
-      //console.log(error);
+
     }
   };
 }
@@ -150,7 +150,7 @@ export function postUser(payload) {
         payload: response.data,
       });
     } catch (error) {
-      //console.log(error);
+
     }
   };
 }
@@ -167,7 +167,7 @@ export function postCar(payload) {
         payload: response.data,
       });
     } catch (error) {
-      // console.log(error);
+
     }
   };
 }
@@ -184,13 +184,13 @@ export function postMejorasYReclamos(payload) {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error);
+
     }
   };
 }
 
 export function postRoute(routeInfo) {
-  //console.log(routeInfo)
+
   return async function (dispatch) {
     try {
       const response = await axios.post(
@@ -203,7 +203,7 @@ export function postRoute(routeInfo) {
       });
     }
     catch (error) {
-      //console.log(error)
+
     }
   }
 }
@@ -242,7 +242,7 @@ export function allRoutes(order, restriction) {
         payload: response,
       });
     } catch (error) {
-      //console.log(error)
+
     }
   };
 }
