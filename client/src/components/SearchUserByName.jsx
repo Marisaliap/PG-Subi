@@ -13,7 +13,6 @@ export default function SearchUserByName() {
   function handleInput(e) {
     e.preventDefault();
     setName(e.target.value); //el value del input que ingresa por búsqueda va a setear el value del estado
-   // console.log(name); //probar
   }
 
   function handleSubmit(e) {

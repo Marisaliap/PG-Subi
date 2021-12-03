@@ -15,7 +15,7 @@ export default function Footer() {
       <div>
         <h4 className="titulo">About</h4>
         <div className="cosasAbajo">
-          <Link to="/aboutus" className="Link" target="_blank">
+          <Link to="/aboutus" className="Link" target="_blank" rel="noreferrer">
             About Us
           </Link>
         </div>
@@ -24,10 +24,15 @@ export default function Footer() {
       <div className="helpcita">
         <h4 className="titulo">Help</h4>
         <div className="help">
-          <Link to="/Faq" className="Link" target="_blank">
+          <Link to="/Faq" className="Link" target="_blank" rel="noreferrer">
             FAQs
           </Link>
-          <Link to="/recommendations" className="Link" target="_blank">
+          <Link
+            to="/recommendations"
+            className="Link"
+            target="_blank"
+            rel="noreferrer"
+          >
             Recommendations
           </Link>
         </div>
@@ -36,13 +41,28 @@ export default function Footer() {
       <div className="legal">
         <h4 className="titulo">Legal information</h4>
         <div className="cosasAbajo">
-          <Link to="/terms-and-conditions" className="Link" target="_blank">
+          <Link
+            to="/terms-and-conditions"
+            className="Link"
+            target="_blank"
+            rel="noreferrer"
+          >
             Terms and Conditions
           </Link>
-          <Link to="/privacy-policy" className="Link" target="_blank">
+          <Link
+            to="/privacy-policy"
+            className="Link"
+            target="_blank"
+            rel="noreferrer"
+          >
             Privacy Policy
           </Link>
-          <Link to="/cookies-policy" className="Link" target="_blank">
+          <Link
+            to="/cookies-policy"
+            className="Link"
+            target="_blank"
+            rel="noreferrer"
+          >
             Cookies Policy
           </Link>
         </div>
@@ -51,7 +71,12 @@ export default function Footer() {
       <div className="Info">
         <h3>
           Grupo 10 © |{" "}
-          <a href="https://www.soyhenry.com/" className="Link" target="_blank">
+          <a
+            href="https://www.soyhenry.com/"
+            className="Link"
+            target="_blank"
+            rel="noreferrer"
+          >
             {" "}
             Soy Henry ©
           </a>{" "}

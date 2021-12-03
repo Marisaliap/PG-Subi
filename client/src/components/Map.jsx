@@ -4,6 +4,7 @@ import ReactMapboxGl, {
   Marker,
   GeoJSONLayer,
   ZoomControl,
+  ScaleControl
 } from 'react-mapbox-gl';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -15,7 +16,7 @@ import {
   BsPinMapFill,
   BsFillPersonFill,
 } from 'react-icons/bs';
-import { RiPinDistanceFill } from 'react-icons/ri';
+import { RiContactsBookLine, RiPinDistanceFill } from 'react-icons/ri';
 import '../Sass/Styles/Map.scss';
 import swal from 'sweetalert';
 
@@ -28,8 +29,12 @@ export default function Map() {
   const city2 = useSelector((state) => state.suggestions2);
   const data = useSelector((state) => state.route);
   const { user, isAuthenticated } = useAuth0();
-  console.log(data);
-console.log(routeInfo, 'SOY INFO DE POSTROUTE')
+
+
+  // const routeCoordinates = Math.floor(data.coordinates.data.geometry.coordinates.length / 2)
+  // const middlePoint = data.coordinates.data.geometry.coordinates[routeCoordinates]
+  
+
   function handleClick(e) {
     e.preventDefault();
     history.push('/route');
@@ -65,6 +70,8 @@ console.log(routeInfo, 'SOY INFO DE POSTROUTE')
       'pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg',
   });
 
+ 
+
   return (
     <div className="Map">
       <Link to="/home">
@@ -77,10 +84,14 @@ console.log(routeInfo, 'SOY INFO DE POSTROUTE')
           height: '50vh',
           width: '50vw',
         }}
+        fitBounds={[city[0].coordinates,city2[0].coordinates]}
         className="mapbox"
-        center={
-          city && city.length === 1 ? city[0].coordinates : [-57.95, -34.93333]
-        }
+        // center={middlePoint}
+        
+        
+        // {
+        //   city && city.length === 1 ? city[0].coordinates : [-57.95, -34.93333]
+        // }
       >
         {city && city.length === 1 && (
           <Marker coordinates={city[0].coordinates} style={{ color: 'red' }}>
@@ -111,6 +122,7 @@ console.log(routeInfo, 'SOY INFO DE POSTROUTE')
           }}
         />
         <ZoomControl />
+        <ScaleControl />
       </Map>
       <br />
 

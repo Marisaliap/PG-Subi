@@ -1,12 +1,29 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 
 .SubFooter {
   background-color: $subfooter;
 
+  .buttonSuggestion {
+    margin-top: 0.75rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 0.5rem 2rem;
+    background-color: $links;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   .info {
     display: grid;
-    grid-template-columns: 5% 70% 20% 5%;
+    grid-template-columns: 5% 55% 15% 20% 5%;
     justify-items: start;
+    color: $labelForms;
   }
 
   .left {
@@ -19,6 +36,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
+    align-items: center;
 
     a {
       text-decoration: none;

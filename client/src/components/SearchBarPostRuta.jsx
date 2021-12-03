@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getRoute,
@@ -48,12 +48,10 @@ export default function SearchBar() {
     dispatch(getSuggestions(inputs.Origin));
     dispatch(getSuggestions2(inputs.Destination));
     const validations = validateInputs(inputs);
-    //console.log(validations, "soy input");
     setErrors(() => {
       const errorState = { ...errors, validations };
       return errorState;
     });
-   //console.log(errors);
   }
 
   const { validations } = errors;
@@ -70,7 +68,6 @@ export default function SearchBar() {
       const errorState = { ...errors, validations };
       return errorState;
     });
-    console.log(info)
   }
 
   const checkAllInfo =
@@ -163,13 +160,17 @@ export default function SearchBar() {
           </select>
         </div>
         <div className= 'selectContainer'>
-          <h4 for="restrictions"> Restrictions: </h4>
+          <h4 for="restrictions"> Preferences: </h4>
           <select
             name="restrictions"
             onChange={handleRestrictions}
             id="restrictions"
             className='restrictions'
           >
+          <option disabled selected value="1">
+                {" "}
+                -- Select an option --{" "}
+              </option>
           <option value="petsAllowed">Pets Allowed</option>
           <option value="smokersAllowed">Smoking Allowed</option>
           <option value="foodAllowed">Food Allowed</option>
@@ -198,10 +199,16 @@ export default function SearchBar() {
         </div>
         <pre>
         <div>
+          <NavLink to="/">
+            <button className="buttonBlue">Back</button>
+          </NavLink>
+        </div>
+        <div>
           {checkAllInfo ? (
             <button
               onClick={handleSubmit}
               className="button"
+             
               disabled={checkInfo.length !== 3 && checkInputs.length !== 2}
             >
               <NavLink
@@ -212,20 +219,16 @@ export default function SearchBar() {
                   color: "white",
                 }}
               >
-                Search
+                Preview Trip
               </NavLink>
             </button>
           ) : (
-            <button className="button" disabled="true">
-              Search
+            <button className="button"  style={{backgroundColor:"grey"}} disabled>
+              Preview Trip
             </button>
           )}
         </div>
-        <div>
-          <NavLink to="/">
-            <button className="buttonBlue">Back</button>
-          </NavLink>
-        </div>
+       
         </pre>
       </form>
     </div>

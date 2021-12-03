@@ -1,49 +1,53 @@
-import React,{useEffect} from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { allRoutes } from "../actions";
-import CardRoute from "./CardRoute";
-import CardUser from "./CardUser";
-import "../Sass/Styles/RouteCardContainer.scss"
-import "../Sass/Styles/RouteCard.scss"
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { allRoutes, getOrder } from '../actions';
+import CardRoute from './CardRoute';
+import CardUser from './CardUser';
+import NavBarFilter from './NavBarFilter';
+import '../Sass/Styles/RouteCardContainer.scss';
+import '../Sass/Styles/RouteCard.scss';
 // import {CardCar} from "./CardCar";
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
 
 const RouteDetails = () => {
-    const dispatch = useDispatch();
-    useEffect(() =>dispatch(allRoutes()), []);
-    const { getRoutes} = useSelector(state => state);
-    //console.log( getRoutes);
+  const dispatch = useDispatch();
+  useEffect(() => dispatch(allRoutes()), []);
+  const { getRoutes } = useSelector((state) => state);
 
-    return (
+  useEffect(() => {
+    dispatch(getOrder());
+  }, []);
 
-        <div className='RouteCardContainer'>
-        {getRoutes.map((route,i) => (
-           <Link to={`/route/${route.id}`}  style={{textDecoration:'none'}}>
-            <div className='RouteCard'>
+  return (
+    <div className="RouteDetails">
+      <NavBarFilter />
 
-            
-            <CardUser
-                photo={route.users?[0].photo: 'el route.user'}
-                name={route.users?[0].name: 'el route.user'}
-                calification = { route.users?[0].calification: 'el route.user' }
+      <div className="RouteCardContainer">
+        {getRoutes.map((route, i) => (
+          <Link to={`/route/${route.id}`} style={{ textDecoration: 'none' }}>
+            <div className="RouteCard">
+              <CardUser
+                photo={route.users[0].photo}
+                name={route.users[0].name}
+                calification={route.users[0].calification}
                 key={i}
-            />
+              />
 
-             <CardRoute
-            origin={route.originName}
-            destiny={route.destinyName}
-            infoRoute={route.infoRoute}
-            date={route.date}
-            hours = { route.hours }
-            place = {route.place}
-            key={i+1}
-            />
-
+              <CardRoute
+                origin={route.originName}
+                destiny={route.destinyName}
+                infoRoute={route.infoRoute}
+                date={route.date}
+                hours={route.hours}
+                place={route.place}
+                key={i + 1}
+                price={route.price}
+              />
             </div>
-            </Link>
-        ))
-        }
-        </div>
-    )
-}
-export default RouteDetails
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
+export default RouteDetails;

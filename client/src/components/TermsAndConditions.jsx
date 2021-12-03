@@ -1,15 +1,8 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Sass/Styles/TermsAndConditions.scss";
 
 export default function TermsAndConditions() {
-  const history = useHistory();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    history.push("/home");
-  }
-
   return (
     <div className="TermsAndConditions">
       <Link to="/home">
@@ -19,8 +12,12 @@ export default function TermsAndConditions() {
         <div></div>
         <div>
           <p>
-          <p> Terms and Conditions | <a href="/privacy-policy">Privacy Policy </a>| <a href="/cookies-policy"> Cookies Policy </a></p>
-            
+            <p>
+              {" "}
+              Terms and Conditions |{" "}
+              <a href="/privacy-policy">Privacy Policy </a>|{" "}
+              <a href="/cookies-policy"> Cookies Policy </a>
+            </p>
           </p>
           <p>
             <strong>Last review: </strong>
@@ -29,10 +26,10 @@ export default function TermsAndConditions() {
           <p>
             <span>
               This document describes the General Terms and Conditions
-              applicable to the use of the services offered by Give me a ride®
+              applicable to the use of the services offered by Gimme A Ride®
               &nbsp;{" "}
               <a href="http://www.givemearide.com/">www.givemearide.com/app</a>
-              &nbsp; and the Give me a ride® application (hereinafter “Give me a
+              &nbsp; and the Gimme A Ride® application (hereinafter “Give me a
               ride®”). Any person (hereinafter "User") who wishes to use Give me
               a ride® can do so subject to the Terms and Conditions respective,
               along with all other policies and principles.
@@ -49,16 +46,16 @@ export default function TermsAndConditions() {
             <span>
               The User must read, understand and accept all the conditions
               established in the General Terms and Conditions prior to its
-              registration as a User of Give me a ride®. If you continue, you
-              are expressly accepting and without waiving any clause the these
-              Terms and Conditions.
+              registration as a User of Gimme A Ride®. If you continue, you are
+              expressly accepting and without waiving any clause the these Terms
+              and Conditions.
             </span>
           </p>
           <p>
             <span>
-              Give me a ride® may modify the Terms and Conditions at any time
+              Gimme A Ride® may modify the Terms and Conditions at any time
               moment and will be binding from their publication on the web
-              www.Give me a ride®.com
+              www.Gimme A Ride®.com
             </span>
           </p>
           <p>
@@ -67,11 +64,11 @@ export default function TermsAndConditions() {
           <p>
             <span>
               The Services are only available to people who have legal capacity
-              to contract according to Argentine legislation. No Give me a ride®
+              to contract according to Argentine legislation. No Gimme A Ride®
               can be used by people who do not have this capacity, minors or
-              Give me a ride® Users who have been suspended temporarily,
+              Gimme A Ride® Users who have been suspended temporarily,
               indefinitely or permanently. The user acknowledges being over 18
-              years of age when registering for use Give me a ride®. Regarding
+              years of age when registering for use Gimme A Ride®. Regarding
               Users who are transported with minors, must comply with the
               provisions of the SGT N ° 43/2016, of the CNRT N ° 1025/2016 and
               concordant. The User will be the exclusively responsible for
@@ -79,7 +76,7 @@ export default function TermsAndConditions() {
               breach of it, without prejudice to the actions that Give me a
               ride® can take regarding your temporary or permanent suspension.
               The use of the service is individual and proper to the user who
-              uploaded their personal data in the Give me a ride® profile. It is
+              uploaded their personal data in the Gimme A Ride® profile. It is
               only possible to create a single user per individual, any natural
               person that is detected with multiple user accounts will be
               suspended, leaving a single user associated with the natural
@@ -103,28 +100,28 @@ export default function TermsAndConditions() {
           <p>
             <span>
               The meeting point service between drivers and passengers offered
-              by Give me a ride® is free. Give me a ride® reserves the right to
+              by Gimme A Ride® is free. Gimme A Ride® reserves the right to
               implement new free or paid services, which will be published on
-              the web www.Give me a ride®.com.ar and which the User will have
-              the possibility to accept or not. The service consists on a
-              platform that allows you to find people to share a non-profit car
-              ride for none of the people. The car must be contributed for the
-              trip in a disinterested way by any of the people who will share
-              the journey. Who drives can not ask remuneration or payment for
-              that action. In this way it is expressly Forbidden to use the
-              platform for profit of any nature and / or as a means of public
-              passenger transport service or private.
+              the web www.Gimme A Ride®.com.ar and which the User will have the
+              possibility to accept or not. The service consists on a platform
+              that allows you to find people to share a non-profit car ride for
+              none of the people. The car must be contributed for the trip in a
+              disinterested way by any of the people who will share the journey.
+              Who drives can not ask remuneration or payment for that action. In
+              this way it is expressly Forbidden to use the platform for profit
+              of any nature and / or as a means of public passenger transport
+              service or private.
             </span>
           </p>
           <p>
             <span>
               Acceptance of any new service, free or paid, constitutes an
-              exclusive condition to remain a User Give me a ride® asset
+              exclusive condition to remain a User Gimme A Ride® asset
             </span>
           </p>
           <p>
             <span>
-              Give me a ride® reserves the right to disable or suspend users,
+              Gimme A Ride® reserves the right to disable or suspend users,
               without being obliged to communicate or state the reasons for your
               decision and without generating any right to compensation, redress
               or repair.
@@ -132,22 +129,22 @@ export default function TermsAndConditions() {
           </p>
           <p>
             <span>
-              Without prejudice to other measures, Give me a ride® may warn,
+              Without prejudice to other measures, Gimme A Ride® may warn,
               suspend temporarily or permanently, disable a User and / or a
               publication, initiate the actions it deems pertinent and / or
               suspend the provision of its Services if: (1) it is broken any
               law, or any of the stipulations of the Terms and Conditions and
-              other policies of Give me a ride®; (2) if you breach your
+              other policies of Gimme A Ride®; (2) if you breach your
               commitments as a User; (3) if incurred, at the discretion of Give
               me a ride® that go against the legal system or that which exceeds
               the limits imposed by good faith, morals and good customs and / or
               malicious or fraudulent acts tending to harm both to the other
-              Users and to Give me a ride®; (4) could not Verify the identity of
+              Users and to Gimme A Ride®; (4) could not Verify the identity of
               the User or any information provided by the same is erroneous; (5)
-              Give me a ride® understand that postings or other actions may be
-              the cause of responsibility for the User who published them, for
-              Give me a ride® correspondingly and according to the legislation
-              on privacy, all data that Give me a ride® is obliged to provide to
+              Gimme A Ride® understand that postings or other actions may be the
+              cause of responsibility for the User who published them, for Gimme
+              A Ride® correspondingly and according to the legislation on
+              privacy, all data that Gimme A Ride® is obliged to provide to
               assist in the advancement of any investigation civil, criminal or
               of any kind.
             </span>
@@ -171,18 +168,18 @@ export default function TermsAndConditions() {
               A journey in which users share a car is the result of a prior
               agreement between a driver and passengers, service users (both
               driver and passengers over age) act under their full
-              responsibility. As such, Give me a ride® no is responsible for the
+              responsibility. As such, Gimme A Ride® no is responsible for the
               actual fulfillment of the trip or the conditions proposed by users
               or drivers, or any consequence, foreseen or unforeseen, arising
-              from the same. The service provided by Give me a ride® is limited
-              to connecting to users (who can act as passengers or drivers
+              from the same. The service provided by Gimme A Ride® is limited to
+              connecting to users (who can act as passengers or drivers
               indistinctly) through the application put to disposition of the
               same.
             </span>
           </p>
           <p>
             <span>
-              Give me a ride® does not assume the realization, ownership, or
+              Gimme A Ride® does not assume the realization, ownership, or
               responsibility of the provision of the services that it
               intermediates, nor against users of the same, nor in front of
               third parties.
@@ -210,7 +207,7 @@ export default function TermsAndConditions() {
               such damages and / or losses. Passengers will have the absolute
               responsibility to control the condition of the car, driver and the
               car in which they will travel, without the possibility of claim
-              any to Give me a ride® or its members.
+              any to Gimme A Ride® or its members.
             </span>
           </p>
           <p>
@@ -225,7 +222,7 @@ export default function TermsAndConditions() {
               the resulting from the division of travel expenses among all
               members of said trip, incurs a serious breach of these Terms and
               Conditions, under warning of being discharged definitively from
-              the application at the sole discretion of Give me a ride®,
+              the application at the sole discretion of Gimme A Ride®,
               notwithstanding the corresponding legal sanctions for illegal
               transportation of passengers and / or the lack of coverage of
               their contracted insurance.
@@ -242,8 +239,8 @@ export default function TermsAndConditions() {
               coordination of the trip. Such request cannot be denied or not
               answered by any other User, under penalty of incurring a fault to
               these Terms and Conditions and subsequent sanction that he may
-              apply Give me a ride® according to the severity of the action or
-              repetition of the same by the same User as a Give me a ride® user.
+              apply Gimme A Ride® according to the severity of the action or
+              repetition of the same by the same User as a Gimme A Ride® user.
             </span>
           </p>
           <p>
@@ -252,13 +249,13 @@ export default function TermsAndConditions() {
               Conditions that the User who drives requests prior to the trip a
               advance travel expenses as a down payment, in that case Give me a
               ride® may sanction and suspend the user from the platform
-              preventing you from using the Give me a ride® platform.
+              preventing you from using the Gimme A Ride® platform.
             </span>
           </p>
           <p>
             <span>
-              Give me a ride® has no responsibility in the definition of
-              expenses From the trip. It is the sole responsibility of the users
+              Gimme A Ride® has no responsibility in the definition of expenses
+              From the trip. It is the sole responsibility of the users
               participants of the trip, both passengers and driver, who in case
               if there is an economic participation, it is not greater than that
               established by the division of travel expenses to maintain the
@@ -272,14 +269,14 @@ export default function TermsAndConditions() {
           </p>
           <p>
             <span>
-              Give me a ride® aims to offer the service uninterrupted. No
-              However, it may happen that access to the website or the service
-              is interrupt in the course of maintenance operations, hardware and
+              Gimme A Ride® aims to offer the service uninterrupted. No However,
+              it may happen that access to the website or the service is
+              interrupt in the course of maintenance operations, hardware and
               software updates, emergency repairs of the web, or due to
-              circumstances beyond the control of Give me a ride® like Internet
-              failure or Facebook problems). Is by that Give me a ride® does not
+              circumstances beyond the control of Gimme A Ride® like Internet
+              failure or Facebook problems). Is by that Gimme A Ride® does not
               guarantee access and continued use or uninterrupted service. Users
-              acknowledge and accept that Give me a ride® assumes no
+              acknowledge and accept that Gimme A Ride® assumes no
               responsibility to him for any lack, suspension or interruption of
               the website or the service.
             </span>
@@ -288,11 +285,11 @@ export default function TermsAndConditions() {
             <span>
               ive me a ride® is not responsible for any damage, loss or loss to
               the User caused by failures in the system, in the server or on the
-              internet. Give me a ride® will also not be responsible for any
-              virus that could infect Users' equipment such as consequence of
-              the access, use or examination of its application or as a result
-              of any transfer of data, files, images, texts, or audio contained
-              therein. Users may not award Give me a ride® any responsibility or
+              internet. Gimme A Ride® will also not be responsible for any virus
+              that could infect Users' equipment such as consequence of the
+              access, use or examination of its application or as a result of
+              any transfer of data, files, images, texts, or audio contained
+              therein. Users may not award Gimme A Ride® any responsibility or
               demand payment for lost profits, by virtue of damages resulting
               from technical difficulties or failures in the systems or on the
               Internet.
@@ -304,9 +301,9 @@ export default function TermsAndConditions() {
           <p>
             <span>
               Any action, use of device, is strictly prohibited. software, or
-              other means tending to interfere with both the Give me a ride®
+              other means tending to interfere with both the Gimme A Ride®
               activities and operations as in descriptions or databases
-              associated with Give me a ride®. Any meddling attempt or activity
+              associated with Gimme A Ride®. Any meddling attempt or activity
               violating or contrary to the laws on intellectual property rights
               and / or stipulated prohibitions in this contract they will make
               their person responsible for the actions criminal and civil laws
@@ -320,16 +317,16 @@ export default function TermsAndConditions() {
           </p>
           <p>
             <span>
-              Give me a ride® is a non-profit project owned by the Rosario Civil
+              Gimme A Ride® is a non-profit project owned by the Rosario Civil
               Association Sustainable Technological Solutions (en hereinafter
               "STS Rosario") under License No. 2,850,394. All forbidden misuse
               and / or use for profit and / or reproduction and for any medium
               of your image, logo, programs, databases, application, networks,
-              files that allow the User to make use of Give me a ride® ®,
-              digital audiovisual content, without authorization due from STS
-              Rosario who is the absolute owner of said assets and rights over
-              them; they are protected by international copyright laws and
-              treaties, trademarks, patents, models and industrial designs.
+              files that allow the User to make use of Gimme A Ride® ®, digital
+              audiovisual content, without authorization due from STS Rosario
+              who is the absolute owner of said assets and rights over them;
+              they are protected by international copyright laws and treaties,
+              trademarks, patents, models and industrial designs.
             </span>
           </p>
           <p>
