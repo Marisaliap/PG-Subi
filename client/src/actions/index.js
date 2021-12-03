@@ -172,6 +172,23 @@ export function postCar(payload) {
   };
 }
 
+export function postMejorasYReclamos(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/suggestionbox/add`,
+        payload
+      );
+      return dispatch({
+        type: "POST_RECLAMOSYMEJORAS",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 export function postRoute(routeInfo) {
   //console.log(routeInfo)
   return async function (dispatch) {
@@ -186,7 +203,7 @@ export function postRoute(routeInfo) {
       });
     }
     catch (error) {
-      console.log(error)
+      //console.log(error)
     }
   }
 }

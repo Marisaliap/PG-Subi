@@ -13,7 +13,7 @@ export const Profile = () => {
   return (
     isAuthenticated && (
       <div className="Profile">
-        <Link to={"/user/" + user.email}>
+        <Link to={"/user/" + user.email.slice(0, user.email.lastIndexOf("@"))}>
           <img className="fotoPerfil" src={user.picture} alt={user.name} />
         </Link>
       </div>

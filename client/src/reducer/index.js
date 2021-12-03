@@ -15,6 +15,7 @@ const initialState = {
   order: "",
   filtersRoute: [],
 
+  reclamosymejoras: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -40,12 +41,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: action.payload,
       };
-    case 'GET_USER_DETAIL':
+    case "GET_USER_DETAIL":
       return {
         ...state,
         user: action.payload,
       };
-    case 'GET_ALL_ROUTE_INFO':
+    case "GET_ALL_ROUTE_INFO":
       return {
         ...state,
         getRoutes: action.payload,
@@ -60,7 +61,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         user: action.payload,
       };
-    case 'GET_USER_BY_NAME':
+    case "POST_RECLAMOSYMEJORAS":
+      return {
+        ...state,
+        reclamosymejoras: action.payload,
+      };
+    case "GET_USER_BY_NAME":
       return {
         ...state,
         users: action.payload,
@@ -110,12 +116,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         routePostInfo: action.payload,
       };
-    case 'GET_ROUTE_BY_ID':
+    case "GET_ROUTE_BY_ID":
       return {
         ...state,
         routeById: action.payload,
       };
-    case 'GET_ROUTE_FROM_DB':
+    case "GET_ROUTE_FROM_DB":
       return {
         ...state,
         routeFromDb: action.payload,

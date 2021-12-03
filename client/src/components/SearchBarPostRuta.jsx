@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getRoute,
@@ -197,35 +197,35 @@ export default function SearchBar() {
           <p>{validations && validations.hours}</p>
         </div>
         <pre>
-        <div>
-          {checkAllInfo ? (
-            <button
-              onClick={handleSubmit}
-              className="button"
-              disabled={checkInfo.length !== 3 && checkInputs.length !== 2}
-            >
-              <NavLink
-                to="/route/finish"
-                style={{
-                  textDecoration: " none",
-                  width: "60px",
-                  color: "white",
-                }}
+          <div>
+            {checkAllInfo ? (
+              <button
+                onClick={handleSubmit}
+                className="button"
+                disabled={checkInfo.length !== 3 && checkInputs.length !== 2}
               >
+                <NavLink
+                  to="/route/finish"
+                  style={{
+                    textDecoration: " none",
+                    width: "60px",
+                    color: "white",
+                  }}
+                >
+                  Search
+                </NavLink>
+              </button>
+            ) : (
+              <button className="button" disabled="true">
                 Search
-              </NavLink>
-            </button>
-          ) : (
-            <button className="button" disabled="true">
-              Search
-            </button>
-          )}
-        </div>
-        <div>
-          <NavLink to="/">
-            <button className="buttonBlue">Back</button>
-          </NavLink>
-        </div>
+              </button>
+            )}
+          </div>
+          <div>
+            <NavLink to="/">
+              <button className="buttonBlue">Back</button>
+            </NavLink>
+          </div>
         </pre>
       </form>
     </div>

@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getRoute,
-  getRouteFromDb,
-  getSuggestions,
-  getSuggestions2,
-  RoutePostInfo,
-} from "../actions";
+import { getRouteFromDb, getSuggestions, getSuggestions2 } from "../actions";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/SearchBarHome.scss";
 import "../Sass/Styles/App.scss";
@@ -56,7 +50,7 @@ export default function SearchBarHome() {
     //console.log(errors);
   }
 
-  const { validations } = errors;
+  // const { validations } = errors;
 
   const checkInputs = Object.values(inputs);
   const checkInfo = Object.values(info);

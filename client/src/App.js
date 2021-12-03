@@ -28,18 +28,14 @@ import PoliticaCookies from "./components/PoliticaCookies";
 import CookiesPolicy from "./components/CookiesPolicy";
 import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
-
-
-
-
-
+import SuggestionBox from "./components/SuggestionBox";
 export default function App() {
   const { isAuthenticated } = useAuth0();
 
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       if (window.pageYOffset > 300) {
         setShowButton(true);
       } else {
@@ -52,7 +48,7 @@ export default function App() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // for smoothly scrolling
+      behavior: "smooth", // for smoothly scrolling
     });
   };
 
@@ -95,7 +91,7 @@ export default function App() {
             <Route path="/politica-privacidad" component={PoliticaPrivacidad} />
             <Route path="/privacy-policy" component={ PrivacyPolicy } />
             <Route path="/cookies-policy" component={CookiesPolicy} />
-            <Route path="/politica-cookies" component={PoliticaCookies} />
+            <Route path="/suggestion-box" component={SuggestionBox} />
             {showButton && (
               <button onClick={scrollToTop} className="back-to-top">
                 &#8679;

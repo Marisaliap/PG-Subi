@@ -19,9 +19,9 @@ export default function Faq() {
         <div></div>
         <div>
           <h2>Frequently asked questions</h2>
-          <h3>Using Gimme a Ride® </h3>
+          <h3>Using Gimme A Ride® </h3>
           <p>
-            Do you have questions about how to use Gimme a Ride®? Write to our
+            Do you have questions about how to use Gimme A Ride®? Write to our
             <a
               href="https://www.facebook.com/people/Give-me-a-ride/100075632223946/?sk=about"
               target="_blank"
@@ -35,17 +35,17 @@ export default function Faq() {
             .
           </p>
 
-          <h3>What is Gimme a Ride®? </h3>
+          <h3>What is Gimme A Ride®? </h3>
           <p>
             It is a network of people who share car trips between cities, making
             an equitable division of costs among all travelers or an agreed
-            contribution. Gimme a Ride® is not a public or private passenger
+            contribution. Gimme A Ride® is not a public or private passenger
             transportation system.{" "}
           </p>
 
-          <h3>What types of trips can I do with Gimme a Ride®? </h3>
+          <h3>What types of trips can I do with Gimme A Ride®? </h3>
           <p>
-            In Gimme a Ride® you can create or find medium and long-distance
+            In Gimme A Ride® you can create or find medium and long-distance
             trips. Drivers who organize their long or short distance trips
             publish their free seats on the app, specifying in their
             advertisement the route and the price for each seat and section.
@@ -62,22 +62,22 @@ export default function Faq() {
           </p>
 
           <h3>
-            Do the rides on Gimme a Ride® have a cost? How much does a Give me
-            a ride® ride cost?{" "}
+            Do the rides on Gimme A Ride® have a cost? How much does a Give me a
+            ride® ride cost?{" "}
           </h3>
           <p>
-            Gimme a Ride® -being a network of people who share trips- only
+            Gimme A Ride® -being a network of people who share trips- only
             allows monetary contributions for used fuel and tolls or equitable
             division of expenses among all participants. There is no fixed rate
             or ticket value. The contribution cannot exceed the value of an
             equitable division of fuel expenses and tolls since if so it could
             be considered illegal passenger transport.
-            <u>Gimme a Ride® is a collaborative network, not a service. </u>
+            <u>Gimme A Ride® is a collaborative network, not a service. </u>
           </p>
 
           <h3>How is the contribution for a trip calculated? </h3>
           <p>
-            The maximum monetary contribution accepted in Gimme a Ride® is the
+            The maximum monetary contribution accepted in Gimme A Ride® is the
             fuel used + tolls divided by the number of people traveling in the
             car. It must be defined before the trip, before or during the prior
             coordination. Unless it is decided to make a division of expenses
@@ -135,11 +135,11 @@ export default function Faq() {
             unanswered, nor can they cancel a passenger for this request. The
             division of expenses with fuel tickets and tolls is the most direct
             way to establish the maximum contribution for a trip and is
-            recommended by Gimme a Ride®. (*){" "}
+            recommended by Gimme A Ride®. (*){" "}
           </p>
           <p>
             {" "}
-            (*) To calculate fuel costs and tolls with tickets, Gimme a Ride®
+            (*) To calculate fuel costs and tolls with tickets, Gimme A Ride®
             recommends filling the tank before leaving and refilling it at the
             destination. This last load (or the amount of fuel loads that are
             made once the trip has started) will be the fuel expense + the toll
@@ -234,7 +234,7 @@ export default function Faq() {
           <p>
             {" "}
             When creating a trip, you can define its privacy and choose who will
-            be the Gimme a Ride® users who will be able to contact you. <br />
+            be the Gimme A Ride® users who will be able to contact you. <br />
             There are three types of visibility: <br />
             "Public trip" <br />
             "Visible trip for friends of friends" <br />
@@ -242,26 +242,26 @@ export default function Faq() {
             <br /> You can create your list of friends by sending friend
             requests within the platform or by linking your account with that of
             Facebook, so that the platform also takes into account your friends
-            from that social network who are on Gimme a Ride® .
+            from that social network who are on Gimme A Ride® .
           </p>
           <p> Following this, the three types of travel comprise: </p>
           <ul>
             <li>
               {" "}
-              “Public ride” → ALL Gimme a Ride® users will be able to view and
+              “Public ride” → ALL Gimme A Ride® users will be able to view and
               request this ride.{" "}
             </li>
             <li>
               {" "}
               “Visible trip for friends of friends” → your friends and their
-              friends from Gimme a Ride® and Facebook (if you logged in with
+              friends from Gimme A Ride® and Facebook (if you logged in with
               this social network) will be able to see and request this trip.{" "}
             </li>
             <li>
               {" "}
-              “Visible trip for friends” → only your Gimme a Ride® and
-              Facebook friends (if you logged in with this social network) who
-              use Gimme a Ride® will be able to see and request this trip.{" "}
+              “Visible trip for friends” → only your Gimme A Ride® and Facebook
+              friends (if you logged in with this social network) who use Gimme
+              A Ride® will be able to see and request this trip.{" "}
             </li>
           </ul>
           <table>
@@ -303,7 +303,7 @@ export default function Faq() {
             conditions of the trip did not occur as they were established, tell
             about your experience when you can rate the other person. That is
             why it is important that you maintain the coordination of the trips
-            within the Gimme a Ride® platform.{" "}
+            within the Gimme A Ride® platform.{" "}
           </p>
           <p>
             {" "}
@@ -361,7 +361,7 @@ export default function Faq() {
             did not take place and that you tell how your experience was when
             interacting with the other person.{" "}
           </p>
-          <h3> Can I Gimme a Ride® without having a car? </h3>
+          <h3> Can I Gimme A Ride® without having a car? </h3>
           <p>
             {" "}
             Sure, generating a trip as a passenger looking for a driver. You can
@@ -373,7 +373,7 @@ export default function Faq() {
 
           <h3>
             {" "}
-            Can I use Gimme a Ride® to connect with another transport and
+            Can I use Gimme A Ride® to connect with another transport and
             continue my journey? (Example: to go to Ezeiza International
             Airport){" "}
           </h3>
@@ -411,7 +411,7 @@ export default function Faq() {
             Soon you will be able to configure the alert conditions, being able
             to have a range of time and distance. You can collaborate with Give
             me a ride® so that we can incorporate these functions soon{" "}
-            <a href="https://GimmeARide.com/donar"> Donate! </a>{" "}
+            <a href="https://gimmearide.com/donar"> Donate! </a>{" "}
           </p>
           <h3> How does the travel ‘matcher’ work? </h3>
           <p>
@@ -420,37 +420,37 @@ export default function Faq() {
             have to go to "my trips" enter the one you created and you will see
             the matches. The match has a range of days. Soon you will be able to
             configure the "match" conditions, being able to have a range of time
-            and distance. You can collaborate with Gimme a Ride® so that we
-            can incorporate these functions soon{" "}
-            <a href="https://subiquetellevo.com.ar/donar"> Donate! </a>{" "}
+            and distance. You can collaborate with Gimme A Ride® so that we can
+            incorporate these functions soon{" "}
+            <a href="https://gimmearide.com.ar/donar"> Donate! </a>{" "}
           </p>
-          {/* <h3>¿Puedo invitar a mis amigos a Gimme a Ride®? :D</h3>
+          {/* <h3>¿Puedo invitar a mis amigos a Gimme A Ride®? :D</h3>
               <p>¡Claro que sí! Contales del proyecto e invitalos a sumarse a la aplicación mediante el botón “Invitar amigos” en el menú principal. También podés incentivarlos compartir en tu muro de Facebook los viajes que cargues a la plataforma. </p>
 
 
-               <h3> Can I create frequent or occasional trips for Gimme a Ride® within my city? </h3>
+               <h3> Can I create frequent or occasional trips for Gimme A Ride® within my city? </h3>
                <p> Unfortunately the system has not yet been developed to manage this type of trip but we are working on developing a version that is also useful for sharing trips within the same city. </p> 
                <h3> How do I share trips through social networks? </h3>
                <p> To share your trip or one that you have seen on the platform through social networks, you have to use the buttons with the symbol of the social network. You can find them in the list of trips or in the detail of each one. This feature is only available for the downloadable version for mobile phones. </p> 
 
-               <h3> How was Gimme a Ride® born? Who do it? </h3>
-               <p> Gimme a Ride® is a network of people who share car rides. It is a non-profit and open source collective management project that emerged from the civil association STS Rosario in 2013 in order to contribute to a more rational use of the car.
-                 The idea is that when we have to travel by car because there is no bus or it does not suit us for some reason, we always try to fill the car to make better use of fossil resources and pollution associated with the trip. Beyond environmental motivation, Gimme a Ride® also seems very important to us because it helps to generate bonds between people, who many times would not have met otherwise. </p> 
-                 <h3> How can I contribute to Gimme a Ride®? </h3>
-                 <p> Great that you want to collaborate! You can contribute to Gimme a Ride® with volunteer work and also dissemination / contacts. <a href="https://GimmeARide.com/howtocooperate"> Here you can find all the information to help Gimme a Ride® go further </a>. </p> 
-                 <p> You can also donate once or monthly here <a href="https://GimmeARide.com/donate"> --- & gt; Donate! </a> </p>
+               <h3> How was Gimme A Ride® born? Who do it? </h3>
+               <p> Gimme A Ride® is a network of people who share car rides. It is a non-profit and open source collective management project that emerged from the civil association STS Rosario in 2013 in order to contribute to a more rational use of the car.
+                 The idea is that when we have to travel by car because there is no bus or it does not suit us for some reason, we always try to fill the car to make better use of fossil resources and pollution associated with the trip. Beyond environmental motivation, Gimme A Ride® also seems very important to us because it helps to generate bonds between people, who many times would not have met otherwise. </p> 
+                 <h3> How can I contribute to Gimme A Ride®? </h3>
+                 <p> Great that you want to collaborate! You can contribute to Gimme A Ride® with volunteer work and also dissemination / contacts. <a href="https://givemearide.com/howtocooperate"> Here you can find all the information to help Gimme A Ride® go further </a>. </p> 
+                 <p> You can also donate once or monthly here <a href="https://givemearide.com/donate"> --- & gt; Donate! </a> </p>
 
 
-              <h3>¿Cómo nace Gimme a Ride®? ¿Quiénes lo hacen? </h3>
-              <p>Gimme a Ride® es una red de personas que comparten viajes en auto. Es un proyecto de gestión colectiva sin fines de lucro y de código libre que surge de la asociación civil STS Rosario en 2013 con el fin de aportar a un uso más racional del auto. 
-                La idea es que cuando tengamos que viajar en auto porque no hay colectivo o no nos conviene por algún motivo, siempre busquemos de llenar el auto para hacer un mejor aprovechamiento de los recursos fósiles y contaminación asociada al viaje. Más allá de la motivación ambiental, también Gimme a Ride® nos parece muy importante porque ayuda a generar vínculos entre las personas, quienes muchas veces no se hubieran encontrado de otra forma. </p>
+              <h3>¿Cómo nace Gimme A Ride®? ¿Quiénes lo hacen? </h3>
+              <p>Gimme A Ride® es una red de personas que comparten viajes en auto. Es un proyecto de gestión colectiva sin fines de lucro y de código libre que surge de la asociación civil STS Rosario en 2013 con el fin de aportar a un uso más racional del auto. 
+                La idea es que cuando tengamos que viajar en auto porque no hay colectivo o no nos conviene por algún motivo, siempre busquemos de llenar el auto para hacer un mejor aprovechamiento de los recursos fósiles y contaminación asociada al viaje. Más allá de la motivación ambiental, también Gimme A Ride® nos parece muy importante porque ayuda a generar vínculos entre las personas, quienes muchas veces no se hubieran encontrado de otra forma. </p>
 
-                <h3>¿Cómo puedo contribuir con Gimme a Ride®?  </h3>
-                <p>¡Genial que quieras colaborar! Se puede aportar a Gimme a Ride® con tareas de voluntariado y también difusión/contactos. <a href="https://subiquetellevo.com.ar/colabora-como-colaborar">Acá podés encontrar toda la información para ayudar a que Gimme a Ride® llegue más lejos</a>.  </p>
+                <h3>¿Cómo puedo contribuir con Gimme A Ride®?  </h3>
+                <p>¡Genial que quieras colaborar! Se puede aportar a Gimme A Ride® con tareas de voluntariado y también difusión/contactos. <a href="https://subiquetellevo.com.ar/colabora-como-colaborar">Acá podés encontrar toda la información para ayudar a que Gimme A Ride® llegue más lejos</a>.  </p>
 
               <p>También podés donar por única vez o mensualmente acá <a href="https://subiquetellevo.com.ar/donar"> ---&gt; ¡Donar!</a></p>
 
-              <h3>Ante cualquier comentario, consulta o propuesta de mejora, escribinos a nuestras redes Facebook, Instagram, Twitter o <a href="mailto:subiquetellevo@grupo10.com.ar" target="_top">Gimme a Ride®@grupo10.com.ar</a>.<p></p>
+              <h3>Ante cualquier comentario, consulta o propuesta de mejora, escribinos a nuestras redes Facebook, Instagram, Twitter o <a href="mailto:subiquetellevo@grupo10.com.ar" target="_top">Gimme A Ride®@grupo10.com.ar</a>.<p></p>
 
                 <p>¡Buen viaje!</p>
             </h3> */}
