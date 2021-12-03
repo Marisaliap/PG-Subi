@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../Sass/Styles/CookiesPolicy.scss";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import MensajesIngles from "../lang/en-US.json";
 import MensajesEspanol from "../lang/es-Ar.json";
+import langContext from "../context/langContext";
+import es from "./../img/spain.png"
+import en from "./../img/united-kingdom.png"
 
 export default function PoliticaCookies() {
+  const idioma = useContext(langContext)
+  console.log(idioma.establecerLenguaje());
+
   const history = useHistory();
 
   function handleSubmit(e) {
@@ -14,6 +20,10 @@ export default function PoliticaCookies() {
   }
   return (
     <IntlProvider locale="en-US" messages={ MensajesIngles }>
+      <div>
+      <button onClick={() => idioma.establecerLenguaje("es-Ar")}><img src={es} alt=""></img></button>
+      <button onClick={() => idioma.establecerLenguaje("en-US")}><img src={en} alt=""></img></button>
+      </div>
     <div className="Cookies">
      
       <article>
