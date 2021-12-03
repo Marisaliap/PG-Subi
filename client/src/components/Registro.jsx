@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postUser } from "../actions";
@@ -11,6 +10,9 @@ export default function Registro() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { user, isAuthenticated } = useAuth0();
+  const [image,setImage] = useState("");
+  const [loanding,setLoading] = useState(false);
+
 
   function validate(input) {
     let errors = {};
@@ -102,6 +104,26 @@ export default function Registro() {
       [e.target.name]: e.target.value,
     });
   }
+  // ----------------------< upload image rami x jp >----------------------
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "s6kdvopu");
+    setLoading(true);
+
+    const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+        {
+            method: "POST",
+            body: data,
+        }
+    );
+
+    const file = await res.json();
+setImage(file.secure_url);
+};
+  // _______________________________________________________________________
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -121,7 +143,9 @@ export default function Registro() {
         facebook: "",
         instagram: "",
         about: "",
+        photo: image,
       });
+
       swal({
         title: "Good job!",
         text: "User created correctly",
@@ -310,6 +334,18 @@ export default function Registro() {
             />
             {errors.about && <p className="error">{errors.about}</p>}
           </div>
+          {/* ------------------< photo input rami x jp >--------------------- */}
+          <div>
+            <label >photo user</label>
+            <input
+              onchange={uploadImage}
+              type="file"
+              name="image"
+              required="required"
+              accept="image/png, image/jpeg"
+            />
+          </div>
+          {/* ------------------------------------------------------------------ */}
           <div className="terminosycond">
             <div className="terminos">
               By submitting, you agree to our{" "}

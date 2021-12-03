@@ -1,7 +1,7 @@
 const { User, Post, Car, Route, Op } = require("../db.js");
 const { ClOUD_NAME, APY_KEY_CLOUD, API_CLOUD_SECRET } = process.env
-const cloudinary = require("cloudinary")
-const fs = require("fs-extra");
+// const cloudinary = require("cloudinary")
+// const fs = require("fs-extra");
 
 cloudinary.config({
   cloud_name: ClOUD_NAME,
@@ -28,13 +28,14 @@ const postUser = async (req, res, next) => {
       photo,
       photoDni,
     } = req.body;
-const result= await cloudinary.v2.uploader.upload(req.file.path)
+// const result= await cloudinary.v2.uploader.upload(req.file.path)
 
     const user = await User.findOrCreate({
       where: { email },
       defaults: {
         name,
-        photo:result.url,
+        // photo:result.url,
+        photo,
         lastName,
         email,
         telephone,
@@ -49,7 +50,7 @@ const result= await cloudinary.v2.uploader.upload(req.file.path)
         genre,
         calification: [0],
         photoDni,
-        public_id:result.public_id,
+        // public_id:result.public_id,
       },
     });
     await fs.unlink(req.file.path);
