@@ -22,9 +22,11 @@ import Users from "./components/Users";
 import NavBar from "./components/NavBar";
 import RouteDetails from "./components/RouteDetails";
 import PoliticaPrivacidad from "./components/PoliticaPrivacidad";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import PoliticaCookies from "./components/PoliticaCookies";
 import CookiesPolicy from "./components/CookiesPolicy";
 import AllInfoRoute from "./components/allInfoRoute";
-import RoutesFromSearch from "./components/RoutesFromSearch"
+import RoutesFromSearch from "./components/RoutesFromSearch";
 export default function App() {
   const { isAuthenticated } = useAuth0();
 
@@ -82,8 +84,10 @@ export default function App() {
             />
             <Route path="/recommendations" component={Recommendations} />
             <Route path="/aboutus" component={Aboutus} />
-            <Route path="/privacy-policy" component={PoliticaPrivacidad} />
+            <Route path="/politica-privacidad" component={PoliticaPrivacidad} />
+            <Route path="/privacy-policy" component={ PrivacyPolicy } />
             <Route path="/cookies-policy" component={CookiesPolicy} />
+            <Route path="/politica-cookies" component={PoliticaCookies} />
             {showButton && (
               <button onClick={scrollToTop} className="back-to-top">
                 &#8679;
