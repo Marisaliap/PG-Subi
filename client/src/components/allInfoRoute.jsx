@@ -18,12 +18,21 @@ import { RiPinDistanceFill } from "react-icons/ri";
 import "../Sass/Styles/Map.scss";
 
 export default function AllInfoRoute({ match }) {
-  useEffect(() => dispatch(getRouteById(match.params.id)), []);
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const route = useSelector(state => state.routeById)
-  const data = useSelector(state => state.route)
- route.origin && data.length === 0 && dispatch(getRoute(route.origin[0], route.origin[1], route.destiny[0], route.destiny[1]))
+  useEffect(() => dispatch(getRouteById(match.params.id)));
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const route = useSelector((state) => state.routeById);
+  const data = useSelector((state) => state.route);
+  route.origin &&
+    data.length === 0 &&
+    dispatch(
+      getRoute(
+        route.origin[0],
+        route.origin[1],
+        route.destiny[0],
+        route.destiny[1]
+      )
+    );
   const Map = ReactMapboxGl({
     accessToken:
       "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
@@ -33,29 +42,29 @@ export default function AllInfoRoute({ match }) {
     dispatch(deleteRoute());
     history.push("/route-list");
   }
-  return <div className='Map'>
-    {route.length > 0 && route.originName}
-  
-  <Map
-       style="mapbox://styles/mapbox/streets-v11"
-       containerStyle={{
-         height: '50vh',
-         width: '50vw',
-       }}
-       className="mapbox"
-       center={route.origin}
-       fitBounds={route.origin && [route.origin, route.destiny]}
-  >
-    
-    
-      {  data &&  <Marker coordinates={route.origin} style={{ color: 'red' }}>
+  return (
+    <div className="Map">
+      {route.length > 0 && route.originName}
+
+      <Map
+        style="mapbox://styles/mapbox/streets-v11"
+        containerStyle={{
+          height: "50vh",
+          width: "50vw",
+        }}
+        className="mapbox"
+        center={route.origin}
+        fitBounds={route.origin && [route.origin, route.destiny]}
+      >
+        {data && (
+          <Marker coordinates={route.origin} style={{ color: "red" }}>
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
               style={{ height: "30px" }}
               alt=""
             ></img>
           </Marker>
-        }
+        )}
 
         {data && (
           <Marker coordinates={route.destiny}>
@@ -104,5 +113,5 @@ export default function AllInfoRoute({ match }) {
         volver
       </button>
     </div>
-  ;
+  );
 }

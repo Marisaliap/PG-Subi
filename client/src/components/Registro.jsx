@@ -1,7 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { postUser } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
@@ -19,7 +19,7 @@ export default function Registro() {
     } else if (!input.lastName) {
       errors.lastName = "Last name is required";
       /* } else if ("^[^!@#$^&%*()+=[\]\/{}|:<>?,.\t]+$") {
-      errors.email = 'The last name cannot contain symbols'; */
+      errors.lastName = 'Last name cannot contain symbols'; */
     } else if (!input.dni) {
       errors.dni = "DNI is required";
     } else if (validateGender() === false) {
@@ -41,26 +41,34 @@ export default function Registro() {
   }
 
   function validateGender() {
-    if (document.getElementById("genre").value == "1") {
+    if (document.getElementById("genre").value === "1") {
       return false;
     }
     return true;
   }
 
-  const [errors, setErrors] = useState({
-    name: isAuthenticated ? "" : "Name is required",
-    lastName: isAuthenticated ? "" : "Last name is required",
-    dni: "DNI is required",
-    age: "Age required",
-    telephone: "Telephone is required",
-    street: "Street is required",
-    city: "City is required",
-    province: "Province is required",
-  });
+  function validateInputs() {
+    if (
+      !input.name ||
+      !input.lastName ||
+      !input.dni ||
+      !input.age ||
+      !input.telephone ||
+      !input.street ||
+      !input.city ||
+      !input.province
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
     name: isAuthenticated ? user.given_name : "",
-    lastName: isAuthenticated ? (!user.family_name && "Fernandez") : user.family_name,
+    lastName: isAuthenticated ? user.family_name : "",
     email: isAuthenticated ? user.email : "",
     dni: "",
     genre: "",
@@ -95,18 +103,9 @@ export default function Registro() {
     });
   }
 
-  function handleSelectTerms(e) {
-    e.preventDefault();
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-    setErrors({});
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === 0 && validateInputs() === true) {
       dispatch(postUser(input));
       setInput({
         name: "",
@@ -316,19 +315,22 @@ export default function Registro() {
               By submitting, you agree to our{" "}
               <a target="_blank" href="/terms-and-conditions">
                 {" "}
-                Terms of Use{" "}
+                Terms of Use
               </a>{" "}
-              and
+              and{" "}
               <a target="_blank" href="/privacy-policy">
-                {" "}
                 Privacy Policy
               </a>
             </div>
           </div>
           <div>
-            <button className="button" type="submit">
-              Submit
-            </button>
+            {validateInputs() === false ? (
+              <button className="buttondisabled">Submit</button>
+            ) : (
+              <button className="button" type="submit">
+                Submit
+              </button>
+            )}
           </div>
         </form>
       </div>

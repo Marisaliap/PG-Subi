@@ -1,14 +1,8 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Sass/Styles/Recommendations.scss";
 
 export default function Recommendations() {
-  const history = useHistory();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    history.push("/home");
-  }
   return (
     <div className="Recommendations">
       <Link to="/home">
@@ -133,8 +127,7 @@ export default function Recommendations() {
   );
 }
 
-{
-  /* <h2>Recomendaciones a la hora de Gimme A Ride®</h2>
+/* <h2>Recomendaciones a la hora de Gimme A Ride®</h2>
 
           <p>
             Compartir es una gran experiencia pero debemos tener en cuenta
@@ -236,9 +229,8 @@ export default function Recommendations() {
             del viaje dividido la cantidad de ocupantes del vehículo al momento
             del viaje (conductor y pasajeros). Esto debe ser respetado pues de
             no ser así se estaría cometiendo una actividad ilegal. */
-}
-{
-  /* </p>
+
+/* </p>
 
           <p>
             Remarcamos que el conductor no debe obtener ganancia económica en
@@ -247,7 +239,4 @@ export default function Recommendations() {
               Términos y Condiciones Generales de Gimme A Ride®.
             </a>
           </p> */
-}
-{
-  /* </div> */
-}
+/* </div> */

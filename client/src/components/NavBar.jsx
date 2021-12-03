@@ -16,13 +16,9 @@ function Nav() {
   const { user, isAuthenticated } = useAuth0();
   const id = isAuthenticated ? user.email : "";
 
-
-
   useEffect(() => {
     dispatch(getUserDetail(id));
   }, [dispatch, id]);
-
-
 
   return (
     <>
@@ -38,6 +34,11 @@ function Nav() {
               <h2 className="nombreSubi">Gimme a Ride</h2>
             </Link>
           </div>
+        </div>
+        <div className="searchContainer">
+          <NavLink to="/route-list" className="searchContainerItem">
+            <button className="button">Route List</button>
+          </NavLink>
         </div>
         <div className="searchContainer">
           {

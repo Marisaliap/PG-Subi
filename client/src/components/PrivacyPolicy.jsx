@@ -1,20 +1,16 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
 import "../Sass/Styles/Recommendations.scss";
 
 export default function PoliticaPrivacidad() {
-  const history = useHistory();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    history.push("/home");
-  }
+  
   return (
     <div className="TermsAndConditions">
       <article>
         <div></div>
         <div>
-        <p ><a href="/terms-and-conditions">Terms &amp; Conditions</a> | Privacy Policy | <a href="/cookies-policy">Cookies Policy</a></p>
+        <p ><a href="/terms-and-conditions" target="_blank"
+            rel="noreferrer">Terms &amp; Conditions</a> | Privacy Policy | <a href="/cookies-policy" target="_blank"
+            rel="noreferrer">Cookies Policy</a></p>
 <p><strong>Effective date: 17/12/2021</strong></p>
 <p ></p><h2>1. General</h2><p></p>
 <p >Give SA (whose registered office is at 54678, Rivadavia avenue, Buenos Aires, Argentina) (“<strong>GimmeARide</strong>”), acting as data controller, is committed to protecting and respecting your privacy. This notice (the “<strong>Privacy Policy</strong>”) is designed to tell you about our practices regarding the collection, use and disclosure of information that you may provide via our platform  accessible from the website www.GimmeARide.com or our mobile applications (the "http://www.GimmeARide.com/"<strong>Platform</strong>).</p>

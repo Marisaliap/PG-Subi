@@ -1,13 +1,13 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { postUser } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
 import swal from "sweetalert";
 
-export default function EditUser() {
+export default function Registro() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { user, isAuthenticated } = useAuth0();
@@ -19,7 +19,7 @@ export default function EditUser() {
     } else if (!input.lastName) {
       errors.lastName = "Last name is required";
       /* } else if ("^[^!@#$^&%*()+=[\]\/{}|:<>?,.\t]+$") {
-      errors.email = 'The last name cannot contain symbols'; */
+      errors.lastName = 'Last name cannot contain symbols'; */
     } else if (!input.dni) {
       errors.dni = "DNI is required";
     } else if (validateGender() === false) {
@@ -36,29 +36,35 @@ export default function EditUser() {
       errors.city = "City is required";
     } else if (!input.province) {
       errors.province = "Province is required";
-    } else if (validateTerms() === false) {
-      errors.terms = "You must agree to our terms and conditions";
     }
     return errors;
   }
 
   function validateGender() {
-    if (document.getElementById("genre").value == "1") {
+    if (document.getElementById("genre").value === "1") {
       return false;
     }
     return true;
   }
 
-  function validateTerms() {
-    if (document.getElementById("terms").value == "1") {
+  function validateInputs() {
+    if (
+      !input.name ||
+      !input.lastName ||
+      !input.dni ||
+      !input.age ||
+      !input.telephone ||
+      !input.street ||
+      !input.city ||
+      !input.province
+    ) {
       return false;
+    } else {
+      return true;
     }
-    return true;
   }
 
-  const [errors, setErrors] = useState({
-    algo: "asd",
-  });
+  const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
     name: isAuthenticated ? user.given_name : "",
@@ -74,7 +80,6 @@ export default function EditUser() {
     facebook: "",
     instagram: "",
     about: "",
-    terms: "",
   });
 
   function handleChange(e) {
@@ -96,24 +101,11 @@ export default function EditUser() {
       ...input,
       [e.target.name]: e.target.value,
     });
-    setErrors({
-      algo: "",
-    });
-  }
-
-  function handleSelectTerms(e) {
-    e.preventDefault();
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-    setErrors({});
-    // HAY QUE ARREGLAR ESTO PORQUE SI LE DAS QUE SI BORRA TODOS LOS ERRORES.
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === 0 && validateInputs() === true) {
       dispatch(postUser(input));
       setInput({
         name: "",
@@ -129,7 +121,6 @@ export default function EditUser() {
         facebook: "",
         instagram: "",
         about: "",
-        terms: "",
       });
       swal({
         title: "Good job!",
@@ -161,6 +152,51 @@ export default function EditUser() {
             handleSubmit(e);
           }}
         >
+          <div>
+            <div className="cadaLinea">
+              <p className="label">Name*:</p>
+              <input
+                className="inputs"
+                type="text"
+                name="name"
+                value={input.name}
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.name && <p className="error">{errors.name}</p>}
+            </div>
+            <div className="cadaLinea">
+              <p className="label">Last Name*:</p>
+              <input
+                className="inputs"
+                type="text"
+                name="lastName"
+                value={input.lastName}
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.lastName && <p className="error">{errors.lastName}</p>}
+            </div>
+            {/* <div className="cadaLinea">
+              <p className="label">Email*:</p>
+              <input
+                className="inputs"
+                type="text"
+                name="email"
+                value={input.email}
+                onChange={(e) => handleChange(e)}
+              />
+            </div> */}
+          </div>
+          <div className="cadaLinea">
+            <p className="label">DNI*:</p>
+            <input
+              className="inputs"
+              type="number"
+              name="dni"
+              value={input.dni}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.dni && <p className="error">{errors.dni}</p>}
+          </div>
           <div className="cadaLinea">
             <p className="label" for="genre">
               Gender*:
@@ -274,10 +310,27 @@ export default function EditUser() {
             />
             {errors.about && <p className="error">{errors.about}</p>}
           </div>
+          <div className="terminosycond">
+            <div className="terminos">
+              By submitting, you agree to our{" "}
+              <a target="_blank" href="/terms-and-conditions">
+                {" "}
+                Terms of Use
+              </a>{" "}
+              and{" "}
+              <a target="_blank" href="/privacy-policy">
+                Privacy Policy
+              </a>
+            </div>
+          </div>
           <div>
-            <button className="button" type="submit">
-              Submit
-            </button>
+            {validateInputs() === false ? (
+              <button className="buttondisabled">Submit</button>
+            ) : (
+              <button className="button" type="submit">
+                Submit
+              </button>
+            )}
           </div>
         </form>
       </div>
