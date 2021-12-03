@@ -18,7 +18,6 @@ const postUser = async (req, res, next) => {
       age,
       about,
       genre,
-      calification,
       photo,
       photoDni,
     } = req.body;
