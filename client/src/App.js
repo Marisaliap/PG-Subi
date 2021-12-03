@@ -81,7 +81,7 @@ export default function App() {
                 }
               </div>
             ) : (
-              <h1 className="signInAlert">Login Please</h1>
+              ""
             )}
             <Route path="/faq" component={Faq} />
             <Route
