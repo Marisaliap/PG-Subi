@@ -115,12 +115,7 @@ export function getRouteFromDb(originName, destinyName, date, place) {
 
 
 
-export function getOrder(order) {
-  return {
-    type: "ORDER",
-    payload: (order),
-  }
-};
+
 export function orderByRestriction(restriction) {
   return {
     type: "FILTER",
@@ -141,20 +136,7 @@ export function orderByDistance(payload) {
   };
 }
 // ----------------------------------------------------------------------
-export function allRoutes(order,) {
-  return async function (dispatch) {
-    try {
-      const response = (await axios.get(`http://localhost:3001/maps/route?order=${order ? order : "time"}`)).data;
-      return dispatch({
-        type: "GET_ALL_ROUTE_INFO",
-        payload: response,
-      });
-    }
-    catch (error) {
-      console.log(error)
-    }
-  }
-}
+
 
 export function postUser(payload) {
   return async function (dispatch) {

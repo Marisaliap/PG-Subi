@@ -73,23 +73,8 @@ const postRoute = async (req, res, next) => {
       points,
     } = req.body;
 
-    let price = km * 7 + (km * 7 * (10/100));
+    let price = km * 7 + (km * 7 * (10 / 100));
 
-    const route = await Route.create(
-      {
-        originName,
-        destinyName,
-        origin,
-        destiny,
-        date,
-        price,
-        hours,
-        place,
-        restriction,
-        infoRoute,
-        points
-      });
-      
 
     const route = await Route.create({
       originName,
@@ -191,7 +176,7 @@ const getRoute = async (req, res, next) => {
         if (restricRoute.includes(false)) return false;
         else return true;
       });
-    }else if (!restriction||restriction === ""){
+    } else if (!restriction || restriction === "") {
       routes = routes
     }
 
