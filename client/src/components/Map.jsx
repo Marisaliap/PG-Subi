@@ -72,7 +72,6 @@ export default function Map() {
 
  
 
-
   return (
     <div className="Map">
       <Link to="/home">

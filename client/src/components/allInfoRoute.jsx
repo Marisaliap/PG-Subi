@@ -33,21 +33,22 @@ export default function AllInfoRoute({ match }) {
     dispatch(deleteRoute());
     history.push("/route-list");
   }
-  return (
-    <div className="Map">
-      {route.length > 0 && route.originName}
-
-      <Map
-        style="mapbox://styles/mapbox/streets-v11"
-        containerStyle={{
-          height: "50vh",
-          width: "50vw",
-        }}
-        className="mapbox"
-        center={route.origin}
-      >
-        {data && (
-          <Marker coordinates={route.origin} style={{ color: "red" }}>
+  return <div className='Map'>
+    {route.length > 0 && route.originName}
+  
+  <Map
+       style="mapbox://styles/mapbox/streets-v11"
+       containerStyle={{
+         height: '50vh',
+         width: '50vw',
+       }}
+       className="mapbox"
+       center={route.origin}
+       fitBounds={route.origin && [route.origin, route.destiny]}
+  >
+    
+    
+      {  data &&  <Marker coordinates={route.origin} style={{ color: 'red' }}>
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
               style={{ height: "30px" }}
