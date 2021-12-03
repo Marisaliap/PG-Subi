@@ -63,7 +63,7 @@ const getUser = async (req, res, next) => {
         },
         include: Post
       }); 
-  // console.log(data.map(user =>user.posts.map(c=>parseInt(c.calification)))),
+
       data = data.map(user => {
         return {
           name: user.name,

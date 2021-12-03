@@ -29,13 +29,12 @@ export default function Map() {
   const city2 = useSelector((state) => state.suggestions2);
   const data = useSelector((state) => state.route);
   const { user, isAuthenticated } = useAuth0();
-  console.log(data);
 
 
   // const routeCoordinates = Math.floor(data.coordinates.data.geometry.coordinates.length / 2)
   // const middlePoint = data.coordinates.data.geometry.coordinates[routeCoordinates]
   
-console.log(routeInfo, 'SOY INFO DE POSTROUTE')
+
   function handleClick(e) {
     e.preventDefault();
     history.push('/route');

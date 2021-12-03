@@ -29,8 +29,7 @@ export default function UserProfile() {
     }, []);
 
   const { user, isAuthenticated } = useAuth0();
-  console.log(user, isAuthenticated, 'soy profile')
-  console.log(userInfo)
+
   function handleChange (e) {
     setInput({
       ...input,

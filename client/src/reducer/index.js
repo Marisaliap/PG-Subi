@@ -36,7 +36,6 @@ function rootReducer(state = initialState, action) {
         suggestions2: action.payload.cities,
       };
     case 'GET_ROUTE':
-      //console.log(action.payload, 'SOY PAYLOAD')
       return {
         ...state,
         route: action.payload,
