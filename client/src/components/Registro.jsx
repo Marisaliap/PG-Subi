@@ -36,8 +36,6 @@ export default function Registro() {
       errors.city = "City is required";
     } else if (!input.province) {
       errors.province = "Province is required";
-    } else if (validateTerms() === false) {
-      errors.terms = "You must agree to our terms and conditions";
     }
     return errors;
   }
@@ -49,15 +47,15 @@ export default function Registro() {
     return true;
   }
 
-  function validateTerms() {
-    if (document.getElementById("terms").value == "1") {
-      return false;
-    }
-    return true;
-  }
-
   const [errors, setErrors] = useState({
-    algo: "asd",
+    name: isAuthenticated ? "" : "Name is required",
+    lastName: isAuthenticated ? "" : "Last name is required",
+    dni: "DNI is required",
+    age: "Age required",
+    telephone: "Telephone is required",
+    street: "Street is required",
+    city: "City is required",
+    province: "Province is required",
   });
 
   const [input, setInput] = useState({
@@ -74,7 +72,6 @@ export default function Registro() {
     facebook: "",
     instagram: "",
     about: "",
-    terms: "",
   });
 
   function handleChange(e) {
@@ -96,9 +93,6 @@ export default function Registro() {
       ...input,
       [e.target.name]: e.target.value,
     });
-    setErrors({
-      algo: "",
-    });
   }
 
   function handleSelectTerms(e) {
@@ -108,7 +102,6 @@ export default function Registro() {
       [e.target.name]: e.target.value,
     });
     setErrors({});
-    // HAY QUE ARREGLAR ESTO PORQUE SI LE DAS QUE SI BORRA TODOS LOS ERRORES.
   }
 
   function handleSubmit(e) {
@@ -129,7 +122,6 @@ export default function Registro() {
         facebook: "",
         instagram: "",
         about: "",
-        terms: "",
       });
       swal({
         title: "Good job!",
@@ -161,71 +153,40 @@ export default function Registro() {
             handleSubmit(e);
           }}
         >
-          {!isAuthenticated ? (
-            <div>
-              <div>
-                <p className="label">Name*:</p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="name"
-                  value={input.name}
-                  onChange={(e) => handleChange(e)}
-                />
-                {errors.name && <p className="error">{errors.name}</p>}
-              </div>
-              <div>
-                <p className="label">Last Name*:</p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="lastName"
-                  value={input.lastName}
-                  onChange={(e) => handleChange(e)}
-                />
-                {errors.lastName && <p className="error">{errors.lastName}</p>}
-              </div>
-              <div>
-                <p className="label">Email*:</p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="email"
-                  value={input.email}
-                  onChange={(e) => handleChange(e)}
-                />
-              </div>
+          <div>
+            <div className="cadaLinea">
+              <p className="label">Name*:</p>
+              <input
+                className="inputs"
+                type="text"
+                name="name"
+                value={input.name}
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.name && <p className="error">{errors.name}</p>}
             </div>
-          ) : (
-            user.name.includes("@") && (
-              <div>
-                <div>
-                  <p className="label">Name*:</p>
-                  <input
-                    className="inputs"
-                    type="text"
-                    name="name"
-                    value={input.name}
-                    onChange={(e) => handleChange(e)}
-                  />
-                  {errors.name && <p className="error">{errors.name}</p>}
-                </div>
-                <div>
-                  <p className="label">Last Name*:</p>
-                  <input
-                    className="inputs"
-                    type="text"
-                    name="lastName"
-                    value={input.lastName}
-                    onChange={(e) => handleChange(e)}
-                  />
-                  {errors.lastName && (
-                    <p className="error">{errors.lastName}</p>
-                  )}
-                </div>
-              </div>
-            )
-          )}
+            <div className="cadaLinea">
+              <p className="label">Last Name*:</p>
+              <input
+                className="inputs"
+                type="text"
+                name="lastName"
+                value={input.lastName}
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.lastName && <p className="error">{errors.lastName}</p>}
+            </div>
+            {/* <div className="cadaLinea">
+              <p className="label">Email*:</p>
+              <input
+                className="inputs"
+                type="text"
+                name="email"
+                value={input.email}
+                onChange={(e) => handleChange(e)}
+              />
+            </div> */}
+          </div>
           <div className="cadaLinea">
             <p className="label">DNI*:</p>
             <input
@@ -352,7 +313,7 @@ export default function Registro() {
           </div>
           <div className="terminosycond">
             <div className="terminos">
-              By continuing, you agree to our{" "}
+              By submitting, you agree to our{" "}
               <a target="_blank" href="/terms-and-conditions">
                 {" "}
                 Terms of Use{" "}
@@ -362,24 +323,7 @@ export default function Registro() {
                 {" "}
                 Privacy Policy
               </a>
-              <div className="selectterminos">
-                <select
-                  name="terms"
-                  id="terms"
-                  className="terms"
-                  onChange={(e) => handleSelectTerms(e)}
-                >
-                  <option disabled selected value="1">
-                    {" "}
-                    -- Select an option --{" "}
-                  </option>
-                  <option className="options" value="Yes">
-                    Yes
-                  </option>
-                </select>
-              </div>
             </div>
-            {errors.terms && <p className="errorterms">{errors.terms}</p>}
           </div>
           <div>
             <button className="button" type="submit">

@@ -108,7 +108,7 @@ export default function SuggestionBox() {
             )}
           </div>
           <button className="button" type="submit">
-            Add Car
+            Submit Suggestion
           </button>
         </form>
       </div>
