@@ -54,7 +54,8 @@ export default function Map() {
         place: routeInfo.pasajeros,
         restriction: routeInfo.restrictions.join(', '),
         km: data.coordinates.distance,
-        points: data.coordinates.data.geometry.coordinates
+        points: data.coordinates.data.geometry.coordinates,
+        time: data.coordinates.time
       })
     );
     swal({

@@ -32,6 +32,16 @@ export default function AllInfoRoute({ match }) {
     },
     type: 'Feature'
   }
+  route.origin &&
+    data.length === 0 &&
+    dispatch(
+      getRoute(
+        route.origin[0],
+        route.origin[1],
+        route.destiny[0],
+        route.destiny[1]
+      )
+    );
   const Map = ReactMapboxGl({
     accessToken:
       "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
