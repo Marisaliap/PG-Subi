@@ -27,7 +27,6 @@ export default function AllInfoRoute({ match }) {
       idRoute:route.id,
       title:'Bitcoin',
       price:320,
-      quantity:1,
     })
     .then((info)=> setDatos(info.data))
     .catch(err => console.error(err))
