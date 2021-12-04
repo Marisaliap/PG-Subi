@@ -1,3 +1,71 @@
 {
-    "cookies.conditions" : "Terms and Conditions"
+    "cookies.conditions" : "Terms and Conditions",
+
+    "navBar.name" : "Gimme a Ride",
+    "navBar.post" : "Post a Trip",
+    "navBar.home" : "Home",
+
+    "searchUserByName.search" : "Search",
+    "searchUserByName.placeholder" : " 🔍  Find user...",
+
+    "home.save" : "Save money while driving",
+    "home.paragraph1" : "Publish your next round trip on Gimme a Ride and get, on average, 80 dollars * of your passengers. You will only need a couple of minutes to publish your route. Do we share a trip?",
+    "home.paragraph2" : "* Average amount received by drivers in 2021.",
+
+    "searchBarHome.searchTitle" : "Where do you want to go?",
+    "searchBarHome.searchButton" : "Search",
+
+    "footer.lang" : "Language",
+    "footer.about" : "About",
+    "footer.aboutUs" : "About Us",
+
+    "footer.help" : "Help",
+    "footer.faq" : "FAQ",
+    "footer.rec" : "Recommendations",
+    "footer.legal" : "Legal Information",
+    "footer.terms" : "Terms and Conditions",
+    "footer.privacy" : "Privacy Policy",
+    "footer.cookies" : "Cookies Policy",
+    "footer.group10" : "Group 10 © |",
+
+    "subFooter.app" : "Gimme a Ride is an app to share trips between people. Wherever you go, find your ideal trip.",
+
+    "landing.enter" : "Enter",
+
+    "register.home" : "Home",
+    "register.title" : "Create your User",
+    "register.name" : "Name*",
+    "register.lastname" : "Last Name*:",
+    "register.email" : "Email*:",
+    "register.id" : "ID or passport*:", 
+    "register.gender" : "Gender*:",
+    "register.genderOptions" : "-- Select an option --",
+    "register.male" : "Male",
+    "register.female" : "Female",
+    "register.doNotSay" : "Rather not say",
+    "register.age" : "Age*:",
+    "register.phone" : "Telephone*:",
+    "register.street" : "Street and Number*:",
+    "register.city" : "City*:",
+    "register.province" : "Province*:",
+    "register.facebook" : "Facebook:",
+    "register.instagram" : "Instagram:",
+    "register.about" : "About:",
+    "register.agree" : "By continuing, you agree to our",
+    "register.terms" : "Terms of Use",
+    "register.and" : "and",
+    "register.privacy" : "Privacy Policy",
+    "register.termsOptions" : "-- Select an option --",
+    "register.yes" : "Yes",
+    "register.submit" : "Register",
+
+    "privacyPolicy.terms" : "Terms &amp; Conditions",
+    "privacyPolicy.effdate" : "Effective date: ",
+    "privacyPolicy.date" : "17/12/2021"
+
+
+
+
+
+
 }

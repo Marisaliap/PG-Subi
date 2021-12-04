@@ -4,6 +4,7 @@ import { getRouteFromDb, getSuggestions, getSuggestions2 } from "../actions";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/SearchBarHome.scss";
 import "../Sass/Styles/App.scss";
+import {FormattedMessage} from 'react-intl';
 
 
 let inputs = { Origin: "", Destination: "" };
@@ -90,7 +91,10 @@ export default function SearchBarHome() {
 
   return (
     <div className="searchBarPostHome">
-      <h1>Where do you want to go?</h1>
+      <h1><FormattedMessage
+							id="searchBarHome.searchTitle"
+							defaultMessage="Where do you want to go?"
+						/></h1>
       <form className="postRouteForm">
         <input
           type="text"
@@ -166,7 +170,10 @@ export default function SearchBarHome() {
               </button>
             ) : (
               <button className="button" disabled="true">
-                Search
+                <FormattedMessage
+							id="searchBarHome.searchButton"
+							defaultMessage=" Search"
+						/>
               </button>
             )}
           </div>

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { getUserByName } from "../actions";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/SearchUserByName.scss";
+import {FormattedMessage} from 'react-intl';
 
 
 export default function SearchUserByName() {
@@ -23,8 +24,16 @@ export default function SearchUserByName() {
 
     return (
         <div className="SearchUserByName"> 
-            <input type="text" value={name} placeholder=" 🔍  Find user..." onChange={(e) => handleInput(e)} />
-            <button type="submit" onClick={(e) => handleSubmit(e)} > <NavLink className="Navlink" to="/users"> Search</NavLink> </button>
+        <FormattedMessage id="searchUserByName.placeholder" defaultMessage=" 🔍  Find user...">
+    {placeholder=>  
+            <input type="text" value={name} placeholder={placeholder} onChange={(e) => handleInput(e)} />
+        }
+    </FormattedMessage>
+    <button type="submit" onClick={(e) => handleSubmit(e)} > <NavLink className="Navlink" to="/users">
+              <FormattedMessage
+							id="searchUserByName.search"
+							defaultMessage="Search"
+						/></NavLink> </button>
         </div>
     )
 }

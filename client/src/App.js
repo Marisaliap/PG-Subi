@@ -11,7 +11,7 @@ import Recommendations from "./components/Recommendations";
 import CreateRoute from "./components/CreateRoute";
 import UserDetails from "./components/UserDetails";
 import { useAuth0 } from "@auth0/auth0-react";
-import Registro from "./components/Registro";
+import Register from "./components/Register";
 import Footer from "./components/Footer";
 import SubFooter from "./components/SubFooter";
 import FormCar from "./components/FormCar";
@@ -63,7 +63,7 @@ export default function App() {
                   <Switch>
                     <Route exact path="/route" component={CreateRoute} />
                     <Route path="/route/finish" component={Map} />
-                    <Route path="/register" component={Registro} />
+                    <Route path="/register" component={Register} />
                     <Route exact path="/profile" component={UserProfile} />
                     <Route path="/user/:id" component={UserDetails} />
                     <Route path="/route-list" component={RouteDetails} />
