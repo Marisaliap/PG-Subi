@@ -27,8 +27,11 @@
 
     "subFooter.app" : "Gimme a Ride es una aplicación para compartir viajes entre personas. Dondequiera que vayas, encuentra tu viaje ideal.",
 
-    "land.enter" : "Entrar"
+    "land.enter" : "Entrar",
     
+    "register.home" : "Inicio",
+    "register.title" : "Crea tu Usuario",
+    "register.name" : "Nombre*"
 
 
 }

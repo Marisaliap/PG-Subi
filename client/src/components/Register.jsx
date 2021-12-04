@@ -6,6 +6,7 @@ import { postUser } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
 import swal from "sweetalert";
+import {FormattedMessage} from 'react-intl';
 
 export default function Registro() {
   const dispatch = useDispatch();
@@ -151,10 +152,18 @@ export default function Registro() {
   return (
     <>
       <Link to="/home">
-        <button className="buttonBlue">Home</button>
+        <button className="buttonBlue">
+          <FormattedMessage
+							id="register.home"
+							defaultMessage="Home"
+						/></button>
       </Link>
       <div className="formContainer">
-        <h1>Create your User</h1>
+        <h1>
+          <FormattedMessage
+							id="register.title"
+							defaultMessage="Create your User"
+						/></h1>
         <form
           className="FormRegistro"
           onSubmit={(e) => {
@@ -164,7 +173,11 @@ export default function Registro() {
           {!isAuthenticated ? (
             <div>
               <div>
-                <p className="label">Name*:</p>
+                <p className="label">
+                <FormattedMessage
+							id="register.name"
+							defaultMessage="Name*:"
+						/></p>
                 <input
                   className="inputs"
                   type="text"
