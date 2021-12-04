@@ -38,13 +38,13 @@ function Nav() {
           <div>
             <Link to="/home" className="nombreSubi">
 						<FormattedMessage
-							id="menu.name"
+							id="navBar.name"
 							defaultMessage="Gimme a Ride"
 						/>
 					</Link>
           <Link to="/">
 						<FormattedMessage
-							id="menu.home"
+							id="navBar.home"
 							defaultMessage="Home"
 						/>
 					</Link>
@@ -66,7 +66,7 @@ function Nav() {
             >
              <button className="button">
               <FormattedMessage
-							id="menu.post"
+							id="navBar.post"
 							defaultMessage="Post a Trip"
 						/>
             </button>

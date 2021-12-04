@@ -19,7 +19,7 @@ export default function LandingPage() {
           <NavLink to="/home">
             <button className="button">
             <FormattedMessage
-							id="land.enter"
+							id="landing.enter"
 							defaultMessage="Enter"
 						/>
             </button>

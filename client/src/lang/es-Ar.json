@@ -1,10 +1,12 @@
 {
     "cookies.conditions" : "Condiciones Generales de Uso",
 
-    "menu.name" : "Subí que te Llevo",
-    "menu.post" : "Crea un Viaje",
-    "menu.home": "Inicio",
-    "menu.search" : "Buscar",
+    "navBar.name" : "Subí que te Llevo",
+    "navBar.post" : "Crea un Viaje",
+    "navBar.home": "Inicio",
+
+    "searchUserByName.search" : "Buscar",
+    "searchUserByName.placeholder" : " 🔍  Encuentra un usuario...",
 
     "home.save" : "Ahorra dinero mientras conduces",
     "home.paragraph1" : "Publica tu próximo viaje de ida y vuelta en Gimme a Ride y obtén, en promedio, 80 dólares * de tus pasajeros. Solo necesitarás un par de minutos para publicar tu ruta. ¿Compartimos un viaje?",
@@ -27,7 +29,7 @@
 
     "subFooter.app" : "Gimme a Ride es una aplicación para compartir viajes entre personas. Dondequiera que vayas, encuentra tu viaje ideal.",
 
-    "land.enter" : "Entrar",
+    "landing.enter" : "Entrar",
     
     "register.home" : "Inicio",
     "register.title" : "Crea tu Usuario",
@@ -47,13 +49,17 @@
     "register.facebook" : "Facebook:",
     "register.instagram" : "Instagram:",
     "register.about" : "Sobre:",
-    "register.agree" : "Al continuar, estás de acuerdo con nuestras",
+    "register.agree" : "Al continuar, aceptas nuestras",
     "register.terms" : "Condiciones Generales de Uso",
     "register.and" : "y",
     "register.privacy" : "Política de Privacidad",
     "register.termsOptions" : "-- Selecciona una Opción --",
     "register.yes" : "Sí",
-    "register.submit" : "Registrar"
+    "register.submit" : "Registrar",
+
+    "privacyPolicy.terms" : "Términos &amp; Condiciones",
+    "privacyPolicy.effdate" : "Effective date: ",
+    "privacyPolicy.date" : "17/12/2021"
 
 
 

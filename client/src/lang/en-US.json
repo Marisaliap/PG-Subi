@@ -1,10 +1,12 @@
 {
     "cookies.conditions" : "Terms and Conditions",
 
-    "menu.name" : "Gimme a Ride",
-    "menu.post" : "Post a Trip",
-    "menu.home" : "Home",
-    "menu.search" : "Search",
+    "navBar.name" : "Gimme a Ride",
+    "navBar.post" : "Post a Trip",
+    "navBar.home" : "Home",
+
+    "searchUserByName.search" : "Search",
+    "searchUserByName.placeholder" : " 🔍  Find user...",
 
     "home.save" : "Save money while driving",
     "home.paragraph1" : "Publish your next round trip on Gimme a Ride and get, on average, 80 dollars * of your passengers. You will only need a couple of minutes to publish your route. Do we share a trip?",
@@ -28,7 +30,7 @@
 
     "subFooter.app" : "Gimme a Ride is an app to share trips between people. Wherever you go, find your ideal trip.",
 
-    "land.enter" : "Enter",
+    "landing.enter" : "Enter",
 
     "register.home" : "Home",
     "register.title" : "Create your User",
@@ -55,7 +57,11 @@
     "register.privacy" : "Privacy Policy",
     "register.termsOptions" : "-- Select an option --",
     "register.yes" : "Yes",
-    "register.submit" : "Register"
+    "register.submit" : "Register",
+
+    "privacyPolicy.terms" : "Terms &amp; Conditions",
+    "privacyPolicy.effdate" : "Effective date: ",
+    "privacyPolicy.date" : "17/12/2021"
 
 
 

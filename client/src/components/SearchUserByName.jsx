@@ -25,10 +25,14 @@ export default function SearchUserByName() {
 
     return (
         <div className="SearchUserByName"> 
-            <input type="text" value={name} placeholder=" 🔍  Find user..." onChange={(e) => handleInput(e)} />
-            <button type="submit" onClick={(e) => handleSubmit(e)} > <NavLink className="Navlink" to="/users">
+        <FormattedMessage id="searchUserByName.placeholder" defaultMessage=" 🔍  Find user...">
+    {placeholder=>  
+            <input type="text" value={name} placeholder={placeholder} onChange={(e) => handleInput(e)} />
+        }
+    </FormattedMessage>
+    <button type="submit" onClick={(e) => handleSubmit(e)} > <NavLink className="Navlink" to="/users">
               <FormattedMessage
-							id="menu.search"
+							id="searchUserByName.search"
 							defaultMessage="Search"
 						/></NavLink> </button>
         </div>
