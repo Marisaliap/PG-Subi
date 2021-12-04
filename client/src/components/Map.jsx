@@ -74,7 +74,7 @@ export default function Map() {
  
 
   return (
-    <div className="Map">
+    <div className="Mapping">
       <Link to="/home">
         <button className="buttonBlue">Home</button>
       </Link>
@@ -117,7 +117,7 @@ export default function Map() {
         <GeoJSONLayer
           data={data.coordinates && data.coordinates.data}
           linePaint={{
-            'line-color': '#78c644',
+            'line-color': '#2CB67D',
             'line-width': 5,
           }}
           lineLayout={{

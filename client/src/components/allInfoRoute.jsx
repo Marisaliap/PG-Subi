@@ -132,7 +132,7 @@ export default function AllInfoRoute({ match }) {
         <GeoJSONLayer
           data={data.coordinates && data.coordinates.data}
           linePaint={{
-            "line-color": "#78c644",
+            "line-color": "#2CB67D",
             "line-width": 5,
           }}
           lineLayout={{
