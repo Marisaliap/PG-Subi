@@ -56,18 +56,24 @@ export default function Home() {
                     ? "/route"
                     : ""
                 }
-              >
-                <FormattedMessage id="menu.post" defaultMessage="Post a Trip" />
+              ><p><FormattedMessage id="home.post" defaultMessage="Post a Trip" /></p>
               </NavLink>
             }
-            <p>or</p>
-            <div>
+            <p><FormattedMessage
+              id="home.or"
+              defaultMessage="Or"
+            /></p>
+            
               {
                 <NavLink to="/route-list">
-                  <p> See all routes available!</p>
+                  <p> 
+                  <FormattedMessage
+              id="home.routes"
+              defaultMessage="See all routes available!"
+            /></p>
                 </NavLink>
               }
-            </div>
+    
           </div>
         </article>
       </div>
