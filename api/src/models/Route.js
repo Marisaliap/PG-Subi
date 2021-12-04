@@ -51,7 +51,7 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
     },
     km: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.STRING,
     },
     time: {
       type: DataTypes.STRING,

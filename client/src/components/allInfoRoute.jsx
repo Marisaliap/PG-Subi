@@ -20,7 +20,6 @@ import { RiPinDistanceFill } from "react-icons/ri";
 import "../Sass/Styles/Map.scss";
 
 export default function AllInfoRoute({ match }) {
-<<<<<<< HEAD
   const [datos, setDatos] = useState("")
   useEffect(() => {
     dispatch(getRouteById(match.params.id))
@@ -33,9 +32,6 @@ export default function AllInfoRoute({ match }) {
     .then((info)=> setDatos(info.data))
     .catch(err => console.error(err))
   }, []);
-=======
-  useEffect(() => dispatch(getRouteById(match.params.id)) , []);
->>>>>>> Fabri
   const history = useHistory();
   const dispatch = useDispatch();
   const route = useSelector((state) => state.routeById);
