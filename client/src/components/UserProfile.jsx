@@ -15,11 +15,9 @@ import {
 } from "react-icons/bs";
 import "../Sass/Styles/UserProfile.scss";
 import "../Sass/Styles/App.scss";
-import { useHistory } from "react-router";
 
-let editInfo = false;
 export default function UserProfile() {
-  const { user, isAuthenticated } = useAuth0();
+  const { user } = useAuth0();
   const userInfo = useSelector((state) => state.user);
   const [boolean, setBoolean] = useState(false);
   const dispatch = useDispatch();
