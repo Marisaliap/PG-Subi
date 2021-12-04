@@ -49,6 +49,12 @@ module.exports = (sequelize) => {
     },
     infoRoute: {
       type: DataTypes.TEXT,
+    },
+    km: {
+      type: DataTypes.DECIMAL,
+    },
+    time: {
+      type: DataTypes.STRING,
     }
   },
   {

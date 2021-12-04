@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteRoute, getRoute, getRouteById } from "../actions/index.js";
 import Continue from './ContinueMP.jsx';
@@ -25,7 +25,7 @@ export default function AllInfoRoute({ match }) {
     dispatch(getRouteById(match.params.id))
     axios.post("http://localhost:3001/mercadopago",{
       idRoute:route.id,
-      title:'hola',
+      title:'Bitcoin',
       price:320,
       quantity:1,
     })
@@ -102,6 +102,7 @@ export default function AllInfoRoute({ match }) {
         />
         <ZoomControl />
       </Map>
+
       <div className="infoContainer">
         <p>
           <BsPinMap /> {route.originName}
@@ -122,18 +123,19 @@ export default function AllInfoRoute({ match }) {
           <BsFillPersonFill /> {route.place} Seats available.
         </p>
       </div>
-<<<<<<< HEAD
-  <button className='buttonBlue' onClick={handleClick}>Go Back</button>
-  { !datos
-    ? <p>Wait a moment....</p>
-    : <Continue trip={route} data={datos}/>
-  }
-  </div>
-=======
+
+      <div>
+        <button className='buttonBlue' onClick={handleClick}>Go Back</button>
+        { !datos
+          ? <p>Wait a moment....</p>
+          : <a href={datos.init_point} alt="">Paga</a>//<Continue trip={route} data={datos}/>
+        }
+      </div>
+
       <button className="buttonBlue" onClick={handleClick}>
         volver
       </button>
     </div>
   );
->>>>>>> Lolito
+
 }

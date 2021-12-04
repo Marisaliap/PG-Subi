@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const RoutesFromSearch = () => {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(allRoutes()));
+  useEffect(() => dispatch(allRoutes()),[]);
   const { routeFromDb } = useSelector((state) => state);
 
   return (

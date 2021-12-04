@@ -64,8 +64,8 @@ User.hasMany(Car);
 Car.belongsTo(User);
 
 //User UM Order
-User.hasMany(Order);
-Order.belongsTo(User);
+Route.hasMany(Order);
+Order.belongsTo(Route);
 
 //User UM Post
 User.hasMany(Post);
