@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteRoute, getRoute, getRouteById } from "../actions/index.js";
+import Continue from './ContinueMP.jsx';
+import axios from 'axios';
 import ReactMapboxGl, {
   Marker,
   GeoJSONLayer,
@@ -18,21 +20,32 @@ import { RiPinDistanceFill } from "react-icons/ri";
 import "../Sass/Styles/Map.scss";
 
 export default function AllInfoRoute({ match }) {
-  useEffect(() => dispatch(getRouteById(match.params.id)), []);
+  const [datos, setDatos] = useState("")
+  useEffect(() => {
+    dispatch(getRouteById(match.params.id))
+    axios.post("http://localhost:3001/mercadopago",{
+      idRoute:route.id,
+      title:'Bitcoin',
+      price:320,
+      quantity:1,
+    })
+    .then((info)=> setDatos(info.data))
+    .catch(err => console.error(err))
+  }, []);
   const history = useHistory();
   const dispatch = useDispatch();
   const route = useSelector((state) => state.routeById);
   const data = useSelector((state) => state.route);
-  route.origin &&
-    data.length === 0 &&
-    dispatch(
-      getRoute(
-        route.origin[0],
-        route.origin[1],
-        route.destiny[0],
-        route.destiny[1]
-      )
-    );
+  console.log(route)
+  console.log(data)
+  const routeCoordinates = {
+    geometry: {
+      coordinates: route.points,
+    type: 'LineString'
+    },
+    type: 'Feature'
+  }
+
   const Map = ReactMapboxGl({
     accessToken:
       "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
@@ -64,8 +77,7 @@ export default function AllInfoRoute({ match }) {
               alt=""
             ></img>
           </Marker>
-        )
-        }
+        )}
 
         {data && (
           <Marker coordinates={route.destiny}>
@@ -78,7 +90,8 @@ export default function AllInfoRoute({ match }) {
         )}
 
         <GeoJSONLayer
-          data={data.coordinates && data.coordinates.data}
+          // data={data.coordinates && data.coordinates.data}
+          data={routeCoordinates}
           linePaint={{
             "line-color": "#78c644",
             "line-width": 5,
@@ -90,6 +103,7 @@ export default function AllInfoRoute({ match }) {
         />
         <ZoomControl />
       </Map>
+
       <div className="infoContainer">
         <p>
           <BsPinMap /> {route.originName}
@@ -101,18 +115,28 @@ export default function AllInfoRoute({ match }) {
           <BsFillCalendarCheckFill /> {route.date}
         </p>
         <p>
-          <RiPinDistanceFill /> {data.coordinates && data.coordinates.distance}.
+          <RiPinDistanceFill /> {route.km}.
         </p>
         <p>
-          <BsWatch /> {data.coordinates && data.coordinates.time}
+          <BsWatch /> {route.time}
         </p>
         <p>
           <BsFillPersonFill /> {route.place} Seats available.
         </p>
       </div>
+
+      <div>
+        <button className='buttonBlue' onClick={handleClick}>Go Back</button>
+        { !datos
+          ? <p>Wait a moment....</p>
+          : <a href={datos.init_point} alt="">Paga</a>//<Continue trip={route} data={datos}/>
+        }
+      </div>
+
       <button className="buttonBlue" onClick={handleClick}>
         volver
       </button>
     </div>
-        )
+  );
+
 }

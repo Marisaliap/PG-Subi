@@ -15,8 +15,10 @@ export default function TermsAndConditions() {
             <p>
               {" "}
               Terms and Conditions |{" "}
-              <a href="/privacy-policy">Privacy Policy </a>|{" "}
-              <a href="/cookies-policy"> Cookies Policy </a>
+              <a href="/privacy-policy" target="_blank"
+            rel="noreferrer">Privacy Policy </a>|{" "}
+              <a href="/cookies-policy" target="_blank"
+            rel="noreferrer">Cookies Policy </a>
             </p>
           </p>
           <p>

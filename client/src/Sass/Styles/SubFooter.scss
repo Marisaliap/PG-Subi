@@ -1,4 +1,4 @@
-@import '../Variables/Variables.scss';
+@import "../Variables/Variables.scss";
 
 .SubFooter {
   background-color: $subfooter;
@@ -16,6 +16,7 @@
 
     &:hover {
       cursor: pointer;
+      background-color: $buttonBlue;
     }
   }
 

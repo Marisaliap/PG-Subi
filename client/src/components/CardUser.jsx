@@ -14,14 +14,14 @@ export default function CardUser({
     <div {...props}>
       <br />
       <br />
-      <img src={photo} style={{ width: '150px' }} alt="" />{' '}
+      <img src={photo} style={{height:'70px' }} alt="" />{' '}
       <h5>{name}</h5>
       <h5>{lastName}</h5>
       <h5>{genre}</h5>
       <h5>{age}</h5>
       <h5>
         <BsStarFill className="icon" />
-        {calification}
+        {calification} /5
       </h5>
     </div>
   );
