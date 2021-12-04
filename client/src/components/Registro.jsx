@@ -81,7 +81,7 @@ export default function Registro() {
     name: isAuthenticated ? user.given_name : "",
     lastName: isAuthenticated ? user.family_name : "",
     email: isAuthenticated ? user.email : "",
-    photo: isAuthenticated ? user.picture : "",
+    photo: "",
     dni: "",
     genre: "",
     age: "",
@@ -94,9 +94,6 @@ export default function Registro() {
     about: "",
     photoDni: [],
   });
-
-  console.log(user);
-  console.log(input);
 
   function handleChange(e) {
     setInput({
@@ -235,9 +232,9 @@ export default function Registro() {
                 value={input.lastName}
                 onChange={(e) => handleChange(e)}
               />
-              {/* {errors.lastName && <p className="error">{errors.lastName}</p>} */}
+              
             </div>
-            {/* ------------------< photo input rami x jp >--------------------- */}
+            
             <div>
               <label>Photo User</label>
               <input
@@ -247,7 +244,7 @@ export default function Registro() {
                 required="required"
                 accept="image/png, image/jpeg"
               />
-              {/* {errors.photo && <p className="error">{errors.photo}</p>} */}
+              
             </div>
 
             <div Style="display:none">{(input.photo = image)}</div>
@@ -255,22 +252,23 @@ export default function Registro() {
               {loanding ? (
                 <img src={image} Style="height:150px" alt="user" />
               ) : (
-                <p>not upload Image</p>
+                ""
               )}
             </label>
-            {/* ------------------------------------------------------------------ */}
+            
             <div className="cadaLinea">
               <p className="label">DNI*:</p>
               <input
                 className="inputs"
                 type="number"
                 name="dni"
+                required="required"
                 value={input.dni}
                 onChange={(e) => handleChange(e)}
               />
-              {errors.dni && <p className="error">{errors.dni}</p>}
+            
             </div>
-            {/* ------------------< photo input rami x jp >--------------------- */}
+          
             <div>
               <label>DNI Front</label>
               <input
@@ -280,7 +278,7 @@ export default function Registro() {
                 required="required"
                 accept="image/png, image/jpeg"
               />
-              {/* {errors.photo && <p className="error">{errors.photo}</p>} */}
+            
             </div>
 
             <div Style="display:none">{(input.photoDni = dni)}</div>
@@ -288,7 +286,7 @@ export default function Registro() {
               {loanding ? (
                 <img src={dni[0]} Style="height:150px" alt="front" />
               ) : (
-                <p>not upload Image</p>
+                ""
               )}
             </label>
 
@@ -301,7 +299,6 @@ export default function Registro() {
                 required="required"
                 accept="image/png, image/jpeg"
               />
-              {errors.photo && <p className="error">{errors.photo}</p>}
             </div>
 
             <div Style="display:none">{(input.photoDni = dni)}</div>
@@ -309,11 +306,9 @@ export default function Registro() {
               {loanding ? (
                 <img src={dni[1]} Style="height:150px" alt="back" />
               ) : (
-                <p>not upload Image</p>
+                ""
               )}
             </label>
-
-            {/* ------------------------------------------------------------------ */}
           </div>
 
           <div className="cadaLinea">
