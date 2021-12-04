@@ -8,8 +8,6 @@ const mercadoPagoRoute = require('./MercadoPago');
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
 router.use('/maps', mapsRoute)
 router.use('/user', userRoute)
 router.use('/car', carRoute)

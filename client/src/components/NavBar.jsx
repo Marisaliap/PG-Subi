@@ -19,7 +19,7 @@ function Nav() {
   useEffect(() => {
     dispatch(getUserDetail(id));
   }, [dispatch, id]);
-
+  
   return (
     <>
       <nav className="NavBar">

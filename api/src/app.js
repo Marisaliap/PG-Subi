@@ -3,6 +3,8 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 // const multer = require('multer');
+// const path = require('path');
+// const exphbs = require('express-handlebars');
 
 
 require("./db.js");
@@ -37,4 +39,13 @@ server.use((err, req, res, next) => {
   res.status(status).send(message);
 });
 
+// middleware
+// const strorage = multer.diskStorage({
+//   destination: path.join(__dirname, 'public/uploads'),
+//   filename: (req, file, cb) => {
+//     cb(null, new Date().getTime() + path.extname(file.originalname));
+//   }
+
+// })
+// server.use(multer({ strorage }).single('image'));
 module.exports = server;
