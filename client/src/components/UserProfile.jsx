@@ -15,6 +15,7 @@ import {
 } from "react-icons/bs";
 import "../Sass/Styles/UserProfile.scss";
 import "../Sass/Styles/App.scss";
+import { useHistory } from "react-router";
 
 let editInfo = false;
 export default function UserProfile() {
@@ -22,10 +23,6 @@ export default function UserProfile() {
   const userInfo = useSelector((state) => state.user);
   const [boolean, setBoolean] = useState(false);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getUserDetail(user.email));
-  }, []);
 
   const [input, setInput] = useState({
     street: "",
@@ -38,20 +35,27 @@ export default function UserProfile() {
     age: "",
   });
 
+  useEffect(() => {
+    dispatch(getUserDetail(user.email));
+  }, [input]);
+
+  
+
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(editUser(userInfo.id, input));
-
+    dispatch(editUser(userInfo.email, input));
+    setBoolean(false)
     setInput({
-      street: "",
-      city: "",
-      province: "",
-      telephone: "",
-      facebook: "",
-      instagram: "",
-      about: "",
-      age: "",
+      street: userInfo.street,
+      city: userInfo.city,
+      province: userInfo.province,
+      telephone: userInfo.telephone,
+      facebook: userInfo.facebook,
+      instagram: userInfo.instagram,
+      about: userInfo.about,
+      age: userInfo.age,
     });
+  
   }
 
   function handleChange(e) {
@@ -272,7 +276,7 @@ export default function UserProfile() {
                 <button
                   className="botonEdit"
                   type="submit"
-                  onSubmit={(e) => handleSubmit(e)}
+                  onClick={(e) => handleSubmit(e)}
                 >
                   Submit
                 </button>

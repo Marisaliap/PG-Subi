@@ -25,7 +25,7 @@ export const Profile = () => {
   return (
     isAuthenticated && (
       <div className="Profile">
-        <Link to={"/profile"}>
+        <Link to={ !userInfo.dni ? "/register" : "/profile"}>
           <img
             className="fotoPerfil"
             src={userInfo.photo ? userInfo.photo : user.picture}

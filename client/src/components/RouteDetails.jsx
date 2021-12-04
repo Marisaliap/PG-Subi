@@ -11,12 +11,10 @@ import { Link } from 'react-router-dom';
 
 const RouteDetails = () => {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(allRoutes()));
+ 
   const { getRoutes } = useSelector((state) => state);
-
-  useEffect(() => {
-    dispatch(getOrder());
-  });
+  useEffect(() => dispatch(allRoutes()), [getRoutes.length]);
+  useEffect(() =>  dispatch(getOrder()), []);
 
   return (
     <div className="RouteDetails">
@@ -28,9 +26,9 @@ const RouteDetails = () => {
             <div className="RouteCard">
               
              { route.users && <CardUser
-                photo={route.users[0].photo}
-                name={route.users[0].name}
-                calification={route.users[0].calification}
+                photo={ route.users.length > 0 && route.users[0].photo}
+                name={route.users.length > 0 && route.users[0].name}
+                calification={route.users.length > 0 && route.users[0].calification}
                 key={i}
               />}
 

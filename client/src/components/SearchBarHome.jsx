@@ -83,6 +83,9 @@ export default function SearchBarHome() {
         )
       );
     }
+    inputs = { Origin: "", Destination: "" };
+    info = { pasajeros: 1, date: "" };
+
   }
 
   return (
