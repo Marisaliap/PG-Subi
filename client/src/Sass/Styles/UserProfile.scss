@@ -1,0 +1,149 @@
+@import "../Variables/Variables.scss";
+
+.containerProfile {
+  outline: none;
+  border-radius: 15px;
+  background-color: #e4f4d9;
+  padding: 1rem;
+  margin: 0 0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.5s ease-in-out;
+  width: 60vw;
+  margin-left: 20vw;
+
+  &:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+.ProfileReal {
+  font-size: 0.8em;
+  color: $text;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+
+  .cadaLinea {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.2em;
+    padding-top: 1rem;
+    color: $headline;
+    height: auto;
+    min-height: 2rem;
+    margin-left: 20rem;
+  }
+
+  .botonEdit {
+    margin: 0.5rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 1rem 3rem;
+    width: auto;
+    background-color: $buttonBlue;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
+
+    &:hover {
+      background-color: $buttonBlueHover;
+      cursor: pointer;
+    }
+  }
+
+  .icon {
+    display: flex;
+    color: $labelForms;
+    margin-right: 6rem;
+  }
+
+  .botonEditDisabled {
+    margin: 0.5rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 1rem 3rem;
+    width: auto;
+    background-color: $buttonDisabled;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
+
+    &:hover {
+      //   cursor: pointer;
+    }
+  }
+
+  .paddingAbajo {
+    padding-bottom: 4.5rem;
+  }
+
+  .label {
+    display: flex;
+    color: $labelForms;
+    height: 2rem;
+    margin-right: 3.75rem;
+  }
+
+  .labelEsp {
+    display: flex;
+    color: $labelForms;
+  }
+
+  .inputProfile {
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    width: 15rem;
+    color: $text;
+    height: 2rem;
+    font-family: inherit;
+    font-size: inherit;
+    transition: background-color 0.5s ease-in-out;
+    border-radius: 5px;
+    display: flex;
+    background-color: $background;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background-color: $buttonColor-33;
+    }
+  }
+
+  .titulos {
+  }
+
+  .titulosEdad {
+  }
+
+  textarea {
+    border: 0;
+    border-bottom: 2px solid $buttonColor;
+    cursor: pointer;
+    padding-top: 0.5rem;
+    resize: vertical;
+    min-height: 2rem;
+    color: $text;
+    font-weight: bold;
+    font-family: inherit;
+    transition: background-color 0.5s ease-in-out;
+    border-radius: 5px;
+    margin-top: 1rem;
+    width: 15rem;
+
+    &:hover {
+      background-color: $buttonColor-33;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

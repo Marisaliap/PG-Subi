@@ -60,10 +60,11 @@ module.exports = (sequelize) => {
     photo:{
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "https://raw.githubusercontent.com/Yooololo/imagenesquemesirven/586e35f5a0f1fa7db361bb7db372d06fc8155e61/avatar.svg"
     },
     photoDni:{
       type: DataTypes.ARRAY(DataTypes.STRING),
-    }
+    },
   },
   {
     timestamps: false,

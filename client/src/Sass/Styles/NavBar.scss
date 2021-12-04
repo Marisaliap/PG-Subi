@@ -2,7 +2,7 @@
 
 .NavBar {
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 20% 20% 20% 30% 10%;
   align-items: center;
   justify-items: center;
   position: sticky;
@@ -36,7 +36,7 @@
     justify-content: center;
   }
 
-  .giveMeARide {
+  .GimmeARide {
     display: flex;
     align-items: center;
     align-content: space-around;
@@ -45,6 +45,7 @@
     justify-content: center;
     width: 80%;
     align-items: center;
+    margin-left: 3vw;
   }
 
   .logoSubi {
@@ -83,5 +84,23 @@
     .searchContainerItem {
       text-decoration: none;
     }
+  } 
+
+  .banderas button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+    width: 3.5rem;
+    margin-left: 10px;
   }
+  
+  .banderas button img {
+    width: 100%;
+  }
+  
+  
 }

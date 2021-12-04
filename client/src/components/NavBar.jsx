@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from 'react';
 import { useEffect } from "react";
 import Logo from "../img/logo.png";
 import { Profile } from "./Profile";
@@ -9,30 +9,28 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link, NavLink } from "react-router-dom";
 import { getUserDetail } from "../actions";
 import "../Sass/Styles/NavBar.scss";
+import es from "./../img/spain.png"
+import en from "./../img/united-kingdom.png"
+import {FormattedMessage} from 'react-intl';
+import {langContext} from './../context/langContext.js';
+
 
 function Nav() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user);
   const { user, isAuthenticated } = useAuth0();
   const id = isAuthenticated ? user.email : "";
-
-  console.log("esto es users", users);
-  //console.log("esto es user",user);
-  // console.log("esto es id",id);
-  //console.log("esto es AUth",isAuthenticated);
+  const idioma = useContext(langContext);
 
   useEffect(() => {
     dispatch(getUserDetail(id));
   }, [dispatch, id]);
 
-  //console.log(" esto es cars/mail", users.cars.userEmail)
-  console.log(" esto es cars", users.cars);
-  console.log(" esto es dni", users.dni);
-
+  
   return (
-    <>
+    <> <div>
       <nav className="NavBar">
-        <div className="giveMeARide">
+        <div className="GimmeARide">
           <div className="izquierda">
             <Link to="/home">
               <img className="logoSubi" src={Logo} alt="" />
@@ -40,9 +38,23 @@ function Nav() {
           </div>
           <div>
             <Link to="/home" className="nombreSubi">
-              <h2 className="nombreSubi">Give me a ride</h2>
-            </Link>
+						<FormattedMessage
+							id="navBar.name"
+							defaultMessage="Gimme a Ride"
+						/>
+					</Link>
+          <Link to="/">
+						<FormattedMessage
+							id="navBar.home"
+							defaultMessage="Home"
+						/>
+					</Link>
           </div>
+        </div>
+        <div className="searchContainer">
+          <NavLink to="/route-list" className="searchContainerItem">
+            <button className="button">Route List</button>
+          </NavLink>
         </div>
         <div className="searchContainer">
           {
@@ -58,7 +70,12 @@ function Nav() {
                   : ""
               }
             >
-              <button className="button">Post a Trip</button>
+             <button className="button">
+              <FormattedMessage
+							id="navBar.post"
+							defaultMessage="Post a Trip"
+						/>
+            </button>
             </NavLink>
           }
         </div>
@@ -73,7 +90,12 @@ function Nav() {
             <Auth />
           </div>
         </div>
+        <div className="banderas">
+      <button onClick={() => idioma.establecerLenguaje("es-AR")}><img src={es} alt=""></img></button>
+      <button onClick={() => idioma.establecerLenguaje("en-US")}><img src={en} alt=""></img></button>
+				</div>
       </nav>
+      </div>
     </>
   );
 }

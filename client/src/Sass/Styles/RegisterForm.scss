@@ -18,18 +18,17 @@
   }
 }
 
-.Form {
+.FormRegistro {
   font-size: 0.8em;
   color: $text;
   font-weight: bolder;
   display: flex;
   flex-direction: column;
-  // grid-template-columns: 30% 70%;
 
   .cadaLinea {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     font-size: 1.2em;
     padding-top: 1rem;
     color: $headline;
@@ -43,13 +42,18 @@
   .terms {
     width: auto;
     display: flex;
-    margin-left: 30.75rem;
     border-radius: 9999px;
+  }
+
+  .selectterminos {
+    display: flex;
+    justify-content: center;
   }
 
   .terminosycond {
     display: grid;
     grid-template-rows: 50% 50%;
+    justify-items: center;
   }
 
   .label {
@@ -61,16 +65,18 @@
 
   .inputs {
     border: 0;
+    padding-top: 0.5rem;
     border-bottom: 2px solid $buttonColor;
     cursor: pointer;
-    padding-top: 1.5rem;
     width: 20vw;
+    height: 2rem;
     font-weight: bold;
     color: $text;
     font-family: inherit;
     transition: background-color 0.5s ease-in-out;
     margin-top: 1rem;
     border-radius: 5px;
+    display: flex;
 
     &:focus {
       outline: none;
@@ -91,11 +97,14 @@
     cursor: pointer;
     padding-top: 0.5rem;
     width: 60vw;
+    resize: vertical;
+    min-height: 2rem;
     color: $text;
     font-weight: bold;
     font-family: inherit;
     transition: background-color 0.5s ease-in-out;
     border-radius: 5px;
+    margin-top: 1rem;
 
     &:hover {
       background-color: $buttonColor-33;
@@ -103,6 +112,10 @@
 
     &:focus {
       outline: none;
+    }
+
+    &::placeholder {
+      text-align: center;
     }
 
     @media only screen and (min-width: 1200px) {
@@ -120,6 +133,7 @@
     transition: background-color 0.5s ease-in-out;
     border-radius: 5px;
     padding: 0.5rem;
+    margin-top: 1rem;
     display: flex;
     margin-left: 0;
 
@@ -142,14 +156,32 @@
 
   .error {
     color: red;
-    position: absolute;
-    left: 2vw;
-    top: 60vh;
+    position: sticky;
+    margin-left: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .errorterms {
+    color: red;
+    position: sticky;
+    margin-top: 1.5rem;
   }
 
   .button {
     margin-top: 2.5rem;
-    width: 10rem;
+    margin: 0.5rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 1rem 3rem;
+    background-color: $buttonColor;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
+  }
+
+  .botoncito {
+    display: flex;
   }
 
   .buttondisabled {
@@ -167,5 +199,9 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  .cargaImagen {
+    font-weight: bold;
   }
 }

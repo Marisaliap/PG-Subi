@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getRoute,
-  getRouteFromDb,
-  getSuggestions,
-  getSuggestions2,
-  RoutePostInfo,
-} from "../actions";
+import { getRouteFromDb, getSuggestions, getSuggestions2 } from "../actions";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/SearchBarHome.scss";
 import "../Sass/Styles/App.scss";
+import {FormattedMessage} from 'react-intl';
+
 
 let inputs = { Origin: "", Destination: "" };
 let info = { pasajeros: 1, date: "" };
@@ -41,26 +37,25 @@ export default function SearchBarHome() {
   const cities2 = useSelector((state) => state.suggestions2);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({ validations: {} });
-  console.log(cities);
+
   function inputHandleChange(e) {
     inputs[e.target.name] = e.target.value;
     dispatch(getSuggestions(inputs.Origin));
     dispatch(getSuggestions2(inputs.Destination));
     const validations = validateInputs(inputs);
-    console.log(validations, "soy input");
     setErrors(() => {
       const errorState = { ...errors, validations };
       return errorState;
     });
-    console.log(errors);
+
   }
 
-  const { validations } = errors;
+
 
   const checkInputs = Object.values(inputs);
   const checkInfo = Object.values(info);
 
-  // const checkValidations = Object.keys(validations)
+
   function handleChange(e) {
     info[e.target.name] = e.target.value;
     const validations = validateInfo(info);
@@ -89,11 +84,17 @@ export default function SearchBarHome() {
         )
       );
     }
+    inputs = { Origin: "", Destination: "" };
+    info = { pasajeros: 1, date: "" };
+
   }
 
   return (
     <div className="searchBarPostHome">
-      <h1>Where do you want to go?</h1>
+      <h1><FormattedMessage
+							id="searchBarHome.searchTitle"
+							defaultMessage="Where do you want to go?"
+						/></h1>
       <form className="postRouteForm">
         <input
           type="text"
@@ -117,7 +118,7 @@ export default function SearchBarHome() {
           placeholder="Destination"
           className="searchbar"
         />
-
+        
         <datalist id="cities2">
           {cities2 && cities2.map((city) => <option>{city.name}</option>)}
         </datalist>
@@ -147,6 +148,7 @@ export default function SearchBarHome() {
             <option value="6">6</option>
           </select>
         </div>
+        
         <pre>
           <div>
             {checkAllInfo ? (
@@ -163,12 +165,15 @@ export default function SearchBarHome() {
                     color: "white",
                   }}
                 >
-                  Submit
+                  Search
                 </NavLink>
               </button>
             ) : (
               <button className="button" disabled="true">
-                Submit
+                <FormattedMessage
+							id="searchBarHome.searchButton"
+							defaultMessage=" Search"
+						/>
               </button>
             )}
           </div>
