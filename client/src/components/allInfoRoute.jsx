@@ -20,7 +20,6 @@ import { RiPinDistanceFill } from "react-icons/ri";
 import "../Sass/Styles/Map.scss";
 
 export default function AllInfoRoute({ match }) {
-<<<<<<< HEAD
   const [datos, setDatos] = useState("")
   useEffect(() => {
     dispatch(getRouteById(match.params.id))
@@ -33,22 +32,10 @@ export default function AllInfoRoute({ match }) {
     .then((info)=> setDatos(info.data))
     .catch(err => console.error(err))
   }, []);
-=======
-  useEffect(() => dispatch(getRouteById(match.params.id)) , []);
->>>>>>> Fabri
   const history = useHistory();
   const dispatch = useDispatch();
   const route = useSelector((state) => state.routeById);
   const data = useSelector((state) => state.route);
-  console.log(route)
-  console.log(data)
-  const routeCoordinates = {
-    geometry: {
-      coordinates: route.points,
-    type: 'LineString'
-    },
-    type: 'Feature'
-  }
   route.origin &&
     data.length === 0 &&
     dispatch(
@@ -103,8 +90,7 @@ export default function AllInfoRoute({ match }) {
         )}
 
         <GeoJSONLayer
-          // data={data.coordinates && data.coordinates.data}
-          data={routeCoordinates}
+          data={data.coordinates && data.coordinates.data}
           linePaint={{
             "line-color": "#78c644",
             "line-width": 5,
