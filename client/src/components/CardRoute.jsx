@@ -17,7 +17,7 @@ export default function CardRoute({
       <h5>Date: {date}</h5>
       <h5>Time: {hours}</h5>
       <h5>Seats available: {place}</h5>
-      <h5>{price}</h5>
+      {/* <h5>{price}</h5> */}
       <h5>{infoRoute}</h5>
     </div>
   );

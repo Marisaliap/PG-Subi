@@ -45,16 +45,7 @@ export default function AllInfoRoute({ match }) {
     },
     type: 'Feature'
   }
-  route.origin &&
-    data.length === 0 &&
-    dispatch(
-      getRoute(
-        route.origin[0],
-        route.origin[1],
-        route.destiny[0],
-        route.destiny[1]
-      )
-    );
+
   const Map = ReactMapboxGl({
     accessToken:
       "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
@@ -124,10 +115,10 @@ export default function AllInfoRoute({ match }) {
           <BsFillCalendarCheckFill /> {route.date}
         </p>
         <p>
-          <RiPinDistanceFill /> {data.coordinates && data.coordinates.distance}.
+          <RiPinDistanceFill /> {route.km}.
         </p>
         <p>
-          <BsWatch /> {data.coordinates && data.coordinates.time}
+          <BsWatch /> {route.time}
         </p>
         <p>
           <BsFillPersonFill /> {route.place} Seats available.

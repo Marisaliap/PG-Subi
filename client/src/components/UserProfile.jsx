@@ -24,10 +24,6 @@ export default function UserProfile() {
   const [boolean, setBoolean] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUserDetail(user.email));
-  }, []);
-
   const [input, setInput] = useState({
     street: "",
     city: "",
@@ -38,6 +34,12 @@ export default function UserProfile() {
     about: "",
     age: "",
   });
+
+  useEffect(() => {
+    dispatch(getUserDetail(user.email));
+  }, [input]);
+
+  
 
   function handleSubmit(e) {
     e.preventDefault();
