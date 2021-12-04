@@ -1,23 +1,12 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Post from "./Post";
 import CardCar from "./CardCar";
 import { editUser, getUserDetail } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  BsFillTelephoneFill,
-  BsGenderFemale,
-  BsGenderMale,
-  BsInstagram,
-  BsFacebook,
-  BsStarFill,
-  BsMap,
-  BsEnvelope,
-} from "react-icons/bs";
 import "../Sass/Styles/UserDetails.scss";
-import img from "../img/photoDefault.jpg";
 import CardFullUser from "./CardFullUser";
 import "../Sass/Styles/App.scss";
 

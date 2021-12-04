@@ -1,4 +1,5 @@
 const { User, Post, Car, Route, Op } = require("../db.js");
+const { ClOUD_NAME, APY_KEY_CLOUD, API_CLOUD_SECRET } = process.env
 
 const postUser = async (req, res, next) => {
   try {
@@ -19,12 +20,13 @@ const postUser = async (req, res, next) => {
       photo,
       photoDni,
     } = req.body;
+// const result= await cloudinary.v2.uploader.upload(req.file.path)
 
-    
     const user = await User.findOrCreate({
       where: { email },
       defaults: {
         name,
+        // photo:result.url,
         photo,
         lastName,
         email,
@@ -40,6 +42,7 @@ const postUser = async (req, res, next) => {
         genre,
         calification: [0],
         photoDni,
+        // public_id:result.public_id,
       },
     });
     res.send(user);
@@ -62,16 +65,14 @@ const getUser = async (req, res, next) => {
           },
         },
         include: Post
-      }); 
-
+      });
       data = data.map(user => {
         return {
           name: user.name,
           lastName: user.lastName,
           genre: user.genre,
           age: user.age,
-          calification: user.posts.map(c=>parseInt(c.calification)).reduce((a,b)=>a+b)/user.posts.length,
-          // calification: user.calification.flat().reduce((a, b) => a + b,) / user.calification.length,
+          calification: user.posts.map(c => parseInt(c.calification)).reduce((a, b) => a + b) / user.posts.length,
           photo: user.photo,
           email: user.email,
         }
@@ -99,7 +100,7 @@ const getUser = async (req, res, next) => {
 const putUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { about, age, street, city, province, telephone, facebook, instagram, password, email, photo, calification } = req.body;
+    const { about, age, street, city, province, telephone, facebook, instagram, email, photo, calification } = req.body;
     const user = await User.findByPk(id);
     user.update({
       about,
@@ -112,7 +113,7 @@ const putUser = async (req, res, next) => {
       instagram,
       email,
       photo,
-      calification: [calification, ...user.calification],
+      calification,
     });
     res.send(user);
   } catch (error) {

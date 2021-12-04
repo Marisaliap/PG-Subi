@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postUser } from "../actions";
@@ -7,12 +6,20 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
 import swal from "sweetalert";
 
+
+
 export default function Registro() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { user, isAuthenticated } = useAuth0();
-
+  const [image, setImage] = useState("");
+  const [loanding, setLoanding] = useState(false);
+  const [dni, setDni] = useState([]);
+  
+  
+  
   function validate(input) {
+    // ------------------------< erros gestions >------------------------
     let errors = {};
     if (!input.name) {
       errors.name = "Name is required";
@@ -36,17 +43,20 @@ export default function Registro() {
       errors.city = "City is required";
     } else if (!input.province) {
       errors.province = "Province is required";
+      // } else if (!input.photo) {
+        //   errors.photo = "Photo is required";
+      }
+      return errors;
     }
-    return errors;
-  }
-
-  function validateGender() {
-    if (document.getElementById("genre").value === "1") {
+    // __________________________________________________________________________________
+    
+    function validateGender() {
+    if (document.getElementById("genre").value == "1") {
       return false;
     }
     return true;
   }
-
+  
   function validateInputs() {
     if (
       !input.name ||
@@ -56,44 +66,57 @@ export default function Registro() {
       !input.telephone ||
       !input.street ||
       !input.city ||
-      !input.province
-    ) {
-      return false;
-    } else {
-      return true;
+      !input.province||
+      !input.checkbox
+      ) {
+        return false;
+      } else {
+        return true;
+      }
     }
-  }
-
-  const [errors, setErrors] = useState({});
-
-  const [input, setInput] = useState({
-    name: isAuthenticated ? user.given_name : "",
-    lastName: isAuthenticated ? user.family_name : "",
-    email: isAuthenticated ? user.email : "",
-    dni: "",
-    genre: "",
-    age: "",
-    telephone: "",
-    street: "",
-    city: "",
-    province: "",
-    facebook: "",
-    instagram: "",
-    about: "",
-  });
-
-  function handleChange(e) {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
+    
+    const [errors, setErrors] = useState({});
+    
+    const [input, setInput] = useState({
+      name: isAuthenticated ? user.given_name : "",
+      lastName: isAuthenticated ? user.family_name : "",
+      email: isAuthenticated ? user.email : "",
+      photo: "",
+      dni: "",
+      genre: "",
+      age: "",
+      telephone: "",
+      street: "",
+      city: "",
+      province: "",
+      facebook: "",
+      instagram: "",
+      about: "",
+      photoDni: [],
+      checkbox:false,
     });
-    setErrors(
-      validate({
+    console.log("input", input);
+    
+    function handleChange(e) {
+      setInput({
         ...input,
         [e.target.name]: e.target.value,
-      })
-    );
-  }
+      });
+      setErrors(
+        validate({
+          ...input,
+          [e.target.name]: e.target.value,
+        })
+        );
+      }
+      
+  const handleCheck = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.checked,
+    });
+  };
+
 
   function handleSelect(e) {
     e.preventDefault();
@@ -102,6 +125,49 @@ export default function Registro() {
       [e.target.name]: e.target.value,
     });
   }
+  // ----------------------< upload image rami x jp >----------------------
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    console.log("file", files);
+    const data = new FormData();
+    console.log("data", data);
+    data.append("file", files[0]);
+    data.append("upload_preset", "s6kdvopu");
+    setLoanding(true);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    setImage(file.secure_url);
+  };
+
+  const uploadImage2 = async (e) => {
+    const files = e.target.files;
+    console.log("file", files);
+    const data = new FormData();
+    console.log("data", data);
+    data.append("file", files[0]);
+    data.append("upload_preset", "tiuimc3c");
+    setLoanding(true);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    setDni([...dni, file.secure_url]);
+  };
+  // _______________________________________________________________________
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -121,7 +187,10 @@ export default function Registro() {
         facebook: "",
         instagram: "",
         about: "",
+        photo: "",
+        photoDni: [],
       });
+
       swal({
         title: "Good job!",
         text: "User created correctly",
@@ -173,30 +242,85 @@ export default function Registro() {
                 value={input.lastName}
                 onChange={(e) => handleChange(e)}
               />
-              {errors.lastName && <p className="error">{errors.lastName}</p>}
+              
             </div>
-            {/* <div className="cadaLinea">
-              <p className="label">Email*:</p>
+            
+            <div>
+              <label>Photo User</label>
+              <input
+                onChange={(e) => uploadImage(e)}
+                type="file"
+                name="image"
+                required="required"
+                accept="image/png, image/jpeg"
+              />
+              
+            </div>
+
+            <div Style="display:none">{(input.photo = image)}</div>
+            <label>
+              {loanding ? (
+                <img src={image} Style="height:150px" alt="user" />
+              ) : (
+                ""
+              )}
+            </label>
+            
+            <div className="cadaLinea">
+              <p className="label">DNI*:</p>
               <input
                 className="inputs"
-                type="text"
-                name="email"
-                value={input.email}
+                type="number"
+                name="dni"
+                required="required"
+                value={input.dni}
                 onChange={(e) => handleChange(e)}
               />
-            </div> */}
+            
+            </div>
+          
+            <div>
+              <label>DNI Front</label>
+              <input
+                onChange={(e) => uploadImage2(e)}
+                type="file"
+                name="image"
+                required="required"
+                accept="image/png, image/jpeg"
+              />
+            
+            </div>
+
+            <div Style="display:none">{(input.photoDni = dni)}</div>
+            <label>
+              {loanding ? (
+                <img src={dni[0]} Style="height:150px" alt="front" />
+              ) : (
+                ""
+              )}
+            </label>
+
+            <div>
+              <label>DNI Back</label>
+              <input
+                onChange={(e) => uploadImage2(e)}
+                type="file"
+                name="image"
+                required="required"
+                accept="image/png, image/jpeg"
+              />
+            </div>
+
+            <div Style="display:none">{(input.photoDni = dni)}</div>
+            <label>
+              {loanding ? (
+                <img src={dni[1]} Style="height:150px" alt="back" />
+              ) : (
+                ""
+              )}
+            </label>
           </div>
-          <div className="cadaLinea">
-            <p className="label">DNI*:</p>
-            <input
-              className="inputs"
-              type="number"
-              name="dni"
-              value={input.dni}
-              onChange={(e) => handleChange(e)}
-            />
-            {errors.dni && <p className="error">{errors.dni}</p>}
-          </div>
+
           <div className="cadaLinea">
             <p className="label" for="genre">
               Gender*:
@@ -310,6 +434,7 @@ export default function Registro() {
             />
             {errors.about && <p className="error">{errors.about}</p>}
           </div>
+
           <div className="terminosycond">
             <div className="terminos">
               By submitting, you agree to our{" "}
@@ -323,6 +448,7 @@ export default function Registro() {
               </a>
             </div>
           </div>
+          <input type="checkbox" name="checkbox" onChange={(e)=> handleCheck(e)}/>
           <div>
             {validateInputs() === false ? (
               <button className="buttondisabled">Submit</button>
