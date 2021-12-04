@@ -96,29 +96,36 @@ export default function SearchBarHome() {
 							defaultMessage="Where do you want to go?"
 						/></h1>
       <form className="postRouteForm">
+      <FormattedMessage id="searchBarHome.origin" defaultMessage="Origin">
+    {placeholder=> 
         <input
           type="text"
           list="cities"
           onChange={inputHandleChange}
           name="Origin"
-          placeholder="Origin"
+          placeholder={placeholder}
           className="searchbar"
         />
+      }
+      </FormattedMessage>
 
         <datalist id="cities">
           {cities && cities.map((city) => <option>{city.name}</option>)}
         </datalist>
         {/* <p>{validations && validations.Origin}</p> */}
+        <FormattedMessage id="searchBarHome.destination" defaultMessage="Destination">
+    {placeholder=>  
 
         <input
           type="text"
           list="cities2"
           onChange={inputHandleChange}
           name="Destination"
-          placeholder="Destination"
+          placeholder={placeholder}
           className="searchbar"
         />
-        
+      }
+      </FormattedMessage>
         <datalist id="cities2">
           {cities2 && cities2.map((city) => <option>{city.name}</option>)}
         </datalist>
