@@ -73,8 +73,8 @@ export default function Registro() {
   const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
-    name: isAuthenticated ? user.given_name : "",
-    lastName: isAuthenticated ? user.family_name : "",
+    name: "",
+    lastName: "",
     email: isAuthenticated ? user.email : "",
     photo: "",
     dni: "",
@@ -222,9 +222,9 @@ export default function Registro() {
                 className="inputs"
                 type="text"
                 name="name"
-                value=""
+                value={input.name}
                 placeholder={
-                  "Please type your real name! " + "-> Rec: " + input.name
+                  "Please type your real name! " + "-> Rec: " + user.given_name
                 }
                 onChange={(e) => handleChange(e)}
               />
@@ -238,10 +238,10 @@ export default function Registro() {
                 placeholder={
                   "Please type your real last name! " +
                   "-> Rec: " +
-                  input.lastName
+                  user.family_name
                 }
                 name="lastName"
-                value=""
+                value={input.lastName}
                 onChange={(e) => handleChange(e)}
               />
             </div>
