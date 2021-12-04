@@ -1,10 +1,3 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import Post from "./Post";
-import CardCar from "./CardCar";
-import { getUserDetail } from "../actions";
-import { useDispatch, useSelector } from "react-redux";
 import {
   BsFillTelephoneFill,
   BsGenderFemale,
@@ -16,7 +9,6 @@ import {
   BsEnvelope,
 } from "react-icons/bs";
 import "../Sass/Styles/UserDetails.scss";
-import img from "../img/photoDefault.jpg";
 
 export default function CardFullUser({name, lastName, email, genre, photo, age, about, telephone, facebook, instagram, street, city, province, calification} ) {
 
@@ -36,7 +28,7 @@ export default function CardFullUser({name, lastName, email, genre, photo, age, 
               src={photo}
               alt="User Image"
             /> */}
-            <img src={img} alt="User Image" style={{ width: "250px" }} />
+            <img src={photo} alt="User" style={{ width: "250px" }} />
             <h2>
               {name} {lastName} {genderIcon(genre)}
             </h2>

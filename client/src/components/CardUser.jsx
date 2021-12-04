@@ -1,5 +1,4 @@
 import React from 'react';
-import img from '../img/photoDefault.jpg';
 import { BsStarFill } from 'react-icons/bs';
 
 export default function CardUser({
@@ -9,12 +8,13 @@ export default function CardUser({
   genre,
   age,
   calification,
-  ...props}) { 
+  ...props
+}) {
   return (
-    <>
     <div {...props}>
-      <img src={img} style={{ width: '150px' }} alt="" />{' '}
-      {/*agregar url de img*/}
+      <br />
+      <br />
+      <img src={photo} style={{ width: '150px' }} alt="" />{' '}
       <h5>{name}</h5>
       <h5>{lastName}</h5>
       <h5>{genre}</h5>
@@ -24,6 +24,5 @@ export default function CardUser({
         {calification}
       </h5>
     </div>
-    </>
   );
 }
