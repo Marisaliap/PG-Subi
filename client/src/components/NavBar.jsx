@@ -84,14 +84,14 @@ function Nav() {
               <Auth />
             </div>
           </div>
-          <div className="banderas">
+          {/* <div className="banderas">
             <button onClick={() => idioma.establecerLenguaje("es-AR")}>
               <img src={es} alt=""></img>
             </button>
             <button onClick={() => idioma.establecerLenguaje("en-US")}>
               <img src={en} alt=""></img>
             </button>
-          </div>
+          </div> */}
         </nav>
       </div>
     </>

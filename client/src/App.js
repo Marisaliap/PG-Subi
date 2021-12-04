@@ -45,7 +45,7 @@ export default function App() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", 
+      behavior: "smooth",
     });
   };
 
@@ -96,7 +96,6 @@ export default function App() {
               </button>
             )}
             <Footer />
-            <SubFooter />
           </div>
         </Switch>
       </div>
