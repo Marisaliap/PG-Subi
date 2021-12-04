@@ -42,6 +42,7 @@ export default function Registro() {
       errors.province = "Province is required";
     } else if (!input.photo) {
       errors.photo = "Photo is required";
+    }
       return errors;
     }
     // __________________________________________________________________________________
