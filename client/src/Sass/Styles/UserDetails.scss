@@ -1,0 +1,55 @@
+@import '../Variables/Variables.scss';
+
+.UserDetails {
+  margin: 1.5rem;
+
+  @media only screen and (min-width: 768px) {
+    margin: 1rem 7rem;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    margin: 1rem 30rem;
+  }
+
+  img {
+    width: 30vw;
+    border-radius: 50%;
+
+    @media only screen and (min-width: 768px) {
+      width: 18vw;
+    }
+
+    @media only screen and (min-width: 1200px) {
+      width: 7vw;
+    }
+  }
+
+  .maleGender {
+    color: #3da9fc;
+    font-size: large;
+    stroke-width: 1px;
+  }
+
+  .femaleGender {
+    color: #ff829f;
+    font-size: large;
+    stroke-width: 1px;
+  }
+
+  .age {
+    font-weight: bold;
+  }
+
+  .about {
+    margin: 1rem;
+    text-align: left;
+  }
+
+  .moreInfo {
+    text-align: left;
+    margin: 1rem;
+  }
+
+  .icon {
+  }
+}

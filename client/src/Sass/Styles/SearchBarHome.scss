@@ -1,0 +1,66 @@
+@import "../Variables/Variables.scss";
+
+.searchBarPostHome {
+  display: grid;
+  place-items: center;
+  height: 20vh;
+  margin-top: 5rem;
+  margin-bottom: 6rem;
+
+  .searchbar {
+    width: 20vw;
+  }
+
+  .passengers {
+    height: 55px;
+    width: 70px;
+    border: 2px solid $text;
+    padding: 1rem;
+    border-radius: 30px;
+    border-color: $buttonColor;
+    font-family: inherit;
+    font-weight: bold;
+    color: $text;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    transition: box-shadow 0.5s ease-in-out;
+  }
+  pre {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .postRouteForm {
+    padding: 1rem;
+    display: flex;
+    align-items: baseline;
+
+    input {
+      height: 20px;
+      width: 200px;
+      border: 2px solid $text;
+      padding: 1rem;
+      margin-left: 1rem;
+      border-radius: 9999px;
+      border-color: $buttonColor;
+      font-family: inherit;
+      font-weight: bold;
+      color: $text;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+      transition: box-shadow 0.5s ease-in-out;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+    }
+    select {
+      margin-left: 1rem;
+    }
+   
+  }
+}

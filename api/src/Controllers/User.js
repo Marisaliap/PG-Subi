@@ -1,100 +1,135 @@
-
-const { User, Op } = require('../db.js');
-
+const { User, Post, Car, Route, Op } = require("../db.js");
+const { ClOUD_NAME, APY_KEY_CLOUD, API_CLOUD_SECRET } = process.env
 
 const postUser = async (req, res, next) => {
   try {
-    const {
+    let {
       name,
       lastName,
       email,
       telephone,
       facebook,
       instagram,
-      password,
       province,
       city,
       street,
-      patent,
       dni,
       age,
       about,
       genre,
-      calification,
-    } = req.body
+      photo,
+      photoDni,
+    } = req.body;
+// const result= await cloudinary.v2.uploader.upload(req.file.path)
 
-
-
-
-    const user = await User.findOrCreate(
-      {
-        where: {
-          dni: dni,
-        },
-
-        defaults: {
-          name: name,
-          lastName: lastName,
-          email: email,
-          telephone: telephone,
-          facebook: facebook,
-          instagram: instagram,
-          password: password,
-          province: province,
-          city: city,
-          street: street,
-          patent: city,
-          dni: dni,
-          age: age,
-          about: about,
-          genre: genre,
-          patent: patent,
-          calification: calification,
-        }
-
-      })
-    res.send(user)
-
+    const user = await User.findOrCreate({
+      where: { email },
+      defaults: {
+        name,
+        // photo:result.url,
+        photo,
+        lastName,
+        email,
+        telephone,
+        facebook,
+        instagram,
+        province,
+        city,
+        street,
+        dni,
+        age,
+        about,
+        genre,
+        calification: [0],
+        photoDni,
+        // public_id:result.public_id,
+      },
+    });
+    res.send(user);
   } catch (error) {
     next(error);
   }
-}
+};
 
 const getUser = async (req, res, next) => {
   try {
-    const { name } = req.query
-    const { id } = req.params
-    var data
+    const { name } = req.query;
+    const { id } = req.params;
+    var data;
 
     if (name) {
       data = await User.findAll({
         where: {
           name: {
-            [Op.iLike]: `%${name}%`
-          }
-        }
+            [Op.iLike]: `%${name}%`,
+          },
+        },
+        include: Post
       });
-
       data = data.map(user => {
         return {
           name: user.name,
           lastName: user.lastName,
           genre: user.genre,
           age: user.age,
-          calification: user.calification,
+          calification: user.posts.map(c => parseInt(c.calification)).reduce((a, b) => a + b) / user.posts.length,
           photo: user.photo,
-          id: user.id,
-
+          email: user.email,
         }
       })
     }
+
     else if (id) {
-      data = await User.findByPk(id);
+      data = await User.findByPk(id,
+        {
+          include: [Post, Car, Route]
+        }
+      );
     }
+
+    else {
+      data = await User.findAll();
+    }
+
     res.send(data);
   } catch (error) {
     next(error);
   }
-}
+};
 
-module.exports = { postUser, getUser }
+const putUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { about, age, street, city, province, telephone, facebook, instagram, email, photo, calification } = req.body;
+    const user = await User.findByPk(id);
+    user.update({
+      about,
+      age,
+      street,
+      city,
+      province,
+      telephone,
+      facebook,
+      instagram,
+      email,
+      photo,
+      calification,
+    });
+    res.send(user);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const deleteUser = async (req, res, next) => {
+  try {
+    const { email } = req.params;
+    const user = await User.findByPk(email);
+    await user.destroy();
+    res.send("Registro elminado");
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { postUser, getUser, putUser, deleteUser }

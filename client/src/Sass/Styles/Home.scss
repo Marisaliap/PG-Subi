@@ -1,0 +1,52 @@
+@import "../Variables/Variables.scss";
+
+.Home {
+  .Article {
+    display: grid;
+    grid-template-columns: 10% 40% 40% 10%;
+    text-align: center;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 3rem;
+
+    p {
+      text-align: left;
+    }
+
+    .foto {
+      width: 35vw;
+      height: 30vh;
+      -webkit-box-shadow: 5px 5px 10px 5px #838282;
+      box-shadow: 5px 5px 10px 5px #838282;
+    }
+  }
+
+  .Link {
+    text-decoration: none;
+  }
+
+  .Links {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 20% 30% 30% 20%;
+    padding-bottom: 1rem;
+  }
+
+  .fotoHeader {
+    width: 80vw;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin-left: 10vw;
+  }
+
+  .linksdelhome {
+    display: flex;
+    flex-direction: row;
+    width: 16vw;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}

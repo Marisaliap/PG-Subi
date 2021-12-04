@@ -3,9 +3,8 @@ const { DataTypes, Model } = require('sequelize');
 module.exports = (sequelize) => {
 
   sequelize.define('user', {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+    email: {
+      type: DataTypes.STRING,
       primaryKey: true,
       allowNull: false
     },
@@ -20,7 +19,6 @@ module.exports = (sequelize) => {
     genre:{
       type:DataTypes.STRING,
       allowNull:false,
-
     },
     about: {
       type:DataTypes.TEXT,
@@ -32,10 +30,6 @@ module.exports = (sequelize) => {
     },
     dni: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    patent: {
-      type: DataTypes.STRING,
       allowNull: false,
     },
     street: {
@@ -51,28 +45,25 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     telephone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     facebook: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
     instagram: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
     calification: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+      type: DataTypes.ARRAY(DataTypes.FLOAT),
     },
-    password:{
-      type:DataTypes.STRING,
-      allowNull:false
-    },
-    email:{
+    photo:{
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: "https://raw.githubusercontent.com/Yooololo/imagenesquemesirven/586e35f5a0f1fa7db361bb7db372d06fc8155e61/avatar.svg"
+    },
+    photoDni:{
+      type: DataTypes.ARRAY(DataTypes.STRING),
     },
     photo:{
       type: DataTypes.STRING,
@@ -87,4 +78,3 @@ module.exports = (sequelize) => {
   }
   );
 };
-

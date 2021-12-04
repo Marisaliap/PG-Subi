@@ -8,6 +8,14 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
+    originName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    destinyName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     origin: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
@@ -16,23 +24,38 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
+    points:{
+      type: DataTypes.ARRAY(DataTypes.STRING),
+     allownull: false,
+    },
+    price:{
+      type:DataTypes.STRING,
+      allowNull: false,
+    },
     date: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     hours: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     place: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+       allowNull: false,
     },
     restriction: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
-
+    infoRoute: {
+      type: DataTypes.TEXT,
+    },
+    km: {
+      type: DataTypes.STRING,
+    },
+    time: {
+      type: DataTypes.STRING,
+    }
   },
   {
     timestamps: false,

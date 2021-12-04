@@ -3,30 +3,27 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
 
   sequelize.define('post', {
-    title: {
-      type: DataTypes.STRING,
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    calification:{
+      type: DataTypes.INTEGER,
+    },
+    date: {
+      type: DataTypes.STRING
     },
     author: {
       type: DataTypes.STRING,
+      primaryKey: true,
     },
-
-    date: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-
-
-    description: {
-      type: DataTypes.TEXT,
-
-    },
-
-    calification: {
-      type: DataTypes.DECIMAL
+    title: {
+      type: DataTypes.STRING
     }
   },
-    {
-      timestamps: false,
-    }
+  {
+    timestamps: false,
+
+  },
   );
 };

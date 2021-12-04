@@ -1,0 +1,106 @@
+@import "../Variables/Variables.scss";
+
+.NavBar {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 30% 10%;
+  align-items: center;
+  justify-items: center;
+  position: sticky;
+  z-index: 99999999999;
+  top: 0;
+  width: 100%;
+  padding-bottom: 1rem;
+  // background-color: $navbar;
+  background-color: $background;
+  border-bottom: 1px solid $footer;
+  -webkit-box-shadow: 0px 2px 10px 1px rgba(100, 100, 100, 0.33);
+  box-shadow: 0px 8px 18px 1px rgba(100, 100, 100, 0.33);
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+
+  &:hover {
+    -webkit-box-shadow: 0px 5px 15px 1px rgba(25, 25, 25, 0.5);
+    box-shadow: 0px 8px 18px 1px rgba(25, 25, 25, 0.5);
+    transition: box-shadow 0.5s ease-in-out;
+  }
+
+  .logs {
+    display: flex;
+  }
+
+  .perfylog {
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .GimmeARide {
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 80%;
+    align-items: center;
+    margin-left: 3vw;
+  }
+
+  .logoSubi {
+    margin-top: 1.5rem;
+    width: 20rem;
+  }
+
+  .nombreSubi {
+    font-family: "Inter", sans-serif;
+    display: none;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin: 0;
+  }
+
+  .izquierda {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .profile {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1vh;
+  }
+
+  .searchContainer {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+
+    .searchContainerItem {
+      text-decoration: none;
+    }
+  } 
+
+  .banderas button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+    width: 3.5rem;
+    margin-left: 10px;
+  }
+  
+  .banderas button img {
+    width: 100%;
+  }
+  
+  
+}

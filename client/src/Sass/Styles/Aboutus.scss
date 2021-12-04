@@ -1,0 +1,36 @@
+@import "../Variables/Variables.scss";
+
+.aboutus{
+
+    .text{
+        display:grid;
+        grid-template-columns: 10% 80% 10%;
+        font-family: "inter", sans-serif;
+
+        .icon{
+            width: 15px;
+        }
+    }
+    
+    img{
+        border-radius: 50%;
+        bottom: 1rem;
+        -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+        box-shadow: 5px 5px 15px 5px #000000;
+        float: none;
+    }
+
+    li{
+        display:grid;
+        grid-template-columns: 20% 10% 40% 30%;
+    }
+
+    p{
+        text-align:left;
+    }
+
+    pre{
+        margin-top: 1.5rem;
+        margin-right: 1rem;
+    }
+}
