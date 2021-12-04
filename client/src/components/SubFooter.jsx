@@ -16,21 +16,35 @@ export default function SubFooter() {
               go, find your ideal trip."
 						/>
         </div>
+        <div>
+          <Link to="/suggestion-box" target="_blank" rel="noreferrer">
+            <button className="buttonSuggestion">Suggestion Box</button>
+          </Link>
+        </div>
         <div className="redesSociales">
           <p>
-            <a href="https://www.instagram.com/gimmearideapp/" target="_blank">
+            <a
+              href="https://www.instagram.com/gimmearide/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <BsInstagram className="icon" />
             </a>
           </p>
           <p>
-            <a href="https://twitter.com/gimmearideapp" target="_blank">
+            <a
+              href="https://twitter.com/GimmeARide_"
+              target="_blank"
+              rel="noreferrer"
+            >
               <BsTwitter className="icon" />
             </a>
           </p>
           <p>
             <a
-              href="https://www.facebook.com/people/Give-me-a-ride/100075632223946/?sk=about"
+              href="https://www.facebook.com/profile.php?id=100075632223946"
               target="_blank"
+              rel="noreferrer"
             >
               <BsFacebook className="icon" />
             </a>

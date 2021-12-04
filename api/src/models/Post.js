@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     calification:{
-      type: DataTypes.DECIMAL
+      type: DataTypes.INTEGER,
     },
     date: {
       type: DataTypes.STRING

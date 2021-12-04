@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getRoute,
@@ -11,7 +11,7 @@ import "../Sass/Styles/SearchBarPostRuta.scss";
 import "../Sass/Styles/App.scss";
 
 let inputs = { Origin: "", Destination: "" };
-let info = { pasajeros: 1, date: "", hours: "" };
+let info = { pasajeros: 1, date: "", hours: "", restrictions: [] };
 
 const validateInputs = (input) => {
   const errors = {};
@@ -40,18 +40,18 @@ export default function SearchBar() {
   const cities2 = useSelector((state) => state.suggestions2);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({ validations: {} });
+  const [restrictions, setRestrictions] = useState([])
+
 
   function inputHandleChange(e) {
     inputs[e.target.name] = e.target.value;
     dispatch(getSuggestions(inputs.Origin));
     dispatch(getSuggestions2(inputs.Destination));
     const validations = validateInputs(inputs);
-    console.log(validations, "soy input");
     setErrors(() => {
       const errorState = { ...errors, validations };
       return errorState;
     });
-    console.log(errors);
   }
 
   const { validations } = errors;
@@ -78,7 +78,7 @@ export default function SearchBar() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    info.restrictions = restrictions
     if (checkAllInfo) {
       dispatch(
         getRoute(
@@ -91,10 +91,22 @@ export default function SearchBar() {
 
       dispatch(RoutePostInfo(info));
       inputs = { Origin: "", Destination: "" };
-      info = { pasajeros: 1, date: "", hours: "" };
+      info = { pasajeros: 1, date: "", hours: "", restrictions:[] };
     }
   }
 
+  function handleRestrictions(e) {
+    if(!restrictions.includes(e.target.value)) {
+      setRestrictions([
+        ...restrictions,
+        e.target.value
+      ])
+    }
+  }
+  function deleteRestrictions(e) {
+    let filter = restrictions.filter(restriction => restriction !== e.target.value)
+    setRestrictions(filter)
+  }
   return (
     <div className="searchBarPostRuta">
       <form className="postRouteForm">
@@ -136,9 +148,9 @@ export default function SearchBar() {
           <p>{validations && validations.date}</p>
         </div>
 
-        <div>
-          <label for="pasajeros">Seats Available: </label>
-          <select name="pasajeros" onChange={handleChange} id="pasajeros">
+        <div className='selectContainer'>
+          <h4 for="pasajeros">Seats Available: </h4>
+          <select name="pasajeros" onChange={handleChange} className = 'passengers' id="pasajeros">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -146,6 +158,32 @@ export default function SearchBar() {
             <option value="5">5</option>
             <option value="6">6</option>
           </select>
+        </div>
+        <div className= 'selectContainer'>
+          <h4 for="restrictions"> Preferences: </h4>
+          <select
+            name="restrictions"
+            onChange={handleRestrictions}
+            id="restrictions"
+            className='restrictions'
+          >
+          <option disabled selected value="1">
+                {" "}
+                -- Select an option --{" "}
+              </option>
+          <option value="petsAllowed">Pets Allowed</option>
+          <option value="smokersAllowed">Smoking Allowed</option>
+          <option value="foodAllowed">Food Allowed</option>
+          <option value="twoMaxInTheBack">Max. 2 in the back</option>
+          <option value="kidsAllowed">Kids Allowed</option>
+          <option value="onlyWomen">Only Women</option>
+          </select>
+          {restrictions.includes("petsAllowed") && <h5>Pets Allowed <button value="petsAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
+          {restrictions.includes("smokersAllowed") && <h5 >Smoking Allowed <button value="smokersAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
+          {restrictions.includes("foodAllowed") && <h5 >Food Allowed <button value="foodAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
+      {    restrictions.includes("twoMaxInTheBack") && <h5>Max. 2 in the back <button value="twoMaxInTheBack" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
+        {  restrictions.includes("kidsAllowed") && <h5 >Kids Allowed <button value="kidsAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
+          {restrictions.includes("onlyWomen") && <h5 >Only Women <button value="onlyWomen" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
         </div>
         <div>
           <input
@@ -161,10 +199,16 @@ export default function SearchBar() {
         </div>
         <pre>
         <div>
+          <NavLink to="/">
+            <button className="buttonBlue">Back</button>
+          </NavLink>
+        </div>
+        <div>
           {checkAllInfo ? (
             <button
               onClick={handleSubmit}
               className="button"
+             
               disabled={checkInfo.length !== 3 && checkInputs.length !== 2}
             >
               <NavLink
@@ -175,20 +219,16 @@ export default function SearchBar() {
                   color: "white",
                 }}
               >
-                Search
+                Preview Trip
               </NavLink>
             </button>
           ) : (
-            <button className="button" disabled="true">
-              Search
+            <button className="button"  style={{backgroundColor:"grey"}} disabled>
+              Preview Trip
             </button>
           )}
         </div>
-        <div>
-          <NavLink to="/">
-            <button className="buttonBlue">Back</button>
-          </NavLink>
-        </div>
+       
         </pre>
       </form>
     </div>

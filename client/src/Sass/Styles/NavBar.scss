@@ -2,7 +2,7 @@
 
 .NavBar {
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 20% 20% 20% 30% 10%;
   align-items: center;
   justify-items: center;
   position: sticky;
@@ -45,6 +45,7 @@
     justify-content: center;
     width: 80%;
     align-items: center;
+    margin-left: 3vw;
   }
 
   .logoSubi {

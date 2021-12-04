@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
     },
     points:{
       type: DataTypes.ARRAY(DataTypes.STRING),
-      allownull: false,
+     allownull: false,
     },
     price:{
       type:DataTypes.STRING,
@@ -42,13 +42,19 @@ module.exports = (sequelize) => {
     },
     place: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+       allowNull: false,
     },
     restriction: {
       type: DataTypes.STRING,
     },
     infoRoute: {
       type: DataTypes.TEXT,
+    },
+    km: {
+      type: DataTypes.STRING,
+    },
+    time: {
+      type: DataTypes.STRING,
     }
   },
   {

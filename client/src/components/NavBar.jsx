@@ -26,6 +26,7 @@ function Nav() {
     dispatch(getUserDetail(id));
   }, [dispatch, id]);
 
+  
   return (
     <> <div>
       <nav className="NavBar">
@@ -49,6 +50,11 @@ function Nav() {
 						/>
 					</Link>
           </div>
+        </div>
+        <div className="searchContainer">
+          <NavLink to="/route-list" className="searchContainerItem">
+            <button className="button">Route List</button>
+          </NavLink>
         </div>
         <div className="searchContainer">
           {

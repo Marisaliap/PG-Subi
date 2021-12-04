@@ -12,12 +12,6 @@ export default function PoliticaCookies() {
   /* const idioma = useContext(langContext)
   console.log(idioma.establecerLenguaje()); */
 
-  const history = useHistory();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    history.push("/home");
-  }
   return (
       <div>
      {/*  <button onClick={() => idioma.establecerLenguaje("es-AR")}><img src={es} alt=""></img></button>

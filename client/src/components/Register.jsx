@@ -1,7 +1,6 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { postUser } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
@@ -12,15 +11,20 @@ export default function Registro() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { user, isAuthenticated } = useAuth0();
+  const [image, setImage] = useState("");
+  const [loanding, setLoanding] = useState(false);
+  const [dni, setDni] = useState([]);
+  const placeHolderAbout = "Please tell us a little about yourself";
 
   function validate(input) {
+    // ------------------------< erros gestions >------------------------
     let errors = {};
     if (!input.name) {
       errors.name = "Name is required";
     } else if (!input.lastName) {
       errors.lastName = "Last name is required";
       /* } else if ("^[^!@#$^&%*()+=[\]\/{}|:<>?,.\t]+$") {
-      errors.email = 'The last name cannot contain symbols'; */
+      errors.lastName = 'Last name cannot contain symbols'; */
     } else if (!input.dni) {
       errors.dni = "DNI is required";
     } else if (validateGender() === false) {
@@ -37,11 +41,10 @@ export default function Registro() {
       errors.city = "City is required";
     } else if (!input.province) {
       errors.province = "Province is required";
-    } else if (validateTerms() === false) {
-      errors.terms = "You must agree to our terms and conditions";
     }
     return errors;
   }
+  // __________________________________________________________________________________
 
   function validateGender() {
     if (document.getElementById("genre").value == "1") {
@@ -50,21 +53,31 @@ export default function Registro() {
     return true;
   }
 
-  function validateTerms() {
-    if (document.getElementById("terms").value == "1") {
+  function validateInputs() {
+    if (
+      !input.name ||
+      !input.lastName ||
+      !input.dni ||
+      !input.age ||
+      !input.telephone ||
+      !input.street ||
+      !input.city ||
+      !input.province ||
+      !input.checkbox
+    ) {
       return false;
+    } else {
+      return true;
     }
-    return true;
   }
 
-  const [errors, setErrors] = useState({
-    algo: "asd",
-  });
+  const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
-    name: isAuthenticated ? user.given_name : "",
-    lastName: isAuthenticated ? user.family_name : "",
+    name: "",
+    lastName: "",
     email: isAuthenticated ? user.email : "",
+    photo: "",
     dni: "",
     genre: "",
     age: "",
@@ -75,8 +88,10 @@ export default function Registro() {
     facebook: "",
     instagram: "",
     about: "",
-    terms: "",
+    photoDni: [],
+    checkbox: false,
   });
+  console.log("input", input);
 
   function handleChange(e) {
     setInput({
@@ -91,30 +106,67 @@ export default function Registro() {
     );
   }
 
+  const handleCheck = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.checked,
+    });
+  };
+
   function handleSelect(e) {
     e.preventDefault();
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
-    setErrors({
-      algo: "",
-    });
   }
+  // ----------------------< upload image rami x jp >----------------------
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    console.log("file", files);
+    const data = new FormData();
+    console.log("data", data);
+    data.append("file", files[0]);
+    data.append("upload_preset", "s6kdvopu");
+    setLoanding(true);
 
-  function handleSelectTerms(e) {
-    e.preventDefault();
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-    setErrors({});
-    // HAY QUE ARREGLAR ESTO PORQUE SI LE DAS QUE SI BORRA TODOS LOS ERRORES.
-  }
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    setImage(file.secure_url);
+  };
+
+  const uploadImage2 = async (e) => {
+    const files = e.target.files;
+    console.log("file", files);
+    const data = new FormData();
+    console.log("data", data);
+    data.append("file", files[0]);
+    data.append("upload_preset", "tiuimc3c");
+    setLoanding(true);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    setDni([...dni, file.secure_url]);
+  };
+  // _______________________________________________________________________
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === 0 && validateInputs() === true) {
       dispatch(postUser(input));
       setInput({
         name: "",
@@ -130,8 +182,10 @@ export default function Registro() {
         facebook: "",
         instagram: "",
         about: "",
-        terms: "",
+        photo: "",
+        photoDni: [],
       });
+
       swal({
         title: "Good job!",
         text: "User created correctly",
@@ -148,7 +202,6 @@ export default function Registro() {
       });
     }
   }
-
   return (
     <>
       <Link to="/home">
@@ -170,106 +223,110 @@ export default function Registro() {
             handleSubmit(e);
           }}
         >
-          {!isAuthenticated ? (
-            <div>
-              <div>
-                <p className="label">
-                <FormattedMessage
+          <div>
+            <div className="cadaLinea">
+              <p className="label">
+              <FormattedMessage
 							   id="register.name"
 							   defaultMessage="Name*:"
-					    	/></p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="name"
-                  value={input.name}
-                  onChange={(e) => handleChange(e)}
-                />
-                {errors.name && <p className="error">{errors.name}</p>}
-              </div>
-              <div>
-                <p className="label">
-                <FormattedMessage
+					    	/>
+              </p>
+              <input
+                className="inputs"
+                type="text"
+                name="name"
+                value={input.name}
+                placeholder={
+                  "Please type your real name! " + "-> Rec: " + user.given_name
+                }
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.name && <p className="error">{errors.name}</p>}
+            </div>
+            <div className="cadaLinea">
+              <p className="label">
+              <FormattedMessage
 							   id="register.lastname"
 							   defaultMessage="Last Name*:"
-					    	/></p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="lastName"
-                  value={input.lastName}
-                  onChange={(e) => handleChange(e)}
-                />
-                {errors.lastName && <p className="error">{errors.lastName}</p>}
-              </div>
-              <div>
-                <p className="label">
-                <FormattedMessage
+					    	/>
+              </p>
+              <input
+                className="inputs"
+                type="text"
+                placeholder={
+                  "Please type your real last name! " +
+                  "-> Rec: " +
+                  user.family_name
+                }
+                name="lastName"
+                value={input.lastName}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+            <div className="cadaLinea">
+              <p className="label">Photo User*:</p>
+             {/*  <FormattedMessage
 						   	id="register.email"
 						  	defaultMessage="Email*:"
-						    /></p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="email"
-                  value={input.email}
-                  onChange={(e) => handleChange(e)}
-                />
-              </div>
+						    /> */}
+              <input
+                onChange={(e) => uploadImage(e)}
+                className="cargaImagen"
+                type="file"
+                name="image"
+                required="required"
+                accept="image/png, image/jpeg"
+              />
             </div>
-          ) : (
-            user.name.includes("@") && (
-              <div>
-                <div>
-                  <p className="label">
-                  <FormattedMessage
-						    	id="register.name"
-						    	defaultMessage="Name*:"
-					      	/>
-                  </p>
-                  <input
-                    className="inputs"
-                    type="text"
-                    name="name"
-                    value={input.name}
-                    onChange={(e) => handleChange(e)}
-                  />
-                  {errors.name && <p className="error">{errors.name}</p>}
-                </div>
-                <div>
-                  <p className="label">
-                    <FormattedMessage
-						      	id="register.lastname"
-						      	defaultMessage="Last Name*:"
-					        	/></p>
-                  <input
-                    className="inputs"
-                    type="text"
-                    name="lastName"
-                    value={input.lastName}
-                    onChange={(e) => handleChange(e)}
-                  />
-                  {errors.lastName && (
-                    <p className="error">{errors.lastName}</p>
-                  )}
-                </div>
-              </div>
-            )
-          )}
-          <div className="cadaLinea">
-            <p className="label">
-            <FormattedMessage
+            <div Style="display:none">{(input.photo = image)}</div>
+            <p>
+              {loanding ? <img src={image} Style="height:150px" alt="" /> : ""}
+            </p>
+            <div className="cadaLinea">
+              <p className="label">
+              <FormattedMessage
 						      	id="register.id"
 						      	defaultMessage="ID or passport*:"
 					        	/></p>
-            <input
-              className="inputs"
-              type="number"
-              name="dni"
-              value={input.dni}
-              onChange={(e) => handleChange(e)}
-            />
-            {errors.dni && <p className="error">{errors.dni}</p>}
+              <input
+                className="inputs"
+                type="number"
+                name="dni"
+                required="required"
+                value={input.dni}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+            <div className="cadaLinea">
+              <p className="label">DNI Front*:</p>
+              <input
+                onChange={(e) => uploadImage2(e)}
+                className="cargaImagen"
+                type="file"
+                name="image"
+                required="required"
+                accept="image/png, image/jpeg"
+              />
+            </div>
+            <div Style="display:none">{(input.photoDni = dni)}</div>
+            <p>
+              {loanding ? <img src={dni[0]} Style="height:150px" alt="" /> : ""}
+            </p>
+            <div className="cadaLinea">
+              <p className="label">DNI Back*:</p>
+              <input
+                onChange={(e) => uploadImage2(e)}
+                className="cargaImagen"
+                type="file"
+                name="image"
+                required="required"
+                accept="image/png, image/jpeg"
+              />
+            </div>
+            <div Style="display:none">{(input.photoDni = dni)}</div>
+            <p>
+              {loanding ? <img src={dni[1]} Style="height:150px" alt="" /> : ""}
+            </p>
           </div>
           <div className="cadaLinea">
             <p className="label" for="genre">
@@ -429,6 +486,7 @@ export default function Registro() {
               type="text"
               name="about"
               value={input.about}
+              placeholder={placeHolderAbout}
               onChange={(e) => handleChange(e)}
             />
             {errors.about && <p className="error">{errors.about}</p>}
@@ -483,15 +541,28 @@ export default function Registro() {
                 </select>
               </div>
             </div>
-            {errors.terms && <p className="errorterms">{errors.terms}</p>}
           </div>
+          <input
+            type="checkbox"
+            name="checkbox"
+            onChange={(e) => handleCheck(e)}
+          />
           <div>
-            <button className="button" type="submit">
-            <FormattedMessage
-						      	id="register.submit"
-						      	defaultMessage="Register"
-					        	/>
-            </button>
+            {validateInputs() === false ? (
+              <button className="button" type="submit">
+              <FormattedMessage
+                      id="register.submit"
+                      defaultMessage="Register"
+                      />
+              </button>
+            ) : (
+              <button className="button" type="submit">
+                 <FormattedMessage
+                      id="register.submit"
+                      defaultMessage="Register"
+                      />
+              </button>
+            )}
           </div>
         </form>
       </div>

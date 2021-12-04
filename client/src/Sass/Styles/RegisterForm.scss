@@ -24,7 +24,6 @@
   font-weight: bolder;
   display: flex;
   flex-direction: column;
-  // grid-template-columns: 30% 70%;
 
   .cadaLinea {
     display: flex;
@@ -66,16 +65,18 @@
 
   .inputs {
     border: 0;
+    padding-top: 0.5rem;
     border-bottom: 2px solid $buttonColor;
     cursor: pointer;
-    padding-top: 1.5rem;
     width: 20vw;
+    height: 2rem;
     font-weight: bold;
     color: $text;
     font-family: inherit;
     transition: background-color 0.5s ease-in-out;
     margin-top: 1rem;
     border-radius: 5px;
+    display: flex;
 
     &:focus {
       outline: none;
@@ -96,11 +97,14 @@
     cursor: pointer;
     padding-top: 0.5rem;
     width: 60vw;
+    resize: vertical;
+    min-height: 2rem;
     color: $text;
     font-weight: bold;
     font-family: inherit;
     transition: background-color 0.5s ease-in-out;
     border-radius: 5px;
+    margin-top: 1rem;
 
     &:hover {
       background-color: $buttonColor-33;
@@ -108,6 +112,10 @@
 
     &:focus {
       outline: none;
+    }
+
+    &::placeholder {
+      text-align: center;
     }
 
     @media only screen and (min-width: 1200px) {
@@ -161,7 +169,15 @@
 
   .button {
     margin-top: 2.5rem;
-    width: 10rem;
+    margin: 0.5rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 1rem 3rem;
+    background-color: $buttonColor;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
   }
 
   .botoncito {
@@ -183,5 +199,9 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  .cargaImagen {
+    font-weight: bold;
   }
 }

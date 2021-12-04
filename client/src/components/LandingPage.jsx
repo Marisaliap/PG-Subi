@@ -9,13 +9,13 @@ import {FormattedMessage} from 'react-intl';
 
 export default function LandingPage() {
   const dispatch = useDispatch();
-  useEffect(() =>dispatch(allRoutes()), []);
+  useEffect(() =>dispatch(allRoutes()),[]);
 
   return (
     <div className="LandingPage">
       <div className="LandingPageContainer">
         <div className="cosas">
-          <img className="logo" src={img} />
+          <img className="logo" src={img} alt="logo" />
           <NavLink to="/home">
             <button className="button">
             <FormattedMessage

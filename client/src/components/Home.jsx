@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../Sass/Styles/Home.scss";
-import header from "../img/header.png";
+// import header from "../img/header.png";
 import group2 from "../img/group2.png";
 import SearchBarHome from "./SearchBarHome";
 import { useSelector } from "react-redux";
@@ -41,6 +41,7 @@ export default function Home() {
 							defaultMessage="* Average amount received by drivers in 2021."
 						/></p>
           </p>
+          <div className="linksdelhome">
           <div className="searchContainer">
             {
               <NavLink
@@ -61,6 +62,15 @@ export default function Home() {
 						/></button>
               </NavLink>
             }
+            </div>
+            <p className="searchContainer">or</p>
+            <div>
+              {
+                <NavLink to="/route-list">
+                  <p> See all routes available!</p>
+                </NavLink>
+              }
+            </div>
           </div>
         </article>
       </div>

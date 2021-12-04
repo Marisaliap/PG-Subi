@@ -32,7 +32,7 @@ export default function Footer() {
 							defaultMessage="About"
 						/></h4>
         <div className="cosasAbajo">
-          <Link to="/aboutus" className="Link" target="_blank">
+          <Link to="/aboutus" className="Link" target="_blank" rel="noreferrer">
           <FormattedMessage
 							id="footer.aboutUs"
 							defaultMessage="About Us"
@@ -48,13 +48,13 @@ export default function Footer() {
 							defaultMessage="Help"
 						/></h4>
         <div className="help">
-          <Link to="/Faq" className="Link" target="_blank">
+          <Link to="/Faq" className="Link" target="_blank" rel="noreferrer">
           <FormattedMessage
 							id="footer.faq"
 							defaultMessage="FAQ"
 						/>
           </Link>
-          <Link to="/recommendations" className="Link" target="_blank">
+          <Link to="/recommendations" className="Link" target="_blank" rel="noreferrer">
           <FormattedMessage
 							id="footer.rec"
 							defaultMessage="Recommendations"
@@ -71,19 +71,19 @@ export default function Footer() {
 						/>
         </h4>
         <div className="cosasAbajo">
-          <Link to="/terms-and-conditions" className="Link" target="_blank">
+          <Link to="/terms-and-conditions" className="Link" target="_blank" rel="noreferrer">
           <FormattedMessage
 							id="footer.terms"
 							defaultMessage="Terms and Conditions"
 						/>
           </Link>
-          <Link to="/privacy-policy" className="Link" target="_blank">
+          <Link to="/privacy-policy" className="Link" target="_blank" rel="noreferrer">
           <FormattedMessage
 							id="footer.privacy"
 							defaultMessage="Privacy Policy"
 						/>
           </Link>
-          <Link to="/cookies-policy" className="Link" target="_blank">
+          <Link to="/cookies-policy" className="Link" target="_blank" rel="noreferrer">
           <FormattedMessage
 							id="footer.cookies"
 							defaultMessage="Cookies Policy"
@@ -98,7 +98,7 @@ export default function Footer() {
 							id="footer.group10"
 							defaultMessage="Group 10 © |"
 						/>{" "}
-          <a href="https://www.soyhenry.com/" className="Link" target="_blank">
+          <a href="https://www.soyhenry.com/" className="Link" target="_blank" rel="noreferrer">
             {" "}
             Soy Henry ©
           </a>{" "}

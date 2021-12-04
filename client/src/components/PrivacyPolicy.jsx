@@ -1,15 +1,9 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
 import "../Sass/Styles/Recommendations.scss";
 import {FormattedMessage} from 'react-intl';
 
 export default function PoliticaPrivacidad() {
-  const history = useHistory();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    history.push("/home");
-  }
+  
   return (
     <div className="TermsAndConditions">
       <article>

@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     cylinder: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     color: {
