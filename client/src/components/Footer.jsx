@@ -1,31 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../Sass/Styles/Footer.scss";
+import { FormattedMessage } from "react-intl";
+import { langContext } from "./../context/langContext.js";
+import es from "./../img/spain.png";
+import en from "./../img/united-kingdom.png";
 
 export default function Footer() {
+  const idioma = useContext(langContext);
   return (
     <div className="Footer">
-      <br />
-      <br />
-      <div>
-        <h4 className="titulo">Language:</h4>
-        <div className="cosasAbajo">SELECT idiomas</div>
-      </div>
       <hr classname="lineahr" />
       <div>
-        <h4 className="titulo">About</h4>
+        <h4 className="titulo">
+          <FormattedMessage id="footer.about" defaultMessage="About" />
+        </h4>
         <div className="cosasAbajo">
           <Link to="/aboutus" className="Link" target="_blank" rel="noreferrer">
-            About Us
+            <FormattedMessage id="footer.aboutUs" defaultMessage="About Us" />
           </Link>
         </div>
       </div>
       <hr classname="lineahr" />
       <div className="helpcita">
-        <h4 className="titulo">Help</h4>
+        <h4 className="titulo">
+          <FormattedMessage id="footer.help" defaultMessage="Help" />
+        </h4>
         <div className="help">
           <Link to="/Faq" className="Link" target="_blank" rel="noreferrer">
-            FAQs
+            <FormattedMessage id="footer.faq" defaultMessage="FAQ" />
           </Link>
           <Link
             to="/recommendations"
@@ -33,13 +36,21 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            Recommendations
+            <FormattedMessage
+              id="footer.rec"
+              defaultMessage="Recommendations"
+            />
           </Link>
         </div>
       </div>
       <hr classname="lineahr" />
       <div className="legal">
-        <h4 className="titulo">Legal information</h4>
+        <h4 className="titulo">
+          <FormattedMessage
+            id="footer.legal"
+            defaultMessage="Legal Information"
+          />
+        </h4>
         <div className="cosasAbajo">
           <Link
             to="/terms-and-conditions"
@@ -47,7 +58,10 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            Terms and Conditions
+            <FormattedMessage
+              id="footer.terms"
+              defaultMessage="Terms and Conditions"
+            />
           </Link>
           <Link
             to="/privacy-policy"
@@ -55,7 +69,10 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            Privacy Policy
+            <FormattedMessage
+              id="footer.privacy"
+              defaultMessage="Privacy Policy"
+            />
           </Link>
           <Link
             to="/cookies-policy"
@@ -63,14 +80,17 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            Cookies Policy
+            <FormattedMessage
+              id="footer.cookies"
+              defaultMessage="Cookies Policy"
+            />
           </Link>
         </div>
       </div>
       <hr classname="lineahr" />
       <div className="Info">
         <h3>
-          Grupo 10 © |{" "}
+          <FormattedMessage id="footer.group10" defaultMessage="Group 10 © |" />{" "}
           <a
             href="https://www.soyhenry.com/"
             className="Link"
@@ -83,6 +103,27 @@ export default function Footer() {
           | 2021{" "}
         </h3>
       </div>
+      <hr classname="lineahr" />
+      <div className="languages">
+        <h4 className="titulo">
+          <FormattedMessage id="footer.lang" defaultMessage="Language" />
+        </h4>
+        <div className="cosasAbajo">
+          <button
+            className="botonBandera"
+            onClick={() => idioma.establecerLenguaje("es-AR")}
+          >
+            <img className="banderas" src={es} alt="" />
+          </button>
+          <button
+            className="botonBandera"
+            onClick={() => idioma.establecerLenguaje("en-US")}
+          >
+            <img className="banderas" src={en} alt="" />
+          </button>
+        </div>
+      </div>
+      <hr classname="lineahr" />
     </div>
   );
 }

@@ -35,6 +35,7 @@ export default function AllInfoRoute({ match }) {
   const dispatch = useDispatch();
   const route = useSelector((state) => state.routeById);
   const data = useSelector((state) => state.route);
+<<<<<<< HEAD
   route.origin &&
     data.length === 0 &&
     dispatch(
@@ -45,6 +46,18 @@ export default function AllInfoRoute({ match }) {
         route.destiny[1]
       )
     );
+=======
+  console.log(route)
+  console.log(data)
+  const routeCoordinates = {
+    geometry: {
+      coordinates: route.points,
+    type: 'LineString'
+    },
+    type: 'Feature'
+  }
+
+>>>>>>> Lolito
   const Map = ReactMapboxGl({
     accessToken:
       "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
@@ -113,10 +126,10 @@ export default function AllInfoRoute({ match }) {
           <BsFillCalendarCheckFill /> {route.date}
         </p>
         <p>
-          <RiPinDistanceFill /> {data.coordinates && data.coordinates.distance}.
+          <RiPinDistanceFill /> {route.km}.
         </p>
         <p>
-          <BsWatch /> {data.coordinates && data.coordinates.time}
+          <BsWatch /> {route.time}
         </p>
         <p>
           <BsFillPersonFill /> {route.place} Seats available.

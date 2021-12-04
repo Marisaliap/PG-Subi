@@ -24,10 +24,6 @@ export default function UserProfile() {
   const [boolean, setBoolean] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUserDetail(user.email));
-  }, []);
-
   const [input, setInput] = useState({
     street: "",
     city: "",
@@ -39,10 +35,14 @@ export default function UserProfile() {
     age: "",
   });
 
+  useEffect(() => {
+    dispatch(getUserDetail(user.email));
+  }, [input]);
+
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(editUser(userInfo.email, input));
-    setBoolean(false)
+    setBoolean(false);
     setInput({
       street: userInfo.street,
       city: userInfo.city,
@@ -53,7 +53,6 @@ export default function UserProfile() {
       about: userInfo.about,
       age: userInfo.age,
     });
-  
   }
 
   function handleChange(e) {
@@ -117,30 +116,27 @@ export default function UserProfile() {
             <>
               <div className="">
                 <img
+                  className="photousuario"
                   src={userInfo.photo ? userInfo.photo : userInfo.picture}
                   alt="User Image"
-                  style={{
-                    width: "250px",
-                    borderRadius: 99999999,
-                    margin: "1rem",
-                  }}
                 />
                 <div className="datosUsuario">
-                  <p className="label">
-                    Name: {userInfo.name} {userInfo.lastName}{" "}
+                  <h1 className="titulos">
+                    {userInfo.name} {userInfo.lastName}{" "}
                     {genderIcon(userInfo.genre)}
-                  </p>
+                  </h1>
                   <div
                     style={{
                       display: "flex",
-                      justifyContent: "flex-start",
+                      justifyContent: "center",
                       width: "auto",
-                      marginLeft: "15rem",
                     }}
                   >
-                    <p className="labelEsp">Age: {userInfo.age} years old</p>
+                    <h1 className="titulosEdad">{userInfo.age} years old</h1>
                   </div>
-                  <p className="label">About: {userInfo.about}</p>
+                  <div className="cadaLinea">
+                    <p className="label">About: {userInfo.about}</p>
+                  </div>
                   <br />
                   <div className="moreInfo">
                     <div className="cadaLinea">
@@ -167,39 +163,44 @@ export default function UserProfile() {
                   </div>
                 </div>
               </div>
+              <div className="paddingAbajo"></div>
             </>
           ) : (
             <>
               <div className="">
                 <img
+                  className="photousuario"
                   src={userInfo.photo ? userInfo.photo : userInfo.picture}
                   alt="User Image"
-                  style={{
-                    width: "250px",
-                    borderRadius: 99999999,
-                    margin: "1rem",
-                  }}
                 />
                 <div className="datosUsuario">
-                  <p className="label">
-                    Name: {userInfo.name} {userInfo.lastName}{" "}
+                  <h1 className="titulos">
+                    {userInfo.name} {userInfo.lastName}{" "}
                     {genderIcon(userInfo.genre)}
-                  </p>
+                  </h1>
                   <div
                     style={{
                       display: "flex",
-                      justifyContent: "flex-start",
+                      justifyContent: "center",
                       width: "auto",
-                      marginLeft: "15rem",
                     }}
                   >
-                    <p className="labelEsp">Age: {userInfo.age} years old</p>
+                    <h1 className="titulosEdad"> {userInfo.age} years old</h1>
                   </div>
-                  <p className="label">About: {userInfo.about}</p>
+                  <div className="cadaLinea">
+                    <p className="label">About: {userInfo.about}</p>
+                    <textarea
+                      type="text"
+                      name="about"
+                      value={userInfo.about}
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </div>
                   <br />
                   <div className="moreInfo">
                     <div className="cadaLinea">
-                      <BsStarFill className="icon" /> {input.calification} / 5
+                      <BsStarFill className="icon" /> {userInfo.calification} /
+                      5
                     </div>
                     <div className="cadaLinea">
                       <BsFillTelephoneFill className="icon" />
@@ -207,6 +208,7 @@ export default function UserProfile() {
                         onChange={(e) => handleChange(e)}
                         type="text"
                         name="telephone"
+                        className="inputProfile"
                         value={input.telephone}
                       />
                     </div>
@@ -220,6 +222,7 @@ export default function UserProfile() {
                         onChange={(e) => handleChange(e)}
                         type="text"
                         name="facebook"
+                        className="inputProfile"
                         value={input.facebook}
                       />
                     </div>
@@ -229,6 +232,7 @@ export default function UserProfile() {
                         onChange={(e) => handleChange(e)}
                         type="text"
                         name="instagram"
+                        className="inputProfile"
                         value={input.instagram}
                       />
                     </div>
@@ -238,18 +242,21 @@ export default function UserProfile() {
                         onChange={(e) => handleChange(e)}
                         type="text"
                         name="street"
+                        className="inputProfile"
                         value={input.street}
                       />
                       <input
                         onChange={(e) => handleChange(e)}
                         type="text"
                         name="city"
+                        className="inputProfile"
                         value={input.city}
                       />
                       <input
                         onChange={(e) => handleChange(e)}
                         name="province"
                         type="text"
+                        className="inputProfile"
                         value={input.province}
                       />
                     </div>
