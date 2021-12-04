@@ -10,11 +10,12 @@
   }
 
   .passengers {
-    height:3rem;
-    width:70px;
-    border: 1px solid $text;
+    height: 55px;
+    width: 70px;
+    border: 2px solid $text;
     padding: 1rem;
     border-radius: 30px;
+    border-color: $buttonColor;
     font-family: inherit;
     font-weight: bold;
     color: $text;
@@ -22,20 +23,21 @@
       0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
     transition: box-shadow 0.5s ease-in-out;
-}
+  }
 .restrictions {
-  height:3rem;
-  width:15rem;
-  border: 1px solid $text;
-  padding: 1rem;
-  border-radius: 30px;
-  font-family: inherit;
-  font-weight: bold;
-  color: $text;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  height: 55px;
+    width: 200px;
+    border: 2px solid $text;
+    padding: 1rem;
+    border-radius: 30px;
+    border-color: $buttonColor;
+    font-family: inherit;
+    font-weight: bold;
+    color: $text;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
-  transition: box-shadow 0.5s ease-in-out;
+    transition: box-shadow 0.5s ease-in-out;
 }
 
 .selectContainer{
@@ -50,9 +52,13 @@
     padding: 1rem;
 
     input {
-      border: 1px solid $text;
+      height: 20px;
+      width: 300px;
+      border: 2px solid $text;
       padding: 1rem;
-      border-radius: 10px;
+      margin-left: 1rem;
+      border-radius: 9999px;
+      border-color: $buttonColor;
       font-family: inherit;
       font-weight: bold;
       color: $text;
@@ -67,9 +73,9 @@
           0 10px 10px -5px rgba(0, 0, 0, 0.04);
       }
     }
-
     select {
-      border-radius: 5px;
+      margin-left: 1rem;
     }
+
   }
 }

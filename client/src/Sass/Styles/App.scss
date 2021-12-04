@@ -1,9 +1,9 @@
-@import "../Variables/Variables.scss";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@150;200;300;400;500;600;700;800;900&display=swap");
+@import '../Variables/Variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@150;200;300;400;500;600;700;800;900&display=swap');
 
 .App {
   background-color: $background;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.5;
   text-align: center;
   position: sticky;

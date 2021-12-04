@@ -2,22 +2,22 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { postMejorasYReclamos } from "../actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 import "../Sass/Styles/SuggestionBox.scss";
 
 export default function SuggestionBox() {
+  const { user, isAuthenticated } = useAuth0();
   const history = useHistory();
   const dispatch = useDispatch();
-  const { user, isAuthenticated } = useAuth0();
 
-  const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
-    author: isAuthenticated ? user.name : "",
+    author: isAuthenticated ? user.given_name : "",
     authorEmail: isAuthenticated ? user.email : "",
     suggestion: "",
   });
+  const [errors, setErrors] = useState({});
 
   function validate(input) {
     let errors = {};
@@ -81,8 +81,9 @@ export default function SuggestionBox() {
             <input
               className="inputsugg"
               type="text"
-              name="Name"
+              name="author"
               value={input.author}
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="cadaLineasugg">
@@ -90,8 +91,9 @@ export default function SuggestionBox() {
             <input
               className="inputsugg"
               type="text"
-              name="Email"
+              name="authorEmail"
               value={input.authorEmail}
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="cadaLineasugg">
@@ -99,7 +101,7 @@ export default function SuggestionBox() {
             <input
               className="inputsugg"
               type="textarea"
-              name="Suggestion"
+              name="suggestion"
               value={input.suggestion}
               onChange={(e) => handleChange(e)}
             />

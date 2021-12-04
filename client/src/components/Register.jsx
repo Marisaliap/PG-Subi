@@ -91,7 +91,6 @@ export default function Registro() {
     photoDni: [],
     checkbox: false,
   });
-  console.log("input", input);
 
   function handleChange(e) {
     setInput({
@@ -340,34 +339,42 @@ export default function Registro() {
                 defaultMessage="Gender*:"
               />
             </p>
-            <FormattedMessage id="register.genderOptions" defaultMessage="-- Select an option --">
-    {placeholder=> 
-            <select
-              name="genre"
-              id="genre"
-              className="select"
-              onChange={(e) => handleSelect(e)}
+            <FormattedMessage
+              id="register.genderOptions"
+              defaultMessage="-- Select an option --"
             >
-              <option disabled selected value="1">
-                {" "} 
-              </option> 
-              <option className="options" value="Male">
-                <FormattedMessage id="register.male" defaultMessage="Male" />
-              </option>
-              <option className="options" value="Female">
-                <FormattedMessage
-                  id="register.female"
-                  defaultMessage="Female:"
-                />
-              </option>
-              <option className="options" value="Rather not say">
-                <FormattedMessage
-                  id="register.doNotSay"
-                  defaultMessage="Rather not say"
-                />
-              </option>
-            </select>
-            }
+              {(placeholder) => (
+                <select
+                  name="genre"
+                  id="genre"
+                  className="select"
+                  onChange={(e) => handleSelect(e)}
+                >
+                  {/* {["en", "es", "fr", "de"].map(l => (
+          <option key={l}>{l}</option> */}{" "}
+                  <option disabled selected value="1">
+                    {" "}
+                  </option>
+                  <option className="options" value="Male">
+                    <FormattedMessage
+                      id="register.male"
+                      defaultMessage="Male"
+                    />
+                  </option>
+                  <option className="options" value="Female">
+                    <FormattedMessage
+                      id="register.female"
+                      defaultMessage="Female:"
+                    />
+                  </option>
+                  <option className="options" value="Rather not say">
+                    <FormattedMessage
+                      id="register.doNotSay"
+                      defaultMessage="Rather not say"
+                    />
+                  </option>
+                </select>
+              )}
             </FormattedMessage>
             {errors.genre && <p className="error">{errors.genre}</p>}
           </div>
