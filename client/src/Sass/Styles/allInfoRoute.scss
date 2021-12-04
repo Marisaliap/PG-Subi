@@ -1,0 +1,43 @@
+@import '../Variables/Variables.scss';
+
+.Map {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  margin: 1rem 3rem;
+
+  .mapbox {
+    margin-top: 1rem;
+    border: 2px solid $headline;
+    border-radius: 10px;
+  }
+  .userContainer{
+      width: 20vw;
+
+    img {
+      height: 30rem;
+      max-height: 15rem 
+    }
+  }
+  .infoContainer {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1rem;
+    align-items: baseline
+    
+  }
+
+  .Container {
+    display: flex;
+    width: 50vw;
+   
+   
+
+
+    p {
+      margin-top: 0;
+      font-weight: bold;
+    }
+  }
+}

@@ -17,7 +17,10 @@ import {
   BsFillPersonFill,
 } from "react-icons/bs";
 import { RiPinDistanceFill } from "react-icons/ri";
-import "../Sass/Styles/Map.scss";
+import "../Sass/Styles/allInfoRoute.scss";
+import { BsStarFill } from 'react-icons/bs';
+import { Link } from "react-router-dom";
+
 
 export default function AllInfoRoute({ match }) {
   const [datos, setDatos] = useState("")
@@ -56,8 +59,45 @@ export default function AllInfoRoute({ match }) {
     history.push("/route-list");
   }
   return (
+    <div >
     <div className="Map">
       {route.length > 0 && route.originName}
+      <div className="Container">
+     
+      <div className="infoContainer">
+        <p>
+          <BsPinMap /> {route.originName}
+        </p>
+        <p>
+          <BsPinMapFill /> {route.destinyName}
+        </p>
+        <p>
+          <BsFillCalendarCheckFill /> {route.date}
+        </p>
+        <p>
+          <RiPinDistanceFill /> {route.km}.
+        </p>
+        <p>
+          <BsWatch /> {route.time}
+        </p>
+        <p>
+          <BsFillPersonFill /> {route.place} Seats available.
+        </p>
+      </div>
+      {route.users && <Link to={`/user/${route.users[0].email}`} className="userContainer">
+            <div className="userContainer">
+                <img src={ route.users.length > 0 && route.users[0].photo}/>
+                <h5>{route.users.length > 0 && route.users[0].name}</h5>
+              
+                  <div>
+        <BsStarFill className="icon" />
+        {route.users.length > 0 && route.users[0].calification}/5
+           </div>
+
+              </div>
+              </Link> }
+      </div>
+      
 
       <Map
         style="mapbox://styles/mapbox/streets-v11"
@@ -104,38 +144,14 @@ export default function AllInfoRoute({ match }) {
         <ZoomControl />
       </Map>
 
-      <div className="infoContainer">
-        <p>
-          <BsPinMap /> {route.originName}
-        </p>
-        <p>
-          <BsPinMapFill /> {route.destinyName}
-        </p>
-        <p>
-          <BsFillCalendarCheckFill /> {route.date}
-        </p>
-        <p>
-          <RiPinDistanceFill /> {route.km}.
-        </p>
-        <p>
-          <BsWatch /> {route.time}
-        </p>
-        <p>
-          <BsFillPersonFill /> {route.place} Seats available.
-        </p>
+     
+       
       </div>
-
-      <div>
-        <button className='buttonBlue' onClick={handleClick}>Go Back</button>
+      <button className='buttonBlue' onClick={handleClick}>Go Back</button>
         { !datos
           ? <p>Wait a moment....</p>
           : <a href={datos.init_point} alt="">Paga</a>//<Continue trip={route} data={datos}/>
         }
-      </div>
-
-      <button className="buttonBlue" onClick={handleClick}>
-        volver
-      </button>
     </div>
   );
 

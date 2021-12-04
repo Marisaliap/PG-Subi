@@ -37,7 +37,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     dispatch(getUserDetail(user.email));
-  }, [input]);
+  }, [boolean]);
 
   
 

@@ -13,9 +13,9 @@ const RouteDetails = () => {
   const dispatch = useDispatch();
  
   const { getRoutes } = useSelector((state) => state);
-  useEffect(() => dispatch(allRoutes()), [getRoutes.length]);
-  useEffect(() =>  dispatch(getOrder()), []);
-
+  useEffect(() => dispatch(allRoutes()), []);
+  // useEffect(() =>  dispatch(getOrder()), [getRoutes.length]);
+  console.log(getRoutes)
   return (
     <div className="RouteDetails">
       <NavBarFilter />
@@ -31,6 +31,7 @@ const RouteDetails = () => {
                 calification={route.users.length > 0 && route.users[0].calification}
                 key={i}
               />}
+
 
               <CardRoute
                 origin={route.originName}

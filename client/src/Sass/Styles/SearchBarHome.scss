@@ -14,9 +14,10 @@
   .passengers {
     height: 55px;
     width: 70px;
-    border: 1px solid $text;
+    border: 2px solid $text;
     padding: 1rem;
     border-radius: 30px;
+    border-color: $buttonColor;
     font-family: inherit;
     font-weight: bold;
     color: $text;
@@ -38,9 +39,11 @@
     input {
       height: 20px;
       width: 200px;
-      border: 1px solid $text;
+      border: 2px solid $text;
       padding: 1rem;
+      margin-left: 1rem;
       border-radius: 9999px;
+      border-color: $buttonColor;
       font-family: inherit;
       font-weight: bold;
       color: $text;
@@ -55,9 +58,9 @@
           0 10px 10px -5px rgba(0, 0, 0, 0.04);
       }
     }
-
     select {
-      border-radius: 5px;
+      margin-left: 1rem;
     }
+   
   }
 }
