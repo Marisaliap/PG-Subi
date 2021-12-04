@@ -1,3 +1,34 @@
 {
-    "cookies.conditions" : "Condiciones Generales de Uso"
+    "cookies.conditions" : "Condiciones Generales de Uso",
+
+    "menu.name" : "Subí que te Llevo",
+    "menu.post" : "Crea un Viaje",
+    "menu.home": "Inicio",
+    "menu.search" : "Buscar",
+
+    "home.save" : "Ahorra dinero mientras conduces",
+    "home.paragraph1" : "Publica tu próximo viaje de ida y vuelta en Gimme a Ride y obtén, en promedio, 80 dólares * de tus pasajeros. Solo necesitarás un par de minutos para publicar tu ruta. ¿Compartimos un viaje?",
+    "home.paragraph2" : "* Cantidad promedio recibida por los conductores en 2021.",
+
+    "searchBarHome.searchTitle" : "Adónde quieres ir?",
+    "searchBarHome.searchButton" : "Buscar",
+
+    "footer.lang" : "Idioma",
+    "footer.about" : "Sobre",
+    "footer.aboutUs" : "Sobre nosotros",
+    "footer.help" : "Ayuda",
+    "footer.faq" : "Preguntas Frecuentes",
+    "footer.rec" : "Recomendaciones",
+    "footer.legal" : "Información Legal",
+    "footer.terms" : "Condiciones de Uso",
+    "footer.privacy" : "Política de Privacidad",
+    "footer.cookies" : "Política de Cookies",
+    "footer.group10" : "Grupo 10 © |",
+
+    "subFooter.app" : "Gimme a Ride es una aplicación para compartir viajes entre personas. Dondequiera que vayas, encuentra tu viaje ideal.",
+
+    "land.enter" : "Entrar"
+    
+
+
 }

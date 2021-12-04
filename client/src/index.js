@@ -6,14 +6,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import { LangProvider } from "./context/langContext"
+import { LangProvider } from "./context/langContext";
 
 const auth0Domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const auth0Client = process.env.REACT_APP_AUTH0_CLIENT;
 ReactDOM.render(
-  <LangProvider>
+  
   <Provider store={store}>
     <React.StrictMode>
+    <LangProvider>
       <Auth0Provider
         useRefreshTokens={true}
         cacheLocation="localstorage"
@@ -24,9 +25,9 @@ ReactDOM.render(
       >
         <App />
       </Auth0Provider>
+      </LangProvider>
     </React.StrictMode>
-  </Provider>
-  </LangProvider>,
+  </Provider>,
   document.getElementById("root")
 );
 
@@ -34,3 +35,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

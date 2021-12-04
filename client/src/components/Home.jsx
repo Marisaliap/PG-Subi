@@ -5,6 +5,7 @@ import header from "../img/header.png";
 import group2 from "../img/group2.png";
 import SearchBarHome from "./SearchBarHome";
 import { useSelector } from "react-redux";
+import {FormattedMessage} from 'react-intl';
 
 export default function Home() {
   const users = useSelector((state) => state.user);
@@ -22,13 +23,23 @@ export default function Home() {
           <img className="foto" src={group2} alt="Home" />
         </div>
         <article>
-          <h1>Save money while driving</h1>
+          <h1>
+          <FormattedMessage
+							id="home.save"
+							defaultMessage="Save money while driving"
+						/></h1>
           <p>
             {" "}
-            Publish your next round trip on Gimme a Ride and get, on average, 80
-            dollars * of your passengers. You will only need a couple of minutes
-            to publish your route. Do we share a trip?
-            <p>* Average amount received by drivers in 2021.</p>
+            <FormattedMessage
+							id="home.paragraph1"
+							defaultMessage="Publish your next round trip on Gimme a Ride and get, on average, 80
+              dollars * of your passengers. You will only need a couple of minutes
+              to publish your route. Do we share a trip?"
+						/>
+            <p><FormattedMessage
+							id="home.paragraph2"
+							defaultMessage="* Average amount received by drivers in 2021."
+						/></p>
           </p>
           <div className="searchContainer">
             {
@@ -44,7 +55,10 @@ export default function Home() {
                     : ""
                 }
               >
-                <button className="button">Post a Trip</button>
+                <button className="button"><FormattedMessage
+							id="menu.post"
+							defaultMessage="Post a Trip"
+						/></button>
               </NavLink>
             }
           </div>

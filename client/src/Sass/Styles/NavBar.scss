@@ -83,5 +83,23 @@
     .searchContainerItem {
       text-decoration: none;
     }
+  } 
+
+  .banderas button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+    width: 3.5rem;
+    margin-left: 10px;
   }
+  
+  .banderas button img {
+    width: 100%;
+  }
+  
+  
 }

@@ -1,3 +1,34 @@
 {
-    "cookies.conditions" : "Terms and Conditions"
+    "cookies.conditions" : "Terms and Conditions",
+
+    "menu.name" : "Gimme a Ride",
+    "menu.post" : "Post a Trip",
+    "menu.home" : "Home",
+    "menu.search" : "Search",
+
+    "home.save" : "Save money while driving",
+    "home.paragraph1" : "Publish your next round trip on Gimme a Ride and get, on average, 80 dollars * of your passengers. You will only need a couple of minutes to publish your route. Do we share a trip?",
+    "home.paragraph2" : "* Average amount received by drivers in 2021.",
+
+    "searchBarHome.searchTitle" : "Where do you want to go?",
+    "searchBarHome.searchButton" : "Search",
+
+    "footer.lang" : "Language",
+    "footer.about" : "About",
+    "footer.aboutUs" : "About Us",
+
+    "footer.help" : "Help",
+    "footer.faq" : "FAQ",
+    "footer.rec" : "Recommendations",
+    "footer.legal" : "Legal Information",
+    "footer.terms" : "Terms and Conditions",
+    "footer.privacy" : "Privacy Policy",
+    "footer.cookies" : "Cookies Policy",
+    "footer.group10" : "Group 10 © |",
+
+    "subFooter.app" : "Gimme a Ride is an app to share trips between people. Wherever you go, find your ideal trip.",
+
+    "land.enter" : "Enter"
+
+
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../Sass/Styles/SubFooter.scss";
 import { BsTwitter, BsInstagram, BsFacebook } from "react-icons/bs";
+import {FormattedMessage} from 'react-intl';
 
 export default function SubFooter() {
   return (
@@ -9,8 +10,11 @@ export default function SubFooter() {
       <div className="info">
         <br />
         <div className="left">
-          Gimme a Ride is an app to share trips between people. Wherever you
-          go, find your ideal trip.
+        <FormattedMessage
+							id="subFooter.app"
+							defaultMessage="Gimme a Ride is an app to share trips between people. Wherever you
+              go, find your ideal trip."
+						/>
         </div>
         <div className="redesSociales">
           <p>
