@@ -12,12 +12,12 @@ export const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   let umail;
-  isAuthenticated? (umail = user.email) : (umail = "");
- 
+  isAuthenticated ? (umail = user.email) : (umail = "");
+
   useEffect(() => {
     dispatch(getUserDetail(umail));
-  }, [dispatch, umail])
-  
+  }, [dispatch, umail]);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -25,7 +25,7 @@ export const Profile = () => {
   return (
     isAuthenticated && (
       <div className="Profile">
-        <Link to={"/user/" + user.email}>
+        <Link to={"/profile"}>
           <img
             className="fotoPerfil"
             src={userInfo.photo ? userInfo.photo : user.picture}

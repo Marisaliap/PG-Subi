@@ -6,8 +6,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
 import swal from "sweetalert";
 
-
-
 export default function Registro() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -15,9 +13,8 @@ export default function Registro() {
   const [image, setImage] = useState("");
   const [loanding, setLoanding] = useState(false);
   const [dni, setDni] = useState([]);
-  
-  
-  
+  const placeHolderAbout = "Please tell us a little about yourself";
+
   function validate(input) {
     // ------------------------< erros gestions >------------------------
     let errors = {};
@@ -43,20 +40,18 @@ export default function Registro() {
       errors.city = "City is required";
     } else if (!input.province) {
       errors.province = "Province is required";
-      // } else if (!input.photo) {
-        //   errors.photo = "Photo is required";
-      }
-      return errors;
     }
-    // __________________________________________________________________________________
-    
-    function validateGender() {
+    return errors;
+  }
+  // __________________________________________________________________________________
+
+  function validateGender() {
     if (document.getElementById("genre").value == "1") {
       return false;
     }
     return true;
   }
-  
+
   function validateInputs() {
     if (
       !input.name ||
@@ -66,57 +61,56 @@ export default function Registro() {
       !input.telephone ||
       !input.street ||
       !input.city ||
-      !input.province||
+      !input.province ||
       !input.checkbox
-      ) {
-        return false;
-      } else {
-        return true;
-      }
+    ) {
+      return false;
+    } else {
+      return true;
     }
-    
-    const [errors, setErrors] = useState({});
-    
-    const [input, setInput] = useState({
-      name: isAuthenticated ? user.given_name : "",
-      lastName: isAuthenticated ? user.family_name : "",
-      email: isAuthenticated ? user.email : "",
-      photo: "",
-      dni: "",
-      genre: "",
-      age: "",
-      telephone: "",
-      street: "",
-      city: "",
-      province: "",
-      facebook: "",
-      instagram: "",
-      about: "",
-      photoDni: [],
-      checkbox:false,
+  }
+
+  const [errors, setErrors] = useState({});
+
+  const [input, setInput] = useState({
+    name: isAuthenticated ? user.given_name : "",
+    lastName: isAuthenticated ? user.family_name : "",
+    email: isAuthenticated ? user.email : "",
+    photo: "",
+    dni: "",
+    genre: "",
+    age: "",
+    telephone: "",
+    street: "",
+    city: "",
+    province: "",
+    facebook: "",
+    instagram: "",
+    about: "",
+    photoDni: [],
+    checkbox: false,
+  });
+  console.log("input", input);
+
+  function handleChange(e) {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
     });
-    console.log("input", input);
-    
-    function handleChange(e) {
-      setInput({
+    setErrors(
+      validate({
         ...input,
         [e.target.name]: e.target.value,
-      });
-      setErrors(
-        validate({
-          ...input,
-          [e.target.name]: e.target.value,
-        })
-        );
-      }
-      
+      })
+    );
+  }
+
   const handleCheck = (e) => {
     setInput({
       ...input,
       [e.target.name]: e.target.checked,
     });
   };
-
 
   function handleSelect(e) {
     e.preventDefault();
@@ -228,7 +222,10 @@ export default function Registro() {
                 className="inputs"
                 type="text"
                 name="name"
-                value={input.name}
+                value=""
+                placeholder={
+                  "Please type your real name! " + "-> Rec: " + input.name
+                }
                 onChange={(e) => handleChange(e)}
               />
               {errors.name && <p className="error">{errors.name}</p>}
@@ -238,34 +235,31 @@ export default function Registro() {
               <input
                 className="inputs"
                 type="text"
+                placeholder={
+                  "Please type your real last name! " +
+                  "-> Rec: " +
+                  input.lastName
+                }
                 name="lastName"
-                value={input.lastName}
+                value=""
                 onChange={(e) => handleChange(e)}
               />
-              
             </div>
-            
-            <div>
-              <label>Photo User</label>
+            <div className="cadaLinea">
+              <p className="label">Photo User*:</p>
               <input
                 onChange={(e) => uploadImage(e)}
+                className="cargaImagen"
                 type="file"
                 name="image"
                 required="required"
                 accept="image/png, image/jpeg"
               />
-              
             </div>
-
             <div Style="display:none">{(input.photo = image)}</div>
-            <label>
-              {loanding ? (
-                <img src={image} Style="height:150px" alt="user" />
-              ) : (
-                ""
-              )}
-            </label>
-            
+            <p>
+              {loanding ? <img src={image} Style="height:150px" alt="" /> : ""}
+            </p>
             <div className="cadaLinea">
               <p className="label">DNI*:</p>
               <input
@@ -276,51 +270,38 @@ export default function Registro() {
                 value={input.dni}
                 onChange={(e) => handleChange(e)}
               />
-            
             </div>
-          
-            <div>
-              <label>DNI Front</label>
+            <div className="cadaLinea">
+              <p className="label">DNI Front*:</p>
               <input
                 onChange={(e) => uploadImage2(e)}
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
-            
-            </div>
-
-            <div Style="display:none">{(input.photoDni = dni)}</div>
-            <label>
-              {loanding ? (
-                <img src={dni[0]} Style="height:150px" alt="front" />
-              ) : (
-                ""
-              )}
-            </label>
-
-            <div>
-              <label>DNI Back</label>
-              <input
-                onChange={(e) => uploadImage2(e)}
+                className="cargaImagen"
                 type="file"
                 name="image"
                 required="required"
                 accept="image/png, image/jpeg"
               />
             </div>
-
             <div Style="display:none">{(input.photoDni = dni)}</div>
-            <label>
-              {loanding ? (
-                <img src={dni[1]} Style="height:150px" alt="back" />
-              ) : (
-                ""
-              )}
-            </label>
+            <p>
+              {loanding ? <img src={dni[0]} Style="height:150px" alt="" /> : ""}
+            </p>
+            <div className="cadaLinea">
+              <p className="label">DNI Back*:</p>
+              <input
+                onChange={(e) => uploadImage2(e)}
+                className="cargaImagen"
+                type="file"
+                name="image"
+                required="required"
+                accept="image/png, image/jpeg"
+              />
+            </div>
+            <div Style="display:none">{(input.photoDni = dni)}</div>
+            <p>
+              {loanding ? <img src={dni[1]} Style="height:150px" alt="" /> : ""}
+            </p>
           </div>
-
           <div className="cadaLinea">
             <p className="label" for="genre">
               Gender*:
@@ -430,11 +411,11 @@ export default function Registro() {
               type="text"
               name="about"
               value={input.about}
+              placeholder={placeHolderAbout}
               onChange={(e) => handleChange(e)}
             />
             {errors.about && <p className="error">{errors.about}</p>}
           </div>
-
           <div className="terminosycond">
             <div className="terminos">
               By submitting, you agree to our{" "}
@@ -448,7 +429,11 @@ export default function Registro() {
               </a>
             </div>
           </div>
-          <input type="checkbox" name="checkbox" onChange={(e)=> handleCheck(e)}/>
+          <input
+            type="checkbox"
+            name="checkbox"
+            onChange={(e) => handleCheck(e)}
+          />
           <div>
             {validateInputs() === false ? (
               <button className="buttondisabled">Submit</button>

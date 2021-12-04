@@ -8,9 +8,9 @@ export default function CardUser({
   genre,
   age,
   calification,
-  ...props}) { 
+  ...props
+}) {
   return (
-    <>
     <div {...props}>
       <br />
       <br />
@@ -24,6 +24,5 @@ export default function CardUser({
         {calification}
       </h5>
     </div>
-    </>
   );
 }
