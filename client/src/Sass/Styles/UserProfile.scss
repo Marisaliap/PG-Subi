@@ -3,7 +3,7 @@
 .containerProfile {
   outline: none;
   border-radius: 15px;
-  background-color: #78c64433;
+  background-color: #e4f4d9;
   padding: 1rem;
   margin: 0 0;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -25,6 +25,13 @@
   display: flex;
   flex-direction: column;
 
+  .photousuario {
+    width: 250px;
+    height: 250px;
+    border-radius: 99999999px;
+    margin: 1rem;
+  }
+
   .cadaLinea {
     display: flex;
     flex-direction: row;
@@ -32,6 +39,9 @@
     font-size: 1.2em;
     padding-top: 1rem;
     color: $headline;
+    height: auto;
+    min-height: 2rem;
+    margin-left: 20rem;
   }
 
   .botonEdit {
@@ -53,10 +63,9 @@
   }
 
   .icon {
-    width: 10rem;
     display: flex;
-    margin-left: 15rem;
     color: $labelForms;
+    margin-right: 6rem;
   }
 
   .botonEditDisabled {
@@ -76,15 +85,72 @@
     }
   }
 
+  .paddingAbajo {
+    padding-bottom: 4.5rem;
+  }
+
   .label {
-    width: 10rem;
     display: flex;
-    margin-left: 15rem;
     color: $labelForms;
+    height: 2rem;
+    margin-right: 3.75rem;
   }
 
   .labelEsp {
     display: flex;
     color: $labelForms;
+  }
+
+  .inputProfile {
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    width: 15rem;
+    color: $text;
+    height: 2rem;
+    font-family: inherit;
+    font-size: inherit;
+    transition: background-color 0.5s ease-in-out;
+    border-radius: 5px;
+    display: flex;
+    background-color: $background;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background-color: $buttonColor-33;
+    }
+  }
+
+  .titulos {
+  }
+
+  .titulosEdad {
+  }
+
+  textarea {
+    border: 0;
+    border-bottom: 2px solid $buttonColor;
+    cursor: pointer;
+    padding-top: 0.5rem;
+    resize: vertical;
+    min-height: 2rem;
+    color: $text;
+    font-weight: bold;
+    font-family: inherit;
+    transition: background-color 0.5s ease-in-out;
+    border-radius: 5px;
+    margin-top: 1rem;
+    width: 15rem;
+
+    &:hover {
+      background-color: $buttonColor-33;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }

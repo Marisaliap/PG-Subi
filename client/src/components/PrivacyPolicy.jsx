@@ -1,5 +1,6 @@
 import React from "react";
 import "../Sass/Styles/Recommendations.scss";
+import {FormattedMessage} from 'react-intl';
 
 export default function PoliticaPrivacidad() {
   
@@ -8,10 +9,19 @@ export default function PoliticaPrivacidad() {
       <article>
         <div></div>
         <div>
-        <p ><a href="/terms-and-conditions" target="_blank"
-            rel="noreferrer">Terms &amp; Conditions</a> | Privacy Policy | <a href="/cookies-policy" target="_blank"
-            rel="noreferrer">Cookies Policy</a></p>
-<p><strong>Effective date: 17/12/2021</strong></p>
+        <p ><a href="/terms-and-conditions">
+        <FormattedMessage
+							id="privacyPolicy.terms"
+							defaultMessage="Terms &amp; Conditions"
+						/></a> | Privacy Policy | <a href="/cookies-policy">Cookies Policy</a></p>
+<p><strong><FormattedMessage
+							id="privacyPolicy.effdate"
+							defaultMessage="Effective date: "
+						/>
+            <FormattedMessage
+							id="privacyPolicy.date"
+							defaultMessage="17/12/2021"
+						/></strong></p>
 <p ></p><h2>1. General</h2><p></p>
 <p >Give SA (whose registered office is at 54678, Rivadavia avenue, Buenos Aires, Argentina) (“<strong>GimmeARide</strong>”), acting as data controller, is committed to protecting and respecting your privacy. This notice (the “<strong>Privacy Policy</strong>”) is designed to tell you about our practices regarding the collection, use and disclosure of information that you may provide via our platform  accessible from the website www.GimmeARide.com or our mobile applications (the "http://www.GimmeARide.com/"<strong>Platform</strong>).</p>
 <p >This Privacy Policy (together with our <a href="/terms-and-conditions">Terms and Conditions</a>, any other documents referred to in it and our <a href="/cookies-policy">Cookie Policy</a>) sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed by us. Please read the following carefully to understand our views and practices regarding your personal data and how we will treat it.</p>

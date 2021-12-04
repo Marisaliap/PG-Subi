@@ -5,6 +5,7 @@ import { postUser } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
 import swal from "sweetalert";
+import { FormattedMessage } from "react-intl";
 
 export default function Registro() {
   const dispatch = useDispatch();
@@ -103,6 +104,7 @@ export default function Registro() {
         [e.target.name]: e.target.value,
       })
     );
+    console.log(input);
   }
 
   const handleCheck = (e) => {
@@ -201,14 +203,20 @@ export default function Registro() {
       });
     }
   }
-
   return (
     <>
       <Link to="/home">
-        <button className="buttonBlue">Home</button>
+        <button className="buttonBlue">
+          <FormattedMessage id="register.home" defaultMessage="Home" />
+        </button>
       </Link>
       <div className="formContainer">
-        <h1>Create your User</h1>
+        <h1>
+          <FormattedMessage
+            id="register.title"
+            defaultMessage="Create your User"
+          />
+        </h1>
         <form
           className="FormRegistro"
           onSubmit={(e) => {
@@ -217,7 +225,9 @@ export default function Registro() {
         >
           <div>
             <div className="cadaLinea">
-              <p className="label">Name*:</p>
+              <p className="label">
+                <FormattedMessage id="register.name" defaultMessage="Name*:" />
+              </p>
               <input
                 className="inputs"
                 type="text"
@@ -231,7 +241,12 @@ export default function Registro() {
               {errors.name && <p className="error">{errors.name}</p>}
             </div>
             <div className="cadaLinea">
-              <p className="label">Last Name*:</p>
+              <p className="label">
+                <FormattedMessage
+                  id="register.lastname"
+                  defaultMessage="Last Name*:"
+                />
+              </p>
               <input
                 className="inputs"
                 type="text"
@@ -244,6 +259,17 @@ export default function Registro() {
                 value={input.lastName}
                 onChange={(e) => handleChange(e)}
               />
+            </div>
+            <div className="cadaLinea">
+              <p className="label">
+                <FormattedMessage
+                  id="register.email"
+                  defaultMessage="Email*:"
+                />
+              </p>
+              <p className="inputs" type="text" name="email">
+                {input.email}
+              </p>
             </div>
             <div className="cadaLinea">
               <p className="label">Photo User*:</p>
@@ -261,7 +287,12 @@ export default function Registro() {
               {loanding ? <img src={image} Style="height:150px" alt="" /> : ""}
             </p>
             <div className="cadaLinea">
-              <p className="label">DNI*:</p>
+              <p className="label">
+                <FormattedMessage
+                  id="register.id"
+                  defaultMessage="ID or passport*:"
+                />
+              </p>
               <input
                 className="inputs"
                 type="number"
@@ -304,7 +335,10 @@ export default function Registro() {
           </div>
           <div className="cadaLinea">
             <p className="label" for="genre">
-              Gender*:
+              <FormattedMessage
+                id="register.gender"
+                defaultMessage="Gender*:"
+              />
             </p>
             <select
               name="genre"
@@ -314,22 +348,33 @@ export default function Registro() {
             >
               <option disabled selected value="1">
                 {" "}
-                -- Select an option --{" "}
+                <FormattedMessage
+                  id="register.genderOptions"
+                  defaultMessage="-- Select an option --"
+                />{" "}
               </option>
               <option className="options" value="Male">
-                Male
+                <FormattedMessage id="register.male" defaultMessage="Male" />
               </option>
               <option className="options" value="Female">
-                Female
+                <FormattedMessage
+                  id="register.female"
+                  defaultMessage="Female:"
+                />
               </option>
               <option className="options" value="Rather not say">
-                Rather not say
+                <FormattedMessage
+                  id="register.doNotSay"
+                  defaultMessage="Rather not say"
+                />
               </option>
             </select>
             {errors.genre && <p className="error">{errors.genre}</p>}
           </div>
           <div className="cadaLinea">
-            <p className="label">Age*:</p>
+            <p className="label">
+              <FormattedMessage id="register.age" defaultMessage="Age*:" />
+            </p>
             <input
               className="inputs"
               type="number"
@@ -340,7 +385,12 @@ export default function Registro() {
             {errors.age && <p className="error">{errors.age}</p>}
           </div>
           <div className="cadaLinea">
-            <p className="label">Telephone*:</p>
+            <p className="label">
+              <FormattedMessage
+                id="register.phone"
+                defaultMessage="Telephone*:"
+              />
+            </p>
             <input
               className="inputs"
               type="number"
@@ -351,7 +401,12 @@ export default function Registro() {
             {errors.telephone && <p className="error">{errors.telephone}</p>}
           </div>
           <div className="cadaLinea">
-            <p className="label">Street*:</p>
+            <p className="label">
+              <FormattedMessage
+                id="register.street"
+                defaultMessage="Street*:"
+              />
+            </p>
             <input
               className="inputs"
               type="text"
@@ -362,7 +417,9 @@ export default function Registro() {
             {errors.street && <p className="error">{errors.street}</p>}
           </div>
           <div className="cadaLinea">
-            <p className="label">City*:</p>
+            <p className="label">
+              <FormattedMessage id="register.city" defaultMessage="City*:" />
+            </p>
             <input
               className="inputs"
               type="text"
@@ -373,7 +430,12 @@ export default function Registro() {
             {errors.city && <p className="error">{errors.city}</p>}
           </div>
           <div className="cadaLinea">
-            <p className="label">Province*:</p>
+            <p className="label">
+              <FormattedMessage
+                id="register.province"
+                defaultMessage="Province*:"
+              />
+            </p>
             <input
               className="inputs"
               type="text"
@@ -384,7 +446,12 @@ export default function Registro() {
             {errors.province && <p className="error">{errors.province}</p>}
           </div>
           <div className="cadaLinea">
-            <p className="label">Facebook:</p>
+            <p className="label">
+              <FormattedMessage
+                id="register.facebook"
+                defaultMessage="Facebook:"
+              />
+            </p>
             <input
               className="inputs"
               type="text"
@@ -395,7 +462,12 @@ export default function Registro() {
             {errors.facebook && <p className="error">{errors.facebook}</p>}
           </div>
           <div className="cadaLinea">
-            <p className="label">Instagram:</p>
+            <p className="label">
+              <FormattedMessage
+                id="register.instagram"
+                defaultMessage="Instagram:"
+              />
+            </p>
             <input
               className="inputs"
               type="text"
@@ -406,7 +478,9 @@ export default function Registro() {
             {errors.instagram && <p className="error">{errors.instagram}</p>}
           </div>
           <div className="cadaLinea">
-            <p className="label">About:</p>
+            <p className="label">
+              <FormattedMessage id="register.about" defaultMessage="About:" />
+            </p>
             <textarea
               type="text"
               name="about"
@@ -418,14 +492,24 @@ export default function Registro() {
           </div>
           <div className="terminosycond">
             <div className="terminos">
-              By submitting, you agree to our{" "}
+              <FormattedMessage
+                id="register.agree"
+                defaultMessage="By continuing, you agree to our"
+              />{" "}
               <a target="_blank" href="/terms-and-conditions">
                 {" "}
-                Terms of Use
+                <FormattedMessage
+                  id="register.terms"
+                  defaultMessage="Terms of Use"
+                />{" "}
               </a>{" "}
-              and{" "}
+              <FormattedMessage id="register.and" defaultMessage="and" />
               <a target="_blank" href="/privacy-policy">
-                Privacy Policy
+                {" "}
+                <FormattedMessage
+                  id="register.privacy"
+                  defaultMessage="Privacy Policy"
+                />
               </a>
             </div>
           </div>
@@ -436,10 +520,18 @@ export default function Registro() {
           />
           <div>
             {validateInputs() === false ? (
-              <button className="buttondisabled">Submit</button>
+              <button className="button" type="submit">
+                <FormattedMessage
+                  id="register.submit"
+                  defaultMessage="Register"
+                />
+              </button>
             ) : (
               <button className="button" type="submit">
-                Submit
+                <FormattedMessage
+                  id="register.submit"
+                  defaultMessage="Register"
+                />
               </button>
             )}
           </div>

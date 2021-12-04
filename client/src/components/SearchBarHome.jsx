@@ -4,6 +4,7 @@ import { getRouteFromDb, getSuggestions, getSuggestions2 } from "../actions";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/SearchBarHome.scss";
 import "../Sass/Styles/App.scss";
+import {FormattedMessage} from 'react-intl';
 
 
 let inputs = { Origin: "", Destination: "" };
@@ -90,31 +91,41 @@ export default function SearchBarHome() {
 
   return (
     <div className="searchBarPostHome">
-      <h1>Where do you want to go?</h1>
+      <h1><FormattedMessage
+							id="searchBarHome.searchTitle"
+							defaultMessage="Where do you want to go?"
+						/></h1>
       <form className="postRouteForm">
+      <FormattedMessage id="searchBarHome.origin" defaultMessage="Origin">
+    {placeholder=> 
         <input
           type="text"
           list="cities"
           onChange={inputHandleChange}
           name="Origin"
-          placeholder="Origin"
+          placeholder={placeholder}
           className="searchbar"
         />
+      }
+      </FormattedMessage>
 
         <datalist id="cities">
           {cities && cities.map((city) => <option>{city.name}</option>)}
         </datalist>
         {/* <p>{validations && validations.Origin}</p> */}
+        <FormattedMessage id="searchBarHome.destination" defaultMessage="Destination">
+    {placeholder=>  
 
         <input
           type="text"
           list="cities2"
           onChange={inputHandleChange}
           name="Destination"
-          placeholder="Destination"
+          placeholder={placeholder}
           className="searchbar"
         />
-        
+      }
+      </FormattedMessage>
         <datalist id="cities2">
           {cities2 && cities2.map((city) => <option>{city.name}</option>)}
         </datalist>
@@ -166,7 +177,10 @@ export default function SearchBarHome() {
               </button>
             ) : (
               <button className="button" disabled="true">
-                Search
+                <FormattedMessage
+							id="searchBarHome.searchButton"
+							defaultMessage=" Search"
+						/>
               </button>
             )}
           </div>

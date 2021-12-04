@@ -1,9 +1,9 @@
-@import '../Variables/Variables.scss';
+@import "../Variables/Variables.scss";
 
 .Footer {
   font-weight: normal;
   display: grid;
-  grid-template-columns: 2% 11% 2% 11% 2% 16% 2% 30% 2% 20% 2%;
+  grid-template-columns: 2% 8% 2% 20% 2% 34% 2% 18% 2% 8% 2%;
   margin: 0;
   text-align: left;
   background-color: $footer;
@@ -73,5 +73,23 @@
     justify-content: center;
     display: flex;
     margin-top: 0.5rem;
+  }
+
+  .botonBandera {
+    border: none;
+    cursor: pointer;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+  }
+
+  .banderas {
+    width: 2rem;
+    height: 2rem;
+  }
+  .languages {
+    width: 100%;
   }
 }
