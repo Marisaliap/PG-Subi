@@ -1,13 +1,5 @@
 const { User, Post, Car, Route, Op } = require("../db.js");
 const { ClOUD_NAME, APY_KEY_CLOUD, API_CLOUD_SECRET } = process.env
-// const cloudinary = require("cloudinary")
-// const fs = require("fs-extra");
-
-cloudinary.config({
-  cloud_name: ClOUD_NAME,
-  api_key: APY_KEY_CLOUD,
-  api_secret: API_CLOUD_SECRET,
-})
 
 const postUser = async (req, res, next) => {
   try {
@@ -53,7 +45,6 @@ const postUser = async (req, res, next) => {
         // public_id:result.public_id,
       },
     });
-    await fs.unlink(req.file.path);
     res.send(user);
   } catch (error) {
     next(error);
