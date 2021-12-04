@@ -13,7 +13,6 @@ import UserDetails from "./components/UserDetails";
 import { useAuth0 } from "@auth0/auth0-react";
 import Register from "./components/Register";
 import Footer from "./components/Footer";
-import SubFooter from "./components/SubFooter";
 import FormCar from "./components/FormCar";
 import Map from "./components/Map";
 import Users from "./components/Users";
