@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteRoute, getRoute, getRouteById } from "../actions/index.js";
-import Continue from './ContinueMP.jsx';
+//import Continue from './ContinueMP.jsx';
 import axios from 'axios';
 import ReactMapboxGl, {
   Marker,
