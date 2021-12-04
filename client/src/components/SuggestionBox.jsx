@@ -82,7 +82,7 @@ export default function SuggestionBox() {
               className="inputsugg"
               type="text"
               name="Name"
-              value={input.suggestion}
+              value={input.author}
             />
           </div>
           <div className="cadaLineasugg">
@@ -91,7 +91,7 @@ export default function SuggestionBox() {
               className="inputsugg"
               type="text"
               name="Email"
-              value={input.suggestion}
+              value={input.authorEmail}
             />
           </div>
           <div className="cadaLineasugg">
