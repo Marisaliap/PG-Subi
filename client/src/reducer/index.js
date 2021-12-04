@@ -73,7 +73,7 @@ function rootReducer(state = initialState, action) {
       case "EDIT_USER":
         return {
           ...state,
-          user: action.payload,
+     
         };
     // -----------------------------< filters >----------------------------------
 

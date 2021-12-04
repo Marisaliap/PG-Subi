@@ -11,12 +11,10 @@ import { Link } from 'react-router-dom';
 
 const RouteDetails = () => {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(allRoutes()));
+  useEffect(() => dispatch(allRoutes()), []);
   const { getRoutes } = useSelector((state) => state);
 
-  useEffect(() => {
-    dispatch(getOrder());
-  });
+  useEffect(() =>  dispatch(getOrder()), []);
 
   return (
     <div className="RouteDetails">
