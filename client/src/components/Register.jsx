@@ -517,29 +517,6 @@ export default function Registro() {
 						      	defaultMessage="Privacy Policy"
 					        	/>
               </a>
-              <div className="selectterminos">
-                <select
-                  name="terms"
-                  id="terms"
-                  className="terms"
-                  onChange={(e) => handleSelectTerms(e)}
-                >
-                  <option disabled selected value="1">
-                    {" "}
-                    <FormattedMessage
-						      	id="register.termsOptions"
-						      	defaultMessage="-- Select an option --"
-					        	/>
-                    {" "}
-                  </option>
-                  <option className="options" value="Yes">
-                  <FormattedMessage
-						      	id="register.yes"
-						      	defaultMessage="Yes"
-					        	/>
-                  </option>
-                </select>
-              </div>
             </div>
           </div>
           <input
