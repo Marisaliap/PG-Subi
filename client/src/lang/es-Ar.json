@@ -31,7 +31,30 @@
     
     "register.home" : "Inicio",
     "register.title" : "Crea tu Usuario",
-    "register.name" : "Nombre*"
+    "register.name" : "Nombre*",
+    "register.lastname" : "Last Name*:",
+    "register.id" : "DNI o Pasaporte*:",
+    "register.gender" : "Género*:", 
+    "register.genderOptions" : "-- Selecciona una opción --",
+    "register.male" : "Masculino",
+    "register.female" : "Femenino",
+    "register.doNotSay" : "Prefiero no Decir",
+    "register.age" : "Edad*:",
+    "register.phone" : "Teléfono*:",
+    "register.street" : "Calle y Número*:",
+    "register.city" : "Ciudad*:",
+    "register.province" : "Provincia*:",
+    "register.facebook" : "Facebook:",
+    "register.instagram" : "Instagram:",
+    "register.about" : "Sobre:",
+    "register.agree" : "Al continuar, estás de acuerdo con nuestras",
+    "register.terms" : "Condiciones Generales de Uso",
+    "register.and" : "y",
+    "register.privacy" : "Política de Privacidad",
+    "register.termsOptions" : "-- Selecciona una Opción --",
+    "register.yes" : "Sí",
+    "register.submit" : "Registrar"
+
 
 
 }

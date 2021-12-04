@@ -32,7 +32,33 @@
 
     "register.home" : "Home",
     "register.title" : "Create your User",
-    "register.name" : "Name*"
+    "register.name" : "Name*",
+    "register.lastname" : "Last Name*:",
+    "register.email" : "Email*:",
+    "register.id" : "ID or passport*:", 
+    "register.gender" : "Gender*:",
+    "register.genderOptions" : "-- Select an option --",
+    "register.male" : "Male",
+    "register.female" : "Female",
+    "register.doNotSay" : "Rather not say",
+    "register.age" : "Age*:",
+    "register.phone" : "Telephone*:",
+    "register.street" : "Street and Number*:",
+    "register.city" : "City*:",
+    "register.province" : "Province*:",
+    "register.facebook" : "Facebook:",
+    "register.instagram" : "Instagram:",
+    "register.about" : "About:",
+    "register.agree" : "By continuing, you agree to our",
+    "register.terms" : "Terms of Use",
+    "register.and" : "and",
+    "register.privacy" : "Privacy Policy",
+    "register.termsOptions" : "-- Select an option --",
+    "register.yes" : "Yes",
+    "register.submit" : "Register"
+
+
+
 
 
 
