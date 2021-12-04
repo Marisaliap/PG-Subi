@@ -14,6 +14,8 @@
 
     "searchBarHome.searchTitle" : "Where do you want to go?",
     "searchBarHome.searchButton" : "Search",
+    "searchBarHome.destination" : "Destination",
+    "searchBarHome.origin" : "Origin",
 
     "footer.lang" : "Language",
     "footer.about" : "About",

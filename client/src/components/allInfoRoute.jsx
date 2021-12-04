@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteRoute, getRoute, getRouteById } from "../actions/index.js";
-import Continue from './ContinueMP.jsx';
+//import Continue from './ContinueMP.jsx';
 import axios from 'axios';
 import ReactMapboxGl, {
   Marker,
@@ -17,7 +17,10 @@ import {
   BsFillPersonFill,
 } from "react-icons/bs";
 import { RiPinDistanceFill } from "react-icons/ri";
-import "../Sass/Styles/Map.scss";
+import "../Sass/Styles/allInfoRoute.scss";
+import { BsStarFill } from 'react-icons/bs';
+import { Link } from "react-router-dom";
+
 
 export default function AllInfoRoute({ match }) {
   const [datos, setDatos] = useState("")
@@ -27,7 +30,6 @@ export default function AllInfoRoute({ match }) {
       idRoute:route.id,
       title:'Bitcoin',
       price:320,
-      quantity:1,
     })
     .then((info)=> setDatos(info.data))
     .catch(err => console.error(err))
@@ -36,16 +38,17 @@ export default function AllInfoRoute({ match }) {
   const dispatch = useDispatch();
   const route = useSelector((state) => state.routeById);
   const data = useSelector((state) => state.route);
-  console.log(route)
-  console.log(data)
-  const routeCoordinates = {
-    geometry: {
-      coordinates: route.points,
-    type: 'LineString'
-    },
-    type: 'Feature'
-  }
 
+  route.origin &&
+    data.length === 0 &&
+    dispatch(
+      getRoute(
+        route.origin[0],
+        route.origin[1],
+        route.destiny[0],
+        route.destiny[1]
+      )
+    );
   const Map = ReactMapboxGl({
     accessToken:
       "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
@@ -56,8 +59,45 @@ export default function AllInfoRoute({ match }) {
     history.push("/route-list");
   }
   return (
+    <div >
     <div className="Map">
       {route.length > 0 && route.originName}
+      <div className="Container">
+     
+      <div className="infoContainer">
+        <p>
+          <BsPinMap /> {route.originName}
+        </p>
+        <p>
+          <BsPinMapFill /> {route.destinyName}
+        </p>
+        <p>
+          <BsFillCalendarCheckFill /> {route.date}
+        </p>
+        <p>
+          <RiPinDistanceFill /> {route.km}.
+        </p>
+        <p>
+          <BsWatch /> {route.time}
+        </p>
+        <p>
+          <BsFillPersonFill /> {route.place} Seats available.
+        </p>
+      </div>
+      {route.users && <Link to={`/user/${route.users[0].email}`} className="userContainer">
+            <div className="userContainer">
+                <img src={ route.users.length > 0 && route.users[0].photo}/>
+                <h5>{route.users.length > 0 && route.users[0].name}</h5>
+              
+                  <div>
+        <BsStarFill className="icon" />
+        {route.users.length > 0 && route.users[0].calification}/5
+           </div>
+
+              </div>
+              </Link> }
+      </div>
+      
 
       <Map
         style="mapbox://styles/mapbox/streets-v11"
@@ -90,8 +130,7 @@ export default function AllInfoRoute({ match }) {
         )}
 
         <GeoJSONLayer
-          // data={data.coordinates && data.coordinates.data}
-          data={routeCoordinates}
+          data={data.coordinates && data.coordinates.data}
           linePaint={{
             "line-color": "#78c644",
             "line-width": 5,
@@ -104,38 +143,14 @@ export default function AllInfoRoute({ match }) {
         <ZoomControl />
       </Map>
 
-      <div className="infoContainer">
-        <p>
-          <BsPinMap /> {route.originName}
-        </p>
-        <p>
-          <BsPinMapFill /> {route.destinyName}
-        </p>
-        <p>
-          <BsFillCalendarCheckFill /> {route.date}
-        </p>
-        <p>
-          <RiPinDistanceFill /> {route.km}.
-        </p>
-        <p>
-          <BsWatch /> {route.time}
-        </p>
-        <p>
-          <BsFillPersonFill /> {route.place} Seats available.
-        </p>
+     
+       
       </div>
-
-      <div>
-        <button className='buttonBlue' onClick={handleClick}>Go Back</button>
+      <button className='buttonBlue' onClick={handleClick}>Go Back</button>
         { !datos
           ? <p>Wait a moment....</p>
           : <a href={datos.init_point} alt="">Paga</a>//<Continue trip={route} data={datos}/>
         }
-      </div>
-
-      <button className="buttonBlue" onClick={handleClick}>
-        volver
-      </button>
     </div>
   );
 

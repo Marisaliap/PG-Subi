@@ -37,14 +37,12 @@ export default function UserProfile() {
 
   useEffect(() => {
     dispatch(getUserDetail(user.email));
-  }, [input]);
-
-  
+  }, [boolean]);
 
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(editUser(userInfo.email, input));
-    setBoolean(false)
+    setBoolean(false);
     setInput({
       street: userInfo.street,
       city: userInfo.city,
@@ -55,7 +53,6 @@ export default function UserProfile() {
       about: userInfo.about,
       age: userInfo.age,
     });
-  
   }
 
   function handleChange(e) {
@@ -119,13 +116,9 @@ export default function UserProfile() {
             <>
               <div className="">
                 <img
+                  className="photousuario"
                   src={userInfo.photo ? userInfo.photo : userInfo.picture}
                   alt="User Image"
-                  style={{
-                    width: "250px",
-                    borderRadius: 99999999,
-                    margin: "1rem",
-                  }}
                 />
                 <div className="datosUsuario">
                   <h1 className="titulos">
@@ -176,13 +169,9 @@ export default function UserProfile() {
             <>
               <div className="">
                 <img
+                  className="photousuario"
                   src={userInfo.photo ? userInfo.photo : userInfo.picture}
                   alt="User Image"
-                  style={{
-                    width: "250px",
-                    borderRadius: 99999999,
-                    margin: "1rem",
-                  }}
                 />
                 <div className="datosUsuario">
                   <h1 className="titulos">

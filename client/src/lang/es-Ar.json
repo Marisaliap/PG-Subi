@@ -12,8 +12,10 @@
     "home.paragraph1" : "Publica tu próximo viaje de ida y vuelta en Gimme a Ride y obtén, en promedio, 80 dólares * de tus pasajeros. Solo necesitarás un par de minutos para publicar tu ruta. ¿Compartimos un viaje?",
     "home.paragraph2" : "* Cantidad promedio recibida por los conductores en 2021.",
 
-    "searchBarHome.searchTitle" : "Adónde quieres ir?",
+    "searchBarHome.searchTitle" : "¿Adónde quieres ir?",
     "searchBarHome.searchButton" : "Buscar",
+    "searchBarHome.destination" : "Destino",
+    "searchBarHome.origin" : "Origen",
 
     "footer.lang" : "Idioma",
     "footer.about" : "Sobre",
