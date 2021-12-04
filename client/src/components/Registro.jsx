@@ -15,9 +15,8 @@ export default function Registro() {
   const [image, setImage] = useState("");
   const [loanding, setLoanding] = useState(false);
   const [dni, setDni] = useState([]);
-  console.log("image", image);
-
-
+  
+  
   
   function validate(input) {
     // ------------------------< erros gestions >------------------------
@@ -45,19 +44,19 @@ export default function Registro() {
     } else if (!input.province) {
       errors.province = "Province is required";
       // } else if (!input.photo) {
-      //   errors.photo = "Photo is required";
+        //   errors.photo = "Photo is required";
+      }
+      return errors;
     }
-    return errors;
-  }
-  // __________________________________________________________________________________
-
-  function validateGender() {
+    // __________________________________________________________________________________
+    
+    function validateGender() {
     if (document.getElementById("genre").value == "1") {
       return false;
     }
     return true;
   }
-
+  
   function validateInputs() {
     if (
       !input.name ||
@@ -67,46 +66,57 @@ export default function Registro() {
       !input.telephone ||
       !input.street ||
       !input.city ||
-      !input.province
-    ) {
-      return false;
-    } else {
-      return true;
+      !input.province||
+      !input.checkbox
+      ) {
+        return false;
+      } else {
+        return true;
+      }
     }
-  }
-
-  const [errors, setErrors] = useState({});
-
-  const [input, setInput] = useState({
-    name: isAuthenticated ? user.given_name : "",
-    lastName: isAuthenticated ? user.family_name : "",
-    email: isAuthenticated ? user.email : "",
-    photo: "",
-    dni: "",
-    genre: "",
-    age: "",
-    telephone: "",
-    street: "",
-    city: "",
-    province: "",
-    facebook: "",
-    instagram: "",
-    about: "",
-    photoDni: [],
-  });
-
-  function handleChange(e) {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
+    
+    const [errors, setErrors] = useState({});
+    
+    const [input, setInput] = useState({
+      name: isAuthenticated ? user.given_name : "",
+      lastName: isAuthenticated ? user.family_name : "",
+      email: isAuthenticated ? user.email : "",
+      photo: "",
+      dni: "",
+      genre: "",
+      age: "",
+      telephone: "",
+      street: "",
+      city: "",
+      province: "",
+      facebook: "",
+      instagram: "",
+      about: "",
+      photoDni: [],
+      checkbox:false,
     });
-    setErrors(
-      validate({
+    console.log("input", input);
+    
+    function handleChange(e) {
+      setInput({
         ...input,
         [e.target.name]: e.target.value,
-      })
-    );
-  }
+      });
+      setErrors(
+        validate({
+          ...input,
+          [e.target.name]: e.target.value,
+        })
+        );
+      }
+      
+  const handleCheck = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.checked,
+    });
+  };
+
 
   function handleSelect(e) {
     e.preventDefault();
@@ -438,6 +448,7 @@ export default function Registro() {
               </a>
             </div>
           </div>
+          <input type="checkbox" name="checkbox" onChange={(e)=> handleCheck(e)}/>
           <div>
             {validateInputs() === false ? (
               <button className="buttondisabled">Submit</button>
