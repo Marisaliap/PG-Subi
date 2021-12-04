@@ -12,8 +12,8 @@ export const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   useEffect(() => {
-    dispatch(getUserDetail(user.email));
-  }, [dispatch, user.email]);
+    dispatch(getUserDetail(isAuthenticated?user.email:user));
+  }, [dispatch, isAuthenticated?user.email:user]);
 
   if (isLoading) {
     return <div>Loading...</div>;
