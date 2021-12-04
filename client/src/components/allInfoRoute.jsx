@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteRoute, getRoute, getRouteById } from "../actions/index.js";
-import Continue from './ContinueMP.jsx';
+//import Continue from './ContinueMP.jsx';
 import axios from 'axios';
 import ReactMapboxGl, {
   Marker,
@@ -30,7 +30,6 @@ export default function AllInfoRoute({ match }) {
       idRoute:route.id,
       title:'Bitcoin',
       price:320,
-      quantity:1,
     })
     .then((info)=> setDatos(info.data))
     .catch(err => console.error(err))
@@ -39,16 +38,17 @@ export default function AllInfoRoute({ match }) {
   const dispatch = useDispatch();
   const route = useSelector((state) => state.routeById);
   const data = useSelector((state) => state.route);
-  console.log(route)
-  console.log(data)
-  const routeCoordinates = {
-    geometry: {
-      coordinates: route.points,
-    type: 'LineString'
-    },
-    type: 'Feature'
-  }
 
+  route.origin &&
+    data.length === 0 &&
+    dispatch(
+      getRoute(
+        route.origin[0],
+        route.origin[1],
+        route.destiny[0],
+        route.destiny[1]
+      )
+    );
   const Map = ReactMapboxGl({
     accessToken:
       "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
@@ -130,8 +130,7 @@ export default function AllInfoRoute({ match }) {
         )}
 
         <GeoJSONLayer
-          // data={data.coordinates && data.coordinates.data}
-          data={routeCoordinates}
+          data={data.coordinates && data.coordinates.data}
           linePaint={{
             "line-color": "#78c644",
             "line-width": 5,
