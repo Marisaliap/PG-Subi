@@ -5,7 +5,7 @@ import "../Sass/Styles/Home.scss";
 import group2 from "../img/group2.png";
 import SearchBarHome from "./SearchBarHome";
 import { useSelector } from "react-redux";
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 export default function Home() {
   const users = useSelector((state) => state.user);
@@ -24,28 +24,29 @@ export default function Home() {
         </div>
         <article>
           <h1>
-          <FormattedMessage
-							id="home.save"
-							defaultMessage="Save money while driving"
-						/></h1>
+            <FormattedMessage
+              id="home.save"
+              defaultMessage="Save money while driving"
+            />
+          </h1>
           <p>
             {" "}
             <FormattedMessage
-							id="home.paragraph1"
-							defaultMessage="Publish your next round trip on Gimme a Ride and get, on average, 80
+              id="home.paragraph1"
+              defaultMessage="Publish your next round trip on Gimme a Ride and get, on average, 80
               dollars * of your passengers. You will only need a couple of minutes
               to publish your route. Do we share a trip?"
-						/>
-            <p><FormattedMessage
-							id="home.paragraph2"
-							defaultMessage="* Average amount received by drivers in 2021."
-						/></p>
+            />
+            <p>
+              <FormattedMessage
+                id="home.paragraph2"
+                defaultMessage="* Average amount received by drivers in 2021."
+              />
+            </p>
           </p>
           <div className="linksdelhome">
-          <div className="searchContainer">
             {
               <NavLink
-                className="searchContainerItem"
                 to={
                   !users.dni
                     ? "/register"
@@ -56,14 +57,10 @@ export default function Home() {
                     : ""
                 }
               >
-                <button className="button"><FormattedMessage
-							id="menu.post"
-							defaultMessage="Post a Trip"
-						/></button>
+                <FormattedMessage id="menu.post" defaultMessage="Post a Trip" />
               </NavLink>
             }
-            </div>
-            <p className="searchContainer">or</p>
+            <p>or</p>
             <div>
               {
                 <NavLink to="/route-list">
