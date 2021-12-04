@@ -26,9 +26,9 @@ const RouteDetails = () => {
             <div className="RouteCard">
               
              { route.users && <CardUser
-                photo={route.users[0].photo}
-                name={route.users[0].name}
-                calification={route.users[0].calification}
+                photo={ route.users.length > 0 && route.users[0].photo}
+                name={route.users.length > 0 && route.users[0].name}
+                calification={route.users.length > 0 && route.users[0].calification}
                 key={i}
               />}
 
