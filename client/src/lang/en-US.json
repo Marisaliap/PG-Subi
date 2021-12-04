@@ -4,6 +4,7 @@
     "navBar.name" : "Gimme a Ride",
     "navBar.post" : "Post a Trip",
     "navBar.home" : "Home",
+    "navBar.routelist" : "Route List",
 
     "searchUserByName.search" : "Search",
     "searchUserByName.placeholder" : " 🔍  Find user...",

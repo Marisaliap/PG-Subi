@@ -30,63 +30,63 @@ export default function PoliticaPrivacidad() {
 <h3>2.1. Information you give us</h3>
 <p>You may give us information, including information that can identify you ("http://www.GimmeARide.com/"<strong>Personal Data</strong>"http://www.GimmeARide.com/"), when you use our Platform, by filling in forms on the Platforms (such as the sign-up form), when you enter into any of our competitions, promotions or surveys, when you correspond with us by phone, e-mail or otherwise, and when you report a problem related to the use of our Platform.</p>
 <p >The information you give us may include:</p>
-<ul >
-<li><strong>2.1.1.</strong> Mandatory information required to register for the service we provide on our Platform or to access other services provided by us, including your name, email address, date of birth and, when you create an account, a password. All these fields are mandatory. GimmeARide will not be able to provide you with the services offered on our Platforms if the required information is not provided or, if applicable, you will not be able to register for a user account on our Platform;</li>
-</ul>
-<ul >
-<li><strong>2.1.2.</strong> A photograph;</li>
-</ul>
-<ul >
-<li><strong>2.1.3.</strong> A postal address;</li>
-<li><strong>2.1.4. </strong>Your phone number;</li>
-</ul>
-<ul >
-<li><strong>2.1.5.</strong> Details on your cars;</li>
-</ul>
-<ul >
-<li><strong>2.1.6.</strong> Your mini-biography, your gender when you agree to provide that information;</li>
-</ul>
-<ul >
-<li><strong>2.1.7.</strong> A record of any correspondence between you and GimmeARide; we may record and/or listen to the phone calls between you and GimmeARide (for example, with the agents of our Community Relations service). We give you the possibility to object to that processing at the beginning of the call;</li>
-</ul>
-<ul >
-<li><strong>2.1.8.</strong> A record of any bookings you have made or trip related advertisements you have placed with or through our Platform;</li>
-</ul>
-<ul >
-<li><strong>2.1.9.</strong> Details of accounting or financial transactions including transactions carried out through our Platform or otherwise. This may include information such as your payment card or bank account details, details of trips or legs you have booked or offered through our Platform;</li>
-</ul>
-<ul >
-<li><strong>2.1.10.</strong> Details of your visits to our Platform and the resources that you access;</li>
-</ul>
-<ul >
-<li><strong>2.1.11.</strong> Your replies to any surveys or questionnaires, such as your reviews on the trips made through our Platform. Such information may be used for analytic &amp; user understanding purposes;</li>
-</ul>
-<ul >
-<li><strong>2.1.12.</strong> Information we may require from you when you report a problem with our Platform or our service, such as the subject of your request for support;</li>
-</ul>
-<ul >
-<li><strong>2.1.13.</strong> Location information when you have given consent to the collection and processing of these data so that we can respond to your search for trips near to you; and</li>
-</ul>
-<ul >
-<li><strong>2.1.14.</strong> A copy of your Passport, Driving Licence, ID Card and such other similar documents that you have agreed to provide to us.</li>
-</ul>
+
+<strong>2.1.1.</strong> Mandatory information required to register for the service we provide on our Platform or to access other services provided by us, including your name, email address, date of birth and, when you create an account, a password. All these fields are mandatory. GimmeARide will not be able to provide you with the services offered on our Platforms if the required information is not provided or, if applicable, you will not be able to register for a user account on our Platform;
+
+
+<strong>2.1.2.</strong> A photograph;
+
+
+<strong>2.1.3.</strong> A postal address;
+<strong>2.1.4. </strong>Your phone number;
+
+
+<strong>2.1.5.</strong> Details on your cars;
+
+
+<strong>2.1.6.</strong> Your mini-biography, your gender when you agree to provide that information;
+
+
+<strong>2.1.7.</strong> A record of any correspondence between you and GimmeARide; we may record and/or listen to the phone calls between you and GimmeARide (for example, with the agents of our Community Relations service). We give you the possibility to object to that processing at the beginning of the call;
+
+
+<strong>2.1.8.</strong> A record of any bookings you have made or trip related advertisements you have placed with or through our Platform;
+
+
+<strong>2.1.9.</strong> Details of accounting or financial transactions including transactions carried out through our Platform or otherwise. This may include information such as your payment card or bank account details, details of trips or legs you have booked or offered through our Platform;
+
+
+<strong>2.1.10.</strong> Details of your visits to our Platform and the resources that you access;
+
+
+<strong>2.1.11.</strong> Your replies to any surveys or questionnaires, such as your reviews on the trips made through our Platform. Such information may be used for analytic &amp; user understanding purposes;
+
+
+<strong>2.1.12.</strong> Information we may require from you when you report a problem with our Platform or our service, such as the subject of your request for support;
+
+
+<strong>2.1.13.</strong> Location information when you have given consent to the collection and processing of these data so that we can respond to your search for trips near to you; and
+
+
+<strong>2.1.14.</strong> A copy of your Passport, Driving Licence, ID Card and such other similar documents that you have agreed to provide to us.
+
 <h3>2.2. Information we collect automatically</h3>
 <p ><strong>2.2.1.</strong> If you sign up via social media authentication methods, GimmeARide will access certain Personal Data (e.g. first name, surname, picture and email) in your social media account pursuant to the applicable terms and conditions of these social media platforms. We may also collect some of your Personal Data when you interact with third party social media features, such as "http://www.GimmeARide.com/"Like&#8221; functions.</p>
 <p ><strong>2.2.2.</strong> With regard to each of your visits to our Platform we may collect, in accordance with applicable laws and where required with your consent, information relating to the devices you use and the networks you are connected to when using our services. This may include the following information: your IP address, log-in information, browser type and version, browser plug-in types and versions, operating system and platform, information about your visit including the URL clickstream to the different pages of our Platform, content you viewed or searched for, search terms used, download errors, length of visits to certain pages, the advertising identifier of your device, page interaction and any phone number used to contact us. We collect this information through the use of various technologies including cookies (for further information please refer to our <a href="/cookies-policy">Cookie Policy</a>).</p>
 <p ><strong>2.2.3. </strong>We also collect aggregated information regarding your activity on our Platform (such as the amount of rides offered, your message response rate, etc.). Such information may be published on your public profile, should you have one.</p>
 <h3>2.3. Data retention</h3>
 <p ><strong>2.3.1. </strong>Except regarding the categories of Personal Data mentioned in clauses 2.3.2 and 2.3.3 below, your Personal Data will be archived after the following retention periods:</p>
-<ul >
-<li>5 years after your last use of our Platform, if you did not close your account;</li>
-<li>30 days after the closing of your account, except if you received a negative rating or report, in which case your data is stored for 2 years following the closing of your account.</li>
-</ul>
+
+<p>5 years after your last use of our Platform, if you did not close your account;
+30 days after the closing of your account, except if you received a negative rating or report, in which case your data is stored for 2 years following the closing of your account.
+</p>
 <p><strong>2.3.2.</strong>The following categories of Personal Data may be stored for different durations:</p>
-<ul >
-<li>Financial data (e.g. payments, reimbursements, etc.) is stored for the duration required by applicable tax and accounting laws (for example, the accounting documents are stored for up to 10 years);</li>
-<li>All user-generated content (e.g. comments, feedback and ratings) is anonymised according to the durations mentioned in section 2.3.1 but remains available on our Platform;</li>
-<li>Log data are stored for up to 12 months from the date of their collection;</li>
-<li>The phone calls with our Community Relations service are stored for up to 1 month and the analysis documents (such as time and duration of the call) are stored up to 1 year.</li>
-</ul>
+
+<p>Financial data (e.g. payments, reimbursements, etc.) is stored for the duration required by applicable tax and accounting laws (for example, the accounting documents are stored for up to 10 years);
+All user-generated content (e.g. comments, feedback and ratings) is anonymised according to the durations mentioned in section 2.3.1 but remains available on our Platform;
+Log data are stored for up to 12 months from the date of their collection;
+The phone calls with our Community Relations service are stored for up to 1 month and the analysis documents (such as time and duration of the call) are stored up to 1 year.
+</p>
 <p ><strong>2.3.3. </strong>In the event that your account is suspended or blocked, we will keep your data for a period of 2 or 10 years depending on the gravity of the breach in order to prevent you from circumventing the rules applying to our Platforms.</p>
 <p ><strong>2.3.4. </strong>We may archive some of your Personal Data for a period that will not exceed five (5) years in order to comply with our legal obligations and to manage potential disputes.</p>
 <p ></p><h2> 3. How do we use the information we collect from you?</h2><p></p>
@@ -219,46 +219,51 @@ export default function PoliticaPrivacidad() {
 <p ><strong>4.1. </strong>When you use our services, some information about you is shared with the members of our communities or with bus transport operators distributed on our Platform, either on your public profile or during the booking process (e.g. we give your telephone number to the members with whom you will share a ride).</p>
 <p ><strong>4.2. </strong>We may receive and send information about you, including your Personal Data, with other GimmeARide entities and affiliates, for the purposes outlined in this Privacy Policy.</p>
 <p ><strong>4.3.</strong> We are also working closely with third parties which may be the recipients of your Personal Data such as:</p>
-<ul >
-<li>our business partners who are social media platforms and which may provide you with connecting services, such as the connection of the information of your GimmeARide profile, from their social media platforms to our Platform;</li>
-</ul>
-<ul >
-<li>our business partners who may advertise their services on our Platforms and to which you may decide to sign up for. Namely, these services may be insurance services, banking services, rental services, etc.;</li>
-</ul>
-<ul >
-<li>our business partners who may advertise our services on their websites;</li>
-</ul>
-<ul >
-<li>our sub-contractors including in technical, payment, identity verification and delivery services, or analytics providers.</li>
+ <ul>
+ <li>
+our business partners who are social media platforms and which may provide you with connecting services, such as the connection of the information of your GimmeARide profile, from their social media platforms to our Platform;
+</li>
+<li>
+
+our business partners who may advertise their services on our Platforms and to which you may decide to sign up for. Namely, these services may be insurance services, banking services, rental services, etc.;
+</li>
+ <li>
+
+our business partners who may advertise our services on their websites;
+</li>
+ <li>
+
+our sub-contractors including in technical, payment, identity verification and delivery services, or analytics providers.
+</li>
 </ul>
 <p><strong>4.4. </strong>We only share  your Personal Data with any of these third parties mentioned in section 4.3 in the following cases:</p>
-<ul>
-<li><strong>4.4.1.</strong> Where we resort a third party service provider, for the performance of any contract we enter into with you in order to facilitate or extend our services (e.g. in the framework of the payments made on our Platform);</li>
-</ul>
-<ul >
-<li><strong>4.4.2.</strong> As part of the booking process and in order to provide the requested services, information such as your name, photography, mobile phone number and/or email address, may be displayed on the Platform and/or passed on to another member;</li>
-</ul>
-<ul >
-<li><strong>4.4.3.</strong> As part of our rating system, the reviews you write will be published on the Platform. The reviews including your abbreviated name and photography are visible to all visitors of the Platform;</li>
-</ul>
-<ul >
-<li><strong>4.4.4. </strong>We use analytics and search engine providers to assist us in the improvement and optimization of our Platforms;</li>
-</ul>
-<ul >
-<li><strong>4.4.5. </strong>It is explicitly requested by you (e.g. with when using social media authentication methods, subscribe to a service provided by one of our partners, request to participate to an offer or a good deal of one of our partners);</li>
-</ul>
-<ul >
-<li><strong>4.4.6. </strong>We may distribute parts of our Platforms (including the trips you have posted) for display on our business partners’ websites through API or widgets. In these cases, some information from your public profile may be displayed on these websites;</li>
-</ul>
-<ul >
-<li><strong>4.4.7. </strong>If required to do so by law or in a good faith we believe that it is reasonably necessary to (i) respond to claims asserted against GimmeARide, (ii) to comply with legal proceedings, (iii) to enforce any agreement with our users such as our Terms and Conditions and our Privacy Policy, (iv) in the event of an emergency involving the danger of public health, death or physical injury to a person (v) in the framework of investigation or (vi) to protect the rights, property or personal safety of GimmeARide, its members or others ;</li>
-</ul>
-<ul >
-<li><strong>4.4.8. </strong>In the event that we sell or buy any business or assets, in which case we may disclose your Personal Data to the prospective seller or buyer of such business or assets; and</li>
-</ul>
-<ul >
-<li><strong>4.4.9. </strong>If GimmeARide or all or part of its assets are acquired by a third party, in which case Personal Data held by it about its members will be one of the transferred assets.</li>
-</ul>
+
+<strong>4.4.1.</strong> Where we resort a third party service provider, for the performance of any contract we enter into with you in order to facilitate or extend our services (e.g. in the framework of the payments made on our Platform);
+
+
+<strong>4.4.2.</strong> As part of the booking process and in order to provide the requested services, information such as your name, photography, mobile phone number and/or email address, may be displayed on the Platform and/or passed on to another member;
+
+
+<strong>4.4.3.</strong> As part of our rating system, the reviews you write will be published on the Platform. The reviews including your abbreviated name and photography are visible to all visitors of the Platform;
+
+
+<strong>4.4.4. </strong>We use analytics and search engine providers to assist us in the improvement and optimization of our Platforms;
+
+
+<strong>4.4.5. </strong>It is explicitly requested by you (e.g. with when using social media authentication methods, subscribe to a service provided by one of our partners, request to participate to an offer or a good deal of one of our partners);
+
+
+<strong>4.4.6. </strong>We may distribute parts of our Platforms (including the trips you have posted) for display on our business partners’ websites through API or widgets. In these cases, some information from your public profile may be displayed on these websites;
+
+
+<strong>4.4.7. </strong>If required to do so by law or in a good faith we believe that it is reasonably necessary to (i) respond to claims asserted against GimmeARide, (ii) to comply with legal proceedings, (iii) to enforce any agreement with our users such as our Terms and Conditions and our Privacy Policy, (iv) in the event of an emergency involving the danger of public health, death or physical injury to a person (v) in the framework of investigation or (vi) to protect the rights, property or personal safety of GimmeARide, its members or others ;
+
+
+<strong>4.4.8. </strong>In the event that we sell or buy any business or assets, in which case we may disclose your Personal Data to the prospective seller or buyer of such business or assets; and
+
+
+<strong>4.4.9. </strong>If GimmeARide or all or part of its assets are acquired by a third party, in which case Personal Data held by it about its members will be one of the transferred assets.
+
 <p ><strong>4.5.</strong> In accordance with applicable laws and where required with your consent, we may combine information about you, including your Personal Data and cookie information, we send to and receive from our business partners. We may use this information and the combined information for the purposes set out above.</p>
 <p ><strong>4.6. </strong>We draw your attention on the fact that if you decide to share your information, including Personal Data, with us through our business partners&#8217; connecting services, any of our business partners’ privacy policies and/or notices may also be applicable to you, in addition to this Privacy Policy. We do not control the collection and/or the processing of your information eventually made by our business partners on their own platforms.</p>
 <h2>5. How do we use and moderate your messages?</h2>
@@ -267,12 +272,12 @@ export default function PoliticaPrivacidad() {
 <p >In accordance with applicable laws and where required with your consent, we may use the information you give us on our Platform for electronic direct marketing purposes (e.g. (i) receiving our newsletters, (ii) receiving invitations to our events or other communications that we think may interest you or (ii) serving you with targeted advertising on social media platforms or third parties websites) based on your profile and interests.</p>
 <p ><u>For electronic marketing communications</u>: You can withdraw your consent at any time by (i) unticking the relevant box in your member account, (ii) clicking on the unsubscribe link we provide in each communication sent to your attention or (iii) contacting us using the contact details provided in section 13 below.</p>
 <p ><u>For targeted ads and content</u>:</p>
-<ul >
-<li>on social media (e.g. Facebook): you can object at any time by configuring your settings regarding advertisement directly via your social media account or by contacting us pursuant article 13 below;</li>
-</ul>
-<ul >
-<li>on third party websites: please refer to our <a href="/cookies-policy">Cookie Policy</a> to see how to object.</li>
-</ul>
+
+on social media (e.g. Facebook): you can object at any time by configuring your settings regarding advertisement directly via your social media account or by contacting us pursuant article 13 below;
+
+
+on third party websites: please refer to our <a href="/cookies-policy">Cookie Policy</a> to see how to object.
+
 <h2>7. Is your Information being transferred, how and where?</h2>
 <p >In principle, we store the Personal Data that we hold about you in the European Union (“<strong>EU</strong>"http://www.GimmeARide.com/"). However, since for example some of our service providers are based in countries outside of the European Union (“third countries”), we also transfer some of your data to third countries. This may include third countries where the European Commission has not taken the decision that such third country ensures an adequate level of protection. In that case, we ensure that the transfer is performed in accordance with the applicable legislation and that appropriate safeguards have been put in place (especially standard contractual clauses as issued by the European Commission) in order to guarantee a sufficient level of protection of individuals’ private life and fundamental rights.</p>
 <p>By sending a request to the Group Data Protection Officer (dataprotection@GimmeARide.com), we can provide you with the details regarding such appropriate safeguards (for example, the standard contractual clauses issued by the European Commission).</p>

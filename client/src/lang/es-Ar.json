@@ -4,6 +4,7 @@
     "navBar.name" : "Subí que te Llevo",
     "navBar.post" : "Crea un Viaje",
     "navBar.home": "Inicio",
+    "navBar.routelist" : "Lista de Viajes",
 
     "searchUserByName.search" : "Buscar",
     "searchUserByName.placeholder" : " 🔍  Encuentra un usuario...",

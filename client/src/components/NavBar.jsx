@@ -9,8 +9,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link, NavLink } from "react-router-dom";
 import { getUserDetail } from "../actions";
 import "../Sass/Styles/NavBar.scss";
-import es from "./../img/spain.png";
-import en from "./../img/united-kingdom.png";
 import { FormattedMessage } from "react-intl";
 import { langContext } from "./../context/langContext.js";
 
@@ -47,7 +45,11 @@ function Nav() {
           </div>
           <div className="searchContainer">
             <NavLink to="/route-list" className="searchContainerItem">
-              <button className="button">Route List</button>
+              <button className="button">
+              <FormattedMessage
+                  id="navBar.routelist"
+                  defaultMessage="Route List"
+                /></button>
             </NavLink>
           </div>
           <div className="searchContainer">
@@ -84,14 +86,6 @@ function Nav() {
               <Auth />
             </div>
           </div>
-          {/* <div className="banderas">
-            <button onClick={() => idioma.establecerLenguaje("es-AR")}>
-              <img src={es} alt=""></img>
-            </button>
-            <button onClick={() => idioma.establecerLenguaje("en-US")}>
-              <img src={en} alt=""></img>
-            </button>
-          </div> */}
         </nav>
       </div>
     </>
