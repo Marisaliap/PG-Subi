@@ -50,16 +50,18 @@ p {
   padding-top: 1rem;
   color: $headline;
 }
+
 .button {
-  margin: 0.5rem;
-  border: none;
-  font-family: inherit;
-  border-radius: 9999px;
-  font-weight: bolder;
-  padding: 1rem 3rem;
-  background-color: $buttonColor;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
   color: $background;
-  transition: background-color 0.5s ease-in-out;
+  background-color: $buttonColor;
+  margin: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  border: 0;
+  border-radius: 1.5rem;
+  transition: background-color 500ms ease-in-out;
 
   &:hover {
     background-color: $buttonColorHovered;
@@ -68,15 +70,16 @@ p {
 }
 
 .buttonBlue {
-  margin: 0.5rem;
-  border: none;
-  font-family: inherit;
-  border-radius: 9999px;
-  font-weight: bolder;
-  padding: 1rem 3rem;
-  background-color: $buttonBlue;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
   color: $background;
-  transition: background-color 0.5s ease-in-out;
+  background-color: $buttonBlue;
+  margin: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  border: 0;
+  border-radius: 1.5rem;
+  transition: background-color 500ms ease-in-out;
 
   &:hover {
     background-color: $buttonBlueHover;

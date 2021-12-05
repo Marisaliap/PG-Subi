@@ -1,15 +1,6 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 
-.Profile {
-  display: flex;
-  flex-direction: row;
-
-  .fotoPerfil {
-    border-radius: 50%;
-    width: 3em;
-    height: 3rem;
-    //margin-top: 0.5rem;
-    margin: 0;
-    border: 1px solid $buttonColor;
-  }
+.profilePicture {
+  border-radius: 9999px;
+  width: 3rem;
 }
