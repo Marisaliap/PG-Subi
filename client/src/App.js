@@ -26,9 +26,12 @@ import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
+import Chat from "./components/Chat";
+
+
+
 export default function App() {
   const { isAuthenticated } = useAuth0();
-
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
@@ -60,6 +63,7 @@ export default function App() {
               <div>
                 {
                   <Switch>
+                    <Route path="/chat" component={Chat} />
                     <Route exact path="/route" component={CreateRoute} />
                     <Route path="/route/finish" component={Map} />
                     <Route path="/register" component={Register} />

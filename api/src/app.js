@@ -2,22 +2,33 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
-// const multer = require('multer');
-// const path = require('path');
-// const exphbs = require('express-handlebars');
-
-
+const serve = express();
+const http = require('http');
+const server= http.createServer(serve);
 require("./db.js");
+const socketio= require('socket.io');
+const io = socketio(server);
 
-const server = express();
+io.on("connection",socket=>{
+  let nombre
+    socket.on("conectado",(nomb)=>{
+      nombre=nomb
+        socket.broadcast.emit("messages",{nombre:nombre,message:`${nombre} se ha conectado`})
+    });
+    socket.on("message",(nombre,message)=>{
+        io.emit("messages",{nombre,message});
+    });
+    socket.on("disconnect",()=>{
+        io.emit("messages",{server:"server",message:`${nombre} se ha desconectado`});
+    });
+});
 
-server.name = "API";
-
-server.use(express.urlencoded({ extended: true, limit: "50mb" }));
-server.use(express.json({ limit: "50mb" }));
-server.use(cookieParser());
-server.use(morgan("dev"));
-server.use((req, res, next) => {
+serve.name = "API";
+serve.use(express.urlencoded({ extended: true, limit: "50mb" }));
+serve.use(express.json({ limit: "50mb" }));
+serve.use(cookieParser());
+serve.use(morgan("dev"));
+serve.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
@@ -28,10 +39,10 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use("/", routes);
+serve.use("/", routes);
 
 // Error catching endware.
-server.use((err, req, res, next) => {
+serve.use((err, req, res, next) => {
   // eslint-disable-line no-unused-vars
   const status = err.status || 500;
   const message = err.message || err;
@@ -39,13 +50,6 @@ server.use((err, req, res, next) => {
   res.status(status).send(message);
 });
 
-// middleware
-// const strorage = multer.diskStorage({
-//   destination: path.join(__dirname, 'public/uploads'),
-//   filename: (req, file, cb) => {
-//     cb(null, new Date().getTime() + path.extname(file.originalname));
-//   }
 
-// })
-// server.use(multer({ strorage }).single('image'));
+
 module.exports = server;

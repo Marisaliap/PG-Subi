@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../Sass/Styles/Home.scss';
 // import header from "../img/header.png";
@@ -6,16 +6,46 @@ import group2 from '../img/group2.png';
 import SearchBarHome from './SearchBarHome';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
+import Socket from "./Socket";
+import Chat from "./Chat";
+
+
+
+
 
 export default function Home() {
   const users = useSelector((state) => state.user);
+  const [nombre, setNombre] = useState("");
+  const [registe, setRegister] = useState(false);
+  Socket.emit("conectado", "hi you are connected");
+
+
+  const register = (e) => {
+    e.preventDefault();
+    if (nombre !== "") { setRegister(true) }
+  }
+
   return (
     <div className="w-screen">
+
       {/* <div>
         <img className="fotoHeader" src={header} alt="header" />
       </div> */}
       <div>
         <SearchBarHome />
+        <div> {
+          !registe &&
+          <form onSubmit={register}>
+            <label>intro</label>
+            <input value={nombre} onChange={e => setNombre(e.target.value)} />
+            <button >NavLinkregister</button>
+          </form>
+        }
+          {
+            registe &&
+            <Chat name={nombre} />
+          }
+        </div>
       </div>
       <div className="p-5 md:p-20">
         <img
@@ -47,17 +77,17 @@ export default function Home() {
             </p>
           </p>
 
-    
+
           {
             <NavLink
               to={
                 !users.dni
                   ? '/register'
                   : users.name && users.cars.length === 0
-                  ? '/car'
-                  : users.name && users.cars[0].patent
-                  ? '/route'
-                  : ''
+                    ? '/car'
+                    : users.name && users.cars[0].patent
+                      ? '/route'
+                      : ''
               }
             >
               <button className="font-semibold bg-green-500 m-2 py-2 px-6 md:py-4 md:px-12 border-0 rounded-3xl text-white transition duration-500 ease-in-out hover:bg-green-700">
@@ -70,14 +100,15 @@ export default function Home() {
             {
               <NavLink to="/route-list">
                 <p><FormattedMessage
-              id="home.routes"
-              defaultMessage="See all routes available!"
-            /></p>
+                  id="home.routes"
+                  defaultMessage="See all routes available!"
+                /></p>
               </NavLink>
             }
           </div>
         </article>
       </div>
+
     </div>
   );
 }

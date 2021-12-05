@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import  {useSelector} from 'react-redux';
 import CardUser  from "./CardUser";
 import {getUserByName} from '../actions/index'
 export default function Users() {
