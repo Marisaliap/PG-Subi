@@ -176,6 +176,17 @@ export default function PoliticaPrivacidad() {
 							id="privacyPolicy.item15"
 						/>
           </p><br/>
+          <h3><FormattedMessage
+							id="privacyPolicy.p9"
+							defaultMessage="2.2. Information we collect automatically"
+						/></h3>
+            <br/>
+            <p>
+            <strong>2.2.1 </strong> 
+            <FormattedMessage
+							id="privacyPolicy.p10"
+						/>
+          </p><br/>
               <hr />
         </div>
       </article>
