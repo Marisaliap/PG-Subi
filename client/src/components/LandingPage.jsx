@@ -12,15 +12,13 @@ export default function LandingPage() {
 
   return (
     <div className="LandingPage">
-      <div className="LandingPageContainer">
-        <div className="cosas">
-          <img className="logo" src={img} />
-          <NavLink to="/home">
-            <button className="button">
-              <FormattedMessage id="landing.enter" defaultMessage="Enter" />
-            </button>
-          </NavLink>
-        </div>
+      <div className="cosas">
+        <img className="logo" src={img} alt="Logo" />
+        <NavLink to="/home">
+          <button className="button">
+            <FormattedMessage id="landing.enter" defaultMessage="Enter" />
+          </button>
+        </NavLink>
       </div>
     </div>
   );

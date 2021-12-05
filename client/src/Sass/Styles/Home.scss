@@ -1,52 +1,50 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 
-.Home {
-  .Article {
-    display: grid;
-    grid-template-columns: 10% 40% 40% 10%;
-    text-align: center;
-    align-items: center;
-    text-align: left;
-    margin-bottom: 3rem;
+.Homepage {
+  height: 100%;
+  padding: 1.25rem;
 
-    p {
+  @media only screen and (min-width: 768px) {
+    padding: 5rem;
+  }
+
+  .homepageImage {
+    width: 100%;
+    margin-bottom: 1.25rem;
+    border-radius: 0.75rem;
+
+    @media only screen and (min-width: 1024px) {
+      float: left;
+      width: 40%;
+    }
+  }
+
+  article {
+    @media only screen and (min-width: 1024px) {
+      float: right;
+      width: 50%;
       text-align: left;
+      padding-top: 2rem;
     }
 
-    .foto {
-      width: 35vw;
-      height: 30vh;
-      -webkit-box-shadow: 5px 5px 10px 5px #838282;
-      box-shadow: 5px 5px 10px 5px #838282;
+    h1 {
+      margin-left: 1.25rem;
+      font-weight: 600;
+      font-size: 1.5rem;
+      line-height: 2rem;
     }
-  }
 
-  .Link {
-    text-decoration: none;
-  }
+    .description {
+      margin-left: 1.25rem;
+      font-weight: 600;
+    }
 
-  .Links {
-    text-align: center;
-    display: grid;
-    grid-template-columns: 20% 30% 30% 20%;
-    padding-bottom: 1rem;
-  }
+    .detail {
+      font-weight: 300;
+    }
 
-  .fotoHeader {
-    width: 80vw;
-    height: 40vh;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    margin-left: 10vw;
-  }
-
-  .linksdelhome {
-    display: flex;
-    flex-direction: row;
-    width: 16vw;
-    justify-content: space-evenly;
-    align-items: center;
+    .button {
+      margin-left: 1.25rem;
+    }
   }
 }
