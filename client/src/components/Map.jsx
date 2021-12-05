@@ -96,7 +96,7 @@ export default function Map() {
         // }
       >
         {city && city.length === 1 && (
-          <Marker coordinates={city[0].coordinates} style={{ color: 'red' }}>
+          <Marker coordinates={city[0].coordinates} anchor='bottom' style={{ color: 'red' }}>
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
               style={{ height: '30px' }}
@@ -105,7 +105,7 @@ export default function Map() {
           </Marker>
         )}
         {city2 && city2.length === 1 && (
-          <Marker coordinates={city2[0].coordinates}>
+          <Marker coordinates={city2[0].coordinates} anchor='bottom'>
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
               style={{ height: '30px' }}
