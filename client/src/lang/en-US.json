@@ -70,6 +70,9 @@
     "register.termsOptions" : "-- Select an option --",
     "register.yes" : "Yes",
     "register.submit" : "Register",
+    "register.gender.1" : "Male",
+    "register.gender.2" : "Female",
+    "register.gender.3" : "Rather not Say",
 
     "privacyPolicy.terms" : "Terms and Conditions",
     "privacyPolicy.effdate" : "Effective date: ",
@@ -105,9 +108,26 @@
     "privacyPolicy.item15" : "A copy of your insurance subscriptions, withdrawal exercises (if any), declarations made and filed form to subscribe or manage your insurance contract.",
     "privacyPolicy.p9" : "2.2. Information we collect automatically",
     "privacyPolicy.p10" : "If you sign up via social media authentication methods, GimmeARide will access certain Personal Data (e.g. first name, surname, picture and email) in your social media account pursuant to the applicable terms and conditions of these social media platforms. We may also collect some of your Personal Data when you interact with third party social media features, such as I Like functions.",
+    "privacyPolicy.p11" : "With regard to each of your visits to our Platform we may collect, in accordance with applicable laws and where required with your consent, information relating to the devices you use and the networks you are connected to when using our services. This may include the following information: your IP address, log-in information, browser type and version, browser plug-in types and versions, operating system and platform, information about your visit including the URL clickstream to the different pages of our Platform, content you viewed or searched for, search terms used, download errors, length of visits to certain pages, the advertising identifier of your device, page interaction and any phone number used to contact us. We collect this information through the use of various technologies including cookies (for further information please refer to our ",
+    "privacyPolicy.p12" : "Cookie Policy",
+    "privacyPolicy.p13" : "We also collect aggregated information regarding your activity on our Platform (such as the amount of rides offered, your message response rate, etc.). Such information may be published on your public profile, should you have one.",
+    "privacyPolicy.p14" : "Finally, we may collect information about you from our insurance partners or intermediaries in connection with your request for eligibility for insurance programs or your subscription to proposed insurance contracts when we act as insurance representatives.",
+    "privacyPolicy.p15" : "Data retention",    
+    "privacyPolicy.p16" : "Except regarding the categories of Personal Data mentioned in clauses 2.3.2 and 2.3.3 below, your Personal Data will be archived after the following retention periods:",
+    "privacyPolicy.p17" : "5 years after your last use of our Platform, if you did not close your account; 30 days after the closing of your account, except if you received a negative rating or report, in which case your data is stored for 2 years following the closing of your account.",
+    "privacyPolicy.p18" : "The following categories of Personal Data may be stored for different durations:",
+    "privacyPolicy.p19" : "Financial data (e.g. payments, reimbursements, etc.) is stored for the duration required by applicable tax and accounting laws (for example, the accounting documents are stored for up to 10 years); All user-generated content (e.g. comments, feedback and ratings) is anonymised according to the durations mentioned in section 2.3.1 but remains available on our Platform; Log data are stored for up to 12 months from the date of their collection; The phone calls with our Community Relations service are stored for up to 1 month and the analysis documents (such as time and duration of the call) are stored up to 1 year.",
+    "privacyPolicy.p20" : "In the event that your account is suspended or blocked, we will keep your data for a period of 2 or 10 years depending on the gravity of the breach in order to prevent you from circumventing the rules applying to our Platforms.",
+    "privacyPolicy.p21" : "We may archive some of your Personal Data for a period that will not exceed five (5) years in order to comply with our legal obligations and to manage potential disputes.",
+    "privacyPolicy.p22" : "",
+    "privacyPolicy.p23" : "",
+    "privacyPolicy.p24" : "",
+    "privacyPolicy.p25" : "",
+    "privacyPolicy.p26" : "",
 
 
 
+    "privacyPolicy.p70" : "If you have any questions about this Privacy Policy or if you have any requests relating to your Personal Data, you can contact us via email to our Data Protection Officer under <a>dataprotection@GiveMeaRide.com</a>",
 
 
 
