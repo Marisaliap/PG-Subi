@@ -271,7 +271,10 @@ export default function Registro() {
               </p>
             </div>
             <div className="cadaLinea">
-              <p className="label">Photo User*:</p>
+              <p className="label"><FormattedMessage
+                  id="register.photoUser"
+                  defaultMessage="Photo User*:"
+                /></p>
               <input
                 onChange={(e) => uploadImage(e)}
                 className="cargaImagen"
@@ -302,7 +305,10 @@ export default function Registro() {
               />
             </div>
             <div className="cadaLinea">
-              <p className="label">DNI Front*:</p>
+              <p className="label"><FormattedMessage
+                  id="register.idFront"
+                  defaultMessage="ID or passport Front*:"
+                /></p>
               <input
                 onChange={(e) => uploadImage2(e)}
                 className="cargaImagen"
@@ -317,7 +323,10 @@ export default function Registro() {
               {loanding ? <img src={dni[0]} Style="height:150px" alt="" /> : ""}
             </p>
             <div className="cadaLinea">
-              <p className="label">DNI Back*:</p>
+              <p className="label"><FormattedMessage
+                  id="register.idBack"
+                  defaultMessage="ID or passport Back*:"
+                /></p>
               <input
                 onChange={(e) => uploadImage2(e)}
                 className="cargaImagen"
