@@ -50,11 +50,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
+
   },
   "devDependencies": {
     "autoprefixer": "^9.8.8"
-=======
->>>>>>> JotaPe
+
   }
 }
