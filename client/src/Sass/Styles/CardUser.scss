@@ -1,0 +1,16 @@
+.CardUser {
+  display:flex;
+  align-items:flex-start;
+  flex-direction: column;
+
+
+  img{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 1rem;
+
+  }
+  h5{
+    margin:0.2rem;
+  }
+}
