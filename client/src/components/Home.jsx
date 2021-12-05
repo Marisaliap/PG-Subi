@@ -10,28 +10,28 @@ import { FormattedMessage } from 'react-intl';
 export default function Home() {
   const users = useSelector((state) => state.user);
   return (
-    <div className="w-screen">
+    <div className="Home">
       {/* <div>
         <img className="fotoHeader" src={header} alt="header" />
       </div> */}
       <div>
         <SearchBarHome />
       </div>
-      <div className="p-5 md:p-20">
+      <div className="Article">
         <img
-          className="w-full mb-5 rounded-xl shadow-xl lg:float-left lg:w-6/12 "
+          className="foto"
           src={group2}
           alt="Home"
         />
-        <article className="lg:float-right lg:w-6/12 lg:text-left lg:p-8">
-          <h1 className="m-5 font-semibold text-2xl">
+        <article>
+          <h1>
             <FormattedMessage
               id="home.save"
               defaultMessage="Save money while driving"
             />
           </h1>
 
-          <p className="m-5 font-semibold">
+          <p>
             {' '}
             <FormattedMessage
               id="home.paragraph1"
@@ -60,9 +60,9 @@ export default function Home() {
                   : ''
               }
             >
-              <button className="font-semibold bg-green-500 m-2 py-2 px-6 md:py-4 md:px-12 border-0 rounded-3xl text-white transition duration-500 ease-in-out hover:bg-green-700">
+            
                 <FormattedMessage id="menu.post" defaultMessage="Post a Trip" />
-              </button>
+              
             </NavLink>
           }
           <p className="searchContainer"><FormattedMessage id="home.post" defaultMessage="Post a Trip" /></p>
