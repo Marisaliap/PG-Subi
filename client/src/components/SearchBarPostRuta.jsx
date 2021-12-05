@@ -7,8 +7,9 @@ import {
   RoutePostInfo,
 } from "../actions";
 import { NavLink } from "react-router-dom";
-import "../Sass/Styles/SearchBarPostRuta.scss";
 import "../Sass/Styles/App.scss";
+
+import "../Sass/Styles/SearchBarPostRuta.scss";
 
 let inputs = { Origin: "", Destination: "" };
 let info = { pasajeros: 1, date: "", hours: "", restrictions: [] };
@@ -160,7 +161,7 @@ export default function SearchBar() {
           />
           <p>{validations && validations.hours}</p>
         </div>
-      <div style={{display:'flex'}}>
+      <div className='restrictionsbox'>
             <div className='selectContainer'>
               <select name="pasajeros" onChange={handleChange} className = 'restrictions' id="pasajeros">
               <option disabled selected value="1">
@@ -174,8 +175,8 @@ export default function SearchBar() {
                 <option value="5">5</option>
                 <option value="6">6</option>
               </select>
-            </div>
-            <div className= 'selectContainer'>
+            
+           
               <select
                 name="restrictions"
                 onChange={handleRestrictions}
@@ -193,13 +194,16 @@ export default function SearchBar() {
               <option value="kidsAllowed">Kids Allowed</option>
               <option value="onlyWomen">Only Women</option>
               </select>
-              {restrictions.includes("petsAllowed") && <h5>Pets Allowed <button value="petsAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-              {restrictions.includes("smokersAllowed") && <h5 >Smoking Allowed <button value="smokersAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-              {restrictions.includes("foodAllowed") && <h5 >Food Allowed <button value="foodAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-          {    restrictions.includes("twoMaxInTheBack") && <h5>Max. 2 in the back <button value="twoMaxInTheBack" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-            {  restrictions.includes("kidsAllowed") && <h5 >Kids Allowed <button value="kidsAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-              {restrictions.includes("onlyWomen") && <h5 >Only Women <button value="onlyWomen" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-            </div>
+              </div>
+            <div style={{marginTop:'1rem'}}>
+              {restrictions.includes("petsAllowed") && <button className='buttonx' value="petsAllowed" onClick={(e) => deleteRestrictions(e)}>Pets Allowed X</button>}
+              {restrictions.includes("smokersAllowed") && <button className='buttonx'  value="smokersAllowed" onClick={(e) => deleteRestrictions(e)}>Smoking Allowed X</button>}
+              {restrictions.includes("foodAllowed") && <button className='buttonx'  value="foodAllowed" onClick={(e) => deleteRestrictions(e)}>Food Allowed X</button>}
+            {  restrictions.includes("twoMaxInTheBack") && <button className='buttonx'  value="twoMaxInTheBack" onClick={(e) => deleteRestrictions(e)}>Max. 2 in the back X</button>}
+            {  restrictions.includes("kidsAllowed") && <button className='buttonx'  value="kidsAllowed" onClick={(e) => deleteRestrictions(e)}>Kids Allowed X</button>}
+              {restrictions.includes("onlyWomen") && <button className='buttonx'  value="onlyWomen" onClick={(e) => deleteRestrictions(e)}>Only Women X</button>}
+              </div>
+            
         </div>
         
         <pre>

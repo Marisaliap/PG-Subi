@@ -1,10 +1,31 @@
 @import '../Variables/Variables.scss';
 
+.buttonx {
+  color:  $text;
+  border-radius: 9999px;
+  border-color: #EF4565;
+  background-color: white;
+  margin-left: 1rem;
+  font-family: inherit;
+      font-weight: bold;
+}
+.restrictionsbox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  span  {
+    margin-left: 1rem;
+    font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  }
+}
+
 .searchBarPostRuta {
   display: grid;
   place-items: center;
   height: 100vh;
-
+  
+ 
   .searchbar {
     width: 30vw;
   }
@@ -42,12 +63,13 @@
 
 .selectContainer{
   display: flex;
+ 
 }
   pre{
     display: flex;
     justify-content: space-evenly;
   }
-
+ 
   .postRouteForm {
     padding: 1rem;
 
@@ -67,11 +89,17 @@
 
       transition: box-shadow 0.5s ease-in-out;
 
+      
       &:hover {
         cursor: pointer;
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
           0 10px 10px -5px rgba(0, 0, 0, 0.04);
       }
+     
+    }
+    p{
+      color: #EF4565;
+      font-weight: bold;
     }
     select {
       margin-left: 1rem;
