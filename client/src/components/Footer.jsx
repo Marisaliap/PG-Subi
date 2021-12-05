@@ -12,7 +12,8 @@ export default function Footer() {
   return (
     <div className="los2footers">
       <div className="Footer">
-        <hr classname="lineahr" />
+        {/* <hr classname="lineahr" /> */}
+        <div></div>
         <div>
           <h4 className="titulo">
             <FormattedMessage id="footer.about" defaultMessage="About" />
@@ -110,7 +111,7 @@ export default function Footer() {
               {" "}
               Soy Henry ©
             </a>{" "}
-            | 2021{" "}
+             2021{" "}
           </h3>
         </div>
         <hr classname="lineahr" />

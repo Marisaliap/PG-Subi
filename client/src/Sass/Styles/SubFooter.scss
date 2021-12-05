@@ -2,8 +2,8 @@
 
 .SubFooter {
   width: 100vw;
-  background-color: $subfooter;
-
+  background-color: $buttonColor;
+  padding-bottom: 10vh;
   .buttonSuggestion {
     margin-top: 0.75rem;
     border: none;
@@ -11,13 +11,13 @@
     border-radius: 9999px;
     font-weight: bolder;
     padding: 0.5rem 2rem;
-    background-color: $links;
+    background-color: $buttonColorHovered;
     color: $background;
     transition: background-color 0.5s ease-in-out;
 
     &:hover {
       cursor: pointer;
-      background-color: $buttonBlue;
+      background-color: $buttonColorHovered;
     }
   }
 
@@ -25,24 +25,27 @@
     display: grid;
     grid-template-columns: 5% 55% 15% 20% 5%;
     justify-items: start;
-    color: $labelForms;
+    color: $background;
   }
 
   .left {
     display: flex;
     align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
   }
 
   .redesSociales {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 100%;
+    width: 50%;
     align-items: center;
 
     a {
       text-decoration: none;
-      color: $links;
+      color: $background;
+
     }
   }
 }
