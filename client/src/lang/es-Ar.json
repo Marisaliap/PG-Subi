@@ -63,10 +63,42 @@
     "register.yes" : "Sí",
     "register.submit" : "Registrar",
 
-    "privacyPolicy.terms" : "Términos &amp; Condiciones",
-    "privacyPolicy.effdate" : "Effective date: ",
-    "privacyPolicy.date" : "17/12/2021"
+    "privacyPolicy.terms" : "Términos y Condiciones",
+    "privacyPolicy.effdate" : "Versión vigente a partir del ",
+    "privacyPolicy.date" : "17/12/2021",
+    "privacyPolicy.privacy" : " | Política de Privacidad | ",
+    "privacyPolicy.cookies" : "Política de Cookies",
+    "privacyPolicy.title1" : "1. General",
+    "privacyPolicy.p1" : "Give SA (con domicilio social en la calle Rivadavia 54678, Buenos Aires, Argentina) ({name}), nosotros o nuestro), interviniendo como responsable del tratamiento de datos, se compromete a proteger y a respetar tu privacidad. Esta política la ({privacyPolicy}) está diseñado para informarte sobre nuestras prácticas en lo referente a la recopilación, uso y divulgación de la información que nos proporciones a través de nuestra plataforma (the http://www.GimmeARide.com/{platform}) accesible desde la página web",
+    "privacyPolicy.title2" : "I have read and understood <a> Terms and Conditions</a>",
+    "privacyPolicy.p2" : "Esta Política de Privacidad (junto con nuestros <a>Términos y Condiciones</a>, ",
+    "privacyPolicy.p3" : "y el resto de documentos a los que se hace referencia en ellos y en nuestra<a>Política de Cookies</a>)  establece el marco según el cual se recogerán y tratarán tus datos personales. Lee detenidamente este texto para que comprendas nuestra posición y prácticas respecto a tus datos personales y cómo los trataremos.",
+    "privacyPolicy.title3" : "2. ¿Qué información es la que recogemos?",
+    "privacyPolicy.p4" : "Podemos recopilar y procesar los siguientes datos sobre ti:",
+    "privacyPolicy.p5" : "2.1 Información que tú nos proporcionas",
+    "privacyPolicy.p6" : "Puede que nos facilites información, incluso información que puede identificarte",
+    "privacyPolicy.p7" : " cuando utilizas la Página Web/App al rellenar sus formularios (como, por ejemplo, el formulario de registro), cuando entras en cualquiera de nuestros concursos, promociones o encuestas o cuando te pones en contacto con nosotros por teléfono, correo electrónico o de cualquier otra forma, así como cuando nos informas de algún problema relacionado con el uso de nuestra Página Web/App.",
+    "privacyPolicy.pdata" : "Datos personales",
+    "privacyPolicy.p8" : "La información que nos proporcionas puede contener:",
+    "privacyPolicy.item1" : "Información obligatoria necesaria para registrarse en el servicio que proporcionamos en nuestra Plataforma o para acceder a otros de nuestros servicios; estos datos incluyen tu nombre, correo electrónico, fecha de nacimiento, sexo, número de teléfono móvil y, cuando creas una cuenta, una contraseña. Todos estos campos son obligatorios. GiveMeaRide no podrá proporcionarte los servicios ofrecidos en nuestra página y app si no nos das la información necesaria o, si procede, no podrás crearte una cuenta de usuario en nuestra Plataforma;",
+    "privacyPolicy.item2" : "Una fotografía.",
+    "privacyPolicy.item3" : "Una dirección postal.",
+    "privacyPolicy.item4" : "Tu número de teléfono.",
+    "privacyPolicy.item5" : "Información sobre tu coche.",
+    "privacyPolicy.item6" : " Tu mini-biografía, tu sexo cuando aceptas proporcionarnos dicha información.",
+    "privacyPolicy.item7" : " Un registro de la correspondencia que hayas mantenido con nosotros , podemos grabar o escuchar las llamadas telefónicas que mantengas con GiveMeaRide (por ejemplo, con los agentes de nuestro servicio de Relaciones con la Comunidad). Te ofrecemos la posibilidad de oponerte a ese tratamiento al principio de la llamada.",
+    "privacyPolicy.item8" : "Un registro de cualquier reserva que realices o cualquier anuncio de viaje que publiques a través de nuestra Plataforma.",
+    "privacyPolicy.item9" : "Detalles sobre las transacciones económicas o contables, incluidas las operaciones efectuadas a través de nuestra Plataforma o de cualquier otro medio. Esto puede incluir información como, por ejemplo, tu tarjeta de pago o datos bancarios, información relativa a viajes o tramos de viaje que hayas reservado u ofrecido a través de nuestra Plataforma.",
+    "privacyPolicy.item10" : "Detalles de tus visitas a nuestra Plataforma y los contenidos a los que accedes.",
+    "privacyPolicy.item11" : "Si procede, tus respuestas a nuestras encuestas o cuestionarios, como tus evaluaciones sobre los viajes realizados a través de nuestra Plataforma. Dicha información puede ser empleada para fines de análisis y estudio de las conductas de los usuarios.",
+    "privacyPolicy.item12" : "Información que podemos solicitarte cuando informes acerca de un problema con nuestra Plataforma o nuestro servicio, como, por ejemplo, la causa de tu solicitud de asistencia.",
+    "privacyPolicy.item13" : "Información sobre tu localización, siempre y cuando hayas dado tu consentimiento a la recopilación y tratamiento de estos datos, para que podamos responder a tu búsqueda de viajes cerca de ti.",
+    "privacyPolicy.item14" : "Una copia de tu Pasaporte, Licencia de conducir, DNI y otros documentos similares que has acordado brindarnos.",
+    "privacyPolicy.item15" : "Una copia de tus suscripciones de seguros, ejercicios de retirada (si los hay), declaraciones realizadas y formulario archivado para suscribir o gestionar tu contrato de seguro.",
 
 
+    
 
+
+    "final" : ""
 }
