@@ -4,13 +4,13 @@
   width: 100vw;
   font-weight: normal;
   display: grid;
-  grid-template-columns: 2% 8% 2% 20% 2% 34% 2% 18% 2% 8% 2%;
+  grid-template-columns: 10% 8% 2% 16% 2% 22% 2% 18% 2% 8% 10%;
   margin: 0;
   text-align: left;
   background-color: $buttonColor;
   justify-items: center;
   margin-top: 1rem;
-  padding-top: 10vh;
+  padding-top: 5vh;
   padding-bottom: 1.5rem;
   transition: background-color 0.5s ease-in-out;
 

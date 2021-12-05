@@ -134,7 +134,7 @@ export default function Footer() {
             </button>
           </div>
         </div>
-        <hr classname="lineahr" />
+        <div></div>
       </div>
       <SubFooter />
     </div>

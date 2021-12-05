@@ -3,9 +3,10 @@
 .SubFooter {
   width: 100vw;
   background-color: $buttonColor;
-  padding-bottom: 10vh;
+  padding-bottom: 4vh;
+  padding-top: 2vh;
   .buttonSuggestion {
-    margin-top: 0.75rem;
+    margin-top: 1.2rem;
     border: none;
     font-family: inherit;
     border-radius: 9999px;
@@ -23,7 +24,7 @@
 
   .info {
     display: grid;
-    grid-template-columns: 5% 55% 15% 20% 5%;
+    grid-template-columns: 10% 50% 15% 15% 10%;
     justify-items: start;
     color: $background;
   }
@@ -39,13 +40,17 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 50%;
+    width: 70%;
     align-items: center;
 
     a {
       text-decoration: none;
       color: $background;
+    }
 
+    .icon {
+      font-size: 2rem;
+      padding-left: 4rem;
     }
   }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../Sass/Styles/SubFooter.scss";
-import { BsTwitter, BsInstagram, BsFacebook } from "react-icons/bs";
+import { SiTwitter, SiInstagram, SiFacebook } from "react-icons/si";
 import {FormattedMessage} from 'react-intl';
 
 export default function SubFooter() {
@@ -28,7 +28,7 @@ export default function SubFooter() {
               target="_blank"
               rel="noreferrer"
             >
-              <BsInstagram className="icon" />
+              <SiInstagram className="icon" />
             </a>
           </p>
           <p>
@@ -37,7 +37,7 @@ export default function SubFooter() {
               target="_blank"
               rel="noreferrer"
             >
-              <BsTwitter className="icon" />
+              <SiTwitter className="icon" />
             </a>
           </p>
           <p>
@@ -46,7 +46,7 @@ export default function SubFooter() {
               target="_blank"
               rel="noreferrer"
             >
-              <BsFacebook className="icon" />
+              <SiFacebook className="icon" />
             </a>
           </p>
         </div>

@@ -271,10 +271,12 @@ export default function Registro() {
               </p>
             </div>
             <div className="cadaLinea">
-              <p className="label"><FormattedMessage
+              <p className="label">
+                <FormattedMessage
                   id="register.photoUser"
                   defaultMessage="Photo User*:"
-                /></p>
+                />
+              </p>
               <input
                 onChange={(e) => uploadImage(e)}
                 className="cargaImagen"
@@ -305,10 +307,12 @@ export default function Registro() {
               />
             </div>
             <div className="cadaLinea">
-              <p className="label"><FormattedMessage
+              <p className="label">
+                <FormattedMessage
                   id="register.idFront"
                   defaultMessage="ID or passport Front*:"
-                /></p>
+                />
+              </p>
               <input
                 onChange={(e) => uploadImage2(e)}
                 className="cargaImagen"
@@ -323,10 +327,12 @@ export default function Registro() {
               {loanding ? <img src={dni[0]} Style="height:150px" alt="" /> : ""}
             </p>
             <div className="cadaLinea">
-              <p className="label"><FormattedMessage
+              <p className="label">
+                <FormattedMessage
                   id="register.idBack"
                   defaultMessage="ID or passport Back*:"
-                /></p>
+                />
+              </p>
               <input
                 onChange={(e) => uploadImage2(e)}
                 className="cargaImagen"
@@ -346,6 +352,36 @@ export default function Registro() {
               <FormattedMessage
                 id="register.gender"
                 defaultMessage="Gender*:"
+              />{" "}
+            </p>
+            <select
+              className="select"
+              name="genre"
+              id="genre"
+              onChange={(e)=>handleSelect(e)}
+              required
+            >
+            
+              <option disabled selected value="1">
+                -- Select an option --
+              </option>
+              <FormattedMessage id="register.gender.1" key={"op" + "-" + "1"}>
+                {(message) => <option value="a">{message}</option>}
+              </FormattedMessage>
+              <FormattedMessage id="register.gender.2" key={"op" + "-" + "2"}>
+                {(message) => <option value="b">{message}</option>}
+              </FormattedMessage>
+              <FormattedMessage id="register.gender.3" key={"op" + "-" + "3"}>
+                {(message) => <option value="c">{message}</option>}
+              </FormattedMessage>
+            </select>
+            {errors.genre && <p className="error">{errors.genre}</p>}
+          </div>
+          {/* <div className="cadaLinea">
+            <p className="label" for="genre">
+              <FormattedMessage
+                id="register.gender"
+                defaultMessage="Gender*:"
               />
             </p>
             <FormattedMessage
@@ -359,8 +395,7 @@ export default function Registro() {
                   className="select"
                   onChange={(e) => handleSelect(e)}
                 >
-                  {/* {["en", "es", "fr", "de"].map(l => (
-          <option key={l}>{l}</option> */}{" "}
+                  {" "}
                   <option disabled selected value="1">
                     {" "}
                   </option>
@@ -386,7 +421,7 @@ export default function Registro() {
               )}
             </FormattedMessage>
             {errors.genre && <p className="error">{errors.genre}</p>}
-          </div>
+          </div> */}
           <div className="cadaLinea">
             <p className="label">
               <FormattedMessage id="register.age" defaultMessage="Age*:" />
@@ -527,16 +562,16 @@ export default function Registro() {
                   defaultMessage="Privacy Policy"
                 />
               </a>
-            </div>
-          </div>
           <input
             type="checkbox"
             name="checkbox"
             onChange={(e) => handleCheck(e)}
           />
+            </div>
+          </div>
           <div>
             {validateInputs() === false ? (
-              <button className="button" type="submit">
+              <button className="buttondisabled" >
                 <FormattedMessage
                   id="register.submit"
                   defaultMessage="Register"
