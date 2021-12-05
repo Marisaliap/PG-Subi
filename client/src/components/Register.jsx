@@ -333,49 +333,30 @@ export default function Registro() {
             </p>
           </div>
           <div className="cadaLinea">
-            <p className="label" for="genre">
-              <FormattedMessage
+            <p className="label" for="genre"><FormattedMessage
                 id="register.gender"
                 defaultMessage="Gender*:"
-              />
-            </p>
-            <FormattedMessage
-              id="register.genderOptions"
-              defaultMessage="-- Select an option --"
-            >
-              {(placeholder) => (
-                <select
-                  name="genre"
-                  id="genre"
-                  className="select"
-                  onChange={(e) => handleSelect(e)}
-                >
-                  {/* {["en", "es", "fr", "de"].map(l => (
-          <option key={l}>{l}</option> */}{" "}
-                  <option disabled selected value="1">
-                    {" "}
-                  </option>
-                  <option className="options" value="Male">
-                    <FormattedMessage
-                      id="register.male"
-                      defaultMessage="Male"
-                    />
-                  </option>
-                  <option className="options" value="Female">
-                    <FormattedMessage
-                      id="register.female"
-                      defaultMessage="Female:"
-                    />
-                  </option>
-                  <option className="options" value="Rather not say">
-                    <FormattedMessage
-                      id="register.doNotSay"
-                      defaultMessage="Rather not say"
-                    />
-                  </option>
-                </select>
-              )}
-            </FormattedMessage>
+              /> </p>
+            <select
+      className="content"
+      name="type-enquiry"
+      defaultValue="Type of Enquiry"
+      onChange={handleSelect}
+      required
+     >
+      <option name="options" disabled hidden>
+      -- Select an option --
+      </option>
+        <FormattedMessage id='register.gender.1' key={'op' + '-' + '1'}>
+           {(message) => <option value='a'>{message}</option>}
+        </FormattedMessage>
+        <FormattedMessage id='register.gender.2' key={'op' + '-' + '2'}>
+           {(message) => <option value='b'>{message}</option>}
+        </FormattedMessage>
+        <FormattedMessage id='register.gender.3' key={'op' + '-' + '3'}>
+           {(message) => <option value='c'>{message}</option>}
+        </FormattedMessage>
+    </select>
             {errors.genre && <p className="error">{errors.genre}</p>}
           </div>
           <div className="cadaLinea">

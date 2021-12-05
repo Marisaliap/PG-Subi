@@ -62,6 +62,9 @@
     "register.termsOptions" : "-- Selecciona una Opción --",
     "register.yes" : "Sí",
     "register.submit" : "Registrar",
+    "register.gender.1" : "Masculino",
+    "register.gender.2" : "Femenino",
+    "register.gender.3" : "Prefiero no decir",
 
     "privacyPolicy.terms" : "Términos y Condiciones",
     "privacyPolicy.effdate" : "Versión vigente a partir del ",

@@ -64,6 +64,9 @@
     "register.termsOptions" : "-- Select an option --",
     "register.yes" : "Yes",
     "register.submit" : "Register",
+    "register.gender.1" : "Male",
+    "register.gender.2" : "Female",
+    "register.gender.3" : "Rather not Say",
 
     "privacyPolicy.terms" : "Terms and Conditions",
     "privacyPolicy.effdate" : "Effective date: ",
