@@ -1,5 +1,6 @@
 import React from "react";
 import "../Sass/Styles/Recommendations.scss";
+import {FormattedMessage} from 'react-intl';
 
 export default function PoliticaPrivacidad() {
   return (
@@ -7,37 +8,57 @@ export default function PoliticaPrivacidad() {
       <article>
         <div></div>
         <div>
-          <p>
-            <a
-              href="/terms-and-conditions"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Condiciones Generales de Uso
-            </a>{" "}
-            | Política de Privacidad |{" "}
-            <a href="/cookies-policy" target="_blank" rel="noopener noreferrer">
-              Política de cookies
-            </a>
-          </p>
-          <p>
-            <strong>
-              Versión vigente a partir del 17 de Diciembre de 2021
-            </strong>
-          </p>
-          <p></p>
-          <h2>1. General</h2>
-          <p></p>
-          <p>
-            Give SA (con domicilio social en la calle Rivadavia 54678, Buenos
-            Aires, Argentina) (“<strong>GiveMeaRide</strong>”, nosotros o
-            nuestro), interviniendo como responsable del tratamiento de datos,
-            se compromete a proteger y a respetar tu privacidad. Esta política
-            (la “Política de Privacidad”) está diseñado para informarte sobre
-            nuestras prácticas en lo referente a la recopilación, uso y
-            divulgación de la información que nos proporciones a través de
-            nuestra plataforma (la “Plataforma”) accesible desde la página web{" "}
-            <a
+        <p ><a href="/terms-and-conditions">
+        <FormattedMessage
+							id="privacyPolicy.terms"
+							defaultMessage="Terms and Conditions"
+						/></a><FormattedMessage
+            id="privacyPolicy.privacy"
+            defaultMessage=" | Privacy Policy | "
+          />
+          <a href="/cookies-policy">
+          <FormattedMessage
+            id="privacyPolicy.cookies"
+            defaultMessage="Cookies Policy"
+          /></a></p>
+<p><strong><FormattedMessage
+							id="privacyPolicy.effdate"
+							defaultMessage="Effective date: "
+						/>
+            <FormattedMessage
+							id="privacyPolicy.date"
+							defaultMessage="17/12/2021"
+						/></strong></p>
+            <p ></p>
+            <h2><FormattedMessage
+							id="privacyPolicy.title1"
+							defaultMessage="1. General"
+						/>1. General</h2>
+            <p></p>
+          <p><FormattedMessage
+							id="privacyPolicy.p1"
+							defaultMessage="Give SA (whose registered office is at 54678, Rivadavia avenue, Buenos Aires, 
+                Argentina) ({name}), acting as data controller, is committed to protecting and respecting 
+                your privacy. This notice ({privacyPolicy}) is designed to tell you about our practices 
+                regarding the collection, use and disclosure of information that you may provide via our 
+                platform  accessible from the website www.GimmeARide.com or our mobile applications 
+                (the http://www.GimmeARide.com/{platform})."   
+              values={{ 
+                name: <b>{"GimmeARide"}</b>,
+                privacyPolicy: <b>{"Privacy Policy"}</b>,
+                platform: <b>{"Platform"}</b>,
+              }}/>
+              <br/>
+              <p>BLABALBLABLALALALA</p>
+              <p></p>
+              <p></p>
+            <FormattedMessage 
+            	id="privacyPolicy.title2"
+            defaultMessage="I have read and understood <a> Terms and Conditions</a>" 
+            values={{
+              a: (...chunks) => <a href={"http://www.GiveMeaRide.com"} target="_blank" rel="noopener noreferrer">{chunks}</a>
+            }}
+          /><a
               href="http://www.GiveMeaRide.com/"
               target="_blank"
               rel="noopener noreferrer"
