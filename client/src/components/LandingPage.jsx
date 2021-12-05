@@ -16,7 +16,7 @@ export default function LandingPage() {
         <div className="flex flex-col">
           <img className="mx-10 mb-5 md:mx-20" src={img} />
           <NavLink to="/home">
-            <button className="font-semibold bg-green-500 m-2 py-2 px-6 md:py-4 md:px-12 border-0 rounded-3xl text-white transition duration-500 ease-in-out hover:bg-green-700">
+            <button className="font-semibold bg-green-500 m-2 py-2 px-6 border-0 rounded-3xl text-white transition duration-500 ease-in-out hover:bg-green-700">
               <FormattedMessage id="landing.enter" defaultMessage="Enter" />
             </button>
           </NavLink>

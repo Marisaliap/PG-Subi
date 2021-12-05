@@ -1,4 +1,4 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 
 .Profile {
   display: flex;
@@ -12,4 +12,9 @@
     margin: 0;
     border: 1px solid $buttonColor;
   }
+}
+
+.foto {
+  border-radius: 5px;
+  width: 100px;
 }
