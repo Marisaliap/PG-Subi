@@ -264,6 +264,7 @@ export default function Registro() {
                 value={input.lastName}
                 onChange={(e) => handleChange(e)}
               />
+              {errors.lastName && <p className="error">{errors.lastName}</p>}
             </div>
             <div className="cadaLinea">
               <p className="label">
@@ -311,6 +312,7 @@ export default function Registro() {
                 value={input.dni}
                 onChange={(e) => handleChange(e)}
               />
+              {errors.dni && <p className="error">{errors.dni}</p>}
             </div>
             <div className="cadaLinea">
               <p className="label">
@@ -320,14 +322,14 @@ export default function Registro() {
                 />
               </p>
               <div className="cargaImagen">
-              <input
-                onChange={(e) => uploadImage2(e)}
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
-            </div>
+                <input
+                  onChange={(e) => uploadImage2(e)}
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>
             <p>
@@ -341,14 +343,14 @@ export default function Registro() {
                 />
               </p>
               <label className="cargaImagen">
-              <input
-                onChange={(e) => uploadImage2(e)}
-                className="cargaImagen"
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
+                <input
+                  onChange={(e) => uploadImage2(e)}
+                  className="cargaImagen"
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
               </label>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>

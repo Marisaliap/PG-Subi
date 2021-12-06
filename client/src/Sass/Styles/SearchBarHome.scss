@@ -11,6 +11,7 @@
   }
 
   .passengers {
+    text-align: center;
     height: 50px;
     width: 65px;
     border: 2px solid $text;
@@ -60,6 +61,5 @@
     select {
       margin-left: 1rem;
     }
-   
   }
 }
