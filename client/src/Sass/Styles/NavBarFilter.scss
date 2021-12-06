@@ -11,17 +11,15 @@
     font-family: inherit;
     font-weight: bold;
     color: $headline;
-    border: 1px solid $buttonColor;
-    border-radius: 5px;
+    border: 2px solid $buttonColor;
+    border-radius: 1rem;
 
     &:focus {
       outline: none;
     }
 
     @media only screen and (min-width: 768px) {
-      border: 1px solid $buttonColor;
-      margin: 1rem;
-      padding: 1rem;
+      border: 2px solid $buttonColor;
     }
   }
 }

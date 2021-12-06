@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import '../Sass/Styles/Home.scss';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "../Sass/Styles/Home.scss";
 // import header from "../img/header.png";
-import group2 from '../img/group2.png';
-import SearchBarHome from './SearchBarHome';
-import { useSelector } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
-import Loggin from "./Loggin";
-
+import navigator from "../img/navigator.svg";
+import ecoConscious from "../img/ecoConscious.svg";
+import saveMoney from "../img/saveMoney.svg";
+import offRoad from "../img/offRoad.svg";
+import electricCar from "../img/electricCar.svg";
+import group2 from "../img/group2.png";
+import SearchBarHome from "./SearchBarHome";
+import { useSelector } from "react-redux";
+import { FormattedMessage } from "react-intl";
 
 export default function Home() {
   const users = useSelector((state) => state.user);
@@ -15,7 +18,7 @@ export default function Home() {
   
 
   return (
-    <div className="w-screen">
+    <div className="Homepage">
       {/* <div>
         <img className="fotoHeader" src={header} alt="header" />
       </div> */}
@@ -27,37 +30,31 @@ export default function Home() {
         
         </>
       </div>
-      <div className="p-5 md:p-20">
-        <img
-          className="w-full mb-5 rounded-xl shadow-xl lg:float-left lg:w-6/12 "
-          src={group2}
-          alt="Home"
-        />
-        <article className="lg:float-right lg:w-6/12 lg:text-left lg:p-8">
-          <h1 className="m-5 font-semibold text-2xl">
+      <section>
+        <img className="homepageImage" src={navigator} alt="Home" />
+        <article>
+          <h1>
             <FormattedMessage
-              id="home.save"
+              id="home.title1"
               defaultMessage="Save money while driving"
             />
           </h1>
 
-          <p className="m-5 font-semibold">
-            {' '}
+          <p className="description">
             <FormattedMessage
-              id="home.paragraph1"
+              id="home.p1"
               defaultMessage="Publish your next round trip on Gimme a Ride and get, on average, 80
               dollars * of your passengers. You will only need a couple of minutes
               to publish your route. Do we share a trip?"
-            />
-            <p className="mt-5 font-light">
+            /></p>
+            <p className="detail">
               <FormattedMessage
-                id="home.paragraph2"
+                id="home.p2"
                 defaultMessage="* Average amount received by drivers in 2021."
               />
+
             </p>
-          </p>
-
-
+            {/* 
           {
             <NavLink
               to={
@@ -70,24 +67,79 @@ export default function Home() {
                       : ''
               }
             >
-              <button className="font-semibold bg-green-500 m-2 py-2 px-6 md:py-4 md:px-12 border-0 rounded-3xl text-white transition duration-500 ease-in-out hover:bg-green-700">
+              <button className="button">
                 <FormattedMessage id="menu.post" defaultMessage="Post a Trip" />
               </button>
             </NavLink>
-          }
-          <p className="searchContainer"><FormattedMessage id="home.post" defaultMessage="Post a Trip" /></p>
+          } */}
+            <div>
+              {
+                <NavLink to="/route-list">
+                  <button className="button">
+                    <FormattedMessage
+                      id="home.routes"
+                      defaultMessage="See all routes available!"
+                    />
+                  </button>
+                </NavLink>
+              }
+            </div>
+          </article>
+        </section>
+
+      <section className="sectionBelow">
+        <h1><FormattedMessage
+                id="home.title2"
+                defaultMessage="Why use GimmeARide?"
+              /></h1>
+        <div className="belowContainer">
           <div>
-            {
-              <NavLink to="/route-list">
-                <p><FormattedMessage
-                  id="home.routes"
-                  defaultMessage="See all routes available!"
-                /></p>
-              </NavLink>
-            }
+            <img src={ecoConscious} alt="Eco-Consciousness" />
+            <h3><FormattedMessage
+                id="home.subtitle1"
+                defaultMessage="It's Eco-Conscious"
+              /></h3>
+            <p>
+            <FormattedMessage
+                id="home.p4"
+                defaultMessage="By reducing the number of vehicles on the road, the environment is
+                greatly benefited."
+              />
+            </p>
           </div>
-        </article>
+
+          <div>
+            <img src={electricCar} alt="It's hella fun" />
+            <h3><FormattedMessage
+                id="home.subtitle2"
+                defaultMessage="Have fun"
+              /></h3>
+            <p>
+            <FormattedMessage
+                id="home.p5"
+                defaultMessage="Meet new people with whom to share excellent experiences.
+                Traveling alone is boooring."
+              />
+            </p>
+          </div>
+
+          <div>
+            <img src={saveMoney} alt="Lets you save money" />
+            <h3><FormattedMessage
+                id="home.subtitle3"
+                defaultMessage="Lets you save money"
+              /></h3>
+            <p>
+            <FormattedMessage
+                id="home.p6"
+                defaultMessage="Share your travel expenses with select passengers, you will end up
+                spending less on each trip!"
+              />
+            </p>
+          </div>
+          </div>
+        </section>
       </div>
-    </div>
+    
   );
 }

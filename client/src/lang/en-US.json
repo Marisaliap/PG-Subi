@@ -4,21 +4,35 @@
     "navBar.name" : "Gimme a Ride",
     "navBar.post" : "Post a Trip",
     "navBar.home" : "Home",
+    "navBar.routelist" : "Route List",
 
     "searchUserByName.search" : "Search",
     "searchUserByName.placeholder" : " 🔍  Find user...",
 
-    "home.save" : "Save money while driving",
-    "home.paragraph1" : "Publish your next round trip on Gimme a Ride and get, on average, 80 dollars * of your passengers. You will only need a couple of minutes to publish your route. Do we share a trip?",
-    "home.paragraph2" : "* Average amount received by drivers in 2021.",
+    "home.title1" : "Save money while driving",
+    "home.p1" : "Publish your next round trip on Gimme a Ride and get, on average, 80 dollars * of your passengers. You will only need a couple of minutes to publish your route. Do we share a trip?",
+    "home.p2" : "* Average amount received by drivers in 2021.",
     "home.post" : "Post a Trip",
     "home.routes" : "See all routes available!",
     "home.or" : "Or",
+    "home.title2" : "Why use GimmeARide?",
+    "home.p4" : "By reducing the number of vehicles on the road, the environment is greatly benefited.",
+    "home.p5" : "Meet new people with whom to share excellent experiences. Traveling alone is boooring.",
+    "home.p6" : "Share your travel expenses with select passengers, you will end up spending less on each trip!",
+    "home.subtitle1" : "It's Eco-Conscious",
+    "home.subtitle2" : "Have fun",
+    "home.subtitle3" : "Lets you save money",
+
 
     "searchBarHome.searchTitle" : "Where do you want to go?",
     "searchBarHome.searchButton" : "Search",
     "searchBarHome.destination" : "Destination",
     "searchBarHome.origin" : "Origin",
+
+    "searchBarPostRuta.searchTitle": "Where do you want to go?",
+    "searchBarPostRuta.destination" : "Destination",
+    "searchBarPostRuta.origin" : "Origin",
+    "searchBarPostRuta.preview" : "Preview Trip",
 
     "footer.lang" : "Language",
     "footer.about" : "About",
@@ -34,20 +48,47 @@
     "footer.group10" : "Group 10 © |",
 
     "subFooter.app" : "Gimme a Ride is an app to share trips between people. Wherever you go, find your ideal trip.",
+    "subFooter.sbox" : "Suggestion Box",
+
+    "sugestionBox.title" : "Suggestions Box",
+    "sugestionBox.name" : "Your name:",
+    "sugestionBox.email" : "Email:",
+    "sugestionBox.suggestion" : "Suggestions:",
+    "sugestionBox.submit" : "Submit Suggestions",
+
+    "formCar.title" : "Create your Car",
+    "formCar.patent" : "Patent",
+    "formCar.color" : "Color:",
+    "formCar.brand" : "Brand:",
+    "formCar.model" : "Model:",
+    "formCar.cylinder" : "Cylinder:",
+    "formCar.add" : " Add Car",
+
+    "routesFromSearch.noRoute" : "No route match your search",
+
+    "userDetails.back" : "Back",
+
+    "profile.loading": "Loading...",
 
     "landing.enter" : "Enter",
 
     "register.home" : "Home",
     "register.title" : "Create your User",
-    "register.name" : "Name*",
+    "register.name" : "Name*:",
     "register.lastname" : "Last Name*:",
     "register.email" : "Email*:",
+    "register.photoUser" : "Photo User*:",
     "register.id" : "ID or passport*:", 
+    "register.idFront" : "ID or passport Front*:",
+    "register.idBack" : "ID or passport Back*:",
     "register.gender" : "Gender*:",
     "register.genderOptions" : "-- Select an option --",
     "register.male" : "Male",
     "register.female" : "Female",
     "register.doNotSay" : "Rather not say",
+    "register.gender.1" : "Male",
+    "register.gender.2" : "Female",
+    "register.gender.3" : "Rather not Say",
     "register.age" : "Age*:",
     "register.phone" : "Telephone*:",
     "register.street" : "Street and Number*:",
@@ -64,9 +105,69 @@
     "register.yes" : "Yes",
     "register.submit" : "Register",
 
-    "privacyPolicy.terms" : "Terms &amp; Conditions",
+    "privacyPolicy.terms" : "Terms and Conditions",
     "privacyPolicy.effdate" : "Effective date: ",
-    "privacyPolicy.date" : "17/12/2021"
+    "privacyPolicy.date" : "12/17/2021",
+    "privacyPolicy.privacy" : " | Privacy Policy | ",
+    "privacyPolicy.cookies" : "Cookies Policy",
+    "privacyPolicy.title1" : "1. General",
+    "privacyPolicy.p1" : "Give SA (whose registered office is at 54678, Rivadavia avenue, Buenos Aires, Argentina) ({name}), acting as data controller, is committed to protecting and respecting your privacy. This notice ({privacyPolicy}) is designed to tell you about our practices regarding the collection, use and disclosure of information that you may provide via our platform  accessible from the website www.GimmeARide.com or our mobile applications (the http://www.GimmeARide.com/{platform}).",
+    "privacyPolicy.title2" : "I have read and understood <a> Terms and Conditions</a>" ,
+    "privacyPolicy.p2" : "This Privacy Policy (together with our <a>Terms and Conditions</a>, ",
+    "privacyPolicy.p3" : "any other documents referred to in it and our <a>Cookie Policy</a>) sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed by us. Please read the following carefully to understand our views and practices regarding your personal data and how we will treat it.",
+    "privacyPolicy.title3" : "2. What information do we collect from you and for how long?",
+    "privacyPolicy.p4" : "We may collect and process the following data about you:",
+    "privacyPolicy.p5" : "2.1. Information you give us",
+    "privacyPolicy.p6" : "You may give us information, including information that can identify you",
+    "privacyPolicy.p7" : " when you use our Platform, by filling in forms on the Platforms (such as the sign-up form), when you enter into any of our competitions, promotions or surveys, when you correspond with us by phone, e-mail or otherwise, and when you report a problem related to the use of our Platform.",
+    "privacyPolicy.pdata" : "Personal Data",
+    "privacyPolicy.p8" : "The information you give us may include:",
+    "privacyPolicy.item1" : "Mandatory information required to register for the service we provide on our Platform or to access other services provided by us, including your name, email address, date of birth and, when you create an account, a password. All these fields are mandatory. GimmeARide will not be able to provide you with the services offered on our Platforms if the required information is not provided or, if applicable, you will not be able to register for a user account on our Platform;",
+    "privacyPolicy.item2" : "A photograph;",
+    "privacyPolicy.item3" : "A postal address;",
+    "privacyPolicy.item4" : "Your phone number;",
+    "privacyPolicy.item5" : "Details on your cars;",
+    "privacyPolicy.item6" : "Your mini-biography, your gender when you agree to provide that information;",
+    "privacyPolicy.item7" : "A record of any correspondence between you and GimmeARide; we may record and/or listen to the phone calls between you and GimmeARide (for example, with the agents of our Community Relations service). We give you the possibility to object to that processing at the beginning of the call;",
+    "privacyPolicy.item8" : " A record of any bookings you have made or trip related advertisements you have placed with or through our Platform;",
+    "privacyPolicy.item9" : "Details of accounting or financial transactions including transactions carried out through our Platform or otherwise. This may include information such as your payment card or bank account details, details of trips or legs you have booked or offered through our Platform;",
+    "privacyPolicy.item10" : "Details of your visits to our Platform and the resources that you access;",
+    "privacyPolicy.item11" : "Your replies to any surveys or questionnaires, such as your reviews on the trips made through our Platform. Such information may be used for analytic &amp; user understanding purposes;",
+    "privacyPolicy.item12" : "Information we may require from you when you report a problem with our Platform or our service, such as the subject of your request for support;",
+    "privacyPolicy.item13" : "Location information when you have given consent to the collection and processing of these data so that we can respond to your search for trips near to you; and",
+    "privacyPolicy.item14" : "A copy of your Passport, Driving Licence, ID Card and such other similar documents that you have agreed to provide to us.",
+    "privacyPolicy.item15" : "A copy of your insurance subscriptions, withdrawal exercises (if any), declarations made and filed form to subscribe or manage your insurance contract.",
+    "privacyPolicy.p9" : "2.2. Information we collect automatically",
+    "privacyPolicy.p10" : "If you sign up via social media authentication methods, GimmeARide will access certain Personal Data (e.g. first name, surname, picture and email) in your social media account pursuant to the applicable terms and conditions of these social media platforms. We may also collect some of your Personal Data when you interact with third party social media features, such as I Like functions.",
+    "privacyPolicy.p11" : "With regard to each of your visits to our Platform we may collect, in accordance with applicable laws and where required with your consent, information relating to the devices you use and the networks you are connected to when using our services. This may include the following information: your IP address, log-in information, browser type and version, browser plug-in types and versions, operating system and platform, information about your visit including the URL clickstream to the different pages of our Platform, content you viewed or searched for, search terms used, download errors, length of visits to certain pages, the advertising identifier of your device, page interaction and any phone number used to contact us. We collect this information through the use of various technologies including cookies (for further information please refer to our ",
+    "privacyPolicy.p12" : "Cookie Policy",
+    "privacyPolicy.p13" : "We also collect aggregated information regarding your activity on our Platform (such as the amount of rides offered, your message response rate, etc.). Such information may be published on your public profile, should you have one.",
+    "privacyPolicy.p14" : "Finally, we may collect information about you from our insurance partners or intermediaries in connection with your request for eligibility for insurance programs or your subscription to proposed insurance contracts when we act as insurance representatives.",
+    "privacyPolicy.p15" : "Data retention",    
+    "privacyPolicy.p16" : "Except regarding the categories of Personal Data mentioned in clauses 2.3.2 and 2.3.3 below, your Personal Data will be archived after the following retention periods:",
+    "privacyPolicy.p17" : "5 years after your last use of our Platform, if you did not close your account; 30 days after the closing of your account, except if you received a negative rating or report, in which case your data is stored for 2 years following the closing of your account.",
+    "privacyPolicy.p18" : "The following categories of Personal Data may be stored for different durations:",
+    "privacyPolicy.p19" : "Financial data (e.g. payments, reimbursements, etc.) is stored for the duration required by applicable tax and accounting laws (for example, the accounting documents are stored for up to 10 years); All user-generated content (e.g. comments, feedback and ratings) is anonymised according to the durations mentioned in section 2.3.1 but remains available on our Platform; Log data are stored for up to 12 months from the date of their collection; The phone calls with our Community Relations service are stored for up to 1 month and the analysis documents (such as time and duration of the call) are stored up to 1 year.",
+    "privacyPolicy.p20" : "In the event that your account is suspended or blocked, we will keep your data for a period of 2 or 10 years depending on the gravity of the breach in order to prevent you from circumventing the rules applying to our Platforms.",
+    "privacyPolicy.p21" : "We may archive some of your Personal Data for a period that will not exceed five (5) years in order to comply with our legal obligations and to manage potential disputes.",
+    "privacyPolicy.p22" : "",
+    "privacyPolicy.p23" : "",
+    "privacyPolicy.p24" : "",
+    "privacyPolicy.p25" : "",
+    "privacyPolicy.p26" : "",
+
+
+
+    "privacyPolicy.p70" : "If you have any questions about this Privacy Policy or if you have any requests relating to your Personal Data, you can contact us via email to our Data Protection Officer under <a>dataprotection@GiveMeaRide.com</a>",
+
+
+
+
+
+
+
+    "final" : ""
+
 
 
 

@@ -7,8 +7,9 @@ import {
   RoutePostInfo,
 } from "../actions";
 import { NavLink } from "react-router-dom";
-import "../Sass/Styles/SearchBarPostRuta.scss";
 import "../Sass/Styles/App.scss";
+import "../Sass/Styles/SearchBarPostRuta.scss";
+import {FormattedMessage} from 'react-intl';
 
 let inputs = { Origin: "", Destination: "" };
 let info = { pasajeros: 1, date: "", hours: "", restrictions: [] };
@@ -110,21 +111,29 @@ export default function SearchBar() {
   return (
     <div className="searchBarPostRuta">
       <form className="postRouteForm">
-        <h1>Where do you want to go?</h1>
+        <h1> <FormattedMessage
+							id="searchBarPostRuta.searchTitle"
+							defaultMessage="Where do you want to go?"
+						/></h1>
+            <FormattedMessage id="searchBarHome.origin" defaultMessage="Origin">
+    {placeholder=>
         <input
           type="text"
           list="cities"
           onChange={inputHandleChange}
           name="Origin"
-          placeholder="Origin"
+          placeholder={placeholder}
           className="searchbar"
-        />
+        />}
+        </FormattedMessage>
 
         <datalist id="cities">
           {cities && cities.map((city) => <option>{city.name}</option>)}
         </datalist>
         <p>{validations && validations.Origin}</p>
 
+        <FormattedMessage id="searchBarHome.destination" defaultMessage="Destination">
+    {placeholder=>
         <input
           type="text"
           list="cities2"
@@ -132,7 +141,8 @@ export default function SearchBar() {
           name="Destination"
           placeholder="Destination"
           className="searchbar"
-        />
+        />}
+        </FormattedMessage>
 
         <datalist id="cities2">
           {cities2 && cities2.map((city) => <option>{city.name}</option>)}
@@ -160,7 +170,7 @@ export default function SearchBar() {
           />
           <p>{validations && validations.hours}</p>
         </div>
-      <div style={{display:'flex'}}>
+      <div className='restrictionsbox'>
             <div className='selectContainer'>
               <select name="pasajeros" onChange={handleChange} className = 'restrictions' id="pasajeros">
               <option disabled selected value="1">
@@ -174,8 +184,8 @@ export default function SearchBar() {
                 <option value="5">5</option>
                 <option value="6">6</option>
               </select>
-            </div>
-            <div className= 'selectContainer'>
+            
+           
               <select
                 name="restrictions"
                 onChange={handleRestrictions}
@@ -193,19 +203,26 @@ export default function SearchBar() {
               <option value="kidsAllowed">Kids Allowed</option>
               <option value="onlyWomen">Only Women</option>
               </select>
-              {restrictions.includes("petsAllowed") && <h5>Pets Allowed <button value="petsAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-              {restrictions.includes("smokersAllowed") && <h5 >Smoking Allowed <button value="smokersAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-              {restrictions.includes("foodAllowed") && <h5 >Food Allowed <button value="foodAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-          {    restrictions.includes("twoMaxInTheBack") && <h5>Max. 2 in the back <button value="twoMaxInTheBack" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-            {  restrictions.includes("kidsAllowed") && <h5 >Kids Allowed <button value="kidsAllowed" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-              {restrictions.includes("onlyWomen") && <h5 >Only Women <button value="onlyWomen" onClick={(e) => deleteRestrictions(e)}>x</button></h5>}
-            </div>
+              </div>
+            <div style={{marginTop:'1rem'}}>
+              {restrictions.includes("petsAllowed") && <button className='buttonx' value="petsAllowed" onClick={(e) => deleteRestrictions(e)}>Pets Allowed X</button>}
+              {restrictions.includes("smokersAllowed") && <button className='buttonx'  value="smokersAllowed" onClick={(e) => deleteRestrictions(e)}>Smoking Allowed X</button>}
+              {restrictions.includes("foodAllowed") && <button className='buttonx'  value="foodAllowed" onClick={(e) => deleteRestrictions(e)}>Food Allowed X</button>}
+            {  restrictions.includes("twoMaxInTheBack") && <button className='buttonx'  value="twoMaxInTheBack" onClick={(e) => deleteRestrictions(e)}>Max. 2 in the back X</button>}
+            {  restrictions.includes("kidsAllowed") && <button className='buttonx'  value="kidsAllowed" onClick={(e) => deleteRestrictions(e)}>Kids Allowed X</button>}
+              {restrictions.includes("onlyWomen") && <button className='buttonx'  value="onlyWomen" onClick={(e) => deleteRestrictions(e)}>Only Women X</button>}
+              </div>
+            
         </div>
         
         <pre>
         <div>
           <NavLink to="/">
-            <button className="buttonBlue">Back</button>
+            <button className="buttonBlue">
+              <FormattedMessage
+							id="userDetails.back"
+							defaultMessage="Back"
+						/></button>
           </NavLink>
         </div>
         <div>
@@ -223,13 +240,18 @@ export default function SearchBar() {
                   width: "60px",
                   color: "white",
                 }}
-              >
-                Preview Trip
+              ><FormattedMessage
+							id="searchBarPostRuta.preview"
+							defaultMessage="Preview Trip"
+						/>
               </NavLink>
             </button>
           ) : (
             <button className="button"  style={{backgroundColor:"grey"}} disabled>
-              Preview Trip
+            <FormattedMessage
+							id="searchBarPostRuta.preview"
+							defaultMessage="Preview Trip"
+						/>  
             </button>
           )}
         </div>

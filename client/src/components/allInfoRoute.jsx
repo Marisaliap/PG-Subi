@@ -110,7 +110,7 @@ export default function AllInfoRoute({ match }) {
         fitBounds={route.origin && [route.origin, route.destiny]}
       >
         {data && (
-          <Marker coordinates={route.origin} style={{ color: "red" }}>
+          <Marker coordinates={route.origin} anchor='bottom' style={{ color: "red" }}>
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
               style={{ height: "30px" }}
@@ -120,7 +120,7 @@ export default function AllInfoRoute({ match }) {
         )}
 
         {data && (
-          <Marker coordinates={route.destiny}>
+          <Marker coordinates={route.destiny} anchor='bottom'>
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
               style={{ height: "30px" }}
@@ -148,7 +148,7 @@ export default function AllInfoRoute({ match }) {
       </div>
       <button className='buttonBlue' onClick={handleClick}>Go Back</button>
         { !datos
-          ? <p>Wait a moment....</p>
+          ? ""
           : <a href={datos.init_point} alt="">Paga</a>//<Continue trip={route} data={datos}/>
         }
     </div>

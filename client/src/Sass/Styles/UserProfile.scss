@@ -3,9 +3,9 @@
 .containerProfile {
   outline: none;
   border-radius: 15px;
-  background-color: #e4f4d9;
+  background-color: #ededed;
   padding: 1rem;
-  margin: 0 0;
+  margin: 1rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.5s ease-in-out;
@@ -44,6 +44,12 @@
     margin-left: 20rem;
   }
 
+  .icon {
+    display: flex;
+    color: $labelForms;
+    margin-right: 6rem;
+  }
+
   .botonEdit {
     margin: 0.5rem;
     border: none;
@@ -60,12 +66,6 @@
       background-color: $buttonBlueHover;
       cursor: pointer;
     }
-  }
-
-  .icon {
-    display: flex;
-    color: $labelForms;
-    margin-right: 6rem;
   }
 
   .botonEditDisabled {
@@ -93,7 +93,20 @@
     display: flex;
     color: $labelForms;
     height: 2rem;
-    margin-right: 3.75rem;
+    margin-right: 0;
+    width: 7rem;
+  }
+
+  .about {
+    display: flex;
+    color: $labelForms;
+    min-height: 2rem;
+    height: auto;
+    margin: 0;
+    margin-top: 1rem;
+    width: auto;
+    max-width: 25vw;
+    text-align: left;
   }
 
   .labelEsp {
@@ -151,6 +164,46 @@
 
     &:focus {
       outline: none;
+    }
+  }
+
+  .ubicaBotonPhoto {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .botonPhoto {
+    margin: 0.5rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 1rem 3rem;
+    width: auto;
+    background-color: $buttonBlue;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
+
+    &:hover {
+      background-color: $buttonBlueHover;
+      cursor: pointer;
+    }
+  }
+
+  .botonPhotoDisabled {
+    margin: 0.5rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 1rem 3rem;
+    width: auto;
+    background-color: $buttonDisabled;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
+
+    &:hover {
+      //   cursor: pointer;
     }
   }
 }

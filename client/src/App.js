@@ -19,7 +19,6 @@ import Users from "./components/Users";
 import Error404 from "./components/Error404";
 import NavBar from "./components/NavBar";
 import RouteDetails from "./components/RouteDetails";
-import PoliticaPrivacidad from "./components/PoliticaPrivacidad";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiesPolicy from "./components/CookiesPolicy";
 import AllInfoRoute from "./components/allInfoRoute";
@@ -70,7 +69,7 @@ export default function App() {
                     <Route exact path="/profile" component={UserProfile} />
                     <Route path="/user/:id" component={UserDetails} />
                     <Route path="/route-list" component={RouteDetails} />
-                    <Route path="/maps/route" component={RouteDetails} />
+                    {/* <Route path="/maps/route" component={RouteDetails} /> */}
                     <Route path="/routes-found" component={RoutesFromSearch} />
                     <Route path="/route/:id" component={AllInfoRoute} />
                     <Route path="/car" component={FormCar} />
@@ -89,7 +88,6 @@ export default function App() {
             />
             <Route path="/recommendations" component={Recommendations} />
             <Route path="/aboutus" component={Aboutus} />
-            <Route path="/politica-privacidad" component={PoliticaPrivacidad} />
             <Route path="/privacy-policy" component={PrivacyPolicy} />
             <Route path="/cookies-policy" component={CookiesPolicy} />
             <Route path="/suggestion-box" component={SuggestionBox} />

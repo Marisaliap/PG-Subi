@@ -1,22 +1,23 @@
-@import '../Variables/Variables.scss';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@150;200;300;400;500;600;700;800;900&display=swap');
+@import "../Variables/Variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@150;200;300;400;500;600;700;800;900&display=swap");
 
 .App {
   background-color: $background;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5;
   text-align: center;
   position: sticky;
   top: 15vh;
+  overflow-x: hidden;
 
   .back-to-top {
     position: fixed;
-    bottom: 20vh;
-    right: 2vw;
+    bottom: 35vh;
+    right: 1vw;
     z-index: 99999;
     border: none;
     outline: none;
-    background-color: $buttonColor;
+    background-color: $buttonColorHovered;
     color: white;
     cursor: pointer;
     padding: 0.5rem 1rem;
@@ -50,16 +51,18 @@ p {
   padding-top: 1rem;
   color: $headline;
 }
+
 .button {
-  margin: 0.5rem;
-  border: none;
-  font-family: inherit;
-  border-radius: 9999px;
-  font-weight: bolder;
-  padding: 1rem 3rem;
-  background-color: $buttonColor;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
   color: $background;
-  transition: background-color 0.5s ease-in-out;
+  background-color: $buttonColor;
+  margin: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  border: 0;
+  border-radius: 1.5rem;
+  transition: background-color 500ms ease-in-out;
 
   &:hover {
     background-color: $buttonColorHovered;
@@ -68,18 +71,31 @@ p {
 }
 
 .buttonBlue {
-  margin: 0.5rem;
-  border: none;
-  font-family: inherit;
-  border-radius: 9999px;
-  font-weight: bolder;
-  padding: 1rem 3rem;
-  background-color: $buttonBlue;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
   color: $background;
-  transition: background-color 0.5s ease-in-out;
+  background-color: $buttonBlue;
+  margin: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  border: 0;
+  border-radius: 1.5rem;
+  transition: background-color 500ms ease-in-out;
 
   &:hover {
     background-color: $buttonBlueHover;
     cursor: pointer;
   }
+}
+
+.buttonDisabled {
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: $background;
+  background-color: $buttonDisabled;
+  margin: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  border: 0;
+  border-radius: 1.5rem;
 }

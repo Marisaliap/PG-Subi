@@ -1,5 +1,6 @@
 @import '../Variables/Variables.scss';
 
+
 .Map {
   display: flex;
   flex-direction: row-reverse;
@@ -13,12 +14,15 @@
   }
   .userContainer{
       width: 20vw;
+      text-decoration: none;
 
     img {
       height: 30rem;
-      max-height: 15rem 
+      max-height: 15rem; 
+      border-radius: 50%;
     }
   }
+
   .infoContainer {
     display:flex;
     flex-direction: column;
