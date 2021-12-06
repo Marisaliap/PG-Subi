@@ -23,7 +23,7 @@
 
   article {
     @media only screen and (min-width: 1024px) {
-      float: right;
+      float: left;
       width: 50%;
       text-align: left;
       padding-top: 2rem;
@@ -43,6 +43,7 @@
 
     .detail {
       font-weight: 300;
+      margin-left: 1.25rem;
     }
 
     .button {
@@ -62,7 +63,7 @@
     }
 
     @media only screen and (min-width: 1024px) {
-      margin-top: 0;
+      margin-top: 0rem;
     }
 
     h1 {
@@ -76,7 +77,7 @@
     }
 
     @media only screen and (min-width: 1024px) {
-      margin-top: 0;
+      margin-top: 27rem;
     }
 
     h1 {
@@ -87,6 +88,7 @@
       @media only screen and (min-width: 1024px) {
         display: flex;
         align-items: center;
+        margin-top: 1rem;
       }
 
       div {

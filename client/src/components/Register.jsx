@@ -374,13 +374,13 @@ export default function Registro() {
                 -- Select an option --
               </option>
               <FormattedMessage id="register.gender.1" key={"op" + "-" + "1"}>
-                {(message) => <option value="a">{message}</option>}
+                {(message) => <option value="Male">{message}</option>}
               </FormattedMessage>
               <FormattedMessage id="register.gender.2" key={"op" + "-" + "2"}>
-                {(message) => <option value="b">{message}</option>}
+                {(message) => <option value="Female">{message}</option>}
               </FormattedMessage>
               <FormattedMessage id="register.gender.3" key={"op" + "-" + "3"}>
-                {(message) => <option value="c">{message}</option>}
+                {(message) => <option value="Rather not say">{message}</option>}
               </FormattedMessage>
             </select>
             {errors.genre && <p className="error">{errors.genre}</p>}
