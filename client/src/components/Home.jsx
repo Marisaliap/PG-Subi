@@ -38,15 +38,15 @@ export default function Home() {
               defaultMessage="Publish your next round trip on Gimme a Ride and get, on average, 80
               dollars * of your passengers. You will only need a couple of minutes
               to publish your route. Do we share a trip?"
-            />
+            /></p>
             <p className="detail">
               <FormattedMessage
                 id="home.p2"
                 defaultMessage="* Average amount received by drivers in 2021."
               />
+
             </p>
-          </p>
-          {/* 
+            {/* 
           {
             <NavLink
               to={
@@ -64,20 +64,20 @@ export default function Home() {
               </button>
             </NavLink>
           } */}
-          <div>
-            {
-              <NavLink to="/route-list">
-                <button className="button">
-                  <FormattedMessage
-                    id="home.routes"
-                    defaultMessage="See all routes available!"
-                  />
-                </button>
-              </NavLink>
-            }
-          </div>
-        </article>
-      </section>
+            <div>
+              {
+                <NavLink to="/route-list">
+                  <button className="button">
+                    <FormattedMessage
+                      id="home.routes"
+                      defaultMessage="See all routes available!"
+                    />
+                  </button>
+                </NavLink>
+              }
+            </div>
+          </article>
+        </section>
 
       <section className="sectionBelow">
         <h1><FormattedMessage
@@ -129,8 +129,9 @@ export default function Home() {
               />
             </p>
           </div>
-        </div>
-      </section>
-    </div>
+          </div>
+        </section>
+      </div>
+    
   );
 }

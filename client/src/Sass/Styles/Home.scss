@@ -6,7 +6,7 @@
 
   @media only screen and (min-width: 768px) {
     padding: 5rem;
-    padding-top: 0;
+    margin-top: 0;
   }
 
   .homepageImage {
@@ -23,7 +23,7 @@
 
   article {
     @media only screen and (min-width: 1024px) {
-      float: right;
+      float: left;
       width: 50%;
       text-align: left;
       padding-top: 2rem;
@@ -43,6 +43,7 @@
 
     .detail {
       font-weight: 300;
+      margin-left: 1.25rem;
     }
 
     .button {
@@ -50,13 +51,33 @@
     }
   }
 
-  .sectionBelow {
+  .secciones {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .sectionAbove {
     @media only screen and (min-width: 768px) {
-      padding: 3rem;
+      padding: 1.5rem;
     }
 
     @media only screen and (min-width: 1024px) {
-      margin-top: 22rem;
+      margin-top: 0rem;
+    }
+
+    h1 {
+      font-weight: 600;
+    }
+  }
+
+  .sectionBelow {
+    @media only screen and (min-width: 768px) {
+      padding: 1.5rem;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      margin-top: 27rem;
     }
 
     h1 {
@@ -67,6 +88,7 @@
       @media only screen and (min-width: 1024px) {
         display: flex;
         align-items: center;
+        margin-top: 1rem;
       }
 
       div {
