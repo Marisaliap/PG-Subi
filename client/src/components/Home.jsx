@@ -19,7 +19,7 @@ export default function Home() {
       {/* <div>
         <img className="fotoHeader" src={header} alt="header" />
       </div> */}
-      <div>{/* <SearchBarHome /> */}</div>
+      <div><SearchBarHome /></div>
       <section>
         <img className="homepageImage" src={navigator} alt="Home" />
         <article>
