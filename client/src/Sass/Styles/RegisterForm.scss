@@ -35,15 +35,21 @@
     color: $headline;
   }
 
-  .cargaImagen {
+//   .cargaImagen {
 
-    :before,
-    :after {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-bo
-    }
-  }
+// input{
+//   display: none;
+// }
+// border: 1px solid #ccc;
+// display: inline-block;
+// padding: 6px 12px;
+// cursor: pointer;
+    
+    
+//     }
+  
+
+
 
   .terminos {
     font-size: 1rem;
@@ -211,9 +217,5 @@
     &:hover {
       cursor: pointer;
     }
-  }
-
-  .cargaImagen {
-    font-weight: bold;
   }
 }

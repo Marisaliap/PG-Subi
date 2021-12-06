@@ -313,14 +313,15 @@ export default function Registro() {
                   defaultMessage="ID or passport Front*:"
                 />
               </p>
+              <div className="cargaImagen">
               <input
                 onChange={(e) => uploadImage2(e)}
-                className="cargaImagen"
                 type="file"
                 name="image"
                 required="required"
                 accept="image/png, image/jpeg"
               />
+            </div>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>
             <p>
@@ -333,6 +334,7 @@ export default function Registro() {
                   defaultMessage="ID or passport Back*:"
                 />
               </p>
+              <label className="cargaImagen">
               <input
                 onChange={(e) => uploadImage2(e)}
                 className="cargaImagen"
@@ -341,6 +343,7 @@ export default function Registro() {
                 required="required"
                 accept="image/png, image/jpeg"
               />
+              </label>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>
             <p>
