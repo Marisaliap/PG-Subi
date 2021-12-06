@@ -9,6 +9,7 @@
     "searchUserByName.search" : "Buscar",
     "searchUserByName.placeholder" : " 🔍  Encuentra un usuario...",
 
+    "home.title1" : "Ahorra dinero mientras conduces",
     "home.save" : "Ahorra dinero mientras conduces",
     "home.p1" : "Publica tu próximo viaje de ida y vuelta en Gimme a Ride y obtén, en promedio, 80 dólares * de tus pasajeros. Solo necesitarás un par de minutos para publicar tu ruta. ¿Compartimos un viaje?",
     "home.p2" : "* Cantidad promedio recibida por los conductores en 2021.",
@@ -27,6 +28,11 @@
     "searchBarHome.searchButton" : "Buscar",
     "searchBarHome.destination" : "Destino",
     "searchBarHome.origin" : "Origen",
+
+    "searchBarPostRuta.searchTitle": "¿Adónde quieres ir?",
+    "searchBarPostRuta.destination" : "Destino",
+    "searchBarPostRuta.origin" : "Origen",
+    "searchBarPostRuta.preview" : "Vista previa del viaje",
 
     "footer.lang" : "Idioma",
     "footer.about" : "Sobre",
@@ -56,7 +62,13 @@
     "formCar.model" : "Modelo:",
     "formCar.cylinder" : "Cilindrada:",
     "formCar.add" : " Agregar Coche",
-    
+
+    "routesFromSearch.noRoute" : "Ninguna ruta coincide con su búsqueda",
+
+    "userDetails.back" : "Volver",
+
+    "profile.loading": "Cargando...",
+
 
     "landing.enter" : "Entrar",
     

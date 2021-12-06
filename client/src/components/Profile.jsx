@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { getUserDetail } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Sass/Styles/Profile.scss';
+import {FormattedMessage} from 'react-intl';
 
 export const Profile = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,10 @@ export const Profile = () => {
   }, [dispatch, umail]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div><FormattedMessage
+    id="profile.loading"
+    defaultMessage="Loading..."
+  /></div>;
   }
 
   return (

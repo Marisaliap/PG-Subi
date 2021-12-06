@@ -29,6 +29,11 @@
     "searchBarHome.destination" : "Destination",
     "searchBarHome.origin" : "Origin",
 
+    "searchBarPostRuta.searchTitle": "Where do you want to go?",
+    "searchBarPostRuta.destination" : "Destination",
+    "searchBarPostRuta.origin" : "Origin",
+    "searchBarPostRuta.preview" : "Preview Trip",
+
     "footer.lang" : "Language",
     "footer.about" : "About",
     "footer.aboutUs" : "About Us",
@@ -58,6 +63,12 @@
     "formCar.model" : "Model:",
     "formCar.cylinder" : "Cylinder:",
     "formCar.add" : " Add Car",
+
+    "routesFromSearch.noRoute" : "No route match your search",
+
+    "userDetails.back" : "Back",
+
+    "profile.loading": "Loading...",
 
     "landing.enter" : "Enter",
 
