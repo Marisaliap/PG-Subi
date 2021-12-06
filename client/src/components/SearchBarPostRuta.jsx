@@ -8,8 +8,8 @@ import {
 } from "../actions";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/App.scss";
-
 import "../Sass/Styles/SearchBarPostRuta.scss";
+import {FormattedMessage} from 'react-intl';
 
 let inputs = { Origin: "", Destination: "" };
 let info = { pasajeros: 1, date: "", hours: "", restrictions: [] };
@@ -111,21 +111,29 @@ export default function SearchBar() {
   return (
     <div className="searchBarPostRuta">
       <form className="postRouteForm">
-        <h1>Where do you want to go?</h1>
+        <h1> <FormattedMessage
+							id="searchBarPostRuta.searchTitle"
+							defaultMessage="Where do you want to go?"
+						/></h1>
+            <FormattedMessage id="searchBarHome.origin" defaultMessage="Origin">
+    {placeholder=>
         <input
           type="text"
           list="cities"
           onChange={inputHandleChange}
           name="Origin"
-          placeholder="Origin"
+          placeholder={placeholder}
           className="searchbar"
-        />
+        />}
+        </FormattedMessage>
 
         <datalist id="cities">
           {cities && cities.map((city) => <option>{city.name}</option>)}
         </datalist>
         <p>{validations && validations.Origin}</p>
 
+        <FormattedMessage id="searchBarHome.destination" defaultMessage="Destination">
+    {placeholder=>
         <input
           type="text"
           list="cities2"
@@ -133,7 +141,8 @@ export default function SearchBar() {
           name="Destination"
           placeholder="Destination"
           className="searchbar"
-        />
+        />}
+        </FormattedMessage>
 
         <datalist id="cities2">
           {cities2 && cities2.map((city) => <option>{city.name}</option>)}
@@ -209,7 +218,11 @@ export default function SearchBar() {
         <pre>
         <div>
           <NavLink to="/">
-            <button className="buttonBlue">Back</button>
+            <button className="buttonBlue">
+              <FormattedMessage
+							id="userDetails.back"
+							defaultMessage="Back"
+						/></button>
           </NavLink>
         </div>
         <div>
@@ -227,13 +240,18 @@ export default function SearchBar() {
                   width: "60px",
                   color: "white",
                 }}
-              >
-                Preview Trip
+              ><FormattedMessage
+							id="searchBarPostRuta.preview"
+							defaultMessage="Preview Trip"
+						/>
               </NavLink>
             </button>
           ) : (
             <button className="button"  style={{backgroundColor:"grey"}} disabled>
-              Preview Trip
+            <FormattedMessage
+							id="searchBarPostRuta.preview"
+							defaultMessage="Preview Trip"
+						/>  
             </button>
           )}
         </div>

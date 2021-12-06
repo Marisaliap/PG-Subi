@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 import "../Sass/Styles/SuggestionBox.scss";
+import { FormattedMessage } from 'react-intl';
 
 export default function SuggestionBox() {
   const { user, isAuthenticated } = useAuth0();
@@ -69,7 +70,9 @@ export default function SuggestionBox() {
   return (
     <>
       <div className="FormSuggestion">
-        <h1>Suggestion Box</h1>
+        <h1><FormattedMessage
+							id="sugestionBox.title"
+							defaultMessage="Suggestion Box"/></h1>
         <form
           className="FormRECO"
           onSubmit={(e) => {
@@ -77,7 +80,9 @@ export default function SuggestionBox() {
           }}
         >
           <div className="cadaLineasugg">
-            <p className="label">Name:</p>
+            <p className="label"><FormattedMessage
+							id="sugestionBox.name"
+							defaultMessage="Name:"/></p>
             <input
               className="inputsugg"
               type="text"
@@ -87,7 +92,9 @@ export default function SuggestionBox() {
             />
           </div>
           <div className="cadaLineasugg">
-            <p className="label">Email:</p>
+            <p className="label"><FormattedMessage
+							id="sugestionBox.email"
+							defaultMessage="Email:"/></p>
             <input
               className="inputsugg"
               type="text"
@@ -97,7 +104,9 @@ export default function SuggestionBox() {
             />
           </div>
           <div className="cadaLineasugg">
-            <p className="label">Suggestion:</p>
+            <p className="label"><FormattedMessage
+							id="sugestionBox.suggestion"
+							defaultMessage="Suggestion:"/></p>
             <input
               className="inputsugg"
               type="textarea"
@@ -110,7 +119,9 @@ export default function SuggestionBox() {
             )}
           </div>
           <button className="button" type="submit">
-            Submit Suggestion
+          <FormattedMessage
+							id="sugestionBox.submit"
+							defaultMessage="Submit Suggestion"/>
           </button>
         </form>
       </div>

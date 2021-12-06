@@ -7,6 +7,7 @@ import "../Sass/Styles/RouteCardContainer.scss";
 import "../Sass/Styles/RouteCard.scss";
 // import {CardCar} from "./CardCar";
 import { Link } from "react-router-dom";
+import {FormattedMessage} from 'react-intl';
 
 const RoutesFromSearch = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,11 @@ const RoutesFromSearch = () => {
           </Link>
         ))
       ) : (
-        <div className="mensajeRutas">No route match your search</div>
+        <div className="mensajeRutas">
+          <FormattedMessage
+            id="routesFromSearch.noRoute"
+            defaultMessage="No route match your search"
+          /></div>
       )}
     </div>
   );

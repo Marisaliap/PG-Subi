@@ -6,6 +6,7 @@ import CardCar from "./CardCar";
 import CardFullUser from "./CardFullUser";
 import { getUserDetail } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
+import {FormattedMessage} from 'react-intl';
 
 export default function UserDetails(props) {
   const dispatch = useDispatch();
@@ -60,7 +61,11 @@ export default function UserDetails(props) {
         {/* <p> Loading...</p> */}
       </div>
       <Link to="/home">
-        <button className="buttonBlue">Back</button>
+        <button className="buttonBlue">
+        <FormattedMessage
+							id="userDetails.back"
+							defaultMessage="Back"
+						/></button>
       </Link>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../Sass/Styles/Recommendations.scss";
+import {FormattedMessage} from 'react-intl';
 
 export default function Recommendations() {
   return (
