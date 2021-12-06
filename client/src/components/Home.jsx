@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom';
 import '../Sass/Styles/Home.scss';
 // import header from "../img/header.png";
 import navigator from '../img/navigator.svg';
+import ecoConscious from '../img/ecoConscious.svg';
+import saveMoney from '../img/saveMoney.svg';
+import offRoad from '../img/offRoad.svg';
+import electricCar from '../img/electricCar.svg';
 import group2 from '../img/group2.png';
 import SearchBarHome from './SearchBarHome';
 import { useSelector } from 'react-redux';
@@ -71,6 +75,38 @@ export default function Home() {
             }
           </div>
         </article>
+      </section>
+
+      <section className="sectionBelow">
+        <h1>Why use GimmeARide?</h1>
+        <div className="belowContainer">
+          <div>
+            <img src={ecoConscious} alt="Eco-Consciousness" />
+            <h3>It's Eco-Conscious</h3>
+            <p>
+              By reducing the number of vehicles on the road, the environment is
+              greatly benefited.
+            </p>
+          </div>
+
+          <div>
+            <img src={electricCar} alt="It's hella fun" />
+            <h3>Have fun</h3>
+            <p>
+              Meet new people with whom to share excellent experiences.
+              Traveling alone is boooring.
+            </p>
+          </div>
+
+          <div>
+            <img src={saveMoney} alt="Lets you save money" />
+            <h3>Lets you save money</h3>
+            <p>
+              Share your travel expenses with select passengers, you will end up
+              spending less on each trip!
+            </p>
+          </div>
+        </div>
       </section>
     </div>
   );
