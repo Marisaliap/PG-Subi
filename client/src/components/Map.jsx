@@ -20,6 +20,11 @@ import { RiPinDistanceFill } from 'react-icons/ri';
 import '../Sass/Styles/Map.scss';
 import swal from 'sweetalert';
 
+String.prototype.capitalizeFirstLetter = function () {
+  if (this) {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  }
+};
 
 export default function Map() {
   const dispatch = useDispatch();
@@ -96,7 +101,7 @@ export default function Map() {
         // }
       >
         {city && city.length === 1 && (
-          <Marker coordinates={city[0].coordinates} style={{ color: 'red' }}>
+          <Marker coordinates={city[0].coordinates} anchor='bottom' style={{ color: 'red' }}>
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
               style={{ height: '30px' }}
@@ -105,7 +110,7 @@ export default function Map() {
           </Marker>
         )}
         {city2 && city2.length === 1 && (
-          <Marker coordinates={city2[0].coordinates}>
+          <Marker coordinates={city2[0].coordinates} anchor='bottom'>
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
               style={{ height: '30px' }}
@@ -150,7 +155,7 @@ export default function Map() {
           <BsFillPersonFill /> {routeInfo.pasajeros} Seats available.
         </p>
         {routeInfo.restrictions.map(restriction => {
-         return <p>{restriction}</p>
+         return <p>{restriction.capitalizeFirstLetter() + '.'}</p>
         })}
       </div>
       <div className="buttonContainer">

@@ -33,7 +33,7 @@
     "footer.cookies" : "Política de Cookies",
     "footer.group10" : "Grupo 10 © |",
 
-    "subFooter.app" : "Gimme a Ride es una aplicación para compartir viajes entre personas. Dondequiera que vayas, encuentra tu viaje ideal.",
+    "subFooter.app" : "Gimme a Ride es una aplicación para compartir viajes entre personas.                                              Donde quiera que vayas, encuentra tu viaje ideal.",
 
     "landing.enter" : "Entrar",
     
@@ -41,12 +41,18 @@
     "register.title" : "Crea tu Usuario",
     "register.name" : "Nombre*",
     "register.lastname" : "Last Name*:",
+    "register.photoUser" : "Foto Usuario*:",
     "register.id" : "DNI o Pasaporte*:",
+    "register.idFront" : "DNI o Pasaporte Frente*:",
+    "register.idBack" : "DNI o Pasaporte Dorso*:",
     "register.gender" : "Género*:", 
     "register.genderOptions" : "-- Selecciona una opción --",
     "register.male" : "Masculino",
     "register.female" : "Femenino",
     "register.doNotSay" : "Prefiero no Decir",
+    "register.gender.1" : "Masculino",
+    "register.gender.2" : "Femenino",
+    "register.gender.3" : "Prefiero no decir",
     "register.age" : "Edad*:",
     "register.phone" : "Teléfono*:",
     "register.street" : "Calle y Número*:",
@@ -62,6 +68,9 @@
     "register.termsOptions" : "-- Selecciona una Opción --",
     "register.yes" : "Sí",
     "register.submit" : "Registrar",
+    "register.gender.1" : "Masculino",
+    "register.gender.2" : "Femenino",
+    "register.gender.3" : "Prefiero no decir",
 
     "privacyPolicy.terms" : "Términos y Condiciones",
     "privacyPolicy.effdate" : "Versión vigente a partir del ",
@@ -97,8 +106,28 @@
     "privacyPolicy.item15" : "Una copia de tus suscripciones de seguros, ejercicios de retirada (si los hay), declaraciones realizadas y formulario archivado para suscribir o gestionar tu contrato de seguro.",
     "privacyPolicy.p9" : "2.2 Información que recogemos automáticamente",
     "privacyPolicy.p10" : "Si te registras a través de los métodos de autenticación de redes sociales, GiveMeaRide tendrá acceso a ciertos datos personales (p. ej. nombre, apellidos, foto y correo electrónico) de tu cuenta en dicha red social, de acuerdo con los términos y condiciones aplicables. Recogemos algunos de tus datos personales cuando interactúes con las funciones de las redes sociales, como la pestaña Me gusta.",
+    "privacyPolicy.p11" : "Respecto a cada una de tus visitas a nuestra Plataforma, podremos recoger, de acuerdo con la legislación aplicable y, cuando así sea necesario, con tu consentimiento, información referente a los dispositivos que empleas y las redes a las que te conectas cuando haces uso de nuestros servicios. Esto puede incluir la siguiente información: tu dirección IP, información de conexión, tipo y versión de navegador, tipos y versiones de los plugins o complementos de tu navegador, sistema operativo y plataforma, información sobre tu visita incluido el historial detallado de la URL a las diferentes páginas de nuestra Plataforma, contenido que hayas visto o buscado, términos de búsqueda utilizados, errores de descarga, duración de las visitas a determinadas páginas, el identificador publicitario de tu dispositivo, interacciones con la página y número de teléfono desde el que te hayas puesto en contacto con nosotros. Recogemos esta información empleando diversas tecnologías, incluidas las cookies (para más información, ver nuestra ",
+    "privacyPolicy.p12" : "Política de Cookies",
+    "privacyPolicy.p13" : "También recopilamos información global sobre tu actividad en nuestra plataforma (como, por ejemplo, el número de viajes ofrecidos, tu tiempo de respuesta a los mensajes, etc.). Esta información puede ser publicada en tu perfil público en nuestra plataforma, si tienes uno.",
+    "privacyPolicy.p14" : "Por último, podemos recopilar información sobre ti de nuestros socios de seguros o intermediarios en relación con tu solicitud de elegibilidad para los programas de seguros o tu suscripción a los contratos de seguros propuestos cuando actuemos como representantes de seguros.",
+    "privacyPolicy.p15" : "Conservación de datos",    
+    "privacyPolicy.p16" : "Salvo con relación a las categorías de datos personales mencionadas en las cláusulas 2.3.2 y 2.3.3 más adelante, tus datos personales se archivarán después de los siguientes periodos de retención:",
+    "privacyPolicy.p17" : "5 años después del último uso de nuestra plataforma, si no cerraste tu cuenta; 30 días después del cierre de tu cuenta, excepto si recibiste un informe o calificación negativa, en cuyo caso tus datos personales se conservarán durante 2 años después del cierre de tu cuenta.",
+    "privacyPolicy.p18" : "Las siguientes categorías de datos personales pueden conservarse durante periodos diferentes:",
+    "privacyPolicy.p19" : "Los datos financieros (p. ej., pagos, reembolsos, etc.) se conservan durante el tiempo exigido por la legislación contable y fiscal aplicable (por ejemplo, los documentos contables se almacenan durante un máximo de 10 años);",
+    "privacyPolicy.p20" : "En el caso de que tu cuenta sea suspendida o bloqueada, conservaremos tus datos durante un periodo de entre 2 o 10 años, dependiendo de la gravedad del incumplimiento, con el fin de impedir que puedas eludir las normas que se apliquen a nuestras plataformas.",
+    "privacyPolicy.p21" : "Es posible que archivemos algunos de tus Datos personales durante un período que no exceda cinco (5) años para cumplir con nuestras obligaciones legales y gestionar posibles disputas.",
+    "privacyPolicy.p22" : "",
+    "privacyPolicy.p23" : "",
+    "privacyPolicy.p24" : "",
+    "privacyPolicy.p25" : "",
 
-    
+
+
+    "privacyPolicy.p70" : " Si tienes alguna pregunta sobre esta Política de Privacidad o si tienes alguna solicitud con respecto a tus Datos personales, puedes ponerte en contacto con nosotros mediante correo electrónico a nuestro Delegado de Protección de Datos en <a>dataprotection@GiveMeaRide.com</a>",
+
+
+
 
 
     "final" : ""

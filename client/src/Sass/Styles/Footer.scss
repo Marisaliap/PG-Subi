@@ -4,32 +4,32 @@
   width: 100vw;
   font-weight: normal;
   display: grid;
-  grid-template-columns: 2% 8% 2% 20% 2% 34% 2% 18% 2% 8% 2%;
+  grid-template-columns: 10% 8% 2% 16% 2% 22% 2% 18% 2% 8% 10%;
   margin: 0;
   text-align: left;
-  background-color: $footer;
+  background-color: $buttonColor;
   justify-items: center;
   margin-top: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 5vh;
+  padding-bottom: 1.5rem;
   transition: background-color 0.5s ease-in-out;
 
-  &:hover {
-    background-color: $footerhover;
-  }
+  // &:hover {
+  //   background-color: $footerhover;
+  // }
 
   .cosasAbajo {
     width: 100%;
     margin-left: 0%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     margin-top: -1rem;
   }
 
   a {
     text-decoration: underline;
-    color: $links;
+    color: $background;
   }
 
   hr {
@@ -40,6 +40,7 @@
 
   .Link {
     text-decoration: none;
+    align-self: center;
   }
 
   .Link:hover {
@@ -49,6 +50,9 @@
 
   .Info {
     align-self: center;
+    h3 {
+      color: $background
+    }
   }
 
   .legal {
@@ -59,7 +63,7 @@
     width: 100%;
     margin-left: 0%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     margin-top: -1rem;
   }
@@ -68,12 +72,15 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-content: center;
   }
 
   .titulo {
     justify-content: center;
     display: flex;
     margin-top: 0.5rem;
+    color: $background
+    
   }
 
   .botonBandera {

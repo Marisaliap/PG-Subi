@@ -3,7 +3,8 @@
 .formContainer {
   outline: none;
   border-radius: 15px;
-  background-color: #78c64433;
+  border-top: 1px solid #ededed00;
+  background-color: #EDEDED;
   padding: 1rem;
   margin: 0 0;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -32,6 +33,16 @@
     font-size: 1.2em;
     padding-top: 1rem;
     color: $headline;
+  }
+
+  .cargaImagen {
+
+    :before,
+    :after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-bo
+    }
   }
 
   .terminos {
