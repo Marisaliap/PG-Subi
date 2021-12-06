@@ -191,7 +191,7 @@ export default function UserProfile() {
     <div>
       <div className="containerProfile">
         <div className="ProfileReal">
-          <div className="ubicaBotonPhoto">
+          {/* <div className="ubicaBotonPhoto">
             {!booleanPhoto ? (
               <button className="botonPhoto" onClick={() => handleClickPhoto()}>
                 Change User Photo
@@ -236,14 +236,14 @@ export default function UserProfile() {
                 Change Photo
               </button>
             </>
-          )}
+          )} */}
           <div className="botonera">
             {!booleanUser ? (
-              <button className="botonEdit" onClick={() => handleClickUser()}>
+              <button className="buttonBlue" onClick={() => handleClickUser()}>
                 Edit User Information
               </button>
             ) : (
-              <button className="botonEditDisabled">
+              <button className="buttonDisabled">
                 Edit User Information
               </button>
             )}
@@ -255,7 +255,7 @@ export default function UserProfile() {
                 <img
                   className="photousuario"
                   src={userInfo.photo ? userInfo.photo : userInfo.picture}
-                  alt="User Image"
+                  alt="User"
                 />
                 <div className="datosUsuario">
                   <h1 className="titulos">
@@ -310,7 +310,7 @@ export default function UserProfile() {
                 <img
                   className="photousuario"
                   src={userInfo.photo ? userInfo.photo : userInfo.picture}
-                  alt="User Image"
+                  alt="User "
                 />
                 <div className="datosUsuario">
                   <h1 className="titulos">
@@ -402,25 +402,25 @@ export default function UserProfile() {
                   </div>
                 </div>
                 <button
-                  className="botonEdit"
+                  className="buttonBlue"
                   type="submit"
                   onClick={(e) => handleSubmitUser(e)}
                 >
-                  Submit
+                  Save
                 </button>
               </div>
             </>
           )}
           {idAuto === "" ? (
             <NavLink to="/car">
-              <button className="botonEdit">Edit Car Information</button>
+              <button className="buttonBlue">Edit Car Information</button>
             </NavLink>
           ) : !booleanCar ? (
-            <button className="botonEdit" onClick={() => handleClickCar()}>
+            <button className="buttonBlue" onClick={() => handleClickCar()}>
               Edit Car Information
             </button>
           ) : (
-            <button className="botonEditDisabled">Edit Car Information</button>
+            <button className="buttonDisabled">Edit Car Information</button>
           )}
           {booleanCar === false ? (
             <>
@@ -540,11 +540,11 @@ export default function UserProfile() {
                 )}
               </div>
               <button
-                className="botonEdit"
+                className="buttonBlue"
                 type="submit"
                 onClick={(e) => handleSubmitCar(e)}
               >
-                Submit
+                Save
               </button>
             </>
           )}

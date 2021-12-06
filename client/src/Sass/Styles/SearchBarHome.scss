@@ -11,10 +11,10 @@
   }
 
   .passengers {
-    height: 55px;
-    width: 70px;
+    height: 50px;
+    width: 65px;
     border: 2px solid $text;
-    padding: 1rem;
+    padding: 0.8rem;
     border-radius: 30px;
     border-color: $buttonColor;
     font-family: inherit;
@@ -39,7 +39,7 @@
       height: 20px;
       width: 200px;
       border: 2px solid $text;
-      padding: 1rem;
+      padding: 0.8rem;
       margin-left: 1rem;
       border-radius: 9999px;
       border-color: $buttonColor;
