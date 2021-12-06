@@ -44,12 +44,7 @@ export default function Home() {
                 id="home.p2"
                 defaultMessage="* Average amount received by drivers in 2021."
               />
-              <p className="detail">
-                <FormattedMessage
-                  id="home.paragraph2"
-                  defaultMessage="* Average amount received by drivers in 2021."
-                />
-              </p>
+
             </p>
             {/* 
           {
