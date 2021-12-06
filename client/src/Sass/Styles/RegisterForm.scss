@@ -35,61 +35,15 @@
     color: $headline;
   }
 
-  // .cargaImagen{
-  //   display: grid 
-	// grid-gap: $gap
-	// position: relative
-	// z-index: 1
+  .cargaImagen {
 
-	// label 
-	// 	display: flex
-	// 	align-items: center
-	// 	color: setColor(primary, .5)
-	// 	background: setColor(white)
-	// 	transition: .4s ease
-	// 	font-family: arial, sans-serif
-	// 	font-size: .75em
-	// 	font-weight: regular
-
-	// input 
-	// 	position: relative
-	// 	z-index: 1
-	// 	padding: 0 gap(m)
-	// 	width: 100%
-	// 	height: $size
-	// 	border: 1px solid $primary
-	// 	border-radius: $borderRadius
-	// 	font-family: arial, sans-serif
-	// 	font-size: 1rem
-	// 	font-weight: regular
-
-	// 	&[type="file"]
-	// 		padding: 0 gap(m)
-	// 		&::-webkit-file-upload-button
-	// 			visibility: hidden
-	// 			margin-left: $gap
-	// 			padding: 0
-	// 			height: $size
-	// 			width: 0px
-				
-
-	// button 
-	// 	position: absolute 
-	// 	right: 0
-	// 	bottom: 0
-	// 	height: $size
-	// 	width: $size
-	// 	line-height: 0
-	// 	user-select: none
-	// 	color: $secondary
-	// 	background-color: $primary
-	// 	border-radius: 0 $borderRadius $borderRadius 0
-	// 	font-family: arial, sans-serif
-	// 	font-size: 1rem
-	// 	font-weight: 800
-	// 	@-moz-document url-prefix()
-	// 		display: none
-  // }
+    :before,
+    :after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-bo
+    }
+  }
 
   .terminos {
     font-size: 1rem;
