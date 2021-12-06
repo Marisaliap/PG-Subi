@@ -19,12 +19,14 @@ const RouteDetails = () => {
   return (
     <div className="RouteDetails">
       <NavBarFilter />
+    
 
-      <div className="RouteCardContainer">
+      <div className="RouteContainer">
         {
           getRoutes.map((route, i) => (
             <Link className="link" to={`/route/${route.id}`} >
               <div className="RouteCard">
+              
                {
                  route.users && <CardUser
                   photo={ route.users.length > 0 && route.users[0].photo}
@@ -36,6 +38,8 @@ const RouteDetails = () => {
                   key={i}
                 />
               }
+              <hr />
+              
                 <CardRoute
                   origin={route.originName}
                   destiny={route.destinyName}
@@ -46,6 +50,7 @@ const RouteDetails = () => {
                   key={i + 1}
                   price={route.price}
                 />
+                
               </div>
             </Link>
           ))
