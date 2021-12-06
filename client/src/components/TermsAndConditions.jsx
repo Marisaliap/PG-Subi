@@ -9,53 +9,40 @@ export default function TermsAndConditions() {
       <article>
         <div></div>
         <div>
-        <p ><a href="/terms-and-conditions">
+        <p>
         <FormattedMessage
 							id="privacyPolicy.terms"
 							defaultMessage="Terms and Conditions"
-						/></a><FormattedMessage
+						/> | <a href="/privacy-policy"><FormattedMessage
             id="privacyPolicy.privacy"
-            defaultMessage=" | Privacy Policy | "
-          />
-          <a href="/cookies-policy">
+            defaultMessage="Privacy Policy"
+          /></a> | <a href="/cookies-policy"> 
           <FormattedMessage
             id="privacyPolicy.cookies"
             defaultMessage="Cookies Policy"
-          /></a></p>
+          /></a> </p>
           <p><strong><FormattedMessage
-							id="privacyPolicy.effdate"
-							defaultMessage="Effective date: "
-						/>
+							id="termsAndCond.review"
+							defaultMessage="Last review: "
+						/></strong>
             <FormattedMessage
-							id="privacyPolicy.date"
-							defaultMessage="17/12/2021"
-						/></strong></p>
-            <br/>
-          <p>
-            <p>
-              {" "}
-              Terms and Conditions |{" "}
-              <a href="/privacy-policy" target="_blank"
-            rel="noreferrer">Privacy Policy </a>|{" "}
-              <a href="/cookies-policy" target="_blank"
-            rel="noreferrer">Cookies Policy </a>
-            </p>
-          </p>
-          <p>
-            <strong>Last review: </strong>
-            <span>November 28, 2021 </span>
-          </p>
-          <p>
-            <span>
-              This document describes the General Terms and Conditions
-              applicable to the use of the services offered by Gimme A Ride®
-              &nbsp;{" "}
+							id="termsAndCond.date"
+							defaultMessage="November 28, 2021"
+						/></p>
+          <p><FormattedMessage
+							id="termsAndCond.p1"
+							defaultMessage="This document describes the General Terms and Conditions
+              applicable to the use of the services offered by Gimme A Ride®"
+						/>
               <a href="http://www.givemearide.com/">www.givemearide.com/app</a>
+              <FormattedMessage
+							id="termsAndCond.p1"
+							defaultMessage=""
+						/>
               &nbsp; and the Gimme A Ride® application (hereinafter “Give me a
               ride®”). Any person (hereinafter "User") who wishes to use Give me
               a ride® can do so subject to the Terms and Conditions respective,
               along with all other policies and principles.
-            </span>
           </p>
           <p>
             <span>

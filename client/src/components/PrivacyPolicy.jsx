@@ -12,11 +12,10 @@ export default function PoliticaPrivacidad() {
         <FormattedMessage
 							id="privacyPolicy.terms"
 							defaultMessage="Terms and Conditions"
-						/></a><FormattedMessage
+						/></a> | <FormattedMessage
             id="privacyPolicy.privacy"
             defaultMessage=" | Privacy Policy | "
-          />
-          <a href="/cookies-policy">
+          /> | <a href="/cookies-policy">
           <FormattedMessage
             id="privacyPolicy.cookies"
             defaultMessage="Cookies Policy"
