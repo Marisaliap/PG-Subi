@@ -148,7 +148,7 @@ export default function AllInfoRoute({ match }) {
       </div>
       <button className='buttonBlue' onClick={handleClick}>Go Back</button>
         { !datos
-          ? <p>Wait a moment....</p>
+          ? ""
           : <a href={datos.init_point} alt="">Paga</a>//<Continue trip={route} data={datos}/>
         }
     </div>

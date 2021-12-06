@@ -1,18 +1,19 @@
-@import '../Variables/Variables.scss';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@150;200;300;400;500;600;700;800;900&display=swap');
+@import "../Variables/Variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@150;200;300;400;500;600;700;800;900&display=swap");
 
 .App {
   background-color: $background;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5;
   text-align: center;
   position: sticky;
   top: 15vh;
+  overflow-x: hidden;
 
   .back-to-top {
     position: fixed;
-    bottom: 20vh;
-    right: 2vw;
+    bottom: 35vh;
+    right: 1vw;
     z-index: 99999;
     border: none;
     outline: none;
@@ -53,7 +54,7 @@ p {
 
 .button {
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   color: $background;
   background-color: $buttonColor;
@@ -71,7 +72,7 @@ p {
 
 .buttonBlue {
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   color: $background;
   background-color: $buttonBlue;

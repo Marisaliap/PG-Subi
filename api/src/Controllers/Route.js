@@ -76,7 +76,7 @@ const postRoute = async (req, res, next) => {
 
     let kmNumber = km.split("k")[0];
 
-    let price = kmNumber * 7 + (kmNumber * 7 * (10 / 100));
+    let price = Math.ceil(kmNumber * 7 + (kmNumber * 7 * (10 / 100)));
 
 
     const route = await Route.create({

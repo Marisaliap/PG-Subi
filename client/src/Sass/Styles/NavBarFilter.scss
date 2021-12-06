@@ -12,7 +12,7 @@
     font-weight: bold;
     color: $headline;
     border: 2px solid $buttonColor;
-    border-radius: 9999px;
+    border-radius: 1rem;
 
     &:focus {
       outline: none;
@@ -20,8 +20,6 @@
 
     @media only screen and (min-width: 768px) {
       border: 2px solid $buttonColor;
-      margin: 1rem;
-      padding: 1rem;
     }
   }
 }

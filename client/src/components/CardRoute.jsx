@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Sass/Styles/CardRoute.scss';
 
 export default function CardRoute({
   origin,
@@ -7,18 +8,18 @@ export default function CardRoute({
   hours,
   place,
   price,
-  infoRoute,
+  //infoRoute,
   ...props
 }) {
   return (
-    <div {...props}>
+    <div className="CardRoute" {...props}>
       <h5>From: {origin}</h5>
       <h5>To: {destiny}</h5>
       <h5>Date: {date}</h5>
       <h5>Time: {hours}</h5>
       <h5>Seats available: {place}</h5>
-      {/* <h5>{price}</h5> */}
-      <h5>{infoRoute}</h5>
+      <h5>$ {price}</h5>
+      
     </div>
   );
 }
