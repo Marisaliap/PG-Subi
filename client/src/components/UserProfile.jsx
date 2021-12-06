@@ -1,8 +1,9 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { editUser, getUserDetail } from "../actions";
+import { editUser, getUserDetail, editCar } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import {
   BsFillTelephoneFill,
   BsGenderFemale,
@@ -17,10 +18,20 @@ import "../Sass/Styles/UserProfile.scss";
 import "../Sass/Styles/App.scss";
 
 export default function UserProfile() {
-  const { user } = useAuth0();
   const userInfo = useSelector((state) => state.user);
-  const [boolean, setBoolean] = useState(false);
+  const autoInfo = useSelector((state) => state.car);
+  let idAuto;
+  autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
+  const [loanding, setLoanding] = useState(false);
+  const [image, setImage] = useState("");
+  const [booleanUser, setBooleanUser] = useState(false);
+  const [booleanCar, setBooleanCar] = useState(false);
+  const [booleanPhoto, setBooleanPhoto] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserDetail(userInfo.email));
+  }, [booleanUser, booleanCar, booleanPhoto]);
 
   const [input, setInput] = useState({
     street: "",
@@ -31,17 +42,23 @@ export default function UserProfile() {
     instagram: "",
     about: "",
     age: "",
+    photo: "",
   });
 
-  useEffect(() => {
-    dispatch(getUserDetail(user.email));
-  }, [boolean]);
+  const [auto, setAuto] = useState({
+    patent: "",
+    color: "",
+    brand: "",
+    model: "",
+    cylinder: "",
+  });
 
-  function handleSubmit(e) {
+  function handleSubmitUser(e) {
     e.preventDefault();
     dispatch(editUser(userInfo.email, input));
-    setBoolean(false);
+    setBooleanUser(false);
     setInput({
+      ...input,
       street: userInfo.street,
       city: userInfo.city,
       province: userInfo.province,
@@ -50,6 +67,84 @@ export default function UserProfile() {
       instagram: userInfo.instagram,
       about: userInfo.about,
       age: userInfo.age,
+    });
+  }
+
+  function handleSubmitCar(e) {
+    e.preventDefault();
+    dispatch(editCar(idAuto, auto));
+    setBooleanCar(false);
+    setAuto({
+      patent: userInfo.cars[0].patent,
+      color: userInfo.cars[0].color,
+      brand: userInfo.cars[0].brand,
+      model: userInfo.cars[0].model,
+      cylinder: userInfo.cars[0].cylinder,
+    });
+  }
+
+  function handleSubmitPhoto(e) {
+    e.preventDefault();
+    setTimeout(() => {
+      dispatch(editUser(userInfo.email, input));
+      setLoanding(false);
+      setBooleanPhoto(false);
+      window.location.reload(false);
+      // }, 60000);
+    }, 1000);
+    alert("Photo updated* (This may take some minutes to show)");
+  }
+
+  function handleChange(e) {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+    setAuto({
+      ...auto,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  function handleClickPhoto() {
+    if (booleanPhoto === false) {
+      setBooleanPhoto(true);
+    } else {
+      setBooleanPhoto(false);
+    }
+  }
+
+  function handleClickUser() {
+    if (booleanUser === false) {
+      setBooleanUser(true);
+    } else {
+      setBooleanUser(false);
+    }
+    setInput({
+      ...input,
+      street: userInfo.street,
+      city: userInfo.city,
+      province: userInfo.province,
+      telephone: userInfo.telephone,
+      facebook: userInfo.facebook,
+      instagram: userInfo.instagram,
+      about: userInfo.about,
+      age: userInfo.age,
+    });
+  }
+
+  function handleClickCar() {
+    if (booleanCar === false) {
+      setBooleanCar(true);
+    } else {
+      setBooleanCar(false);
+    }
+    setAuto({
+      patent: userInfo.cars[0].patent,
+      color: userInfo.cars[0].color,
+      brand: userInfo.cars[0].brand,
+      model: userInfo.cars[0].model,
+      cylinder: userInfo.cars[0].cylinder,
     });
   }
 
@@ -58,29 +153,8 @@ export default function UserProfile() {
       ...input,
       [e.target.name]: e.target.value,
     });
-  }
-
-  function handleClick() {
-    if (boolean === false) {
-      setBoolean(true);
-    } else {
-      setBoolean(false);
-    }
-    setInput({
-      street: userInfo.street,
-      city: userInfo.city,
-      province: userInfo.province,
-      telephone: userInfo.telephone,
-      facebook: userInfo.facebook,
-      instagram: userInfo.instagram,
-      about: userInfo.about,
-      age: userInfo.age,
-    });
-  }
-
-  function handleChange(e) {
-    setInput({
-      ...input,
+    setAuto({
+      ...auto,
       [e.target.name]: e.target.value,
     });
   }
@@ -92,27 +166,92 @@ export default function UserProfile() {
     }
   }
 
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    // console.log("file", files);
+    const data = new FormData();
+    // console.log("data", data);
+    data.append("file", files[0]);
+    data.append("upload_preset", "s6kdvopu");
+    setLoanding(true);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    setImage(file.secure_url);
+  };
+
   return (
     <div>
       <div className="containerProfile">
         <div className="ProfileReal">
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            {!boolean ? (
-              <button className="botonEdit" onClick={() => handleClick()}>
-                Edit information
+          <div className="ubicaBotonPhoto">
+            {!booleanPhoto ? (
+              <button className="botonPhoto" onClick={() => handleClickPhoto()}>
+                Change User Photo
               </button>
             ) : (
+              <button className="botonPhotoDisabled">Change User Photo</button>
+            )}
+          </div>
+          {booleanPhoto === false ? (
+            ""
+          ) : (
+            <>
+              <div className="cadaLinea">
+                <p className="label">
+                  <FormattedMessage
+                    id="register.photoUser"
+                    defaultMessage="Photo User*:"
+                  />
+                </p>
+                <input
+                  onChange={(e) => uploadImage(e)}
+                  className="cargaImagen"
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
+              <div Style="display:none">{(input.photo = image)}</div>
+              <p>
+                {loanding ? (
+                  <img src={image} Style="height:150px" alt="" />
+                ) : (
+                  ""
+                )}
+              </p>
               <button
-                className="botonEditDisabled"
-                onClick={() => handleClick()}
+                className="botonEdit"
+                type="submit"
+                onClick={(e) => handleSubmitPhoto(e)}
               >
-                Edit information
+                Change Photo
+              </button>
+            </>
+          )}
+          <div className="botonera">
+            {!booleanUser ? (
+              <button className="botonEdit" onClick={() => handleClickUser()}>
+                Edit User Information
+              </button>
+            ) : (
+              <button className="botonEditDisabled">
+                Edit User Information
               </button>
             )}
           </div>
-          {boolean === false ? (
+          {booleanUser === false ? (
             <>
               <div className="">
+                <h1>User Details</h1>
                 <img
                   className="photousuario"
                   src={userInfo.photo ? userInfo.photo : userInfo.picture}
@@ -133,7 +272,8 @@ export default function UserProfile() {
                     <h1 className="titulosEdad">{userInfo.age} years old</h1>
                   </div>
                   <div className="cadaLinea">
-                    <p className="label">About: {userInfo.about}</p>
+                    <p className="label">About:</p>
+                    <p className="about">{userInfo.about}</p>
                   </div>
                   <br />
                   <div className="moreInfo">
@@ -166,6 +306,7 @@ export default function UserProfile() {
           ) : (
             <>
               <div className="">
+                <h1>User Details</h1>
                 <img
                   className="photousuario"
                   src={userInfo.photo ? userInfo.photo : userInfo.picture}
@@ -186,11 +327,11 @@ export default function UserProfile() {
                     <h1 className="titulosEdad"> {userInfo.age} years old</h1>
                   </div>
                   <div className="cadaLinea">
-                    <p className="label">About: {userInfo.about}</p>
+                    <p className="label">About:</p>
                     <textarea
                       type="text"
                       name="about"
-                      value={userInfo.about}
+                      defaultValue={userInfo.about}
                       onChange={(e) => handleChange(e)}
                     />
                   </div>
@@ -263,11 +404,148 @@ export default function UserProfile() {
                 <button
                   className="botonEdit"
                   type="submit"
-                  onClick={(e) => handleSubmit(e)}
+                  onClick={(e) => handleSubmitUser(e)}
                 >
                   Submit
                 </button>
               </div>
+            </>
+          )}
+          {idAuto === "" ? (
+            <NavLink to="/car">
+              <button className="botonEdit">Edit Car Information</button>
+            </NavLink>
+          ) : !booleanCar ? (
+            <button className="botonEdit" onClick={() => handleClickCar()}>
+              Edit Car Information
+            </button>
+          ) : (
+            <button className="botonEditDisabled">Edit Car Information</button>
+          )}
+          {booleanCar === false ? (
+            <>
+              <h1>Car Details</h1>
+              <div className="cadaLinea">
+                <p className="label">Plate:</p>
+                {userInfo.cars && userInfo.cars.length === 0 ? (
+                  ""
+                ) : (
+                  <p className="label">{autoInfo.patent}</p>
+                )}
+              </div>
+              <div className="cadaLinea">
+                <p className="label">Color:</p>
+                {userInfo.cars && userInfo.cars.length === 0 ? (
+                  ""
+                ) : (
+                  <p className="label">{autoInfo.color}</p>
+                )}
+              </div>
+              <div className="cadaLinea">
+                <p className="label">Brand:</p>
+                {userInfo.cars && userInfo.cars.length === 0 ? (
+                  ""
+                ) : (
+                  <p className="label">{autoInfo.brand}</p>
+                )}
+              </div>
+              <div className="cadaLinea">
+                <p className="label">Model:</p>
+                {userInfo.cars && userInfo.cars.length === 0 ? (
+                  ""
+                ) : (
+                  <p className="label">{autoInfo.model}</p>
+                )}
+              </div>
+              <div className="cadaLinea">
+                <p className="label">Cylinder:</p>
+                {userInfo.cars && userInfo.cars.length === 0 ? (
+                  ""
+                ) : (
+                  <p className="label">{autoInfo.cylinder}</p>
+                )}
+              </div>{" "}
+            </>
+          ) : (
+            <>
+              <h1>Car Details</h1>
+              <div className="cadaLinea">
+                <p className="label">Plate:</p>
+                {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  ""
+                ) : (
+                  <input
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    name="patent"
+                    className="inputProfile"
+                    value={auto.patent}
+                  />
+                )}
+              </div>
+              <div className="cadaLinea">
+                <p className="label">Color:</p>
+                {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  ""
+                ) : (
+                  <input
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    name="color"
+                    className="inputProfile"
+                    value={auto.color}
+                  />
+                )}
+              </div>
+              <div className="cadaLinea">
+                <p className="label">Brand:</p>
+                {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  ""
+                ) : (
+                  <input
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    name="brand"
+                    className="inputProfile"
+                    value={auto.brand}
+                  />
+                )}
+              </div>
+              <div className="cadaLinea">
+                <p className="label">Model:</p>
+                {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  ""
+                ) : (
+                  <input
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    name="model"
+                    className="inputProfile"
+                    value={auto.model}
+                  />
+                )}
+              </div>
+              <div className="cadaLinea">
+                <p className="label">Cylinder:</p>
+                {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  ""
+                ) : (
+                  <input
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    name="cylinder"
+                    className="inputProfile"
+                    value={auto.cylinder}
+                  />
+                )}
+              </div>
+              <button
+                className="botonEdit"
+                type="submit"
+                onClick={(e) => handleSubmitCar(e)}
+              >
+                Submit
+              </button>
             </>
           )}
         </div>
