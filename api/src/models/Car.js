@@ -1,31 +1,38 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
+  sequelize.define(
+    "car",
+    {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+      },
+      patent: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      brand: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      model: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      cylinder: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+      },
+      color: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    },
 
-  sequelize.define('car', {
-    patent: {
-      type: DataTypes.STRING,
-      primaryKey: true
-    },
-    brand: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    model: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    cylinder: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-    color: {
-      type: DataTypes.STRING,
+    {
+      timestamps: false,
     }
-  },
-
-  {
-    timestamps: false,
-  }
   );
 };

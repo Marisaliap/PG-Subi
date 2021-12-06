@@ -19,34 +19,33 @@ export default function Home() {
       {/* <div>
         <img className="fotoHeader" src={header} alt="header" />
       </div> */}
-      <div>
-        <SearchBarHome />
-      </div>
-      <section>
-        <img className="homepageImage" src={navigator} alt="Home" />
-        <article>
-          <h1>
-            <FormattedMessage
-              id="home.save"
-              defaultMessage="Save money while driving"
-            />
-          </h1>
+      <SearchBarHome />
+      <div className="secciones">
+        <section className="sectionAbove">
+          <img className="homepageImage" src={navigator} alt="Home" />
+          <article>
+            <h1>
+              <FormattedMessage
+                id="home.save"
+                defaultMessage="Save money while driving"
+              />
+            </h1>
 
-          <p className="description">
-            <FormattedMessage
-              id="home.paragraph1"
-              defaultMessage="Publish your next round trip on Gimme a Ride and get, on average, 80
+            <p className="description">
+              <FormattedMessage
+                id="home.paragraph1"
+                defaultMessage="Publish your next round trip on Gimme a Ride and get, on average, 80
               dollars * of your passengers. You will only need a couple of minutes
               to publish your route. Do we share a trip?"
-            />
-            <p className="detail">
-              <FormattedMessage
-                id="home.paragraph2"
-                defaultMessage="* Average amount received by drivers in 2021."
               />
+              <p className="detail">
+                <FormattedMessage
+                  id="home.paragraph2"
+                  defaultMessage="* Average amount received by drivers in 2021."
+                />
+              </p>
             </p>
-          </p>
-          {/* 
+            {/* 
           {
             <NavLink
               to={
@@ -64,52 +63,53 @@ export default function Home() {
               </button>
             </NavLink>
           } */}
-          <div>
-            {
-              <NavLink to="/route-list">
-                <button className="button">
-                  <FormattedMessage
-                    id="home.routes"
-                    defaultMessage="See all routes available!"
-                  />
-                </button>
-              </NavLink>
-            }
-          </div>
-        </article>
-      </section>
+            <div>
+              {
+                <NavLink to="/route-list">
+                  <button className="button">
+                    <FormattedMessage
+                      id="home.routes"
+                      defaultMessage="See all routes available!"
+                    />
+                  </button>
+                </NavLink>
+              }
+            </div>
+          </article>
+        </section>
 
-      <section className="sectionBelow">
-        <h1>Why use GimmeARide?</h1>
-        <div className="belowContainer">
-          <div>
-            <img src={ecoConscious} alt="Eco-Consciousness" />
-            <h3>It's Eco-Conscious</h3>
-            <p>
-              By reducing the number of vehicles on the road, the environment is
-              greatly benefited.
-            </p>
-          </div>
+        <section className="sectionBelow">
+          <h1>Why use GimmeARide?</h1>
+          <div className="belowContainer">
+            <div>
+              <img src={ecoConscious} alt="Eco-Consciousness" />
+              <h3>It's Eco-Conscious</h3>
+              <p>
+                By reducing the number of vehicles on the road, the environment
+                is greatly benefited.
+              </p>
+            </div>
 
-          <div>
-            <img src={electricCar} alt="It's hella fun" />
-            <h3>Have fun</h3>
-            <p>
-              Meet new people with whom to share excellent experiences.
-              Traveling alone is boooring.
-            </p>
-          </div>
+            <div>
+              <img src={electricCar} alt="It's hella fun" />
+              <h3>Have fun</h3>
+              <p>
+                Meet new people with whom to share excellent experiences.
+                Traveling alone is boooring.
+              </p>
+            </div>
 
-          <div>
-            <img src={saveMoney} alt="Lets you save money" />
-            <h3>Lets you save money</h3>
-            <p>
-              Share your travel expenses with select passengers, you will end up
-              spending less on each trip!
-            </p>
+            <div>
+              <img src={saveMoney} alt="Lets you save money" />
+              <h3>Lets you save money</h3>
+              <p>
+                Share your travel expenses with select passengers, you will end
+                up spending less on each trip!
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
