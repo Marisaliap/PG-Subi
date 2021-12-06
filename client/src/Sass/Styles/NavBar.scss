@@ -1,6 +1,7 @@
 @import '../Variables/Variables.scss';
 
 .NavBar {
+  position: sticky;
   background-color: $background;
   top: 0;
   display: flex;
