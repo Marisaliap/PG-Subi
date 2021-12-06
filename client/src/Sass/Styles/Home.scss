@@ -1,10 +1,12 @@
-@import '../Variables/Variables.scss';
+@import "../Variables/Variables.scss";
 
 .Homepage {
   padding: 1.25rem;
+  padding-top: 0;
 
   @media only screen and (min-width: 768px) {
     padding: 5rem;
+    padding-top: 0;
   }
 
   .homepageImage {

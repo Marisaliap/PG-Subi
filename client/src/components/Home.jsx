@@ -1,16 +1,16 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import '../Sass/Styles/Home.scss';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "../Sass/Styles/Home.scss";
 // import header from "../img/header.png";
-import navigator from '../img/navigator.svg';
-import ecoConscious from '../img/ecoConscious.svg';
-import saveMoney from '../img/saveMoney.svg';
-import offRoad from '../img/offRoad.svg';
-import electricCar from '../img/electricCar.svg';
-import group2 from '../img/group2.png';
-import SearchBarHome from './SearchBarHome';
-import { useSelector } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import navigator from "../img/navigator.svg";
+import ecoConscious from "../img/ecoConscious.svg";
+import saveMoney from "../img/saveMoney.svg";
+import offRoad from "../img/offRoad.svg";
+import electricCar from "../img/electricCar.svg";
+import group2 from "../img/group2.png";
+import SearchBarHome from "./SearchBarHome";
+import { useSelector } from "react-redux";
+import { FormattedMessage } from "react-intl";
 
 export default function Home() {
   const users = useSelector((state) => state.user);
@@ -19,7 +19,9 @@ export default function Home() {
       {/* <div>
         <img className="fotoHeader" src={header} alt="header" />
       </div> */}
-      <div>{/* <SearchBarHome /> */}</div>
+      <div>
+        <SearchBarHome />
+      </div>
       <section>
         <img className="homepageImage" src={navigator} alt="Home" />
         <article>
