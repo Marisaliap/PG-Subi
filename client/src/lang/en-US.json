@@ -9,12 +9,20 @@
     "searchUserByName.search" : "Search",
     "searchUserByName.placeholder" : " 🔍  Find user...",
 
-    "home.save" : "Save money while driving",
-    "home.paragraph1" : "Publish your next round trip on Gimme a Ride and get, on average, 80 dollars * of your passengers. You will only need a couple of minutes to publish your route. Do we share a trip?",
-    "home.paragraph2" : "* Average amount received by drivers in 2021.",
+    "home.title1" : "Save money while driving",
+    "home.p1" : "Publish your next round trip on Gimme a Ride and get, on average, 80 dollars * of your passengers. You will only need a couple of minutes to publish your route. Do we share a trip?",
+    "home.p2" : "* Average amount received by drivers in 2021.",
     "home.post" : "Post a Trip",
     "home.routes" : "See all routes available!",
     "home.or" : "Or",
+    "home.title2" : "Why use GimmeARide?",
+    "home.p4" : "By reducing the number of vehicles on the road, the environment is greatly benefited.",
+    "home.p5" : "Meet new people with whom to share excellent experiences. Traveling alone is boooring.",
+    "home.p6" : "Share your travel expenses with select passengers, you will end up spending less on each trip!",
+    "home.subtitle1" : "It's Eco-Conscious",
+    "home.subtitle2" : "Have fun",
+    "home.subtitle3" : "Lets you save money",
+
 
     "searchBarHome.searchTitle" : "Where do you want to go?",
     "searchBarHome.searchButton" : "Search",
@@ -35,7 +43,8 @@
     "footer.group10" : "Group 10 © |",
 
     "subFooter.app" : "Gimme a Ride is an app to share trips between people. Wherever you go, find your ideal trip.",
-
+    "subFooter.sbox" : "Suggestion Box",
+    
     "landing.enter" : "Enter",
 
     "register.home" : "Home",
@@ -70,9 +79,6 @@
     "register.termsOptions" : "-- Select an option --",
     "register.yes" : "Yes",
     "register.submit" : "Register",
-    "register.gender.1" : "Male",
-    "register.gender.2" : "Female",
-    "register.gender.3" : "Rather not Say",
 
     "privacyPolicy.terms" : "Terms and Conditions",
     "privacyPolicy.effdate" : "Effective date: ",

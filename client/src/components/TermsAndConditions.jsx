@@ -1,16 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../Sass/Styles/TermsAndConditions.scss";
+import {FormattedMessage} from 'react-intl';
 
 export default function TermsAndConditions() {
   return (
     <div className="TermsAndConditions">
-      <Link to="/home">
-        <button className="buttonBlue">Home</button>
-      </Link>
       <article>
         <div></div>
         <div>
+        <p ><a href="/terms-and-conditions">
+        <FormattedMessage
+							id="privacyPolicy.terms"
+							defaultMessage="Terms and Conditions"
+						/></a><FormattedMessage
+            id="privacyPolicy.privacy"
+            defaultMessage=" | Privacy Policy | "
+          />
+          <a href="/cookies-policy">
+          <FormattedMessage
+            id="privacyPolicy.cookies"
+            defaultMessage="Cookies Policy"
+          /></a></p>
+          <p><strong><FormattedMessage
+							id="privacyPolicy.effdate"
+							defaultMessage="Effective date: "
+						/>
+            <FormattedMessage
+							id="privacyPolicy.date"
+							defaultMessage="17/12/2021"
+						/></strong></p>
+            <br/>
           <p>
             <p>
               {" "}

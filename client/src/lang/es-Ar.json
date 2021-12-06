@@ -10,11 +10,18 @@
     "searchUserByName.placeholder" : " 🔍  Encuentra un usuario...",
 
     "home.save" : "Ahorra dinero mientras conduces",
-    "home.paragraph1" : "Publica tu próximo viaje de ida y vuelta en Gimme a Ride y obtén, en promedio, 80 dólares * de tus pasajeros. Solo necesitarás un par de minutos para publicar tu ruta. ¿Compartimos un viaje?",
-    "home.paragraph2" : "* Cantidad promedio recibida por los conductores en 2021.",
+    "home.p1" : "Publica tu próximo viaje de ida y vuelta en Gimme a Ride y obtén, en promedio, 80 dólares * de tus pasajeros. Solo necesitarás un par de minutos para publicar tu ruta. ¿Compartimos un viaje?",
+    "home.p2" : "* Cantidad promedio recibida por los conductores en 2021.",
     "home.post" : "Crea un Viaje",
     "home.routes" : "¡Mira todas las rutas disponibles!",
     "home.or" : "O",
+    "home.title2" : "¿Por qué usar GimmeARide?",
+    "home.p4" : "Al reducir el número de vehículos en la carretera, el medio ambiente se beneficia enormemente",
+    "home.p5" : "Conoce gente nueva con la que compartir experiencias excelentes. Viajar solo es aburrido",
+    "home.p6" : "¡Comparte tus gastos de viaje con pasajeros selectos, terminarás gastando menos en cada viaje!",
+    "home.subtitle1" : "Es Eco-Consciente",
+    "home.subtitle2" : "Es divertido",
+    "home.subtitle3" : "Te permite ahorrar dinero",
 
     "searchBarHome.searchTitle" : "¿Adónde quieres ir?",
     "searchBarHome.searchButton" : "Buscar",
@@ -34,7 +41,8 @@
     "footer.group10" : "Grupo 10 © |",
 
     "subFooter.app" : "Gimme a Ride es una aplicación para compartir viajes entre personas.                                              Donde quiera que vayas, encuentra tu viaje ideal.",
-
+    "subFooter.sbox" : "Sugerencias",
+    
     "landing.enter" : "Entrar",
     
     "register.home" : "Inicio",
@@ -68,9 +76,6 @@
     "register.termsOptions" : "-- Selecciona una Opción --",
     "register.yes" : "Sí",
     "register.submit" : "Registrar",
-    "register.gender.1" : "Masculino",
-    "register.gender.2" : "Femenino",
-    "register.gender.3" : "Prefiero no decir",
 
     "privacyPolicy.terms" : "Términos y Condiciones",
     "privacyPolicy.effdate" : "Versión vigente a partir del ",

@@ -18,7 +18,9 @@ export default function SubFooter() {
         </div>
         <div>
           <Link to="/suggestion-box" target="_blank" rel="noreferrer">
-            <button className="buttonSuggestion">Suggestion Box</button>
+            <button className="buttonSuggestion"><FormattedMessage
+							id="subFooter.sbox"
+							defaultMessage="Suggestion Box"/></button>
           </Link>
         </div>
         <div className="redesSociales">
