@@ -6,6 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
 import swal from "sweetalert";
 import { FormattedMessage } from "react-intl";
+import { getUserDetail } from "../actions";
 
 export default function Registro() {
   const dispatch = useDispatch();
@@ -103,7 +104,6 @@ export default function Registro() {
         [e.target.name]: e.target.value,
       })
     );
-    console.log(input);
   }
 
   const handleCheck = (e) => {
@@ -123,9 +123,9 @@ export default function Registro() {
   // ----------------------< upload image rami x jp >----------------------
   const uploadImage = async (e) => {
     const files = e.target.files;
-    console.log("file", files);
+    // console.log("file", files);
     const data = new FormData();
-    console.log("data", data);
+    // console.log("data", data);
     data.append("file", files[0]);
     data.append("upload_preset", "s6kdvopu");
     setLoanding(true);
@@ -168,6 +168,7 @@ export default function Registro() {
     e.preventDefault();
     if (Object.keys(errors).length === 0 && validateInputs() === true) {
       dispatch(postUser(input));
+      let emailUsuario = input.email;
       setInput({
         name: "",
         lastName: "",
@@ -192,6 +193,7 @@ export default function Registro() {
         icon: "success",
         button: "Aww yiss!",
       });
+      dispatch(getUserDetail(emailUsuario));
       history.push("/home");
     } else {
       swal({
@@ -233,7 +235,10 @@ export default function Registro() {
                 name="name"
                 value={input.name}
                 placeholder={
-                  "Please type your real name! " + "-> Rec: " + user.given_name
+                  "Please type your real name! " +
+                  (user.given_name === undefined
+                    ? ""
+                    : "-> Rec: " + user.given_name)
                 }
                 onChange={(e) => handleChange(e)}
               />
@@ -251,8 +256,9 @@ export default function Registro() {
                 type="text"
                 placeholder={
                   "Please type your real last name! " +
-                  "-> Rec: " +
-                  user.family_name
+                  (user.family_name === undefined
+                    ? ""
+                    : "-> Rec: " + user.family_name)
                 }
                 name="lastName"
                 value={input.lastName}
@@ -313,14 +319,15 @@ export default function Registro() {
                   defaultMessage="ID or passport Front*:"
                 />
               </p>
+              <div className="cargaImagen">
               <input
                 onChange={(e) => uploadImage2(e)}
-                className="cargaImagen"
                 type="file"
                 name="image"
                 required="required"
                 accept="image/png, image/jpeg"
               />
+            </div>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>
             <p>
@@ -333,6 +340,7 @@ export default function Registro() {
                   defaultMessage="ID or passport Back*:"
                 />
               </p>
+              <label className="cargaImagen">
               <input
                 onChange={(e) => uploadImage2(e)}
                 className="cargaImagen"
@@ -341,6 +349,7 @@ export default function Registro() {
                 required="required"
                 accept="image/png, image/jpeg"
               />
+              </label>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>
             <p>
@@ -358,10 +367,9 @@ export default function Registro() {
               className="select"
               name="genre"
               id="genre"
-              onChange={(e)=>handleSelect(e)}
+              onChange={(e) => handleSelect(e)}
               required
             >
-            
               <option disabled selected value="1">
                 -- Select an option --
               </option>
@@ -377,51 +385,6 @@ export default function Registro() {
             </select>
             {errors.genre && <p className="error">{errors.genre}</p>}
           </div>
-          {/* <div className="cadaLinea">
-            <p className="label" for="genre">
-              <FormattedMessage
-                id="register.gender"
-                defaultMessage="Gender*:"
-              />
-            </p>
-            <FormattedMessage
-              id="register.genderOptions"
-              defaultMessage="-- Select an option --"
-            >
-              {(placeholder) => (
-                <select
-                  name="genre"
-                  id="genre"
-                  className="select"
-                  onChange={(e) => handleSelect(e)}
-                >
-                  {" "}
-                  <option disabled selected value="1">
-                    {" "}
-                  </option>
-                  <option className="options" value="Male">
-                    <FormattedMessage
-                      id="register.male"
-                      defaultMessage="Male"
-                    />
-                  </option>
-                  <option className="options" value="Female">
-                    <FormattedMessage
-                      id="register.female"
-                      defaultMessage="Female:"
-                    />
-                  </option>
-                  <option className="options" value="Rather not say">
-                    <FormattedMessage
-                      id="register.doNotSay"
-                      defaultMessage="Rather not say"
-                    />
-                  </option>
-                </select>
-              )}
-            </FormattedMessage>
-            {errors.genre && <p className="error">{errors.genre}</p>}
-          </div> */}
           <div className="cadaLinea">
             <p className="label">
               <FormattedMessage id="register.age" defaultMessage="Age*:" />
@@ -562,16 +525,16 @@ export default function Registro() {
                   defaultMessage="Privacy Policy"
                 />
               </a>
-          <input
-            type="checkbox"
-            name="checkbox"
-            onChange={(e) => handleCheck(e)}
-          />
+              <input
+                type="checkbox"
+                name="checkbox"
+                onChange={(e) => handleCheck(e)}
+              />
             </div>
           </div>
           <div>
             {validateInputs() === false ? (
-              <button className="buttondisabled" >
+              <button className="buttondisabled">
                 <FormattedMessage
                   id="register.submit"
                   defaultMessage="Register"

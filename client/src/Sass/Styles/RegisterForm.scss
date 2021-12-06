@@ -4,9 +4,9 @@
   outline: none;
   border-radius: 15px;
   border-top: 1px solid #ededed00;
-  background-color: #EDEDED;
+  background-color: #ededed;
   padding: 1rem;
-  margin: 0 0;
+  margin: 1rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.5s ease-in-out;
@@ -33,16 +33,6 @@
     font-size: 1.2em;
     padding-top: 1rem;
     color: $headline;
-  }
-
-  .cargaImagen {
-
-    :before,
-    :after {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-bo
-    }
   }
 
   .terminos {
@@ -117,6 +107,7 @@
     transition: background-color 0.5s ease-in-out;
     border-radius: 5px;
     margin-top: 1rem;
+    font-size: 1.2em;
 
     &:hover {
       background-color: $buttonColor-33;

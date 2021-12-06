@@ -20,22 +20,22 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case 'GET_SUGGESTIONS':
+    case "GET_SUGGESTIONS":
       return {
         ...state,
         suggestions1: action.payload.cities,
       };
-    case 'MATCHED_CITY':
+    case "MATCHED_CITY":
       return {
         ...state,
         matched: action.payload,
       };
-    case 'GET_SUGGESTIONS2':
+    case "GET_SUGGESTIONS2":
       return {
         ...state,
         suggestions2: action.payload.cities,
       };
-    case 'GET_ROUTE':
+    case "GET_ROUTE":
       return {
         ...state,
         route: action.payload,
@@ -44,18 +44,19 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload,
+        car: action.payload.cars[0],
       };
     case "GET_ALL_ROUTE_INFO":
       return {
         ...state,
         getRoutes: action.payload,
       };
-    case 'POST_CAR':
+    case "POST_CAR":
       return {
         ...state,
         car: action.payload,
       };
-    case 'POST_USER':
+    case "POST_USER":
       return {
         ...state,
         user: action.payload,
@@ -70,11 +71,14 @@ function rootReducer(state = initialState, action) {
         ...state,
         users: action.payload,
       };
-      case "EDIT_USER":
-        return {
-          ...state,
-     
-        };
+    case "EDIT_USER":
+      return {
+        ...state,
+      };
+    case "EDIT_CAR":
+      return {
+        ...state,
+      };
     // -----------------------------< filters >----------------------------------
 
     case "RESTRICTION":
@@ -89,9 +93,7 @@ function rootReducer(state = initialState, action) {
         order: action.payload,
       };
 
-    
-
-    case 'ORDER_BY_DISTANCE':
+    case "ORDER_BY_DISTANCE":
       return {
         ...state,
         route: action.payload,
@@ -108,14 +110,14 @@ function rootReducer(state = initialState, action) {
         //     route: action.payload,
         //   };
 
-// ----------------------------------------------------------------------------
+        // ----------------------------------------------------------------------------
       };
-    case 'DELETE_ROUTE':
+    case "DELETE_ROUTE":
       return {
         ...state,
         route: [],
       };
-    case 'ROUTE_POST_INFO':
+    case "ROUTE_POST_INFO":
       return {
         ...state,
         routePostInfo: action.payload,

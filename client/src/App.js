@@ -65,7 +65,7 @@ export default function App() {
                     <Route exact path="/profile" component={UserProfile} />
                     <Route path="/user/:id" component={UserDetails} />
                     <Route path="/route-list" component={RouteDetails} />
-                    <Route path="/maps/route" component={RouteDetails} />
+                    {/* <Route path="/maps/route" component={RouteDetails} /> */}
                     <Route path="/routes-found" component={RoutesFromSearch} />
                     <Route path="/route/:id" component={AllInfoRoute} />
                     <Route path="/car" component={FormCar} />
