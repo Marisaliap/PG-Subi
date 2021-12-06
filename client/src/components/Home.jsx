@@ -6,46 +6,26 @@ import group2 from '../img/group2.png';
 import SearchBarHome from './SearchBarHome';
 import { useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import Socket from "./Socket";
-import Chat from "./Chat";
-
-
-
+import Loggin from "./Loggin";
 
 
 export default function Home() {
   const users = useSelector((state) => state.user);
-  const [nombre, setNombre] = useState("");
-  const [registe, setRegister] = useState(false);
-  Socket.emit("conectado", "hi you are connected");
-
-
-  const register = (e) => {
-    e.preventDefault();
-    if (nombre !== "") { setRegister(true) }
-  }
+  const [id, setId] = useState("");
+  
 
   return (
     <div className="w-screen">
-
       {/* <div>
         <img className="fotoHeader" src={header} alt="header" />
       </div> */}
       <div>
         <SearchBarHome />
-        <div> {
-          !registe &&
-          <form onSubmit={register}>
-            <label>intro</label>
-            <input value={nombre} onChange={e => setNombre(e.target.value)} />
-            <button >NavLinkregister</button>
-          </form>
-        }
-          {
-            registe &&
-            <Chat name={nombre} />
-          }
-        </div>
+        <>
+          <h1>{id}</h1>
+          <Loggin onIdSubmit={setId} />
+        
+        </>
       </div>
       <div className="p-5 md:p-20">
         <img
@@ -108,7 +88,6 @@ export default function Home() {
           </div>
         </article>
       </div>
-
     </div>
   );
 }
