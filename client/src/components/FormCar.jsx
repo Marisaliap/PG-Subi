@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 import swal from 'sweetalert';
 import '../Sass/Styles/FormCar.scss';
+import { FormattedMessage } from 'react-intl';
 
 export default function FormCar() {
   const history = useHistory();
@@ -83,7 +84,9 @@ export default function FormCar() {
 
   return (
     <div className="FormCar">
-      <h1>Create your Car</h1>
+      <h1><FormattedMessage
+							id="formCar.title"
+							defaultMessage="Create your Car"/></h1>
       <form
         className="FormAUTO"
         onSubmit={(e) => {
@@ -91,7 +94,9 @@ export default function FormCar() {
         }}
       >
         <div className="cadaLineaAuto">
-          <p className="label">Patent:</p>
+          <p className="label"><FormattedMessage
+							id="formCar.patent"
+							defaultMessage="Patent:"/></p>
           <input
             className="inputauto"
             type="text"
@@ -102,7 +107,10 @@ export default function FormCar() {
           {errors.patent && <p className="errorcar">{errors.patent}</p>}
         </div>
         <div className="cadaLineaAuto">
-          <p className="label">Color:</p>
+          <p className="label">
+          <FormattedMessage
+							id="formCar.color"
+							defaultMessage="Color:"/></p>
           <input
             className="inputauto"
             type="text"
@@ -113,7 +121,10 @@ export default function FormCar() {
           {errors.color && <p className="errorcar">{errors.color}</p>}
         </div>
         <div className="cadaLineaAuto">
-          <p className="label">Brand:</p>
+          <p className="label">
+          <FormattedMessage
+							id="formCar.brand"
+							defaultMessage="Brand:"/></p>
           <input
             className="inputauto"
             type="text"
@@ -124,7 +135,10 @@ export default function FormCar() {
           {errors.brand && <p className="errorcar">{errors.brand}</p>}
         </div>
         <div className="cadaLineaAuto">
-          <p className="label">Model:</p>
+          <p className="label">
+          <FormattedMessage
+							id="formCar.model"
+							defaultMessage="Model:"/></p>
           <input
             className="inputauto"
             type="text"
@@ -135,7 +149,10 @@ export default function FormCar() {
           {errors.model && <p className="errorcar">{errors.model}</p>}
         </div>
         <div className="cadaLineaAuto">
-          <p className="label">Cylinder:</p>
+          <p className="label">
+          <FormattedMessage
+							id="formCar.cylinder"
+							defaultMessage="Cylinder:"/></p>
           <input
             className="inputauto"
             type="text"
@@ -146,7 +163,9 @@ export default function FormCar() {
           {errors.cylinder && <p className="errorcar">{errors.cylinder}</p>}
         </div>
         <button className="button" type="submit">
-          Add Car
+        <FormattedMessage
+							id="formCar.add"
+							defaultMessage=" Add Car"/>
         </button>
       </form>
     </div>

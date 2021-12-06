@@ -42,7 +42,22 @@
 
     "subFooter.app" : "Gimme a Ride es una aplicación para compartir viajes entre personas.                                              Donde quiera que vayas, encuentra tu viaje ideal.",
     "subFooter.sbox" : "Sugerencias",
+
+    "sugestionBox.title" : "Sugerencias",
+    "sugestionBox.name" : "Tu nombre:",
+    "sugestionBox.email" : "Email:",
+    "sugestionBox.suggestion" : "Sugerencias:",
+    "sugestionBox.submit" : "Enviar Sugerencias",
+
+    "formCar.title" : "Crea tu Coche",
+    "formCar.patent" : "Patente",
+    "formCar.color" : "Color:",
+    "formCar.brand" : "Marca:",
+    "formCar.model" : "Modelo:",
+    "formCar.cylinder" : "Cilindrada:",
+    "formCar.add" : " Agregar Coche",
     
+
     "landing.enter" : "Entrar",
     
     "register.home" : "Inicio",
