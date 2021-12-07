@@ -111,7 +111,7 @@ export default function SearchBar() {
   }
   return (
     <div className="searchBarPostRuta">
-      <form className="postRouteForm">
+      <div className="postRouteForm">
         <h1> <FormattedMessage
 							id="searchBarPostRuta.searchTitle"
 							defaultMessage="Where do you want to go?"
@@ -258,7 +258,7 @@ export default function SearchBar() {
         </div>
        
         </pre>
-      </form>
+    </div>
     </div>
   );
 }
