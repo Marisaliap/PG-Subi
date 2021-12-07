@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { allRoutes } from '../actions';
 import '../Sass/Styles/NavBarFilter.scss';
 
@@ -7,6 +7,7 @@ export default function NavBarFilter() {
   const dispatch = useDispatch();
   const [order, setOrder] = useState('');
   const [restriction, setRestriction] = useState('');
+  const user = useSelector(state => state.user)
 
   const handleSelect = (e) => {
     e.preventDefault();
@@ -36,7 +37,7 @@ export default function NavBarFilter() {
           <option value="foodAllowed">Food Allowed</option>
           <option value="twoMaxInTheBack">Max. 2 in the back</option>
           <option value="kidsAllowed">Kids Allowed</option>
-          <option value="onlyWomen">Only Women</option>
+         {user.genre === 'Female' && <option value="onlyWomen">Only Women</option>}
         </select>
       </div>
     </div>

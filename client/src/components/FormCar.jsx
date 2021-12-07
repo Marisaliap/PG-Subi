@@ -1,12 +1,12 @@
-import React from 'react';
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { postCar } from '../actions';
-import { useDispatch } from 'react-redux';
-import { useAuth0 } from '@auth0/auth0-react';
-import swal from 'sweetalert';
-import '../Sass/Styles/FormCar.scss';
-import { FormattedMessage } from 'react-intl';
+import React from "react";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { postCar } from "../actions";
+import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import swal from "sweetalert";
+import "../Sass/Styles/FormCar.scss";
+import { FormattedMessage } from "react-intl";
 
 export default function FormCar() {
   const history = useHistory();
@@ -15,33 +15,42 @@ export default function FormCar() {
 
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
-    idUser: isAuthenticated ? user.email : '',
-    patent: '',
-    color: '',
-    brand: '',
-    model: '',
-    cylinder: '',
+    idUser: isAuthenticated ? user.email : "",
+    patent: "",
+    color: "",
+    brand: "",
+    model: "",
+    cylinder: "",
   });
-
 
   function validate(input) {
     let errors = {};
+    const numberandlettervalidate = /^[0-9a-zA-Z]+$/;
+    const wordvalidate = /^[a-zA-Z]+$/;
+    const floatvalidate = /^[0-9]*\.?[0-9]+$/;
     if (!input.patent) {
-      errors.patent = 'Patent is required';
+      errors.patent = "Patent is required";
+    } else if (numberandlettervalidate.test(input.patent) === false) {
+      errors.patent = "Invalid Name";
     } else if (!input.color) {
-      errors.color = 'Color is required';
+      errors.color = "Color is required";
+    } else if (wordvalidate.test(input.color) === false) {
+      errors.color = "Invalid Color: No Symbols Allowed";
     } else if (!input.brand) {
-      errors.brand = 'Brand is required';
+      errors.brand = "Brand is required";
+    } else if (wordvalidate.test(input.brand) === false) {
+      errors.brand = "Invalid Brand: No Symbols Allowed";
     } else if (!input.model) {
-      errors.model = 'Model is required';
+      errors.model = "Model is required";
     } else if (!input.cylinder) {
-      errors.cylinder = 'Cylinder is required';
+      errors.cylinder = "Cylinder is required";
+    } else if (floatvalidate.test(input.cylinder) === false) {
+      errors.cylinder = "Invalid Cylinder: No Symbols Allowed";
     }
     return errors;
   }
 
   function handleChange(e) {
-
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -59,34 +68,34 @@ export default function FormCar() {
     if (Object.keys(errors).length === 0) {
       dispatch(postCar(input));
       setInput({
-        patent: '',
-        color: '',
-        brand: '',
-        model: '',
-        cylinder: '',
+        patent: "",
+        color: "",
+        brand: "",
+        model: "",
+        cylinder: "",
       });
       swal({
-        title: 'Good job!',
-        text: 'Car created correctly',
-        icon: 'success',
-        button: 'Aww yiss!',
+        title: "Good job!",
+        text: "Car created correctly",
+        icon: "success",
+        button: "Aww yiss!",
       });
-      history.push('/route');
+      history.push("/route");
     } else {
       swal({
-        title: 'Sorry',
-        text: 'All mandatory fields must be filled to continue',
-        icon: 'warning',
-        button: 'Ok',
+        title: "Sorry",
+        text: "All mandatory fields must be filled to continue",
+        icon: "warning",
+        button: "Ok",
       });
     }
   }
 
   return (
     <div className="FormCar">
-      <h1><FormattedMessage
-							id="formCar.title"
-							defaultMessage="Create your Car"/></h1>
+      <h1>
+        <FormattedMessage id="formCar.title" defaultMessage="Create your Car" />
+      </h1>
       <form
         className="FormAUTO"
         onSubmit={(e) => {
@@ -94,9 +103,9 @@ export default function FormCar() {
         }}
       >
         <div className="cadaLineaAuto">
-          <p className="label"><FormattedMessage
-							id="formCar.patent"
-							defaultMessage="Patent:"/></p>
+          <p className="label">
+            <FormattedMessage id="formCar.patent" defaultMessage="Patent:" />
+          </p>
           <input
             className="inputauto"
             type="text"
@@ -108,9 +117,8 @@ export default function FormCar() {
         </div>
         <div className="cadaLineaAuto">
           <p className="label">
-          <FormattedMessage
-							id="formCar.color"
-							defaultMessage="Color:"/></p>
+            <FormattedMessage id="formCar.color" defaultMessage="Color:" />
+          </p>
           <input
             className="inputauto"
             type="text"
@@ -122,9 +130,8 @@ export default function FormCar() {
         </div>
         <div className="cadaLineaAuto">
           <p className="label">
-          <FormattedMessage
-							id="formCar.brand"
-							defaultMessage="Brand:"/></p>
+            <FormattedMessage id="formCar.brand" defaultMessage="Brand:" />
+          </p>
           <input
             className="inputauto"
             type="text"
@@ -136,9 +143,8 @@ export default function FormCar() {
         </div>
         <div className="cadaLineaAuto">
           <p className="label">
-          <FormattedMessage
-							id="formCar.model"
-							defaultMessage="Model:"/></p>
+            <FormattedMessage id="formCar.model" defaultMessage="Model:" />
+          </p>
           <input
             className="inputauto"
             type="text"
@@ -150,9 +156,11 @@ export default function FormCar() {
         </div>
         <div className="cadaLineaAuto">
           <p className="label">
-          <FormattedMessage
-							id="formCar.cylinder"
-							defaultMessage="Cylinder:"/></p>
+            <FormattedMessage
+              id="formCar.cylinder"
+              defaultMessage="Cylinder:"
+            />
+          </p>
           <input
             className="inputauto"
             type="text"
@@ -163,9 +171,7 @@ export default function FormCar() {
           {errors.cylinder && <p className="errorcar">{errors.cylinder}</p>}
         </div>
         <button className="button" type="submit">
-        <FormattedMessage
-							id="formCar.add"
-							defaultMessage=" Add Car"/>
+          <FormattedMessage id="formCar.add" defaultMessage=" Add Car" />
         </button>
       </form>
     </div>

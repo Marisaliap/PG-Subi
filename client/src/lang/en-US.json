@@ -105,10 +105,14 @@
     "register.yes" : "Yes",
     "register.submit" : "Register",
 
+    "termsAndCond.review" : "Last review: ",
+    "termsAndCond.date" : "November 28, 2021",
+
+
     "privacyPolicy.terms" : "Terms and Conditions",
     "privacyPolicy.effdate" : "Effective date: ",
     "privacyPolicy.date" : "12/17/2021",
-    "privacyPolicy.privacy" : " | Privacy Policy | ",
+    "privacyPolicy.privacy" : "Privacy Policy",
     "privacyPolicy.cookies" : "Cookies Policy",
     "privacyPolicy.title1" : "1. General",
     "privacyPolicy.p1" : "Give SA (whose registered office is at 54678, Rivadavia avenue, Buenos Aires, Argentina) ({name}), acting as data controller, is committed to protecting and respecting your privacy. This notice ({privacyPolicy}) is designed to tell you about our practices regarding the collection, use and disclosure of information that you may provide via our platform  accessible from the website www.GimmeARide.com or our mobile applications (the http://www.GimmeARide.com/{platform}).",

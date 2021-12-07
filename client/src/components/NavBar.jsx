@@ -1,29 +1,40 @@
-import React, { useContext } from 'react';
-import { useEffect } from 'react';
-import autitos from '../img/autitos.png';
-import Logo from '../img/logo.png';
-import { Profile } from './Profile';
-import SearchUserByName from './SearchUserByName';
-import { useSelector, useDispatch } from 'react-redux';
-import Auth from './Auth';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Link, NavLink } from 'react-router-dom';
-import { getUserDetail } from '../actions';
-import { BsPlusCircle } from 'react-icons/bs';
-import '../Sass/Styles/NavBar.scss';
-import { FormattedMessage } from 'react-intl';
-import { langContext } from './../context/langContext.js';
+import React, { useContext } from "react";
+import { useEffect } from "react";
+import autitos from "../img/autitos.png";
+import Logo from "../img/logo.png";
+import { Profile } from "./Profile";
+import { useSelector, useDispatch } from "react-redux";
+import Auth from "./Auth";
+import { NavLink } from "react-router-dom";
+import { getUserDetail } from "../actions";
+import { BsPlusCircle } from "react-icons/bs";
+import "../Sass/Styles/NavBar.scss";
+import { FormattedMessage } from "react-intl";
+import { langContext } from "./../context/langContext.js";
+import { useAuth0 } from "@auth0/auth0-react";
+import "../Sass/Styles/Login.scss";
+import swal from "sweetalert";
 
 export default function Nav() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user);
-  const { user, isAuthenticated } = useAuth0();
-  const id = isAuthenticated ? user.email : '';
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  const id = isAuthenticated ? user.email : "";
   const idioma = useContext(langContext);
 
   useEffect(() => {
     dispatch(getUserDetail(id));
   }, [dispatch, id]);
+
+  function handleClick() {
+    swal({
+      title: "Sorry",
+      text: "You need to be logged in to post a trip!",
+      icon: "warning",
+      button: "Ok",
+    });
+    loginWithRedirect();
+  }
 
   return (
     <header className="NavBar">
@@ -32,31 +43,43 @@ export default function Nav() {
         <img className="logo" src={Logo} alt="" />
       </NavLink>
       <nav>
-        {/* <NavLink to="/route-list" className="searchContainerItem">
-        <button className="button">Route List</button>
-      </NavLink> */}
         <ul>
           <li>
-            <NavLink
-              className="postNavLink"
-              to={
-                !users.dni
-                  ? '/register'
-                  : users.name && users.cars.length === 0
-                  ? '/car'
-                  : users.name && users.cars[0].patent
-                  ? '/route'
-                  : ''
-              }
-            >
-              <BsPlusCircle className="BsPlusCircle" />
-              <h3>
-                <FormattedMessage
-                  id="navBar.post"
-                  defaultMessage="Post a Trip"
-                />
-              </h3>
-            </NavLink>
+            {!isAuthenticated ? (
+              <>
+                <button
+                  className="emulaPost emulador"
+                  onClick={() => handleClick()}
+                >
+                  <BsPlusCircle className="BsPlusCircle" />
+                  <FormattedMessage
+                    id="navBar.post"
+                    defaultMessage="Post a Trip"
+                  />
+                </button>
+              </>
+            ) : (
+              <NavLink
+                className="postNavLink"
+                to={
+                  !users.dni
+                    ? "/register"
+                    : users.name && users.cars.length === 0
+                    ? "/car"
+                    : users.name && users.cars[0].patent
+                    ? "/route"
+                    : ""
+                }
+              >
+                <BsPlusCircle className="BsPlusCircle" />
+                <h3>
+                  <FormattedMessage
+                    id="navBar.post"
+                    defaultMessage="Post a Trip"
+                  />
+                </h3>
+              </NavLink>
+            )}
           </li>
 
           <li className="barrita">|</li>
@@ -68,8 +91,6 @@ export default function Nav() {
             <Auth />
           </li>
         </ul>
-
-        {/* <SearchUserByName /> */}
 
         {/* <div className="banderas">
             <button onClick={() => idioma.establecerLenguaje("es-AR")}>

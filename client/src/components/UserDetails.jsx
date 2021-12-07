@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Post from "./Post";
+//import Post from "./Post";
 import CardCar from "./CardCar";
 import CardFullUser from "./CardFullUser";
 import { getUserDetail } from "../actions";
@@ -44,7 +44,7 @@ export default function UserDetails(props) {
             ""
           )}
         </div>
-        <div>{<Post />}</div>
+        {/* <div>{<Post />}</div> */}
         <hr />
         <div>
           {user.cars && user.cars.length > 0 ? (

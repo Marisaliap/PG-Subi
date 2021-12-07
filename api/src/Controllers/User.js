@@ -75,7 +75,7 @@ const getUser = async (req, res, next) => {
           calification:
             user.posts
               .map((c) => parseInt(c.calification))
-              .reduce((a, b) => a + b) / user.posts.length,
+              .reduce((a, b) => a + b, 0) / user.posts.length,
           photo: user.photo,
           email: user.email,
         };

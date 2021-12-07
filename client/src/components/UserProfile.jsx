@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { editUser, getUserDetail, editCar } from "../actions";
+import { editUser, getUserDetail, editCar, postUser } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import swal from "sweetalert";
+import SearchUserByName from "./SearchUserByName";
 import { FormattedMessage } from "react-intl";
 import {
   BsFillTelephoneFill,
@@ -31,43 +33,17 @@ export default function UserProfile() {
 
   useEffect(() => {
     dispatch(getUserDetail(userInfo.email));
-  }, [booleanUser, booleanCar, booleanPhoto]);
+  }, [booleanUser, booleanCar, booleanPhoto, dispatch]);
 
-  const [input, setInput] = useState({
-    street: "",
-    city: "",
-    province: "",
-    telephone: "",
-    facebook: "",
-    instagram: "",
-    about: "",
-    age: "",
-    photo: "",
-  });
+  const [input, setInput] = useState({});
 
-  const [auto, setAuto] = useState({
-    patent: "",
-    color: "",
-    brand: "",
-    model: "",
-    cylinder: "",
-  });
+  const [auto, setAuto] = useState({});
 
   function handleSubmitUser(e) {
     e.preventDefault();
     dispatch(editUser(userInfo.email, input));
     setBooleanUser(false);
-    setInput({
-      ...input,
-      street: userInfo.street,
-      city: userInfo.city,
-      province: userInfo.province,
-      telephone: userInfo.telephone,
-      facebook: userInfo.facebook,
-      instagram: userInfo.instagram,
-      about: userInfo.about,
-      age: userInfo.age,
-    });
+    dispatch(getUserDetail(userInfo.email));
   }
 
   function handleSubmitCar(e) {
@@ -85,14 +61,15 @@ export default function UserProfile() {
 
   function handleSubmitPhoto(e) {
     e.preventDefault();
-    setTimeout(() => {
-      dispatch(editUser(userInfo.email, input));
-      setLoanding(false);
-      setBooleanPhoto(false);
-      window.location.reload(false);
-      // }, 60000);
-    }, 1000);
-    alert("Photo updated* (This may take some minutes to show)");
+    setImage("");
+    dispatch(editUser(userInfo.email, input));
+    setBooleanPhoto(false);
+    swal({
+      title: "Good job!",
+      text: "Photo updated* (This may take some minutes to show)",
+      icon: "success",
+      button: "Aww yiss!",
+    });
   }
 
   function handleChange(e) {
@@ -130,6 +107,7 @@ export default function UserProfile() {
       instagram: userInfo.instagram,
       about: userInfo.about,
       age: userInfo.age,
+      photo: userInfo.photo,
     });
   }
 
@@ -168,11 +146,9 @@ export default function UserProfile() {
 
   const uploadImage = async (e) => {
     const files = e.target.files;
-    // console.log("file", files);
     const data = new FormData();
-    // console.log("data", data);
     data.append("file", files[0]);
-    data.append("upload_preset", "s6kdvopu");
+    data.append("upload_preset", "cmbcusw9");
     setLoanding(true);
 
     const res = await fetch(
@@ -189,9 +165,10 @@ export default function UserProfile() {
 
   return (
     <div>
+      <SearchUserByName />
       <div className="containerProfile">
         <div className="ProfileReal">
-          {/* <div className="ubicaBotonPhoto">
+          <div className="ubicaBotonPhoto">
             {!booleanPhoto ? (
               <button className="botonPhoto" onClick={() => handleClickPhoto()}>
                 Change User Photo
@@ -236,16 +213,14 @@ export default function UserProfile() {
                 Change Photo
               </button>
             </>
-          )} */}
+          )}
           <div className="botonera">
             {!booleanUser ? (
               <button className="buttonBlue" onClick={() => handleClickUser()}>
                 Edit User Information
               </button>
             ) : (
-              <button className="buttonDisabled">
-                Edit User Information
-              </button>
+              <button className="buttonDisabled">Edit User Information</button>
             )}
           </div>
           {booleanUser === false ? (
@@ -262,6 +237,7 @@ export default function UserProfile() {
                     {userInfo.name} {userInfo.lastName}{" "}
                     {genderIcon(userInfo.genre)}
                   </h1>
+                  <h1 className="titulos">{userInfo.dni}</h1>
                   <div
                     style={{
                       display: "flex",
@@ -317,6 +293,7 @@ export default function UserProfile() {
                     {userInfo.name} {userInfo.lastName}{" "}
                     {genderIcon(userInfo.genre)}
                   </h1>
+                  <h1 className="titulos">{userInfo.dni}</h1>
                   <div
                     style={{
                       display: "flex",
