@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./Sass/Styles/App.scss";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -19,6 +20,7 @@ import Users from "./components/Users";
 import Error404 from "./components/Error404";
 import NavBar from "./components/NavBar";
 import Post from "./components/Post";
+import Admin from "./components/Admin";
 import RouteDetails from "./components/RouteDetails";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiesPolicy from "./components/CookiesPolicy";
@@ -26,9 +28,10 @@ import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
+import { Redirect} from 'react-router';
 export default function App() {
+  const {user}=useSelector(state => state)
   const { isAuthenticated } = useAuth0();
-
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
@@ -47,7 +50,7 @@ export default function App() {
       behavior: "smooth",
     });
   };
-
+console.log(user, "soy user de app")
   return (
     <BrowserRouter>
       <div className="App">
@@ -60,6 +63,7 @@ export default function App() {
               <>
                 {
                   <Switch>
+                    <Route exact path='/Admin' render={() => user.isAdmin === true ? <Admin/>: <Redirect to='/'/>}/>
                     <Route exact path="/route" component={CreateRoute} />
                     <Route path="/route/finish" component={Map} />
                     <Route path="/register" component={Register} />
