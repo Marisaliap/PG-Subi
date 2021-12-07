@@ -21,7 +21,7 @@ const RouteDetails = () => {
       <NavBarFilter />
     
 
-      <div className="RouteContainer">
+      <div className="RouteCardContainer">
         {
           getRoutes.map((route, i) => (
             <Link className="link" to={`/route/${route.id}`} >
