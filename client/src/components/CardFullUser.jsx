@@ -24,10 +24,6 @@ export default function CardFullUser({name, lastName, email, genre, photo, age, 
     return (
         <div> 
           <div className="UserDetails">
-            {/* <img
-              src={photo}
-              alt="User Image"
-            /> */}
             <img src={photo} alt="User" style={{ width: "250px" }} />
             <h2>
               {name} {lastName} {genderIcon(genre)}

@@ -280,7 +280,6 @@ export function userPost(id) {
     try {
       const response = (await axios.get(`http://localhost:3001/user/${id}`))
         .data;
-        console.log("response",response)
       return dispatch({
         type: "USER_POST",
         payload: response,

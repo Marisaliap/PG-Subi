@@ -7,22 +7,23 @@ import { useAuth0 } from "@auth0/auth0-react";
 import CardPost from "./CardPost";
 import { BsStar } from "react-icons/bs";
 import swal from "sweetalert";
+import "../Sass/Styles/Post.scss";
+
 
 export default function Post(props) {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userPost);
   const { user, isAuthenticated } = useAuth0();
   const [errors, setErrors] = useState({});
-const id = props.match.params.id;
+  const id = props.match.params.id;
   let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
-
 
   useEffect(() => {
     dispatch(userPost(id));
   }, [dispatch, id]);
 
   const [input, setInput] = useState({
-    email: userInfo.email,
+    email: id,
     date: time,
     author: isAuthenticated ? user.name : "",
     description: "",
@@ -31,7 +32,7 @@ const id = props.match.params.id;
 
   function validate(input) {
     let errors = {};
-   if (!input.description) {
+    if (!input.description) {
       errors.description = "Description is required";
     } else if (!input.calification) {
       errors.calification = "Calification is required";
@@ -39,11 +40,7 @@ const id = props.match.params.id;
     return errors;
   }
 
-
-
-  console.log("id", id);
   console.log("userinfo", userInfo);
-  console.log("user", user);
   console.log("input", input);
 
   function handleChange(e) {
@@ -87,19 +84,34 @@ const id = props.match.params.id;
   }
 
   return (
+    <div className="Post">
     <div>
-      <div>
-        <img src={userInfo.photo} alt="post" Style="width:200px" />
-        <h1>{userInfo.name}</h1>
-        <h2>
-          {userInfo.calification}
-          <BsStar />
-        </h2>
-        <CardPost
-        //calification={userInfo.post.calification}
-        //description={userInfo.post.description}
-        />
-      </div>
+      {userInfo.length === 0 ? (
+        ""
+      ) : (
+        <div className="infoUser">
+          <img src={userInfo.photo} alt="post" Style="width:75px" />
+          <h2>
+            {userInfo.name} {userInfo.LastName}
+          </h2>
+          <h2>
+            {userInfo.calification}
+            <BsStar />
+          </h2>
+        </div>
+      )}
+      {userInfo.length === 0
+        ? ""
+        : userInfo.posts.map((e) => (
+            <div>
+              <CardPost
+                calification={e.calification}
+                date={e.date}
+                description={e.description}
+              />
+            </div>
+          ))}
+          </div>
       <div>
         <form
           onSubmit={(e) => {
@@ -115,7 +127,9 @@ const id = props.match.params.id;
           />
           /5
           <BsStar />
-          {errors.calification && <p className="error">{errors.calification}</p>}
+          {errors.calification && (
+            <p className="error">{errors.calification}</p>
+          )}
           <br />
           <label>Comment</label>
           <textarea
