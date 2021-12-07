@@ -11,6 +11,7 @@ const initialState = {
   routeFromDb: [],
   setPost:[],
   userPost:[],
+  usuariosRegistrados: [],
   // ---------------< filters rami>----------------------------------
 
   restriction: "",
@@ -72,6 +73,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         users: action.payload,
+      };
+    case "GET_ALL_USERS":
+      return {
+        ...state,
+        usuariosRegistrados: action.payload,
       };
     case "EDIT_USER":
       return {

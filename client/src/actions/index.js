@@ -80,6 +80,19 @@ export function getUserByName(name) {
   };
 }
 
+export function getAllUsers() {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user/`)).data;
+
+      return dispatch({
+        type: "GET_ALL_USERS",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
 export function editUser(id, info) {
   return async function (dispatch) {
     try {

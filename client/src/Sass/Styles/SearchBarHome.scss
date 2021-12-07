@@ -10,6 +10,11 @@
     width: 20vw;
   }
 
+  .pesejeres {
+    display: flex;
+    flex-direction: column;
+  }
+
   .passengers {
     text-align: center;
     height: 50px;

@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { postUser } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
+import { postUser, getUserDetail, getAllUsers } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
 import swal from "sweetalert";
 import { FormattedMessage } from "react-intl";
-import { getUserDetail } from "../actions";
 
 export default function Registro() {
   const dispatch = useDispatch();
@@ -14,14 +13,25 @@ export default function Registro() {
   const { user, isAuthenticated } = useAuth0();
   const [image, setImage] = useState("");
   const [loanding, setLoanding] = useState(false);
+  let booleanDNI;
   const [dni, setDni] = useState([]);
   const placeHolderAbout = "Please tell us a little about yourself";
+  let usuariosRegistrados = useSelector((state) => state.usuariosRegistrados);
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [booleanDNI, dispatch]);
 
   function validate(input) {
     // ------------------------< erros gestions >------------------------
-
+    booleanDNI = true;
+    for (let i = 0; i < usuariosRegistrados.length; i++) {
+      if (usuariosRegistrados[i].dni.toString() === input.dni) {
+        booleanDNI = false;
+      }
+    }
     let errors = {};
-    const wordvalidate = /^[a-zA-Z]+$/;
+    const wordvalidate = /^[a-zA-Z ]+$/;
     if (!input.name) {
       errors.name = "Name is required";
     } else if (wordvalidate.test(input.name) === false) {
@@ -32,6 +42,8 @@ export default function Registro() {
       errors.lastName = "Invalid Last Name: No Symbols Allowed";
     } else if (!input.dni) {
       errors.dni = "DNI is required";
+    } else if (booleanDNI === false) {
+      errors.dni = "DNI already exists";
     } else if (validateGender() === false) {
       errors.genre = "Gender is required";
     } else if (!input.age) {
@@ -131,9 +143,7 @@ export default function Registro() {
   // ----------------------< upload image rami x jp >----------------------
   const uploadImage = async (e) => {
     const files = e.target.files;
-    // console.log("file", files);
     const data = new FormData();
-    // console.log("data", data);
     data.append("file", files[0]);
     data.append("upload_preset", "s6kdvopu");
     setLoanding(true);
@@ -152,9 +162,7 @@ export default function Registro() {
 
   const uploadImage2 = async (e) => {
     const files = e.target.files;
-    console.log("file", files);
     const data = new FormData();
-    console.log("data", data);
     data.append("file", files[0]);
     data.append("upload_preset", "tiuimc3c");
     setLoanding(true);
