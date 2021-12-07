@@ -39,11 +39,12 @@ const validateInfo = (routeInfo) => {
 export default function SearchBar() {
   const cities = useSelector((state) => state.suggestions1);
   const cities2 = useSelector((state) => state.suggestions2);
+  const user = useSelector(state => state.user)
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({ validations: {} });
   const [restrictions, setRestrictions] = useState([])
 
-
+  console.log(user)
   function inputHandleChange(e) {
     inputs[e.target.name] = e.target.value;
     dispatch(getSuggestions(inputs.Origin));
@@ -204,7 +205,7 @@ export default function SearchBar() {
               <option value="foodAllowed">Food Allowed</option>
               <option value="twoMaxInTheBack">Max. 2 in the back</option>
               <option value="kidsAllowed">Kids Allowed</option>
-              <option value="onlyWomen">Only Women</option>
+             {user.genre === 'Female' && <option value="onlyWomen">Only Women</option>}
               </select>
               </div>
             <div style={{marginTop:'1rem'}}>
