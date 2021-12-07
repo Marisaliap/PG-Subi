@@ -12,7 +12,8 @@ import SearchBarHome from "./SearchBarHome";
 import { useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 
-export default function Home() {
+
+export default function Home({location}) {
   const users = useSelector((state) => state.user);
   return (
     <div className="Homepage">
@@ -31,7 +32,7 @@ export default function Home() {
               defaultMessage="Save money while driving"
             />
           </h1>
-
+      
           <p className="description">
             <FormattedMessage
               id="home.p1"

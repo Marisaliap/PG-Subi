@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteRoute, getRoute, getRouteById } from "../actions/index.js";
-import axios from 'axios';
+import { deleteRoute, getRouteById } from "../actions/index.js";
 import ReactMapboxGl, {
   Marker,
   GeoJSONLayer,
@@ -19,26 +18,28 @@ import { RiPinDistanceFill } from "react-icons/ri";
 import "../Sass/Styles/allInfoRoute.scss";
 import { BsStarFill } from 'react-icons/bs';
 import { Link } from "react-router-dom";
-
+import { Modal } from "./ModalMP.jsx";
 
 export default function AllInfoRoute({ match }) {
-  const [datos, setDatos] = useState("")
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
 
   useEffect(() => {
     dispatch(getRouteById(match.params.id))
-    axios.post("http://localhost:3001/mercadopago",{
-      idRoute:route.id,
-      title:"Viaje",
-      price:route.price,
-    })
-    .then((info)=> setDatos(info.data))
-    .catch(err => console.error(err))
+    
   }, []);
 
   const history = useHistory();
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user)
   const route = useSelector((state) => state.routeById);
   const data = useSelector((state) => state.route);
+
+  
 
   
   const coordinates = {
@@ -148,14 +149,19 @@ export default function AllInfoRoute({ match }) {
 
       </div>
       <button className='buttonBlue' onClick={handleClick}>Go Back</button>
-      {datos.init_point && route.place !== 0 ? <a href={datos.init_point} >
+
+      
+      <button onClick={openModal} className='button'> Join this trip!</button>
+      {showModal ? <Modal setShowModal={setShowModal} route={route} user ={user} /> : null}
+   
+      {/* {datos.init_point && route.place !== 0 ? <a href={datos.init_point} >
       <button className='button'>
       Join this trip!
       </button>
       </a> :  
       <button className='buttonDisabled'>
       Join this trip!
-      </button>}
+      </button>} */}
     </div>
   );
 

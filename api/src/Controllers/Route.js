@@ -1,4 +1,4 @@
-const { Route, User, Car } = require("../db.js");
+const { Route, User, Car, Order } = require("../db.js");
 const axios = require("axios");
 const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
 const { TOKEN } = process.env;
@@ -136,21 +136,25 @@ const getRoute = async (req, res, next) => {
         "restriction",
         "points",
       ],
-      include: {
-        model: User,
-        attributes: [
-          "name",
-          "photo",
-          "lastName",
-          "genre",
-          "age",
-          "calification",
-        ],
-        include: {
-          model: Car,
-          attributes: ["patent", "color", "brand", "model"],
-        },
-      },
+      include: [
+          {model: Order},
+        {
+          model: User,
+          attributes: [
+            "name",
+            "photo",
+            "lastName",
+            "genre",
+            "age",
+            "calification",
+          ],
+          include: {
+            model: Car,
+            attributes: ["patent", "color", "brand", "model"],
+          },
+
+        }
+    ],
     });
 
     if (from) {
@@ -220,6 +224,7 @@ const putRoute = async (req, res) => {
   try {
     const { id } = req.params;
     const { date, hours, restriction, place, idUser } = req.body;
+    console.log(idUser)
     const route = await Route.findByPk(id);
     route.update({
       date,

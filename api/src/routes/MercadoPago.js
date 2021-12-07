@@ -6,7 +6,6 @@ const {postMP,getMPById,getMPPayment} = require('../Controllers/MercadoPago');
 
 
 router.post('/', postMP);
-router.get('/payment/:id', getMPById);
 router.get('/payment', getMPPayment);
 
 

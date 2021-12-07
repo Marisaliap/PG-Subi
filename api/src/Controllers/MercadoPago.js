@@ -1,25 +1,24 @@
 const mercadopago = require ('mercadopago');
 const { Order, Route } = require('../db.js');
 
-
+const axios = require('axios')
 const { ACCESS_TOKEN } = process.env;
 
 const postMP = async (req,res,next) => {
   try {
     let {
+      idUser,
       idRoute,
       title,
       price,
     } = req.body
 
     price = parseInt(price);
-
-    let orden = await Order.create({status:'processing'});
-    // const route = await Route.findByPk(idRoute);
-    // await route.addOrder(orden.id);
+      const orden = await Order.create({status:'processing'});
+      const route = await Route.findByPk(idRoute);
+      await route.addOrder(orden.id);
 
     mercadopago.configure({access_token: ACCESS_TOKEN});
-
     const item_ml =
       {
         title: title,
@@ -39,9 +38,9 @@ const postMP = async (req,res,next) => {
       installments: 1
   	  },
       back_urls: {
-        success: 'http://localhost:3001/mercadopago/payment',
-        failure: 'http://localhost:3001/mercadopago/payment',
-        pending: 'http://localhost:3001/mercadopago/payment',
+        success: 'http://localhost:3001/mercadopago/payment?idRoute=' + idRoute + '&idUser=' + idUser,
+        failure: 'http://localhost:3000/route/' + idRoute,
+        pending: 'http://localhost:3001/mercadopago/payment?idRoute=' + idRoute + '&idUser=' + idUser,
       }
     };
 
@@ -49,7 +48,7 @@ const postMP = async (req,res,next) => {
 
     global.id = response.body.id;
 
-    res.json({id:global.id,init_point: response.body.sandbox_init_point});
+    res.json({id:orden.id,init_point: response.body.sandbox_init_point});
 
   } catch(err)  {
     next(err)
@@ -57,22 +56,17 @@ const postMP = async (req,res,next) => {
 }
 
 
-const getMPById = async (req,res,next) => {
-  try{
-    const mp = new mercadopago(ACCESS_TOKEN)
-    const id = req.params.id
-
-    const result = await mp.get(`/v1/payments/search`, {'status': 'pending'})
-    res.json({"resultado": result})
-
-  } catch(err){
-    next(err)
-  }
-}
-
-
-const getMPPayment = (req,res) => {
+const getMPPayment = async (req,res) => {
   const { payment_id,payment_status,external_reference,merchant_order_id } =  req.query;
+  const {idRoute, idUser} = req.query
+
+  Route.findByPk(idRoute)
+  .then((route) => {
+    axios.put('http://localhost:3001/maps/route/' + route.id, {
+      place: route.place - 1,
+      idUser: idUser
+    })
+  })
 
   Order.findByPk(external_reference)
   .then((order) => {
@@ -88,4 +82,4 @@ const getMPPayment = (req,res) => {
   .catch(err => res.redirect(`http://localhost:3000/?error=${err}&where=al+buscar`))
 }
 
-module.exports = {postMP,getMPById,getMPPayment}
+module.exports = {postMP,getMPPayment}
