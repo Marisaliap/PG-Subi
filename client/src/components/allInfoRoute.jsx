@@ -40,16 +40,15 @@ export default function AllInfoRoute({ match }) {
   const route = useSelector((state) => state.routeById);
   const data = useSelector((state) => state.route);
 
-  route.origin &&
-    data.length === 0 &&
-    dispatch(
-      getRoute(
-        route.origin[0],
-        route.origin[1],
-        route.destiny[0],
-        route.destiny[1]
-      )
-    );
+  
+  const coordinates = {
+    geometry: {
+      coordinates: route.points,
+      type: 'LineString'
+    },
+    type: 'Feature'
+  }
+ 
   const Map = ReactMapboxGl({
     accessToken:
       "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
@@ -108,7 +107,7 @@ export default function AllInfoRoute({ match }) {
           width: "50vw",
         }}
         className="mapbox"
-        center={route.origin}
+        center={route.destiny}
         fitBounds={route.origin && [route.origin, route.destiny]}
       >
         {data && (
@@ -132,7 +131,7 @@ export default function AllInfoRoute({ match }) {
         )}
 
         <GeoJSONLayer
-          data={data.coordinates && data.coordinates.data}
+          data={route.points && coordinates}
           linePaint={{
             "line-color": "#2CB67D",
             "line-width": 5,
@@ -149,9 +148,14 @@ export default function AllInfoRoute({ match }) {
 
       </div>
       <button className='buttonBlue' onClick={handleClick}>Go Back</button>
-
-      <a href={datos.init_point} >Pagar</a>
-
+      {datos.init_point && route.place !== 0 ? <a href={datos.init_point} >
+      <button className='button'>
+      Join this trip!
+      </button>
+      </a> :  
+      <button className='buttonDisabled'>
+      Join this trip!
+      </button>}
     </div>
   );
 

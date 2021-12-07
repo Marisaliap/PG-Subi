@@ -39,11 +39,12 @@ const validateInfo = (routeInfo) => {
 export default function SearchBar() {
   const cities = useSelector((state) => state.suggestions1);
   const cities2 = useSelector((state) => state.suggestions2);
+  const user = useSelector(state => state.user)
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({ validations: {} });
   const [restrictions, setRestrictions] = useState([])
 
-
+  console.log(user)
   function inputHandleChange(e) {
     inputs[e.target.name] = e.target.value;
     dispatch(getSuggestions(inputs.Origin));
@@ -55,6 +56,8 @@ export default function SearchBar() {
     });
   }
 
+  let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
+  
   const { validations } = errors;
 
   const checkInputs = Object.values(inputs);
@@ -72,11 +75,12 @@ export default function SearchBar() {
   }
 
   const checkAllInfo =
-    inputs.Origin.length > 6 &&
-    inputs.Destination.length > 6 &&
+     cities && cities.length > 0 && inputs.Origin === cities[0].name &&
+    cities2 && cities2.length > 0 && inputs.Destination === cities2[0].name &&
     info.date.length > 1 &&
     info.hours.length > 1;
 
+  
   function handleSubmit(e) {
     e.preventDefault();
     info.restrictions = restrictions
@@ -110,7 +114,7 @@ export default function SearchBar() {
   }
   return (
     <div className="searchBarPostRuta">
-      <form className="postRouteForm">
+      <div className="postRouteForm">
         <h1> <FormattedMessage
 							id="searchBarPostRuta.searchTitle"
 							defaultMessage="Where do you want to go?"
@@ -152,7 +156,7 @@ export default function SearchBar() {
           <input
             type="date"
             name="date"
-            min="2021-11-28"
+            min={time} //HACER QUE ESTO FILTRE POR FECHA ACTUAL
             onChange={handleChange}
           />
           <p>{validations && validations.date}</p>
@@ -201,7 +205,7 @@ export default function SearchBar() {
               <option value="foodAllowed">Food Allowed</option>
               <option value="twoMaxInTheBack">Max. 2 in the back</option>
               <option value="kidsAllowed">Kids Allowed</option>
-              <option value="onlyWomen">Only Women</option>
+             {user.genre === 'Female' && <option value="onlyWomen">Only Women</option>}
               </select>
               </div>
             <div style={{marginTop:'1rem'}}>
@@ -257,7 +261,7 @@ export default function SearchBar() {
         </div>
        
         </pre>
-      </form>
+    </div>
     </div>
   );
 }
