@@ -9,6 +9,8 @@ const initialState = {
   car: [],
   routeById: [],
   routeFromDb: [],
+  setPost:[],
+  userPost:[],
   // ---------------< filters rami>----------------------------------
 
   restriction: "",
@@ -131,6 +133,16 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         routeFromDb: action.payload,
+      };
+      case "SET_POST":
+      return {
+        ...state,
+        setPost: action.payload,
+      };
+      case "USER_POST":
+      return {
+        ...state,
+        userPost: action.payload,
       };
     default:
       return state;
