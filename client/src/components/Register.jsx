@@ -19,13 +19,17 @@ export default function Registro() {
 
   function validate(input) {
     // ------------------------< erros gestions >------------------------
+
     let errors = {};
+    const wordvalidate = /^[a-zA-Z]+$/;
     if (!input.name) {
       errors.name = "Name is required";
+    } else if (wordvalidate.test(input.name) === false) {
+      errors.name = "Invalid Name: No Symbols Allowed";
     } else if (!input.lastName) {
       errors.lastName = "Last name is required";
-      /* } else if ("^[^!@#$^&%*()+=[\]\/{}|:<>?,.\t]+$") {
-      errors.lastName = 'Last name cannot contain symbols'; */
+    } else if (wordvalidate.test(input.lastName) === false) {
+      errors.lastName = "Invalid Last Name: No Symbols Allowed";
     } else if (!input.dni) {
       errors.dni = "DNI is required";
     } else if (validateGender() === false) {
@@ -40,8 +44,12 @@ export default function Registro() {
       errors.street = "Street is required";
     } else if (!input.city) {
       errors.city = "City is required";
+    } else if (wordvalidate.test(input.city) === false) {
+      errors.city = "Invalid City: No Symbols Allowed";
     } else if (!input.province) {
       errors.province = "Province is required";
+    } else if (wordvalidate.test(input.province) === false) {
+      errors.province = "Invalid Province: No Symbols Allowed";
     }
     return errors;
   }
@@ -264,6 +272,7 @@ export default function Registro() {
                 value={input.lastName}
                 onChange={(e) => handleChange(e)}
               />
+              {errors.lastName && <p className="error">{errors.lastName}</p>}
             </div>
             <div className="cadaLinea">
               <p className="label">
@@ -311,6 +320,7 @@ export default function Registro() {
                 value={input.dni}
                 onChange={(e) => handleChange(e)}
               />
+              {errors.dni && <p className="error">{errors.dni}</p>}
             </div>
             <div className="cadaLinea">
               <p className="label">
@@ -320,14 +330,14 @@ export default function Registro() {
                 />
               </p>
               <div className="cargaImagen">
-              <input
-                onChange={(e) => uploadImage2(e)}
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
-            </div>
+                <input
+                  onChange={(e) => uploadImage2(e)}
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>
             <p>
@@ -341,14 +351,14 @@ export default function Registro() {
                 />
               </p>
               <label className="cargaImagen">
-              <input
-                onChange={(e) => uploadImage2(e)}
-                className="cargaImagen"
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
+                <input
+                  onChange={(e) => uploadImage2(e)}
+                  className="cargaImagen"
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
               </label>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>

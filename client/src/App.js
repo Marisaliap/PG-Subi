@@ -56,7 +56,7 @@ export default function App() {
             <NavBar />
             <Route path="/home" component={Home} />
             {isAuthenticated ? (
-              <div>
+              <>
                 {
                   <Switch>
                     <Route exact path="/route" component={CreateRoute} />
@@ -65,7 +65,7 @@ export default function App() {
                     <Route exact path="/profile" component={UserProfile} />
                     <Route path="/user/:id" component={UserDetails} />
                     <Route path="/route-list" component={RouteDetails} />
-                    {/* <Route path="/maps/route" component={RouteDetails} /> */}
+                    <Route path="/maps/route" component={RouteDetails} />
                     <Route path="/routes-found" component={RoutesFromSearch} />
                     <Route path="/route/:id" component={AllInfoRoute} />
                     <Route path="/car" component={FormCar} />
@@ -73,7 +73,7 @@ export default function App() {
                     <Route path="/404" component={Error404} />
                   </Switch>
                 }
-              </div>
+              </>
             ) : (
               ""
             )}

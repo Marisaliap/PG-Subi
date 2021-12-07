@@ -3,9 +3,9 @@
 .FormSuggestion {
   outline: none;
   border-radius: 15px;
-  background-color: #78c64433;
+  background-color: #ededed;
   padding: 1rem;
-  margin: 0 0;
+  margin: 1rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.5s ease-in-out;
@@ -74,11 +74,11 @@
     font-weight: bold;
   }
 
-  .errorcar {
+  .errorSuggestion {
     color: red;
     position: sticky;
     margin-top: 1.5rem;
-    width: 10rem;
+    width: 15rem;
     display: flex;
     position: sticky;
     margin-left: 0;
