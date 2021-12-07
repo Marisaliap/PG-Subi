@@ -19,13 +19,17 @@ export default function Registro() {
 
   function validate(input) {
     // ------------------------< erros gestions >------------------------
+
     let errors = {};
+    const wordvalidate = /^[a-zA-Z]+$/;
     if (!input.name) {
       errors.name = "Name is required";
+    } else if (wordvalidate.test(input.name) === false) {
+      errors.name = "Invalid Name: No Symbols Allowed";
     } else if (!input.lastName) {
       errors.lastName = "Last name is required";
-      /* } else if ("^[^!@#$^&%*()+=[\]\/{}|:<>?,.\t]+$") {
-      errors.lastName = 'Last name cannot contain symbols'; */
+    } else if (wordvalidate.test(input.lastName) === false) {
+      errors.lastName = "Invalid Last Name: No Symbols Allowed";
     } else if (!input.dni) {
       errors.dni = "DNI is required";
     } else if (validateGender() === false) {
@@ -40,8 +44,12 @@ export default function Registro() {
       errors.street = "Street is required";
     } else if (!input.city) {
       errors.city = "City is required";
+    } else if (wordvalidate.test(input.city) === false) {
+      errors.city = "Invalid City: No Symbols Allowed";
     } else if (!input.province) {
       errors.province = "Province is required";
+    } else if (wordvalidate.test(input.province) === false) {
+      errors.province = "Invalid Province: No Symbols Allowed";
     }
     return errors;
   }
