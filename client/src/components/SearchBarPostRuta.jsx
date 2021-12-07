@@ -72,11 +72,12 @@ export default function SearchBar() {
   }
 
   const checkAllInfo =
-    inputs.Origin.length > 6 &&
-    inputs.Destination.length > 6 &&
+     cities && cities.length > 0 && inputs.Origin === cities[0].name &&
+    cities2 && cities2.length > 0 && inputs.Destination === cities2[0].name &&
     info.date.length > 1 &&
     info.hours.length > 1;
 
+  
   function handleSubmit(e) {
     e.preventDefault();
     info.restrictions = restrictions

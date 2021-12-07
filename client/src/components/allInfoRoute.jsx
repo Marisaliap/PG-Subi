@@ -39,16 +39,14 @@ export default function AllInfoRoute({ match }) {
   const route = useSelector((state) => state.routeById);
   const data = useSelector((state) => state.route);
 
-  route.origin &&
-    data.length === 0 &&
-    dispatch(
-      getRoute(
-        route.origin[0],
-        route.origin[1],
-        route.destiny[0],
-        route.destiny[1]
-      )
-    );
+  const coordinates = {
+    geometry: {
+      coordinates: route.points,
+      type: 'LineString'
+    },
+    type: 'Feature'
+  }
+ 
   const Map = ReactMapboxGl({
     accessToken:
       "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
@@ -130,7 +128,7 @@ export default function AllInfoRoute({ match }) {
         )}
 
         <GeoJSONLayer
-          data={data.coordinates && data.coordinates.data}
+          data={route.points && coordinates}
           linePaint={{
             "line-color": "#2CB67D",
             "line-width": 5,
