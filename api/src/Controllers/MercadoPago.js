@@ -6,16 +6,17 @@ const { ACCESS_TOKEN } = process.env;
 
 const postMP = async (req,res,next) => {
   try {
-    const {
-      //idRoute,
+    let {
+      idRoute,
       title,
       price,
     } = req.body
 
+    price = parseInt(price);
 
     let orden = await Order.create({status:'processing'});
     // const route = await Route.findByPk(idRoute);
-    // await route.addOrder();
+    // await route.addOrder(orden.id);
 
     mercadopago.configure({access_token: ACCESS_TOKEN});
 
@@ -46,9 +47,9 @@ const postMP = async (req,res,next) => {
 
     const response = await mercadopago.preferences.create(preference)
 
-    //global.id = response.body.id;
+    global.id = response.body.id;
 
-    res.json(response/*{init_point: response.body.sandbox_init_point}*/);
+    res.json({id:global.id,init_point: response.body.sandbox_init_point});
 
   } catch(err)  {
     next(err)
@@ -80,7 +81,7 @@ const getMPPayment = (req,res) => {
     order.merchant_order_id = merchant_order_id
     order.status = "created"
     order.save()
-    .then(() => res.redirect("http://localhost:3000"))
+    .then(() => res.redirect("http://localhost:3000/home"))
     .catch((err) => res.redirect(`http://localhost:3000/?error=${err}&where=al+salvar`))
   })
 

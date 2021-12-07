@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteRoute, getRoute, getRouteById } from "../actions/index.js";
-//import Continue from './ContinueMP.jsx';
 import axios from 'axios';
 import ReactMapboxGl, {
   Marker,
@@ -24,16 +23,18 @@ import { Link } from "react-router-dom";
 
 export default function AllInfoRoute({ match }) {
   const [datos, setDatos] = useState("")
+
   useEffect(() => {
     dispatch(getRouteById(match.params.id))
     axios.post("http://localhost:3001/mercadopago",{
       idRoute:route.id,
-      title:'Bitcoin',
-      price:320,
+      title:"Viaje",
+      price:route.price,
     })
     .then((info)=> setDatos(info.data))
     .catch(err => console.error(err))
   }, []);
+
   const history = useHistory();
   const dispatch = useDispatch();
   const route = useSelector((state) => state.routeById);
@@ -60,10 +61,11 @@ export default function AllInfoRoute({ match }) {
   }
   return (
     <div >
+
     <div className="Map">
       {route.length > 0 && route.originName}
       <div className="Container">
-     
+
       <div className="infoContainer">
         <p>
           <BsPinMap /> {route.originName}
@@ -88,7 +90,7 @@ export default function AllInfoRoute({ match }) {
             <div className="userContainer">
                 <img src={ route.users.length > 0 && route.users[0].photo}/>
                 <h5>{route.users.length > 0 && route.users[0].name}</h5>
-              
+
                   <div>
         <BsStarFill className="icon" />
         {route.users.length > 0 && route.users[0].calification}/5
@@ -97,7 +99,7 @@ export default function AllInfoRoute({ match }) {
               </div>
               </Link> }
       </div>
-      
+
 
       <Map
         style="mapbox://styles/mapbox/streets-v11"
@@ -143,14 +145,13 @@ export default function AllInfoRoute({ match }) {
         <ZoomControl />
       </Map>
 
-     
-       
+
+
       </div>
       <button className='buttonBlue' onClick={handleClick}>Go Back</button>
-        { !datos
-          ? ""
-          : <a href={datos.init_point} alt="">Paga</a>//<Continue trip={route} data={datos}/>
-        }
+
+      <a href={datos.init_point} >Pagar</a>
+
     </div>
   );
 
