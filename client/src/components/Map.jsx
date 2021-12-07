@@ -35,7 +35,7 @@ export default function Map() {
   const data = useSelector((state) => state.route);
   const { user } = useAuth0();
 
-
+  console.log(data)
   // const routeCoordinates = Math.floor(data.coordinates.data.geometry.coordinates.length / 2)
   // const middlePoint = data.coordinates.data.geometry.coordinates[routeCoordinates]
   
@@ -155,7 +155,7 @@ export default function Map() {
           <BsFillPersonFill /> {routeInfo.pasajeros} Seats available.
         </p>
         {routeInfo.restrictions.map(restriction => {
-         return <p>{restriction.capitalizeFirstLetter() + '.'}</p>
+         return <p>{restriction.capitalizeFirstLetter().replace(/([a-z0-9])([A-Z])/g, '$1 $2')}</p>
         })}
       </div>
       <div className="buttonContainer">
