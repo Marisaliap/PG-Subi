@@ -55,6 +55,8 @@ export default function SearchBar() {
     });
   }
 
+  let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
+  
   const { validations } = errors;
 
   const checkInputs = Object.values(inputs);
@@ -153,7 +155,7 @@ export default function SearchBar() {
           <input
             type="date"
             name="date"
-            min="2021-11-28"
+            min={time} //HACER QUE ESTO FILTRE POR FECHA ACTUAL
             onChange={handleChange}
           />
           <p>{validations && validations.date}</p>

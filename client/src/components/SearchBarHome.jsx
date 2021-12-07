@@ -5,6 +5,9 @@ import { NavLink } from "react-router-dom";
 import "../Sass/Styles/SearchBarHome.scss";
 import "../Sass/Styles/App.scss";
 import { FormattedMessage } from "react-intl";
+import {
+  BsPersonFill
+} from "react-icons/bs";
 
 let inputs = { Origin: "", Destination: "" };
 let info = { pasajeros: 1, date: "" };
@@ -138,6 +141,7 @@ export default function SearchBarHome() {
           {/* <p>{validations && validations.date}</p> */}
         </div>
         <div>
+          
           <label for="pasajeros"></label>
           <select
             name="pasajeros"
@@ -145,6 +149,7 @@ export default function SearchBarHome() {
             id="pasajeros"
             className="passengers"
           >
+            {/* <BsPersonFill /> */}
             <option value="0" disabled selected>
               --Select Seats Available--
             </option>
