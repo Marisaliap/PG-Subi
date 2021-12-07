@@ -11,7 +11,6 @@ export default function CardUser({
   calification,
   ...props
 }) {
-  console.log("gen", genre);
   return (
     <div className="CardUser" {...props}>
       <img src={photo} alt="" />{' '}
