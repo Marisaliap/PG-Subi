@@ -40,6 +40,7 @@ export default function AllInfoRoute({ match }) {
   const route = useSelector((state) => state.routeById);
   const data = useSelector((state) => state.route);
 
+  
   const coordinates = {
     geometry: {
       coordinates: route.points,
@@ -106,7 +107,7 @@ export default function AllInfoRoute({ match }) {
           width: "50vw",
         }}
         className="mapbox"
-        center={route.origin}
+        center={route.destiny}
         fitBounds={route.origin && [route.origin, route.destiny]}
       >
         {data && (
@@ -147,9 +148,14 @@ export default function AllInfoRoute({ match }) {
 
       </div>
       <button className='buttonBlue' onClick={handleClick}>Go Back</button>
-
-      <a href={datos.init_point} >Pagar</a>
-
+      {datos.init_point && route.place !== 0 ? <a href={datos.init_point} >
+      <button className='button'>
+      Join this trip!
+      </button>
+      </a> :  
+      <button className='buttonDisabled'>
+      Join this trip!
+      </button>}
     </div>
   );
 

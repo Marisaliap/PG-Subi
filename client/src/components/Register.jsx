@@ -294,7 +294,7 @@ export default function Registro() {
               </p>
               <input
                 onChange={(e) => uploadImage(e)}
-                className="cargaImagen"
+                className="custom-file-input"
                 type="file"
                 name="image"
                 required="required"
@@ -332,6 +332,7 @@ export default function Registro() {
               <div className="cargaImagen">
                 <input
                   onChange={(e) => uploadImage2(e)}
+                  className="custom-file-input"
                   type="file"
                   name="image"
                   required="required"
@@ -353,7 +354,7 @@ export default function Registro() {
               <label className="cargaImagen">
                 <input
                   onChange={(e) => uploadImage2(e)}
-                  className="cargaImagen"
+                  className="custom-file-input"
                   type="file"
                   name="image"
                   required="required"
