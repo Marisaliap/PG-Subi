@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { postMejorasYReclamos } from "../actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 import "../Sass/Styles/SuggestionBox.scss";
@@ -22,7 +22,7 @@ export default function SuggestionBox() {
 
   function validate(input) {
     let errors = {};
-    const emailvalidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const emailvalidate = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
     const namevalidate = /^[a-zA-Z]+$/;
     if (!input.author) {
       errors.author = "Name is required";

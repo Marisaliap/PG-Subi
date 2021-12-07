@@ -237,6 +237,7 @@ export default function UserProfile() {
                     {userInfo.name} {userInfo.lastName}{" "}
                     {genderIcon(userInfo.genre)}
                   </h1>
+                  <h1 className="titulos">{userInfo.dni}</h1>
                   <div
                     style={{
                       display: "flex",
@@ -292,6 +293,7 @@ export default function UserProfile() {
                     {userInfo.name} {userInfo.lastName}{" "}
                     {genderIcon(userInfo.genre)}
                   </h1>
+                  <h1 className="titulos">{userInfo.dni}</h1>
                   <div
                     style={{
                       display: "flex",
