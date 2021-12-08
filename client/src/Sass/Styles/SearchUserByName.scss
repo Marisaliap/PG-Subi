@@ -1,45 +1,48 @@
 @import "../Variables/Variables.scss";
 
 .SearchUserByName {
-
-input {
-  border: 0;
-  border-bottom: 2px solid $buttonColor;
-  cursor: pointer;
-  padding-top: 1.5rem;
-  width: 10vw;
-  margin-left: 5rem;
-  font-weight: bold;
-  color: $text;
-  font-family: inherit;
-  transition: background-color 0.5s ease-in-out;
-  margin-top: 1rem;
-  border-radius: 5px;
-     
-  &:hover {
-  background-color: $buttonColor-33;
- }
-}
-
-button {
-  margin: 0.5rem;
-  border: none;
-  font-family: inherit;
-  border-radius: 9999px;
-  font-weight: bolder;
-  padding: 1rem 3rem;
-  background-color: $buttonColor;
-  color: $background;
-  transition: background-color 0.5s ease-in-out;
-
-  &:hover {
-    background-color: $buttonColorHovered;
+  input {
+    border: 0;
+    border-bottom: 2px solid $buttonColor;
     cursor: pointer;
+    padding-top: 1.5rem;
+    width: 15vw;
+    margin-left: 5rem;
+    font-weight: bold;
+    color: $text;
+    font-family: inherit;
+    transition: background-color 0.5s ease-in-out;
+    margin-top: 1rem;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: $buttonColor-33;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
-}
+
+  button {
+    margin: 0.5rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 1rem 3rem;
+    background-color: $buttonColor;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
+
+    &:hover {
+      background-color: $buttonColorHovered;
+      cursor: pointer;
+    }
+  }
 }
 
 .Navlink {
-    text-decoration: none;
-    color: $background;
+  text-decoration: none;
+  color: $background;
 }

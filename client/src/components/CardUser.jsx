@@ -1,6 +1,6 @@
-import React from 'react';
-import { BsStarFill } from 'react-icons/bs';
-import '../Sass/Styles/CardUser.scss';
+import React from "react";
+import { BsStarFill } from "react-icons/bs";
+import "../Sass/Styles/CardUser.scss";
 
 export default function CardUser({
   photo,
@@ -13,8 +13,7 @@ export default function CardUser({
 }) {
   return (
     <div className="CardUser" {...props}>
-      <img src={photo} alt="" />{' '}
-      <h5>Name: {name}</h5>
+      <img src={photo} alt="" /> <h5>Name: {name}</h5>
       <h5>LastName: {lastName}</h5>
       <h5>Genre: {genre}</h5>
       <h5>Age: {age}</h5>

@@ -16,7 +16,7 @@ import {
 } from "react-icons/bs";
 import { RiPinDistanceFill } from "react-icons/ri";
 import "../Sass/Styles/allInfoRoute.scss";
-import { BsStarFill } from 'react-icons/bs';
+import { BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { Modal } from "./ModalMP.jsx";
 
@@ -32,11 +32,12 @@ export default function AllInfoRoute({ match }) {
     dispatch(getRouteById(match.params.id))
     
   }, []);
-
-  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector(state => state.user)
   const route = useSelector((state) => state.routeById);
+  const [datos, setDatos] = useState([]);
+  const history = useHistory();
+
   const data = useSelector((state) => state.route);
 
   
@@ -45,11 +46,11 @@ export default function AllInfoRoute({ match }) {
   const coordinates = {
     geometry: {
       coordinates: route.points,
-      type: 'LineString'
+      type: "LineString",
     },
-    type: 'Feature'
-  }
- 
+    type: "Feature",
+  };
+
   const Map = ReactMapboxGl({
     accessToken:
       "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
@@ -59,10 +60,8 @@ export default function AllInfoRoute({ match }) {
     dispatch(deleteRoute());
     history.push("/route-list");
   }
-  return (
-    <div >
 
-    <div className="Map">
+   return( <div className="Map">
       {route.length > 0 && route.originName}
       <div className="Container">
 
@@ -93,63 +92,75 @@ export default function AllInfoRoute({ match }) {
                 <img src={ route.users.length > 0 && route.users[0].photo}/>
                 <h5>{route.users.length > 0 && route.users[0].name}</h5>
 
-                  <div>
-        <BsStarFill className="icon" />
-        {route.users.length > 0 && route.users[0].calification}/5
-           </div>
-
+                <div>
+                  <BsStarFill className="icon" />
+                  {route.users.length > 0 && route.users[0].calification}/5
+                </div>
               </div>
               </Link> }
       </div>
 
-
-      <Map
-        style="mapbox://styles/mapbox/streets-v11"
-        containerStyle={{
-          height: "50vh",
-          width: "50vw",
-        }}
-        className="mapbox"
-        center={route.destiny}
-        fitBounds={route.origin && [route.origin, route.destiny]}
-      >
-        {data && (
-          <Marker coordinates={route.origin} anchor='bottom' style={{ color: "red" }}>
-            <img
-              src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
-              style={{ height: "30px" }}
-              alt=""
-            ></img>
-          </Marker>
-        )}
-
-        {data && (
-          <Marker coordinates={route.destiny} anchor='bottom'>
-            <img
-              src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
-              style={{ height: "30px" }}
-              alt=""
-            ></img>
-          </Marker>
-        )}
-
-        <GeoJSONLayer
-          data={route.points && coordinates}
-          linePaint={{
-            "line-color": "#2CB67D",
-            "line-width": 5,
+        <Map
+          style="mapbox://styles/mapbox/streets-v11"
+          containerStyle={{
+            height: "50vh",
+            width: "50vw",
           }}
-          lineLayout={{
-            "line-join": "miter",
-            "line-cap": "round",
-          }}
-        />
-        <ZoomControl />
-      </Map>
+          className="mapbox"
+          // center={route.origin}
+          // fitBounds={route.origin && [route.origin, route.destiny]}
+          // center={route.origin}
+          center={route.center}
+          zoom={
+            route.km
+              ? [
+                  parseFloat(
+                    Math.log10(route.km.slice(0, route.km.indexOf(" ")))
+                  ) *
+                    -3.65 +
+                    16,
+                ]
+              : [10]
+          }
+        >
+          {data && (
+            <Marker
+              coordinates={route.origin}
+              anchor="bottom"
+              style={{ color: "red" }}
+            >
+              <img
+                src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
+                style={{ height: "30px" }}
+                alt=""
+              ></img>
+            </Marker>
+          )}
 
+          {data && (
+            <Marker coordinates={route.destiny} anchor="bottom">
+              <img
+                src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
+                style={{ height: "30px" }}
+                alt=""
+              ></img>
+            </Marker>
+          )}
 
-
-      </div>
+          <GeoJSONLayer
+            data={route.points && coordinates}
+            linePaint={{
+              "line-color": "#2CB67D",
+              "line-width": 5,
+            }}
+            lineLayout={{
+              "line-join": "miter",
+              "line-cap": "round",
+            }}
+          />
+          <ZoomControl />
+        </Map>
+     
       <button className='buttonBlue' onClick={handleClick}>Go Back</button>
 
       
@@ -166,7 +177,11 @@ export default function AllInfoRoute({ match }) {
       <button className='buttonDisabled'>
       Join this trip!
       </button>} */}
+      <button className="buttonBlue" onClick={handleClick}>
+        Go Back
+      </button>
+
+      <a href={datos.init_point}>Pagar</a>
     </div>
   );
-
 }
