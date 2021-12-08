@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./Sass/Styles/App.scss";
+import "../src/styles/Admin.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LandingPage from "./components/LandingPage";
@@ -21,6 +22,7 @@ import Error404 from "./components/Error404";
 import NavBar from "./components/NavBar";
 import Post from "./components/Post";
 import Admin from "./admin/Admin";
+/* import Dashboard from "./admin/pages/Dashboard"; */
 import RouteDetails from "./components/RouteDetails";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiesPolicy from "./components/CookiesPolicy";
@@ -28,6 +30,8 @@ import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
+import Topbar from "./admin/Topbar";
+import Sidebar from "./admin/Sidebar";
 import { Redirect} from 'react-router';
 export default function App() {
   const {user}=useSelector(state => state)
@@ -63,7 +67,13 @@ console.log(user, "soy user de app")
               <>
                 {
                   <Switch>
-                    <Route exact path='/Admin' render={() => user.isAdmin === true ? <Admin/>: <Redirect to='/'/>}/>
+                    {/* <div>
+                    <Topbar/>
+                    <div className="containAll">
+                    <Sidebar/> */}
+                    <Route exact path='/admin' render={() => user.isAdmin === true ? <Admin/>: <Redirect to='/home'/>}/>
+                    {/* </div>
+                    </div> */}
                     <Route exact path="/route" component={CreateRoute} />
                     <Route path="/route/finish" component={Map} />
                     <Route path="/register" component={Register} />
@@ -105,3 +115,4 @@ console.log(user, "soy user de app")
     </BrowserRouter>
   );
 }
+

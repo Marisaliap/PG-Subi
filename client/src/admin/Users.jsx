@@ -1,4 +1,4 @@
-import "./users.css";
+import "../styles/Users.css";
 
 export default function Users() {
   const Button = ({ type }) => {
@@ -6,6 +6,7 @@ export default function Users() {
   };
   return (
     <div className="widgetLg">
+        <h1> Soy Users </h1>
       <h3 className="widgetLgTitle">Latest transactions</h3>
       <table className="widgetLgTable">
         <tr className="widgetLgTr">
@@ -74,8 +75,7 @@ export default function Users() {
             <Button type="Approved" />
           </td>
         </tr>
-      </table>
+      </table> 
     </div>
   );
 }
-© 2021 GitHub, Inc.

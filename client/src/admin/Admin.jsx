@@ -1,34 +1,29 @@
 import React from 'react';
-import { Sidebar } from "../admin/SideBar";
+import Sidebar from "./Sidebar"; 
+import Topbar from "./Topbar"; 
+import Users from "./Users"; 
+import UserDetails from "../components/UserDetails";
+import Dashboard from "../admin/pages/Dashboard";
+import "../Sass/Styles/App.scss";
+import "../styles/Admin.css";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function Admin() {
   return (
     <Router>
       <Topbar />
-      <div className="container">
-        <Sidebar />
+        <div className="containAll">
+       <Sidebar />
         <Switch>
-          <Route exact path="/admin/topbar">
+          <Route path="/admin/topbar">
             <Topbar />
           </Route>
-          <Route path="/admin/testing">
-            <Users />
+          <Route exact path="/admin/users">
+           <Users />
           </Route>
-          <Route path="/user/:userId">
-            <User />
-          </Route>
-          <Route path="/newUser">
-            <NewUser />
-          </Route>
-          <Route path="/products">
-            <ProductList />
-          </Route>
-          <Route path="/product/:productId">
-            <Product />
-          </Route>
-          <Route path="/newproduct">
-            <NewProduct />
+          <Route path="/user/:id">
+            <UserDetails />
           </Route>
         </Switch>
       </div>
