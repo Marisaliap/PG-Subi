@@ -23,20 +23,24 @@ export const Modal = ({ setShowModal, route, user }) => {
   const closeModal = (e) => {
     if (e.target === modalRef.current) {
       setShowModal(false);
+      axios.delete("http://localhost:3001/order/" + datos.id);
     }
   };
+  const handledClose = e => {
+    e.preventDefault();
+    axios.delete("http://localhost:3001/order/" + datos.id);
+    setShowModal(false)
+  }
   //render the modal JSX in the portal div.
   return ReactDom.createPortal(
     <div className="container" ref={modalRef} onClick={closeModal}>
-
       <div className="modal">
-       
-        <button onClick={() => setShowModal(false)} className='buttonBlue'>Back</button>
+        <button onClick={handledClose} className='buttonBlue'>Back</button>
         <a href={datos.init_point} >
-      <button className='button'>
-      Join this trip!
-      </button>
-      </a> 
+          <button className='button'>
+            Join this trip!
+          </button>
+        </a>
       </div>
     </div>,
     document.getElementById("portal")
