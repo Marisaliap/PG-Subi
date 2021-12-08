@@ -108,7 +108,7 @@ export default function Map() {
                   )
                 ) *
                   -3.65 +
-                  16,
+                  15,
               ]
             : [10]
         }

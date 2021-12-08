@@ -118,7 +118,7 @@ export default function AllInfoRoute({ match }) {
                     Math.log10(route.km.slice(0, route.km.indexOf(" ")))
                   ) *
                     -3.65 +
-                    16,
+                    15,
                 ]
               : [10]
           }
@@ -161,9 +161,9 @@ export default function AllInfoRoute({ match }) {
           <ZoomControl />
         </Map>
      
-      <button className='buttonBlue' onClick={handleClick}>Go Back</button>
+  
 
-      
+      <div>
      {route.place === 0 ? <button className='buttonDisabled'>
       Join this trip!
       </button> : <button onClick={openModal} className='button'> Join this trip!</button>}
@@ -180,8 +180,7 @@ export default function AllInfoRoute({ match }) {
       <button className="buttonBlue" onClick={handleClick}>
         Go Back
       </button>
-
-      <a href={datos.init_point}>Pagar</a>
+      </div>
     </div>
   );
 }
