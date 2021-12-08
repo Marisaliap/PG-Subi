@@ -39,8 +39,7 @@ const postMP = async (req,res,next) => {
   	  },
       back_urls: {
         success: 'http://localhost:3001/mercadopago/payment?idRoute=' + idRoute + '&idUser=' + idUser,
-        failure: 'http://localhost:3000/route/' + idRoute,
-        pending: 'http://localhost:3001/mercadopago/payment?idRoute=' + idRoute + '&idUser=' + idUser,
+        failure: 'http://localhost:3000/route/' + idRoute
       }
     };
 

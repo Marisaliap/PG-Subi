@@ -82,9 +82,11 @@ export default function AllInfoRoute({ match }) {
         <p>
           <BsWatch /> {route.time}
         </p>
-        <p>
+        {route.place === 0 ? <p>
+          <BsFillPersonFill /> Trip Full
+        </p>: <p>
           <BsFillPersonFill /> {route.place} Seats available.
-        </p>
+        </p>}
       </div>
       {route.users && <Link to={`/user/${route.users[0].email}`} className="userContainer">
             <div className="userContainer">
@@ -151,7 +153,9 @@ export default function AllInfoRoute({ match }) {
       <button className='buttonBlue' onClick={handleClick}>Go Back</button>
 
       
-      <button onClick={openModal} className='button'> Join this trip!</button>
+     {route.place === 0 ? <button className='buttonDisabled'>
+      Join this trip!
+      </button> : <button onClick={openModal} className='button'> Join this trip!</button>}
       {showModal ? <Modal setShowModal={setShowModal} route={route} user ={user} /> : null}
    
       {/* {datos.init_point && route.place !== 0 ? <a href={datos.init_point} >
