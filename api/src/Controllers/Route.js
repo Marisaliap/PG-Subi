@@ -72,6 +72,7 @@ const postRoute = async (req, res, next) => {
       restriction,
       infoRoute,
       points,
+      center,
     } = req.body;
 
     let kmNumber = km.split("k")[0];
@@ -94,6 +95,7 @@ const postRoute = async (req, res, next) => {
       restriction,
       infoRoute,
       points,
+      center,
     });
 
     await route.addUser(idUser);
@@ -135,6 +137,7 @@ const getRoute = async (req, res, next) => {
         "destinyName",
         "restriction",
         "points",
+        "center",
       ],
       include: {
         model: User,

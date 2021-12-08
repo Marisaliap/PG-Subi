@@ -18,6 +18,21 @@
   }
 }
 
+.containerPhoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
+}
+
+.searchUsers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .ProfileReal {
   font-size: 0.8em;
   color: $text;
@@ -26,8 +41,8 @@
   flex-direction: column;
 
   .photousuario {
-    width: 250px;
-    height: 250px;
+    width: 15rem;
+    height: 15rem;
     border-radius: 99999999px;
     margin: 1rem;
   }
@@ -173,13 +188,13 @@
   }
 
   .botonPhoto {
-    margin: 0.5rem;
+    margin: 1rem;
     border: none;
     font-family: inherit;
     border-radius: 9999px;
     font-weight: bolder;
     padding: 1rem 3rem;
-    width: auto;
+    width: 15rem;
     background-color: $buttonBlue;
     color: $background;
     transition: background-color 0.5s ease-in-out;

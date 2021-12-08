@@ -16,11 +16,11 @@ export default function Registro() {
   let booleanDNI;
   const [dni, setDni] = useState([]);
   const placeHolderAbout = "Please tell us a little about yourself";
-  let usuariosRegistrados = useSelector((state) => state.usuariosRegistrados);
 
   useEffect(() => {
     dispatch(getAllUsers());
   }, [booleanDNI, dispatch]);
+  let usuariosRegistrados = useSelector((state) => state.usuariosRegistrados);
 
   function validate(input) {
     // ------------------------< erros gestions >------------------------

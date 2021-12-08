@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { editUser, getUserDetail, editCar, postUser } from "../actions";
+import {
+  editUser,
+  getUserDetail,
+  editCar,
+  getUserByName,
+  getUserById,
+} from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import swal from "sweetalert";
 import SearchUserByName from "./SearchUserByName";
+import SearchUserById from "./SearchUserById";
 import { FormattedMessage } from "react-intl";
 import {
   BsFillTelephoneFill,
@@ -30,6 +37,11 @@ export default function UserProfile() {
   const [booleanCar, setBooleanCar] = useState(false);
   const [booleanPhoto, setBooleanPhoto] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserById(""));
+    dispatch(getUserByName("1010"));
+  }, []);
 
   useEffect(() => {
     dispatch(getUserDetail(userInfo.email));
@@ -165,55 +177,70 @@ export default function UserProfile() {
 
   return (
     <div>
-      <SearchUserByName />
+      <div className="searchUsers">
+        <SearchUserByName />
+        <SearchUserById />
+      </div>
       <div className="containerProfile">
         <div className="ProfileReal">
-          <div className="ubicaBotonPhoto">
-            {!booleanPhoto ? (
-              <button className="botonPhoto" onClick={() => handleClickPhoto()}>
-                Change User Photo
-              </button>
+          <div className="containerPhoto">
+            <div className="ubicaBotonPhoto">
+              {!booleanPhoto ? (
+                <button
+                  className="botonPhoto"
+                  onClick={() => handleClickPhoto()}
+                >
+                  Change User Photo
+                </button>
+              ) : (
+                <button className="botonPhotoDisabled">
+                  Change User Photo
+                </button>
+              )}
+            </div>
+            <img
+              className="photousuario"
+              src={userInfo.photo ? userInfo.photo : userInfo.picture}
+              alt="User"
+            />
+            {booleanPhoto === false ? (
+              ""
             ) : (
-              <button className="botonPhotoDisabled">Change User Photo</button>
+              <>
+                <div className="cadaLinea">
+                  <p className="label">
+                    <FormattedMessage
+                      id="register.photoUser"
+                      defaultMessage="Photo User*:"
+                    />
+                  </p>
+                  <input
+                    onChange={(e) => uploadImage(e)}
+                    className="cargaImagen"
+                    type="file"
+                    name="image"
+                    required="required"
+                    accept="image/png, image/jpeg"
+                  />
+                </div>
+                <div Style="display:none">{(input.photo = image)}</div>
+                <p>
+                  {loanding ? (
+                    <img src={image} Style="height:150px" alt="" />
+                  ) : (
+                    ""
+                  )}
+                </p>
+                <button
+                  className="botonEdit"
+                  type="submit"
+                  onClick={(e) => handleSubmitPhoto(e)}
+                >
+                  Change Photo
+                </button>
+              </>
             )}
           </div>
-          {booleanPhoto === false ? (
-            ""
-          ) : (
-            <>
-              <div className="cadaLinea">
-                <p className="label">
-                  <FormattedMessage
-                    id="register.photoUser"
-                    defaultMessage="Photo User*:"
-                  />
-                </p>
-                <input
-                  onChange={(e) => uploadImage(e)}
-                  className="cargaImagen"
-                  type="file"
-                  name="image"
-                  required="required"
-                  accept="image/png, image/jpeg"
-                />
-              </div>
-              <div Style="display:none">{(input.photo = image)}</div>
-              <p>
-                {loanding ? (
-                  <img src={image} Style="height:150px" alt="" />
-                ) : (
-                  ""
-                )}
-              </p>
-              <button
-                className="botonEdit"
-                type="submit"
-                onClick={(e) => handleSubmitPhoto(e)}
-              >
-                Change Photo
-              </button>
-            </>
-          )}
           <div className="botonera">
             {!booleanUser ? (
               <button className="buttonBlue" onClick={() => handleClickUser()}>
@@ -227,11 +254,7 @@ export default function UserProfile() {
             <>
               <div className="">
                 <h1>User Details</h1>
-                <img
-                  className="photousuario"
-                  src={userInfo.photo ? userInfo.photo : userInfo.picture}
-                  alt="User"
-                />
+
                 <div className="datosUsuario">
                   <h1 className="titulos">
                     {userInfo.name} {userInfo.lastName}{" "}
@@ -283,11 +306,6 @@ export default function UserProfile() {
             <>
               <div className="">
                 <h1>User Details</h1>
-                <img
-                  className="photousuario"
-                  src={userInfo.photo ? userInfo.photo : userInfo.picture}
-                  alt="User "
-                />
                 <div className="datosUsuario">
                   <h1 className="titulos">
                     {userInfo.name} {userInfo.lastName}{" "}
