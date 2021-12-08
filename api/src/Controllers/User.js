@@ -108,6 +108,7 @@ const putUser = async (req, res, next) => {
       email,
       photo,
       calification,
+      isAdmin
     } = req.body;
     const user = await User.findByPk(id);
     user.update({
@@ -122,6 +123,7 @@ const putUser = async (req, res, next) => {
       email,
       photo,
       calification,
+      isAdmin
     });
     res.send(user);
   } catch (error) {

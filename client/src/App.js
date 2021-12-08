@@ -20,7 +20,7 @@ import Users from "./components/Users";
 import Error404 from "./components/Error404";
 import NavBar from "./components/NavBar";
 import Post from "./components/Post";
-import Admin from "./components/Admin";
+import Admin from "./admin/Admin";
 import RouteDetails from "./components/RouteDetails";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiesPolicy from "./components/CookiesPolicy";
