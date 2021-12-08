@@ -80,10 +80,34 @@ const getUser = async (req, res, next) => {
           email: user.email,
         };
       });
+
+ 
     } else if (id) {
       data = await User.findByPk(id, {
         include: [Post, Car, Route],
       });
+      
+      /*data=data.map((user) => {
+        return {
+          name: user.name,
+          lastName: user.lastName,
+          genre:user.genre,
+          age:user.age,
+          calification:
+              user.posts.map((obj) => obj.Post.map((c) => c.calification))
+              .reduce((a,b) => a+b,0)/user.posts.length,
+          photo: user.photo,
+          email: user.email,
+        }
+      })*/
+      const arrayData = Object.values(data)
+      let puntaje=0;
+      arrayData[0].posts.map((d) => { 
+        puntaje += d.calification
+      })
+      let prom = puntaje / arrayData[0].posts.length;
+      console.log(prom)
+      console.log(arrayData[0].posts.length, "cantidad de comentarios")
     } else {
       data = await User.findAll();
     }
