@@ -131,8 +131,8 @@ const putUser = async (req, res, next) => {
 
 const deleteUser = async (req, res, next) => {
   try {
-    const { email } = req.params;
-    const user = await User.findByPk(email);
+    const { id } = req.params;
+    const user = await User.findByPk(id);
     await user.destroy();
     res.send("Registro elminado");
   } catch (error) {

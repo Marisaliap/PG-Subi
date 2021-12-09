@@ -94,8 +94,12 @@ const getMPPayment = async (req,res) => {
 // const refunded = async (req,res,next) => {
 //   const { idUser, idRoute } = req.query;
 //
-//   const user = await User.findByPk(idUser,{ include: Order })
-//   let userOrder = user.orders.filter(order => order.routeId === idRoute)
+//   const user = await User.findByPk(idUser,{ include: Order });
+//   let userOrder = user.orders.filter(order => order.routeId === idRoute);
+//
+//   const refund = await axios.post(`https://api.mercadopago.com/v1/payments/${userOrder[0].payment_id}/refunds?access_token=${ACCESS_TOKEN}`);
+//   res.json(refund);
+//
 //   mercadopago.configure({client_id: 97729619263304, client_secret: "RnnBrcD3TdyzhuPNTgPGJ1OQpMu933yj"});
 //   mercadopago.payment.refund(userOrder[0].payment_id)
 //     .then( (response) => {
