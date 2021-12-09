@@ -99,7 +99,7 @@
     "register.province" : "Province*:",
     "register.facebook" : "Facebook:",
     "register.instagram" : "Instagram:",
-    "register.about" : "About:",
+    "register.about" : "About*:",
     "register.agree" : "By continuing, you agree to our",
     "register.terms" : "Terms of Use",
     "register.and" : "and",

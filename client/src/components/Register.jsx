@@ -13,8 +13,8 @@ export default function Registro() {
   const { user, isAuthenticated } = useAuth0();
   const [image, setImage] = useState("");
   const [loanding, setLoanding] = useState(false);
-  let booleanDNI;
   const [dni, setDni] = useState([]);
+  let booleanDNI;
   const placeHolderAbout = "Please tell us a little about yourself";
 
   useEffect(() => {
@@ -62,6 +62,8 @@ export default function Registro() {
       errors.province = "Province is required";
     } else if (wordvalidate.test(input.province) === false) {
       errors.province = "Invalid Province: No Symbols Allowed";
+    } else if (!input.about) {
+      errors.about = "About is required";
     }
     return errors;
   }
@@ -84,7 +86,8 @@ export default function Registro() {
       !input.street ||
       !input.city ||
       !input.province ||
-      !input.checkbox
+      !input.checkbox ||
+      !input.about
     ) {
       return false;
     } else {
@@ -145,7 +148,7 @@ export default function Registro() {
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
-    data.append("upload_preset", "s6kdvopu");
+    data.append("upload_preset", "PhotoUser");
     setLoanding(true);
 
     const res = await fetch(
@@ -164,7 +167,7 @@ export default function Registro() {
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
-    data.append("upload_preset", "tiuimc3c");
+    data.append("upload_preset", "PhotoDni");
     setLoanding(true);
 
     const res = await fetch(

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/Home.scss";
 // import header from "../img/header.png";
@@ -12,6 +12,7 @@ import SearchBarHome from "./SearchBarHome";
 import { useSelector, useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { getUserDetail } from "../actions";
+import Loggin from "./Loggin";
 
 export default function Home() {
   const user = useSelector((state) => state.user);
@@ -19,6 +20,8 @@ export default function Home() {
   useEffect(() => {
     dispatch(getUserDetail(user.email));
   }, []);
+  const [id, setId] = useState("");
+
   return (
     <div className="Homepage">
       {/* <div>
@@ -26,6 +29,10 @@ export default function Home() {
       </div> */}
       <div>
         <SearchBarHome />
+        <>
+          <h1>{id}</h1>
+          {/* <Loggin onIdSubmit={setId} /> */}
+        </>
       </div>
       <section>
         <img className="homepageImage" src={navigator} alt="Home" />
@@ -36,7 +43,7 @@ export default function Home() {
               defaultMessage="Save money while driving"
             />
           </h1>
-      
+
           <p className="description">
             <FormattedMessage
               id="home.p1"
@@ -58,10 +65,10 @@ export default function Home() {
                 !users.dni
                   ? '/register'
                   : users.name && users.cars.length === 0
-                  ? '/car'
-                  : users.name && users.cars[0].patent
-                  ? '/route'
-                  : ''
+                    ? '/car'
+                    : users.name && users.cars[0].patent
+                      ? '/route'
+                      : ''
               }
             >
               <button className="button">

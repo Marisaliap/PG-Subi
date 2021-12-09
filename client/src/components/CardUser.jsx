@@ -1,6 +1,9 @@
 import React from "react";
-import { BsStarFill } from "react-icons/bs";
 import "../Sass/Styles/CardUser.scss";
+import { BsGenderFemale, BsGenderMale, BsStarFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getUserDetail } from "../actions";
 
 export default function CardUser({
   photo,
@@ -9,18 +12,37 @@ export default function CardUser({
   genre,
   age,
   calification,
+  email,
   ...props
 }) {
+
+  const dispatch = useDispatch();
+
+  function genderIcon(gender) {
+   
+
+    if (gender === "Male") {
+      return <BsGenderMale className="maleGender" />;
+    } else if (gender === "Female") {
+      return <BsGenderFemale className="femaleGender" />;
+    }
+  }
+
   return (
-    <div className="CardUser" {...props}>
-      <img src={photo} alt="" /> <h5>Name: {name}</h5>
-      <h5>LastName: {lastName}</h5>
-      <h5>Genre: {genre}</h5>
-      <h5>Age: {age}</h5>
-      <h5>
-        <BsStarFill className="icon" />
-        {calification} /5
-      </h5>
-    </div>
+    <>
+      <div className="CardUser" {...props}>
+        <Link to={`/user/${email}`} onClick={()=>dispatch(getUserDetail(email))}>
+          <img src={photo} alt="" />
+          <h5>
+            {name} {lastName}
+          </h5>
+          <h5>{age}</h5>
+          <h5>{genderIcon(genre)}</h5>
+          <h5>
+            {calification}/5 <BsStarFill className="icon" />
+          </h5>
+        </Link>
+      </div>
+    </>
   );
 }

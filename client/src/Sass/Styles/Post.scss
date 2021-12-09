@@ -1,25 +1,83 @@
 @import '../Variables/Variables.scss';
 
-.Post{
+.Post {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 
-   
+
 }
 
-.infoUser{
+.infoUser {
     display: flex;
     flex-direction: row;
     align-items: center;
     align-content: stretch;
 
-    img{
+    img {
         border-radius: 50%;
         margin: 1rem;
     }
-    h2{
+
+    h2 {
         margin: 1rem;
     }
+}
+
+.desContainer {
+    padding: 1rem;
+    border: 1px solid;
+    border-radius: 5px;
+    height: 40rem;
+
+
+    .description {
+        border: 1px solid black;
+        border-radius: 5px;
+        width: 10rem;
+        text-align: left;
+        margin-left: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+
+        .infodate {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+            border-bottom: 1px solid black;
+            border-radius: 5px 5px 0px 0px;
+            margin: 0;
+            padding: 0;
+            width: auto;
+            height: 1.5rem;
+            padding-right: 1rem;
+            padding-left: 1rem;
+
+
+        }
+    }
+}
+
+.formPost {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 10rem;
+
+    .select {
+        text-align: center;
+    }
+
+    .textarea {
+
+        textarea{
+            height: 10rem;
+            width: 20rem;
+        }
+    }
+
+    .divbutton {}
 }

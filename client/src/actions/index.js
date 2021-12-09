@@ -37,6 +37,18 @@ export function getRoute(long1, lat1, long2, lat2) {
   };
 }
 
+export function getUserProfile(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user/${id}`))
+        .data;
+      return dispatch({
+        type: "GET_USER_PROFILE",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
 export function getUserDetail(id) {
   return async function (dispatch) {
     try {
@@ -44,6 +56,19 @@ export function getUserDetail(id) {
         .data;
       return dispatch({
         type: "GET_USER_DETAIL",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
+export function getUserAdmin(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user/${id}`))
+        .data;
+      return dispatch({
+        type: "GET_USER_ADMIN",
         payload: response,
       });
     } catch (error) {}
@@ -123,6 +148,31 @@ export function editUser(id, info) {
     }
   };
 }
+
+export function getId(id) {
+  return {
+    type: "ID",
+    payload: id,
+  };
+}
+
+export function deleteUser(id) {
+  return async function (dispatch) {
+    try {
+      const response = ( await axios.delete(
+        `http://localhost:3001/user/` + id
+      )).data;
+      return dispatch({
+        type: "DELETE_USER",
+        payload: response,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+
 
 export function editCar(id, info) {
   return async function (dispatch) {

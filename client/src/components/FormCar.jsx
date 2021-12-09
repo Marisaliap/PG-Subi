@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { postCar } from "../actions";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -13,6 +13,9 @@ export default function FormCar() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
+  const [image, setImage] = useState("");
+  const [loanding, setLoanding] = useState(false);
+  const [cedula, setCedula] = useState([]);
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     idUser: isAuthenticated ? user.email : "",
@@ -21,17 +24,25 @@ export default function FormCar() {
     brand: "",
     model: "",
     cylinder: "",
+    greencard: "",
+    bluecard: [],
   });
+
+
+  console.log("inputlength=>",input.bluecard.length);
+  console.log("input=>",input);
+  console.log("green=>",image);
+  console.log("blue=>",cedula);
 
   function validate(input) {
     let errors = {};
-    const numberandlettervalidate = /^[0-9a-zA-Z]+$/;
+    const numberandlettervalidate = /^[0-9a-zA-Z ]+$/;
     const wordvalidate = /^[a-zA-Z]+$/;
     const floatvalidate = /^[0-9]*\.?[0-9]+$/;
     if (!input.patent) {
-      errors.patent = "Patent is required";
+      errors.patent = "Plate is required";
     } else if (numberandlettervalidate.test(input.patent) === false) {
-      errors.patent = "Invalid Name";
+      errors.patent = "Invalid Plate";
     } else if (!input.color) {
       errors.color = "Color is required";
     } else if (wordvalidate.test(input.color) === false) {
@@ -49,6 +60,44 @@ export default function FormCar() {
     }
     return errors;
   }
+
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "PhotoGreenCard");
+    setLoanding(true);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    setImage(file.secure_url);
+  };
+
+  const uploadImage2 = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "PhotoBlueCard");
+    setLoanding(true);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    setCedula([...cedula, file.secure_url]);
+  };
 
   function handleChange(e) {
     setInput({
@@ -73,6 +122,8 @@ export default function FormCar() {
         brand: "",
         model: "",
         cylinder: "",
+        greencard: "",
+        bluecard:[],
       });
       swal({
         title: "Good job!",
@@ -170,6 +221,100 @@ export default function FormCar() {
           />
           {errors.cylinder && <p className="errorcar">{errors.cylinder}</p>}
         </div>
+        <div>
+        {!input.greencard?
+          <div className="cadaLinea">
+            <p className="label">
+              Green Card:{/* <FormattedMessage
+                id="register.photoUser"
+                defaultMessage="Photo User*:"
+              /> */}
+            </p>
+            <input
+              onChange={(e) => uploadImage(e)}
+              className="custom-file-input"
+              type="file"
+              name="image"
+              required="required"
+              accept="image/png, image/jpeg"
+            />
+          <div Style="display:none">{(input.greencard = image)}</div>
+          <p>
+            {loanding ? <img src={image} Style="height:150px" alt="" /> : ""}
+          </p>
+          </div>
+          :input.greencard?
+           <div className="cadaLinea">
+            <p className="label">
+              Blue Card #1:{/* <FormattedMessage
+                id="register.idFront"
+                defaultMessage="ID or passport Front*:"
+              /> */}
+            </p>
+            <div className="cargaImagen">
+              <input
+                onChange={(e) => uploadImage2(e)}
+                className="custom-file-input"
+                type="file"
+                name="image"
+                required="required"
+                accept="image/png, image/jpeg"
+              />
+            </div>
+          <div Style="display:none">{(input.bluecard = cedula)}</div>
+          <p>
+            {loanding ? <img src={cedula[0]} Style="height:150px" alt="" /> : ""}
+          </p>
+          </div>
+        :input.bluecard.length===1?
+          <div className="cadaLinea">
+            <p className="label">
+              Blue Card #2:{/* <FormattedMessage
+                id="register.idBack"
+                defaultMessage="ID or passport Back*:"
+              /> */}
+            </p>
+            <label className="cargaImagen">
+              <input
+                onChange={(e) => uploadImage2(e)}
+                className="custom-file-input"
+                type="file"
+                name="image"
+                required="required"
+                accept="image/png, image/jpeg"
+              />
+            </label>
+          <div Style="display:none">{(input.bluecard = cedula)}</div>
+          <p>
+            {loanding ? <img src={cedula[1]} Style="height:150px" alt="" /> : ""}
+          </p>
+          </div>
+          :input.bluecard[1]?
+          <div className="cadaLinea">
+            <p className="label">
+              Blue Card #3:{/* <FormattedMessage
+                id="register.idBack"
+                defaultMessage="ID or passport Back*:"
+              /> */}
+            </p>
+            <label className="cargaImagen">
+              <input
+                onChange={(e) => uploadImage2(e)}
+                className="custom-file-input"
+                type="file"
+                name="image"
+                required="required"
+                accept="image/png, image/jpeg"
+              />
+            </label>
+          <div Style="display:none">{(input.bluecard = cedula)}</div>
+          <p>
+            {loanding ? <img src={cedula[2]} Style="height:150px" alt="" /> : ""}
+          </p>
+          </div>
+          :""}
+        </div>
+
         <button className="button" type="submit">
           <FormattedMessage id="formCar.add" defaultMessage=" Add Car" />
         </button>

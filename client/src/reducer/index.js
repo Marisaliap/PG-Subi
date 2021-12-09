@@ -7,17 +7,22 @@ const initialState = {
   users: [],
   getRoutes: [],
   car: [],
+  userpro: [],
+  carpro: [],
   routeById: [],
   routeFromDb: [],
   setPost:[],
   userPost:[],
   usuariosRegistrados: [],
+  userAdmin: [],
+  id: "",
   userBuscado: [],
   // ---------------< filters rami>----------------------------------
 
   restriction: "",
   order: "",
   filtersRoute: [],
+  userDeleted: "",
 
   reclamosymejoras: [],
 };
@@ -44,12 +49,28 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: action.payload,
       };
+    case "GET_USER_PROFILE":
+      return {
+        ...state,
+        userpro: action.payload,
+        carpro: action.payload.cars[0],
+      };
     case "GET_USER_DETAIL":
       return {
         ...state,
         user: action.payload,
         car: action.payload.cars[0],
       };
+    case "GET_USER_ADMIN":
+      return {
+        ...state,
+        userAdmin: action.payload,
+      };
+    case "ID" :
+      return {
+        ...state,
+        id: action.payload
+      }
     case "GET_ALL_ROUTE_INFO":
       return {
         ...state,
@@ -90,6 +111,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         user: [action.payload],
       };
+    case "DELETE_USER":
+      return {
+        ...state,
+        userDeleted: [action.payload]
+      }
     case "EDIT_CAR":
       return {
         ...state,
