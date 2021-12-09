@@ -32,9 +32,9 @@ import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
 /* import Topbar from "./admin/Topbar"; */
 /* import Sidebar from "./admin/Sidebar"; */
-import { Redirect} from 'react-router';
+import { Redirect } from "react-router";
 export default function App() {
-  const {user}=useSelector(state => state)
+  const { user } = useSelector((state) => state);
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
 
@@ -54,7 +54,7 @@ export default function App() {
       behavior: "smooth",
     });
   };
-console.log(user, "soy user de app")
+  console.log(user, "soy user de app");
   return (
     <BrowserRouter>
       <div className="App">
@@ -63,6 +63,7 @@ console.log(user, "soy user de app")
           <div>
             <NavBar />
             <Route path="/home" component={Home} />
+
             {isAuthenticated ? (
               <>
                 {
@@ -80,8 +81,18 @@ console.log(user, "soy user de app")
                     <Route path="/users" component={Users} />
                     <Route path="/post/:id" component={Post} />
                     <Route path="/404" component={Error404} />
-                    <div> 
-                     <Route exact path='/admin' render={() => user.isAdmin === true ? <Admin/>: <Redirect to='/home'/>}/>
+                    <div>
+                      <Route
+                        exact
+                        path="/admin"
+                        render={() =>
+                          user.isAdmin === true ? (
+                            <Admin />
+                          ) : (
+                            <Redirect to="/home" />
+                          )
+                        }
+                      />
                     </div>
                   </Switch>
                 }
@@ -111,4 +122,3 @@ console.log(user, "soy user de app")
     </BrowserRouter>
   );
 }
-
