@@ -15,9 +15,9 @@ export default function Post(id) {
   const [errors, setErrors] = useState({});
   let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
 
-  useEffect(() => {
-    dispatch(getPost(id));
-  }, [dispatch, id]);
+  // useEffect(() => {
+  //   dispatch(getPost(id)); NO EXISTE EL GETPOST
+  // }, [dispatch, id]);
 
   const [input, setInput] = useState({
     email: userInfo.email,
@@ -87,7 +87,7 @@ export default function Post(id) {
           ""
         ) : (
           <div className="infoUser">
-          
+
             {console.log("post", userInfo.calification[0])}
             <RatingStar Rating={userInfo.calification[0]} />
           </div>
