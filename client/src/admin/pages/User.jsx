@@ -9,21 +9,30 @@ import {
     PermIdentity,
     PhoneAndroid,
     Publish,
+    AssignmentInd,
+    WcOutlined,
+    Event,
+    PhotoCamera,
+    DirectionsCar,
+    Facebook, 
+    Instagram,
+    Home,
+    VpnKey,
   } from "@material-ui/icons";
   import { Link } from "react-router-dom";
   import "../../styles/User.css";
+  import { useAuth0 } from "@auth0/auth0-react";
   
-  export default function User(props) {
-  console.log(props, "soy el id de user")
+  export default function User() {
   const dispatch = useDispatch();
+  const { user } = useAuth0();
   const { userAdmin, id } = useSelector(state => state);
 
   useEffect(() => {
   dispatch(getUserAdmin(id));
   }, [dispatch]);
 
-  console.log(id, "SOY YO ID")
-  console.log(userAdmin, "soy user")
+  console.log(userAdmin, "soy user Admin")
 
     return (
       <div className="user">
@@ -37,37 +46,69 @@ import {
           <div className="userShow">
             <div className="userShowTop">
               <img
-                src={ userAdmin.photo }
+                src={ userAdmin.photo || user.picture}
                 alt=""
                 className="userShowImg"
               />
               <div className="userShowTopTitle">
                 <span className="userShowUsername">{userAdmin.name}</span>
-                <span className="userShowUserTitle">Software Engineer</span>
+               <span className="userShowUserTitle">{userAdmin?.cars?.length > 0 ? "Driver" : "Passenger"}</span>
               </div>
             </div>
             <div className="userShowBottom">
               <span className="userShowTitle">Account Details</span>
               <div className="userShowInfo">
                 <PermIdentity className="userShowIcon" />
-                <span className="userShowInfoTitle">annabeck99</span>
+                <span className="userShowInfoTitle">{userAdmin.name}</span>
+                <span className="userShowInfoTitle">{userAdmin.lastName}</span>
               </div>
               <div className="userShowInfo">
-                <CalendarToday className="userShowIcon" />
-                <span className="userShowInfoTitle">10.12.1999</span>
+                < AssignmentInd className="userShowIcon" />
+                <span className="userShowInfoTitle">{userAdmin.dni}</span>
+              </div>
+              <div className="userShowInfo">
+                <Event className="userShowIcon" />
+                <span className="userShowInfoTitle">{userAdmin.age}</span>
+              </div>
+              <div className="userShowInfo">
+                <WcOutlined className="userShowIcon" />
+                <span className="userShowInfoTitle">{userAdmin.genre}</span>
+              </div>
+              <div className="userShowInfo">
+                <Home className="userShowIcon" />
+                <span className="userShowInfoTitle">{userAdmin.street + "|"}</span>
+                <span className="userShowInfoTitle">{userAdmin.city + "|"}</span>
+                <span className="userShowInfoTitle">{userAdmin.province}</span>
+              </div>
+              <div className="userShowInfo">
+                <VpnKey className="userShowIcon" />
+                <span className="userShowInfoTitle">{userAdmin.isAdmin === true ? "Admin" : "Not Admin"}</span>
+              </div>
+              <span className="userShowTitle">Account Documents</span>
+              <div className="userShowInfo">
+                <PhotoCamera className="userShowIcon" />
+                <span className="userShowInfoTitle">{!userAdmin.photoDni? "" : userAdmin.photoDni.map(e => e)}</span>
+              </div>
+              <div className="userShowInfo">
+                <DirectionsCar className="userShowIcon" />
+                <span className="userShowInfoTitle">{!userAdmin.cars? "" : userAdmin.cars.map(e => e)}</span>
               </div>
               <span className="userShowTitle">Contact Details</span>
               <div className="userShowInfo">
                 <PhoneAndroid className="userShowIcon" />
-                <span className="userShowInfoTitle">+1 123 456 67</span>
+                <span className="userShowInfoTitle">{userAdmin.telephone}</span>
               </div>
               <div className="userShowInfo">
                 <MailOutline className="userShowIcon" />
                 <span className="userShowInfoTitle">{userAdmin.email}</span>
               </div>
               <div className="userShowInfo">
-                <LocationSearching className="userShowIcon" />
-                <span className="userShowInfoTitle">New York | USA</span>
+                <Facebook className="userShowIcon" />
+                <span className="userShowInfoTitle">{!userAdmin.facebook ? "No Facebook added" : userAdmin.facebook}</span>
+              </div>
+              <div className="userShowInfo">
+                <Instagram className="userShowIcon" />
+                <span className="userShowInfoTitle">{!userAdmin.instagram ? "No Instagram added" : userAdmin.instagram}</span>
               </div>
             </div>
           </div>
