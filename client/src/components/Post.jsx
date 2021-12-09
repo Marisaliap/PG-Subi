@@ -1,19 +1,19 @@
-import { React, useState } from "react";
+import { React, useState } from 'react';
 //import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getPost, setPost } from "../actions/index";
-import { useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import swal from "sweetalert";
-import "../Sass/Styles/Post.scss";
-import RatingStar from "./RatingStar.jsx";
+import { useSelector, useDispatch } from 'react-redux';
+import { getPost, setPost } from '../actions/index';
+import { useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import swal from 'sweetalert2';
+import '../Sass/Styles/Post.scss';
+import RatingStar from './RatingStar.jsx';
 
 export default function Post(id) {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userPost);
   const { user, isAuthenticated } = useAuth0();
   const [errors, setErrors] = useState({});
-  let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
+  let time = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
 
   useEffect(() => {
     dispatch(getPost(id));
@@ -22,23 +22,23 @@ export default function Post(id) {
   const [input, setInput] = useState({
     email: userInfo.email,
     date: time,
-    author: isAuthenticated ? user.name : "",
-    description: "",
-    calification: "",
+    author: isAuthenticated ? user.name : '',
+    description: '',
+    calification: '',
   });
 
   function validate(input) {
     let errors = {};
     if (!input.description) {
-      errors.description = "Description is required";
+      errors.description = 'Description is required';
     } else if (!input.calification) {
-      errors.calification = "Calification is required";
+      errors.calification = 'Calification is required';
     }
     return errors;
   }
 
-  console.log("userinfo", userInfo);
-  console.log("input", input);
+  console.log('userinfo', userInfo);
+  console.log('input', input);
 
   function handleChange(e) {
     setInput({
@@ -58,24 +58,24 @@ export default function Post(id) {
     if (Object.keys(errors).length === 0) {
       dispatch(setPost(input));
       setInput({
-        email: "",
-        date: "",
-        author: "",
-        description: "",
-        calification: "",
+        email: '',
+        date: '',
+        author: '',
+        description: '',
+        calification: '',
       });
-      swal({
-        title: "Good job!",
-        text: "Post created correctly",
-        icon: "success",
-        button: "Aww yiss!",
+      new swal({
+        title: 'Good job!',
+        text: 'Post created correctly',
+        icon: 'success',
+        button: 'Aww yiss!',
       });
     } else {
-      swal({
-        title: "Sorry",
-        text: "All mandatory fields must be filled to continue",
-        icon: "warning",
-        button: "Ok",
+      new swal({
+        title: 'Sorry',
+        text: 'All mandatory fields must be filled to continue',
+        icon: 'warning',
+        button: 'Ok',
       });
     }
   }
@@ -84,17 +84,16 @@ export default function Post(id) {
     <div className="Post">
       <div>
         {userInfo.length === 0 ? (
-          ""
+          ''
         ) : (
           <div className="infoUser">
-          
-            {console.log("post", userInfo.calification[0])}
+            {console.log('post', userInfo.calification[0])}
             <RatingStar Rating={userInfo.calification[0]} />
           </div>
         )}
         <div className="desContainer">
           {userInfo.length === 0
-            ? ""
+            ? ''
             : userInfo.posts.map((e) => (
                 <div className="description">
                   <div className="infodate">
