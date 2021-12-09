@@ -62,6 +62,8 @@ export default function Registro() {
       errors.province = "Province is required";
     } else if (wordvalidate.test(input.province) === false) {
       errors.province = "Invalid Province: No Symbols Allowed";
+    } else if (!input.about) {
+      errors.about = "About is required";
     }
     return errors;
   }
@@ -84,7 +86,8 @@ export default function Registro() {
       !input.street ||
       !input.city ||
       !input.province ||
-      !input.checkbox
+      !input.checkbox ||
+      !input.about
     ) {
       return false;
     } else {

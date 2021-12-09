@@ -40,7 +40,7 @@ const validateInfo = (routeInfo) => {
 export default function SearchBar() {
   const cities = useSelector((state) => state.suggestions1);
   const cities2 = useSelector((state) => state.suggestions2);
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({ validations: {} });
   const [restrictions, setRestrictions] = useState([]);
@@ -139,7 +139,11 @@ export default function SearchBar() {
         </FormattedMessage>
 
         <datalist id="cities">
-          {cities && cities.map((city) => city.name !== inputs.Origin && <option>{city.name}</option>)}
+          {cities &&
+            cities.map(
+              (city) =>
+                city.name !== inputs.Origin && <option>{city.name}</option>
+            )}
         </datalist>
         <p>{validations && validations.Origin}</p>
 
@@ -160,7 +164,11 @@ export default function SearchBar() {
         </FormattedMessage>
 
         <datalist id="cities2">
-          {cities2 && cities2.map((city) => city.name !== inputs.Destination && <option>{city.name}</option>)}
+          {cities2 &&
+            cities2.map(
+              (city) =>
+                city.name !== inputs.Destination && <option>{city.name}</option>
+            )}
         </datalist>
         <p>{validations && validations.Destination}</p>
         <div>
@@ -219,29 +227,78 @@ export default function SearchBar() {
               <option value="foodAllowed">Food Allowed</option>
               <option value="twoMaxInTheBack">Max. 2 in the back</option>
               <option value="kidsAllowed">Kids Allowed</option>
-             {user.genre === 'Female' && <option value="onlyWomen">Only Women</option>}
-              </select>
-              </div>
-            <div style={{marginTop:'1rem'}}>
-              {restrictions.includes("petsAllowed") && <button className='buttonx' value="petsAllowed" onClick={(e) => deleteRestrictions(e)}>Pets Allowed X</button>}
-              {restrictions.includes("smokersAllowed") && <button className='buttonx'  value="smokersAllowed" onClick={(e) => deleteRestrictions(e)}>Smoking Allowed X</button>}
-              {restrictions.includes("foodAllowed") && <button className='buttonx'  value="foodAllowed" onClick={(e) => deleteRestrictions(e)}>Food Allowed X</button>}
-            {  restrictions.includes("twoMaxInTheBack") && <button className='buttonx'  value="twoMaxInTheBack" onClick={(e) => deleteRestrictions(e)}>Max. 2 in the back X</button>}
-            {  restrictions.includes("kidsAllowed") && <button className='buttonx'  value="kidsAllowed" onClick={(e) => deleteRestrictions(e)}>Kids Allowed X</button>}
-              {restrictions.includes("onlyWomen") && <button className='buttonx'  value="onlyWomen" onClick={(e) => deleteRestrictions(e)}>Only Women X</button>}
-              </div>
-            
+              {user.genre === "Female" && (
+                <option value="onlyWomen">Only Women</option>
+              )}
+            </select>
+          </div>
+          <div style={{ marginTop: "1rem" }}>
+            {restrictions.includes("petsAllowed") && (
+              <button
+                className="buttonx"
+                value="petsAllowed"
+                onClick={(e) => deleteRestrictions(e)}
+              >
+                Pets Allowed X
+              </button>
+            )}
+            {restrictions.includes("smokersAllowed") && (
+              <button
+                className="buttonx"
+                value="smokersAllowed"
+                onClick={(e) => deleteRestrictions(e)}
+              >
+                Smoking Allowed X
+              </button>
+            )}
+            {restrictions.includes("foodAllowed") && (
+              <button
+                className="buttonx"
+                value="foodAllowed"
+                onClick={(e) => deleteRestrictions(e)}
+              >
+                Food Allowed X
+              </button>
+            )}
+            {restrictions.includes("twoMaxInTheBack") && (
+              <button
+                className="buttonx"
+                value="twoMaxInTheBack"
+                onClick={(e) => deleteRestrictions(e)}
+              >
+                Max. 2 in the back X
+              </button>
+            )}
+            {restrictions.includes("kidsAllowed") && (
+              <button
+                className="buttonx"
+                value="kidsAllowed"
+                onClick={(e) => deleteRestrictions(e)}
+              >
+                Kids Allowed X
+              </button>
+            )}
+            {restrictions.includes("onlyWomen") && (
+              <button
+                className="buttonx"
+                value="onlyWomen"
+                onClick={(e) => deleteRestrictions(e)}
+              >
+                Only Women X
+              </button>
+            )}
+          </div>
         </div>
 
         <pre>
-          <div>
+          <div className="botonPostRuta">
             <NavLink to="/">
               <button className="buttonBlue">
                 <FormattedMessage id="userDetails.back" defaultMessage="Back" />
               </button>
             </NavLink>
           </div>
-          <div>
+          <div className="botonPostRuta">
             {checkAllInfo ? (
               <button
                 onClick={handleSubmit}

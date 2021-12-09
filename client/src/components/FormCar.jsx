@@ -25,13 +25,13 @@ export default function FormCar() {
 
   function validate(input) {
     let errors = {};
-    const numberandlettervalidate = /^[0-9a-zA-Z]+$/;
+    const numberandlettervalidate = /^[0-9a-zA-Z ]+$/;
     const wordvalidate = /^[a-zA-Z]+$/;
     const floatvalidate = /^[0-9]*\.?[0-9]+$/;
     if (!input.patent) {
-      errors.patent = "Patent is required";
+      errors.patent = "Plate is required";
     } else if (numberandlettervalidate.test(input.patent) === false) {
-      errors.patent = "Invalid Name";
+      errors.patent = "Invalid Plate";
     } else if (!input.color) {
       errors.color = "Color is required";
     } else if (wordvalidate.test(input.color) === false) {

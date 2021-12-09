@@ -91,15 +91,6 @@ export default function Nav() {
             <Auth />
           </li>
         </ul>
-
-        {/* <div className="banderas">
-            <button onClick={() => idioma.establecerLenguaje("es-AR")}>
-            <img src={es} alt=""></img>
-            </button>
-            <button onClick={() => idioma.establecerLenguaje("en-US")}>
-            <img src={en} alt=""></img>
-            </button>
-          </div> */}
       </nav>
     </header>
   );
