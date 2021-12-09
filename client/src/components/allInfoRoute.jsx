@@ -55,8 +55,10 @@ export default function AllInfoRoute({ match }) {
     dispatch(deleteRoute());
     history.push("/route-list");
   }
+  console.log(route.restriction)
+  console.log(route)
 
-  let restricciones = route.restriction.split(", ");
+  let restricciones =route.restriction && route.restriction.split(", ");
 
   return (
     <div className="Map">
@@ -89,7 +91,7 @@ export default function AllInfoRoute({ match }) {
           )}
         </div>
         <div className="restrictionContainer">
-          {restricciones.map((restriction) => {
+          {restricciones&&restricciones.map((restriction) => {
             return (
               <p>
                 {restriction

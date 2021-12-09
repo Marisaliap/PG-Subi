@@ -17,6 +17,8 @@ import {
   BsInfoSquareFill,
 } from "react-icons/bs";
 import "../Sass/Styles/UserDetails.scss";
+import Post from "./Post"
+
 
 export default function UserDetails(props) {
   const userInfo = useSelector((state) => state.user);
@@ -139,6 +141,10 @@ export default function UserDetails(props) {
               )}
             </div>{" "}
           </div>
+          <Post 
+          id={userInfo.email}
+          />
+          {console.log(userInfo.email)}
         </div>
       </div>
     </div>

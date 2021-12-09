@@ -37,6 +37,18 @@ export function getRoute(long1, lat1, long2, lat2) {
   };
 }
 
+export function getUserProfile(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user/${id}`))
+        .data;
+      return dispatch({
+        type: "GET_USER_PROFILE",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
 export function getUserDetail(id) {
   return async function (dispatch) {
     try {

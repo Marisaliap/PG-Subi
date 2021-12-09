@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/Home.scss";
 // import header from "../img/header.png";
@@ -12,6 +12,7 @@ import SearchBarHome from "./SearchBarHome";
 import { useSelector, useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { getUserDetail } from "../actions";
+import Loggin from "./Loggin";
 
 export default function Home() {
   const user = useSelector((state) => state.user);
@@ -30,7 +31,7 @@ export default function Home() {
         <SearchBarHome />
         <>
           <h1>{id}</h1>
-          <Loggin onIdSubmit={setId} />
+          {/* <Loggin onIdSubmit={setId} /> */}
         </>
       </div>
       <section>

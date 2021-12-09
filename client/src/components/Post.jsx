@@ -1,29 +1,26 @@
 import { React, useState } from "react";
 //import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { userPost, setPost } from "../actions/index";
+import { getPost, setPost } from "../actions/index";
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import CardPost from "./CardPost";
-import { BsStar } from "react-icons/bs";
 import swal from "sweetalert";
 import "../Sass/Styles/Post.scss";
 import RatingStar from "./RatingStar.jsx";
 
-export default function Post(props) {
+export default function Post(id) {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userPost);
   const { user, isAuthenticated } = useAuth0();
   const [errors, setErrors] = useState({});
-  const id = props.match.params.id;
   let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
 
   useEffect(() => {
-    dispatch(userPost(id));
+    dispatch(getPost(id));
   }, [dispatch, id]);
 
   const [input, setInput] = useState({
-    email: id,
+    email: userInfo.email,
     date: time,
     author: isAuthenticated ? user.name : "",
     description: "",
@@ -90,10 +87,7 @@ export default function Post(props) {
           ""
         ) : (
           <div className="infoUser">
-            <img src={userInfo.photo} alt="post" Style="width:75px" />
-            <h2>
-              {userInfo.name} {userInfo.LastName}
-            </h2>
+          
             {console.log("post", userInfo.calification[0])}
             <RatingStar Rating={userInfo.calification[0]} />
           </div>
