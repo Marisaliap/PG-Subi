@@ -5,21 +5,19 @@ import "../Sass/Styles/Home.scss";
 import navigator from "../img/navigator.svg";
 import ecoConscious from "../img/ecoConscious.svg";
 import saveMoney from "../img/saveMoney.svg";
-import offRoad from "../img/offRoad.svg";
 import electricCar from "../img/electricCar.svg";
-import group2 from "../img/group2.png";
 import SearchBarHome from "./SearchBarHome";
 import { useSelector, useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
-import { getUserDetail } from "../actions";
+import { getUserProfile } from "../actions";
 import Loggin from "./Loggin";
 
 export default function Home() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserDetail(user.email));
-  }, []);
+    dispatch(getUserProfile(user.email));
+  }, [dispatch, user.email]);
   const [id, setId] = useState("");
 
   return (
