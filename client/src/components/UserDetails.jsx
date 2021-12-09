@@ -16,9 +16,8 @@ import {
   BsInfoSquareFill,
 } from "react-icons/bs";
 import "../Sass/Styles/UserDetails.scss";
-import Post from "./Post"
+import Post from "./Post";
 import RatingStar from "./RatingStar.jsx";
-
 
 export default function UserDetails(props) {
   const userInfo = useSelector((state) => state.user);
@@ -27,9 +26,6 @@ export default function UserDetails(props) {
   autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
   // console.log(props, "soy el id del get detail")
   const dispatch = useDispatch();
-
-
-
 
   useEffect(() => {
     dispatch(getUserById(""));
@@ -145,15 +141,15 @@ export default function UserDetails(props) {
               )}
             </div>{" "}
           </div>
-          <Post 
-          id={userInfo.email}
-          />
-          
+          <div className="centralo">
+            <h1 className="tituloUserProfile">Rating</h1>
+          </div>
+          <Post id={userInfo.email} />
+
           {/* {console.log(userInfo.posts[0].date)}
           {console.log(userInfo.posts[0].description)}
           {console.log(userInfo.posts[0].author)} 
           {console.log(userInfo.posts[0].calification)} */}
-          
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ export default function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserProfile(user.email));
-  }, [dispatch, user.email]);
+  }, [dispatch, user.email, getUserProfile]);
   const [id, setId] = useState("");
 
   return (
