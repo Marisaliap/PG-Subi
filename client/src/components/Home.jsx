@@ -13,13 +13,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { getUserDetail } from "../actions";
 
+
 export default function Home() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserDetail(user.email));
   }, []);
-  const [id, setId] = useState("");
+ console.log(user, "user");
 
   return (
     <div className="Homepage">
@@ -28,10 +29,10 @@ export default function Home() {
       </div> */}
       <div>
         <SearchBarHome />
-        <>
+        {/* <>
           <h1>{id}</h1>
           <Loggin onIdSubmit={setId} />
-        </>
+        </> */}
       </div>
       <section>
         <img className="homepageImage" src={navigator} alt="Home" />

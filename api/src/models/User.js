@@ -69,6 +69,7 @@ module.exports = (sequelize) => {
       },
       photoDni: {
         type: DataTypes.ARRAY(DataTypes.STRING),
+        defaultValue: [],
       },
       isAdmin: {
         type: DataTypes.BOOLEAN,
