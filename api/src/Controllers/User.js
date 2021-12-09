@@ -40,7 +40,7 @@ const postUser = async (req, res, next) => {
         age,
         about,
         genre,
-        calification: [0],
+        //calification:[0],
         photoDni,
         // public_id:result.public_id,
       },
@@ -86,28 +86,18 @@ const getUser = async (req, res, next) => {
       data = await User.findByPk(id, {
         include: [Post, Car, Route],
       });
-      
-      /*data=data.map((user) => {
-        return {
-          name: user.name,
-          lastName: user.lastName,
-          genre:user.genre,
-          age:user.age,
-          calification:
-              user.posts.map((obj) => obj.Post.map((c) => c.calification))
-              .reduce((a,b) => a+b,0)/user.posts.length,
-          photo: user.photo,
-          email: user.email,
-        }
-      })*/
-      const arrayData = Object.values(data)
-      let puntaje=0;
-      arrayData[0].posts.map((d) => { 
-        puntaje += d.calification
+      const calification = data.posts;
+      let array = [];
+      calification.map((d) => {
+        array.push(d.calification)
       })
-      let prom = puntaje / arrayData[0].posts.length;
-      console.log(prom)
-      console.log(arrayData[0].posts.length, "cantidad de comentarios")
+      let calUser=0;
+      let suma=0;
+      array.forEach(function (e){
+        suma+=e;
+      })
+      calUser = suma/array.length;
+      
     } else {
       data = await User.findAll();
     }
