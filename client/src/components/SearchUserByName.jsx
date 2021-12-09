@@ -4,12 +4,11 @@ import { useDispatch } from "react-redux";
 import { getUserByName } from "../actions";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/SearchUserByName.scss";
-import {FormattedMessage} from 'react-intl';
-
+import { FormattedMessage } from "react-intl";
 
 export default function SearchUserByName() {
   const dispatch = useDispatch();
-  const [name, setName] = useState(''); //lo que está tipeando el usuario es mi estado local name
+  const [name, setName] = useState(""); //lo que está tipeando el usuario es mi estado local name
 
   function handleInput(e) {
     e.preventDefault();
@@ -19,21 +18,32 @@ export default function SearchUserByName() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(getUserByName(name));
-    setName('');
+    setName("");
   }
 
-    return (
-        <div className="SearchUserByName"> 
-        <FormattedMessage id="searchUserByName.placeholder" defaultMessage=" 🔍  Find user...">
-    {placeholder=>  
-            <input type="text" value={name} placeholder={placeholder} onChange={(e) => handleInput(e)} />
-        }
-    </FormattedMessage>
-    <button type="submit" onClick={(e) => handleSubmit(e)} > <NavLink className="Navlink" to="/users">
-              <FormattedMessage
-							id="searchUserByName.search"
-							defaultMessage="Search"
-						/></NavLink> </button>
-        </div>
-    )
+  return (
+    <div className="SearchUserByName">
+      <FormattedMessage
+        id="searchUserByName.placeholder"
+        defaultMessage=" 🔍  Find user by name..."
+      >
+        {(placeholder) => (
+          <input
+            type="text"
+            value={name}
+            placeholder={placeholder}
+            onChange={(e) => handleInput(e)}
+          />
+        )}
+      </FormattedMessage>
+      <button type="submit" onClick={(e) => handleSubmit(e)}>
+        <NavLink className="Navlink" to="/users">
+          <FormattedMessage
+            id="searchUserByName.search"
+            defaultMessage="Search"
+          />
+        </NavLink>
+      </button>
+    </div>
+  );
 }

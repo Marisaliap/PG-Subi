@@ -7,7 +7,10 @@
     "navBar.routelist" : "Lista de Viajes",
 
     "searchUserByName.search" : "Buscar",
-    "searchUserByName.placeholder" : " 🔍  Encuentra un usuario...",
+    "searchUserByName.placeholder" : " 🔍  Encuentra un usuario por nombre...",
+
+    "searchUserById.search" : "Buscar",
+    "searchUserById.placeholder" : " 🔍  Encuentra un usuario por email...",
 
     "home.title1" : "Ahorra dinero mientras conduces",
     "home.save" : "Ahorra dinero mientras conduces",
@@ -95,7 +98,7 @@
     "register.province" : "Provincia*:",
     "register.facebook" : "Facebook:",
     "register.instagram" : "Instagram:",
-    "register.about" : "Sobre:",
+    "register.about" : "Sobre mi*:",
     "register.agree" : "Al continuar, aceptas nuestras",
     "register.terms" : "Condiciones Generales de Uso",
     "register.and" : "y",
@@ -104,10 +107,14 @@
     "register.yes" : "Sí",
     "register.submit" : "Registrar",
 
+    "termsAndCond.review" : "Última revisión: ",
+    "termsAndCond.date" : "28 de noviembre de 2021",
+
+
     "privacyPolicy.terms" : "Términos y Condiciones",
     "privacyPolicy.effdate" : "Versión vigente a partir del ",
     "privacyPolicy.date" : "17/12/2021",
-    "privacyPolicy.privacy" : " | Política de Privacidad | ",
+    "privacyPolicy.privacy" : "Política de Privacidad",
     "privacyPolicy.cookies" : "Política de Cookies",
     "privacyPolicy.title1" : "1. General",
     "privacyPolicy.p1" : "Give SA (con domicilio social en la calle Rivadavia 54678, Buenos Aires, Argentina) ({name}), nosotros o nuestro), interviniendo como responsable del tratamiento de datos, se compromete a proteger y a respetar tu privacidad. Esta política la ({privacyPolicy}) está diseñado para informarte sobre nuestras prácticas en lo referente a la recopilación, uso y divulgación de la información que nos proporciones a través de nuestra plataforma (the http://www.GimmeARide.com/{platform}) accesible desde la página web",
@@ -146,7 +153,7 @@
     "privacyPolicy.p16" : "Salvo con relación a las categorías de datos personales mencionadas en las cláusulas 2.3.2 y 2.3.3 más adelante, tus datos personales se archivarán después de los siguientes periodos de retención:",
     "privacyPolicy.p17" : "5 años después del último uso de nuestra plataforma, si no cerraste tu cuenta; 30 días después del cierre de tu cuenta, excepto si recibiste un informe o calificación negativa, en cuyo caso tus datos personales se conservarán durante 2 años después del cierre de tu cuenta.",
     "privacyPolicy.p18" : "Las siguientes categorías de datos personales pueden conservarse durante periodos diferentes:",
-    "privacyPolicy.p19" : "Los datos financieros (p. ej., pagos, reembolsos, etc.) se conservan durante el tiempo exigido por la legislación contable y fiscal aplicable (por ejemplo, los documentos contables se almacenan durante un máximo de 10 años);",
+    "privacyPolicy.p19" : "Los datos financieros (p. ej., pagos, reembolsos, etc.) se conservan durante el tiempo exigido por la legislación contable y fiscal aplicable (por ejemplo, los documentos contables se almacenan durante un máximo de 10 años); Los datos del seguro se guardan durante el término del contrato suscrito y la duración necesaria para gestionar tus reclamaciones, si las hubiera; Todo el contenido generado por el usuario (p. ej. comentarios, retroalimentación y clasificaciones) se anonimiza según las duraciones mencionadas en la sección 2.3.1, aunque sigue estando disponible en nuestras plataformas; Los datos de registro se almacenan durante un máximo de 12 meses a partir de la fecha de su recogida; Las llamadas telefónicas con nuestro servicio de Relaciones con la Comunidad se almacenan durante un máximo de 1 mes y los documentos de análisis (como el tiempo y la duración de la llamada) se almacenan hasta durante 1 año.",
     "privacyPolicy.p20" : "En el caso de que tu cuenta sea suspendida o bloqueada, conservaremos tus datos durante un periodo de entre 2 o 10 años, dependiendo de la gravedad del incumplimiento, con el fin de impedir que puedas eludir las normas que se apliquen a nuestras plataformas.",
     "privacyPolicy.p21" : "Es posible que archivemos algunos de tus Datos personales durante un período que no exceda cinco (5) años para cumplir con nuestras obligaciones legales y gestionar posibles disputas.",
     "privacyPolicy.p22" : "",

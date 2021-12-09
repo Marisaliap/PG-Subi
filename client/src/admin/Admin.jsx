@@ -1,41 +1,43 @@
-import React from 'react'
- import Sidebar from './Components/Sidebar';
- import TopBar from '../Components/Topbar';
-import Dashboard from './pages/Dashboard';
+import React from 'react';
+import Sidebar from "./Sidebar"; 
+import Topbar from "./Topbar"; 
+import User from "../admin/pages/User"
+import UserDetails from "../components/UserDetails";
+import Dashboard from "../admin/pages/Dashboard";
+import NewUser from "../admin/pages/NewUser";
+import UserList from "../admin/pages/UserList";
+import "../Sass/Styles/App.scss";
+import "../styles/Admin.css";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./Style/styles.css";
 
 export default function Admin() {
   return (
-      <Router>
-      <TopBar/>
-      <div className="container">
-        <Sidebar />
+    <Router>
+      <Topbar/>
+      <div className="containAll">
+       <Sidebar />
         <Switch>
           <Route exact path="/admin">
-            <Dashboard />
+            <Dashboard/>
+            </Route>
+          <Route exact path="/admin/topbar">
+            <Topbar />
           </Route>
-          <Route exact path="/users">
-            <UserList />
-          </Route>
-          {/* <Route path="/user/:userId">
+          <Route path="/admin/user/:id">
             <User />
           </Route>
-          <Route path="/newUser">
+          <Route exact path="/admin/newUser">
             <NewUser />
           </Route>
-          <Route path="/products">
-            <ProductList />
+          <Route exact path="/admin/users">
+            <UserList />
           </Route>
-          <Route path="/product/:productId">
-            <Product />
-          </Route>
-          <Route path="/newproduct">
-            <NewProduct />
-          </Route> */}
+          {/* <Route path="/admin/user/:id">
+            <UserDetails />
+          </Route>  */}
         </Switch>
       </div>
     </Router>
-
   );
 }

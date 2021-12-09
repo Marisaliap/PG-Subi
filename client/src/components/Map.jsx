@@ -1,24 +1,24 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ReactMapboxGl, {
   Marker,
   GeoJSONLayer,
   ZoomControl,
-  ScaleControl
-} from 'react-mapbox-gl';
-import { Link, useHistory } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
-import { postRoute } from '../actions';
+  ScaleControl,
+} from "react-mapbox-gl";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { postRoute } from "../actions";
 import {
   BsFillCalendarCheckFill,
   BsWatch,
   BsPinMap,
   BsPinMapFill,
   BsFillPersonFill,
-} from 'react-icons/bs';
-import { RiPinDistanceFill } from 'react-icons/ri';
-import '../Sass/Styles/Map.scss';
-import swal from 'sweetalert';
+} from "react-icons/bs";
+import { RiPinDistanceFill } from "react-icons/ri";
+import "../Sass/Styles/Map.scss";
+import swal from "sweetalert";
 
 String.prototype.capitalizeFirstLetter = function () {
   if (this) {
@@ -35,14 +35,18 @@ export default function Map() {
   const data = useSelector((state) => state.route);
   const { user } = useAuth0();
 
-
-  // const routeCoordinates = Math.floor(data.coordinates.data.geometry.coordinates.length / 2)
-  // const middlePoint = data.coordinates.data.geometry.coordinates[routeCoordinates]
-  
-
+  // const routeCoordinates = Math.floor(
+  //   data.coordinates.data.geometry.coordinates.length / 2
+  // );
+  // const middlePoint =
+  //   data.coordinates.data.geometry.coordinates[routeCoordinates];
+  const middlePointLolo = [
+    (city[0].coordinates[0] + city2[0].coordinates[0]) / 2,
+    (city[0].coordinates[1] + city2[0].coordinates[1]) / 2,
+  ];
   function handleClick(e) {
     e.preventDefault();
-    history.push('/route');
+    history.push("/route");
   }
 
   function handlePost(e) {
@@ -54,13 +58,14 @@ export default function Map() {
         originName: city[0].name,
         destiny: city2[0].coordinates,
         destinyName: city2[0].name,
-        date: routeInfo.date.split('-').reverse().join('-'),
+        date: routeInfo.date.split("-").reverse().join("-"),
         hours: routeInfo.hours,
         place: routeInfo.pasajeros,
-        restriction: routeInfo.restrictions.join(', '),
+        restriction: routeInfo.restrictions.join(", "),
         km: data.coordinates.distance,
         points: data.coordinates.data.geometry.coordinates,
-        time: data.coordinates.time
+        time: data.coordinates.time,
+        center: middlePointLolo,
       })
     );
     swal({
@@ -69,14 +74,12 @@ export default function Map() {
       icon: "success",
       button: "Go to Trip!",
     });
-    history.push('/route-list')
+    history.push("/route-list");
   }
   const Map = ReactMapboxGl({
     accessToken:
-      'pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg',
+      "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
   });
-
- 
 
   return (
     <div className="Mapping">
@@ -85,35 +88,49 @@ export default function Map() {
       </Link>
 
       <Map
-        style={"mapbox://styles/mapbox/streets-v11"
-        }
+        style={"mapbox://styles/mapbox/streets-v11"}
         containerStyle={{
-          height: '50vh',
-          width: '50vw',
+          height: "50vh",
+          width: "50vw",
         }}
-        fitBounds={[city[0].coordinates,city2[0].coordinates]}
+        // fitBounds={[city[0].coordinates, city2[0].coordinates]}
         className="mapbox"
-        // center={middlePoint}
-        
-        
-        // {
-        //   city && city.length === 1 ? city[0].coordinates : [-57.95, -34.93333]
-        // }
+        center={middlePointLolo}
+        zoom={
+          data.coordinates && data.coordinates.distance
+            ? [
+                parseFloat(
+                  Math.log10(
+                    data.coordinates.distance.slice(
+                      0,
+                      data.coordinates.distance.indexOf(" ")
+                    )
+                  )
+                ) *
+                  -3.65 +
+                  15,
+              ]
+            : [10]
+        }
       >
         {city && city.length === 1 && (
-          <Marker coordinates={city[0].coordinates} anchor='bottom' style={{ color: 'red' }}>
+          <Marker
+            coordinates={city[0].coordinates}
+            anchor="bottom"
+            style={{ color: "red" }}
+          >
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
-              style={{ height: '30px' }}
+              style={{ height: "30px" }}
               alt="marker"
             ></img>
           </Marker>
         )}
         {city2 && city2.length === 1 && (
-          <Marker coordinates={city2[0].coordinates} anchor='bottom'>
+          <Marker coordinates={city2[0].coordinates} anchor="bottom">
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
-              style={{ height: '30px' }}
+              style={{ height: "30px" }}
               alt="marker"
             ></img>
           </Marker>
@@ -122,12 +139,12 @@ export default function Map() {
         <GeoJSONLayer
           data={data.coordinates && data.coordinates.data}
           linePaint={{
-            'line-color': '#2CB67D',
-            'line-width': 5,
+            "line-color": "#2CB67D",
+            "line-width": 5,
           }}
           lineLayout={{
-            'line-join': 'miter',
-            'line-cap': 'round',
+            "line-join": "miter",
+            "line-cap": "round",
           }}
         />
         <ZoomControl />
@@ -143,7 +160,8 @@ export default function Map() {
           <BsPinMapFill /> {city2[0].name}
         </p>
         <p>
-          <BsFillCalendarCheckFill /> {routeInfo.date.split('-').reverse().join('-')}
+          <BsFillCalendarCheckFill />{" "}
+          {routeInfo.date.split("-").reverse().join("-")}
         </p>
         <p>
           <RiPinDistanceFill /> {data.coordinates && data.coordinates.distance}.
@@ -154,8 +172,14 @@ export default function Map() {
         <p>
           <BsFillPersonFill /> {routeInfo.pasajeros} Seats available.
         </p>
-        {routeInfo.restrictions.map(restriction => {
-         return <p>{restriction.capitalizeFirstLetter() + '.'}</p>
+        {routeInfo.restrictions.map((restriction) => {
+          return (
+            <p>
+              {restriction
+                .capitalizeFirstLetter()
+                .replace(/([a-z0-9])([A-Z])/g, "$1 $2")}
+            </p>
+          );
         })}
       </div>
       <div className="buttonContainer">

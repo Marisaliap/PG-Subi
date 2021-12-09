@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/Home.scss";
 // import header from "../img/header.png";
@@ -9,10 +9,17 @@ import offRoad from "../img/offRoad.svg";
 import electricCar from "../img/electricCar.svg";
 import group2 from "../img/group2.png";
 import SearchBarHome from "./SearchBarHome";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
+import { getUserDetail } from "../actions";
 
 export default function Home() {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserDetail(user.email));
+  }, []);
+  const [id, setId] = useState("");
 
   return (
     <div className="Homepage">
@@ -21,7 +28,10 @@ export default function Home() {
       </div> */}
       <div>
         <SearchBarHome />
-       
+        <>
+          <h1>{id}</h1>
+          <Loggin onIdSubmit={setId} />
+        </>
       </div>
       <section>
         <img className="homepageImage" src={navigator} alt="Home" />
@@ -39,15 +49,15 @@ export default function Home() {
               defaultMessage="Publish your next round trip on Gimme a Ride and get, on average, 80
               dollars * of your passengers. You will only need a couple of minutes
               to publish your route. Do we share a trip?"
-            /></p>
-            <p className="detail">
-              <FormattedMessage
-                id="home.p2"
-                defaultMessage="* Average amount received by drivers in 2021."
-              />
-
-            </p>
-            {/* 
+            />
+          </p>
+          <p className="detail">
+            <FormattedMessage
+              id="home.p2"
+              defaultMessage="* Average amount received by drivers in 2021."
+            />
+          </p>
+          {/* 
           {
             <NavLink
               to={
@@ -65,35 +75,39 @@ export default function Home() {
               </button>
             </NavLink>
           } */}
-            <div>
-              {
-                <NavLink to="/route-list">
-                  <button className="button">
-                    <FormattedMessage
-                      id="home.routes"
-                      defaultMessage="See all routes available!"
-                    />
-                  </button>
-                </NavLink>
-              }
-            </div>
-          </article>
-        </section>
+          <div>
+            {
+              <NavLink to="/route-list">
+                <button className="button">
+                  <FormattedMessage
+                    id="home.routes"
+                    defaultMessage="See all routes available!"
+                  />
+                </button>
+              </NavLink>
+            }
+          </div>
+        </article>
+      </section>
 
       <section className="sectionBelow">
-        <h1><FormattedMessage
-                id="home.title2"
-                defaultMessage="Why use GimmeARide?"
-              /></h1>
+        <h1>
+          <FormattedMessage
+            id="home.title2"
+            defaultMessage="Why use GimmeARide?"
+          />
+        </h1>
         <div className="belowContainer">
           <div>
             <img src={ecoConscious} alt="Eco-Consciousness" />
-            <h3><FormattedMessage
+            <h3>
+              <FormattedMessage
                 id="home.subtitle1"
                 defaultMessage="It's Eco-Conscious"
-              /></h3>
+              />
+            </h3>
             <p>
-            <FormattedMessage
+              <FormattedMessage
                 id="home.p4"
                 defaultMessage="By reducing the number of vehicles on the road, the environment is
                 greatly benefited."
@@ -103,12 +117,11 @@ export default function Home() {
 
           <div>
             <img src={electricCar} alt="It's hella fun" />
-            <h3><FormattedMessage
-                id="home.subtitle2"
-                defaultMessage="Have fun"
-              /></h3>
+            <h3>
+              <FormattedMessage id="home.subtitle2" defaultMessage="Have fun" />
+            </h3>
             <p>
-            <FormattedMessage
+              <FormattedMessage
                 id="home.p5"
                 defaultMessage="Meet new people with whom to share excellent experiences.
                 Traveling alone is boooring."
@@ -118,21 +131,22 @@ export default function Home() {
 
           <div>
             <img src={saveMoney} alt="Lets you save money" />
-            <h3><FormattedMessage
+            <h3>
+              <FormattedMessage
                 id="home.subtitle3"
                 defaultMessage="Lets you save money"
-              /></h3>
+              />
+            </h3>
             <p>
-            <FormattedMessage
+              <FormattedMessage
                 id="home.p6"
                 defaultMessage="Share your travel expenses with select passengers, you will end up
                 spending less on each trip!"
               />
             </p>
           </div>
-          </div>
-        </section>
-      </div>
-    
+        </div>
+      </section>
+    </div>
   );
 }

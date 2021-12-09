@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { postUser } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
+import { postUser, getUserDetail, getAllUsers } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
 import swal from "sweetalert";
 import { FormattedMessage } from "react-intl";
-import { getUserDetail } from "../actions";
 
 export default function Registro() {
   const dispatch = useDispatch();
@@ -14,20 +13,37 @@ export default function Registro() {
   const { user, isAuthenticated } = useAuth0();
   const [image, setImage] = useState("");
   const [loanding, setLoanding] = useState(false);
+  let booleanDNI;
   const [dni, setDni] = useState([]);
   const placeHolderAbout = "Please tell us a little about yourself";
 
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [booleanDNI, dispatch]);
+  let usuariosRegistrados = useSelector((state) => state.usuariosRegistrados);
+
   function validate(input) {
     // ------------------------< erros gestions >------------------------
+    booleanDNI = true;
+    for (let i = 0; i < usuariosRegistrados.length; i++) {
+      if (usuariosRegistrados[i].dni.toString() === input.dni) {
+        booleanDNI = false;
+      }
+    }
     let errors = {};
+    const wordvalidate = /^[a-zA-Z ]+$/;
     if (!input.name) {
       errors.name = "Name is required";
+    } else if (wordvalidate.test(input.name) === false) {
+      errors.name = "Invalid Name: No Symbols Allowed";
     } else if (!input.lastName) {
       errors.lastName = "Last name is required";
-      /* } else if ("^[^!@#$^&%*()+=[\]\/{}|:<>?,.\t]+$") {
-      errors.lastName = 'Last name cannot contain symbols'; */
+    } else if (wordvalidate.test(input.lastName) === false) {
+      errors.lastName = "Invalid Last Name: No Symbols Allowed";
     } else if (!input.dni) {
       errors.dni = "DNI is required";
+    } else if (booleanDNI === false) {
+      errors.dni = "DNI already exists";
     } else if (validateGender() === false) {
       errors.genre = "Gender is required";
     } else if (!input.age) {
@@ -40,8 +56,14 @@ export default function Registro() {
       errors.street = "Street is required";
     } else if (!input.city) {
       errors.city = "City is required";
+    } else if (wordvalidate.test(input.city) === false) {
+      errors.city = "Invalid City: No Symbols Allowed";
     } else if (!input.province) {
       errors.province = "Province is required";
+    } else if (wordvalidate.test(input.province) === false) {
+      errors.province = "Invalid Province: No Symbols Allowed";
+    } else if (!input.about) {
+      errors.about = "About is required";
     }
     return errors;
   }
@@ -64,7 +86,8 @@ export default function Registro() {
       !input.street ||
       !input.city ||
       !input.province ||
-      !input.checkbox
+      !input.checkbox ||
+      !input.about
     ) {
       return false;
     } else {
@@ -123,9 +146,7 @@ export default function Registro() {
   // ----------------------< upload image rami x jp >----------------------
   const uploadImage = async (e) => {
     const files = e.target.files;
-    // console.log("file", files);
     const data = new FormData();
-    // console.log("data", data);
     data.append("file", files[0]);
     data.append("upload_preset", "s6kdvopu");
     setLoanding(true);
@@ -144,9 +165,7 @@ export default function Registro() {
 
   const uploadImage2 = async (e) => {
     const files = e.target.files;
-    console.log("file", files);
     const data = new FormData();
-    console.log("data", data);
     data.append("file", files[0]);
     data.append("upload_preset", "tiuimc3c");
     setLoanding(true);
@@ -264,6 +283,7 @@ export default function Registro() {
                 value={input.lastName}
                 onChange={(e) => handleChange(e)}
               />
+              {errors.lastName && <p className="error">{errors.lastName}</p>}
             </div>
             <div className="cadaLinea">
               <p className="label">
@@ -285,7 +305,7 @@ export default function Registro() {
               </p>
               <input
                 onChange={(e) => uploadImage(e)}
-                className="cargaImagen"
+                className="custom-file-input"
                 type="file"
                 name="image"
                 required="required"
@@ -311,6 +331,7 @@ export default function Registro() {
                 value={input.dni}
                 onChange={(e) => handleChange(e)}
               />
+              {errors.dni && <p className="error">{errors.dni}</p>}
             </div>
             <div className="cadaLinea">
               <p className="label">
@@ -320,14 +341,15 @@ export default function Registro() {
                 />
               </p>
               <div className="cargaImagen">
-              <input
-                onChange={(e) => uploadImage2(e)}
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
-            </div>
+                <input
+                  onChange={(e) => uploadImage2(e)}
+                  className="custom-file-input"
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>
             <p>
@@ -341,14 +363,14 @@ export default function Registro() {
                 />
               </p>
               <label className="cargaImagen">
-              <input
-                onChange={(e) => uploadImage2(e)}
-                className="cargaImagen"
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
+                <input
+                  onChange={(e) => uploadImage2(e)}
+                  className="custom-file-input"
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
               </label>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>

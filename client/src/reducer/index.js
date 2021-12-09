@@ -9,13 +9,18 @@ const initialState = {
   car: [],
   routeById: [],
   routeFromDb: [],
-  allUsers: [],
-
+  setPost:[],
+  userPost:[],
+  usuariosRegistrados: [],
+  userAdmin: [],
+  id: "",
+  userBuscado: [],
   // ---------------< filters rami>----------------------------------
 
   restriction: "",
   order: "",
   filtersRoute: [],
+  userDeleted: "",
 
   reclamosymejoras: [],
 };
@@ -48,13 +53,16 @@ function rootReducer(state = initialState, action) {
         user: action.payload,
         car: action.payload.cars[0],
       };
-      // -----------------------<all users rami>-----------------------------------
-    case "GET_ALL_USER":
+    case "GET_USER_ADMIN":
       return {
         ...state,
-        allUsers: action.payload,
+        userAdmin: action.payload,
       };
-      // ___________________________________________________________________________-
+    case "ID" :
+      return {
+        ...state,
+        id: action.payload
+      }
     case "GET_ALL_ROUTE_INFO":
       return {
         ...state,
@@ -80,10 +88,26 @@ function rootReducer(state = initialState, action) {
         ...state,
         users: action.payload,
       };
+    case "GET_USER_BY_ID":
+      return {
+        ...state,
+        userBuscado: action.payload,
+      };
+    case "GET_ALL_USERS":
+      return {
+        ...state,
+        usuariosRegistrados: action.payload,
+      };
     case "EDIT_USER":
       return {
         ...state,
+        user: [action.payload],
       };
+    case "DELETE_USER":
+      return {
+        ...state,
+        userDeleted: [action.payload]
+      }
     case "EDIT_CAR":
       return {
         ...state,
@@ -140,6 +164,16 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         routeFromDb: action.payload,
+      };
+      case "SET_POST":
+      return {
+        ...state,
+        setPost: action.payload,
+      };
+      case "USER_POST":
+      return {
+        ...state,
+        userPost: action.payload,
       };
     default:
       return state;

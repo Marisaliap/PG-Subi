@@ -18,6 +18,68 @@
   }
 }
 
+.edadyemail {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  width: 40rem;
+}
+
+.datosUsuario {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.seccionTop {
+  display: flex;
+  flex-direction: row;
+  height: min-content;
+  height: 28rem;
+}
+
+.containerPhoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: min-content;
+  margin: 0 2rem;
+}
+
+.containerUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
+  margin: 0;
+}
+
+.searchUsers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.patents {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.centralo {
+  display: flex;
+  justify-content: center;
+  height: min-content;
+}
+
 .ProfileReal {
   font-size: 0.8em;
   color: $text;
@@ -26,10 +88,11 @@
   flex-direction: column;
 
   .photousuario {
-    width: 250px;
-    height: 250px;
+    width: 12rem;
+    height: 12rem;
     border-radius: 99999999px;
-    margin: 1rem;
+    margin: 0.5rem;
+    margin-top: 1rem;
   }
 
   .cadaLinea {
@@ -41,13 +104,25 @@
     color: $headline;
     height: auto;
     min-height: 2rem;
-    margin-left: 20rem;
+    margin: 0.25rem 0;
   }
 
   .icon {
     display: flex;
     color: $labelForms;
-    margin-right: 6rem;
+    margin-right: 3rem;
+  }
+
+  .iconArriba {
+    display: flex;
+    color: $labelForms;
+    margin-right: 1rem;
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .botonera {
+    margin: 0;
   }
 
   .botonEdit {
@@ -93,8 +168,20 @@
     display: flex;
     color: $labelForms;
     height: 2rem;
-    margin-right: 0;
-    width: 7rem;
+    margin-right: 2rem;
+    width: auto;
+    font-size: 1rem;
+  }
+
+  .labelArriba {
+    display: flex;
+    color: $labelForms;
+    height: 2rem;
+    margin: 0 1rem;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
   }
 
   .about {
@@ -113,16 +200,43 @@
     display: flex;
     color: $labelForms;
   }
+  .inputProfile + .inputProfile {
+    margin-left: 0.5rem;
+  }
 
   .inputProfile {
     border: 0;
     cursor: pointer;
     font-weight: bold;
-    width: 15rem;
+    width: 11.5rem;
     color: $text;
     height: 2rem;
     font-family: inherit;
-    font-size: inherit;
+    font-size: 1rem;
+    transition: background-color 0.5s ease-in-out;
+    border-radius: 5px;
+    display: flex;
+    background-color: $background;
+    margin-right: 2rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background-color: $buttonColor-33;
+    }
+  }
+
+  .inputProfileCar {
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    width: 7rem;
+    color: $text;
+    height: 2rem;
+    font-family: inherit;
+    font-size: 1rem;
     transition: background-color 0.5s ease-in-out;
     border-radius: 5px;
     display: flex;
@@ -137,7 +251,30 @@
     }
   }
 
+  .ubicatop {
+    display: flex;
+    height: min-content;
+  }
+
+  .tituloUserProfile {
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 0.5rem 1.5rem;
+    margin: 0;
+    width: 15rem;
+    background-color: $rojoLogo;
+    color: $background;
+    height: min-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0;
+  }
+
   .titulos {
+    margin: 0;
   }
 
   .titulosEdad {
@@ -148,15 +285,16 @@
     border-bottom: 2px solid $buttonColor;
     cursor: pointer;
     padding-top: 0.5rem;
-    resize: vertical;
     min-height: 2rem;
     color: $text;
     font-weight: bold;
     font-family: inherit;
     transition: background-color 0.5s ease-in-out;
     border-radius: 5px;
-    margin-top: 1rem;
-    width: 15rem;
+    width: 36rem;
+    resize: vertical;
+    max-height: 5rem;
+    font-size: 1rem;
 
     &:hover {
       background-color: $buttonColor-33;
@@ -170,19 +308,22 @@
   .ubicaBotonPhoto {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
   }
 
   .botonPhoto {
-    margin: 0.5rem;
+    margin: 0.5rem 0.5rem;
     border: none;
     font-family: inherit;
     border-radius: 9999px;
     font-weight: bolder;
-    padding: 1rem 3rem;
-    width: auto;
+    padding: 0.5rem 2rem;
+    width: 12rem;
     background-color: $buttonBlue;
     color: $background;
     transition: background-color 0.5s ease-in-out;
+    height: 3rem;
+    font-size: 1rem;
 
     &:hover {
       background-color: $buttonBlueHover;
@@ -205,5 +346,35 @@
     &:hover {
       //   cursor: pointer;
     }
+  }
+
+  .buttonBlue {
+    outline: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: $background;
+    background-color: $buttonBlue;
+    margin: 0.5rem;
+    padding: 0.9rem 1.5rem;
+    border: 0;
+    border-radius: 1.5rem;
+    transition: background-color 500ms ease-in-out;
+    width: 12rem;
+
+    &:hover {
+      background-color: $buttonBlueHover;
+      cursor: pointer;
+    }
+  }
+
+  .errorcar {
+    color: red;
+    position: sticky;
+    margin-top: 1.5rem;
+    width: 10rem;
+    display: flex;
+    position: sticky;
+    margin-left: 0;
+    justify-content: flex-end;
   }
 }

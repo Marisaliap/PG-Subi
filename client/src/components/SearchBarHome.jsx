@@ -4,8 +4,8 @@ import { getRouteFromDb, getSuggestions, getSuggestions2 } from "../actions";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/SearchBarHome.scss";
 import "../Sass/Styles/App.scss";
-import {FormattedMessage} from 'react-intl';
-
+import { FormattedMessage } from "react-intl";
+import { BsPersonFill } from "react-icons/bs";
 
 let inputs = { Origin: "", Destination: "" };
 let info = { pasajeros: 1, date: "" };
@@ -47,14 +47,10 @@ export default function SearchBarHome() {
       const errorState = { ...errors, validations };
       return errorState;
     });
-
   }
-
-
 
   const checkInputs = Object.values(inputs);
   const checkInfo = Object.values(info);
-
 
   function handleChange(e) {
     info[e.target.name] = e.target.value;
@@ -67,9 +63,9 @@ export default function SearchBarHome() {
   }
 
   const checkAllInfo =
-    inputs.Origin.length > 6 &&
-    inputs.Destination.length > 6 &&
-    info.date.length > 1;
+     cities && cities.length > 0 && inputs.Origin === cities[0].name &&
+    cities2 && cities2.length > 0 && inputs.Destination === cities2[0].name &&
+    info.date.length > 1
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -86,48 +82,51 @@ export default function SearchBarHome() {
     }
     inputs = { Origin: "", Destination: "" };
     info = { pasajeros: 1, date: "" };
-
   }
 
   return (
     <div className="searchBarPostHome">
-      <h1><FormattedMessage
-							id="searchBarHome.searchTitle"
-							defaultMessage="Where do you want to go?"
-						/></h1>
-      <form className="postRouteForm">
-      <FormattedMessage id="searchBarHome.origin" defaultMessage="Origin">
-    {placeholder=> 
-        <input
-          type="text"
-          list="cities"
-          onChange={inputHandleChange}
-          name="Origin"
-          placeholder={placeholder}
-          className="searchbar"
+      <h1>
+        <FormattedMessage
+          id="searchBarHome.searchTitle"
+          defaultMessage="Where do you want to go?"
         />
-      }
-      </FormattedMessage>
+      </h1>
+      <form className="postRouteForm">
+        <FormattedMessage id="searchBarHome.origin" defaultMessage="Origin">
+          {(placeholder) => (
+            <input
+              type="text"
+              list="cities"
+              onChange={inputHandleChange}
+              name="Origin"
+              placeholder={placeholder}
+              className="searchbar"
+            />
+          )}
+        </FormattedMessage>
 
         <datalist id="cities">
-          {cities && cities.map((city) => <option>{city.name}</option>)}
+          {cities && cities.map((city) => city.name !== inputs.Origin &&  <option>{city.name}</option>)}
         </datalist>
         {/* <p>{validations && validations.Origin}</p> */}
-        <FormattedMessage id="searchBarHome.destination" defaultMessage="Destination">
-    {placeholder=>  
-
-        <input
-          type="text"
-          list="cities2"
-          onChange={inputHandleChange}
-          name="Destination"
-          placeholder={placeholder}
-          className="searchbar"
-        />
-      }
-      </FormattedMessage>
+        <FormattedMessage
+          id="searchBarHome.destination"
+          defaultMessage="Destination"
+        >
+          {(placeholder) => (
+            <input
+              type="text"
+              list="cities2"
+              onChange={inputHandleChange}
+              name="Destination"
+              placeholder={placeholder}
+              className="searchbar"
+            />
+          )}
+        </FormattedMessage>
         <datalist id="cities2">
-          {cities2 && cities2.map((city) => <option>{city.name}</option>)}
+          {cities2 && cities2.map((city) => city.name !== inputs.Destination &&  <option>{city.name}</option>)}
         </datalist>
         {/* <p>{validations && validations.Destination}</p> */}
         <div>
@@ -140,13 +139,15 @@ export default function SearchBarHome() {
           {/* <p>{validations && validations.date}</p> */}
         </div>
         <div>
-          <label for="pasajeros"></label>
           <select
             name="pasajeros"
             onChange={handleChange}
             id="pasajeros"
             className="passengers"
           >
+            <option value="0" disabled selected>
+              --Select Seats Available--
+            </option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -154,8 +155,10 @@ export default function SearchBarHome() {
             <option value="5">5</option>
             <option value="6">6</option>
           </select>
+          <label for="pasajeros">
+            <BsPersonFill />
+          </label>
         </div>
-        
         <pre>
           <div>
             {checkAllInfo ? (
@@ -178,9 +181,9 @@ export default function SearchBarHome() {
             ) : (
               <button className="button" disabled="true">
                 <FormattedMessage
-							id="searchBarHome.searchButton"
-							defaultMessage=" Search"
-						/>
+                  id="searchBarHome.searchButton"
+                  defaultMessage=" Search"
+                />
               </button>
             )}
           </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./Sass/Styles/App.scss";
-import "./admin/Style/styles.css"
+import "../src/styles/Admin.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LandingPage from "./components/LandingPage";
@@ -20,6 +20,9 @@ import Map from "./components/Map";
 import Users from "./components/Users";
 import Error404 from "./components/Error404";
 import NavBar from "./components/NavBar";
+import Post from "./components/Post";
+import Admin from "./admin/Admin";
+/* import Dashboard from "./admin/pages/Dashboard"; */
 import RouteDetails from "./components/RouteDetails";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiesPolicy from "./components/CookiesPolicy";
@@ -27,13 +30,11 @@ import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
-import { Redirect } from 'react-router';
-import Admin from "./admin/Admin";
-
-
-
-
+/* import Topbar from "./admin/Topbar"; */
+/* import Sidebar from "./admin/Sidebar"; */
+import { Redirect } from "react-router";
 export default function App() {
+  const { user } = useSelector((state) => state);
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
   const { user } = useSelector(state => state)
@@ -54,7 +55,7 @@ export default function App() {
       behavior: "smooth",
     });
   };
-
+  console.log(user, "soy user de app");
   return (
     <BrowserRouter>
       <div className="App">
@@ -64,9 +65,8 @@ export default function App() {
             <NavBar />
             <Route path="/home" component={Home} />
 
-
             {isAuthenticated ? (
-              <div>
+              <>
                 {
                   <Switch>
                     <Route exact path="/route" component={CreateRoute} />
@@ -75,18 +75,29 @@ export default function App() {
                     <Route exact path="/profile" component={UserProfile} />
                     <Route path="/user/:id" component={UserDetails} />
                     <Route path="/route-list" component={RouteDetails} />
-                    {/* <Route path="/maps/route" component={RouteDetails} /> */}
+                    <Route path="/maps/route" component={RouteDetails} />
                     <Route path="/routes-found" component={RoutesFromSearch} />
                     <Route path="/route/:id" component={AllInfoRoute} />
                     <Route path="/car" component={FormCar} />
                     <Route path="/users" component={Users} />
+                    <Route path="/post/:id" component={Post} />
                     <Route path="/404" component={Error404} />
-                    <div >
-                      <Route exact path='/admin' render={() => user.isAdmin === true ? <Admin /> : <Redirect to='/' />} />
+                    <div>
+                      <Route
+                        exact
+                        path="/admin"
+                        render={() =>
+                          user.isAdmin === true ? (
+                            <Admin />
+                          ) : (
+                            <Redirect to="/home" />
+                          )
+                        }
+                      />
                     </div>
                   </Switch>
                 }
-              </div>
+              </>
             ) : (
               ""
             )}

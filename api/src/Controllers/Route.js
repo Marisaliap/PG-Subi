@@ -1,6 +1,6 @@
-const { Route, User, Car } = require('../db.js');
-const axios = require('axios');
-const { kilometers, hours } = require('./Function'); // ME TRAIGO LAS FUNCTIONS
+const { Route, User, Car, Order } = require("../db.js");
+const axios = require("axios");
+const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
 const { TOKEN } = process.env;
 
 const getRouteInfo = async (req, res, next) => {
@@ -37,9 +37,9 @@ const getRouteInfo = async (req, res, next) => {
       coordinates = {
         distance: kilometers(distance),
         time: hours(time),
-        type: 'geojson',
+        type: "geojson",
         data: {
-          type: 'Feature',
+          type: "Feature",
           geometry: info.routes[0].geometry,
         },
       };
@@ -72,12 +72,14 @@ const postRoute = async (req, res, next) => {
       restriction,
       infoRoute,
       points,
+      center,
     } = req.body;
 
     let kmNumber = km.split("k")[0];
 
-    let price = Math.ceil(kmNumber * 7 + (kmNumber * 7 * (10 / 100)));
+    let price = ((kmNumber / 10) * 97) / 5;
 
+    price =  Math.ceil(price + price * (10 / 100));
 
     const route = await Route.create({
       originName,
@@ -93,6 +95,7 @@ const postRoute = async (req, res, next) => {
       restriction,
       infoRoute,
       points,
+      center,
     });
 
     await route.addUser(idUser);
@@ -123,33 +126,38 @@ const getRoute = async (req, res, next) => {
 
     routes = await Route.findAll({
       attributes: [
-        'origin',
-        'destiny',
-        'date',
-        'hours',
-        'place',
-        'id',
-        'price',
-        'originName',
-        'destinyName',
-        'restriction',
-        'points',
+        "origin",
+        "destiny",
+        "date",
+        "hours",
+        "place",
+        "id",
+        "price",
+        "originName",
+        "destinyName",
+        "restriction",
+        "points",
+        "center",
       ],
-      include: {
-        model: User,
-        attributes: [
-          'name',
-          'photo',
-          'lastName',
-          'genre',
-          'age',
-          'calification',
-        ],
-        include: {
-          model: Car,
-          attributes: ['patent', 'color', 'brand', 'model'],
-        },
-      },
+      include: [
+          {model: Order},
+        {
+          model: User,
+          attributes: [
+            "name",
+            "photo",
+            "lastName",
+            "genre",
+            "age",
+            "calification",
+          ],
+          include: {
+            model: Car,
+            attributes: ["patent", "color", "brand", "model"],
+          },
+
+        }
+    ],
     });
 
     if (from) {
@@ -167,10 +175,10 @@ const getRoute = async (req, res, next) => {
     }
 
     if (restriction) {
-      restriction = restriction.split(',');
+      restriction = restriction.split(",");
 
       routes = routes.filter((route) => {
-        let restricRoute = route.restriction.split(',');
+        let restricRoute = route.restriction.split(",");
         restricRoute = restriction.map((r) => restricRoute.includes(r));
 
         // if (!restriction ||restriction === '') {
@@ -182,7 +190,7 @@ const getRoute = async (req, res, next) => {
         else return true;
       });
     } else if (!restriction || restriction === "") {
-      routes = routes
+      routes = routes;
     }
 
     if (date) {
@@ -199,13 +207,13 @@ const getRoute = async (req, res, next) => {
       });
     }
 
-    if (order === 'time' || !order || order === '') {
+    if (order === "time" || !order || order === "") {
       routes = routes.sort(
         (a, b) =>
-          parseInt(a.hours.split(':').join('')) -
-          parseInt(b.hours.split(':').join(''))
+          parseInt(a.hours.split(":").join("")) -
+          parseInt(b.hours.split(":").join(""))
       );
-    } else if (order === 'price') {
+    } else if (order === "price") {
       routes = routes.sort((a, b) => a.price - b.price);
     }
 
@@ -219,6 +227,7 @@ const putRoute = async (req, res) => {
   try {
     const { id } = req.params;
     const { date, hours, restriction, place, idUser } = req.body;
+    console.log(idUser)
     const route = await Route.findByPk(id);
     route.update({
       date,
@@ -238,7 +247,7 @@ const deleteRoute = async (req, res, next) => {
     const { id } = req.params;
     const route = await Route.findByPk(id);
     await route.destroy();
-    res.send('Registro Eliminado');
+    res.send("Registro Eliminado");
   } catch (error) {
     next(error);
   }

@@ -1,0 +1,25 @@
+@import '../Variables/Variables.scss';
+
+.Post{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+   
+}
+
+.infoUser{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: stretch;
+
+    img{
+        border-radius: 50%;
+        margin: 1rem;
+    }
+    h2{
+        margin: 1rem;
+    }
+}
