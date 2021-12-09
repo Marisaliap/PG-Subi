@@ -6,7 +6,7 @@ import { Profile } from "./Profile";
 import { useSelector, useDispatch } from "react-redux";
 import Auth from "./Auth";
 import { NavLink } from "react-router-dom";
-import { getUserDetail } from "../actions";
+import { getUserDetail, getAllUsers } from "../actions";
 import { BsPlusCircle } from "react-icons/bs";
 import "../Sass/Styles/NavBar.scss";
 import { FormattedMessage } from "react-intl";
@@ -21,10 +21,15 @@ export default function Nav() {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const id = isAuthenticated ? user.email : "";
   const idioma = useContext(langContext);
+  const { usuariosRegistrados } = useSelector((state) => state);
 
   useEffect(() => {
     dispatch(getUserDetail(id));
   }, [dispatch, id]);
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
 
   function handleClick() {
     swal({
@@ -91,6 +96,22 @@ export default function Nav() {
             <Auth />
           </li>
         </ul>
+
+        {/* <div className="banderas">
+            <button onClick={() => idioma.establecerLenguaje("es-AR")}>
+            <img src={es} alt=""></img>
+            </button>
+            <button onClick={() => idioma.establecerLenguaje("en-US")}>
+            <img src={en} alt=""></img>
+            </button>
+          </div> */}
+        {isAuthenticated &&
+        usuariosRegistrados
+          .map((e) => e.email)
+          .filter((e) => e === user.email)[0] === user.email &&
+        users.isAdmin === true ? (
+          <NavLink to="/Admin">Admin</NavLink>
+        ) : null}
       </nav>
     </header>
   );

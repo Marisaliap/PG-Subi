@@ -18,11 +18,12 @@ import {
 } from "react-icons/bs";
 import "../Sass/Styles/UserDetails.scss";
 
-export default function UserDetails() {
+export default function UserDetails(props) {
   const userInfo = useSelector((state) => state.user);
   const autoInfo = useSelector((state) => state.car);
   let idAuto;
   autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
+  // console.log(props, "soy el id del get detail")
   const dispatch = useDispatch();
 
   useEffect(() => {

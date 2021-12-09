@@ -108,6 +108,7 @@ const putUser = async (req, res, next) => {
       email,
       photo,
       calification,
+      isAdmin
     } = req.body;
     const user = await User.findByPk(id);
     user.update({
@@ -122,6 +123,7 @@ const putUser = async (req, res, next) => {
       email,
       photo,
       calification,
+      isAdmin
     });
     res.send(user);
   } catch (error) {
@@ -131,10 +133,10 @@ const putUser = async (req, res, next) => {
 
 const deleteUser = async (req, res, next) => {
   try {
-    const { email } = req.params;
-    const user = await User.findByPk(email);
+    const { id } = req.params;
+    const user = await User.findByPk(id);
     await user.destroy();
-    res.send("Registro elminado");
+    res.send("Registro eliminado");
   } catch (error) {
     next(error);
   }
