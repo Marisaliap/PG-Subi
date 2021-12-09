@@ -31,7 +31,7 @@ export default function Registro() {
       }
     }
     let errors = {};
-    const wordvalidate = /^[a-zA-Z ]+$/;
+    const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     if (!input.name) {
       errors.name = 'Name is required';
     } else if (wordvalidate.test(input.name) === false) {
@@ -114,6 +114,7 @@ export default function Registro() {
     about: '',
     photoDni: [],
     checkbox: false,
+    checkboxManejante: false,
   });
 
   function handleChange(e) {
@@ -244,6 +245,16 @@ export default function Registro() {
           }}
         >
           <div>
+            <div className="terminosycond">
+              <div className="cadaLinea">
+                <p className="">If you plan to be a Driver please check</p>
+                <input
+                  type="checkbox"
+                  name="checkboxManejante"
+                  onChange={(e) => handleCheck(e)}
+                />
+              </div>
+            </div>
             <div className="cadaLinea">
               <p className="label">
                 <FormattedMessage id="register.name" defaultMessage="Name*:" />
@@ -481,6 +492,23 @@ export default function Registro() {
             />
             {errors.province && <p className="error">{errors.province}</p>}
           </div>
+          {input.checkboxManejante === false ? (
+            ""
+          ) : (
+            <div className="cadaLinea">
+              <p className="label">
+                <FormattedMessage id="register.cbu" defaultMessage="CBU:" />
+              </p>
+              <input
+                className="inputs"
+                type="text"
+                name="cbu"
+                value={input.cbu}
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.cbu && <p className="error">{errors.cbu}</p>}
+            </div>
+          )}
           <div className="cadaLinea">
             <p className="label">
               <FormattedMessage

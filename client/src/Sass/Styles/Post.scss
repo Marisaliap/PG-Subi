@@ -1,83 +1,66 @@
-@import '../Variables/Variables.scss';
+@import "../Variables/Variables.scss";
 
 .Post {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 
-
-}
-
-.infoUser {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: stretch;
-
-    img {
-        border-radius: 50%;
-        margin: 1rem;
-    }
-
-    h2 {
-        margin: 1rem;
-    }
-}
-
-.desContainer {
+  .desContainer {
     padding: 1rem;
-    border: 1px solid;
+    border: 1px solid $buttonColor;
+    background-color: $background;
     border-radius: 5px;
-    height: 40rem;
-
+    height: 20rem;
+    width: 35rem;
+    overflow-y: scroll;
 
     .description {
-        border: 1px solid black;
-        border-radius: 5px;
-        width: 10rem;
-        text-align: left;
-        margin-left: 1rem;
-        padding-left: 1rem;
+      border: 1px solid $buttonColor;
+      border-radius: 5px;
+      background-color: #ededed;
+      width: 10rem;
+      text-align: left;
+      margin-left: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      width: 30rem;
+
+      .infodate {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        border-bottom: 1px solid black;
+        border-radius: 5px 5px 0px 0px;
+        margin: 0;
+        padding: 0;
+        width: auto;
+        height: 1.5rem;
         padding-right: 1rem;
-
-
-        .infodate {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-direction: row;
-            border-bottom: 1px solid black;
-            border-radius: 5px 5px 0px 0px;
-            margin: 0;
-            padding: 0;
-            width: auto;
-            height: 1.5rem;
-            padding-right: 1rem;
-            padding-left: 1rem;
-
-
-        }
+        padding-left: 1rem;
+      }
     }
-}
+  }
 
-.formPost {
+  .formPost {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 10rem;
+    width: 30rem;
 
     .select {
-        text-align: center;
+      text-align: center;
     }
 
     .textarea {
-
-        textarea{
-            height: 10rem;
-            width: 20rem;
-        }
+      textarea {
+        height: 10rem;
+        width: 30rem;
+      }
     }
 
-    .divbutton {}
+    .divbutton {
+    }
+  }
 }

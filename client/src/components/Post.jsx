@@ -1,44 +1,47 @@
-import { React, useState } from 'react';
+import { React, useState } from "react";
 //import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
-import { getPost, setPost } from '../actions/index';
-import { useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import swal from 'sweetalert2';
-import '../Sass/Styles/Post.scss';
-import RatingStar from './RatingStar.jsx';
+import { useSelector, useDispatch } from "react-redux";
+import { userPost, setPost } from "../actions/index";
+import { useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import swal from "sweetalert";
+import "../Sass/Styles/Post.scss";
+import RatingStar from "./RatingStar.jsx";
 
 export default function Post(id) {
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.userPost);
+  const userpost = useSelector((state) => state.userPost);
   const { user, isAuthenticated } = useAuth0();
   const [errors, setErrors] = useState({});
-  let time = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-
+  let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
+  let ids = id.id;
   useEffect(() => {
-    dispatch(getPost(id));
-  }, [dispatch, id]);
+    dispatch(userPost(ids));
+  }, [dispatch, ids]);
+
+  console.log("ids", ids);
+  console.log("ids", userpost);
 
   const [input, setInput] = useState({
-    email: userInfo.email,
+    email: ids,
     date: time,
-    author: isAuthenticated ? user.name : '',
-    description: '',
-    calification: '',
+    author: isAuthenticated ? user.name : "",
+    description: "",
+    calification: "",
   });
 
   function validate(input) {
     let errors = {};
     if (!input.description) {
-      errors.description = 'Description is required';
+      errors.description = "Description is required";
     } else if (!input.calification) {
-      errors.calification = 'Calification is required';
+      errors.calification = "Calification is required";
     }
     return errors;
   }
-
-  console.log('userinfo', userInfo);
-  console.log('input', input);
+  console.log("ids", ids);
+  //console.log("userinfo", userInfo);
+  console.log("input", input);
 
   function handleChange(e) {
     setInput({
@@ -58,52 +61,48 @@ export default function Post(id) {
     if (Object.keys(errors).length === 0) {
       dispatch(setPost(input));
       setInput({
-        email: '',
-        date: '',
-        author: '',
-        description: '',
-        calification: '',
+        email: "",
+        date: "",
+        author: "",
+        description: "",
+        calification: "",
       });
-      new swal({
-        title: 'Good job!',
-        text: 'Post created correctly',
-        icon: 'success',
-        button: 'Aww yiss!',
+      swal({
+        title: "Good job!",
+        text: "Post created correctly",
+        icon: "success",
+        button: "Aww yiss!",
       });
     } else {
-      new swal({
-        title: 'Sorry',
-        text: 'All mandatory fields must be filled to continue',
-        icon: 'warning',
-        button: 'Ok',
+      swal({
+        title: "Sorry",
+        text: "All mandatory fields must be filled to continue",
+        icon: "warning",
+        button: "Ok",
       });
     }
   }
 
+  // console.log("date", userpost[0].date);
+  // console.log("author", userpost[0].author);
+  // console.log("cal", userpost[0].calification);
+  //console.log("des", userpost[0].description);
   return (
     <div className="Post">
       <div>
-        {userInfo.length === 0 ? (
-          ''
-        ) : (
-          <div className="infoUser">
-            {console.log('post', userInfo.calification[0])}
-            <RatingStar Rating={userInfo.calification[0]} />
-          </div>
-        )}
         <div className="desContainer">
-          {userInfo.length === 0
-            ? ''
-            : userInfo.posts.map((e) => (
+          {userpost.length > 0
+            ? userpost.map((post) => (
                 <div className="description">
                   <div className="infodate">
-                    <h6>{e.date}</h6>
-                    <h6>{e.author}</h6>
-                    <RatingStar Rating={e.calification} />
+                    <h6>{post.date}</h6>
+                    <h6>{post.author}</h6>
+                    <RatingStar Rating={post.calification} />
                   </div>
-                  <h5>{e.description}</h5>
+                  <h5>{post.description}</h5>
                 </div>
-              ))}
+              ))
+            : ""}
         </div>
       </div>
       <div>
@@ -142,7 +141,7 @@ export default function Post(id) {
           <br />
           <div className="textarea">
             <textarea
-              placeholder="Commnet"
+              placeholder="Please tell us about your experience with this user..."
               type="text"
               name="description"
               value={input.description}

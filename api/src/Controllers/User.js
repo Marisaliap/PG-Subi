@@ -81,17 +81,17 @@ const getUser = async (req, res, next) => {
         };
       });
       //--------------------------------------------------------------
-      const calification = data.posts;
-      let array = [];
-      calification.map((d) => {
-        array.push(d.calification);
-      });
-      let calUser = 0;
-      let suma = 0;
-      array.forEach(function (e) {
-        suma += e;
-      });
-      calUser = suma / array.length;
+      // const calification = data.posts;
+      // let array = [];
+      // calification.map((d) => {
+      //   array.push(d.calification);
+      // });
+      // let calUser = 0;
+      // let suma = 0;
+      // array.forEach(function (e) {
+      //   suma += e;
+      // });
+      // calUser = suma / array.length;
       //---------------------------------------------------------------
     } else if (id) {
       data = await User.findByPk(id, {
@@ -133,6 +133,7 @@ const putUser = async (req, res, next) => {
       photo,
       calification,
       isAdmin,
+      cbu,
     } = req.body;
     const user = await User.findByPk(id);
     user.update({
@@ -148,6 +149,7 @@ const putUser = async (req, res, next) => {
       photo,
       calification,
       isAdmin,
+      cbu,
     });
     res.send(user);
   } catch (error) {

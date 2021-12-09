@@ -198,7 +198,7 @@ export default function UserProfile() {
   };
 
   function validateuser(input) {
-    const wordvalidate = /^[a-zA-Z ]+$/;
+    const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     const phonevalidate = /^[0-9]+$/;
     let errorsUser = {};
     if (!input.telephone) {
@@ -366,6 +366,15 @@ export default function UserProfile() {
                       <BsInfoSquareFill className="icon" />
                       {userInfo.about}
                     </div>
+                    <div className="cadaLinea">
+                      <p className="label">
+                        <FormattedMessage
+                          id="register.cbu"
+                          defaultMessage="CBU:"
+                        />
+                      </p>
+                      <p className="label">{userInfo.cbu}</p>
+                    </div>
                   </div>
                   <div className="paddingAbajo"></div>
                 </>
@@ -450,6 +459,21 @@ export default function UserProfile() {
                         {errorsUser.about && (
                           <p className="errorcar">{errorsUser.about}</p>
                         )}
+                      </div>
+                      <div className="cadaLinea">
+                        <p className="label">
+                          <FormattedMessage
+                            id="register.cbu"
+                            defaultMessage="CBU:"
+                          />
+                        </p>
+                        <input
+                          className="inputs"
+                          type="text"
+                          name="cbu"
+                          value={input.cbu}
+                          onChange={(e) => handleChange(e)}
+                        />
                       </div>
                     </div>
                     <button

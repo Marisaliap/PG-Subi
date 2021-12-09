@@ -11,30 +11,25 @@ import {
   BsGenderMale,
   BsInstagram,
   BsFacebook,
-  BsStarFill,
   BsMap,
   BsEnvelope,
   BsInfoSquareFill,
 } from "react-icons/bs";
 import "../Sass/Styles/UserDetails.scss";
-import Post from "./Post"
+import Post from "./Post";
+import RatingStar from "./RatingStar.jsx";
 
-
-export default function UserDetails(props) {
+export default function UserDetails({ match }) {
   const userInfo = useSelector((state) => state.user);
   const autoInfo = useSelector((state) => state.car);
   let idAuto;
   autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
-  // console.log(props, "soy el id del get detail")
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserById(""));
-    dispatch(getUserByName("1010"));
-  }, []);
-
-  useEffect(() => {
-    dispatch(getUserDetail(userInfo.email));
+    userInfo.email === undefined
+      ? dispatch(getUserDetail(window.location.href.split("/user/")[1]))
+      : dispatch(getUserDetail(userInfo.email));
   }, [dispatch]);
 
   function genderIcon(gender) {
@@ -67,8 +62,7 @@ export default function UserDetails(props) {
                   {genderIcon(userInfo.genre)}
                 </h1>
                 <div className="labelArriba">
-                  <BsStarFill className="iconArriba" /> {userInfo.calification}{" "}
-                  / 5
+                  <RatingStar Rating={userInfo.calification} />
                 </div>
               </div>
             </div>
@@ -141,10 +135,15 @@ export default function UserDetails(props) {
               )}
             </div>{" "}
           </div>
-          <Post 
-          id={userInfo.email}
-          />
-          {console.log(userInfo.email)}
+          <div className="centralo">
+            <h1 className="tituloUserProfile">Rating</h1>
+          </div>
+          <Post id={userInfo.email} />
+
+          {/* {console.log(userInfo.posts[0].date)}
+          {console.log(userInfo.posts[0].description)}
+          {console.log(userInfo.posts[0].author)} 
+          {console.log(userInfo.posts[0].calification)} */}
         </div>
       </div>
     </div>
