@@ -54,7 +54,6 @@ export default function App() {
       behavior: "smooth",
     });
   };
-  console.log(user, "soy user de app");
   return (
     <BrowserRouter>
       <div className="App">

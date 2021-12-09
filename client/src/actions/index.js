@@ -354,7 +354,7 @@ export function setPost(payload) {
 export function userPost(id) {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`http://localhost:3001/user/${id}`))
+      const response = (await axios.get(`http://localhost:3001/user/post/${id}`))
         .data;
       return dispatch({
         type: "USER_POST",

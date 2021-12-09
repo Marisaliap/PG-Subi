@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 //import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getPost, setPost } from "../actions/index";
+import { userPost, setPost } from "../actions/index";
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
@@ -10,17 +10,20 @@ import RatingStar from "./RatingStar.jsx";
 
 export default function Post(id) {
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.userPost);
+ const userpost = useSelector((state) => state.userPost);
   const { user, isAuthenticated } = useAuth0();
   const [errors, setErrors] = useState({});
   let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
+let ids = id.id
+  useEffect(() => {
+    dispatch(userPost(ids));
+  }, [dispatch, ids]);
 
-  // useEffect(() => {
-  //   dispatch(getPost(id)); NO EXISTE EL GETPOST
-  // }, [dispatch, id]);
+  console.log("ids", ids);
+  console.log("ids",userpost );
 
   const [input, setInput] = useState({
-    email: userInfo.email,
+    email: ids,
     date: time,
     author: isAuthenticated ? user.name : "",
     description: "",
@@ -36,8 +39,8 @@ export default function Post(id) {
     }
     return errors;
   }
-
-  console.log("userinfo", userInfo);
+  console.log("ids", ids);
+  //console.log("userinfo", userInfo);
   console.log("input", input);
 
   function handleChange(e) {
@@ -80,32 +83,26 @@ export default function Post(id) {
     }
   }
 
+ // console.log("date", userpost[0].date);
+ // console.log("author", userpost[0].author);
+ // console.log("cal", userpost[0].calification);
+  //console.log("des", userpost[0].description);
   return (
     <div className="Post">
       <div>
-        {userInfo.length === 0 ? (
-          ""
-        ) : (
-          <div className="infoUser">
-
-            {console.log("post", userInfo.calification[0])}
-            <RatingStar Rating={userInfo.calification[0]} />
-          </div>
-        )}
+      {userpost.length > 0 ? userpost.map((post) => (
         <div className="desContainer">
-          {userInfo.length === 0
-            ? ""
-            : userInfo.posts.map((e) => (
                 <div className="description">
                   <div className="infodate">
-                    <h6>{e.date}</h6>
-                    <h6>{e.author}</h6>
-                    <RatingStar Rating={e.calification} />
+                    <h6>{post.date}</h6>
+                    <h6>{post.author}</h6>
+                    <RatingStar Rating={post.calification} />
                   </div>
-                  <h5>{e.description}</h5>
+                  <h5>{post.description}</h5>
                 </div>
-              ))}
+              
         </div>
+      )):""}
       </div>
       <div>
         <form
