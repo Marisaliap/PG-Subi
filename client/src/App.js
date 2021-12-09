@@ -33,8 +33,9 @@ import UserProfile from "./components/UserProfile";
 /* import Topbar from "./admin/Topbar"; */
 /* import Sidebar from "./admin/Sidebar"; */
 import { Redirect } from "react-router";
+
+
 export default function App() {
-  const { user } = useSelector((state) => state);
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
   const { user } = useSelector(state => state)
