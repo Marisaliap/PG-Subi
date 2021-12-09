@@ -57,8 +57,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
       calification: {
-        //type: DataTypes.ARRAY(DataTypes.FLOAT),
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         defaultValue: 0,
       },
       photo: {
