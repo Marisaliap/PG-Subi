@@ -13,9 +13,6 @@ import { useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 
 export default function Home() {
-  const users = useSelector((state) => state.user);
-  const [id, setId] = useState("");
-  
 
   return (
     <div className="Homepage">
@@ -24,11 +21,7 @@ export default function Home() {
       </div> */}
       <div>
         <SearchBarHome />
-        <>
-          <h1>{id}</h1>
-          <Loggin onIdSubmit={setId} />
-        
-        </>
+       
       </div>
       <section>
         <img className="homepageImage" src={navigator} alt="Home" />

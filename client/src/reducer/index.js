@@ -9,6 +9,8 @@ const initialState = {
   car: [],
   routeById: [],
   routeFromDb: [],
+  allUsers: [],
+
   // ---------------< filters rami>----------------------------------
 
   restriction: "",
@@ -46,6 +48,13 @@ function rootReducer(state = initialState, action) {
         user: action.payload,
         car: action.payload.cars[0],
       };
+      // -----------------------<all users rami>-----------------------------------
+    case "GET_ALL_USER":
+      return {
+        ...state,
+        allUsers: action.payload,
+      };
+      // ___________________________________________________________________________-
     case "GET_ALL_ROUTE_INFO":
       return {
         ...state,

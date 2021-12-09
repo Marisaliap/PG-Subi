@@ -6,9 +6,12 @@ import { langContext } from './../context/langContext.js';
 import es from './../img/spain.png';
 import en from './../img/united-kingdom.png';
 import SubFooter from './SubFooter.jsx';
+import {useSelector} from 'react-redux';
 
 export default function Footer() {
   const idioma = useContext(langContext);
+  const{user}=useSelector(state => state)
+  console.log("soy el user",user)
   return (
     <div className="los2footers">
       <div className="Footer">
@@ -134,7 +137,6 @@ export default function Footer() {
             </button>
           </div>
         </div>
-        <div></div>
       </div>
       <SubFooter />
     </div>

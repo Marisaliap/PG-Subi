@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    margin-top: 10px;
+  
+}
+.container2{
+    display: flex;
+    margin-top: 10px;
+    width: 16%;
+}
+.top{
+    display: block;
+    
+    
+}

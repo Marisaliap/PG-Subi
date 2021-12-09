@@ -1,5 +1,5 @@
 const { User, Post, Car, Route, Op } = require("../db.js");
-const { ClOUD_NAME, APY_KEY_CLOUD, API_CLOUD_SECRET } = process.env;
+
 
 const postUser = async (req, res, next) => {
   try {
@@ -20,13 +20,12 @@ const postUser = async (req, res, next) => {
       photo,
       photoDni,
     } = req.body;
-    // const result= await cloudinary.v2.uploader.upload(req.file.path)
+    
 
     const user = await User.findOrCreate({
       where: { email },
       defaults: {
         name,
-        // photo:result.url,
         photo,
         lastName,
         email,
@@ -40,9 +39,8 @@ const postUser = async (req, res, next) => {
         age,
         about,
         genre,
-        calification: [0],
+        calification:[],
         photoDni,
-        // public_id:result.public_id,
       },
     });
     res.send(user);
@@ -75,7 +73,7 @@ const getUser = async (req, res, next) => {
           calification:
             user.posts
               .map((c) => parseInt(c.calification))
-              .reduce((a, b) => a + b) / user.posts.length,
+              .reduce((a, b) => a + b,0) / user.posts.length,
           photo: user.photo,
           email: user.email,
         };
@@ -108,6 +106,7 @@ const putUser = async (req, res, next) => {
       email,
       photo,
       calification,
+      
     } = req.body;
     const user = await User.findByPk(id);
     user.update({
@@ -122,6 +121,7 @@ const putUser = async (req, res, next) => {
       email,
       photo,
       calification,
+      isAdmin,
     });
     res.send(user);
   } catch (error) {

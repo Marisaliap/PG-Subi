@@ -20,6 +20,7 @@ module.exports = (sequelize) => {
     merchant_order_id: {
       type: DataTypes.BIGINT,
       defaultValue: 0
+      
     }
   });
 };

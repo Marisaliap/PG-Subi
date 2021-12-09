@@ -8,23 +8,40 @@ import { useSelector, useDispatch } from 'react-redux';
 import Auth from './Auth';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link, NavLink } from 'react-router-dom';
-import { getUserDetail } from '../actions';
-import { BsPlusCircle } from 'react-icons/bs';
+import { getUserDetail,getAllUser } from '../actions';
+import { BsArrowCounterclockwise, BsPlusCircle } from 'react-icons/bs';
 import '../Sass/Styles/NavBar.scss';
 import { FormattedMessage } from 'react-intl';
 import { langContext } from './../context/langContext.js';
 
+
 export default function Nav() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user);
-  const { user, isAuthenticated } = useAuth0();
+  const { allUsers} = useSelector(state => state)
+  const { user, isAuthenticated,
+ } = useAuth0();
   const id = isAuthenticated ? user.email : '';
   const idioma = useContext(langContext);
+  ;
 
   useEffect(() => {
     dispatch(getUserDetail(id));
+    // dispatch(getAllUser());
   }, [dispatch, id]);
 
+  useEffect(() => {
+     dispatch( getAllUser() );;
+  }, []);
+  
+  
+  const admin =(users) => {
+    if(users.isAdmin===false){
+      users.isAdmin=true;
+      return users.isAdmin;
+    }
+  }
+  admin(users)
   return (
     <header className="NavBar">
       <NavLink to="/home">
@@ -79,6 +96,10 @@ export default function Nav() {
             <img src={en} alt=""></img>
             </button>
           </div> */}
+           { isAuthenticated&&allUsers.map(e=>e.email).filter(e=>e===user.email)[0]===user.email && users.isAdmin === true?
+           
+              <NavLink to='/Admin'>Admin</NavLink>
+               : null}
       </nav>
     </header>
   );

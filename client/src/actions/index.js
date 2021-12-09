@@ -33,7 +33,7 @@ export function getRoute(long1, lat1, long2, lat2) {
         type: "GET_ROUTE",
         payload: response.data,
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 }
 
@@ -46,7 +46,18 @@ export function getUserDetail(id) {
         type: "GET_USER_DETAIL",
         payload: response,
       });
-    } catch (error) {}
+    } catch (error) { }
+  };
+}
+export function getAllUser() {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user`)).data;
+      return dispatch({
+        type: "GET_ALL_USER",
+        payload: response,
+      });
+    } catch (error) { }
   };
 }
 
@@ -61,7 +72,7 @@ export function getRouteById(id) {
         type: "GET_ROUTE_BY_ID",
         payload: response,
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 }
 
@@ -76,7 +87,7 @@ export function getUserByName(name) {
         type: "GET_USER_BY_NAME",
         payload: response,
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 }
 
@@ -124,7 +135,7 @@ export function getRouteFromDb(originName, destinyName, date, place) {
         type: "GET_ROUTE_FROM_DB",
         payload: response.data,
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 }
 // -----------------------------< filters >----------------------------------
@@ -174,7 +185,7 @@ export function postUser(payload) {
         type: "POST_USER",
         payload: response.data,
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 }
 
@@ -189,7 +200,7 @@ export function postCar(payload) {
         type: "POST_CAR",
         payload: response.data,
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 }
 
@@ -204,7 +215,7 @@ export function postMejorasYReclamos(payload) {
         type: "POST_RECLAMOSYMEJORAS",
         payload: response.data,
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 }
 
@@ -219,7 +230,7 @@ export function postRoute(routeInfo) {
         type: "POST_ROUTE",
         payload: response.data,
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 }
 export function RoutePostInfo(info) {
@@ -247,8 +258,7 @@ export function allRoutes(order, restriction) {
     try {
       const response = (
         await axios.get(
-          `http://localhost:3001/maps/route?order=${
-            order ? order : ""
+          `http://localhost:3001/maps/route?order=${order ? order : ""
           }&restriction=${restriction ? restriction : ""}`
         )
       ).data;
@@ -256,6 +266,6 @@ export function allRoutes(order, restriction) {
         type: "GET_ALL_ROUTE_INFO",
         payload: response,
       });
-    } catch (error) {}
+    } catch (error) { }
   };
 }

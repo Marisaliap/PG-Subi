@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./Sass/Styles/App.scss";
+import "./admin/Style/styles.css"
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LandingPage from "./components/LandingPage";
@@ -25,12 +27,16 @@ import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
+import { Redirect } from 'react-router';
+import Admin from "./admin/Admin";
+
 
 
 
 export default function App() {
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
+  const { user } = useSelector(state => state)
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -57,8 +63,8 @@ export default function App() {
           <div>
             <NavBar />
             <Route path="/home" component={Home} />
-          
-           
+
+
             {isAuthenticated ? (
               <div>
                 {
@@ -75,6 +81,9 @@ export default function App() {
                     <Route path="/car" component={FormCar} />
                     <Route path="/users" component={Users} />
                     <Route path="/404" component={Error404} />
+                    <div >
+                      <Route exact path='/admin' render={() => user.isAdmin === true ? <Admin /> : <Redirect to='/' />} />
+                    </div>
                   </Switch>
                 }
               </div>
