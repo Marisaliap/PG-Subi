@@ -31,9 +31,8 @@ export default function AllInfoRoute({ match }) {
     dispatch(getRouteById(match.params.id));
   }, []);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.userpro);
   const route = useSelector((state) => state.routeById);
-  const [datos, setDatos] = useState([]);
   const history = useHistory();
 
   const data = useSelector((state) => state.route);
@@ -55,7 +54,7 @@ export default function AllInfoRoute({ match }) {
     dispatch(deleteRoute());
     history.push("/route-list");
   }
-  console.log(route.restriction)
+
   console.log(route)
 
   let restricciones =route.restriction && route.restriction.split(", ");
@@ -177,8 +176,9 @@ export default function AllInfoRoute({ match }) {
         <ZoomControl />
       </Map>
 
+
       <div>
-        {route.place === 0 ? (
+        {route.place === 0 || !route.users || user.email === route.users[0].email  ? (
           <button className="buttonDisabled">Join this trip!</button>
         ) : (
           <button onClick={openModal} className="button">

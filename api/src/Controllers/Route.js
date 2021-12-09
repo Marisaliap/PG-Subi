@@ -73,7 +73,6 @@ const postRoute = async (req, res, next) => {
       infoRoute,
       points,
       center,
-      cbu
     } = req.body;
 
     let kmNumber = km.split("k")[0];
@@ -98,8 +97,6 @@ const postRoute = async (req, res, next) => {
       points,
       center,
     });
-
-    await axios.put(`http://localhost:3001/user/${idUser}`,{cbu})
 
     await route.addUser(idUser);
     //const car = await Car.findByPk(patentCar)
