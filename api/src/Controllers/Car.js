@@ -12,9 +12,9 @@ const getCar = async (req, res, next) => {
 
 const postCar = async (req, res, next) => {
   try {
-    const { idUser, patent, brand, model, cylinder, color } = req.body;
+    const { idUser, patent, brand, model, cylinder, color, greencard, bluecard } = req.body;
 
-    let car = await Car.create({ patent, brand, model, cylinder, color });
+    let car = await Car.create({ patent, brand, model, cylinder, color, greencard, bluecard });
     const user = await User.findByPk(idUser);
     await user.addCar(car.id);
     res.send(car);
@@ -26,7 +26,7 @@ const postCar = async (req, res, next) => {
 const putCar = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { patent, brand, model, cylinder, color } = req.body;
+    const { patent, brand, model, cylinder, color, greencard, bluecard } = req.body;
 
     const car = await Car.findByPk(id);
 
@@ -36,6 +36,8 @@ const putCar = async (req, res, next) => {
       model,
       cylinder,
       color,
+      greencard,
+      bluecard
     });
     res.send(car);
   } catch (error) {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import {
   editUser,
-  getUserDetail,
+  getUserProfile,
   editCar,
   getUserByName,
   getUserById,
@@ -27,8 +27,8 @@ import {
 import "../Sass/Styles/UserProfile.scss";
 
 export default function UserProfile() {
-  const userInfo = useSelector((state) => state.user);
-  const autoInfo = useSelector((state) => state.car);
+  const userInfo = useSelector((state) => state.userpro);
+  const autoInfo = useSelector((state) => state.carpro);
   let idAuto;
   autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
   const [loanding, setLoanding] = useState(false);
@@ -46,7 +46,7 @@ export default function UserProfile() {
   }, []);
 
   useEffect(() => {
-    dispatch(getUserDetail(userInfo.email));
+    dispatch(getUserProfile(userInfo.email));
   }, [booleanUser, booleanCar, booleanPhoto, dispatch]);
 
   const [input, setInput] = useState({});
@@ -58,7 +58,7 @@ export default function UserProfile() {
     if (Object.keys(errorsUser).length === 0) {
       dispatch(editUser(userInfo.email, input));
       setBooleanUser(false);
-      dispatch(getUserDetail(userInfo.email));
+      dispatch(getUserProfile(userInfo.email));
     } else {
       swal({
         title: "Sorry",
@@ -182,7 +182,7 @@ export default function UserProfile() {
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
-    data.append("upload_preset", "PhotoUser");
+    data.append("upload_preset", "EditPhotoUser");
     setLoanding(true);
 
     const res = await fetch(

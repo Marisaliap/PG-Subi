@@ -1,17 +1,16 @@
-import React, { useEffect,useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/Home.scss";
 // import header from "../img/header.png";
 import navigator from "../img/navigator.svg";
 import ecoConscious from "../img/ecoConscious.svg";
 import saveMoney from "../img/saveMoney.svg";
-import offRoad from "../img/offRoad.svg";
 import electricCar from "../img/electricCar.svg";
-import group2 from "../img/group2.png";
 import SearchBarHome from "./SearchBarHome";
 import { useSelector, useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
-import { getUserDetail } from "../actions";
+import { getUserProfile } from "../actions";
+import Loggin from "./Loggin";
 
 
 export default function Home() {

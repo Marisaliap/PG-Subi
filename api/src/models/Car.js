@@ -29,6 +29,13 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      greencard: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      bluecard: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+      },
     },
 
     {

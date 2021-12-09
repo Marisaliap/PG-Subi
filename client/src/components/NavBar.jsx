@@ -6,7 +6,7 @@ import { Profile } from "./Profile";
 import { useSelector, useDispatch } from "react-redux";
 import Auth from "./Auth";
 import { NavLink } from "react-router-dom";
-import { getUserDetail, getAllUsers } from "../actions";
+import { getUserProfile, getAllUsers } from "../actions";
 import { BsPlusCircle } from "react-icons/bs";
 import "../Sass/Styles/NavBar.scss";
 import { FormattedMessage } from "react-intl";
@@ -18,15 +18,14 @@ import swal from "sweetalert";
 
 export default function Nav() {
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.user);
+  const users = useSelector((state) => state.userpro);
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const id = isAuthenticated ? user.email : "";
   const idioma = useContext(langContext);
   const { usuariosRegistrados } = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(getUserDetail(id));
-    // dispatch(getAllUser());
+    dispatch(getUserProfile(id));
   }, [dispatch, id]);
 
   useEffect(() => {

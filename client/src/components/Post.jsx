@@ -4,26 +4,26 @@ import { useSelector, useDispatch } from "react-redux";
 import { userPost, setPost } from "../actions/index";
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import CardPost from "./CardPost";
-import { BsStar } from "react-icons/bs";
 import swal from "sweetalert";
 import "../Sass/Styles/Post.scss";
+import RatingStar from "./RatingStar.jsx";
 
-
-export default function Post(props) {
+export default function Post(id) {
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.userPost);
+ const userpost = useSelector((state) => state.userPost);
   const { user, isAuthenticated } = useAuth0();
   const [errors, setErrors] = useState({});
-  const id = props.match.params.id;
   let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
-
+let ids = id.id
   useEffect(() => {
-    dispatch(userPost(id));
-  }, [dispatch, id]);
+    dispatch(userPost(ids));
+  }, [dispatch, ids]);
+
+  console.log("ids", ids);
+  console.log("ids",userpost );
 
   const [input, setInput] = useState({
-    email: id,
+    email: ids,
     date: time,
     author: isAuthenticated ? user.name : "",
     description: "",
@@ -39,8 +39,8 @@ export default function Post(props) {
     }
     return errors;
   }
-
-  console.log("userinfo", userInfo);
+  console.log("ids", ids);
+  //console.log("userinfo", userInfo);
   console.log("input", input);
 
   function handleChange(e) {
@@ -83,63 +83,74 @@ export default function Post(props) {
     }
   }
 
+ // console.log("date", userpost[0].date);
+ // console.log("author", userpost[0].author);
+ // console.log("cal", userpost[0].calification);
+  //console.log("des", userpost[0].description);
   return (
     <div className="Post">
-    <div>
-      {userInfo.length === 0 ? (
-        ""
-      ) : (
-        <div className="infoUser">
-          <img src={userInfo.photo} alt="post" Style="width:75px" />
-          <h2>
-            {userInfo.name} {userInfo.LastName}
-          </h2>
-          <h2>
-            {userInfo.calification}
-            <BsStar />
-          </h2>
+      <div>
+      {userpost.length > 0 ? userpost.map((post) => (
+        <div className="desContainer">
+                <div className="description">
+                  <div className="infodate">
+                    <h6>{post.date}</h6>
+                    <h6>{post.author}</h6>
+                    <RatingStar Rating={post.calification} />
+                  </div>
+                  <h5>{post.description}</h5>
+                </div>
+              
         </div>
-      )}
-      {userInfo.length === 0
-        ? ""
-        : userInfo.posts.map((e) => (
-            <div>
-              <CardPost
-                calification={e.calification}
-                date={e.date}
-                description={e.description}
-              />
-            </div>
-          ))}
-          </div>
+      )):""}
+      </div>
       <div>
         <form
+          className="formPost"
           onSubmit={(e) => {
             handleSubmit(e);
           }}
         >
-          <label>Calification</label>
-          <input
-            type="number"
-            name="calification"
-            value={input.calification}
-            onChange={(e) => handleChange(e)}
-          />
-          /5
-          <BsStar />
-          {errors.calification && (
-            <p className="error">{errors.calification}</p>
-          )}
+          <div className="select">
+            <select
+              name="calification"
+              onChange={(e) => handleChange(e)}
+              id="star"
+              className="star"
+            >
+              <option value="0" disabled selected className="person">
+                Calification
+              </option>
+              <option value="0">0</option>
+              <option value="0.5">0.5</option>
+              <option value="1">1</option>
+              <option value="1.5">1.5</option>
+              <option value="2">2</option>
+              <option value="2.5">2.5</option>
+              <option value="3">3</option>
+              <option value="3.5">3.5</option>
+              <option value="4">4</option>
+              <option value="4.5">4.5</option>
+              <option value="5">5</option>
+            </select>
+            {errors.calification && (
+              <p className="error">{errors.calification}</p>
+            )}
+          </div>
           <br />
-          <label>Comment</label>
-          <textarea
-            type="text"
-            name="description"
-            value={input.description}
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.description && <p className="error">{errors.description}</p>}
-          <div>
+          <div className="textarea">
+            <textarea
+              placeholder="Commnet"
+              type="text"
+              name="description"
+              value={input.description}
+              onChange={(e) => handleChange(e)}
+            />
+            {errors.description && (
+              <p className="error">{errors.description}</p>
+            )}
+          </div>
+          <div className="divbutton">
             <button className="button" type="submit">
               Submit
             </button>

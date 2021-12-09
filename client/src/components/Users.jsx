@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserById, getUserByName } from "../actions";
 import CardUser from "./CardUser";
 import "../Sass/Styles/Users.scss";
+import { NavLink } from "react-router-dom";
+
 
 export default function Users() {
   const { users } = useSelector((state) => state);
@@ -56,6 +58,23 @@ export default function Users() {
           </button>
         </>
       )}
+    <div>
+      {/* { users.map(user => {
+        return(
+          <NavLink to={"/profile/"+ user.email}>
+          <CardUser  
+          name = { user.name }
+          lastName = { user.lastName }
+          genre = { user.genre } 
+          age = { user.age } 
+          photo = { user.photo }
+          calification = { user.calification }
+          />
+          </NavLink>
+        )
+      }) } */}
+    
+    </div>
     </div>
   );
 }
