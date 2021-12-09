@@ -19,18 +19,12 @@ import "../Sass/Styles/UserDetails.scss";
 import Post from "./Post";
 import RatingStar from "./RatingStar.jsx";
 
-export default function UserDetails(props) {
+export default function UserDetails({ match }) {
   const userInfo = useSelector((state) => state.user);
   const autoInfo = useSelector((state) => state.car);
   let idAuto;
   autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
-  // console.log(props, "soy el id del get detail")
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getUserById(""));
-    dispatch(getUserByName("1010"));
-  }, []);
 
   useEffect(() => {
     userInfo.email === undefined

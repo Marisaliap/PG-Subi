@@ -31,7 +31,7 @@ export default function AllInfoRoute({ match }) {
     dispatch(getRouteById(match.params.id));
   }, []);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.userpro);
   const route = useSelector((state) => state.routeById);
   const [datos, setDatos] = useState([]);
   const history = useHistory();
@@ -190,14 +190,7 @@ export default function AllInfoRoute({ match }) {
           <Modal setShowModal={setShowModal} route={route} user={user} />
         ) : null}
 
-        {/* {datos.init_point && route.place !== 0 ? <a href={datos.init_point} >
-      <button className='button'>
-      Join this trip!
-      </button>
-      </a> :  
-      <button className='buttonDisabled'>
-      Join this trip!
-      </button>} */}
+
         <button className="buttonBlue" onClick={handleClick}>
           Go Back
         </button>

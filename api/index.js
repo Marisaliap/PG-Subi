@@ -28,9 +28,3 @@ conn.sync({ force: false }).then(() => {
     console.log(`%s listening at ${process.env.PORT || 3001}`);
 });
 });
-
-
-
-
-
-

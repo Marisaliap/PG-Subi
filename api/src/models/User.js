@@ -73,6 +73,9 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
+      cbu: {
+        type: DataTypes.STRING,
+      },
     },
     {
       timestamps: false,
