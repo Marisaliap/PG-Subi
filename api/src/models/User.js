@@ -57,7 +57,9 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
       calification: {
-        type: DataTypes.ARRAY(DataTypes.FLOAT),
+         //type: DataTypes.ARRAY(DataTypes.FLOAT),
+         type: DataTypes.INTEGER,
+         defaultValue: 0,
       },
       photo: {
         type: DataTypes.STRING,
@@ -68,14 +70,7 @@ module.exports = (sequelize) => {
       photoDni: {
         type: DataTypes.ARRAY(DataTypes.STRING),
       },
-      photo: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      photoDni: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-      },
-    },
+       },
     {
       timestamps: false,
     }

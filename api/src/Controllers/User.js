@@ -40,7 +40,7 @@ const postUser = async (req, res, next) => {
         age,
         about,
         genre,
-        calification: [0],
+        calification:0,
         photoDni,
         // public_id:result.public_id,
       },
@@ -80,6 +80,19 @@ const getUser = async (req, res, next) => {
           email: user.email,
         };
       });
+//--------------------------------------------------------------
+      const calification = data.posts;
+      let array = [];
+      calification.map((d) => {
+        array.push(d.calification)
+      })
+      let calUser=0;
+      let suma=0;
+      array.forEach(function (e){
+        suma+=e;
+      })
+      calUser = suma/array.length;
+//---------------------------------------------------------------
     } else if (id) {
       data = await User.findByPk(id, {
         include: [Post, Car, Route],

@@ -1,0 +1,19 @@
+@import '../Variables/Variables.scss';
+
+/* Rating */
+.rating {
+  //color: #000000;
+  //color: #f0c040;
+
+  span{
+    margin: 0.2rem;
+    
+    .staron {
+      color: #f0c040;
+    }
+    
+    .staroff{
+      color: #404040;
+    }
+  }
+}

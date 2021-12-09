@@ -17,9 +17,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       primaryKey: true,
     },
-    title: {
-      type: DataTypes.STRING
-    }
   },
   {
     timestamps: false,

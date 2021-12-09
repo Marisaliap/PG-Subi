@@ -148,7 +148,7 @@ export default function UserProfile() {
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
-    data.append("upload_preset", "cmbcusw9");
+    data.append("upload_preset", "EditPhotoUser");
     setLoanding(true);
 
     const res = await fetch(
@@ -214,6 +214,11 @@ export default function UserProfile() {
               </button>
             </>
           )}
+          <NavLink to="/post">
+          <button className="botonPhoto" onClick={() => handleClickPhoto()}>
+                Post & Calification
+              </button>
+              </NavLink>
           <div className="botonera">
             {!booleanUser ? (
               <button className="buttonBlue" onClick={() => handleClickUser()}>

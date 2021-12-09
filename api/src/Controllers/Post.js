@@ -20,7 +20,6 @@ const getPost = async (req, res, next) => {
 const setPost = async (req, res, next) => {
     try {
         const {
-            title,
             date,
             author,
             description,
@@ -31,7 +30,6 @@ const setPost = async (req, res, next) => {
 
         const posts = Post.create({
            
-                title,
                 date,
                 author,
                 description,

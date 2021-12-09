@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import CardUser  from "./CardUser";
 import {getUserByName} from '../actions/index'
+import { NavLink } from "react-router-dom";
+
+
 export default function Users() {
 const { users } = useSelector(state => state )
 
@@ -9,6 +12,7 @@ const { users } = useSelector(state => state )
     <div>
       { users.map(user => {
         return(
+          <NavLink to={"/profile/"+ user.email}>
           <CardUser  
           name = { user.name }
           lastName = { user.lastName }
@@ -17,6 +21,7 @@ const { users } = useSelector(state => state )
           photo = { user.photo }
           calification = { user.calification }
           />
+          </NavLink>
         )
       }) }
     
