@@ -22,8 +22,8 @@ export default function Nav() {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const id = isAuthenticated ? user.email : "";
   const idioma = useContext(langContext);
-  const { usuariosRegistrados } = useSelector((state) => state);
-
+  const { usuariosRegistrados } = useSelector(state => state);
+ 
   useEffect(() => {
     dispatch(getUserProfile(id));
   }, [dispatch, id]);
@@ -31,6 +31,9 @@ export default function Nav() {
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
+
+  console.log(user,"users navbar");
+  console.log(usuariosRegistrados,"usuarios registrados");
 
   function handleClick() {
     swal({

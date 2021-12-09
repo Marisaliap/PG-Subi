@@ -38,8 +38,8 @@ import { Redirect } from "react-router";
 export default function App() {
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
-  const { user } = useSelector(state => state)
-  console.log(user, "user in app")
+  const { userpro } = useSelector(state => state)
+  console.log(userpro, "user in app")
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -88,7 +88,7 @@ export default function App() {
                         exact
                         path="/admin"
                         render={() =>
-                          user.isAdmin === true ? (
+                          userpro.isAdmin === true ? (
                             <Admin />
                           ) : (
                             <Redirect to="/home" />
