@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {FormattedMessage} from 'react-intl';
 
 export default function UserDetails(props) {
+  console.log(props, "soy el id del get detail")
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 

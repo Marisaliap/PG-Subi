@@ -2,10 +2,8 @@ import Chart from "../../admin/Chart";
 import FeaturedInfo from "../../admin/FeaturedInfo";
 import "../../styles/Dashboard.css";
 import { userData } from "../dummyData";
-/* import Users from "../Users"; */
-/* import Sidebar from "../bar"; 
-import Topbar from "../Topbar";  */
-/* import WidgetLg from "../../components/widgetLg/WidgetLg"; */
+import WidgetSm from "../WidgetSm"; 
+import WidgetLg from "../WidgetLg";
 
 export default function Dashboard() {
   return (
@@ -13,8 +11,8 @@ export default function Dashboard() {
       <FeaturedInfo />
       <Chart data={userData} title="User Analytics" grid dataKey="Active User"/>
       <div className="homeWidgets">
-       {/*  <Users/> */}
-       {/*  <WidgetLg/> */}
+       <WidgetSm/>
+       <WidgetLg/>
       </div>
     </div>
   );

@@ -1,12 +1,11 @@
-import "../styles/Users.css";
+import "../styles/WidgetLg.css";
 
-export default function Users() {
+export default function WidgetLg() {
   const Button = ({ type }) => {
     return <button className={"widgetLgButton " + type}>{type}</button>;
   };
   return (
     <div className="widgetLg">
-        <h1> Soy Users </h1>
       <h3 className="widgetLgTitle">Latest transactions</h3>
       <table className="widgetLgTable">
         <tr className="widgetLgTr">

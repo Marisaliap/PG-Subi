@@ -31,10 +31,6 @@ export default function Nav() {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-
-  console.log(users, "acá está users")
-  console.log(user, "este es user")
-
   function handleClick() {
     swal({
       title: "Sorry",
