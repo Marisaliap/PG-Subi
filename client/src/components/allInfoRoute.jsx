@@ -31,7 +31,7 @@ export default function AllInfoRoute({ match }) {
     dispatch(getRouteById(match.params.id));
   }, []);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.userpro);
   const route = useSelector((state) => state.routeById);
   const [datos, setDatos] = useState([]);
   const history = useHistory();

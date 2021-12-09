@@ -20,7 +20,7 @@ import Post from "./Post"
 import RatingStar from "./RatingStar.jsx";
 
 
-export default function UserDetails(props) {
+export default function UserDetails({match}) {
   const userInfo = useSelector((state) => state.user);
   const autoInfo = useSelector((state) => state.car);
   let idAuto;
@@ -31,10 +31,10 @@ export default function UserDetails(props) {
 
 
 
-  useEffect(() => {
-    dispatch(getUserById(""));
-    dispatch(getUserByName("1010"));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getUserById());
+  //   dispatch(getUserByName("1010"));
+  // }, []);
 
   useEffect(() => {
     userInfo.email === undefined

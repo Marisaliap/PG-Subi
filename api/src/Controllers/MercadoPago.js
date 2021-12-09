@@ -12,7 +12,7 @@ const postMP = async (req,res,next) => {
       title,
       price,
     } = req.body
-
+    
     price = parseInt(price);
       const orden = await Order.create({status:'processing'});
       const route = await Route.findByPk(idRoute);
