@@ -2,8 +2,6 @@ import React from "react";
 import { useEffect } from "react";
 import { getUserDetail, getUserByName, getUserById } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import swal from "sweetalert";
 import SearchUserByName from "./SearchUserByName";
 import SearchUserById from "./SearchUserById";
 import { FormattedMessage } from "react-intl";
@@ -20,7 +18,7 @@ import {
 } from "react-icons/bs";
 import "../Sass/Styles/UserDetails.scss";
 
-export default function UserProfile() {
+export default function UserDetails() {
   const userInfo = useSelector((state) => state.user);
   const autoInfo = useSelector((state) => state.car);
   let idAuto;
