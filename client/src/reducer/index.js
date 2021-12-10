@@ -14,9 +14,10 @@ const initialState = {
   setPost:[],
   userPost:[],
   usuariosRegistrados: [],
+  userBuscado: [],
+  //-------------------------< admin store >------------------------ 
   userAdmin: [],
   id: "",
-  userBuscado: [],
   // ---------------< filters rami>----------------------------------
 
   restriction: "",
@@ -61,16 +62,20 @@ function rootReducer(state = initialState, action) {
         user: action.payload,
         car: action.payload.cars[0],
       };
+      //  --------------------------------------< admin reducer>----------------------
     case "GET_USER_ADMIN":
       return {
         ...state,
         userAdmin: action.payload,
       };
+
     case "ID" :
       return {
         ...state,
         id: action.payload
       }
+      // ______________________________________________________________________--________
+
     case "GET_ALL_ROUTE_INFO":
       return {
         ...state,

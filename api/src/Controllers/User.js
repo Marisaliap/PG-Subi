@@ -1,5 +1,5 @@
-const { User, Post, Car, Route, Op, Order } = require("../db.js");
-const { ClOUD_NAME, APY_KEY_CLOUD, API_CLOUD_SECRET } = process.env;
+const { User, Post, Car, Route, Op } = require("../db.js");
+
 
 const postUser = async (req, res, next) => {
   try {
@@ -20,13 +20,12 @@ const postUser = async (req, res, next) => {
       photo,
       photoDni,
     } = req.body;
-    // const result= await cloudinary.v2.uploader.upload(req.file.path)
+
 
     const user = await User.findOrCreate({
       where: { email },
       defaults: {
         name,
-        // photo:result.url,
         photo,
         lastName,
         email,
@@ -42,9 +41,9 @@ const postUser = async (req, res, next) => {
         genre,
         calification: 0,
         photoDni,
-        // public_id:result.public_id,
       },
-      include: [Post, Car, Order, Route]
+      /* include: [Post, Car, Order, Route] */
+      include: [Post, Car, Route]
     });
     res.send(user);
   } catch (error) {
@@ -163,36 +162,48 @@ const putUser = async (req, res, next) => {
   try {
     const { id } = req.params;
     const {
-      about,
-      age,
-      street,
-      city,
-      province,
-      telephone,
-      facebook,
-      instagram,
       email,
-      photo,
+      genre,
+      name,
+       lastName,
+      about,
+        age,
+         dni,
+      street,
+       city,
+       province,
+      telephone,
+     facebook,
+      instagram,
       calification,
+      photo,
+      photoDni,
       isAdmin,
       cbu,
     } = req.body;
+   
     const user = await User.findByPk(id);
     user.update({
+      email,
+      name,
+       lastName,
+       genre,
       about,
-      age,
+        age,
+         dni,
       street,
-      city,
-      province,
+       city,
+       province,
       telephone,
       facebook,
-      instagram,
-      email,
-      photo,
+       instagram,
       calification,
+      photo,
+      photoDni,
       isAdmin,
       cbu,
     });
+    
     res.send(user);
   } catch (error) {
     next(error);

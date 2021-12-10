@@ -9,16 +9,20 @@ import electricCar from "../img/electricCar.svg";
 import SearchBarHome from "./SearchBarHome";
 import { useSelector, useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
-import { getUserProfile } from "../actions";
-import Loggin from "./Loggin";
+import { getUserProfile,getUserDetail } from "../actions";
+import { useAuth0 } from "@auth0/auth0-react";
+// import Loggin from "./Loggin";
+
 
 export default function Home() {
-  const user = useSelector((state) => state.userpro);
+  const { user } = useAuth0();
+  const {userpro} = useSelector(state => state);
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getUserProfile(user.email));
-  }, [user.name]);
-  const [id, setId] = useState("");
+   dispatch(getUserProfile(userpro.email));
+  }, []);
+ console.log(userpro, "user navhome");
 
   return (
     <div className="Homepage">
@@ -27,10 +31,10 @@ export default function Home() {
       </div> */}
       <div>
         <SearchBarHome />
-        <>
+        {/* <>
           <h1>{id}</h1>
-          {/* <Loggin onIdSubmit={setId} /> */}
-        </>
+          <Loggin onIdSubmit={setId} />
+        </> */}
       </div>
       <section>
         <img className="homepageImage" src={navigator} alt="Home" />

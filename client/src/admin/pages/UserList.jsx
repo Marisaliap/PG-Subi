@@ -4,7 +4,7 @@ import "../../styles/UserList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { deleteUser, getAllUsers, getId } from "../../actions";
+import { deleteUser, getAllUsers, getId, getUserAdmin } from "../../actions";
 
 export default function UserList() {
   const { usuariosRegistrados } = useSelector(state => state)
@@ -26,6 +26,11 @@ export default function UserList() {
     dispatch(getAllUsers());
   }, [data]); 
 
+  useEffect((id) => {
+    dispatch(getUserAdmin(id));
+  }, []); 
+
+
   const handleDelete = (id) => {
     console.log(id, "soy id")
     dispatch(deleteUser(id))
@@ -34,6 +39,7 @@ export default function UserList() {
   
   const handleId = (id) => {
     dispatch(getId(id))
+    dispatch(getUserAdmin(id)) 
   }
 
   const columns = [
