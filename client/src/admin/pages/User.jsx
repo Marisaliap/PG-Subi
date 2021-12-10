@@ -27,18 +27,39 @@ export default function User() {
   const { carAdmin, userAdmin, id } = useSelector(state => state);
   var usuariosRegistrados = useSelector((state) => state.usuariosRegistrados);
   let booleanDNI;
+
   //----------------------------------<stados>----------------------------------
   const [errorsCars, setErrorsCars] = useState({});
   const [errorsUser, setErrorsUser] = useState({});
   const [image, setImage] = useState("")
   const [dni, setDni] = useState([])
-  const [auto, setAuto] = useState({
+  const [auto, setAuto] = useState( !carAdmin.brand ? ({
+    brand: "",
+    model: "",
+    patent: "",
+    color: "",
+    cylinder: "",
+    greencard: "",
+  }) : ({
     brand: carAdmin.brand,
     model: carAdmin.model,
     patent: carAdmin.patent,
     color: carAdmin.color,
-    cylinder: carAdmin.cylinder
-  });
+    cylinder: carAdmin.cylinder,
+    greencard: carAdmin.greencard,
+  }));
+  
+  setTimeout(function(){ console.log(auto,"carcar"); }, 3000);
+  // const [auto, setAuto] = useState({
+
+  //   brand: carAdmin.brand,
+  //   model: carAdmin.model,
+  //   patent: carAdmin.patent,
+  //   color: carAdmin.color,
+  //   cylinder: carAdmin.cylinder,
+  // greencard: carAdmin.greencard,
+  // });
+  
 
   const [input, setInput] = useState({
     email: userAdmin.email,
@@ -64,7 +85,6 @@ export default function User() {
   ;
   useEffect(() => {
     dispatch(getUserAdmin(id));
-    dispatch(getUserProfile(id));
     dispatch(getAllUsers());
   }, [dispatch]);
   // ___________________________________________________________________________________
@@ -111,8 +131,6 @@ export default function User() {
       errors.province = 'Province is required';
     } else if (wordvalidate.test(input.province) === false) {
       errors.province = 'Invalid Province: No Symbols Allowed';
-    } else if (!input.about) {
-      errors.about = 'About is required';
     }
     return errors;
   }
@@ -242,7 +260,7 @@ export default function User() {
             />
             <div className="userShowTopTitle">
               <span className="userShowUsername">{userAdmin.name}</span>
-              {/* <span className="userShowUserTitle">{userAdmin?.cars?.length > 0 ? "Driver" : "Passenger"}</span> */}
+              <span className="userShowUserTitle">{userAdmin?.cars?.length > 0 ? "Driver" : "Passenger"}</span>
             </div>
           </div>
           <div className="userShowBottom">
@@ -282,7 +300,7 @@ export default function User() {
             </div>
             <div className="userShowInfo">
               <DirectionsCar className="userShowIcon" />
-              {/* <span className="userShowInfoTitle">{!userAdmin.cars ? "" : userAdmin.cars[0]}</span> */}
+              <img className="userShowInfoTitle" src={carAdmin?.greencard} />
             </div>
             <span className="userShowTitle">Contact Details</span>
             <div className="userShowInfo">
@@ -320,6 +338,10 @@ export default function User() {
                   value={input.name}
                   className="userUpdateInput"
                 />
+                {errorsUser.name && (
+                  <p className="errorcar">{errorsUser.name}</p>
+                )}
+
               </div>
 
               <div className="userUpdateItem">
@@ -339,6 +361,34 @@ export default function User() {
 
               </div>
               <div className="userUpdateItem">
+                <label>DNI</label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="number"
+                  name="dni"
+                  placeholder={userAdmin.dni}
+                  value={input.dni}
+                  className="userUpdateInput"
+                />
+                {errorsUser.dni && (
+                  <p className="errorcar">{errorsUser.dni}</p>
+                )}
+              </div>
+              <div className="userUpdateItem">
+                <label>Age</label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="number"
+                  name="age"
+                  placeholder={userAdmin.age}
+                  value={input.age}
+                  className="userUpdateInput"
+                />
+                {errorsUser.age && (
+                  <p className="errorcar">{errorsUser.age}</p>
+                )}
+              </div>
+              <div className="userUpdateItem">
                 <label>Phone</label>
                 <input
                   onChange={(e) => handleChange(e)}
@@ -348,7 +398,11 @@ export default function User() {
                   value={input.telephone}
                   className="userUpdateInput"
                 />
+                {errorsUser.telephone && (
+                  <p className="errorcar">{errorsUser.telephone}</p>
+                )}
               </div>
+
               <div className="userUpdateItem">
                 <label>street</label>
                 <input
@@ -359,8 +413,41 @@ export default function User() {
                   value={input.street}
                   className="userUpdateInput"
                 />
-
+                {errorsUser.street && (
+                  <p className="errorcar">{errorsUser.street}</p>
+                )}
               </div>
+
+              <div className="userUpdateItem">
+                <label>City</label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="city"
+                  placeholder={userAdmin.city}
+                  value={input.city}
+                  className="userUpdateInput"
+                />
+                {errorsUser.city && (
+                  <p className="errorcar">{errorsUser.city}</p>
+                )}
+              </div>
+
+              <div className="userUpdateItem">
+                <label>Province</label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="province"
+                  placeholder={userAdmin.province}
+                  value={input.province}
+                  className="userUpdateInput"
+                />
+                {errorsUser.province && (
+                  <p className="errorcar">{errorsUser.province}</p>
+                )}
+              </div>
+
               <div className="userUpdateItem">
                 <label>Admin</label>
                 <input
@@ -373,18 +460,6 @@ export default function User() {
                 />
               </div>
 
-
-              <div className="userUpdateItem">
-                <label>City</label>
-                <input
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  name="city"
-                  placeholder={userAdmin.city}
-                  value={input.city}
-                  className="userUpdateInput"
-                />
-              </div>
               <div className="userUpdateItem">
                 <label>Genre</label>
                 <input
@@ -395,6 +470,7 @@ export default function User() {
                   value={input.genre}
                   className="userUpdateInput"
                 />
+
               </div>
               <div className="userUpdateItem">
                 <label>Instagram</label>
@@ -418,125 +494,77 @@ export default function User() {
                   className="userUpdateInput"
                 />
               </div>
-
-              <div className="userUpdateItem">
-                <label>Province</label>
-                <input
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  name="province"
-                  placeholder={userAdmin.province}
-                  value={input.province}
-                  className="userUpdateInput"
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>DNI</label>
-                <input
-                  onChange={(e) => handleChange(e)}
-                  type="number"
-                  name="dni"
-                  placeholder={userAdmin.dni}
-                  value={input.dni}
-                  className="userUpdateInput"
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>Age</label>
-                <input
-                  onChange={(e) => handleChange(e)}
-                  type="number"
-                  name="age"
-                  placeholder={userAdmin.age}
-                  value={input.age}
-                  className="userUpdateInput"
-                />
-              </div>
-
             </div>
-            {/* ----------------------------<container center>------------------------ */}
-            <div className="userUpdateCenter">
-              <div className="userUpdateItem">
-                <label>Brand</label>
-                <input
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  name="brand"
-                  placeholder={carAdmin.brand}
-                  className="userUpdateInput"
-                  value={auto.brand}
-                />
-                {errorsCars.brand && (
-                  <p className="errorcar">{errorsCars.brand}</p>
-                )}
-              </div>
+            {/* ----------------------------<container center Car>------------------------ */}
+            {carAdmin?.brand && (
+              <div className="userUpdateCenter">
+                <div className="userUpdateItem">
+                  <label>Brand</label>
+                  <input
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    name="brand"
+                    placeholder={carAdmin.brand}
+                    className="userUpdateInput"
+                    value={auto.brand}
+                  />
+                  {errorsCars.brand && (
+                    <p className="errorcar">{errorsCars.brand}</p>
+                  )}
+                </div>
 
-              <div className="userUpdateItem">
-                <label>Model</label>
-                <input
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  name="brand"
-                  placeholder={carAdmin.brand}
-                  className="userUpdateInput"
-                  value={auto.brand}
-                />
-                {errorsCars.brand && (
-                  <p className="errorcar">{errorsCars.brand}</p>
-                )}
-              </div>
+                <div className="userUpdateItem">
+                  <label>Model</label>
+                  <input
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    name="brand"
+                    placeholder={carAdmin.model}
+                    className="userUpdateInput"
+                    value={auto.model}
+                  />
+                  {errorsCars.model && (
+                    <p className="errorcar">{errorsCars.model}</p>
+                  )}
+                </div>
 
-              <div className="userUpdateItem">
-                <label>Plate</label>
-                <input
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  name="brand"
-                  placeholder={carAdmin.brand}
-                  className="userUpdateInput"
-                  value={auto.brand}
-                />
-                {errorsCars.brand && (
-                  <p className="errorcar">{errorsCars.brand}</p>
-                )}
-              </div>
+                <div className="userUpdateItem">
+                  <label>Color</label>
+                  <input
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    name="brand"
+                    placeholder={carAdmin.color}
+                    className="userUpdateInput"
+                    value={auto.color}
+                  />
+                  {errorsCars.color && (
+                    <p className="errorcar">{errorsCars.color}</p>
+                  )}
+                </div>
 
-              <div className="userUpdateItem">
-                <label>Color</label>
-                <input
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  name="brand"
-                  placeholder={carAdmin.brand}
-                  className="userUpdateInput"
-                  value={auto.brand}
-                />
-                {errorsCars.brand && (
-                  <p className="errorcar">{errorsCars.brand}</p>
-                )}
-              </div>
-              <div className="userUpdateItem">
-                <label>Cylinder</label>
-                <input
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  name="brand"
-                  placeholder={carAdmin.brand}
-                  className="userUpdateInput"
-                  value={auto.brand}
-                />
-                {errorsCars.brand && (
-                  <p className="errorcar">{errorsCars.brand}</p>
-                )}
-              </div>
+                <div className="userUpdateItem">
+                  <label>Cylinder</label>
+                  <input
+                    onChange={(e) => handleChange(e)}
+                    type="text"
+                    name="brand"
+                    placeholder={carAdmin.cylinder}
+                    className="userUpdateInput"
+                    value={auto.cylinder}
+                  />
+                  {errorsCars.cylinder && (
+                    <p className="errorcar">{errorsCars.cylinder}</p>
+                  )}
+                </div>
+              </div>)
+              }
 
-
-
-
-            </div>
             {/* ______________________________________________________________________ */}
+
             <div className="userUpdateRight">
               <div className="userUpdateUpload">
+                <span className="userShowTitle">Photo User</span>
                 <img
                   className="userUpdateImg"
                   src={userAdmin.photo}
@@ -552,12 +580,15 @@ export default function User() {
                     accept="image/png, image/jpeg"
                   />
                 </div>
+
+                <br />
+                <span className="userShowTitle">DNI</span>
                 <div className="userUpdateUpload">
                   {!userAdmin.photoDni ? "" : userAdmin.photoDni.map(e => <img src={e} alt="" className="userUpdateImg" />)}
 
                   <div>
                     <input
-                      onChange={(e) => uploadImage(e)}
+                      onChange={(e) => uploadImage2(e)}
                       className="userUpdateInput"
                       type="file"
                       name="photo"
@@ -565,11 +596,34 @@ export default function User() {
                       accept="image/png, image/jpeg"
                     />
                   </div>
+
+                  {/* <div Style="display:none">{(input.photo = image)}</div> */}
+                </div>
+                <br />
+                <span className="userShowTitle">GreenCard</span>
+                <div className="userUpdateUpload">
+                  <img
+                    className="userUpdateImg"
+                    src={auto?.greencard}
+                    alt=""
+                  />
+                  <div>
+                    <input
+                      onChange={(e) => uploadImage2(e)}
+                      className="userUpdateInput"
+                      type="file"
+                      name="photo"
+                      value={auto?.greencard}
+                      accept="image/png, image/jpeg"
+                    />
+                  </div>
+
                   {/* <div Style="display:none">{(input.photo = image)}</div> */}
                 </div>
                 {/* <label htmlFor="file">
                   <Publish className="userUpdateIcon" />
                 </label> */}
+
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
               <button onClick={(e) => handleSubmitUser(e)} className="userUpdateButton">Update</button>

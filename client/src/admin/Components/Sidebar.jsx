@@ -1,3 +1,4 @@
+import React from 'react';
 import "../Style/sidebar.css";
 import {
   LineStyle,
@@ -13,9 +14,18 @@ import {
   WorkOutline,
   Report,
 } from "@material-ui/icons";
+import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
+import{getAllUsers} from "../../actions"
+
+
 
 export default function Sidebar() {
+const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]); 
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
