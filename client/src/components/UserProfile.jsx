@@ -30,7 +30,10 @@ import { DataGrid, GridRowsProp, GridColDef,  } from "@material-ui/data-grid";
  import { Link } from 'react-router-dom';
 import { Tabs, Tab } from "@material-ui/core"
 import Post from "./Post";
-
+import Person from '@material-ui/icons/Person';
+import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
+import TripOriginIcon from '@material-ui/icons/TripOrigin';
+import CommentIcon from '@material-ui/icons/Comment';
 
 export default function UserProfile() {
   const userInfo = useSelector((state) => state.userpro);
@@ -292,11 +295,13 @@ export default function UserProfile() {
       </div>
       <div className="containerProfile">
       <div className="centralo">
-        <Tabs  onChange={handleNav} aria-label="nav tabs example">
-          <Tab label="User Details" />
-          <Tab label="Car Details"/>
-          <Tab label="Trips Details" />
-          <Tab label="Posts" />
+        <Tabs sx={{
+    color: 'black',
+  }} onChange={handleNav} aria-label="nav tabs example">
+          <Tab  label="User Details" icon={<Person />} />
+          <Tab label="Car Details" icon={<DirectionsCarIcon />}/>
+          <Tab label="Trips Details" icon={<TripOriginIcon />} />
+          <Tab label="Posts" icon={<CommentIcon />} />
         </Tabs>
       </div>
         <div className="ProfileReal">
