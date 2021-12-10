@@ -57,7 +57,8 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
       calification: {
-        type: DataTypes.ARRAY(DataTypes.FLOAT),
+        type: DataTypes.FLOAT,
+        defaultValue: 0,
       },
       photo: {
         type: DataTypes.STRING,
@@ -71,6 +72,9 @@ module.exports = (sequelize) => {
       isAdmin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
+      },
+      cbu: {
+        type: DataTypes.STRING,
       },
     },
     {

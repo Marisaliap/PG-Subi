@@ -1,18 +1,26 @@
 .CardUser {
-  display:flex;
-  align-items:flex-start;
+  display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  margin: 0.5rem;
+  text-decoration: none !important;
 
-
-  img{
+  img {
     height: 5rem;
     width: 5rem;
     border-radius: 50%;
     margin: 1rem;
-    margin-left: 3rem;
-
   }
-  h5{
-    margin:0.2rem;
+  h5 {
+    margin: 0.2rem;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  a {
+    text-decoration: none;
   }
 }

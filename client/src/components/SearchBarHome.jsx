@@ -63,9 +63,9 @@ export default function SearchBarHome() {
   }
 
   const checkAllInfo =
-    inputs.Origin.length > 6 &&
-    inputs.Destination.length > 6 &&
-    info.date.length > 1;
+     cities && cities.length > 0 && inputs.Origin === cities[0].name &&
+    cities2 && cities2.length > 0 && inputs.Destination === cities2[0].name &&
+    info.date.length > 1
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -107,7 +107,7 @@ export default function SearchBarHome() {
         </FormattedMessage>
 
         <datalist id="cities">
-          {cities && cities.map((city) => <option>{city.name}</option>)}
+          {cities && cities.map((city) => city.name !== inputs.Origin &&  <option>{city.name}</option>)}
         </datalist>
         {/* <p>{validations && validations.Origin}</p> */}
         <FormattedMessage
@@ -126,7 +126,7 @@ export default function SearchBarHome() {
           )}
         </FormattedMessage>
         <datalist id="cities2">
-          {cities2 && cities2.map((city) => <option>{city.name}</option>)}
+          {cities2 && cities2.map((city) => city.name !== inputs.Destination &&  <option>{city.name}</option>)}
         </datalist>
         {/* <p>{validations && validations.Destination}</p> */}
         <div>

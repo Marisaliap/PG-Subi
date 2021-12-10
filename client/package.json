@@ -28,6 +28,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.0",
     "sass": "^1.43.5",
+    "socket.io-client": "^4.4.0",
     "sweetalert": "^2.1.2",
     "web-vitals": "^0.2.4"
   },

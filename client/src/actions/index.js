@@ -37,6 +37,18 @@ export function getRoute(long1, lat1, long2, lat2) {
   };
 }
 
+export function getUserProfile(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user/${id}`))
+        .data;
+      return dispatch({
+        type: "GET_USER_PROFILE",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
 export function getUserDetail(id) {
   return async function (dispatch) {
     try {
@@ -87,6 +99,19 @@ export function getUserByName(name) {
 
       return dispatch({
         type: "GET_USER_BY_NAME",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
+export function getUserById(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user/${id}`))
+        .data;
+      return dispatch({
+        type: "GET_USER_BY_ID",
         payload: response,
       });
     } catch (error) {}
@@ -329,7 +354,7 @@ export function setPost(payload) {
 export function userPost(id) {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`http://localhost:3001/user/${id}`))
+      const response = (await axios.get(`http://localhost:3001/user/post/${id}`))
         .data;
       return dispatch({
         type: "USER_POST",

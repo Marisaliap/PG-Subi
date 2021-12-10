@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { postUser, getUserDetail, getAllUsers } from "../actions";
+import { postUser, getUserDetail, getUserProfile, getAllUsers } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
 import swal from "sweetalert";
@@ -13,14 +13,14 @@ export default function Registro() {
   const { user, isAuthenticated } = useAuth0();
   const [image, setImage] = useState("");
   const [loanding, setLoanding] = useState(false);
-  let booleanDNI;
   const [dni, setDni] = useState([]);
+  let booleanDNI;
   const placeHolderAbout = "Please tell us a little about yourself";
-  let usuariosRegistrados = useSelector((state) => state.usuariosRegistrados);
 
   useEffect(() => {
     dispatch(getAllUsers());
   }, [booleanDNI, dispatch]);
+  let usuariosRegistrados = useSelector((state) => state.usuariosRegistrados);
 
   function validate(input) {
     // ------------------------< erros gestions >------------------------
@@ -31,7 +31,7 @@ export default function Registro() {
       }
     }
     let errors = {};
-    const wordvalidate = /^[a-zA-Z ]+$/;
+    const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     if (!input.name) {
       errors.name = "Name is required";
     } else if (wordvalidate.test(input.name) === false) {
@@ -62,6 +62,8 @@ export default function Registro() {
       errors.province = "Province is required";
     } else if (wordvalidate.test(input.province) === false) {
       errors.province = "Invalid Province: No Symbols Allowed";
+    } else if (!input.about) {
+      errors.about = "About is required";
     }
     return errors;
   }
@@ -84,7 +86,8 @@ export default function Registro() {
       !input.street ||
       !input.city ||
       !input.province ||
-      !input.checkbox
+      !input.checkbox ||
+      !input.about
     ) {
       return false;
     } else {
@@ -111,6 +114,7 @@ export default function Registro() {
     about: "",
     photoDni: [],
     checkbox: false,
+    checkboxManejante: false,
   });
 
   function handleChange(e) {
@@ -145,7 +149,7 @@ export default function Registro() {
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
-    data.append("upload_preset", "s6kdvopu");
+    data.append("upload_preset", "PhotoUser");
     setLoanding(true);
 
     const res = await fetch(
@@ -164,7 +168,7 @@ export default function Registro() {
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
-    data.append("upload_preset", "tiuimc3c");
+    data.append("upload_preset", "PhotoDni");
     setLoanding(true);
 
     const res = await fetch(
@@ -185,6 +189,14 @@ export default function Registro() {
     if (Object.keys(errors).length === 0 && validateInputs() === true) {
       dispatch(postUser(input));
       let emailUsuario = input.email;
+   
+      swal({
+        title: "Good job!",
+        text: "User created correctly",
+        icon: "success",
+        button: "Aww yiss!",
+      });
+     
       setInput({
         name: "",
         lastName: "",
@@ -202,14 +214,7 @@ export default function Registro() {
         photo: "",
         photoDni: [],
       });
-
-      swal({
-        title: "Good job!",
-        text: "User created correctly",
-        icon: "success",
-        button: "Aww yiss!",
-      });
-      dispatch(getUserDetail(emailUsuario));
+    // dispatch(getUserProfile(emailUsuario));
       history.push("/home");
     } else {
       swal({
@@ -241,6 +246,16 @@ export default function Registro() {
           }}
         >
           <div>
+            <div className="terminosycond">
+              <div className="cadaLinea">
+                <p className="">If you plan to be a Driver please check</p>
+                <input
+                  type="checkbox"
+                  name="checkboxManejante"
+                  onChange={(e) => handleCheck(e)}
+                />
+              </div>
+            </div>
             <div className="cadaLinea">
               <p className="label">
                 <FormattedMessage id="register.name" defaultMessage="Name*:" />
@@ -478,6 +493,23 @@ export default function Registro() {
             />
             {errors.province && <p className="error">{errors.province}</p>}
           </div>
+          {input.checkboxManejante === false ? (
+            ""
+          ) : (
+            <div className="cadaLinea">
+              <p className="label">
+                <FormattedMessage id="register.cbu" defaultMessage="CBU:" />
+              </p>
+              <input
+                className="inputs"
+                type="text"
+                name="cbu"
+                value={input.cbu}
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.cbu && <p className="error">{errors.cbu}</p>}
+            </div>
+          )}
           <div className="cadaLinea">
             <p className="label">
               <FormattedMessage

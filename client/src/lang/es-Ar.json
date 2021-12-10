@@ -7,7 +7,10 @@
     "navBar.routelist" : "Lista de Viajes",
 
     "searchUserByName.search" : "Buscar",
-    "searchUserByName.placeholder" : " 🔍  Encuentra un usuario...",
+    "searchUserByName.placeholder" : " 🔍  Encuentra un usuario por nombre...",
+
+    "searchUserById.search" : "Buscar",
+    "searchUserById.placeholder" : " 🔍  Encuentra un usuario por email...",
 
     "home.title1" : "Ahorra dinero mientras conduces",
     "home.save" : "Ahorra dinero mientras conduces",
@@ -95,7 +98,7 @@
     "register.province" : "Provincia*:",
     "register.facebook" : "Facebook:",
     "register.instagram" : "Instagram:",
-    "register.about" : "Sobre:",
+    "register.about" : "Sobre mi*:",
     "register.agree" : "Al continuar, aceptas nuestras",
     "register.terms" : "Condiciones Generales de Uso",
     "register.and" : "y",

@@ -1,4 +1,4 @@
-const { Route, User, Car } = require("../db.js");
+const { Route, User, Car, Order } = require("../db.js");
 const axios = require("axios");
 const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
 const { TOKEN } = process.env;
@@ -72,13 +72,15 @@ const postRoute = async (req, res, next) => {
       restriction,
       infoRoute,
       points,
+      center,
+      cbu
     } = req.body;
 
     let kmNumber = km.split("k")[0];
 
-    let price = Math.ceil(((kmNumber / 10) * 97) / 5);
+    let price = ((kmNumber / 10) * 97) / 5;
 
-    price = price + price * (10 / 100);
+    price =  Math.ceil(price + price * (10 / 100));
 
     const route = await Route.create({
       originName,
@@ -94,7 +96,10 @@ const postRoute = async (req, res, next) => {
       restriction,
       infoRoute,
       points,
+      center,
     });
+
+    await axios.put(`http://localhost:3001/user/${idUser}`,{cbu})
 
     await route.addUser(idUser);
     //const car = await Car.findByPk(patentCar)
@@ -135,22 +140,27 @@ const getRoute = async (req, res, next) => {
         "destinyName",
         "restriction",
         "points",
+        "center",
       ],
-      include: {
-        model: User,
-        attributes: [
-          "name",
-          "photo",
-          "lastName",
-          "genre",
-          "age",
-          "calification",
-        ],
-        include: {
-          model: Car,
-          attributes: ["patent", "color", "brand", "model"],
-        },
-      },
+      include: [
+          {model: Order},
+        {
+          model: User,
+          attributes: [
+            "name",
+            "photo",
+            "lastName",
+            "genre",
+            "age",
+            "calification",
+          ],
+          include: {
+            model: Car,
+            attributes: ["patent", "color", "brand", "model"],
+          },
+
+        }
+    ],
     });
 
     if (from) {
@@ -220,6 +230,7 @@ const putRoute = async (req, res) => {
   try {
     const { id } = req.params;
     const { date, hours, restriction, place, idUser } = req.body;
+    console.log(idUser)
     const route = await Route.findByPk(id);
     route.update({
       date,

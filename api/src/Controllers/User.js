@@ -1,4 +1,4 @@
-const { User, Post, Car, Route, Op } = require("../db.js");
+const { User, Post, Car, Route, Op, Order } = require("../db.js");
 const { ClOUD_NAME, APY_KEY_CLOUD, API_CLOUD_SECRET } = process.env;
 
 const postUser = async (req, res, next) => {
@@ -40,10 +40,11 @@ const postUser = async (req, res, next) => {
         age,
         about,
         genre,
-        calification: [0],
+        calification: 0,
         photoDni,
         // public_id:result.public_id,
       },
+      include: [Post, Car, Order, Route]
     });
     res.send(user);
   } catch (error) {
@@ -80,10 +81,42 @@ const getUser = async (req, res, next) => {
           email: user.email,
         };
       });
+      //--------------------------------------------------------------
+      // const calification = data.posts;
+      // let array = [];
+      // calification.map((d) => {
+      //   array.push(d.calification);
+      // });
+      // let calUser = 0;
+      // let suma = 0;
+      // array.forEach(function (e) {
+      //   suma += e;
+      // });
+      // calUser = suma / array.length;
+      //---------------------------------------------------------------
     } else if (id) {
       data = await User.findByPk(id, {
-        include: [Post, Car, Route],
+        include: [Post, Car, {
+          model: Route,
+          include: {
+            model: Order,
+            where: {
+              status: 'created'
+            }
+          }
+        }],
       });
+      const calification = data.posts;
+      let array = [];
+      calification.map((d) => {
+        array.push(d.calification);
+      });
+      let calUser = 0;
+      let suma = 0;
+      array.forEach(function (e) {
+        suma += e;
+      });
+      calUser = suma / array.length;
     } else {
       data = await User.findAll();
     }
@@ -108,7 +141,8 @@ const putUser = async (req, res, next) => {
       email,
       photo,
       calification,
-      isAdmin
+      isAdmin,
+      cbu,
     } = req.body;
     const user = await User.findByPk(id);
     user.update({
@@ -123,7 +157,8 @@ const putUser = async (req, res, next) => {
       email,
       photo,
       calification,
-      isAdmin
+      isAdmin,
+      cbu,
     });
     res.send(user);
   } catch (error) {

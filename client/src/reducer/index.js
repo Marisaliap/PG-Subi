@@ -7,6 +7,8 @@ const initialState = {
   users: [],
   getRoutes: [],
   car: [],
+  userpro: [],
+  carpro: [],
   routeById: [],
   routeFromDb: [],
   setPost:[],
@@ -14,6 +16,7 @@ const initialState = {
   usuariosRegistrados: [],
   userAdmin: [],
   id: "",
+  userBuscado: [],
   // ---------------< filters rami>----------------------------------
 
   restriction: "",
@@ -46,6 +49,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: action.payload,
       };
+    case "GET_USER_PROFILE":
+      return {
+        ...state,
+        userpro: action.payload,
+        carpro: action.payload.cars[0],
+      };
     case "GET_USER_DETAIL":
       return {
         ...state,
@@ -75,7 +84,7 @@ function rootReducer(state = initialState, action) {
     case "POST_USER":
       return {
         ...state,
-        user: action.payload,
+        userpro: action.payload[0],
       };
     case "POST_RECLAMOSYMEJORAS":
       return {
@@ -86,6 +95,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         users: action.payload,
+      };
+    case "GET_USER_BY_ID":
+      return {
+        ...state,
+        userBuscado: action.payload,
       };
     case "GET_ALL_USERS":
       return {

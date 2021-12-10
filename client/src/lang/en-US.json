@@ -7,7 +7,10 @@
     "navBar.routelist" : "Route List",
 
     "searchUserByName.search" : "Search",
-    "searchUserByName.placeholder" : " 🔍  Find user...",
+    "searchUserByName.placeholder" : " 🔍  Find user by name...",
+
+    "searchUserById.search" : "Search",
+    "searchUserById.placeholder" : " 🔍  Find user by email...",
 
     "home.title1" : "Save money while driving",
     "home.p1" : "Publish your next round trip on Gimme a Ride and get, on average, 80 dollars * of your passengers. You will only need a couple of minutes to publish your route. Do we share a trip?",
@@ -96,7 +99,7 @@
     "register.province" : "Province*:",
     "register.facebook" : "Facebook:",
     "register.instagram" : "Instagram:",
-    "register.about" : "About:",
+    "register.about" : "About*:",
     "register.agree" : "By continuing, you agree to our",
     "register.terms" : "Terms of Use",
     "register.and" : "and",

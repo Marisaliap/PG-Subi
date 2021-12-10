@@ -6,7 +6,7 @@ import { Profile } from "./Profile";
 import { useSelector, useDispatch } from "react-redux";
 import Auth from "./Auth";
 import { NavLink } from "react-router-dom";
-import { getUserDetail, getAllUsers } from "../actions";
+import { getUserProfile, getAllUsers } from "../actions";
 import { BsPlusCircle } from "react-icons/bs";
 import "../Sass/Styles/NavBar.scss";
 import { FormattedMessage } from "react-intl";
@@ -17,15 +17,15 @@ import swal from "sweetalert";
 
 export default function Nav() {
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.user);
+  const users = useSelector((state) => state.userpro);
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const id = isAuthenticated ? user.email : "";
   const idioma = useContext(langContext);
-  const {usuariosRegistrados} = useSelector(state => state);
+  const { usuariosRegistrados } = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(getUserDetail(id));
-  }, [dispatch, id]);
+    dispatch(getUserProfile(id));
+  }, [users.photo, users.cars && users.cars.length]);
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -40,7 +40,7 @@ export default function Nav() {
     });
     loginWithRedirect();
   }
-
+  console.log(users, 'soy navbar')
   return (
     <header className="NavBar">
       <NavLink to="/home">
@@ -69,9 +69,9 @@ export default function Nav() {
                 to={
                   !users.dni
                     ? "/register"
-                    : users.name && users.cars.length === 0
+                    : users.name && users.cars && users.cars.length === 0
                     ? "/car"
-                    : users.name && users.cars[0].patent
+                    : users.name && users.cars && users.cars[0].patent
                     ? "/route"
                     : ""
                 }
@@ -105,10 +105,13 @@ export default function Nav() {
             <img src={en} alt=""></img>
             </button>
           </div> */}
-        { isAuthenticated&&usuariosRegistrados.map(e=>e.email).filter(e=>e===user.email)[0]===user.email && users.isAdmin === true?
-           
-           <NavLink to='/Admin'>Admin</NavLink>
-            : null}
+        {isAuthenticated &&
+        usuariosRegistrados
+          .map((e) => e.email)
+          .filter((e) => e === user.email)[0] === user.email &&
+        users.isAdmin === true ? (
+          <NavLink to="/Admin">Admin</NavLink>
+        ) : null}
       </nav>
     </header>
   );

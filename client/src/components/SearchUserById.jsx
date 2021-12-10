@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getUserByName } from "../actions";
+import { getUserById } from "../actions";
 import { NavLink } from "react-router-dom";
 import "../Sass/Styles/SearchUserByName.scss";
 import { FormattedMessage } from "react-intl";
@@ -17,15 +17,15 @@ export default function SearchUserByName() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getUserByName(name));
+    dispatch(getUserById(name));
     setName("");
   }
 
   return (
     <div className="SearchUserByName">
       <FormattedMessage
-        id="searchUserByName.placeholder"
-        defaultMessage=" 🔍  Find user by name..."
+        id="searchUserById.placeholder"
+        defaultMessage=" 🔍  Find user by Email..."
       >
         {(placeholder) => (
           <input
@@ -37,12 +37,13 @@ export default function SearchUserByName() {
         )}
       </FormattedMessage>
       <button type="submit" onClick={(e) => handleSubmit(e)}>
+        {" "}
         <NavLink className="Navlink" to="/users">
           <FormattedMessage
-            id="searchUserByName.search"
+            id="searchUserById.search"
             defaultMessage="Search"
           />
-        </NavLink>
+        </NavLink>{" "}
       </button>
     </div>
   );

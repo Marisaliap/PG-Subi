@@ -1,23 +1,23 @@
+const http = require('http');
 const express = require('express');
+const sokectio = require('socket.io');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const cors = require('cors');
 const routes = require('./routes/index.js');
-// const multer = require('multer');
-// const path = require('path');
-// const exphbs = require('express-handlebars');
-
-
+const app = express();
+const server = http.createServer(app);
+const io = sokectio(server);
 require("./db.js");
 
-const server = express();
 
-server.name = "API";
-
-server.use(express.urlencoded({ extended: true, limit: "50mb" }));
-server.use(express.json({ limit: "50mb" }));
-server.use(cookieParser());
-server.use(morgan("dev"));
-server.use((req, res, next) => {
+app.use(cors());
+app.name = "API";
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.use(express.json({ limit: "50mb" }));
+app.use(cookieParser());
+app.use(morgan("dev"));
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
@@ -28,10 +28,10 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use("/", routes);
+app.use("/", routes);
 
 // Error catching endware.
-server.use((err, req, res, next) => {
+app.use((err, req, res, next) => {
   // eslint-disable-line no-unused-vars
   const status = err.status || 500;
   const message = err.message || err;
@@ -39,13 +39,5 @@ server.use((err, req, res, next) => {
   res.status(status).send(message);
 });
 
-// middleware
-// const strorage = multer.diskStorage({
-//   destination: path.join(__dirname, 'public/uploads'),
-//   filename: (req, file, cb) => {
-//     cb(null, new Date().getTime() + path.extname(file.originalname));
-//   }
 
-// })
-// server.use(multer({ strorage }).single('image'));
 module.exports = server;
