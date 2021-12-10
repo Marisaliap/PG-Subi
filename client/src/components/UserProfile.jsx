@@ -34,7 +34,7 @@ import Person from '@material-ui/icons/Person';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import CommentIcon from '@material-ui/icons/Comment';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-
+import PaymentsIcon from '@material-ui/icons/Payments';
 
 export default function UserProfile() {
   const userInfo = useSelector((state) => state.userpro);
@@ -265,18 +265,47 @@ export default function UserProfile() {
   }
 
  
-  const rows = userInfo?.routes && userInfo.routes.map(route => {
+  const rowsRoutes = userInfo?.routes && userInfo.routes.map(route => {
     return { 
       id: route.id, 
       Origin: route.originName, 
       Destiny: route.destinyName,
       Date: route.date,
       Time: route.hours,
-      RouteId: route.id
+      RouteId: route.id,
+      Driver: route.manejante === userInfo.email ? 'yes' : 'no'
      }
   })
   
-  const columns  = [
+  const columnsRoutes  = [
+    { field: 'Origin', headerName: 'Origin', width: 250 },
+    { field: 'Destiny', headerName: 'Destiny', width: 250 },
+    { field: 'Date', headerName: 'Date', width: 125 },
+    { field: 'Time', headerName: 'Time', width: 125 },
+    { field: 'RouteId', headerName: 'Route Id', width: 150, renderCell: (params) => (
+        <Link to={`/route/${params.value}`}>{params.value}</Link>
+      )
+    },
+    { field: 'Driver', headerName: 'Driver', width: 125 },
+  ];
+
+  {/*----------------------------------------ORDERS-------------------------------------------------------*/}
+
+  const routesManejante = userInfo?.routes && userInfo.routes.filter(r => r.manejante === userInfo.email ? true : false)
+
+  const rowsOrders = userInfo?.routes && routesManejante.map(route => {
+    return { 
+      id: route.id, 
+      Origin: route.originName, 
+      Destiny: route.destinyName,
+      Date: route.date,
+      Time: route.hours,
+      RouteId: route.id,
+      Payment: route.orders && "$ " + (route.orders.length * route.price)
+     }
+  })
+  
+  const columnsOrders  = [
     { field: 'Origin', headerName: 'Origin', width: 250 },
     { field: 'Destiny', headerName: 'Destiny', width: 250 },
     { field: 'Date', headerName: 'Date', width: 125 },
@@ -284,8 +313,11 @@ export default function UserProfile() {
     { field: 'RouteId', headerName: 'Route Id', width: 150, renderCell: (params) => (
       <Link to={`/route/${params.value}`}>{params.value}</Link>
     )
-}
+  },
+    { field: 'Payment', headerName: 'Payment', width: 200 },
   ];
+
+
   return (
     <div>
       
@@ -296,13 +328,12 @@ export default function UserProfile() {
       </div>
       <div className="containerProfile">
       <div className="centralo">
-        <Tabs sx={{
-    color: 'black',
-  }} onChange={handleNav} aria-label="nav tabs example">
-          <Tab  label="User Details" icon={<Person />} />
+        <Tabs  onChange={handleNav} aria-label="nav tabs example">
+        <Tab  label="User Details" icon={<Person />} />
           <Tab label="Car Details" icon={<DirectionsCarIcon />}/>
           <Tab label="Trips Details" icon={<LocationOnIcon />} />
           <Tab label="Posts" icon={<CommentIcon />} />
+          <Tab label="Payments" icon ={<PaymentsIcon />}/>
         </Tabs>
       </div>
         <div className="ProfileReal">
@@ -712,16 +743,30 @@ export default function UserProfile() {
         </div>}
           </div>
 
-         {nav === 2 && <div style={{ height: 300, width: '100%' }}>
-                    {userInfo.routes && userInfo.routes.length > 0 &&   <DataGrid
-                rows={rows} columns={columns}
-              />}
+        {
+          nav === 2 && <div style={{ height: 300, width: '100%' }}>
+            {
+              userInfo.routes && userInfo.routes.length > 0 &&   <DataGrid rows={rowsRoutes} columns={columnsRoutes}/>
+            } 
+          </div>
+        }
 
-          
-        </div>}
-        {nav === 3 && <div className='centralo'>
-        <Post id={userInfo.email} />
-        </div>}
+        {
+          nav === 3 && <div className='centralo'>
+            <Post id={userInfo.email} />
+          </div>
+        }
+
+        {
+          nav === 4 && <div style={{ height: 300, width: '100%' }}>
+            <div className="centralo">
+              <h1 className="tituloUserProfile">Payments Details</h1>
+            </div>
+            {
+              userInfo.routes && userInfo.routes.length > 0 &&   <DataGrid rows={rowsOrders} columns={columnsOrders}/>
+            } 
+          </div>
+        }
       </div>
     </div>
   );
