@@ -32,8 +32,9 @@ import { Tabs, Tab } from "@material-ui/core"
 import Post from "./Post";
 import Person from '@material-ui/icons/Person';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
-import TripOriginIcon from '@material-ui/icons/TripOrigin';
 import CommentIcon from '@material-ui/icons/Comment';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+
 
 export default function UserProfile() {
   const userInfo = useSelector((state) => state.userpro);
@@ -300,7 +301,7 @@ export default function UserProfile() {
   }} onChange={handleNav} aria-label="nav tabs example">
           <Tab  label="User Details" icon={<Person />} />
           <Tab label="Car Details" icon={<DirectionsCarIcon />}/>
-          <Tab label="Trips Details" icon={<TripOriginIcon />} />
+          <Tab label="Trips Details" icon={<LocationOnIcon />} />
           <Tab label="Posts" icon={<CommentIcon />} />
         </Tabs>
       </div>
