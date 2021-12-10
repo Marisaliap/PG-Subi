@@ -51,6 +51,11 @@
     border-radius: 50%;
     object-fit: cover;
   }
+  .userShowImge {
+    width: 170px;
+    height: 80px;
+    object-fit: cover;
+  }
   
   .userShowTopTitle {
     display: flex;
@@ -85,6 +90,9 @@
   
   .userShowIcon{
       font-size: 16px !important;
+  }
+  .dniShowImage{
+      font-size: 1px !important;
   }
   
   .userShowInfoTitle{
