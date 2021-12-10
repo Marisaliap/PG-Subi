@@ -7,7 +7,7 @@ import { Profile } from './Profile';
 import { useSelector, useDispatch } from 'react-redux';
 import Auth from './Auth';
 import { NavLink } from 'react-router-dom';
-import { getUserProfile, getAllUsers } from '../actions';
+import { getUserProfile, getAlluserpro } from '../actions';
 import { BsPlusCircle } from 'react-icons/bs';
 import '../Sass/Styles/NavBar.scss';
 import { FormattedMessage } from 'react-intl';
@@ -25,9 +25,13 @@ export default function Nav() {
   const { usuariosRegistrados } = useSelector((state) => state);
   const history = useHistory();
 
-  useEffect(() => {
+  /* useEffect(() => {
     dispatch(getUserProfile(id));
   }, [users.photo, users.cars && users.cars.length]);
+ */
+  useEffect(() => {
+    dispatch(getUserProfile(id));
+  }, [userpro.photo, userpro.cars && userpro.cars.length]);
 
   useEffect(() => {
     dispatch(getAlluserpro());
@@ -49,7 +53,7 @@ export default function Nav() {
         }
       });
     } else {
-      if (!users.dni) { 
+      if (!userpro.dni) { 
         return new Swal({
           icon: 'warning',
           title: 'Sorry',
@@ -62,7 +66,7 @@ export default function Nav() {
         });
  
       }
-      else if (users.name && users.cars.length === 0) {
+      else if (userpro.name && userpro.cars.length === 0) {
         return new Swal({
           icon: 'warning',
           title: 'Sorry',
@@ -75,13 +79,13 @@ export default function Nav() {
         });
       
       }
-      else if (users.name && users.cars && users.cars[0].patent)
+      else if (userpro.name && userpro.cars && userpro.cars[0].patent)
         history.push('/route');
     }
 
     // (!users.dni ? history.push('/register') : users.name && users.cars.length === 0 ? history.push('/car') : users.name && users.cars[0].patent ? history.push('/route'))
   }
-  console.log(users, 'soy navbar');
+  console.log(userpro, 'soy navbar');
   return (
     <header className="NavBar">
       <NavLink to="/home">

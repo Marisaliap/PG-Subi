@@ -86,6 +86,19 @@ export function getUserAdmin(id) {
   };
 }
 
+export function getAlluserpro(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user/${id}`))
+        .data;
+      return dispatch({
+        type: "GET_USER_ADMIN",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
 export function getRouteById(id) {
   return async function (dispatch) {
     try {
