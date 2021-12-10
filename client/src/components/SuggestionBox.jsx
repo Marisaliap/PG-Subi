@@ -1,12 +1,12 @@
-import React from "react";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { postMejorasYReclamos } from "../actions";
-import { useDispatch } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
-import swal from "sweetalert";
-import "../Sass/Styles/SuggestionBox.scss";
-import { FormattedMessage } from "react-intl";
+import React from 'react';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { postMejorasYReclamos } from '../actions';
+import { useDispatch } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
+import swal from 'sweetalert2';
+import '../Sass/Styles/SuggestionBox.scss';
+import { FormattedMessage } from 'react-intl';
 
 export default function SuggestionBox() {
   const { user, isAuthenticated } = useAuth0();
@@ -14,9 +14,9 @@ export default function SuggestionBox() {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
-    author: isAuthenticated ? user.given_name : "",
-    authorEmail: isAuthenticated ? user.email : "",
-    suggestion: "",
+    author: isAuthenticated ? user.given_name : '',
+    authorEmail: isAuthenticated ? user.email : '',
+    suggestion: '',
   });
   const [errors, setErrors] = useState({});
 
@@ -25,15 +25,15 @@ export default function SuggestionBox() {
     const emailvalidate = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
     const namevalidate = /^[a-zA-Z]+$/;
     if (!input.author) {
-      errors.author = "Name is required";
+      errors.author = 'Name is required';
     } else if (namevalidate.test(input.author) === false) {
-      errors.author = "Invalid Name: No Symbols Allowed";
+      errors.author = 'Invalid Name: No Symbols Allowed';
     } else if (!input.authorEmail) {
-      errors.authorEmail = "Email is required";
+      errors.authorEmail = 'Email is required';
     } else if (emailvalidate.test(input.authorEmail) === false) {
-      errors.authorEmail = "Invalid Email: No Symbols Allowed";
+      errors.authorEmail = 'Invalid Email: No Symbols Allowed';
     } else if (!input.suggestion) {
-      errors.suggestion = "Suggestion is required";
+      errors.suggestion = 'Suggestion is required';
     }
     return errors;
   }
@@ -56,23 +56,23 @@ export default function SuggestionBox() {
     if (Object.keys(errors).length === 0) {
       dispatch(postMejorasYReclamos(input));
       setInput({
-        author: "",
-        authorEmail: "",
-        suggestion: "",
+        author: '',
+        authorEmail: '',
+        suggestion: '',
       });
-      swal({
-        title: "Good job!",
-        text: "Suggestion sent!",
-        icon: "success",
-        button: "Aww yiss!",
+      new swal({
+        title: 'Good job!',
+        text: 'Suggestion sent!',
+        icon: 'success',
+        button: 'Aww yiss!',
       });
-      history.push("/home");
+      history.push('/home');
     } else {
-      swal({
-        title: "Sorry",
-        text: "All mandatory fields must be filled to continue",
-        icon: "warning",
-        button: "Ok",
+      new swal({
+        title: 'Sorry',
+        text: 'All mandatory fields must be filled to continue',
+        icon: 'warning',
+        button: 'Ok',
       });
     }
   }

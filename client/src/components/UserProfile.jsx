@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import {
   editUser,
   getUserProfile,
   editCar,
   getUserByName,
   getUserById,
-} from "../actions";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import swal from "sweetalert";
-import SearchUserByName from "./SearchUserByName";
-import SearchUserById from "./SearchUserById";
-import { FormattedMessage } from "react-intl";
+} from '../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import swal from 'sweetalert2';
+import SearchUserByName from './SearchUserByName';
+import SearchUserById from './SearchUserById';
+import { FormattedMessage } from 'react-intl';
 import {
   BsFillTelephoneFill,
   BsGenderFemale,
@@ -23,16 +23,16 @@ import {
   BsMap,
   BsEnvelope,
   BsInfoSquareFill,
-} from "react-icons/bs";
-import "../Sass/Styles/UserProfile.scss";
+} from 'react-icons/bs';
+import '../Sass/Styles/UserProfile.scss';
 
 export default function UserProfile() {
   const userInfo = useSelector((state) => state.userpro);
   const autoInfo = useSelector((state) => state.carpro);
   let idAuto;
-  autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
+  autoInfo === undefined ? (idAuto = '') : (idAuto = autoInfo.id);
   const [loanding, setLoanding] = useState(false);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState('');
   const [booleanUser, setBooleanUser] = useState(false);
   const [booleanCar, setBooleanCar] = useState(false);
   const [booleanPhoto, setBooleanPhoto] = useState(false);
@@ -41,8 +41,8 @@ export default function UserProfile() {
   const [errorsUser, setErrorsUser] = useState({});
 
   useEffect(() => {
-    dispatch(getUserById(""));
-    dispatch(getUserByName("1010"));
+    dispatch(getUserById(''));
+    dispatch(getUserByName('1010'));
   }, []);
 
   useEffect(() => {
@@ -60,11 +60,11 @@ export default function UserProfile() {
       setBooleanUser(false);
       dispatch(getUserProfile(userInfo.email));
     } else {
-      swal({
-        title: "Sorry",
-        text: "Please check your inputs for errors",
-        icon: "warning",
-        button: "Ok",
+      new swal({
+        title: 'Sorry',
+        text: 'Please check your inputs for errors',
+        icon: 'warning',
+        button: 'Ok',
       });
     }
   }
@@ -82,25 +82,25 @@ export default function UserProfile() {
         cylinder: userInfo.cars[0].cylinder,
       });
     } else {
-      swal({
-        title: "Sorry",
-        text: "Please check your inputs for errors",
-        icon: "warning",
-        button: "Ok",
+      new swal({
+        title: 'Sorry',
+        text: 'Please check your inputs for errors',
+        icon: 'warning',
+        button: 'Ok',
       });
     }
   }
 
   function handleSubmitPhoto(e) {
     e.preventDefault();
-    setImage("");
+    setImage('');
     dispatch(editUser(userInfo.email, input));
     setBooleanPhoto(false);
-    swal({
-      title: "Good job!",
-      text: "Photo updated* (This may take some minutes to show)",
-      icon: "success",
-      button: "Aww yiss!",
+    new swal({
+      title: 'Good job!',
+      text: 'Photo updated* (This may take some minutes to show)',
+      icon: 'success',
+      button: 'Aww yiss!',
     });
   }
 
@@ -171,9 +171,9 @@ export default function UserProfile() {
   }
 
   function genderIcon(gender) {
-    if (gender === "Male") {
+    if (gender === 'Male') {
       return <BsGenderMale className="maleGender" />;
-    } else if (gender === "Female") {
+    } else if (gender === 'Female') {
       return <BsGenderFemale className="femaleGender" />;
     }
   }
@@ -181,14 +181,14 @@ export default function UserProfile() {
   const uploadImage = async (e) => {
     const files = e.target.files;
     const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "EditPhotoUser");
+    data.append('file', files[0]);
+    data.append('upload_preset', 'EditPhotoUser');
     setLoanding(true);
 
     const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+      'https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload',
       {
-        method: "POST",
+        method: 'POST',
         body: data,
       }
     );
@@ -202,21 +202,21 @@ export default function UserProfile() {
     const phonevalidate = /^[0-9]+$/;
     let errorsUser = {};
     if (!input.telephone) {
-      errorsUser.telephone = "Telephone is required";
+      errorsUser.telephone = 'Telephone is required';
     } else if (phonevalidate.test(input.telephone) === false) {
-      errorsUser.telephone = "Invalid Phone: Only Numbers Allowed";
+      errorsUser.telephone = 'Invalid Phone: Only Numbers Allowed';
     } else if (!input.street) {
-      errorsUser.street = "Street is required";
+      errorsUser.street = 'Street is required';
     } else if (!input.city) {
-      errorsUser.city = "City is required";
+      errorsUser.city = 'City is required';
     } else if (wordvalidate.test(input.city) === false) {
-      errorsUser.city = "Invalid City: No Symbols Allowed";
+      errorsUser.city = 'Invalid City: No Symbols Allowed';
     } else if (!input.province) {
-      errorsUser.province = "Province is required";
+      errorsUser.province = 'Province is required';
     } else if (wordvalidate.test(input.province) === false) {
-      errorsUser.province = "Invalid Province: No Symbols Allowed";
+      errorsUser.province = 'Invalid Province: No Symbols Allowed';
     } else if (!input.about) {
-      errorsUser.about = "About is required";
+      errorsUser.about = 'About is required';
     }
     return errorsUser;
   }
@@ -227,23 +227,23 @@ export default function UserProfile() {
     const floatvalidate = /^[0-9]*\.?[0-9]+$/;
     let errorsCars = {};
     if (!input.brand) {
-      errorsCars.brand = "Brand is required";
+      errorsCars.brand = 'Brand is required';
     } else if (wordvalidate.test(input.brand) === false) {
-      errorsCars.brand = "Invalid Brand: No Symbols Allowed";
+      errorsCars.brand = 'Invalid Brand: No Symbols Allowed';
     } else if (!input.model) {
-      errorsCars.model = "Model is required";
+      errorsCars.model = 'Model is required';
     } else if (!input.patent) {
-      errorsCars.patent = "Plate is required";
+      errorsCars.patent = 'Plate is required';
     } else if (numberandlettervalidate.test(input.patent) === false) {
-      errorsCars.patent = "Invalid Plate";
+      errorsCars.patent = 'Invalid Plate';
     } else if (!input.color) {
-      errorsCars.color = "Color is required";
+      errorsCars.color = 'Color is required';
     } else if (wordvalidate.test(input.color) === false) {
-      errorsCars.color = "Invalid Color: No Symbols Allowed";
+      errorsCars.color = 'Invalid Color: No Symbols Allowed';
     } else if (!input.cylinder) {
-      errorsCars.cylinder = "Cylinder is required";
+      errorsCars.cylinder = 'Cylinder is required';
     } else if (floatvalidate.test(input.cylinder) === false) {
-      errorsCars.cylinder = "Invalid Cylinder: No Symbols Allowed";
+      errorsCars.cylinder = 'Invalid Cylinder: No Symbols Allowed';
     }
     return errorsCars;
   }
@@ -278,17 +278,17 @@ export default function UserProfile() {
               <img className="photousuario" src={userInfo.photo} alt="User" />
               <div>
                 <h1 className="titulos">
-                  {userInfo.name} {userInfo.lastName}{" "}
+                  {userInfo.name} {userInfo.lastName}{' '}
                   {genderIcon(userInfo.genre)}
                 </h1>
                 <p className="labelArriba">{userInfo.dni}</p>
                 <div className="labelArriba">
-                  <BsStarFill className="iconArriba" /> {userInfo.calification}{" "}
+                  <BsStarFill className="iconArriba" /> {userInfo.calification}{' '}
                   / 5
                 </div>
               </div>
               {booleanPhoto === false ? (
-                ""
+                ''
               ) : (
                 <>
                   <div className="cadaLinea">
@@ -312,7 +312,7 @@ export default function UserProfile() {
                     {loanding ? (
                       <img src={image} Style="height:150px" alt="" />
                     ) : (
-                      ""
+                      ''
                     )}
                   </p>
                   <button
@@ -350,7 +350,7 @@ export default function UserProfile() {
                 <>
                   <div className="moreInfo">
                     <div className="cadaLinea">
-                      <BsFillTelephoneFill className="icon" />{" "}
+                      <BsFillTelephoneFill className="icon" />{' '}
                       {userInfo.telephone}
                     </div>
                     <div className="cadaLinea">
@@ -360,7 +360,7 @@ export default function UserProfile() {
                       <BsInstagram className="icon" /> {userInfo.instagram}
                     </div>
                     <div className="cadaLinea">
-                      <BsMap className="icon" /> {userInfo.street},{" "}
+                      <BsMap className="icon" /> {userInfo.street},{' '}
                       {userInfo.city},{userInfo.province}
                     </div>
                     <div className="cadaLinea">
@@ -493,7 +493,7 @@ export default function UserProfile() {
             <h1 className="tituloUserProfile">Car Details</h1>
           </div>
           <div className="centralo">
-            {idAuto === "" ? (
+            {idAuto === '' ? (
               <NavLink to="/car">
                 <button className="buttonBlue">Edit Car Information</button>
               </NavLink>
@@ -511,7 +511,7 @@ export default function UserProfile() {
                 <div className="cadaLinea">
                   <p className="label">Brand:</p>
                   {userInfo.cars && userInfo.cars.length === 0 ? (
-                    ""
+                    ''
                   ) : (
                     <p className="label">{autoInfo.brand}</p>
                   )}
@@ -519,7 +519,7 @@ export default function UserProfile() {
                 <div className="cadaLinea">
                   <p className="label">Model:</p>
                   {userInfo.cars && userInfo.cars.length === 0 ? (
-                    ""
+                    ''
                   ) : (
                     <p className="label">{autoInfo.model}</p>
                   )}
@@ -527,7 +527,7 @@ export default function UserProfile() {
                 <div className="cadaLinea">
                   <p className="label">Plate:</p>
                   {userInfo.cars && userInfo.cars.length === 0 ? (
-                    ""
+                    ''
                   ) : (
                     <p className="label">{autoInfo.patent}</p>
                   )}
@@ -537,7 +537,7 @@ export default function UserProfile() {
                 <div className="cadaLinea">
                   <p className="label">Color:</p>
                   {userInfo.cars && userInfo.cars.length === 0 ? (
-                    ""
+                    ''
                   ) : (
                     <p className="label">{autoInfo.color}</p>
                   )}
@@ -545,11 +545,11 @@ export default function UserProfile() {
                 <div className="cadaLinea">
                   <p className="label">Cylinder:</p>
                   {userInfo.cars && userInfo.cars.length === 0 ? (
-                    ""
+                    ''
                   ) : (
                     <p className="label">{autoInfo.cylinder}</p>
                   )}
-                </div>{" "}
+                </div>{' '}
               </div>
             </>
           ) : (
@@ -558,7 +558,7 @@ export default function UserProfile() {
                 <div className="cadaLinea">
                   <p className="label">Brand:</p>
                   {userInfo.cars & (userInfo.cars.length === 0) ? (
-                    ""
+                    ''
                   ) : (
                     <input
                       onChange={(e) => handleChange(e)}
@@ -575,7 +575,7 @@ export default function UserProfile() {
                 <div className="cadaLinea">
                   <p className="label">Model:</p>
                   {userInfo.cars & (userInfo.cars.length === 0) ? (
-                    ""
+                    ''
                   ) : (
                     <input
                       onChange={(e) => handleChange(e)}
@@ -592,7 +592,7 @@ export default function UserProfile() {
                 <div className="cadaLinea">
                   <p className="label">Plate:</p>
                   {userInfo.cars & (userInfo.cars.length === 0) ? (
-                    ""
+                    ''
                   ) : (
                     <input
                       onChange={(e) => handleChange(e)}
@@ -611,7 +611,7 @@ export default function UserProfile() {
                 <div className="cadaLinea">
                   <p className="label">Color:</p>
                   {userInfo.cars & (userInfo.cars.length === 0) ? (
-                    ""
+                    ''
                   ) : (
                     <input
                       onChange={(e) => handleChange(e)}
@@ -628,7 +628,7 @@ export default function UserProfile() {
                 <div className="cadaLinea">
                   <p className="label">Cylinder:</p>
                   {userInfo.cars & (userInfo.cars.length === 0) ? (
-                    ""
+                    ''
                   ) : (
                     <input
                       onChange={(e) => handleChange(e)}
