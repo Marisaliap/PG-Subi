@@ -34,7 +34,8 @@ import UserProfile from "./components/UserProfile";
 /* import Sidebar from "./admin/Sidebar"; */
 import { Redirect } from "react-router";
 export default function App() {
-  const { user } = useSelector((state) => state);
+  /* const { user } = useSelector((state) => state); */
+  const { userpro } = useSelector(state => state)
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
 
@@ -85,7 +86,7 @@ export default function App() {
                         exact
                         path="/admin"
                         render={() =>
-                          user.isAdmin === true ? (
+                          userpro.isAdmin === true ? (
                             <Admin />
                           ) : (
                             <Redirect to="/home" />
