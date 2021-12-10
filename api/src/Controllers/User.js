@@ -42,7 +42,8 @@ const postUser = async (req, res, next) => {
         calification: 0,
         photoDni,
       },
-      include: [Post, Car, Order, Route]
+      /* include: [Post, Car, Order, Route] */
+      include: [Post, Car, Route]
     });
     res.send(user);
   } catch (error) {
