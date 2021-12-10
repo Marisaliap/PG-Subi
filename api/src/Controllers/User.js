@@ -97,7 +97,7 @@ const getUser = async (req, res, next) => {
       data = await User.findByPk(id, {
         include: [Post, Car, Route],
       });
-      const calification = data.posts;
+      /*const calification = data.posts;
       let array = [];
       calification.map((d) => {
         array.push(d.calification);
@@ -107,7 +107,7 @@ const getUser = async (req, res, next) => {
       array.forEach(function (e) {
         suma += e;
       });
-      calUser = suma / array.length;
+      calUser = suma / array.length;*/
     } else {
       data = await User.findAll();
     }
@@ -116,6 +116,37 @@ const getUser = async (req, res, next) => {
     next(error);
   }
 };
+
+const putUserCal = async (req, res, next) => {
+  try {
+
+    data = await User.findByPk(id, {
+      include: [Post],
+    });
+
+    const calification = data.posts;
+    let array = [];
+    calification.map((d) => {
+      array.push(d.calification);
+    });
+    let calUser = 0;
+    let suma = 0;
+    array.forEach(function (e) {
+      suma += e;
+    });
+    
+    calUser = suma / array.length;
+
+    const user = await User.findByPk(id);
+    user.update({
+      calification:calUser,
+    });
+    res.send(user);
+  } catch (error) {
+    next(error);
+  }
+}
+
 
 const putUser = async (req, res, next) => {
   try {
@@ -168,4 +199,4 @@ const deleteUser = async (req, res, next) => {
   }
 };
 
-module.exports = { postUser, getUser, putUser, deleteUser };
+module.exports = { postUser, getUser, putUser, deleteUser, putUserCal };
