@@ -26,7 +26,7 @@ export default function Nav() {
 
   useEffect(() => {
     dispatch(getUserProfile(id));
-  }, [dispatch, id]);
+  }, [users.photo, users.cars && users.cars.length]);
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -53,7 +53,7 @@ export default function Nav() {
 
     // (!users.dni ? history.push('/register') : users.name && users.cars.length === 0 ? history.push('/car') : users.name && users.cars[0].patent ? history.push('/route'))
   }
-
+  console.log(users, 'soy navbar');
   return (
     <header className="NavBar">
       <NavLink to="/home">

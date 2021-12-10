@@ -31,7 +31,7 @@ export default function CardUser({
   return (
     <>
       <div className="CardUser" {...props}>
-        <Link to={`/user/${email}`} onClick={()=>dispatch(getUserDetail(email))}>
+      
           <img src={photo} alt="" />
           <h5>
             {name} {lastName}
@@ -41,7 +41,7 @@ export default function CardUser({
           <h5>
             {calification}/5 <BsStarFill className="icon" />
           </h5>
-        </Link>
+      
       </div>
     </>
   );

@@ -189,6 +189,14 @@ export default function Registro() {
     if (Object.keys(errors).length === 0 && validateInputs() === true) {
       dispatch(postUser(input));
       let emailUsuario = input.email;
+
+      swal({
+        title: 'Good job!',
+        text: 'User created correctly',
+        icon: 'success',
+        button: 'Aww yiss!',
+      });
+
       setInput({
         name: '',
         lastName: '',
@@ -493,7 +501,7 @@ export default function Registro() {
             {errors.province && <p className="error">{errors.province}</p>}
           </div>
           {input.checkboxManejante === false ? (
-            ""
+            ''
           ) : (
             <div className="cadaLinea">
               <p className="label">

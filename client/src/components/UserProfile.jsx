@@ -248,6 +248,7 @@ export default function UserProfile() {
     return errorsCars;
   }
 
+  console.log(userInfo)
   return (
     <div>
       <div className="searchUsers">
@@ -653,6 +654,7 @@ export default function UserProfile() {
               </div>
             </>
           )}
+          <div></div>
         </div>
       </div>
     </div>
