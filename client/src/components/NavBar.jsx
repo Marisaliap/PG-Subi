@@ -45,8 +45,32 @@ export default function Nav() {
         }
       });
     } else {
-      if (!users.dni) history.push('/register');
-      else if (users.name && users.cars.length === 0) history.push('/car');
+      if (!users.dni) { 
+        return new Swal({
+          icon: 'warning',
+          title: 'Sorry',
+          text: 'You need to be registered to post a trip!',
+          confirmButtonText: 'Okay',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.push('/register');
+          }
+        });
+ 
+      }
+      else if (users.name && users.cars.length === 0) {
+        return new Swal({
+          icon: 'warning',
+          title: 'Sorry',
+          text: 'Please give us your car information',
+          confirmButtonText: 'Okay',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.push('/car');
+          }
+        });
+      
+      }
       else if (users.name && users.cars && users.cars[0].patent)
         history.push('/route');
     }

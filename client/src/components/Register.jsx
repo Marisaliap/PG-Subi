@@ -190,12 +190,7 @@ export default function Registro() {
       dispatch(postUser(input));
       let emailUsuario = input.email;
 
-      swal({
-        title: 'Good job!',
-        text: 'User created correctly',
-        icon: 'success',
-        button: 'Aww yiss!',
-      });
+    
 
       setInput({
         name: '',
@@ -215,16 +210,17 @@ export default function Registro() {
         photoDni: [],
       });
 
-      new swal({
+      
+      dispatch(getUserDetail(emailUsuario));
+      history.push('/home');
+     return new swal({
         title: 'Good job!',
         text: 'User created correctly',
         icon: 'success',
         button: 'Aww yiss!',
       });
-      dispatch(getUserDetail(emailUsuario));
-      history.push('/home');
     } else {
-      new swal({
+     return new swal({
         title: 'Sorry',
         text: 'All mandatory fields must be filled to continue',
         icon: 'warning',
