@@ -26,9 +26,12 @@ import {
 } from "react-icons/bs";
 import "../Sass/Styles/UserProfile.scss";
 import RatingStar from "./RatingStar";
-import { DataGrid, GridRowsProp, GridColDef  } from "@material-ui/data-grid";
+import { DataGrid, GridRowsProp, GridColDef,  } from "@material-ui/data-grid";
  import { Link } from 'react-router-dom';
- 
+import { Tabs, Tab } from "@material-ui/core"
+import Post from "./Post";
+
+
 export default function UserProfile() {
   const userInfo = useSelector((state) => state.userpro);
   const autoInfo = useSelector((state) => state.carpro);
@@ -42,7 +45,7 @@ export default function UserProfile() {
   const dispatch = useDispatch();
   const [errorsCars, setErrorsCars] = useState({});
   const [errorsUser, setErrorsUser] = useState({});
-
+  const [nav, setNav] = useState(0)
 
 
   // useEffect(() => {
@@ -203,6 +206,9 @@ export default function UserProfile() {
     setImage(file.secure_url);
   };
 
+  function handleNav(e, value) {
+    setNav(value)
+  }
   function validateuser(input) {
     const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     const phonevalidate = /^[0-9]+$/;
@@ -278,17 +284,30 @@ export default function UserProfile() {
   ];
   return (
     <div>
+      
       <div className="searchUsers">
         <SearchUserByName />
         <SearchUserById />
+        
       </div>
       <div className="containerProfile">
+      <div className="centralo">
+        <Tabs  onChange={handleNav} aria-label="nav tabs example">
+          <Tab label="User Details" />
+          <Tab label="Car Details"/>
+          <Tab label="Trips Details" />
+          <Tab label="Posts" />
+        </Tabs>
+      </div>
         <div className="ProfileReal">
-          <div className="centralo">
-            <h1 className="tituloUserProfile">User Details</h1>
-          </div>
-          <div className="ubicatop"></div>
-          <div className="seccionTop">
+        
+         {nav === 0 && 
+           <div>
+           <div className="centralo">
+             <h1 className="tituloUserProfile">User Details</h1>
+           </div>
+           <div className="ubicatop"></div>
+           <div className="seccionTop">
             <div className="containerPhoto">
               <div className="ubicaBotonPhoto">
                 {!booleanPhoto ? (
@@ -517,11 +536,12 @@ export default function UserProfile() {
                 </>
               )}
             </div>
-          </div>
-          <div className="centralo">
+            </div></div>} {/*------------------------------------------------------ACA EMPIEZA CARS-----------------------------------------------*/}
+        { nav === 1 && <div>
+         <div className="centralo">
             <h1 className="tituloUserProfile">Car Details</h1>
-          </div>
-          <div className="centralo">
+            </div>
+            <div className="centralo">
             {idAuto === '' ? (
               <NavLink to="/car">
                 <button className="buttonBlue">Edit Car Information</button>
@@ -533,8 +553,8 @@ export default function UserProfile() {
             ) : (
               <button className="buttonDisabled">Edit Car Information</button>
             )}
-          </div>
-          {booleanCar === false ? (
+            </div>
+            {booleanCar === false ? (
             <>
               <div className="patents">
                 <div className="cadaLinea">
@@ -581,7 +601,7 @@ export default function UserProfile() {
                 </div>{' '}
               </div>
             </>
-          ) : (
+            ) : (
             <>
               <div className="patents">
                 <div className="cadaLinea">
@@ -682,13 +702,20 @@ export default function UserProfile() {
                 </button>
               </div>
             </>
-          )}
-          <div style={{ height: 300, width: '100%' }}>
-       {userInfo.routes && userInfo.routes.length > 0 &&   <DataGrid
-  rows={rows} columns={columns}
-/>}
+           )}
+        </div>}
           </div>
-        </div>
+
+         {nav === 2 && <div style={{ height: 300, width: '100%' }}>
+                    {userInfo.routes && userInfo.routes.length > 0 &&   <DataGrid
+                rows={rows} columns={columns}
+              />}
+
+          
+        </div>}
+        {nav === 3 && <div className='centralo'>
+        <Post id={userInfo.email} />
+        </div>}
       </div>
     </div>
   );
