@@ -242,7 +242,9 @@ export default function FormCar() {
               <p>
                 {loanding ? (
                   <img src={image} Style="height:150px" alt="" />
-                
+                  ) : (
+                    ""
+                  )}
               </p>
             </div>
           
@@ -268,7 +270,9 @@ export default function FormCar() {
               <p>
                 {loanding ? (
                   <img src={cedula[0]} Style="height:150px" alt="" />
-               
+                  ) : (
+                    ""
+                  )}
               </p>
             </div>
           
@@ -294,7 +298,9 @@ export default function FormCar() {
               <p>
                 {loanding ? (
                   <img src={cedula[1]} Style="height:150px" alt="" />
-                
+                  ) : (
+                    ""
+                  )}
               </p>
             </div>
           
