@@ -34,7 +34,8 @@ import Person from '@material-ui/icons/Person';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import CommentIcon from '@material-ui/icons/Comment';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import PaymentsIcon from '@material-ui/icons/Payments';
+
+import PaymentIcon from '@material-ui/icons/Payment';
 
 export default function UserProfile() {
   const userInfo = useSelector((state) => state.userpro);
@@ -333,7 +334,7 @@ export default function UserProfile() {
           <Tab label="Car Details" icon={<DirectionsCarIcon />}/>
           <Tab label="Trips Details" icon={<LocationOnIcon />} />
           <Tab label="Posts" icon={<CommentIcon />} />
-          <Tab label="Payments" icon ={<PaymentsIcon />}/>
+          <Tab label="Payments" icon ={<PaymentIcon />}/>
         </Tabs>
       </div>
         <div className="ProfileReal">
