@@ -19,10 +19,11 @@ const postUser = async (req, res, next) => {
       genre,
       photo,
       photoDni,
+      cbu
     } = req.body;
     // const result= await cloudinary.v2.uploader.upload(req.file.path)
 
-    const user = await User.findOrCreate({
+    let user = await User.findOrCreate({
       where: { email },
       defaults: {
         name,
@@ -42,6 +43,7 @@ const postUser = async (req, res, next) => {
         genre,
         calification: 0,
         photoDni,
+        cbu
         // public_id:result.public_id,
       },
       include: [Post, Car, Order, Route]
