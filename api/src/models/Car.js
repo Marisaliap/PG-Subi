@@ -4,14 +4,11 @@ module.exports = (sequelize) => {
   sequelize.define(
     "car",
     {
-      id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        primaryKey: true,
-      },
       patent: {
         type: DataTypes.STRING,
         allowNull: false,
+        primaryKey: true,
+        unique: true
       },
       brand: {
         type: DataTypes.STRING,
@@ -31,7 +28,7 @@ module.exports = (sequelize) => {
       },
       greencard: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       bluecard: {
         type: DataTypes.ARRAY(DataTypes.STRING),
