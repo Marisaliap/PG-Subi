@@ -76,6 +76,7 @@ module.exports = (sequelize) => {
       },
       cbu: {
         type: DataTypes.STRING,
+        defaultValue: " ",
       },
     },
     {
