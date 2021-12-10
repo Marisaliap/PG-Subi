@@ -1,51 +1,86 @@
-import React, { useContext } from "react";
-import { useEffect } from "react";
-import autitos from "../img/autitos.png";
-import Logo from "../img/logo.png";
-import { Profile } from "./Profile";
-import { useSelector, useDispatch } from "react-redux";
-import Auth from "./Auth";
-import { NavLink } from "react-router-dom";
-import { getUserProfile, getAllUsers } from "../actions";
-import { BsPlusCircle } from "react-icons/bs";
-import "../Sass/Styles/NavBar.scss";
-import { FormattedMessage } from "react-intl";
-import { langContext } from "./../context/langContext.js";
-import { useAuth0 } from "@auth0/auth0-react";
-import "../Sass/Styles/Login.scss";
-import swal from "sweetalert";
-
+import React, { useContext } from 'react';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router';
+import autitos from '../img/autitos.png';
+import Logo from '../img/logo.png';
+import { Profile } from './Profile';
+import { useSelector, useDispatch } from 'react-redux';
+import Auth from './Auth';
+import { NavLink } from 'react-router-dom';
+import { getUserProfile, getAllUsers} from '../actions';
+import { BsPlusCircle } from 'react-icons/bs';
+import '../Sass/Styles/NavBar.scss';
+import { FormattedMessage } from 'react-intl';
+import { langContext } from './../context/langContext.js';
+import { useAuth0 } from '@auth0/auth0-react';
+import Swal from 'sweetalert2';
 
 export default function Nav() {
   const dispatch = useDispatch();
-  const userpro = useSelector(state => state);
+  const userpro = useSelector(state => state.userpro);
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
-  const id = isAuthenticated ? user.email : "";
+  const id = isAuthenticated ? user.email : '';
   const idioma = useContext(langContext);
-  const { usuariosRegistrados } = useSelector(state => state);
- 
- 
+  const  {usuariosRegistrados}  = useSelector(state => state);
+  const history = useHistory();
+
+console.log(userpro,"userpro ahola");
+console.log(usuariosRegistrados,"usuariosRegistrados ahola");
+console.log(user, "user user");
   useEffect(() => {
     dispatch(getUserProfile(id));
-  }, [dispatch, id]);
+  }, [userpro.photo, userpro.cars && userpro.cars.length]);
 
   useEffect(() => {
-    dispatch(getAlluser());
+    dispatch(getAllUsers());
   }, [dispatch]);
 
-  console.log(userpro,"userpro navbar");
-  console.log(usuariosRegistrados,"usuarios registrados");
-
   function handleClick() {
-    swal({
-      title: "Sorry",
-      text: "You need to be logged in to post a trip!",
-      icon: "warning",
-      button: "Ok",
-    });
-    loginWithRedirect();
-  }
+    if (!isAuthenticated) {
+      return new Swal({
+        icon: 'warning',
+        title: 'Sorry',
+        text: 'You need to be logged in to post a trip!',
+        confirmButtonText: 'Alright',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          loginWithRedirect();
+        }
+      });
+    } else {
+      if (!userpro.dni) { 
+        return new Swal({
+          icon: 'warning',
+          title: 'Sorry',
+          text: 'You need to be registered to post a trip!',
+          confirmButtonText: 'Okay',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.push('/register');
+          }
+        });
+ 
+      }
+      else if (userpro.name && userpro.cars.length === 0) {
+        return new Swal({
+          icon: 'warning',
+          title: 'Sorry',
+          text: 'Please give us your car information',
+          confirmButtonText: 'Okay',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.push('/car');
+          }
+        });
+      
+      }
+      else if (userpro.name && userpro.cars && userpro.cars[0].patent)
+        history.push('/route');
+    }
 
+    // (!userpro.dni ? history.push('/register') : userpro.name && userpro.cars.length === 0 ? history.push('/car') : userpro.name && userpro.cars[0].patent ? history.push('/route'))
+  }
+  
   return (
     <header className="NavBar">
       <NavLink to="/home">
@@ -55,41 +90,15 @@ export default function Nav() {
       <nav>
         <ul>
           <li>
-            {!isAuthenticated ? (
-              <>
-                <button
-                  className="emulaPost emulador"
-                  onClick={() => handleClick()}
-                >
-                  <BsPlusCircle className="BsPlusCircle" />
-                  <FormattedMessage
-                    id="navBar.post"
-                    defaultMessage="Post a Trip"
-                  />
-                </button>
-              </>
-            ) : (
-              <NavLink
-                className="postNavLink"
-                to={
-                  !userpro.dni
-                    ? "/register"
-                    : userpro.name && userpro.cars.length === 0
-                    ? "/car"
-                    : userpro.name && userpro.cars[0].patent
-                    ? "/route"
-                    : ""
-                }
-              >
-                <BsPlusCircle className="BsPlusCircle" />
-                <h3>
-                  <FormattedMessage
-                    id="navBar.post"
-                    defaultMessage="Post a Trip"
-                  />
-                </h3>
-              </NavLink>
-            )}
+            <button className="postNavLink" onClick={handleClick}>
+              <BsPlusCircle className="BsPlusCircle" />
+              <h3>
+                <FormattedMessage
+                  id="navBar.post"
+                  defaultMessage="Post a Trip"
+                />
+              </h3>
+            </button>
           </li>
 
           <li className="barrita">|</li>
@@ -114,7 +123,7 @@ export default function Nav() {
         usuariosRegistrados
           .map((e) => e.email)
           .filter((e) => e === user.email)[0] === user.email &&
-          userpro.isAdmin === true ? (
+        userpro.isAdmin === true ? (
           <NavLink to="/Admin">Admin</NavLink>
         ) : null}
       </nav>
