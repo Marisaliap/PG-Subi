@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Sass/Styles/CardUser.scss";
 import { BsGenderFemale, BsGenderMale, BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ export default function CardUser({
 }) {
 
   const dispatch = useDispatch();
-
+  useEffect(() => getUserDetail(email))
   function genderIcon(gender) {
    
 

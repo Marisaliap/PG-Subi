@@ -50,7 +50,7 @@ export default function Map() {
   }
 
   function handlePost(e) {
-    e.preventDefault();
+    // e.preventDefault();
     dispatch(
       postRoute({
         idUser: user.email,
@@ -75,6 +75,7 @@ export default function Map() {
       button: 'Go to Trip!',
     });
     history.push('/route-list');
+    window.location.reload(true)
   }
   const Map = ReactMapboxGl({
     accessToken:

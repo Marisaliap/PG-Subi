@@ -31,6 +31,7 @@ const RouteDetails = () => {
                   lastName={route.users.length > 0 && route.users[0].lastName}
                   genre={route.users.length > 0 && route.users[0].genre}
                   age={route.users.length > 0 && route.users[0].age}
+                  email={route.users.length > 0 && route.users[0].email}
                   calification={
                     route.users.length > 0 && route.users[0].calification
                   }
