@@ -18,7 +18,7 @@ import Swal from 'sweetalert2';
 
 export default function Nav() {
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.userpro);
+  const userpro = useSelector(state => state);
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const id = isAuthenticated ? user.email : '';
   const idioma = useContext(langContext);
@@ -30,10 +30,10 @@ export default function Nav() {
   }, [users.photo, users.cars && users.cars.length]);
 
   useEffect(() => {
-    dispatch(getAllUsers());
+    dispatch(getAlluserpro());
   }, [dispatch]);
 
-  console.log(user,"users navbar");
+  console.log(userpro,"userpro navbar");
   console.log(usuariosRegistrados,"usuarios registrados");
 
   function handleClick() {
@@ -100,6 +100,41 @@ export default function Nav() {
                 />
               </h3>
             </button>
+           {/*  {!isAuthenticated ? (
+              <>
+                <button
+                  className="emulaPost emulador"
+                  onClick={() => handleClick()}
+                >
+                  <BsPlusCircle className="BsPlusCircle" />
+                  <FormattedMessage
+                    id="navBar.post"
+                    defaultMessage="Post a Trip"
+                  />
+                </button>
+              </>
+            ) : (
+              <NavLink
+                className="postNavLink"
+                to={
+                  !userpro.dni
+                    ? "/register"
+                    : userpro.name && userpro.cars.length === 0
+                    ? "/car"
+                    : userpro.name && userpro.cars[0].patent
+                    ? "/route"
+                    : ""
+                }
+              >
+                <BsPlusCircle className="BsPlusCircle" />
+                <h3>
+                  <FormattedMessage
+                    id="navBar.post"
+                    defaultMessage="Post a Trip"
+                  />
+                </h3>
+              </NavLink>
+            )} */}
           </li>
 
           <li className="barrita">|</li>
@@ -124,7 +159,7 @@ export default function Nav() {
         usuariosRegistrados
           .map((e) => e.email)
           .filter((e) => e === user.email)[0] === user.email &&
-        users.isAdmin === true ? (
+          userpro.isAdmin === true ? (
           <NavLink to="/Admin">Admin</NavLink>
         ) : null}
       </nav>
