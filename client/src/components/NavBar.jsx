@@ -7,7 +7,7 @@ import { Profile } from './Profile';
 import { useSelector, useDispatch } from 'react-redux';
 import Auth from './Auth';
 import { NavLink } from 'react-router-dom';
-import { getUserProfile, getAlluserpro } from '../actions';
+import { getUserProfile, getAllUsers} from '../actions';
 import { BsPlusCircle } from 'react-icons/bs';
 import '../Sass/Styles/NavBar.scss';
 import { FormattedMessage } from 'react-intl';
@@ -15,30 +15,25 @@ import { langContext } from './../context/langContext.js';
 import { useAuth0 } from '@auth0/auth0-react';
 import Swal from 'sweetalert2';
 
-
 export default function Nav() {
   const dispatch = useDispatch();
   const userpro = useSelector(state => state.userpro);
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const id = isAuthenticated ? user.email : '';
   const idioma = useContext(langContext);
-  const { usuariosRegistrados } = useSelector((state) => state);
+  const  usuariosRegistrados = useSelector(state => state.usuariosRegistrados);
   const history = useHistory();
 
-  /* useEffect(() => {
-    dispatch(getUserProfile(id));
-  }, [users.photo, users.cars && users.cars.length]);
- */
+console.log(userpro,"userpro ahola");
+console.log(usuariosRegistrados,"usuariosRegistrados ahola");
+console.log(user, "user user");
   useEffect(() => {
     dispatch(getUserProfile(id));
   }, [userpro.photo, userpro.cars && userpro.cars.length]);
 
   useEffect(() => {
-    dispatch(getAlluserpro());
+    dispatch(getAllUsers());
   }, [dispatch]);
-
-  console.log(userpro,"userpro navbar");
-  console.log(usuariosRegistrados,"usuarios registrados");
 
   function handleClick() {
     if (!isAuthenticated) {
@@ -85,7 +80,6 @@ export default function Nav() {
 
     // (!users.dni ? history.push('/register') : users.name && users.cars.length === 0 ? history.push('/car') : users.name && users.cars[0].patent ? history.push('/route'))
   }
-  console.log(userpro, 'soy navbar');
   return (
     <header className="NavBar">
       <NavLink to="/home">
@@ -163,7 +157,7 @@ export default function Nav() {
         usuariosRegistrados
           .map((e) => e.email)
           .filter((e) => e === user.email)[0] === user.email &&
-          userpro.isAdmin === true ? (
+        userpro.isAdmin === true ? (
           <NavLink to="/Admin">Admin</NavLink>
         ) : null}
       </nav>

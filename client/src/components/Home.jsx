@@ -9,20 +9,24 @@ import electricCar from "../img/electricCar.svg";
 import SearchBarHome from "./SearchBarHome";
 import { useSelector, useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
-import { getUserProfile,getUserDetail } from "../actions";
+import { getUserProfile,getAllUsers} from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 // import Loggin from "./Loggin";
 
 
 export default function Home() {
   const { user } = useAuth0();
-  const {userpro} = useSelector(state => state);
+  const userpro = useSelector(state => state.userpro);
   const dispatch = useDispatch();
 
   useEffect(() => {
    dispatch(getUserProfile(userpro.email));
   }, []);
- console.log(userpro, "user navhome");
+
+  useEffect(() => {
+   dispatch(getAllUsers());
+  }, []);
+
 
   return (
     <div className="Homepage">

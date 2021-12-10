@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { getUserAdmin } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  CalendarToday,
-  LocationSearching,
   MailOutline,
   PermIdentity,
   PhoneAndroid,
@@ -28,36 +26,36 @@ export default function User() {
   const { user } = useAuth0();
   const { userAdmin, id } = useSelector(state => state);
   const [input, setInput] = useState({
-    email: "",
-    name: "",
-    lastName: "",
-    genre: "",
-    age: 0,
-    dni: "",
-    street: "",
-    city: "",
-    province: "",
-    telephone: "",
-    facebook: "",
-    instagram: "",
-    photo: "",
-    photoDni: [],
-    isAdmin: "",
+    email:userAdmin.email,
+    name: userAdmin.name,
+    lastName: userAdmin.lastName,
+    genre: userAdmin.genre,
+    age: userAdmin.age,
+    dni:userAdmin.dni,
+    street: userAdmin.street,
+    city: userAdmin.city,
+    province: userAdmin.province,
+    telephone: userAdmin.telephone,
+    facebook: userAdmin.facebook,
+    instagram: userAdmin.instagram,
+    photo: userAdmin.photo,
+    photoDni: userAdmin.photoDni,
+    isAdmin: userAdmin.isAdmin,
   });
   const [image, setImage] = useState("");
   ;
   useEffect(() => {
     dispatch(getUserAdmin(id))
     dispatch(getUserProfile(id))
-  }, [dispatch]);
+  }, [dispatch,input]);
 
   // ------------------<handles>------------------
   const handleSubmitUser = (e) => {
     e.preventDefault();
 
     dispatch(editUser(id, input));
-    // setBooleanUser(false);
     dispatch(getUserProfile(id));
+    dispatch(getUserAdmin(id))
 
   }
 
@@ -68,7 +66,7 @@ export default function User() {
       [e.target.name]: e.target.value,
     });
   }
-  console.log(input)
+  console.log(input,"input hola")
 
   const uploadImage = async (e) => {
     const files = e.target.files;
@@ -319,7 +317,7 @@ export default function User() {
                 <label>DNI</label>
                 <input
                 onChange={(e) => handleChange(e)}
-                type="text"
+                type="number"
                 name="dni"
                placeholder={userAdmin.dni}
                 value={input.dni}
