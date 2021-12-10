@@ -6,7 +6,6 @@ import SearchUserByName from "./SearchUserByName";
 import SearchUserById from "./SearchUserById";
 import { FormattedMessage } from "react-intl";
 import {
-  BsFillTelephoneFill,
   BsGenderFemale,
   BsGenderMale,
   BsInstagram,
@@ -19,18 +18,20 @@ import "../Sass/Styles/UserDetails.scss";
 import Post from "./Post";
 import RatingStar from "./RatingStar.jsx";
 
-export default function UserDetails({ match }) {
+export default function UserDetails( props) {
   const userInfo = useSelector((state) => state.user);
   const autoInfo = useSelector((state) => state.car);
   let idAuto;
   autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
   const dispatch = useDispatch();
 
+const id = props.match.params.id;
+
   useEffect(() => {
     userInfo.email === undefined
       ? dispatch(getUserDetail(window.location.href.split("/user/")[1]))
-      : dispatch(getUserDetail(userInfo.email));
-  }, [dispatch]);
+      : dispatch(getUserDetail(id));
+  }, [dispatch, id, userInfo.email]);
 
   function genderIcon(gender) {
     if (gender === "Male") {
@@ -138,12 +139,7 @@ export default function UserDetails({ match }) {
           <div className="centralo">
             <h1 className="tituloUserProfile">Rating</h1>
           </div>
-          <Post id={userInfo.email} />
-
-          {/* {console.log(userInfo.posts[0].date)}
-          {console.log(userInfo.posts[0].description)}
-          {console.log(userInfo.posts[0].author)} 
-          {console.log(userInfo.posts[0].calification)} */}
+          <Post id={id} />
         </div>
       </div>
     </div>

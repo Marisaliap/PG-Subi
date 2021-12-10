@@ -221,7 +221,7 @@ export default function FormCar() {
           {errors.cylinder && <p className="errorcar">{errors.cylinder}</p>}
         </div>
         <div>
-          {!input.greencard ? (
+          
             <div className="cadaLinea">
               <p className="label">
                 Green Card:
@@ -242,12 +242,10 @@ export default function FormCar() {
               <p>
                 {loanding ? (
                   <img src={image} Style="height:150px" alt="" />
-                ) : (
-                  ""
-                )}
+                
               </p>
             </div>
-          ) : input.greencard ? (
+          
             <div className="cadaLinea">
               <p className="label">
                 Blue Card #1:
@@ -270,12 +268,10 @@ export default function FormCar() {
               <p>
                 {loanding ? (
                   <img src={cedula[0]} Style="height:150px" alt="" />
-                ) : (
-                  ""
-                )}
+               
               </p>
             </div>
-          ) : input.bluecard.length === 1 ? (
+          
             <div className="cadaLinea">
               <p className="label">
                 Blue Card #2:
@@ -298,12 +294,10 @@ export default function FormCar() {
               <p>
                 {loanding ? (
                   <img src={cedula[1]} Style="height:150px" alt="" />
-                ) : (
-                  ""
-                )}
+                
               </p>
             </div>
-          ) : input.bluecard[1] ? (
+          
             <div className="cadaLinea">
               <p className="label">
                 Blue Card #3:
@@ -331,9 +325,7 @@ export default function FormCar() {
                 )}
               </p>
             </div>
-          ) : (
-            ""
-          )}
+          
         </div>
 
         <button className="button" type="submit">

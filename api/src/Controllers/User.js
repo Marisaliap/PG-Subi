@@ -120,6 +120,8 @@ const getUser = async (req, res, next) => {
 const putUserCal = async (req, res, next) => {
   try {
 
+    const { id } = req.params;
+
     data = await User.findByPk(id, {
       include: [Post],
     });

@@ -4,6 +4,7 @@ import { BsGenderFemale, BsGenderMale, BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUserDetail } from "../actions";
+import RatingStar from "./RatingStar";
 
 export default function CardUser({
   photo,
@@ -39,7 +40,9 @@ export default function CardUser({
           <h5>{age}</h5>
           <h5>{genderIcon(genre)}</h5>
           <h5>
-            {calification}/5 <BsStarFill className="icon" />
+            <RatingStar
+            Rating={calification}
+            />
           </h5>
         </Link>
       </div>

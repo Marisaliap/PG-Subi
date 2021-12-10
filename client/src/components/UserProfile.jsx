@@ -25,6 +25,7 @@ import {
   BsInfoSquareFill,
 } from "react-icons/bs";
 import "../Sass/Styles/UserProfile.scss";
+import RatingStar from "./RatingStar";
 
 export default function UserProfile() {
   const userInfo = useSelector((state) => state.userpro);
@@ -43,11 +44,11 @@ export default function UserProfile() {
   useEffect(() => {
     dispatch(getUserById(""));
     dispatch(getUserByName("1010"));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getUserProfile(userInfo.email));
-  }, [booleanUser, booleanCar, booleanPhoto, dispatch]);
+  }, [booleanUser, booleanCar, booleanPhoto, dispatch, userInfo.email]);
 
   const [input, setInput] = useState({});
 
@@ -282,8 +283,10 @@ export default function UserProfile() {
                 </h1>
                 <p className="labelArriba">{userInfo.dni}</p>
                 <div className="labelArriba">
-                  <BsStarFill className="iconArriba" /> {userInfo.calification}{" "}
-                  / 5
+                  <RatingStar
+                  Rating={userInfo.calification}
+
+                    /> 
                 </div>
               </div>
               {booleanPhoto === false ? (
