@@ -75,7 +75,6 @@ export default function Map() {
       button: "Go to Trip!",
     });
     history.push("/route-list");
-    //window.location.reload(true)
   }
   const Map = ReactMapboxGl({
     accessToken:

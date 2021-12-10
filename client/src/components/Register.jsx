@@ -215,7 +215,6 @@ export default function Registro() {
       });
       dispatch(getUserDetail(emailUsuario));
       history.push("/home");
-      //window.location.reload(true)
     } else {
       swal({
         title: "Sorry",
