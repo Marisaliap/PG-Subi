@@ -6,7 +6,7 @@ import { Profile } from "./Profile";
 import { useSelector, useDispatch } from "react-redux";
 import Auth from "./Auth";
 import { NavLink } from "react-router-dom";
-import { getUserProfile, getAlluserpro } from "../actions";
+import { getUserProfile, getAllUsers } from "../actions";
 import { BsPlusCircle } from "react-icons/bs";
 import "../Sass/Styles/NavBar.scss";
 import { FormattedMessage } from "react-intl";
@@ -30,7 +30,7 @@ export default function Nav() {
   }, [dispatch, id]);
 
   useEffect(() => {
-    dispatch(getAlluserpro());
+    dispatch(getAlluser());
   }, [dispatch]);
 
   console.log(userpro,"userpro navbar");
