@@ -18,7 +18,7 @@ export default function CardUser({
 }) {
 
   const dispatch = useDispatch();
-  useEffect(() => getUserDetail(email))
+  useEffect(() => dispatch(getUserDetail(email)), [dispatch])
   function genderIcon(gender) {
    
 

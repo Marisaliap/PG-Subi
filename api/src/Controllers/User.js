@@ -1,4 +1,4 @@
-const { User, Post, Car, Route, Op } = require("../db.js");
+const { User, Post, Car, Route, Op, Order } = require("../db.js");
 
 const postUser = async (req, res, next) => {
   try {

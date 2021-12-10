@@ -18,7 +18,7 @@ import Swal from 'sweetalert2';
 
 export default function Nav() {
   const dispatch = useDispatch();
-  const userpro = useSelector(state => state);
+  const userpro = useSelector(state => state.userpro);
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const id = isAuthenticated ? user.email : '';
   const idioma = useContext(langContext);

@@ -262,7 +262,6 @@ export default function FormCar() {
                   className="custom-file-input"
                   type="file"
                   name="image"
-                  required="required"
                   accept="image/png, image/jpeg"
                 />
               </div>
@@ -290,7 +289,6 @@ export default function FormCar() {
                   className="custom-file-input"
                   type="file"
                   name="image"
-                  required="required"
                   accept="image/png, image/jpeg"
                 />
               </label>
@@ -318,7 +316,6 @@ export default function FormCar() {
                   className="custom-file-input"
                   type="file"
                   name="image"
-                  required="required"
                   accept="image/png, image/jpeg"
                 />
               </label>
