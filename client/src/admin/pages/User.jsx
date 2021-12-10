@@ -28,21 +28,21 @@ export default function User() {
   const { user } = useAuth0();
   const { userAdmin, id } = useSelector(state => state);
   const [input, setInput] = useState({
-    age: 0,
-    name: "",
-    city: "",
-    dni: "",
     email: "",
-    facebook: "",
-    genre: "",
-    instagram: "",
-    isAdmin: "",
+    name: "",
     lastName: "",
+    genre: "",
+    age: 0,
+    dni: "",
+    street: "",
+    city: "",
+    province: "",
+    telephone: "",
+    facebook: "",
+    instagram: "",
     photo: "",
     photoDni: [],
-    province: "",
-    street: "",
-    telephone: "",
+    isAdmin: "",
   });
   const [image, setImage] = useState("");
   ;
