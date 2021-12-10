@@ -13,11 +13,11 @@ import { getUserProfile } from "../actions";
 import Loggin from "./Loggin";
 
 export default function Home() {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.userpro);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserProfile(user.email));
-  }, [dispatch, user.email, getUserProfile]);
+  }, [user.name]);
   const [id, setId] = useState("");
 
   return (

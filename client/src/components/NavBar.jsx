@@ -25,7 +25,7 @@ export default function Nav() {
 
   useEffect(() => {
     dispatch(getUserProfile(id));
-  }, [dispatch, id]);
+  }, [users.photo, users.cars && users.cars.length]);
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -40,7 +40,7 @@ export default function Nav() {
     });
     loginWithRedirect();
   }
-
+  console.log(users, 'soy navbar')
   return (
     <header className="NavBar">
       <NavLink to="/home">
@@ -69,9 +69,9 @@ export default function Nav() {
                 to={
                   !users.dni
                     ? "/register"
-                    : users.name && users.cars.length === 0
+                    : users.name && users.cars && users.cars.length === 0
                     ? "/car"
-                    : users.name && users.cars[0].patent
+                    : users.name && users.cars && users.cars[0].patent
                     ? "/route"
                     : ""
                 }

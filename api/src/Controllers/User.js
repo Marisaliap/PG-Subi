@@ -1,4 +1,4 @@
-const { User, Post, Car, Route, Op } = require("../db.js");
+const { User, Post, Car, Route, Op, Order } = require("../db.js");
 const { ClOUD_NAME, APY_KEY_CLOUD, API_CLOUD_SECRET } = process.env;
 
 const postUser = async (req, res, next) => {
@@ -46,6 +46,7 @@ const postUser = async (req, res, next) => {
         cbu
         // public_id:result.public_id,
       },
+      include: [Post, Car, Order, Route]
     });
     res.send(user);
   } catch (error) {
@@ -97,7 +98,15 @@ const getUser = async (req, res, next) => {
       //---------------------------------------------------------------
     } else if (id) {
       data = await User.findByPk(id, {
-        include: [Post, Car, Route],
+        include: [Post, Car, {
+          model: Route,
+          include: {
+            model: Order,
+            where: {
+              status: 'created'
+            }
+          }
+        }],
       });
       const calification = data.posts;
       let array = [];
