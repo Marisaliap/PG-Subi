@@ -1,5 +1,4 @@
-const { User, Post, Car, Route, Op, Order } = require("../db.js");
-const { ClOUD_NAME, APY_KEY_CLOUD, API_CLOUD_SECRET } = process.env;
+const { User, Post, Car, Route, Op } = require("../db.js");
 
 const postUser = async (req, res, next) => {
   try {
@@ -19,15 +18,13 @@ const postUser = async (req, res, next) => {
       genre,
       photo,
       photoDni,
-      cbu
+      cbu,
     } = req.body;
-    // const result= await cloudinary.v2.uploader.upload(req.file.path)
 
     let user = await User.findOrCreate({
       where: { email },
       defaults: {
         name,
-        // photo:result.url,
         photo,
         lastName,
         email,
@@ -43,10 +40,11 @@ const postUser = async (req, res, next) => {
         genre,
         calification: 0,
         photoDni,
-        cbu
+        cbu,
         // public_id:result.public_id,
       },
-      include: [Post, Car, Order, Route]
+      include: [Post, Car, Order, Route],
+      // include: [Post, Car, Route]
     });
     res.send(user);
   } catch (error) {
@@ -98,15 +96,19 @@ const getUser = async (req, res, next) => {
       //---------------------------------------------------------------
     } else if (id) {
       data = await User.findByPk(id, {
-        include: [Post, Car, {
-          model: Route,
-          include: {
-            model: Order,
-            where: {
-              status: 'created'
-            }
-          }
-        }],
+        include: [
+          Post,
+          Car,
+          {
+            model: Route,
+            include: {
+              model: Order,
+              where: {
+                status: "created",
+              },
+            },
+          },
+        ],
       });
       const calification = data.posts;
       let array = [];
@@ -132,36 +134,48 @@ const putUser = async (req, res, next) => {
   try {
     const { id } = req.params;
     const {
+      email,
+      genre,
+      name,
+      lastName,
       about,
       age,
+      dni,
       street,
       city,
       province,
       telephone,
       facebook,
       instagram,
-      email,
-      photo,
       calification,
+      photo,
+      photoDni,
       isAdmin,
       cbu,
     } = req.body;
+
     const user = await User.findByPk(id);
     user.update({
+      email,
+      name,
+      lastName,
+      genre,
       about,
       age,
+      dni,
       street,
       city,
       province,
       telephone,
       facebook,
       instagram,
-      email,
-      photo,
       calification,
+      photo,
+      photoDni,
       isAdmin,
       cbu,
     });
+
     res.send(user);
   } catch (error) {
     next(error);

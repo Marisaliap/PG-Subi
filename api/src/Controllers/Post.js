@@ -36,7 +36,7 @@ const setPost = async (req, res, next) => {
                 calification,
             },
         )
-        const users = await User.findByPk(email)
+        const users = await User.findOne({ where: { email: email } })
         await users.addPost(author);
         res.send(posts);
 

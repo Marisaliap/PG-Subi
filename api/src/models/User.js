@@ -48,7 +48,7 @@ module.exports = (sequelize) => {
       },
       telephone: {
         type: DataTypes.STRING,
-        allowNull: false,
+        
       },
       facebook: {
         type: DataTypes.STRING,
@@ -68,6 +68,7 @@ module.exports = (sequelize) => {
       },
       photoDni: {
         type: DataTypes.ARRAY(DataTypes.STRING),
+        defaultValue: [],
       },
       isAdmin: {
         type: DataTypes.BOOLEAN,

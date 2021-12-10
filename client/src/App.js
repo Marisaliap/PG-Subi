@@ -33,10 +33,13 @@ import UserProfile from "./components/UserProfile";
 /* import Topbar from "./admin/Topbar"; */
 /* import Sidebar from "./admin/Sidebar"; */
 import { Redirect } from "react-router";
+
+
 export default function App() {
-  const { user } = useSelector((state) => state);
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
+  const { userpro } = useSelector(state => state)
+  console.log(userpro, "user in app")
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -58,7 +61,7 @@ export default function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route exact path="/" component={LandingPage} />
+         <Route exact path="/" component={LandingPage} />
           <div>
             <NavBar />
             <Route path="/home" component={Home} />
@@ -85,7 +88,7 @@ export default function App() {
                         exact
                         path="/admin"
                         render={() =>
-                          user.isAdmin === true ? (
+                          userpro.isAdmin === true ? (
                             <Admin />
                           ) : (
                             <Redirect to="/home" />
