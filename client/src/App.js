@@ -30,6 +30,7 @@ import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
+import OtherPage from "./components/OtherPage"; 
 /* import Topbar from "./admin/Topbar"; */
 /* import Sidebar from "./admin/Sidebar"; */
 import { Redirect} from 'react-router';
@@ -59,7 +60,8 @@ console.log(user, "soy user de app")
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route exact path="/" component={LandingPage} />
+         <Route exact path="/" component={LandingPage} />
+         <Route path="/otherpage" component={OtherPage} />
           <div>
             <NavBar />
             <Route path="/home" component={Home} />

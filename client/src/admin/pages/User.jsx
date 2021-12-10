@@ -63,12 +63,8 @@ import {
                 <span className="userShowInfoTitle">{userAdmin.lastName}</span>
               </div>
               <div className="userShowInfo">
-                < AssignmentInd className="userShowIcon" />
-                <span className="userShowInfoTitle">{userAdmin.dni}</span>
-              </div>
-              <div className="userShowInfo">
                 <Event className="userShowIcon" />
-                <span className="userShowInfoTitle">{userAdmin.age}</span>
+                <span className="userShowInfoTitle">{userAdmin.age + " years old"}</span>
               </div>
               <div className="userShowInfo">
                 <WcOutlined className="userShowIcon" />
@@ -76,8 +72,8 @@ import {
               </div>
               <div className="userShowInfo">
                 <Home className="userShowIcon" />
-                <span className="userShowInfoTitle">{userAdmin.street + "|"}</span>
-                <span className="userShowInfoTitle">{userAdmin.city + "|"}</span>
+                <span className="userShowInfoTitle">{userAdmin.street + " |"}</span>
+                <span className="userShowInfoTitle">{userAdmin.city + " |"}</span>
                 <span className="userShowInfoTitle">{userAdmin.province}</span>
               </div>
               <div className="userShowInfo">
@@ -86,8 +82,14 @@ import {
               </div>
               <span className="userShowTitle">Account Documents</span>
               <div className="userShowInfo">
-                <PhotoCamera className="userShowIcon" />
-                <span className="userShowInfoTitle">{!userAdmin.photoDni? "" : userAdmin.photoDni.map(e => e)}</span>
+                < AssignmentInd className="userShowIcon" />
+                <span className="userShowInfoTitle">{"Id number " + userAdmin.dni}</span>
+                </div>
+                <div>
+               <img src={!userAdmin.photoDni ? "" : userAdmin.photoDni[0] === null ? "Image not found" : userAdmin.photoDni[0]} alt="" className="userShowImge" />
+               </div>
+               <div>
+               <img src={!userAdmin.photoDni ? "" : userAdmin.photoDni[1] === null ? "Image not found" : userAdmin.photoDni[1]} alt="" className="userShowImge" />
               </div>
               <div className="userShowInfo">
                 <DirectionsCar className="userShowIcon" />
@@ -117,18 +119,18 @@ import {
             <form className="userUpdateForm">
               <div className="userUpdateLeft">
                 <div className="userUpdateItem">
-                  <label>Username</label>
+                  <label>First Name</label>
                   <input
                     type="text"
-                    placeholder="annabeck99"
+                    placeholder="Name"
                     className="userUpdateInput"
                   />
                 </div>
                 <div className="userUpdateItem">
-                  <label>Full Name</label>
+                  <label>Last Name</label>
                   <input
                     type="text"
-                    placeholder="Anna Becker"
+                    placeholder="Last Name"
                     className="userUpdateInput"
                   />
                 </div>
@@ -136,7 +138,7 @@ import {
                   <label>Email</label>
                   <input
                     type="text"
-                    placeholder="annabeck99@gmail.com"
+                    placeholder="Email"
                     className="userUpdateInput"
                   />
                 </div>
@@ -144,15 +146,39 @@ import {
                   <label>Phone</label>
                   <input
                     type="text"
-                    placeholder="+1 123 456 67"
+                    placeholder="Phone"
                     className="userUpdateInput"
                   />
                 </div>
                 <div className="userUpdateItem">
-                  <label>Address</label>
+                  <label>Street and Number</label>
                   <input
                     type="text"
-                    placeholder="New York | USA"
+                    placeholder="Street and Number"
+                    className="userUpdateInput"
+                  />
+                </div>
+                <div className="userUpdateItem">
+                  <label>City</label>
+                  <input
+                    type="text"
+                    placeholder="City"
+                    className="userUpdateInput"
+                  />
+                </div>
+                <div className="userUpdateItem">
+                  <label>Province</label>
+                  <input
+                    type="text"
+                    placeholder="Province"
+                    className="userUpdateInput"
+                  />
+                </div>
+                <div className="userUpdateItem">
+                  <label>Admin Permissions</label>
+                  <input
+                    type="text"
+                    placeholder="Admin Permissions"
                     className="userUpdateInput"
                   />
                 </div>
