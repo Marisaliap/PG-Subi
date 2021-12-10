@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { postUser, getUserDetail, getAllUsers } from "../actions";
+import { postUser, getUserDetail, getUserProfile, getAllUsers } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
 import swal from "sweetalert";
@@ -189,6 +189,14 @@ export default function Registro() {
     if (Object.keys(errors).length === 0 && validateInputs() === true) {
       dispatch(postUser(input));
       let emailUsuario = input.email;
+   
+      swal({
+        title: "Good job!",
+        text: "User created correctly",
+        icon: "success",
+        button: "Aww yiss!",
+      });
+     
       setInput({
         name: "",
         lastName: "",
@@ -206,14 +214,7 @@ export default function Registro() {
         photo: "",
         photoDni: [],
       });
-
-      swal({
-        title: "Good job!",
-        text: "User created correctly",
-        icon: "success",
-        button: "Aww yiss!",
-      });
-      dispatch(getUserDetail(emailUsuario));
+    // dispatch(getUserProfile(emailUsuario));
       history.push("/home");
     } else {
       swal({

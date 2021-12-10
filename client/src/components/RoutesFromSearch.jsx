@@ -15,6 +15,7 @@ const RoutesFromSearch = () => {
   const { routeFromDb } = useSelector((state) => state);
 
   return (
+    
     <div className="RouteCardContainer">
       {routeFromDb.length > 0 ? (
         routeFromDb.map((route, i) => (
@@ -38,6 +39,7 @@ const RoutesFromSearch = () => {
               />
             </div>
           </Link>
+          
         ))
       ) : (
         <div className="mensajeRutas">
@@ -47,6 +49,7 @@ const RoutesFromSearch = () => {
           /></div>
       )}
     </div>
+    
   );
 };
 export default RoutesFromSearch;
