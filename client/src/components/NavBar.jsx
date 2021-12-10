@@ -15,14 +15,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/Login.scss";
 import swal from "sweetalert";
 
+
 export default function Nav() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.userpro);
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const id = isAuthenticated ? user.email : "";
   const idioma = useContext(langContext);
-  const { usuariosRegistrados } = useSelector((state) => state);
-
+  const { usuariosRegistrados } = useSelector(state => state);
+ 
   useEffect(() => {
     dispatch(getUserProfile(id));
   }, [users.photo, users.cars && users.cars.length]);
@@ -30,6 +31,9 @@ export default function Nav() {
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
+
+  console.log(user,"users navbar");
+  console.log(usuariosRegistrados,"usuarios registrados");
 
   function handleClick() {
     swal({
