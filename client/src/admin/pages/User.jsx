@@ -175,7 +175,7 @@ export default function User() {
         </div>
 
 
-        {/*-----------------------------< From>-------------------------  */}
+        {/*-----------------------------< Form>-------------------------  */}
         <div className="userUpdate">
           <span className="userUpdateTitle">Edit</span>
           <div className="userUpdateForm">
@@ -236,7 +236,7 @@ export default function User() {
                 />
               </div>
               <div className="userUpdateItem">
-                <label>street</label>
+                <label>Street</label>
                 <input
                  onChange={(e) => handleChange(e)}
                  type="text"
