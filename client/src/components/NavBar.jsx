@@ -42,18 +42,16 @@ console.log(user, "user user");
         title: 'Sorry',
         text: 'You need to be logged in to post a trip!',
         confirmButtonText: 'Alright',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          loginWithRedirect();
-        }
-      });
+      })
+
     } else {
       if (!userpro.dni) { 
         return new Swal({
           icon: 'warning',
           title: 'Sorry',
           text: 'You need to be registered to post a trip!',
-          confirmButtonText: 'Okay',
+          confirmButtonText: 'Register',
+          denyButtonText: `Go Back`,
         }).then((result) => {
           if (result.isConfirmed) {
             history.push('/register');

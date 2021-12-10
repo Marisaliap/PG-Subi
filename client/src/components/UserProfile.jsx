@@ -26,7 +26,9 @@ import {
 } from "react-icons/bs";
 import "../Sass/Styles/UserProfile.scss";
 import RatingStar from "./RatingStar";
-
+import { DataGrid, GridRowsProp, GridColDef  } from "@material-ui/data-grid";
+ import { Link } from 'react-router-dom';
+ 
 export default function UserProfile() {
   const userInfo = useSelector((state) => state.userpro);
   const autoInfo = useSelector((state) => state.carpro);
@@ -41,10 +43,12 @@ export default function UserProfile() {
   const [errorsCars, setErrorsCars] = useState({});
   const [errorsUser, setErrorsUser] = useState({});
 
-  useEffect(() => {
-    dispatch(getUserById(""));
-    dispatch(getUserByName("1010"));
-  }, [dispatch]);
+
+
+  // useEffect(() => {
+  //   dispatch(getUserById(""));
+  //   dispatch(getUserByName("1010"));
+  // }, [dispatch]);
 
   useEffect(() => {
     dispatch(getUserProfile(userInfo.email));
@@ -54,6 +58,7 @@ export default function UserProfile() {
 
   const [auto, setAuto] = useState({});
 
+  console.log(userInfo)
   function handleSubmitUser(e) {
     e.preventDefault();
     if (Object.keys(errorsUser).length === 0) {
@@ -249,7 +254,28 @@ export default function UserProfile() {
     return errorsCars;
   }
 
-  console.log(userInfo)
+ 
+  const rows = userInfo?.routes && userInfo.routes.map(route => {
+    return { 
+      id: route.id, 
+      Origin: route.originName, 
+      Destiny: route.destinyName,
+      Date: route.date,
+      Time: route.hours,
+      RouteId: route.id
+     }
+  })
+  
+  const columns  = [
+    { field: 'Origin', headerName: 'Origin', width: 250 },
+    { field: 'Destiny', headerName: 'Destiny', width: 250 },
+    { field: 'Date', headerName: 'Date', width: 125 },
+    { field: 'Time', headerName: 'Time', width: 125 },
+    { field: 'RouteId', headerName: 'Route Id', width: 150, renderCell: (params) => (
+      <Link to={`/route/${params.value}`}>{params.value}</Link>
+    )
+}
+  ];
   return (
     <div>
       <div className="searchUsers">
@@ -657,7 +683,11 @@ export default function UserProfile() {
               </div>
             </>
           )}
-          <div></div>
+          <div style={{ height: 300, width: '100%' }}>
+       {userInfo.routes && userInfo.routes.length > 0 &&   <DataGrid
+  rows={rows} columns={columns}
+/>}
+          </div>
         </div>
       </div>
     </div>

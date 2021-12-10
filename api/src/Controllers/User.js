@@ -102,10 +102,7 @@ const getUser = async (req, res, next) => {
           {
             model: Route,
             include: {
-              model: Order,
-              where: {
-                status: "created",
-              },
+              model: Order
             },
           },
         ],
