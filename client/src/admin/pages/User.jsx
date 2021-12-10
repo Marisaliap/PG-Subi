@@ -47,7 +47,7 @@ export default function User() {
   useEffect(() => {
     dispatch(getUserAdmin(id))
     dispatch(getUserProfile(id))
-  }, [dispatch,input]);
+  }, [dispatch]);
 
   // ------------------<handles>------------------
   const handleSubmitUser = (e) => {
@@ -84,7 +84,8 @@ export default function User() {
     );
 
     const file = await res.json();
-    setImage(file.secure_url);
+    setInput({...input,
+      photo:file.secure_url});
   };
 
   // _______________________________________________________________________________
