@@ -48,7 +48,7 @@ module.exports = (sequelize) => {
       },
       telephone: {
         type: DataTypes.STRING,
-        allowNull: false,
+        
       },
       facebook: {
         type: DataTypes.STRING,

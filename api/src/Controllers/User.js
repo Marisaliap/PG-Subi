@@ -20,7 +20,7 @@ const postUser = async (req, res, next) => {
       photo,
       photoDni,
     } = req.body;
-    
+
 
     const user = await User.findOrCreate({
       where: { email },
@@ -119,34 +119,47 @@ const putUser = async (req, res, next) => {
   try {
     const { id } = req.params;
     const {
-      about,
-      age,
-      street,
-      city,
-      province,
-      telephone,
-      facebook,
-      instagram,
       email,
-      photo,
+      genre,
+      name,
+       lastName,
+      about,
+        age,
+         dni,
+      street,
+       city,
+       province,
+      telephone,
+     facebook,
+      instagram,
       calification,
+      photo,
+      photoDni,
       isAdmin,
+
     } = req.body;
+   
     const user = await User.findByPk(id);
     user.update({
+      email,
+      name,
+       lastName,
+       genre,
       about,
-      age,
+        age,
+         dni,
       street,
-      city,
-      province,
+       city,
+       province,
       telephone,
       facebook,
-      instagram,
-      email,
-      photo,
+       instagram,
       calification,
+      photo,
+      photoDni,
       isAdmin,
     });
+    
     res.send(user);
   } catch (error) {
     next(error);
