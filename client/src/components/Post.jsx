@@ -10,17 +10,17 @@ import RatingStar from "./RatingStar.jsx";
 
 export default function Post(id) {
   const dispatch = useDispatch();
- const userpost = useSelector((state) => state.userPost);
+  const userpost = useSelector((state) => state.userPost);
   const { user, isAuthenticated } = useAuth0();
   const [errors, setErrors] = useState({});
   let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
-let ids = id.id
+  let ids = id.id;
   useEffect(() => {
     dispatch(userPost(ids));
   }, [dispatch, ids]);
 
   console.log("ids", ids);
-  console.log("ids",userpost );
+  console.log("ids", userpost);
 
   const [input, setInput] = useState({
     email: ids,
@@ -83,15 +83,16 @@ let ids = id.id
     }
   }
 
- // console.log("date", userpost[0].date);
- // console.log("author", userpost[0].author);
- // console.log("cal", userpost[0].calification);
+  // console.log("date", userpost[0].date);
+  // console.log("author", userpost[0].author);
+  // console.log("cal", userpost[0].calification);
   //console.log("des", userpost[0].description);
   return (
     <div className="Post">
       <div>
-      {userpost.length > 0 ? userpost.map((post) => (
         <div className="desContainer">
+          {userpost.length > 0
+            ? userpost.map((post) => (
                 <div className="description">
                   <div className="infodate">
                     <h6>{post.date}</h6>
@@ -100,9 +101,9 @@ let ids = id.id
                   </div>
                   <h5>{post.description}</h5>
                 </div>
-              
+              ))
+            : ""}
         </div>
-      )):""}
       </div>
       <div>
         <form
@@ -140,7 +141,7 @@ let ids = id.id
           <br />
           <div className="textarea">
             <textarea
-              placeholder="Commnet"
+              placeholder="Please tell us about your experience with this user..."
               type="text"
               name="description"
               value={input.description}

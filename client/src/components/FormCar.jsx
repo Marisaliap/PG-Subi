@@ -28,16 +28,15 @@ export default function FormCar() {
     bluecard: [],
   });
 
-
-  console.log("inputlength=>",input.bluecard.length);
-  console.log("input=>",input);
-  console.log("green=>",image);
-  console.log("blue=>",cedula);
+  console.log("inputlength=>", input.bluecard.length);
+  console.log("input=>", input);
+  console.log("green=>", image);
+  console.log("blue=>", cedula);
 
   function validate(input) {
     let errors = {};
     const numberandlettervalidate = /^[0-9a-zA-Z ]+$/;
-    const wordvalidate = /^[a-zA-Z]+$/;
+    const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     const floatvalidate = /^[0-9]*\.?[0-9]+$/;
     if (!input.patent) {
       errors.patent = "Plate is required";
@@ -123,7 +122,7 @@ export default function FormCar() {
         model: "",
         cylinder: "",
         greencard: "",
-        bluecard:[],
+        bluecard: [],
       });
       swal({
         title: "Good job!",
@@ -222,97 +221,119 @@ export default function FormCar() {
           {errors.cylinder && <p className="errorcar">{errors.cylinder}</p>}
         </div>
         <div>
-        {!input.greencard?
-          <div className="cadaLinea">
-            <p className="label">
-              Green Card:{/* <FormattedMessage
+          {!input.greencard ? (
+            <div className="cadaLinea">
+              <p className="label">
+                Green Card:
+                {/* <FormattedMessage
                 id="register.photoUser"
                 defaultMessage="Photo User*:"
               /> */}
-            </p>
-            <input
-              onChange={(e) => uploadImage(e)}
-              className="custom-file-input"
-              type="file"
-              name="image"
-              required="required"
-              accept="image/png, image/jpeg"
-            />
-          <div Style="display:none">{(input.greencard = image)}</div>
-          <p>
-            {loanding ? <img src={image} Style="height:150px" alt="" /> : ""}
-          </p>
-          </div>
-          :input.greencard?
-           <div className="cadaLinea">
-            <p className="label">
-              Blue Card #1:{/* <FormattedMessage
+              </p>
+              <input
+                onChange={(e) => uploadImage(e)}
+                className="custom-file-input"
+                type="file"
+                name="image"
+                required="required"
+                accept="image/png, image/jpeg"
+              />
+              <div Style="display:none">{(input.greencard = image)}</div>
+              <p>
+                {loanding ? (
+                  <img src={image} Style="height:150px" alt="" />
+                ) : (
+                  ""
+                )}
+              </p>
+            </div>
+          ) : input.greencard ? (
+            <div className="cadaLinea">
+              <p className="label">
+                Blue Card #1:
+                {/* <FormattedMessage
                 id="register.idFront"
                 defaultMessage="ID or passport Front*:"
               /> */}
-            </p>
-            <div className="cargaImagen">
-              <input
-                onChange={(e) => uploadImage2(e)}
-                className="custom-file-input"
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
+              </p>
+              <div className="cargaImagen">
+                <input
+                  onChange={(e) => uploadImage2(e)}
+                  className="custom-file-input"
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
+              <div Style="display:none">{(input.bluecard = cedula)}</div>
+              <p>
+                {loanding ? (
+                  <img src={cedula[0]} Style="height:150px" alt="" />
+                ) : (
+                  ""
+                )}
+              </p>
             </div>
-          <div Style="display:none">{(input.bluecard = cedula)}</div>
-          <p>
-            {loanding ? <img src={cedula[0]} Style="height:150px" alt="" /> : ""}
-          </p>
-          </div>
-        :input.bluecard.length===1?
-          <div className="cadaLinea">
-            <p className="label">
-              Blue Card #2:{/* <FormattedMessage
+          ) : input.bluecard.length === 1 ? (
+            <div className="cadaLinea">
+              <p className="label">
+                Blue Card #2:
+                {/* <FormattedMessage
                 id="register.idBack"
                 defaultMessage="ID or passport Back*:"
               /> */}
-            </p>
-            <label className="cargaImagen">
-              <input
-                onChange={(e) => uploadImage2(e)}
-                className="custom-file-input"
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
-            </label>
-          <div Style="display:none">{(input.bluecard = cedula)}</div>
-          <p>
-            {loanding ? <img src={cedula[1]} Style="height:150px" alt="" /> : ""}
-          </p>
-          </div>
-          :input.bluecard[1]?
-          <div className="cadaLinea">
-            <p className="label">
-              Blue Card #3:{/* <FormattedMessage
+              </p>
+              <label className="cargaImagen">
+                <input
+                  onChange={(e) => uploadImage2(e)}
+                  className="custom-file-input"
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
+              </label>
+              <div Style="display:none">{(input.bluecard = cedula)}</div>
+              <p>
+                {loanding ? (
+                  <img src={cedula[1]} Style="height:150px" alt="" />
+                ) : (
+                  ""
+                )}
+              </p>
+            </div>
+          ) : input.bluecard[1] ? (
+            <div className="cadaLinea">
+              <p className="label">
+                Blue Card #3:
+                {/* <FormattedMessage
                 id="register.idBack"
                 defaultMessage="ID or passport Back*:"
               /> */}
-            </p>
-            <label className="cargaImagen">
-              <input
-                onChange={(e) => uploadImage2(e)}
-                className="custom-file-input"
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
-            </label>
-          <div Style="display:none">{(input.bluecard = cedula)}</div>
-          <p>
-            {loanding ? <img src={cedula[2]} Style="height:150px" alt="" /> : ""}
-          </p>
-          </div>
-          :""}
+              </p>
+              <label className="cargaImagen">
+                <input
+                  onChange={(e) => uploadImage2(e)}
+                  className="custom-file-input"
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
+              </label>
+              <div Style="display:none">{(input.bluecard = cedula)}</div>
+              <p>
+                {loanding ? (
+                  <img src={cedula[2]} Style="height:150px" alt="" />
+                ) : (
+                  ""
+                )}
+              </p>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
 
         <button className="button" type="submit">
