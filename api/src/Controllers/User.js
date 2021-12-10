@@ -164,7 +164,6 @@ const putUser = async (req, res, next) => {
   try {
     const { id } = req.params;
     const {
-      email,
       genre,
       name,
       lastName,
@@ -186,7 +185,6 @@ const putUser = async (req, res, next) => {
 
     const user = await User.findByPk(id);
     user.update({
-      email,
       name,
       lastName,
       genre,
