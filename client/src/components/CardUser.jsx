@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Sass/Styles/CardUser.scss";
 import { BsGenderFemale, BsGenderMale, BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUserDetail } from "../actions";
+import RatingStar from "./RatingStar";
 
 export default function CardUser({
   photo,
@@ -17,7 +18,7 @@ export default function CardUser({
 }) {
 
   const dispatch = useDispatch();
-
+  useEffect(() => dispatch(getUserDetail(email)), [dispatch])
   function genderIcon(gender) {
    
 
@@ -31,7 +32,7 @@ export default function CardUser({
   return (
     <>
       <div className="CardUser" {...props}>
-        <Link to={`/user/${email}`} onClick={()=>dispatch(getUserDetail(email))}>
+      
           <img src={photo} alt="" />
           <h5>
             {name} {lastName}
@@ -39,9 +40,11 @@ export default function CardUser({
           <h5>{age}</h5>
           <h5>{genderIcon(genre)}</h5>
           <h5>
-            {calification}/5 <BsStarFill className="icon" />
+            <RatingStar
+            Rating={calification}
+            />
           </h5>
-        </Link>
+      
       </div>
     </>
   );

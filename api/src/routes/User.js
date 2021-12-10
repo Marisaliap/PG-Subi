@@ -11,6 +11,6 @@ router.get('/',getUser);
 router.get('/:id',getUser);
 router.post('/add',postUser)
 router.put('/:id',putUser)
-router.put('/rating/:id',putUserCal)
+router.put('/rating/:id', putUserCal)
 router.delete('/:id', deleteUser)
 module.exports = router

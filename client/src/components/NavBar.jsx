@@ -21,7 +21,7 @@ export default function Nav() {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const id = isAuthenticated ? user.email : '';
   const idioma = useContext(langContext);
-  const  {usuariosRegistrados}  = useSelector(state => state);
+  const  usuariosRegistrados = useSelector(state => state.usuariosRegistrados);
   const history = useHistory();
 
 console.log(userpro,"userpro ahola");
@@ -78,9 +78,8 @@ console.log(user, "user user");
         history.push('/route');
     }
 
-    // (!userpro.dni ? history.push('/register') : userpro.name && userpro.cars.length === 0 ? history.push('/car') : userpro.name && userpro.cars[0].patent ? history.push('/route'))
+    // (!users.dni ? history.push('/register') : users.name && users.cars.length === 0 ? history.push('/car') : users.name && users.cars[0].patent ? history.push('/route'))
   }
-  
   return (
     <header className="NavBar">
       <NavLink to="/home">
@@ -99,6 +98,41 @@ console.log(user, "user user");
                 />
               </h3>
             </button>
+           {/*  {!isAuthenticated ? (
+              <>
+                <button
+                  className="emulaPost emulador"
+                  onClick={() => handleClick()}
+                >
+                  <BsPlusCircle className="BsPlusCircle" />
+                  <FormattedMessage
+                    id="navBar.post"
+                    defaultMessage="Post a Trip"
+                  />
+                </button>
+              </>
+            ) : (
+              <NavLink
+                className="postNavLink"
+                to={
+                  !userpro.dni
+                    ? "/register"
+                    : userpro.name && userpro.cars.length === 0
+                    ? "/car"
+                    : userpro.name && userpro.cars[0].patent
+                    ? "/route"
+                    : ""
+                }
+              >
+                <BsPlusCircle className="BsPlusCircle" />
+                <h3>
+                  <FormattedMessage
+                    id="navBar.post"
+                    defaultMessage="Post a Trip"
+                  />
+                </h3>
+              </NavLink>
+            )} */}
           </li>
 
           <li className="barrita">|</li>

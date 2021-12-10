@@ -61,7 +61,7 @@ export default function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route exact path="/" component={LandingPage} />
+         <Route exact path="/" component={LandingPage} />
           <div>
             <NavBar />
             <Route path="/home" component={Home} />

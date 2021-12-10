@@ -2,14 +2,15 @@ const { Post, User } = require('../db.js');
 
 const getPost = async (req, res, next) => {
     try {
-        const { id } = req.query;
-        var posts
+        const { id } = req.params;
+        let posts
         if (id) {
-            posts = await Post.findByPk(id);
+            posts = await Post.findAll({where:{userEmail: id}});
             res.send(posts)
+        }else{
+            posts = await Post.findAll();
+            return res.send(posts);
         }
-        posts = await Post.findAll();
-        return res.send(posts);
 
     } catch (error) {
         next(error);

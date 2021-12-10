@@ -89,7 +89,7 @@ function rootReducer(state = initialState, action) {
     case "POST_USER":
       return {
         ...state,
-        user: action.payload,
+        userpro: action.payload[0],
       };
     case "POST_RECLAMOSYMEJORAS":
       return {

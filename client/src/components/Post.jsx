@@ -1,12 +1,13 @@
 import { React, useState } from "react";
 //import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { userPost, setPost } from "../actions/index";
+import { userPost, setPost, putRatingUser } from "../actions/index";
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 import "../Sass/Styles/Post.scss";
 import RatingStar from "./RatingStar.jsx";
+
 
 export default function Post(id) {
   const dispatch = useDispatch();
@@ -15,12 +16,14 @@ export default function Post(id) {
   const [errors, setErrors] = useState({});
   let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
   let ids = id.id;
+
+
   useEffect(() => {
     dispatch(userPost(ids));
   }, [dispatch, ids]);
 
   console.log("ids", ids);
-  console.log("ids", userpost);
+  console.log("post", userpost);
 
   const [input, setInput] = useState({
     email: ids,
@@ -39,9 +42,9 @@ export default function Post(id) {
     }
     return errors;
   }
-  console.log("ids", ids);
+  console.log("id", id);
   //console.log("userinfo", userInfo);
-  console.log("input", input);
+  //console.log("input", input);
 
   function handleChange(e) {
     setInput({
@@ -67,6 +70,7 @@ export default function Post(id) {
         description: "",
         calification: "",
       });
+      dispatch(putRatingUser(ids))
       swal({
         title: "Good job!",
         text: "Post created correctly",

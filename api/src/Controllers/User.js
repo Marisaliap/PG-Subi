@@ -1,5 +1,4 @@
-const { User, Post, Car, Route, Op } = require("../db.js");
-
+const { User, Post, Car, Route, Op, Order } = require("../db.js");
 
 const postUser = async (req, res, next) => {
   try {
@@ -19,10 +18,10 @@ const postUser = async (req, res, next) => {
       genre,
       photo,
       photoDni,
+      cbu,
     } = req.body;
 
-
-    const user = await User.findOrCreate({
+    let user = await User.findOrCreate({
       where: { email },
       defaults: {
         name,
@@ -41,7 +40,11 @@ const postUser = async (req, res, next) => {
         genre,
         calification: 0,
         photoDni,
+        cbu,
+        // public_id:result.public_id,
       },
+      include: [Post, Car, Order, Route],
+      // include: [Post, Car, Route]
     });
     res.send(user);
   } catch (error) {
@@ -93,7 +96,19 @@ const getUser = async (req, res, next) => {
       //---------------------------------------------------------------
     } else if (id) {
       data = await User.findByPk(id, {
-        include: [Post, Car, Route],
+        include: [
+          Post,
+          Car,
+          {
+            model: Route,
+            include: {
+              model: Order,
+              where: {
+                status: "created",
+              },
+            },
+          },
+        ],
       });
       /*const calification = data.posts;
       let array = [];
@@ -117,6 +132,8 @@ const getUser = async (req, res, next) => {
 
 const putUserCal = async (req, res, next) => {
   try {
+
+    const { id } = req.params;
 
     data = await User.findByPk(id, {
       include: [Post],
@@ -153,15 +170,15 @@ const putUser = async (req, res, next) => {
       email,
       genre,
       name,
-       lastName,
+      lastName,
       about,
-        age,
-         dni,
+      age,
+      dni,
       street,
-       city,
-       province,
+      city,
+      province,
       telephone,
-     facebook,
+      facebook,
       instagram,
       calification,
       photo,
@@ -169,29 +186,29 @@ const putUser = async (req, res, next) => {
       isAdmin,
       cbu,
     } = req.body;
-   
+
     const user = await User.findByPk(id);
     user.update({
       email,
       name,
-       lastName,
-       genre,
+      lastName,
+      genre,
       about,
-        age,
-         dni,
+      age,
+      dni,
       street,
-       city,
-       province,
+      city,
+      province,
       telephone,
       facebook,
-       instagram,
+      instagram,
       calification,
       photo,
       photoDni,
       isAdmin,
       cbu,
     });
-    
+
     res.send(user);
   } catch (error) {
     next(error);

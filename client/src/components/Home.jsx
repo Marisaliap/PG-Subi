@@ -16,12 +16,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Home() {
   const { user } = useAuth0();
-  const {userpro} = useSelector(state => state);
+  const userpro = useSelector(state => state.userpro);
   const dispatch = useDispatch();
 
   useEffect(() => {
    dispatch(getUserProfile(userpro.email));
   }, []);
+
   useEffect(() => {
    dispatch(getAllUsers());
   }, []);

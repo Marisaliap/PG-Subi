@@ -25,6 +25,8 @@ export default function User() {
   const dispatch = useDispatch();
   const { user } = useAuth0();
   const { userAdmin, id } = useSelector(state => state);
+
+
   const [input, setInput] = useState({
     email:userAdmin.email,
     name: userAdmin.name,
@@ -41,6 +43,7 @@ export default function User() {
     photo: userAdmin.photo,
     photoDni: userAdmin.photoDni,
     isAdmin: userAdmin.isAdmin,
+    car: userAdmin.cars
   });
   const [image, setImage] = useState("");
   ;
@@ -59,7 +62,7 @@ export default function User() {
 
   }
 
-
+  console.log(userAdmin)
   const handleChange = (e) => {
     setInput({
       ...input,
@@ -109,7 +112,7 @@ export default function User() {
             />
             <div className="userShowTopTitle">
               <span className="userShowUsername">{userAdmin.name}</span>
-              <span className="userShowUserTitle">{userAdmin?.cars?.length > 0 ? "Driver" : "Passenger"}</span>
+              {/* <span className="userShowUserTitle">{userAdmin?.cars?.length > 0 ? "Driver" : "Passenger"}</span> */}
             </div>
           </div>
           <div className="userShowBottom">
@@ -150,7 +153,7 @@ export default function User() {
             </div>
             <div className="userShowInfo">
               <DirectionsCar className="userShowIcon" />
-              <span className="userShowInfoTitle">{!userAdmin.cars ? "" : userAdmin.cars.map(e => e)}</span>
+              {/* <span className="userShowInfoTitle">{!userAdmin.cars ? "" : userAdmin.cars[0]}</span> */}
             </div>
             <span className="userShowTitle">Contact Details</span>
             <div className="userShowInfo">

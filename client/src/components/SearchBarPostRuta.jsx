@@ -311,6 +311,7 @@ export default function SearchBar() {
                     textDecoration: " none",
                     width: "60px",
                     color: "white",
+                    padding:'60px'
                   }}
                 >
                   <FormattedMessage
