@@ -27,6 +27,25 @@
 
   .searchbar {
     width: 30vw;
+    height: 20px;
+    border: 2px solid $text;
+    padding: 0.8rem;
+    margin-left: 1rem;
+    border-radius: 9999px;
+    border-color: $buttonColor;
+    font-family: inherit;
+    font-weight: bold;
+    color: $text;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    transition: box-shadow 0.5s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
   }
 
   .passengers {
@@ -77,28 +96,7 @@
   .postRouteForm {
     padding: 0.8rem;
 
-    input {
-      height: 20px;
-      width: 300px;
-      border: 2px solid $text;
-      padding: 0.8rem;
-      margin-left: 1rem;
-      border-radius: 9999px;
-      border-color: $buttonColor;
-      font-family: inherit;
-      font-weight: bold;
-      color: $text;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-      transition: box-shadow 0.5s ease-in-out;
-
-      &:hover {
-        cursor: pointer;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-          0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      }
-    }
+    
     p {
       color: #ef4565;
       font-weight: bold;

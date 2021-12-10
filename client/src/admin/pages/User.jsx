@@ -19,21 +19,34 @@ import {
 import { Link } from "react-router-dom";
 import "../../styles/User.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { editUser, getUserProfile } from "../../actions";
+import { editUser, getUserProfile, getAllUsers } from "../../actions";
 
 export default function User() {
   const dispatch = useDispatch();
   const { user } = useAuth0();
-  const { userAdmin, id } = useSelector(state => state);
-
+  const { carAdmin, userAdmin, id } = useSelector(state => state);
+  var usuariosRegistrados = useSelector((state) => state.usuariosRegistrados);
+  let booleanDNI;
+  //----------------------------------<stados>----------------------------------
+  const [errorsCars, setErrorsCars] = useState({});
+  const [errorsUser, setErrorsUser] = useState({});
+  const [image, setImage] = useState("")
+  const [dni, setDni] = useState([])
+  const [auto, setAuto] = useState({
+    brand: carAdmin.brand,
+    model: carAdmin.model,
+    patent: carAdmin.patent,
+    color: carAdmin.color,
+    cylinder: carAdmin.cylinder
+  });
 
   const [input, setInput] = useState({
-    email:userAdmin.email,
+    email: userAdmin.email,
     name: userAdmin.name,
     lastName: userAdmin.lastName,
     genre: userAdmin.genre,
     age: userAdmin.age,
-    dni:userAdmin.dni,
+    dni: userAdmin.dni,
     street: userAdmin.street,
     city: userAdmin.city,
     province: userAdmin.province,
@@ -45,37 +58,137 @@ export default function User() {
     isAdmin: userAdmin.isAdmin,
     car: userAdmin.cars
   });
-  const [image, setImage] = useState("");
+  // ___________________________________________________________________________________
+
+  // -------------------------------------< useEffect >----------------------------------
   ;
   useEffect(() => {
-    dispatch(getUserAdmin(id))
-    dispatch(getUserProfile(id))
+    dispatch(getUserAdmin(id));
+    dispatch(getUserProfile(id));
+    dispatch(getAllUsers());
   }, [dispatch]);
+  // ___________________________________________________________________________________
+
+  // ------------------------<validations errors>------------------------
+  function validateuser(input) {
+    booleanDNI = true;
+    for (let i = 0; i < usuariosRegistrados.length; i++) {
+      // if (usuariosRegistrados[i].dni.toString() === input.dni) {
+      if (usuariosRegistrados[i].dni === input.dni) {
+        booleanDNI = false;
+      }
+    }
+    let errors = {};
+    const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
+    const phonevalidate = /^[0-9]+$/;
+    if (!input.name) {
+      errors.name = 'Name is required';
+    } else if (wordvalidate.test(input.name) === false) {
+      errors.name = 'Invalid Name: No Symbols Allowed';
+    } else if (!input.lastName) {
+      errors.lastName = 'Last name is required';
+    } else if (wordvalidate.test(input.lastName) === false) {
+      errors.lastName = 'Invalid Last Name: No Symbols Allowed';
+    } else if (!input.dni) {
+      errors.dni = 'DNI is required';
+    } else if (booleanDNI === false) {
+      errors.dni = 'DNI already exists';
+    } else if (!input.age) {
+      errors.age = 'Age required';
+    } else if (input.age < 18) {
+      errors.age = 'You must be 18 years old or older to register';
+    } else if (!input.telephone) {
+      errorsUser.telephone = 'Telephone is required';
+    } else if (phonevalidate.test(input.telephone) === false) {
+      errorsUser.telephone = 'Invalid Phone: Only Numbers Allowed';
+    } else if (!input.street) {
+      errors.street = 'Street is required';
+    } else if (!input.city) {
+      errors.city = 'City is required';
+    } else if (wordvalidate.test(input.city) === false) {
+      errors.city = 'Invalid City: No Symbols Allowed';
+    } else if (!input.province) {
+      errors.province = 'Province is required';
+    } else if (wordvalidate.test(input.province) === false) {
+      errors.province = 'Invalid Province: No Symbols Allowed';
+    } else if (!input.about) {
+      errors.about = 'About is required';
+    }
+    return errors;
+  }
+  // ----------------------------------------------<errors cars>----------------------------------
+  function validatecars(input) {
+    const numberandlettervalidate = /^[0-9a-zA-Z ]+$/;
+    const wordvalidate = /^[a-zA-Z]+$/;
+    const floatvalidate = /^[0-9]*\.?[0-9]+$/;
+    let errorsCars = {};
+    if (!input.brand) {
+      errorsCars.brand = 'Brand is required';
+    } else if (wordvalidate.test(input.brand) === false) {
+      errorsCars.brand = 'Invalid Brand: No Symbols Allowed';
+    } else if (!input.model) {
+      errorsCars.model = 'Model is required';
+    } else if (!input.patent) {
+      errorsCars.patent = 'Plate is required';
+    } else if (numberandlettervalidate.test(input.patent) === false) {
+      errorsCars.patent = 'Invalid Plate';
+    } else if (!input.color) {
+      errorsCars.color = 'Color is required';
+    } else if (wordvalidate.test(input.color) === false) {
+      errorsCars.color = 'Invalid Color: No Symbols Allowed';
+    } else if (!input.cylinder) {
+      errorsCars.cylinder = 'Cylinder is required';
+    } else if (floatvalidate.test(input.cylinder) === false) {
+      errorsCars.cylinder = 'Invalid Cylinder: No Symbols Allowed';
+    }
+    return errorsCars;
+  }
+  // _____________________________________________________________________
 
   // ------------------<handles>------------------
   const handleSubmitUser = (e) => {
     e.preventDefault();
-
+    setDni([])
+    setImage('');
     dispatch(editUser(id, input));
     dispatch(getUserProfile(id));
     dispatch(getUserAdmin(id))
-
   }
+  // const handleSubmitPhoto=(e)=> {
+  //   e.preventDefault();
+  //   setImage('');
+  //   dispatch(editUser(id, input));
+  // }
 
-  console.log(userAdmin)
-  const handleChange = (e) => {
+  function handleChange(e) {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
+    setAuto({
+      ...auto,
+      [e.target.name]: e.target.value,
+    });
+    setErrorsCars(
+      validatecars({
+        ...auto,
+        [e.target.name]: e.target.value,
+      })
+    );
+    setErrorsUser(
+      validateuser({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
   }
-  console.log(input,"input hola")
+
 
   const uploadImage = async (e) => {
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
-    data.append("upload_preset", "EditPhotoUser");
+    data.append("upload_preset", "photoAdmin");
 
 
     const res = await fetch(
@@ -87,22 +200,39 @@ export default function User() {
     );
 
     const file = await res.json();
-    setInput({...input,
-      photo:file.secure_url});
+    setImage(file.secure_url);
+  };
+  const uploadImage2 = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "dniAdmin");
+
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    setDni([...dni, file.secure_url]);
   };
 
   // _______________________________________________________________________________
 
 
   return (
-    <div className="user">
+    <div className="userAdmin">
       <div className="userTitleContainer">
         <h1 className="userTitle">Edit User</h1>
         <Link to="/admin/newUser">
           <button className="userAddButton">Create</button>
         </Link>
       </div>
-      <div className="userContainer">
+      <div className="userContainerAdmin">
         <div className="userShow">
           <div className="userShowTop">
             <img
@@ -148,8 +278,7 @@ export default function User() {
             <div className="userShowInfo">
               <PhotoCamera className="userShowIcon" />
               {!userAdmin.photoDni ? "" : userAdmin.photoDni.map(e => <img src={e} alt="" className="userShowImge" />)}
-              {/* <img src ={!userAdmin.photoDni? "" : userAdmin.photoDni[0]}className="userShowImge" />
-              <img src ={!userAdmin.photoDni? "" : userAdmin.photoDni[1]} className="userShowImge" /> */}
+
             </div>
             <div className="userShowInfo">
               <DirectionsCar className="userShowIcon" />
@@ -184,67 +313,51 @@ export default function User() {
               <div className="userUpdateItem">
                 <label>Name</label>
                 <input
-              onChange={(e) => handleChange(e)}
-              type="text"
-              name="name"
-             placeholder={userAdmin.name}
-              value={input.name}
-              className="userUpdateInput"
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="name"
+                  placeholder={userAdmin.name}
+                  value={input.name}
+                  className="userUpdateInput"
                 />
               </div>
 
               <div className="userUpdateItem">
                 <label>LastName</label>
                 <input
-                 onChange={(e) => handleChange(e)}
-                 type="text"
-                 name="lastName"
-                placeholder={userAdmin.lastName}
-                 value={input.lastName}
-                 className="userUpdateInput"
-                />
-              </div>
-
-              <div className="userUpdateItem">
-                <label>Email</label>
-                <input
                   onChange={(e) => handleChange(e)}
                   type="text"
-                  name="email"
-                 placeholder={userAdmin.email}
-                  value={input.email}
+                  name="lastName"
+                  placeholder={userAdmin.lastName}
+                  value={input.lastName}
                   className="userUpdateInput"
-
                 />
-                {/* <input
-                  onChange={(e) => handleChange(e)}
-                  placeholder={userAdmin.email}
-                  value={input.email}
-                  className="userUpdateInput"
-                /> */}
+
+                {errorsUser.lastName && (
+                  <p className="errorcar">{errorsUser.lastName}</p>
+                )}
+
               </div>
-
-
               <div className="userUpdateItem">
                 <label>Phone</label>
                 <input
-                onChange={(e) => handleChange(e)}
-                type="text"
-                name="telephone"
-               placeholder={userAdmin.telephone}
-                value={input.telephone}
-                className="userUpdateInput"
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="telephone"
+                  placeholder={userAdmin.telephone}
+                  value={input.telephone}
+                  className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
                 <label>street</label>
                 <input
-                 onChange={(e) => handleChange(e)}
-                 type="text"
-                 name="street"
-                placeholder={userAdmin.street}
-                 value={input.street}
-                 className="userUpdateInput"
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="street"
+                  placeholder={userAdmin.street}
+                  value={input.street}
+                  className="userUpdateInput"
                 />
 
               </div>
@@ -254,33 +367,33 @@ export default function User() {
                   onChange={(e) => handleChange(e)}
                   type="text"
                   name="isAdmin"
-                 placeholder={userAdmin.isAdmin===true?"true":"false"}
+                  placeholder={userAdmin.isAdmin === true ? "true" : "false"}
                   value={input.isAdmin}
                   className="userUpdateInput"
                 />
               </div>
-            </div>
-            <div className="userUpdateLeft">
+
+
               <div className="userUpdateItem">
                 <label>City</label>
                 <input
-                onChange={(e) => handleChange(e)}
-                type="text"
-                name="city"
-               placeholder={userAdmin.city}
-                value={input.city}
-                className="userUpdateInput"
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="city"
+                  placeholder={userAdmin.city}
+                  value={input.city}
+                  className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Genre</label>
                 <input
-                 onChange={(e) => handleChange(e)}
-                 type="text"
-                 name="genre"
-                placeholder={userAdmin.genre}
-                 value={input.genre}
-                 className="userUpdateInput"
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="genre"
+                  placeholder={userAdmin.genre}
+                  value={input.genre}
+                  className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
@@ -289,7 +402,7 @@ export default function User() {
                   onChange={(e) => handleChange(e)}
                   type="text"
                   name="instagram"
-                 placeholder={userAdmin.instagram}
+                  placeholder={userAdmin.instagram}
                   value={input.instagram}
                   className="userUpdateInput"
                 />
@@ -297,57 +410,131 @@ export default function User() {
               <div className="userUpdateItem">
                 <label>Facebook</label>
                 <input
-                   onChange={(e) => handleChange(e)}
-                   type="text"
-                   name="facebook"
-                   placeholder={userAdmin.facebook}
-                   value={input.facebook}
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="facebook"
+                  placeholder={userAdmin.facebook}
+                  value={input.facebook}
                   className="userUpdateInput"
                 />
               </div>
-              
+
               <div className="userUpdateItem">
                 <label>Province</label>
                 <input
-                 onChange={(e) => handleChange(e)}
-                 type="text"
-                 name="province"
-                placeholder={userAdmin.province}
-                 value={input.province}
-                 className="userUpdateInput"
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="province"
+                  placeholder={userAdmin.province}
+                  value={input.province}
+                  className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
                 <label>DNI</label>
                 <input
-                onChange={(e) => handleChange(e)}
-                type="number"
-                name="dni"
-               placeholder={userAdmin.dni}
-                value={input.dni}
-                className="userUpdateInput"
+                  onChange={(e) => handleChange(e)}
+                  type="number"
+                  name="dni"
+                  placeholder={userAdmin.dni}
+                  value={input.dni}
+                  className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Age</label>
                 <input
-               onChange={(e) => handleChange(e)}
-               type="number"
-               name="age"
-              placeholder={userAdmin.age}
-               value={input.age}
-               className="userUpdateInput"
-                />
-                {/* <input
-                  onChange={handleChange}
-                  type="text"
-                  name="city"
+                  onChange={(e) => handleChange(e)}
+                  type="number"
+                  name="age"
+                  placeholder={userAdmin.age}
                   value={input.age}
                   className="userUpdateInput"
-                /> */}
+                />
               </div>
 
             </div>
+            {/* ----------------------------<container center>------------------------ */}
+            <div className="userUpdateCenter">
+              <div className="userUpdateItem">
+                <label>Brand</label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="brand"
+                  placeholder={carAdmin.brand}
+                  className="userUpdateInput"
+                  value={auto.brand}
+                />
+                {errorsCars.brand && (
+                  <p className="errorcar">{errorsCars.brand}</p>
+                )}
+              </div>
+
+              <div className="userUpdateItem">
+                <label>Model</label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="brand"
+                  placeholder={carAdmin.brand}
+                  className="userUpdateInput"
+                  value={auto.brand}
+                />
+                {errorsCars.brand && (
+                  <p className="errorcar">{errorsCars.brand}</p>
+                )}
+              </div>
+
+              <div className="userUpdateItem">
+                <label>Plate</label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="brand"
+                  placeholder={carAdmin.brand}
+                  className="userUpdateInput"
+                  value={auto.brand}
+                />
+                {errorsCars.brand && (
+                  <p className="errorcar">{errorsCars.brand}</p>
+                )}
+              </div>
+
+              <div className="userUpdateItem">
+                <label>Color</label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="brand"
+                  placeholder={carAdmin.brand}
+                  className="userUpdateInput"
+                  value={auto.brand}
+                />
+                {errorsCars.brand && (
+                  <p className="errorcar">{errorsCars.brand}</p>
+                )}
+              </div>
+              <div className="userUpdateItem">
+                <label>Cylinder</label>
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="text"
+                  name="brand"
+                  placeholder={carAdmin.brand}
+                  className="userUpdateInput"
+                  value={auto.brand}
+                />
+                {errorsCars.brand && (
+                  <p className="errorcar">{errorsCars.brand}</p>
+                )}
+              </div>
+
+
+
+
+            </div>
+            {/* ______________________________________________________________________ */}
             <div className="userUpdateRight">
               <div className="userUpdateUpload">
                 <img
@@ -355,22 +542,37 @@ export default function User() {
                   src={userAdmin.photo}
                   alt=""
                 />
-                <div> <input
-                  onChange={(e) => uploadImage(e)}
-                  className="userUpdateInput"
-                  type="file"
-                  name="photo"
-                  value={input.photo}
-                  accept="image/png, image/jpeg"
-                />
+                <div>
+                  <input
+                    onChange={(e) => uploadImage(e)}
+                    className="userUpdateInput"
+                    type="file"
+                    name="photo"
+                    value={input.photo}
+                    accept="image/png, image/jpeg"
+                  />
                 </div>
-                <label htmlFor="file">
+                <div className="userUpdateUpload">
+                  {!userAdmin.photoDni ? "" : userAdmin.photoDni.map(e => <img src={e} alt="" className="userUpdateImg" />)}
+
+                  <div>
+                    <input
+                      onChange={(e) => uploadImage(e)}
+                      className="userUpdateInput"
+                      type="file"
+                      name="photo"
+                      value={input.photo}
+                      accept="image/png, image/jpeg"
+                    />
+                  </div>
+                  {/* <div Style="display:none">{(input.photo = image)}</div> */}
+                </div>
+                {/* <label htmlFor="file">
                   <Publish className="userUpdateIcon" />
-                </label>
+                </label> */}
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
               <button onClick={(e) => handleSubmitUser(e)} className="userUpdateButton">Update</button>
-              {/* <button className="userUpdateButton">Update</button> */}
             </div>
           </div>
         </div>

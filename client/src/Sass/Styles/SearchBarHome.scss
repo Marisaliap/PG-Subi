@@ -6,9 +6,6 @@
   height: 20vh;
   margin-bottom: 5rem;
 
-  .searchbar {
-    width: 20vw;
-  }
 
   .pesejeres {
     display: flex;
@@ -41,9 +38,9 @@
     display: flex;
     align-items: baseline;
 
-    input {
+    .searchbar {
       height: 20px;
-      width: 200px;
+      width: 20vw;
       border: 2px solid $text;
       padding: 0.8rem;
       margin-left: 1rem;

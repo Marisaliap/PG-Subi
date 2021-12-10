@@ -19,7 +19,6 @@ import {
   BsGenderMale,
   BsInstagram,
   BsFacebook,
-  BsStarFill,
   BsMap,
   BsEnvelope,
   BsInfoSquareFill,
@@ -249,7 +248,6 @@ export default function UserProfile() {
     return errorsCars;
   }
 
-  console.log(userInfo)
   return (
     <div>
       <div className="searchUsers">
