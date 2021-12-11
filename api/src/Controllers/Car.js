@@ -12,7 +12,7 @@ const getCar = async (req, res, next) => {
 
 const postCar = async (req, res, next) => {
   try {
-    const { userEmail, patent, brand, model, cylinder, color, greencard, bluecard } = req.body;
+    const { idUser, patent, brand, model, cylinder, color, greencard, bluecard } = req.body;
 
     let car = await Car.create({ patent, brand, model, cylinder, color, greencard, bluecard });
     const user = await User.findByPk(idUser);
