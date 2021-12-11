@@ -4,10 +4,11 @@ import "../../styles/UserList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import User2 from "./Users2"
 import { deleteUser, getAllUsers, getId, getUserAdmin,getUserDetail } from "../../actions";
 
-export default function UserList() {
-  const { usuariosRegistrados } = useSelector(state => state)
+export default function UserList(props) {
+  const { usuariosRegistrados,userAdmin } = useSelector(state => state)
   var filtrados = usuariosRegistrados.map(e => 
     ({ 
       id: e.email,
@@ -21,7 +22,26 @@ export default function UserList() {
 
  const [data, setData] = useState(filtrados); 
   const dispatch = useDispatch();
-
+  // <User2
+  // email={userAdmin.email}
+  //       name={userAdmin.name}
+  //       lastName={userAdmin.lastName}
+  //       genre={userAdmin.genre}
+  //       age={userAdmin.age}
+  //       dni={userAdmin.dni}
+  //       street={userAdmin.street}
+  //       city={userAdmin.city}
+  //       province={userAdmin.province}
+  //       telephone={userAdmin.telephone}
+  //       facebook={userAdmin.facebook}
+  //       instagram={userAdmin.instagram}
+  //       photo={userAdmin.photo}
+  //       photoDni={userAdmin.photoDni}
+  //       isAdmin={userAdmin.isAdmin}
+  //       car={userAdmin.cars}
+  // />
+  
+// ---------------------------------<useEffect>---------------------------------
   useEffect(() => {
     dispatch(getAllUsers());
   }, [data]); 
@@ -29,11 +49,11 @@ export default function UserList() {
   useEffect((id) => {
     dispatch(getUserAdmin(id));
     dispatch(getUserDetail(id));
-  }, []); 
+  }, [dispatch]); 
 
 
   const handleDelete = (id) => {
-    console.log(id, "soy id")
+  
     dispatch(deleteUser(id))
     setData(data.filter((item) => item.id !== id))
   }

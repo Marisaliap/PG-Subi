@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from "./Sidebar"; 
 import Topbar from "./Topbar"; 
-// import User from "../admin/pages/User"
+// import User from "./pages/Users";
 import User2 from "./pages/Users2"
 import UserDetails from "../components/UserDetails";
 import Dashboard from "../admin/pages/Dashboard";
@@ -21,9 +21,9 @@ export default function Admin() {
         <Switch>
           <Route exact path="/admin">
             <Dashboard/>
-            </Route>
+             </Route>
           {/* <Route path="/admin/user/:id">
-            <User /> */}
+            <User />  */}
           <Route path="/admin/users/:id">
             <User2 />
           </Route>

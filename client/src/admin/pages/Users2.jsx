@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
     MailOutline,
@@ -18,52 +18,102 @@ import {
 import { Link } from "react-router-dom";
 import "../../styles/User.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { editUser, getUserProfile, getAllUsers, getUserAdmin,getUserDetail} from "../../actions";
+import { editUser, getUserProfile, getAllUsers, getUserAdmin, getUserDetail } from "../../actions";
 
-export default function User2() {
-    const { id, userAdmin, carAdmin, usuariosRegistrados,car} = useSelector(state => state)
+export default function User2(props) {
+    const { id, userAdmin, carAdmin, usuariosRegistrados, car } = useSelector(state => state)
     const users = useSelector(state => state.user)
     const { user } = useAuth0();
     const dispatch = useDispatch()
     let booleanDNI;
+    // -------------------------------------<useEffect>-------------------------------------
+    useEffect(() => {
+        dispatch(getUserAdmin(id));
+        dispatch(getAllUsers());  
+           
+        // window.location.reload(true)
+    }, [dispatch, id]);
     //   -------------------------------------< estados> --------------------------------
     const [errorsCars, setErrorsCars] = useState({});
     const [errorsUser, setErrorsUser] = useState({});
     const [image, setImage] = useState("")
     const [dni, setDni] = useState([])
-    const [input, setInput] = useState({
-        email: userAdmin.email,
-        name: userAdmin.name,
-        lastName: userAdmin.lastName,
-        genre: userAdmin.genre,
-        age: userAdmin.age,
-        dni: userAdmin.dni,
-        street: userAdmin.street,
-        city: userAdmin.city,
-        province: userAdmin.province,
-        telephone: userAdmin.telephone,
-        facebook: userAdmin.facebook,
-        instagram: userAdmin.instagram,
-        photo: userAdmin.photo,
-        photoDni: userAdmin.photoDni,
-        isAdmin: userAdmin.isAdmin,
-        car: userAdmin.cars
-    });
-    const [auto, setAuto] = useState( carAdmin.color?({
+    var adminUser = {email: userAdmin.email,
+            name: userAdmin.name,
+            lastName: userAdmin.lastName,
+            genre: userAdmin.genre,
+            age: userAdmin.age,
+            dni: userAdmin.dni,
+            street: userAdmin.street,
+            city: userAdmin.city,
+            province: userAdmin.province,
+            telephone: userAdmin.telephone,
+            facebook: userAdmin.facebook,
+            instagram: userAdmin.instagram,
+            photo: userAdmin.photo,
+            photoDni: userAdmin.photoDni,
+            isAdmin: userAdmin.isAdmin,
+            car: userAdmin.cars}
+            console.log(adminUser, "adminUser")
+    const [input, setInput] = useState(adminUser)
+    // const [input, setInput] = useState({
+    //     email: props.email,
+    //     name: props.name,
+    //     lastName: props.lastName,
+    //     genre: props.genre,
+    //     age: props.age,
+    //     dni: props.dni,
+    //     street: props.street,
+    //     city: props.city,
+    //     province: props.province,
+    //     telephone: props.telephone,
+    //     facebook: props.facebook,
+    //     instagram: props.instagram,
+    //     photo: props.photo,
+    //     photoDni: props.photoDni,
+    //     isAdmin: props.isAdmin,
+    //     car: props.cars
+    // });
+
+    // const [input, setInput] = useState({
+    //     email: userAdmin.email,
+    //     name: userAdmin.name,
+    //     lastName: userAdmin.lastName,
+    //     genre: userAdmin.genre,
+    //     age: userAdmin.age,
+    //     dni: userAdmin.dni,
+    //     street: userAdmin.street,
+    //     city: userAdmin.city,
+    //     province: userAdmin.province,
+    //     telephone: userAdmin.telephone,
+    //     facebook: userAdmin.facebook,
+    //     instagram: userAdmin.instagram,
+    //     photo: userAdmin.photo,
+    //     photoDni: userAdmin.photoDni,
+    //     isAdmin: userAdmin.isAdmin,
+    //     car: userAdmin.cars
+    // });
+    
+    console.log("USER ADMIN" , userAdmin)
+    console.log(input,"input input")
+   
+   
+    const [auto, setAuto] = useState(userAdmin?.cars?.length === 0 ? ({
         brand: "",
         model: "",
         patent: "",
         color: "",
         cylinder: "",
         greencard: "",
-      }) : ({
+    }) : ({
         brand: carAdmin.brand,
         model: carAdmin.model,
         patent: carAdmin.patent,
         color: carAdmin.color,
         cylinder: carAdmin.cylinder,
         greencard: carAdmin.greencard,
-      }));
+    }));
+    console.log(auto, "auto")
     // ------------------<handles>------------------
     const handleSubmitUser = (e) => {
         e.preventDefault();
@@ -94,129 +144,129 @@ export default function User2() {
         //     [e.target.name]: e.target.value,
         //   })
         // );
-        setErrorsUser(
-            validateuser({
-                ...input,
-                [e.target.name]: e.target.value,
-            })
-        );
+        // setErrorsUser(
+        //     validateuser({
+        //         ...input,
+        //         [e.target.name]: e.target.value,
+        //     })
+        // );
     }
 
 
-    const uploadImage = async (e) => {
-        const files = e.target.files;
-        const data = new FormData();
-        data.append("file", files[0]);
-        data.append("upload_preset", "photoAdmin");
+    // const uploadImage = async (e) => {
+    //     const files = e.target.files;
+    //     const data = new FormData();
+    //     data.append("file", files[0]);
+    //     data.append("upload_preset", "photoAdmin");
 
 
-        const res = await fetch(
-            "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
-            {
-                method: "POST",
-                body: data,
-            }
-        );
+    //     const res = await fetch(
+    //         "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+    //         {
+    //             method: "POST",
+    //             body: data,
+    //         }
+    //     );
 
-        const file = await res.json();
-        setImage(file.secure_url);
-    };
-    const uploadImage2 = async (e) => {
-        const files = e.target.files;
-        const data = new FormData();
-        data.append("file", files[0]);
-        data.append("upload_preset", "dniAdmin");
+    //     const file = await res.json();
+    //     setImage(file.secure_url);
+    // };
+    // const uploadImage2 = async (e) => {
+    //     const files = e.target.files;
+    //     const data = new FormData();
+    //     data.append("file", files[0]);
+    //     data.append("upload_preset", "dniAdmin");
 
 
-        const res = await fetch(
-            "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
-            {
-                method: "POST",
-                body: data,
-            }
-        );
+    //     const res = await fetch(
+    //         "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+    //         {
+    //             method: "POST",
+    //             body: data,
+    //         }
+    //     );
 
-        const file = await res.json();
-        setDni([...dni, file.secure_url]);
-    };
+    //     const file = await res.json();
+    //     setDni([...dni, file.secure_url]);
+    // };
     //   ___________________________________________________________________________________________
 
 
     // -----------------------------------------< gestion de errores>-----------------------------------
-    function validateuser(input) {
-        booleanDNI = true;
-        for (let i = 0; i < usuariosRegistrados.length; i++) {
-            // if (usuariosRegistrados[i].dni.toString() === input.dni) {
-            if (usuariosRegistrados[i].dni === input.dni) {
-                booleanDNI = false;
-            }
-        }
-        let errors = {};
-        const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
-        const phonevalidate = /^[0-9]+$/;
-        if (!input.name) {
-            errors.name = 'Name is required';
-        } else if (wordvalidate.test(input.name) === false) {
-            errors.name = 'Invalid Name: No Symbols Allowed';
-        } else if (!input.lastName) {
-            errors.lastName = 'Last name is required';
-        } else if (wordvalidate.test(input.lastName) === false) {
-            errors.lastName = 'Invalid Last Name: No Symbols Allowed';
-        } else if (!input.dni) {
-            errors.dni = 'DNI is required';
-        } else if (booleanDNI === false) {
-            errors.dni = 'DNI already exists';
-        } else if (!input.age) {
-            errors.age = 'Age required';
-        } else if (input.age < 18) {
-            errors.age = 'You must be 18 years old or older to register';
-        } else if (!input.telephone) {
-            errorsUser.telephone = 'Telephone is required';
-        } else if (phonevalidate.test(input.telephone) === false) {
-            errorsUser.telephone = 'Invalid Phone: Only Numbers Allowed';
-        } else if (!input.street) {
-            errors.street = 'Street is required';
-        } else if (!input.city) {
-            errors.city = 'City is required';
-        } else if (wordvalidate.test(input.city) === false) {
-            errors.city = 'Invalid City: No Symbols Allowed';
-        } else if (!input.province) {
-            errors.province = 'Province is required';
-        } else if (wordvalidate.test(input.province) === false) {
-            errors.province = 'Invalid Province: No Symbols Allowed';
-        }
-        return errors;
-    }
+    // function validateuser(input) {
+    //     booleanDNI = true;
+    //     for (let i = 0; i < usuariosRegistrados.length; i++) {
+    //         // if (usuariosRegistrados[i].dni.toString() === input.dni) {
+    //         if (usuariosRegistrados[i].dni === input.dni) {
+    //             booleanDNI = false;
+    //         }
+    //     }
+    //     let errors = {};
+    //     const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
+    //     const phonevalidate = /^[0-9]+$/;
+    //     if (!input.name) {
+    //         errors.name = 'Name is required';
+    //     } else if (wordvalidate.test(input.name) === false) {
+    //         errors.name = 'Invalid Name: No Symbols Allowed';
+    //     } else if (!input.lastName) {
+    //         errors.lastName = 'Last name is required';
+    //     } else if (wordvalidate.test(input.lastName) === false) {
+    //         errors.lastName = 'Invalid Last Name: No Symbols Allowed';
+    //     } else if (!input.dni) {
+    //         errors.dni = 'DNI is required';
+    //     } else if (booleanDNI === false) {
+    //         errors.dni = 'DNI already exists';
+    //     } else if (!input.age) {
+    //         errors.age = 'Age required';
+    //     } else if (input.age < 18) {
+    //         errors.age = 'You must be 18 years old or older to register';
+    //     } else if (!input.telephone) {
+    //         errorsUser.telephone = 'Telephone is required';
+    //     } else if (phonevalidate.test(input.telephone) === false) {
+    //         errorsUser.telephone = 'Invalid Phone: Only Numbers Allowed';
+    //     } else if (!input.street) {
+    //         errors.street = 'Street is required';
+    //     } else if (!input.city) {
+    //         errors.city = 'City is required';
+    //     } else if (wordvalidate.test(input.city) === false) {
+    //         errors.city = 'Invalid City: No Symbols Allowed';
+    //     } else if (!input.province) {
+    //         errors.province = 'Province is required';
+    //     } else if (wordvalidate.test(input.province) === false) {
+    //         errors.province = 'Invalid Province: No Symbols Allowed';
+    //     }
+    //     return errors;
+    // }
     //   __________________________________________________________________________________________
 
 
     // -----------------------------------------< gestion car>-----------------------------------
-    function validatecars(input) {
-        const numberandlettervalidate = /^[0-9a-zA-Z ]+$/;
-        const wordvalidate = /^[a-zA-Z]+$/;
-        const floatvalidate = /^[0-9]*\.?[0-9]+$/;
-        let errorsCars = {};
-        if (!input.brand) {
-          errorsCars.brand = 'Brand is required';
-        } else if (wordvalidate.test(input.brand) === false) {
-          errorsCars.brand = 'Invalid Brand: No Symbols Allowed';
-        } else if (!input.model) {
-          errorsCars.model = 'Model is required';
-        } else if (!input.patent) {
-          errorsCars.patent = 'Plate is required';
-        } else if (numberandlettervalidate.test(input.patent) === false) {
-          errorsCars.patent = 'Invalid Plate';
-        } else if (!input.color) {
-          errorsCars.color = 'Color is required';
-        } else if (wordvalidate.test(input.color) === false) {
-          errorsCars.color = 'Invalid Color: No Symbols Allowed';
-        } else if (!input.cylinder) {
-          errorsCars.cylinder = 'Cylinder is required';
-        } else if (floatvalidate.test(input.cylinder) === false) {
-          errorsCars.cylinder = 'Invalid Cylinder: No Symbols Allowed';
-        }
-        return errorsCars;
-      }
+    // function validatecars(input) {
+    //     const numberandlettervalidate = /^[0-9a-zA-Z ]+$/;
+    //     const wordvalidate = /^[a-zA-Z]+$/;
+    //     const floatvalidate = /^[0-9]*\.?[0-9]+$/;
+    //     let errorsCars = {};
+    //     if (!input.brand) {
+    //       errorsCars.brand = 'Brand is required';
+    //     } else if (wordvalidate.test(input.brand) === false) {
+    //       errorsCars.brand = 'Invalid Brand: No Symbols Allowed';
+    //     } else if (!input.model) {
+    //       errorsCars.model = 'Model is required';
+    //     } else if (!input.patent) {
+    //       errorsCars.patent = 'Plate is required';
+    //     } else if (numberandlettervalidate.test(input.patent) === false) {
+    //       errorsCars.patent = 'Invalid Plate';
+    //     } else if (!input.color) {
+    //       errorsCars.color = 'Color is required';
+    //     } else if (wordvalidate.test(input.color) === false) {
+    //       errorsCars.color = 'Invalid Color: No Symbols Allowed';
+    //     } else if (!input.cylinder) {
+    //       errorsCars.cylinder = 'Cylinder is required';
+    //     } else if (floatvalidate.test(input.cylinder) === false) {
+    //       errorsCars.cylinder = 'Invalid Cylinder: No Symbols Allowed';
+    //     }
+    //     return errorsCars;
+    //   }
     //   __________________________________________________________________________________________
     return (
         <div className="userAdmin">
@@ -337,14 +387,14 @@ export default function User2() {
 
                 {/* ----------------------------------------<FORM>------------------------------------------------- */}
                 {/* ------------------------<SI NO FUNCIONA ES CULPA DE MARI =)>------------------------------------------------- */}
-                <div className="userUpdate">
+                {/* <div className="userUpdate">
                     <span className="userUpdateTitle">Edit</span>
                     <div className="userUpdateForm">
                         <div className="userUpdateLeft">
                             <div className="userUpdateItem">
                                 <label>Name</label>
                                 <input
-                                    onChange={(e) => handleChange(e)}
+                                    // onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="name"
                                     placeholder={user.name}
@@ -507,15 +557,15 @@ export default function User2() {
                                     className="userUpdateInput"
                                 />
                             </div>
-                        </div>
+                        </div> */}
 
 
-                        {/* ___________________________________________________________________________ */}
+                {/* ___________________________________________________________________________ */}
 
 
 
-                        {/* ----------------------------<container center Car>------------------------ */}
-                        {/* {carAdmin?.brand && (
+                {/* ----------------------------<container center Car>------------------------ */}
+                {/* {carAdmin?.brand && (
                             <div className="userUpdateCenter">
                                 <div className="userUpdateItem">
                                     <label>Brand</label>
@@ -579,12 +629,12 @@ export default function User2() {
                             </div>)
                         } */}
 
-                        {/* ______________________________________________________________________ */}
+                {/* ______________________________________________________________________ */}
 
-                        <div className="userUpdateRight">
+                {/* <div className="userUpdateRight">
                             <div className="userUpdateUpload">
-                                <span className="userShowTitle">Photo User</span>
-                                {/* <img
+                                <span className="userShowTitle">Photo User</span> */}
+                {/* <img
                                     className="userUpdateImg"
                                     src={userAdmin.photo}
                                     alt=""
@@ -643,13 +693,76 @@ export default function User2() {
                                     <Publish className="userUpdateIcon" />
                                 </label> */}
 
-                                <input type="file" id="file" style={{ display: "none" }} />
+                {/* <input type="file" id="file" style={{ display: "none" }} />
                             </div>
                             <button onClick={(e) => handleSubmitUser(e)} className="userUpdateButton">Update</button>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
+                <div className="userUpdate">
+                    <span className="userUpdateTitle">Edit</span>
+                    <form className="userUpdateForm">
+                        <div className="userUpdateLeft">
+                            <div className="userUpdateItem">
+                                <label>Username</label>
+                                <input
+                                    type="text"
+                                   
+                                    placeholder="annabeck99"
+                                    value={input.name}
+                                    className="userUpdateInput"
+                                />
+                            </div>
+                            <div className="userUpdateItem">
+                                <label>Full Name</label>
+                                <input
+                                    type="text"
+                                    placeholder="Anna Becker"
+                                    className="userUpdateInput"
+                                />
+                            </div>
+                            <div className="userUpdateItem">
+                                <label>Email</label>
+                                <input
+                                    type="text"
+                                    placeholder="annabeck99@gmail.com"
+                                    className="userUpdateInput"
+                                />
+                            </div>
+                            <div className="userUpdateItem">
+                                <label>Phone</label>
+                                <input
+                                    type="text"
+                                    placeholder="+1 123 456 67"
+                                    className="userUpdateInput"
+                                />
+                            </div>
+                            <div className="userUpdateItem">
+                                <label>Address</label>
+                                <input
+                                    type="text"
+                                    placeholder="New York | USA"
+                                    className="userUpdateInput"
+                                />
+                            </div>
+                        </div>
+                        <div className="userUpdateRight">
+                            <div className="userUpdateUpload">
+                                <img
+                                    className="userUpdateImg"
+                                    src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                                    alt=""
+                                />
+                                <label htmlFor="file">
+                                    <Publish className="userUpdateIcon" />
+                                </label>
+                                <input type="file" id="file" style={{ display: "none" }} />
+                            </div>
+                            <button className="userUpdateButton">Update</button>
+                        </div>
+                    </form>
+                </div>
 
 
             </div >
