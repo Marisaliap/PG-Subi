@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allRoutes } from '../actions';
 import '../Sass/Styles/NavBarFilter.scss';
+import { FormattedMessage } from 'react-intl';
 
 export default function NavBarFilter() {
   const dispatch = useDispatch();
@@ -25,19 +26,41 @@ export default function NavBarFilter() {
     <div className="NavBarFilter">
       <div>
         <select onChange={handleSelect} name="sorts">
-          <option value="">Order by...</option>
-          <option value="time">Earliest Departure</option>
-          <option value="price">Lowest Price</option>
+        <FormattedMessage id="navbarfilter.orderby">
+        {(message) => <option value="">{message}</option>}
+        </FormattedMessage>
+        <FormattedMessage id="navbarfilter.earliestdeparture">
+        {(message) => <option value="time">{message}</option>}
+        </FormattedMessage>
+        <FormattedMessage id="navbarfilter.lowestprice">
+        {(message) => <option value="price">{message}</option>}
+        </FormattedMessage>
         </select>
 
         <select onChange={handleSelectFilters} name="filters">
-          <option value="">Filter by Amenities</option>
-          <option value="petsAllowed">Pets Allowed</option>
-          <option value="smokersAllowed">Smoking Allowed</option>
-          <option value="foodAllowed">Food Allowed</option>
-          <option value="twoMaxInTheBack">Max. 2 in the back</option>
-          <option value="kidsAllowed">Kids Allowed</option>
-         {user.genre === 'Female' && <option value="onlyWomen">Only Women</option>}
+        <FormattedMessage id="navbarfilter.amenities">
+          {(messege) => <option value="">{messege}</option>}
+        </FormattedMessage>
+        <FormattedMessage id="navbarfilter.petsaloowed">
+          {(messege)=><option value="petsAllowed">{messege}</option>}
+        </FormattedMessage>
+        <FormattedMessage id="navbarfilter.smokingallowed">
+          {(messege)=><option value="smokersAllowed">{messege}</option>}
+        </FormattedMessage>
+        <FormattedMessage id="navbarfilter.foodallowed">
+          {(messege)=><option value="foodAllowed">{messege}</option>}
+        </FormattedMessage>
+        <FormattedMessage id="navbarfilter.2intheback">
+          {(messege)=><option value="twoMaxInTheBack">{messege}</option>}
+        </FormattedMessage>
+        <FormattedMessage id="navbarfilter.kidsallowed">
+          {(messege)=><option value="kidsAllowed">{messege}</option>}
+          </FormattedMessage>
+        {user.genre === 'Female'?
+        <FormattedMessage id="navbarfilter.onlywomen">
+         {(messege)=><option value="onlyWomen">{messege}</option>}
+          </FormattedMessage>
+         :""}
         </select>
       </div>
     </div>

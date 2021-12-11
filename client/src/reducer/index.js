@@ -15,6 +15,7 @@ const initialState = {
   userPost:[],
   usuariosRegistrados: [],
   userBuscado: [],
+  carMatch: [],
   //-------------------------< admin store >------------------------ 
   userAdmin: [],
   id: "",
@@ -124,6 +125,11 @@ function rootReducer(state = initialState, action) {
     case "EDIT_CAR":
       return {
         ...state,
+      };
+    case "GET_CARS":
+      return {
+        ...state,
+        carMatch: action.payload,
       };
     // -----------------------------< filters >----------------------------------
 

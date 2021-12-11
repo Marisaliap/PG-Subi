@@ -25,6 +25,7 @@ const validateInputs = (input) => {
   }
   return errors;
 };
+
 const validateInfo = (routeInfo) => {
   const errors = {};
   let info = Object.keys(routeInfo);
@@ -45,6 +46,8 @@ export default function SearchBar() {
   const [errors, setErrors] = useState({ validations: {} });
   const [restrictions, setRestrictions] = useState([]);
 
+  let dateTime = new Date().toJSON().slice(0, 10).replace(/-/g, "-");
+
   function inputHandleChange(e) {
     inputs[e.target.name] = e.target.value;
     dispatch(getSuggestions(inputs.Origin));
@@ -56,7 +59,6 @@ export default function SearchBar() {
     });
   }
 
-  let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
 
   const { validations } = errors;
 
@@ -115,6 +117,7 @@ export default function SearchBar() {
     );
     setRestrictions(filter);
   }
+
   return (
     <div className="searchBarPostRuta">
       <div className="postRouteForm">
@@ -157,7 +160,7 @@ export default function SearchBar() {
               list="cities2"
               onChange={inputHandleChange}
               name="Destination"
-              placeholder="Destination"
+              placeholder={placeholder}
               className="searchbar"
             />
           )}
@@ -175,7 +178,7 @@ export default function SearchBar() {
           <input
             type="date"
             name="date"
-            min={time} //HACER QUE ESTO FILTRE POR FECHA ACTUAL
+            min={dateTime} 
             onChange={handleChange}
           />
           <p>{validations && validations.date}</p>
@@ -200,10 +203,11 @@ export default function SearchBar() {
               className="restrictions"
               id="pasajeros"
             >
-              <option disabled selected value="1">
-                {" "}
-                Seats Available: 1{" "}
-              </option>
+            <FormattedMessage id="searchBarPostRuta.select">
+              {(messege)=><option disabled selected value="1">
+                {messege}
+              </option>}
+              </FormattedMessage>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -218,18 +222,31 @@ export default function SearchBar() {
               id="restrictions"
               className="restrictions"
             >
-              <option disabled selected value="1">
-                {" "}
-                Preferences{" "}
-              </option>
-              <option value="petsAllowed">Pets Allowed</option>
-              <option value="smokersAllowed">Smoking Allowed</option>
-              <option value="foodAllowed">Food Allowed</option>
-              <option value="twoMaxInTheBack">Max. 2 in the back</option>
-              <option value="kidsAllowed">Kids Allowed</option>
-              {user.genre === "Female" && (
-                <option value="onlyWomen">Only Women</option>
-              )}
+            <FormattedMessage id="searchBarPostRuta.preferences">
+              {(messege)=><option disabled selected value="1">
+                {messege}
+              </option>}
+              </FormattedMessage>
+            <FormattedMessage id="searchBarPostRuta.petsaloowed">
+              {(messege)=><option value="petsAllowed">{messege}</option>}
+              </FormattedMessage>
+            <FormattedMessage id="searchBarPostRuta.smokingallowed">
+              {(messege)=><option value="smokersAllowed">{messege}</option>}
+              </FormattedMessage>
+            <FormattedMessage id="searchBarPostRuta.foodallowed">
+              {(messege)=><option value="foodAllowed">{messege}</option>}
+              </FormattedMessage>
+            <FormattedMessage id="searchBarPostRuta.2intheback">
+              {(messege)=><option value="twoMaxInTheBack">{messege}</option>}
+              </FormattedMessage>
+            <FormattedMessage id="searchBarPostRuta.kidsallowed">
+              {(messege)=><option value="kidsAllowed">{messege}</option>}
+              </FormattedMessage>
+              {user.genre === "Female"?
+            <FormattedMessage id="searchBarPostRuta.onlywomen">
+                {(messege)=><option value="onlyWomen">{messege}</option>}
+                </FormattedMessage>
+                :""}
             </select>
           </div>
           <div style={{ marginTop: "1rem" }}>
@@ -239,7 +256,7 @@ export default function SearchBar() {
                 value="petsAllowed"
                 onClick={(e) => deleteRestrictions(e)}
               >
-                Pets Allowed X
+                <FormattedMessage id="searchBarPostRuta.petsaloowedX" defaultMessage="Pets Allowed X" />
               </button>
             )}
             {restrictions.includes("smokersAllowed") && (
@@ -248,7 +265,7 @@ export default function SearchBar() {
                 value="smokersAllowed"
                 onClick={(e) => deleteRestrictions(e)}
               >
-                Smoking Allowed X
+                <FormattedMessage id="searchBarPostRuta.smokingallowedX" defaultMessage="Smoking Allowed X" />
               </button>
             )}
             {restrictions.includes("foodAllowed") && (
@@ -257,7 +274,7 @@ export default function SearchBar() {
                 value="foodAllowed"
                 onClick={(e) => deleteRestrictions(e)}
               >
-                Food Allowed X
+                <FormattedMessage id="searchBarPostRuta.foodallowedX" defaultMessage="Food Allowed X" />
               </button>
             )}
             {restrictions.includes("twoMaxInTheBack") && (
@@ -266,7 +283,7 @@ export default function SearchBar() {
                 value="twoMaxInTheBack"
                 onClick={(e) => deleteRestrictions(e)}
               >
-                Max. 2 in the back X
+                <FormattedMessage id="searchBarPostRuta.2inthebackX" defaultMessage="Max. 2 in the back X" />
               </button>
             )}
             {restrictions.includes("kidsAllowed") && (
@@ -275,7 +292,7 @@ export default function SearchBar() {
                 value="kidsAllowed"
                 onClick={(e) => deleteRestrictions(e)}
               >
-                Kids Allowed X
+                <FormattedMessage id="searchBarPostRuta.kidsallowedX" defaultMessage="Kids Allowed X" />
               </button>
             )}
             {restrictions.includes("onlyWomen") && (
@@ -284,7 +301,7 @@ export default function SearchBar() {
                 value="onlyWomen"
                 onClick={(e) => deleteRestrictions(e)}
               >
-                Only Women X
+                <FormattedMessage id="searchBarPostRuta.onlywomenX" defaultMessage="Only Women X" />
               </button>
             )}
           </div>
@@ -298,6 +315,7 @@ export default function SearchBar() {
               </button>
             </NavLink>
           </div>
+          {console.log(checkInfo.length)}
           <div className="botonPostRuta">
             {checkAllInfo ? (
               <button

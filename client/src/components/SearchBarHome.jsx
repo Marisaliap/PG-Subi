@@ -10,6 +10,8 @@ import { BsPersonFill } from "react-icons/bs";
 let inputs = { Origin: "", Destination: "" };
 let info = { pasajeros: 1, date: "" };
 
+let dateTime = new Date().toJSON().slice(0, 10).replace(/-/g, "-");
+
 const validateInputs = (input) => {
   const errors = {};
   let inputs = Object.keys(input);
@@ -133,7 +135,7 @@ export default function SearchBarHome() {
           <input
             type="date"
             name="date"
-            min="2021-11-28"
+            min={dateTime}
             onChange={handleChange}
           />
           {/* <p>{validations && validations.date}</p> */}

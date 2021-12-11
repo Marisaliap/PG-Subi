@@ -70,7 +70,7 @@ export default function Registro() {
   // __________________________________________________________________________________
 
   function validateGender() {
-    if (document.getElementById('genre').value == '1') {
+    if (document.getElementById('genre').value === '1') {
       return false;
     }
     return true;
@@ -189,9 +189,6 @@ export default function Registro() {
     if (Object.keys(errors).length === 0 && validateInputs() === true) {
       dispatch(postUser(input));
       let emailUsuario = input.email;
-
-    
-
       setInput({
         name: '',
         lastName: '',
@@ -251,7 +248,9 @@ export default function Registro() {
           <div>
             <div className="terminosycond">
               <div className="cadaLinea">
-                <p className="">If you plan to be a Driver please check</p>
+                <p className="">
+                <FormattedMessage id="register.checkbox" defaultMessage="If you plan to be a Driver please check" />
+                </p>
                 <input
                   type="checkbox"
                   name="checkboxManejante"
@@ -407,16 +406,16 @@ export default function Registro() {
               onChange={(e) => handleSelect(e)}
               required
             >
-              <option disabled selected value="1">
-                -- Select an option --
-              </option>
-              <FormattedMessage id="register.gender.1" key={'op' + '-' + '1'}>
+            <FormattedMessage id="register.genderOptions">
+            {(message) => <option disabled selected value="1">{message}</option>}
+              </FormattedMessage>
+              <FormattedMessage id="register.gender.1">
                 {(message) => <option value="Male">{message}</option>}
               </FormattedMessage>
-              <FormattedMessage id="register.gender.2" key={'op' + '-' + '2'}>
+              <FormattedMessage id="register.gender.2">
                 {(message) => <option value="Female">{message}</option>}
               </FormattedMessage>
-              <FormattedMessage id="register.gender.3" key={'op' + '-' + '3'}>
+              <FormattedMessage id="register.gender.3">
                 {(message) => <option value="Rather not say">{message}</option>}
               </FormattedMessage>
             </select>

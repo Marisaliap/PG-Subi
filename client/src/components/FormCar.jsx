@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import { postCar } from "../actions";
-import { useDispatch } from "react-redux";
+import { postCar, getAllCars } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 import "../Sass/Styles/FormCar.scss";
@@ -26,20 +25,36 @@ export default function FormCar() {
     cylinder: "",
     greencard: "",
     bluecard: [],
+    checkboxBlueCard: false,
   });
 
-  console.log("inputlength=>", input.bluecard.length);
-  console.log("input=>", input);
-  console.log("green=>", image);
-  console.log("blue=>", cedula);
+  //console.log("inputlength=>", input.bluecard.length);
+  //console.log("input=>", input);
+  //console.log("green=>", image);
+  //console.log("blue=>", cedula);
+  let booleanPatent;
+
+  useEffect(() => {
+    dispatch(getAllCars());
+  }, [booleanPatent, dispatch]);
+  let carPatent = useSelector((state) => state.carMatch);
 
   function validate(input) {
+    booleanPatent = true;
+    for (let i = 0; i < carPatent.length; i++) {
+      if (carPatent[i].patent === input.patent) {
+        booleanPatent = false;
+      }
+    }
+
     let errors = {};
     const numberandlettervalidate = /^[0-9a-zA-Z ]+$/;
     const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     const floatvalidate = /^[0-9]*\.?[0-9]+$/;
     if (!input.patent) {
       errors.patent = "Plate is required";
+    } else if (booleanPatent === false) {
+      errors.patent = "Patent already exists";
     } else if (numberandlettervalidate.test(input.patent) === false) {
       errors.patent = "Invalid Plate";
     } else if (!input.color) {
@@ -98,6 +113,13 @@ export default function FormCar() {
     setCedula([...cedula, file.secure_url]);
   };
 
+  const handleCheck = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.checked,
+    });
+  };
+
   function handleChange(e) {
     setInput({
       ...input,
@@ -141,6 +163,8 @@ export default function FormCar() {
     }
   }
 
+  console.log("input=>", input);
+
   return (
     <div className="FormCar">
       <h1>
@@ -154,7 +178,7 @@ export default function FormCar() {
       >
         <div className="cadaLineaAuto">
           <p className="label">
-            <FormattedMessage id="formCar.patent" defaultMessage="Patent:" />
+            <FormattedMessage id="formCar.patent" defaultMessage="Patent*:" />
           </p>
           <input
             className="inputauto"
@@ -167,7 +191,7 @@ export default function FormCar() {
         </div>
         <div className="cadaLineaAuto">
           <p className="label">
-            <FormattedMessage id="formCar.color" defaultMessage="Color:" />
+            <FormattedMessage id="formCar.color" defaultMessage="Color*:" />
           </p>
           <input
             className="inputauto"
@@ -180,7 +204,7 @@ export default function FormCar() {
         </div>
         <div className="cadaLineaAuto">
           <p className="label">
-            <FormattedMessage id="formCar.brand" defaultMessage="Brand:" />
+            <FormattedMessage id="formCar.brand" defaultMessage="Brand*:" />
           </p>
           <input
             className="inputauto"
@@ -193,7 +217,7 @@ export default function FormCar() {
         </div>
         <div className="cadaLineaAuto">
           <p className="label">
-            <FormattedMessage id="formCar.model" defaultMessage="Model:" />
+            <FormattedMessage id="formCar.model" defaultMessage="Model*:" />
           </p>
           <input
             className="inputauto"
@@ -208,7 +232,7 @@ export default function FormCar() {
           <p className="label">
             <FormattedMessage
               id="formCar.cylinder"
-              defaultMessage="Cylinder:"
+              defaultMessage="Cylinder*:"
             />
           </p>
           <input
@@ -221,40 +245,47 @@ export default function FormCar() {
           {errors.cylinder && <p className="errorcar">{errors.cylinder}</p>}
         </div>
         <div>
-          
-            <div className="cadaLinea">
-              <p className="label">
-                Green Card:
-                {/* <FormattedMessage
-                id="register.photoUser"
-                defaultMessage="Photo User*:"
-              /> */}
-              </p>
-              <input
-                onChange={(e) => uploadImage(e)}
-                className="custom-file-input"
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
+          <div className="cadaLinea">
+            <p className="label">  
+              <FormattedMessage
+                id="formCar.greencard"
+                defaultMessage="Green Card*:"
               />
-              <div Style="display:none">{(input.greencard = image)}</div>
-              <p>
-                {loanding ? (
-                  <img src={image} Style="height:150px" alt="" />
-                  ) : (
-                    ""
-                  )}
-              </p>
-            </div>
-          
+            </p>
+            <input
+              onChange={(e) => uploadImage(e)}
+              className="custom-file-input"
+              type="file"
+              name="image"
+              required="required"
+              accept="image/png, image/jpeg"
+            />
+            <div Style="display:none">{(input.greencard = image)}</div>
+            <p>
+              {loanding ? <img src={image} Style="height:150px" alt="" /> : ""}
+            </p>
+          </div>
+          <div className="cadaLinea">
+            <p className="">
+            <FormattedMessage
+                id="formCar.checkbox"
+                defaultMessage="If the car will be used by someone other than you or you are not the owner of the car, please attach the correspondent blue card"
+              />
+            </p>
+            <input
+              type="checkbox"
+              name="checkboxBlueCard"
+              onChange={(e) => handleCheck(e)}
+            />
+          </div>
+          {input.checkboxBlueCard === false?
+            "":
             <div className="cadaLinea">
               <p className="label">
-                Blue Card #1:
-                {/* <FormattedMessage
-                id="register.idFront"
-                defaultMessage="ID or passport Front*:"
-              /> */}
+                 <FormattedMessage
+                id="formCar.bluecard1"
+                defaultMessage="Blue Card #1:"
+              /> 
               </p>
               <div className="cargaImagen">
                 <input
@@ -268,69 +299,68 @@ export default function FormCar() {
               <div Style="display:none">{(input.bluecard = cedula)}</div>
               <p>
                 {loanding ? (
-                  <img src={cedula[0]} Style="height:150px" alt="" />
-                  ) : (
-                    ""
-                  )}
-              </p>
-            </div>
-          
-            <div className="cadaLinea">
-              <p className="label">
-                Blue Card #2:
-                {/* <FormattedMessage
-                id="register.idBack"
-                defaultMessage="ID or passport Back*:"
-              /> */}
-              </p>
-              <label className="cargaImagen">
-                <input
-                  onChange={(e) => uploadImage2(e)}
-                  className="custom-file-input"
-                  type="file"
-                  name="image"
-                  accept="image/png, image/jpeg"
-                />
-              </label>
-              <div Style="display:none">{(input.bluecard = cedula)}</div>
-              <p>
-                {loanding ? (
-                  <img src={cedula[1]} Style="height:150px" alt="" />
-                  ) : (
-                    ""
-                  )}
-              </p>
-            </div>
-          
-            <div className="cadaLinea">
-              <p className="label">
-                Blue Card #3:
-                {/* <FormattedMessage
-                id="register.idBack"
-                defaultMessage="ID or passport Back*:"
-              /> */}
-              </p>
-              <label className="cargaImagen">
-                <input
-                  onChange={(e) => uploadImage2(e)}
-                  className="custom-file-input"
-                  type="file"
-                  name="image"
-                  accept="image/png, image/jpeg"
-                />
-              </label>
-              <div Style="display:none">{(input.bluecard = cedula)}</div>
-              <p>
-                {loanding ? (
-                  <img src={cedula[2]} Style="height:150px" alt="" />
+                  <img src={input.bluecard[0]} Style="height:150px" alt="" />
                 ) : (
                   ""
                 )}
               </p>
-            </div>
-          
+            </div> }
+             { input.bluecard.length === 0?
+             "":
+          <div className="cadaLinea">
+              <p className="label">
+                <FormattedMessage
+                id="formCar.bluecard2"
+                defaultMessage="Blue Card #2:"
+              />
+              </p>
+              <label className="cargaImagen">
+                <input
+                  onChange={(e) => uploadImage2(e)}
+                  className="custom-file-input"
+                  type="file"
+                  name="image"
+                  accept="image/png, image/jpeg"
+                />
+              </label>
+              <div Style="display:none">{(input.bluecard = cedula)}</div>
+              <p>
+                {loanding ? (
+                  <img src={input.bluecard[1]} Style="height:150px" alt="" />
+                ) : (
+                  ""
+                )}
+              </p>
+            </div>}
+            {input.bluecard.length <= 1?
+            "":
+            <div className="cadaLinea">
+              <p className="label">
+               <FormattedMessage
+                id="formCar.bluecard3"
+                defaultMessage="Blue Card #3:"
+              />
+              </p>
+              <label className="cargaImagen">
+                <input
+                  onChange={(e) => uploadImage2(e)}
+                  className="custom-file-input"
+                  type="file"
+                  name="image"
+                  accept="image/png, image/jpeg"
+                />
+              </label>
+              <div Style="display:none">{(input.bluecard = cedula)}</div>
+              <p>
+                {loanding ? (
+                  <img src={input.bluecard[2]} Style="height:150px" alt="" />
+                ) : (
+                  ""
+                )}
+              </p>
+            </div>}
+          {console.log(input.bluecard)}
         </div>
-
         <button className="button" type="submit">
           <FormattedMessage id="formCar.add" defaultMessage=" Add Car" />
         </button>
