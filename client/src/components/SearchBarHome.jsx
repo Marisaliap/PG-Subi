@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getRouteFromDb, getSuggestions, getSuggestions2 } from "../actions";
-import { NavLink } from "react-router-dom";
-import "../Sass/Styles/SearchBarHome.scss";
-import "../Sass/Styles/App.scss";
-import { FormattedMessage } from "react-intl";
-import { BsPersonFill } from "react-icons/bs";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRouteFromDb, getSuggestions, getSuggestions2 } from '../actions';
+import { NavLink } from 'react-router-dom';
+import '../Sass/Styles/SearchBarHome.scss';
+import '../Sass/Styles/App.scss';
+import { FormattedMessage } from 'react-intl';
+import { BsPersonFill } from 'react-icons/bs';
 
-let inputs = { Origin: "", Destination: "" };
-let info = { pasajeros: 1, date: "" };
+let inputs = { Origin: '', Destination: '' };
+let info = { pasajeros: 1, date: '' };
 
 const validateInputs = (input) => {
   const errors = {};
   let inputs = Object.keys(input);
   for (let i = 0; i < inputs.length; i++) {
     if (!input[inputs[i]]) {
-      errors[inputs[i]] = inputs[i] + " is required.";
+      errors[inputs[i]] = inputs[i] + ' is required.';
     }
   }
   return errors;
@@ -26,7 +26,7 @@ const validateInfo = (routeInfo) => {
 
   for (let i = 0; i < info.length; i++) {
     if (!routeInfo[info[i]]) {
-      errors[info[i]] = info[i] + " is required.";
+      errors[info[i]] = info[i] + ' is required.';
     }
   }
   return errors;
@@ -63,9 +63,13 @@ export default function SearchBarHome() {
   }
 
   const checkAllInfo =
-     cities && cities.length > 0 && inputs.Origin === cities[0].name &&
-    cities2 && cities2.length > 0 && inputs.Destination === cities2[0].name &&
-    info.date.length > 1
+    cities &&
+    cities.length > 0 &&
+    inputs.Origin === cities[0].name &&
+    cities2 &&
+    cities2.length > 0 &&
+    inputs.Destination === cities2[0].name &&
+    info.date.length > 1;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -75,120 +79,125 @@ export default function SearchBarHome() {
         getRouteFromDb(
           cities[0].name,
           cities2[0].name,
-          info.date.split("-").reverse().join("-"),
+          info.date.split('-').reverse().join('-'),
           info.pasajeros
         )
       );
     }
-    inputs = { Origin: "", Destination: "" };
-    info = { pasajeros: 1, date: "" };
+    inputs = { Origin: '', Destination: '' };
+    info = { pasajeros: 1, date: '' };
   }
 
   return (
-    <div className="searchBarPostHome">
-      <h1>
-        <FormattedMessage
-          id="searchBarHome.searchTitle"
-          defaultMessage="Where do you want to go?"
-        />
-      </h1>
-      <form className="postRouteForm">
-        <FormattedMessage id="searchBarHome.origin" defaultMessage="Origin">
-          {(placeholder) => (
-            <input
-              type="text"
-              list="cities"
-              onChange={inputHandleChange}
-              name="Origin"
-              placeholder={placeholder}
-              className="searchbar"
-            />
-          )}
-        </FormattedMessage>
-
-        <datalist id="cities">
-          {cities && cities.map((city) => city.name !== inputs.Origin &&  <option>{city.name}</option>)}
-        </datalist>
-        {/* <p>{validations && validations.Origin}</p> */}
-        <FormattedMessage
-          id="searchBarHome.destination"
-          defaultMessage="Destination"
-        >
-          {(placeholder) => (
-            <input
-              type="text"
-              list="cities2"
-              onChange={inputHandleChange}
-              name="Destination"
-              placeholder={placeholder}
-              className="searchbar"
-            />
-          )}
-        </FormattedMessage>
-        <datalist id="cities2">
-          {cities2 && cities2.map((city) => city.name !== inputs.Destination &&  <option>{city.name}</option>)}
-        </datalist>
-        {/* <p>{validations && validations.Destination}</p> */}
-        <div>
+    <form className="searchBar">
+      <FormattedMessage id="searchBarHome.origin" defaultMessage="Origin">
+        {(placeholder) => (
           <input
-            type="date"
-            name="date"
-            min="2021-11-28"
-            onChange={handleChange}
+            type="text"
+            list="cities"
+            onChange={inputHandleChange}
+            name="Origin"
+            placeholder={placeholder}
+            className="searchBarInputs"
           />
-          {/* <p>{validations && validations.date}</p> */}
-        </div>
-        <div>
-          <select
-            name="pasajeros"
-            onChange={handleChange}
-            id="pasajeros"
-            className="passengers"
+        )}
+      </FormattedMessage>
+
+      <hr />
+
+      <datalist id="cities">
+        {cities &&
+          cities.map(
+            (city) =>
+              city.name !== inputs.Origin && <option>{city.name}</option>
+          )}
+      </datalist>
+      {/* <p>{validations && validations.Origin}</p> */}
+      <FormattedMessage
+        id="searchBarHome.destination"
+        defaultMessage="Destination"
+      >
+        {(placeholder) => (
+          <input
+            type="text"
+            list="cities2"
+            onChange={inputHandleChange}
+            name="Destination"
+            placeholder={placeholder}
+            className="searchBarInputs"
+          />
+        )}
+      </FormattedMessage>
+
+      <hr />
+
+      <datalist id="cities2">
+        {cities2 &&
+          cities2.map(
+            (city) =>
+              city.name !== inputs.Destination && <option>{city.name}</option>
+          )}
+      </datalist>
+      {/* <p>{validations && validations.Destination}</p> */}
+      <div className="dateAndSeatsContainer">
+        <input
+          type="date"
+          name="date"
+          min="2021-11-28"
+          onChange={handleChange}
+          placeholder="Date"
+          className="dateAndSeatsSelectors"
+        />
+        {/* <p>{validations && validations.date}</p> */}
+
+        <hr className="dateSeatsDivider" />
+
+        <select
+          name="pasajeros"
+          onChange={handleChange}
+          id="pasajeros"
+          className="dateAndSeatsSelectors"
+          title="Minimum amount of free seats to search"
+        >
+          <option value="1">1 Passenger</option>
+          <option value="2">2 Passengers</option>
+          <option value="3">3 Passengers</option>
+          <option value="4">4 Passengers</option>
+          <option value="5">5 Passengers</option>
+          <option value="6">6 Passengers</option>
+        </select>
+        {/* <label for="pasajeros">
+          <BsPersonFill />
+        </label> */}
+      </div>
+
+      <hr />
+
+      {checkAllInfo ? (
+        <button
+          onClick={handleSubmit}
+          className="button"
+          disabled={checkInfo.length !== 2 && checkInputs.length !== 2}
+        >
+          <NavLink
+            to="/routes-found"
+            style={{
+              textDecoration: ' none',
+              width: '60px',
+              color: 'white',
+            }}
           >
-            <option value="0" disabled selected>
-              --Select Seats Available--
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-          <label for="pasajeros">
-            <BsPersonFill />
-          </label>
-        </div>
-        <pre>
-          <div>
-            {checkAllInfo ? (
-              <button
-                onClick={handleSubmit}
-                className="button"
-                disabled={checkInfo.length !== 2 && checkInputs.length !== 2}
-              >
-                <NavLink
-                  to="/routes-found"
-                  style={{
-                    textDecoration: " none",
-                    width: "60px",
-                    color: "white",
-                  }}
-                >
-                  Search
-                </NavLink>
-              </button>
-            ) : (
-              <button className="button" disabled="true">
-                <FormattedMessage
-                  id="searchBarHome.searchButton"
-                  defaultMessage=" Search"
-                />
-              </button>
-            )}
-          </div>
-        </pre>
-      </form>
-    </div>
+            Search
+          </NavLink>
+        </button>
+      ) : (
+        <button className="button" disabled="true">
+          <FormattedMessage
+            id="searchBarHome.searchButton"
+            defaultMessage=" Search"
+          />
+        </button>
+      )}
+    </form>
   );
 }

@@ -1,70 +1,160 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 
-.searchBarPostHome {
-  display: grid;
-  place-items: center;
-  height: 20vh;
-  margin-bottom: 5rem;
+// .searchBarPostHome {
+//   display: grid;
+//   place-items: center;
+//   height: 20vh;
+//   margin-bottom: 5rem;
 
-  .searchbar {
-    width: 20vw;
+//   .searchbar {
+//     width: 20vw;
+//   }
+
+//   .pesejeres {
+//     display: flex;
+//     flex-direction: column;
+//   }
+
+//   .passengers {
+//     text-align: center;
+//     height: 50px;
+//     width: 65px;
+//     border: 2px solid $text;
+//     padding: 0.8rem;
+//     border-radius: 30px;
+//     border-color: $buttonColor;
+//     font-family: inherit;
+//     font-weight: bold;
+//     color: $text;
+//     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+//       0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+//     transition: box-shadow 0.5s ease-in-out;
+//   }
+//   pre {
+//     display: flex;
+//     justify-content: space-evenly;
+//   }
+
+//   .postRouteForm {
+//     padding: 1rem;
+//     display: flex;
+//     align-items: baseline;
+
+//     input {
+//       height: 20px;
+//       width: 200px;
+//       border: 2px solid $text;
+//       padding: 0.8rem;
+//       margin-left: 1rem;
+//       border-radius: 9999px;
+//       border-color: $buttonColor;
+//       font-family: inherit;
+//       font-weight: bold;
+//       color: $text;
+//       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+//         0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+//       transition: box-shadow 0.5s ease-in-out;
+
+//       &:hover {
+//         cursor: pointer;
+//         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+//           0 10px 10px -5px rgba(0, 0, 0, 0.04);
+//       }
+//     }
+//     select {
+//       margin-left: 1rem;
+//     }
+//   }
+// }
+
+.searchBar {
+  background-color: #ededed;
+  border-radius: 1.5rem;
+  padding: 0.5rem;
+
+  ::placeholder {
+    color: $buttonColor;
   }
 
-  .pesejeres {
+  @media only screen and (min-width: 768px) {
+    padding: 1rem 3rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
     display: flex;
-    flex-direction: column;
-  }
-
-  .passengers {
     text-align: center;
-    height: 50px;
-    width: 65px;
-    border: 2px solid $text;
-    padding: 0.8rem;
-    border-radius: 30px;
-    border-color: $buttonColor;
-    font-family: inherit;
-    font-weight: bold;
-    color: $text;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-    transition: box-shadow 0.5s ease-in-out;
-  }
-  pre {
-    display: flex;
-    justify-content: space-evenly;
+    padding: 0;
+    margin: 0 12rem;
   }
 
-  .postRouteForm {
-    padding: 1rem;
-    display: flex;
-    align-items: baseline;
-
-    input {
-      height: 20px;
-      width: 200px;
-      border: 2px solid $text;
-      padding: 0.8rem;
-      margin-left: 1rem;
-      border-radius: 9999px;
-      border-color: $buttonColor;
-      font-family: inherit;
-      font-weight: bold;
-      color: $text;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-      transition: box-shadow 0.5s ease-in-out;
-
-      &:hover {
-        cursor: pointer;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-          0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      }
+  div {
+    @media only screen and (min-width: 1024px) {
+      height: 1rem;
     }
-    select {
-      margin-left: 1rem;
+  }
+
+  .searchBarInputs {
+    outline: none;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.8em;
+    width: 80%;
+    padding: 1rem;
+    background-color: transparent;
+    border: 0;
+    color: $buttonColor;
+
+    @media only screen and (min-width: 1024px) {
+      width: 25%;
+      font-size: 1em;
+      padding: 0 1rem;
+    }
+  }
+
+  hr {
+    margin: 0 5%;
+    border-top: 2px solid $buttonColor;
+
+    @media only screen and (min-width: 1024px) {
+      margin: 0;
+    }
+  }
+
+  .dateAndSeatsContainer {
+    display: flex;
+    margin: 0 10%;
+
+    @media only screen and (min-width: 1024px) {
+      width: 20%;
+      height: 100%;
+    }
+  }
+
+  .dateSeatsDivider {
+    display: none;
+
+    @media only screen and (min-width: 1024px) {
+      display: inline;
+    }
+  }
+
+  .dateAndSeatsSelectors {
+    background-color: transparent;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.8em;
+    height: 3rem;
+    width: 50%;
+    border: none;
+    outline: none;
+    text-align: center;
+    color: $buttonColor;
+
+    @media only screen and (min-width: 1024px) {
+      align-items: center;
+      margin-top: 0.33rem;
     }
   }
 }
