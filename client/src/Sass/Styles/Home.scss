@@ -10,7 +10,18 @@
   }
 
   .searchBarSection {
-    margin-bottom: 5rem;
+    // display: grid;
+    // place-items: center;
+    padding: 2rem 0;
+    background-color: $buttonColor;
+
+    @media only screen and (min-width: 768px) {
+      padding: 2rem;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      padding: 5rem;
+    }
   }
 
   .homepageImage {

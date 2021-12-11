@@ -90,6 +90,7 @@ export default function SearchBarHome() {
 
   return (
     <form className="searchBar">
+      <div></div>
       <FormattedMessage id="searchBarHome.origin" defaultMessage="Origin">
         {(placeholder) => (
           <input
@@ -145,7 +146,6 @@ export default function SearchBarHome() {
           name="date"
           min="2021-11-28"
           onChange={handleChange}
-          placeholder="Date"
           className="dateAndSeatsSelectors"
         />
         {/* <p>{validations && validations.date}</p> */}

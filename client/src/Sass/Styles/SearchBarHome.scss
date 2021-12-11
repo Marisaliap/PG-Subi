@@ -83,17 +83,15 @@
   }
 
   @media only screen and (min-width: 1024px) {
-    display: flex;
-    text-align: center;
-    padding: 0;
-    margin: 0 12rem;
+    padding: 3rem 6rem;
+    margin: auto 18rem;
   }
 
-  div {
-    @media only screen and (min-width: 1024px) {
-      height: 1rem;
-    }
-  }
+  // div {
+  //   @media only screen and (min-width: 1024px) {
+  //     height: 1rem;
+  //   }
+  // }
 
   .searchBarInputs {
     outline: none;
@@ -106,38 +104,38 @@
     border: 0;
     color: $buttonColor;
 
-    @media only screen and (min-width: 1024px) {
-      width: 25%;
-      font-size: 1em;
-      padding: 0 1rem;
-    }
+    // @media only screen and (min-width: 1024px) {
+    //   width: 25%;
+    //   font-size: 1em;
+    //   padding: 0 1rem;
+    // }
   }
 
   hr {
     margin: 0 5%;
     border-top: 2px solid $buttonColor;
 
-    @media only screen and (min-width: 1024px) {
-      margin: 0;
-    }
+    // @media only screen and (min-width: 1024px) {
+    //   margin: 0;
+    // }
   }
 
   .dateAndSeatsContainer {
     display: flex;
     margin: 0 10%;
 
-    @media only screen and (min-width: 1024px) {
-      width: 20%;
-      height: 100%;
-    }
+    // @media only screen and (min-width: 1024px) {
+    //   width: 20%;
+    //   height: 100%;
+    // }
   }
 
   .dateSeatsDivider {
     display: none;
 
-    @media only screen and (min-width: 1024px) {
-      display: inline;
-    }
+    // @media only screen and (min-width: 1024px) {
+    //   display: inline;
+    // }
   }
 
   .dateAndSeatsSelectors {
@@ -149,12 +147,11 @@
     width: 50%;
     border: none;
     outline: none;
-    text-align: center;
     color: $buttonColor;
 
-    @media only screen and (min-width: 1024px) {
-      align-items: center;
-      margin-top: 0.33rem;
-    }
+    // @media only screen and (min-width: 1024px) {
+    //   align-items: center;
+    //   margin-top: 0.33rem;
+    // }
   }
 }
