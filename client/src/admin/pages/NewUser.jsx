@@ -540,36 +540,7 @@ export default function Registro() {
               placeholder={placeHolderAbout}
               onChange={(e) => handleChange(e)}
             />
-            {/* {errors.about && <p className="error">{errors.about}</p>} */}
-          </div>{/* 
-          <div className="terminosycond">
-            <div className="terminos">
-              <FormattedMessage
-                id="register.agree"
-                defaultMessage="By continuing, you agree to our"
-              />{' '}
-              <a target="_blank" href="/terms-and-conditions">
-                {' '}
-                <FormattedMessage
-                  id="register.terms"
-                  defaultMessage="Terms of Use"
-                />{' '}
-              </a>{' '}
-              <FormattedMessage id="register.and" defaultMessage="and" />
-              <a target="_blank" href="/privacy-policy">
-                {' '}
-                <FormattedMessage
-                  id="register.privacy"
-                  defaultMessage="Privacy Policy"
-                />
-              </a>
-              <input
-                type="checkbox"
-                name="checkbox"
-                onChange={(e) => handleCheck(e)}
-              />
-            </div>
-          </div> */}
+          </div>
           <div>
             {validateInputs() === false ? (
               <button className="buttondisabled">
@@ -592,3 +563,4 @@ export default function Registro() {
     </>
   );
 }
+
