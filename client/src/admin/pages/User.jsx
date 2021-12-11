@@ -53,7 +53,7 @@ export default function User() {
   }, [dispatch,input]);
 
   // ------------------<handles>------------------
-  const handleSubmitUser = (e) => {
+  const handleSubmitUser  = (e) => {
     e.preventDefault();
 
     dispatch(editUser(id, input));

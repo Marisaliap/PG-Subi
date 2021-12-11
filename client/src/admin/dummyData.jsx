@@ -1,53 +1,72 @@
-export const userData = [
+
+export const userData = (orders) => {
+  console.log(orders, 'soy dummy')
+
+  const january = orders.map(order => order.month === '1' && order.price || 0 ).reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+  const february = orders.map(order => order.month === '2' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
+  const march = orders.map(order => order.month === '3' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
+  const april = orders.map(order => order.month === '4' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
+  const may = orders.map(order => order.month === '5' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
+  const june = orders.map(order => order.month === '6' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
+  const july = orders.map(order => order.month === '7' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
+  const august = orders.map(order => order.month === '8' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
+  const september = orders.map(order => order.month === '9' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
+  const october = orders.map(order => order.month === '10' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
+  const november = orders.map(order => order.month === '11' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
+  const december = orders.map(order => order.month === '12' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)
+  
+return [
+  
+    {
+      name: "Dec",
+      "Sales": december,
+    },
     {
       name: "Jan",
-      "Active User": 12000,
+      "Sales": january,
     },
     {
       name: "Feb",
-      "Active User": 35000,
+      "Sales": february,
     },
     {
       name: "Mar",
-      "Active User": 5000,
+      "Sales": march,
     },
     {
       name: "Apr",
-      "Active User": 4000,
+      "Sales": april,
     },
     {
       name: "May",
-      "Active User": 3000,
+      "Sales": may,
     },
     {
       name: "Jun",
-      "Active User": 2000,
+      "Sales": june,
     },
     {
       name: "Jul",
-      "Active User": 4000,
+      "Sales": july,
     },
     {
       name: "Agu",
-      "Active User": 3000,
+      "Sales": august,
     },
     {
       name: "Sep",
-      "Active User": 4000,
+      "Sales": september,
     },
     {
       name: "Oct",
-      "Active User": 1000,
+      "Sales": october,
     },
+    
     {
       name: "Nov",
-      "Active User": 4000,
+      "Sales": november,
     },
-    {
-      name: "Dec",
-      "Active User": 3000,
-    },
-  ];
+  ];}
 
   export const productData = [
     {

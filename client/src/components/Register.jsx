@@ -22,8 +22,8 @@ export default function Registro() {
   }, [booleanDNI, dispatch]);
   let usuariosRegistrados = useSelector((state) => state.usuariosRegistrados);
 
+  // ------------------------< erros gestions >------------------------
   function validate(input) {
-    // ------------------------< erros gestions >------------------------
     booleanDNI = true;
     for (let i = 0; i < usuariosRegistrados.length; i++) {
       if (usuariosRegistrados[i].dni.toString() === input.dni) {

@@ -1,15 +1,20 @@
 import "../styles/FeaturedInfo.css";
-import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
+import { ArrowDownward, ArrowUpward, DesktopAccessDisabledSharp } from "@material-ui/icons";
 
-export default function FeaturedInfo() {
+export default function FeaturedInfo({info}) {
+  const sales = info[0].Sales
+  const costs = sales * 2/100
+  const revenue = (sales * 10/100) - costs
+  
+  console.log(info, 'soy info')
   return (
     <div className="featured">
       <div className="featuredItem">
-        <span className="featuredTitle">Revanue</span>
+        <span className="featuredTitle">Revenue</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$2,415</span>
+          <span className="featuredMoney">${revenue}</span>
           <span className="featuredMoneyRate">
-            -11.4 <ArrowDownward  className="featuredIcon negative"/>
+           100% <ArrowUpward  className="featuredIcon positive"/>
           </span>
         </div>
         <span className="featuredSub">Compared to last month</span>
@@ -17,19 +22,19 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">Sales</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$4,415</span>
+          <span className="featuredMoney">${sales}</span>
           <span className="featuredMoneyRate">
-            -1.4 <ArrowDownward className="featuredIcon negative"/>
+           100%  <ArrowUpward  className="featuredIcon positive"/>
           </span>
         </div>
         <span className="featuredSub">Compared to last month</span>
       </div>
       <div className="featuredItem">
-        <span className="featuredTitle">Cost</span>
+        <span className="featuredTitle">Costs</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$2,225</span>
+          <span className="featuredMoney">${costs}</span>
           <span className="featuredMoneyRate">
-            +2.4 <ArrowUpward className="featuredIcon"/>
+            100% <ArrowUpward className="featuredIcon negative"/>
           </span>
         </div>
         <span className="featuredSub">Compared to last month</span>

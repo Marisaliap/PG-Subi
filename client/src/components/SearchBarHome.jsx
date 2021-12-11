@@ -135,7 +135,8 @@ export default function SearchBarHome() {
             name="date"
             min="2021-11-28"
             onChange={handleChange}
-          />
+            className="searchbar"
+             />
           {/* <p>{validations && validations.date}</p> */}
         </div>
         <div>

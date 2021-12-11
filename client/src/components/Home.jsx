@@ -12,10 +12,10 @@ import { FormattedMessage } from "react-intl";
 import { getUserProfile,getAllUsers} from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 // import Loggin from "./Loggin";
-
+import Swal from "sweetalert2";
 
 export default function Home() {
-  const { user } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const userpro = useSelector(state => state.userpro);
   const dispatch = useDispatch();
 
@@ -27,7 +27,16 @@ export default function Home() {
    dispatch(getAllUsers());
   }, []);
 
-
+ function handleClick() {
+  if (!isAuthenticated) {
+    return new Swal({
+      icon: 'warning',
+      title: 'Sorry',
+      text: 'You need to be logged in to post a trip!',
+      confirmButtonText: 'Alright',
+    })
+  } 
+ }
   return (
     <div className="Homepage">
       {/* <div>
@@ -83,15 +92,19 @@ export default function Home() {
             </NavLink>
           } */}
           <div>
-            {
-              <NavLink to="/route-list">
+            { isAuthenticated ? <NavLink to="/route-list">
                 <button className="button">
                   <FormattedMessage
                     id="home.routes"
                     defaultMessage="See all routes available!"
                   />
                 </button>
-              </NavLink>
+              </NavLink> : <button onClick={handleClick} className="button">
+                  <FormattedMessage
+                    id="home.routes"
+                    defaultMessage="See all routes available!"
+                  />
+                </button>
             }
           </div>
         </article>

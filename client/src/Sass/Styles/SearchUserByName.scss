@@ -1,7 +1,7 @@
 @import "../Variables/Variables.scss";
 
 .SearchUserByName {
-  input {
+  .searchbar {
     border: 0;
     border-bottom: 2px solid $buttonColor;
     cursor: pointer;

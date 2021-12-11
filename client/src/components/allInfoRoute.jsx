@@ -55,7 +55,7 @@ export default function AllInfoRoute({ match }) {
     history.push("/route-list");
   }
 
-  console.log(route)
+  console.log(route, user)
 
   let restricciones =route.restriction && route.restriction.split(", ");
 
@@ -178,7 +178,7 @@ export default function AllInfoRoute({ match }) {
 
 
       <div>
-        {route.place === 0 || !route.users || user.email === route.users[0].email  ? (
+        {route.place === 0 || !route.users || route.users.filter(u => user.email === u.email).length > 0  ? (
           <button className="buttonDisabled">Join this trip!</button>
         ) : (
           <button onClick={openModal} className="button">
