@@ -11,6 +11,7 @@ import "../Sass/Styles/App.scss";
 import "../styles/Admin.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Transactions from './pages/Transactions';
 
 export default function Admin() {
   return (
@@ -36,6 +37,9 @@ export default function Admin() {
           {/* <Route path="/admin/user/:id">
             <UserDetails />
           </Route>  */}
+          <Route exact path="/admin/transactions">
+            <Transactions/>
+          </Route>
         </Switch>
       </div>
     </Router>

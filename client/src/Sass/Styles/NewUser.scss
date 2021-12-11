@@ -1,5 +1,11 @@
 @import "../Variables/Variables.scss";
 
+.divButton {
+  display:'flex';
+  justify-content:'center';
+  margin-right:'8rem';
+}
+
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 }
@@ -209,7 +215,7 @@
     background-color: $buttonColor;
     color: $background;
     transition: background-color 0.5s ease-in-out;
-    display: inherit;
+    // display: inherit;
   }
 
   .botoncito {
@@ -226,7 +232,7 @@
     background-color: $buttonDisabled;
     color: $background;
     transition: background-color 0.5s ease-in-out;
-    display: inherit;
+    // display: inherit;
 
     &:hover {
       cursor: pointer;

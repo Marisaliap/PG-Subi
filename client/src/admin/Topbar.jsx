@@ -14,13 +14,13 @@ export default function Topbar() {
           <span className="logo">Hola { userpro.name } </span>
         </div>
         <div className="topRight">
-          <div className="topbarIconContainer">
+          {/* <div className="topbarIconContainer">
             <NotificationsNone />
             <span className="topIconBadge">2</span>
           </div>
           <div className="topbarIconContainer">
             <Settings />
-          </div>
+          </div> */}
           <img src={ user.photo||userpro.photo } alt="" className="topAvatar" />
         </div>
       </div>

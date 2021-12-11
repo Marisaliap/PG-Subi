@@ -65,20 +65,28 @@ const getMPPayment = async (req,res) => {
   const { payment_id,payment_status,external_reference,merchant_order_id } =  req.query;
   const {idRoute, idUser} = req.query
 
-  Route.findByPk(idRoute)
-  .then((route) => {
-    axios.put('http://localhost:3001/maps/route/' + route.id, {
-      place: route.place - 1,
-      idUser: idUser
-    })
-  })
+  // Route.findByPk(idRoute)
+  // .then((route) => {
+  //   axios.put('http://localhost:3001/maps/route/' + route.id, {
+  //     place: route.place - 1,
+  //     idUser: idUser
+  //   })
+  // })
+ const route = await Route.findByPk(idRoute)
+
+ const editRoute = await axios.put('http://localhost:3001/maps/route/' + route.id, {
+  place: route.place - 1,
+  idUser: idUser
+})
 
   Order.findByPk(external_reference)
   .then((order) => {
+    console.log(external_reference, 'soy reference')
     order.payment_id= payment_id
     order.payment_status= payment_status
     order.merchant_order_id = merchant_order_id
     order.status = "created"
+    order.price = route.price
     order.save()
     .then(() => res.redirect("http://localhost:3000/home"))
     .catch((err) => res.redirect(`http://localhost:3000/?error=${err}&where=al+salvar`))

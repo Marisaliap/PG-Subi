@@ -540,8 +540,9 @@ export default function Registro() {
               placeholder={placeHolderAbout}
               onChange={(e) => handleChange(e)}
             />
+        
           </div>
-          <div>
+          <div className='divButton'>
             {validateInputs() === false ? (
               <button className="buttondisabled">
                 <FormattedMessage
@@ -559,6 +560,7 @@ export default function Registro() {
             )}
           </div>
         </form>
+       
       </div>
     </>
   );

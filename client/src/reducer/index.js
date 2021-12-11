@@ -15,6 +15,7 @@ const initialState = {
   userPost:[],
   usuariosRegistrados: [],
   userBuscado: [],
+  orderDetails: [],
   //-------------------------< admin store >------------------------ 
   userAdmin: [],
   id: "",
@@ -64,12 +65,19 @@ function rootReducer(state = initialState, action) {
         car: action.payload.cars[0],
       };
       //  --------------------------------------< admin reducer>----------------------
+
+    case "GET_ORDER_DETAILS":
+      return {
+        ...state,
+        orderDetails: action.payload
+      };
     case "GET_USER_ADMIN":
       return {
         ...state,
         userAdmin: action.payload,
         carAdmin: action.payload.cars[0]
-      };
+        };
+  
 
     case "ID" :
       return {
