@@ -139,6 +139,15 @@ export default function Nav() {
           <li>
             <Auth />
           </li>
+          <li>
+            {isAuthenticated &&
+        usuariosRegistrados
+          .map((e) => e.email)
+          .filter((e) => e === user.email)[0] === user.email &&
+        userpro.isAdmin === true ? (
+          <NavLink to="/Admin">Admin</NavLink>
+        ) : null}
+        </li>
         </ul>
 
         {/* <div className="banderas">
@@ -149,13 +158,6 @@ export default function Nav() {
             <img src={en} alt=""></img>
             </button>
           </div> */}
-        {isAuthenticated &&
-        usuariosRegistrados
-          .map((e) => e.email)
-          .filter((e) => e === user.email)[0] === user.email &&
-        userpro.isAdmin === true ? (
-          <NavLink to="/Admin">Admin</NavLink>
-        ) : null}
       </nav>
     </header>
   );
