@@ -2,6 +2,7 @@ const { Route, User, Car, Order } = require("../db.js");
 const axios = require("axios");
 const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
 const { TOKEN } = process.env;
+const { postMail } = require('./Mail.js')
 
 const getRouteInfo = async (req, res, next) => {
   try {
@@ -233,7 +234,17 @@ const putRoute = async (req, res) => {
       restriction,
       place,
     });
-    idUser && (await route.addUser(idUser));
+    if (idUser){
+      const manejante = await User.findByPk(idUser) 
+      await route.addUser(idUser);
+      let mail = await axios.post('http://localhost:3001/mail/add',{
+        manejanteEmail: route.manejante,
+        manejadoName: manejante.name,
+        originName: route.originName,
+        destinyName: route.destinyName
+      });
+      console.log(mail)
+    }
     res.send(route);
   } catch (error) {
     res.send(error);

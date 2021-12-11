@@ -6,6 +6,7 @@ const carRoute = require('./Car');
 const suggestionRoute = require('./SuggestionBox');
 const mercadoPagoRoute = require('./MercadoPago');
 const chatRoute = require('./Chat.js');
+const mailRoute = require('./Mail.js');
 
 
 // Importar todos los routers;
@@ -19,6 +20,7 @@ router.use('/car', carRoute)
 router.use('/suggestionbox', suggestionRoute)
 router.use('/mercadopago', mercadoPagoRoute)
 router.use('/chat', chatRoute)
+router.use('/mail', mailRoute)
 
 
 
