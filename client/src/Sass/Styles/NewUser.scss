@@ -1,0 +1,240 @@
+@import "../Variables/Variables.scss";
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Select an image';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid $buttonColor;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: $buttonColor;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  border-color: $buttonColor
+}
+
+
+
+
+.newUserContainer {
+  flex: 6;
+  outline: none;
+  border-radius: 15px;
+  border-top: 1px solid #ededed00;
+  /* background-color: #ededed; */
+  padding: 1rem;
+  margin: 1rem;
+  width: 60vw;
+  
+  &:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+.newUserForm {
+  font-size: 0.8em;
+  color: $text;
+  display: flex;
+  flex-direction: column;
+
+  .newUserDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.2em;
+    padding-top: 1rem;
+    color: $labelForms; 
+  }
+
+  .userTitleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .newUserTitle {
+    color: $headline;
+    text-align: center;
+    align-items: left;
+    align-self: left;
+
+  }
+
+  .terminos {
+    font-size: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .terms {
+    width: auto;
+    display: flex;
+    border-radius: 9999px;
+  }
+
+  .selectterminos {
+    display: flex;
+    justify-content: center;
+  }
+
+  .termsAndCond {
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+  }
+
+  .label {
+    width: 10rem;
+    display: flex;
+    margin-left: 15rem;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(151, 150, 150);
+  }
+
+  .inputs {
+    border: 0;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 20vw;
+    height: 2rem;
+    font-size: 14px;
+    font-weight: 600;
+    color: $text;
+    margin-top: 1rem;
+    border-radius: 5px;
+    display: flex;
+    height: 20px;
+  
+
+    &:focus {
+      outline: none;
+    }
+
+
+    @media only screen and (min-width: 1200px) {
+      width: 20vw;
+    }
+  }
+
+  textarea {
+    border: 0;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding-top: 0.5rem;
+    width: 21vw !important;
+    resize: vertical;
+    min-height: 4rem;
+    color: $text;
+    border-radius: 5px;
+    margin-top: 1rem;
+    font-size: 1.2em;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      text-align: center;
+    }
+
+    @media only screen and (min-width: 1200px) {
+      width: 20vw;
+    }
+  }
+
+  .select {
+    width: 70vw;
+    height: 2.5rem;
+    text-align: center;
+    border: none;
+    color: $buttonColor;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    display: flex;
+    margin-left: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    .options {
+      font-weight: bold;
+    }
+
+    @media only screen and (min-width: 1200px) {
+      width: 20.25vw;
+    }
+  }
+
+  .error {
+    color: red;
+    position: sticky;
+    margin-left: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .errorterms {
+    color: red;
+    position: sticky;
+    margin-top: 1.5rem;
+  }
+
+  .button {
+    margin-top: 2.5rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 1rem 3rem;
+    background-color: $buttonColor;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
+    display: inherit;
+  }
+
+  .botoncito {
+    display: flex;
+  }
+
+  .buttondisabled {
+    margin-top: 2.5rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 1rem 3rem;
+    background-color: $buttonDisabled;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
+    display: inherit;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .cargaImagen {
+    font-weight: bold;
+    
+  }
+}

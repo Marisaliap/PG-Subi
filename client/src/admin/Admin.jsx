@@ -29,7 +29,7 @@ export default function Admin() {
           </Route>
           <Route exact path="/admin/newUser">
             <NewUser />
-          </Route>
+          </Route> 
           <Route exact path="/admin/users">
             <UserList />
           </Route>
