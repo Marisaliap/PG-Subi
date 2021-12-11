@@ -5,7 +5,6 @@ import User from "../admin/pages/User"
 import UserDetails from "../components/UserDetails";
 import Dashboard from "../admin/pages/Dashboard";
 import NewUser from "../admin/pages/NewUser";
-import CreateNewUserDos from "../admin/pages/CreateNewUserDos";
 import UserList from "../admin/pages/UserList";
 import "../Sass/Styles/App.scss";
 import "../styles/Admin.css";
@@ -28,12 +27,9 @@ export default function Admin() {
           <Route path="/admin/user/:id">
             <User />
           </Route>
-          {/* <Route exact path="/admin/newUser">
-            <NewUser />
-          </Route> */}
           <Route exact path="/admin/newUser">
-            <CreateNewUserDos />
-          </Route>
+            <NewUser />
+          </Route> 
           <Route exact path="/admin/users">
             <UserList />
           </Route>

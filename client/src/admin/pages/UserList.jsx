@@ -46,7 +46,7 @@ export default function UserList() {
     { field: "id", headerName: "ID", width: 200 }, 
     {
       field: "user",
-      headerName: "User",
+      headerName: "User Full Name",
       width: 200,
       renderCell: (params) => {
         return (
@@ -66,13 +66,16 @@ export default function UserList() {
     },
     {
       field: "action",
-      headerName: "Action",
-      width: 150,
+      headerName: "Actions",
+      width: 280,
       renderCell: (params) => {
         return (
           <>
              <Link to={"/admin/user/" + params.row.id}>
-              <button className="userListEdit" onClick={() => handleId(params.row.id)}>Edit</button>
+              <button className="userListEdit" onClick={() => handleId(params.row.id)}>Edit User</button>
+            </Link>
+            <Link to="/admin/newUser">
+            <button className="userListEdit" /* className="userAddButton" */>Create New</button>
             </Link>
             <DeleteOutline
               className="userListDelete"

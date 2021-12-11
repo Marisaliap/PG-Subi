@@ -78,7 +78,7 @@
     "register.home" : "Inicio",
     "register.title" : "Crea tu Usuario",
     "register.name" : "Nombre*",
-    "register.lastname" : "Last Name*:",
+    "register.lastname" : "Apellido*:",
     "register.photoUser" : "Foto Usuario*:",
     "register.id" : "DNI o Pasaporte*:",
     "register.idFront" : "DNI o Pasaporte Frente*:",
@@ -165,7 +165,8 @@
 
     "privacyPolicy.p70" : " Si tienes alguna pregunta sobre esta Política de Privacidad o si tienes alguna solicitud con respecto a tus Datos personales, puedes ponerte en contacto con nosotros mediante correo electrónico a nuestro Delegado de Protección de Datos en <a>dataprotection@GiveMeaRide.com</a>",
 
-
+    "adminNewUser.title" : "Crear Nuevo Usuario",
+    "adminNewUser.about" : "Sobre mi:",
 
 
 
