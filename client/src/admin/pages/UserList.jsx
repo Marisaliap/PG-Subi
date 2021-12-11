@@ -74,9 +74,6 @@ export default function UserList() {
              <Link to={"/admin/user/" + params.row.id}>
               <button className="userListEdit" onClick={() => handleId(params.row.id)}>Edit User</button>
             </Link>
-            <Link to="/admin/newUser">
-            <button className="userListEdit" /* className="userAddButton" */>Create New</button>
-            </Link>
             <DeleteOutline
               className="userListDelete"
               onClick={() => handleDelete(params.row.id)}

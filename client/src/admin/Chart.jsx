@@ -24,3 +24,4 @@ export default function Chart({ title, data, dataKey, grid }) {
     </div>
   );
 }
+
