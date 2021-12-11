@@ -1,7 +1,7 @@
 import Chart from "../../admin/Chart";
 import FeaturedInfo from "../../admin/FeaturedInfo";
 import "../../styles/Dashboard.css";
-import { userData } from "../dummyData";
+import { userData } from "../salesData";
 import WidgetSm from "../WidgetSm"; 
 import WidgetLg from "../WidgetLg";
 import { useSelector } from "react-redux";
