@@ -48,8 +48,8 @@ module.exports = (sequelize) => {
       restriction: {
         type: DataTypes.STRING,
       },
-      infoRoute: {
-        type: DataTypes.TEXT,
+      manejante: {
+        type: DataTypes.STRING,
       },
       km: {
         type: DataTypes.STRING,

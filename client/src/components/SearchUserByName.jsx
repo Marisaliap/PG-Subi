@@ -33,6 +33,7 @@ export default function SearchUserByName() {
             value={name}
             placeholder={placeholder}
             onChange={(e) => handleInput(e)}
+            className="searchbar"
           />
         )}
       </FormattedMessage>

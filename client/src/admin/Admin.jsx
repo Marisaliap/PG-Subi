@@ -1,7 +1,8 @@
 import React from 'react';
 import Sidebar from "./Sidebar"; 
 import Topbar from "./Topbar"; 
-import User from "../admin/pages/User"
+// import User from "../admin/pages/User"
+import User2 from "./pages/Users2"
 import UserDetails from "../components/UserDetails";
 import Dashboard from "../admin/pages/Dashboard";
 import NewUser from "../admin/pages/NewUser";
@@ -10,6 +11,7 @@ import "../Sass/Styles/App.scss";
 import "../styles/Admin.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Transactions from './pages/Transactions';
 
 export default function Admin() {
   return (
@@ -21,21 +23,23 @@ export default function Admin() {
           <Route exact path="/admin">
             <Dashboard/>
             </Route>
-          <Route exact path="/admin/topbar">
-            <Topbar />
-          </Route>
-          <Route path="/admin/user/:id">
-            <User />
+          {/* <Route path="/admin/user/:id">
+            <User /> */}
+          <Route path="/admin/users/:id">
+            <User2 />
           </Route>
           <Route exact path="/admin/newUser">
             <NewUser />
-          </Route>
+          </Route> 
           <Route exact path="/admin/users">
             <UserList />
           </Route>
           {/* <Route path="/admin/user/:id">
             <UserDetails />
           </Route>  */}
+          <Route exact path="/admin/transactions">
+            <Transactions/>
+          </Route>
         </Switch>
       </div>
     </Router>

@@ -4,7 +4,7 @@ import "../../styles/UserList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { deleteUser, getAllUsers, getId, getUserAdmin } from "../../actions";
+import { deleteUser, getAllUsers, getId, getUserAdmin,getUserDetail } from "../../actions";
 
 export default function UserList() {
   const { usuariosRegistrados } = useSelector(state => state)
@@ -28,6 +28,7 @@ export default function UserList() {
 
   useEffect((id) => {
     dispatch(getUserAdmin(id));
+    dispatch(getUserDetail(id));
   }, []); 
 
 
@@ -40,13 +41,14 @@ export default function UserList() {
   const handleId = (id) => {
     dispatch(getId(id))
     dispatch(getUserAdmin(id)) 
+    dispatch(getUserDetail(id))
   }
 
   const columns = [
     { field: "id", headerName: "ID", width: 200 }, 
     {
       field: "user",
-      headerName: "User",
+      headerName: "User Full Name",
       width: 200,
       renderCell: (params) => {
         return (
@@ -66,13 +68,13 @@ export default function UserList() {
     },
     {
       field: "action",
-      headerName: "Action",
-      width: 150,
+      headerName: "Actions",
+      width: 280,
       renderCell: (params) => {
         return (
           <>
              <Link to={"/admin/user/" + params.row.id}>
-              <button className="userListEdit" onClick={() => handleId(params.row.id)}>Edit</button>
+              <button className="userListEdit" onClick={() => handleId(params.row.id)}>Edit User</button>
             </Link>
             <DeleteOutline
               className="userListDelete"
