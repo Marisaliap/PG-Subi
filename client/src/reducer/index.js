@@ -18,6 +18,7 @@ const initialState = {
   //-------------------------< admin store >------------------------ 
   userAdmin: [],
   id: "",
+  carAdmin: [],
   // ---------------< filters rami>----------------------------------
 
   restriction: "",
@@ -67,6 +68,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         userAdmin: action.payload,
+        carAdmin: action.payload.cars[0]
       };
 
     case "ID" :

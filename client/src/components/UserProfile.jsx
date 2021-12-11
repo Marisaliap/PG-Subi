@@ -19,7 +19,6 @@ import {
   BsGenderMale,
   BsInstagram,
   BsFacebook,
-  BsStarFill,
   BsMap,
   BsEnvelope,
   BsInfoSquareFill,
