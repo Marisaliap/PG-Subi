@@ -33,7 +33,7 @@ export default function User() {
   const [errorsUser, setErrorsUser] = useState({});
   const [image, setImage] = useState("")
   const [dni, setDni] = useState([])
-  const [auto, setAuto] = useState( !carAdmin.brand ? ({
+  const [auto, setAuto] = useState( !carAdmin&&!carAdmin.brand ? ({
     brand: "",
     model: "",
     patent: "",
@@ -50,15 +50,15 @@ export default function User() {
   }));
   
   setTimeout(function(){ console.log(auto,"carcar"); }, 3000);
-  // const [auto, setAuto] = useState({
+  const [auto, setAuto] = useState({
 
-  //   brand: carAdmin.brand,
-  //   model: carAdmin.model,
-  //   patent: carAdmin.patent,
-  //   color: carAdmin.color,
-  //   cylinder: carAdmin.cylinder,
-  // greencard: carAdmin.greencard,
-  // });
+    brand: carAdmin.brand,
+    model: carAdmin.model,
+    patent: carAdmin.patent,
+    color: carAdmin.color,
+    cylinder: carAdmin.cylinder,
+  greencard: carAdmin.greencard,
+  });
   
 
   const [input, setInput] = useState({
@@ -172,27 +172,27 @@ export default function User() {
     dispatch(getUserProfile(id));
     dispatch(getUserAdmin(id))
   }
-  // const handleSubmitPhoto=(e)=> {
-  //   e.preventDefault();
-  //   setImage('');
-  //   dispatch(editUser(id, input));
-  // }
+  const handleSubmitPhoto=(e)=> {
+    e.preventDefault();
+    setImage('');
+    dispatch(editUser(id, input));
+  }
 
   function handleChange(e) {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
-    setAuto({
-      ...auto,
-      [e.target.name]: e.target.value,
-    });
-    setErrorsCars(
-      validatecars({
-        ...auto,
-        [e.target.name]: e.target.value,
-      })
-    );
+    // setAuto({
+    //   ...auto,
+    //   [e.target.name]: e.target.value,
+    // });
+    // setErrorsCars(
+    //   validatecars({
+    //     ...auto,
+    //     [e.target.name]: e.target.value,
+    //   })
+    // );
     setErrorsUser(
       validateuser({
         ...input,
@@ -202,42 +202,42 @@ export default function User() {
   }
 
 
-  const uploadImage = async (e) => {
-    const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "photoAdmin");
+  // const uploadImage = async (e) => {
+  //   const files = e.target.files;
+  //   const data = new FormData();
+  //   data.append("file", files[0]);
+  //   data.append("upload_preset", "photoAdmin");
 
 
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
-      {
-        method: "POST",
-        body: data,
-      }
-    );
+  //   const res = await fetch(
+  //     "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+  //     {
+  //       method: "POST",
+  //       body: data,
+  //     }
+  //   );
 
-    const file = await res.json();
-    setImage(file.secure_url);
-  };
-  const uploadImage2 = async (e) => {
-    const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "dniAdmin");
+  //   const file = await res.json();
+  //   setImage(file.secure_url);
+  // };
+  // const uploadImage2 = async (e) => {
+  //   const files = e.target.files;
+  //   const data = new FormData();
+  //   data.append("file", files[0]);
+  //   data.append("upload_preset", "dniAdmin");
 
 
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
-      {
-        method: "POST",
-        body: data,
-      }
-    );
+  //   const res = await fetch(
+  //     "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+  //     {
+  //       method: "POST",
+  //       body: data,
+  //     }
+  //   );
 
-    const file = await res.json();
-    setDni([...dni, file.secure_url]);
-  };
+  //   const file = await res.json();
+  //   setDni([...dni, file.secure_url]);
+  // };
 
   // _______________________________________________________________________________
 
@@ -300,7 +300,7 @@ export default function User() {
             </div>
             <div className="userShowInfo">
               <DirectionsCar className="userShowIcon" />
-              <img className="userShowInfoTitle" src={carAdmin?.greencard} />
+              {/* <img className="userShowInfoTitle" src={carAdmin?.greencard} /> */}
             </div>
             <span className="userShowTitle">Contact Details</span>
             <div className="userShowInfo">
@@ -495,6 +495,9 @@ export default function User() {
                 />
               </div>
             </div>
+            
+            
+            
             {/* ----------------------------<container center Car>------------------------ */}
             {carAdmin?.brand && (
               <div className="userUpdateCenter">
@@ -597,8 +600,8 @@ export default function User() {
                     />
                   </div>
 
-                  {/* <div Style="display:none">{(input.photo = image)}</div> */}
-                </div>
+                  
+                 </div>
                 <br />
                 <span className="userShowTitle">GreenCard</span>
                 <div className="userUpdateUpload">
@@ -618,11 +621,11 @@ export default function User() {
                     />
                   </div>
 
-                  {/* <div Style="display:none">{(input.photo = image)}</div> */}
+                  
                 </div>
-                {/* <label htmlFor="file">
+                 <label htmlFor="file">
                   <Publish className="userUpdateIcon" />
-                </label> */}
+                </label> 
 
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>

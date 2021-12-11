@@ -1,7 +1,8 @@
 import React from 'react';
 import Sidebar from "./Sidebar"; 
 import Topbar from "./Topbar"; 
-import User from "../admin/pages/User"
+// import User from "../admin/pages/User"
+import User2 from "./pages/Users2"
 import UserDetails from "../components/UserDetails";
 import Dashboard from "../admin/pages/Dashboard";
 import NewUser from "../admin/pages/NewUser";
@@ -21,11 +22,10 @@ export default function Admin() {
           <Route exact path="/admin">
             <Dashboard/>
             </Route>
-          <Route exact path="/admin/topbar">
-            <Topbar />
-          </Route>
-          <Route path="/admin/user/:id">
-            <User />
+          {/* <Route path="/admin/user/:id">
+            <User /> */}
+          <Route path="/admin/users/:id">
+            <User2 />
           </Route>
           <Route exact path="/admin/newUser">
             <NewUser />
