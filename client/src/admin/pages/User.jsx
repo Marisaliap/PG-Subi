@@ -62,14 +62,12 @@ export default function User() {
 
   }
 
-  console.log(userAdmin)
   const handleChange = (e) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
   }
-  console.log(input,"input hola")
 
   const uploadImage = async (e) => {
     const files = e.target.files;

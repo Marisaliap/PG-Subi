@@ -196,7 +196,18 @@ export function deleteUser(id) {
   };
 }
 
+export function getAllCars() {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/car/`)).data;
 
+      return dispatch({
+        type: "GET_CARS",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
 
 export function editCar(id, info) {
   return async function (dispatch) {

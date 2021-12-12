@@ -19,6 +19,7 @@ import {
 import { RiPinDistanceFill } from 'react-icons/ri';
 import '../Sass/Styles/Map.scss';
 import swal from 'sweetalert2';
+import { FormattedMessage } from "react-intl";
 
 String.prototype.capitalizeFirstLetter = function () {
   if (this) {
@@ -85,7 +86,10 @@ export default function Map() {
   return (
     <div className="Mapping">
       <Link to="/home">
-        <button className="buttonBlue">Home</button>
+        <button className="buttonBlue"><FormattedMessage
+                        id="map.home"
+                        defaultMessage="Home"
+                      /></button>
       </Link>
 
       <Map
@@ -171,7 +175,10 @@ export default function Map() {
           <BsWatch /> {data.coordinates && data.coordinates.time}
         </p>
         <p>
-          <BsFillPersonFill /> {routeInfo.pasajeros} Seats available.
+          <BsFillPersonFill /> {routeInfo.pasajeros} <FormattedMessage
+                        id="map.seats"
+                        defaultMessage="Seats available"
+                      />
         </p>
         {routeInfo.restrictions.map((restriction) => {
           return (
@@ -185,10 +192,16 @@ export default function Map() {
       </div>
       <div className="buttonContainer">
         <button className="buttonBlue" onClick={handleClick}>
-          I want to change something!
+        <FormattedMessage
+                        id="map.button"
+                        defaultMessage="I want to change something!"
+                      />
         </button>
         <button className="button" onClick={handlePost}>
-          Create Trip
+        <FormattedMessage
+                        id="map.button1"
+                        defaultMessage="Create Trip"
+                      />
         </button>
       </div>
     </div>

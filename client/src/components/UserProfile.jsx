@@ -341,7 +341,10 @@ export default function UserProfile() {
          {nav === 0 && 
            <div>
            <div className="centralo">
-             <h1 className="tituloUserProfile">User Details</h1>
+           <h1 className="tituloUserProfile"><FormattedMessage
+                        id="userProfile.title"
+                        defaultMessage="User Details"
+                      /></h1>
            </div>
            <div className="ubicatop"></div>
            <div className="seccionTop">
@@ -352,10 +355,16 @@ export default function UserProfile() {
                     className="botonPhoto"
                     onClick={() => handleClickPhoto()}
                   >
-                    Change Photo
+                    <FormattedMessage
+                        id="userProfile.changephoto"
+                        defaultMessage="Change Photo"
+                      />
                   </button>
                 ) : (
-                  <button className="botonPhotoDisabled">Change Photo</button>
+                  <button className="botonPhotoDisabled"><FormattedMessage
+                        id="userProfile.changephoto"
+                        defaultMessage="Change Photo"
+                      /></button>
                 )}
               </div>
               <img className="photousuario" src={userInfo.photo} alt="User" />
@@ -405,7 +414,10 @@ export default function UserProfile() {
                     type="submit"
                     onClick={(e) => handleSubmitPhoto(e)}
                   >
-                    Change Photo
+                   <FormattedMessage
+                        id="userProfile.changephoto"
+                        defaultMessage="Change Photo"
+                      />
                   </button>
                 </>
               )}
@@ -415,18 +427,27 @@ export default function UserProfile() {
                 <div className="labelArriba">
                   <BsEnvelope className="iconArriba" /> {userInfo.email}
                 </div>
-                <p className="labelArriba"> {userInfo.age} years old</p>
+                <p className="labelArriba"> {userInfo.age} <FormattedMessage
+                        id="userProfile.yearsold"
+                        defaultMessage="years old"
+                      /></p>
                 <div className="botonera">
                   {!booleanUser ? (
                     <button
                       className="buttonBlue"
                       onClick={() => handleClickUser()}
                     >
-                      Edit User Information
+                      <FormattedMessage
+                        id="userProfile.edituserinfo"
+                        defaultMessage="Edit User Information"
+                      />
                     </button>
                   ) : (
                     <button className="buttonDisabled">
-                      Edit User Information
+                    <FormattedMessage
+                        id="userProfile.edituserinfo"
+                        defaultMessage="Edit User Information"
+                      />
                     </button>
                   )}
                 </div>
@@ -452,6 +473,7 @@ export default function UserProfile() {
                       <BsInfoSquareFill className="icon" />
                       {userInfo.about}
                     </div>
+                    {!userInfo.cbu ?  
                     <div className="cadaLinea">
                       <p className="label">
                         <FormattedMessage
@@ -461,6 +483,7 @@ export default function UserProfile() {
                       </p>
                       <p className="label">{userInfo.cbu}</p>
                     </div>
+                    :""}
                   </div>
                   <div className="paddingAbajo"></div>
                 </>
@@ -546,6 +569,7 @@ export default function UserProfile() {
                           <p className="errorcar">{errorsUser.about}</p>
                         )}
                       </div>
+                      {!userInfo.cars.length===0?"":
                       <div className="cadaLinea">
                         <p className="label">
                           <FormattedMessage
@@ -561,13 +585,17 @@ export default function UserProfile() {
                           onChange={(e) => handleChange(e)}
                         />
                       </div>
+                      }
                     </div>
                     <button
                       className="buttonBlue"
                       type="submit"
                       onClick={(e) => handleSubmitUser(e)}
                     >
-                      Save
+                      <FormattedMessage
+                        id="userProfile.save"
+                        defaultMessage="Save"
+                      />
                     </button>
                   </div>
                 </>
@@ -576,26 +604,41 @@ export default function UserProfile() {
             </div></div>} {/*------------------------------------------------------ACA EMPIEZA CARS-----------------------------------------------*/}
         { nav === 1 && <div>
          <div className="centralo">
-            <h1 className="tituloUserProfile">Car Details</h1>
+         <h1 className="tituloUserProfile"><FormattedMessage
+                        id="userProfile.editcarinfo"
+                        defaultMessage="Edit Car Information"
+                      /></h1>
             </div>
             <div className="centralo">
             {idAuto === '' ? (
               <NavLink to="/car">
-                <button className="buttonBlue">Edit Car Information</button>
+                <button className="buttonBlue"><FormattedMessage
+                        id="userProfile.editcarinfo"
+                        defaultMessage="Edit Car Information"
+                      /></button>
               </NavLink>
             ) : !booleanCar ? (
               <button className="buttonBlue" onClick={() => handleClickCar()}>
-                Edit Car Information
+              <FormattedMessage
+                        id="userProfile.editcarinfo"
+                        defaultMessage="Edit Car Information"
+                      />
               </button>
             ) : (
-              <button className="buttonDisabled">Edit Car Information</button>
+              <button className="buttonDisabled"><FormattedMessage
+                        id="userProfile.editcarinfo"
+                        defaultMessage="Edit Car Information"
+                      /></button>
             )}
             </div>
             {booleanCar === false ? (
             <>
               <div className="patents">
                 <div className="cadaLinea">
-                  <p className="label">Brand:</p>
+                  <p className="label"><FormattedMessage
+                        id="userProfile.brand"
+                        defaultMessage="Brand:"
+                      /></p>
                   {userInfo.cars && userInfo.cars.length === 0 ? (
                     ''
                   ) : (
@@ -603,7 +646,10 @@ export default function UserProfile() {
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label">Model:</p>
+                  <p className="label"><FormattedMessage
+                        id="userProfile.model"
+                        defaultMessage="Model:"
+                      /></p>
                   {userInfo.cars && userInfo.cars.length === 0 ? (
                     ''
                   ) : (
@@ -611,7 +657,10 @@ export default function UserProfile() {
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label">Plate:</p>
+                  <p className="label"><FormattedMessage
+                        id="userProfile.patent"
+                        defaultMessage="Patent:"
+                      /></p>
                   {userInfo.cars && userInfo.cars.length === 0 ? (
                     ''
                   ) : (
@@ -621,7 +670,10 @@ export default function UserProfile() {
               </div>
               <div className="patents">
                 <div className="cadaLinea">
-                  <p className="label">Color:</p>
+                  <p className="label"><FormattedMessage
+                        id="userProfile.color"
+                        defaultMessage="Color:"
+                      /></p>
                   {userInfo.cars && userInfo.cars.length === 0 ? (
                     ''
                   ) : (
@@ -629,7 +681,10 @@ export default function UserProfile() {
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label">Cylinder:</p>
+                  <p className="label"><FormattedMessage
+                        id="userProfile.cylinder"
+                        defaultMessage="Cylinder:"
+                      /></p>
                   {userInfo.cars && userInfo.cars.length === 0 ? (
                     ''
                   ) : (
@@ -642,7 +697,10 @@ export default function UserProfile() {
             <>
               <div className="patents">
                 <div className="cadaLinea">
-                  <p className="label">Brand:</p>
+                  <p className="label"><FormattedMessage
+                        id="userProfile.brand"
+                        defaultMessage="Brand:"
+                      /></p>
                   {userInfo.cars & (userInfo.cars.length === 0) ? (
                     ''
                   ) : (
@@ -659,7 +717,10 @@ export default function UserProfile() {
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label">Model:</p>
+                  <p className="label"><FormattedMessage
+                        id="userProfile.model"
+                        defaultMessage="Model:"
+                      /></p>
                   {userInfo.cars & (userInfo.cars.length === 0) ? (
                     ''
                   ) : (
@@ -676,7 +737,10 @@ export default function UserProfile() {
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label">Plate:</p>
+                  <p className="label"><FormattedMessage
+                        id="userProfile.patent"
+                        defaultMessage="Patent:"
+                      /></p>
                   {userInfo.cars & (userInfo.cars.length === 0) ? (
                     ''
                   ) : (
@@ -695,7 +759,10 @@ export default function UserProfile() {
               </div>
               <div className="patents">
                 <div className="cadaLinea">
-                  <p className="label">Color:</p>
+                  <p className="label"><FormattedMessage
+                        id="userProfile.color"
+                        defaultMessage="Color:"
+                      /></p>
                   {userInfo.cars & (userInfo.cars.length === 0) ? (
                     ''
                   ) : (
@@ -712,7 +779,10 @@ export default function UserProfile() {
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label">Cylinder:</p>
+                  <p className="label"><FormattedMessage
+                        id="userProfile.cylinder"
+                        defaultMessage="Cylinder:"
+                      /></p>
                   {userInfo.cars & (userInfo.cars.length === 0) ? (
                     ''
                   ) : (
@@ -735,7 +805,10 @@ export default function UserProfile() {
                   type="submit"
                   onClick={(e) => handleSubmitCar(e)}
                 >
-                  Save
+                  <FormattedMessage
+                        id="userProfile.save"
+                        defaultMessage="Save"
+                      />
                 </button>
               </div>
             </>

@@ -33,7 +33,6 @@ export default function UserList() {
 
 
   const handleDelete = (id) => {
-    console.log(id, "soy id")
     dispatch(deleteUser(id))
     setData(data.filter((item) => item.id !== id))
   }

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../Sass/Styles/CardUser.scss";
-import { BsGenderFemale, BsGenderMale, BsStarFill } from "react-icons/bs";
+import { BsGenderFemale, BsGenderMale } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getUserDetail } from "../actions";

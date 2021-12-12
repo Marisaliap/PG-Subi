@@ -24,7 +24,6 @@ export default function Nav() {
   const  usuariosRegistrados = useSelector(state => state.usuariosRegistrados);
   const history = useHistory();
 
-
   useEffect(() => {
     dispatch(getUserProfile(id));
   }, [userpro.photo, userpro.cars && userpro.cars.length]);

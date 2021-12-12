@@ -15,7 +15,7 @@ const RouteDetails = () => {
   const { getRoutes } = useSelector((state) => state);
   useEffect(() => {dispatch(allRoutes())}, []);
   // useEffect(() =>  dispatch(getOrder()), [getRoutes.length]);
-  console.log(getRoutes, 'SOY ROUTES')
+
   return (
     <div className="RouteDetails">
       <NavBarFilter />

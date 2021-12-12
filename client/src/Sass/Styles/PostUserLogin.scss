@@ -42,24 +42,4 @@
       }
     }
   }
-
-  .formPost {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 30rem;
-
-    .select {
-      text-align: center;
-    }
-
-    .textarea {
-      textarea {
-        height: 10rem;
-        width: 30rem;
-      }
-    }
-
-    
-  }
 }

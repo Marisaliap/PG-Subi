@@ -39,7 +39,6 @@ export default function App() {
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
   const { userpro } = useSelector(state => state)
-  console.log(userpro, "user in app")
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
