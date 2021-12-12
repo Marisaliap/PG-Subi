@@ -5,7 +5,7 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { deleteUser, getAllUsers, getId, getUserAdmin,getUserDetail } from "../../actions";
-/* import { usePagination } from '@mui/material/Pagination'; */
+import Paged from "../Components/PagedNOUSAR" 
 
 export default function UserList() {
   const { usuariosRegistrados } = useSelector(state => state)
@@ -23,9 +23,23 @@ export default function UserList() {
  const [data, setData] = useState(filtrados); 
   const dispatch = useDispatch();
 
+// ------------------<paged>------------------
+
+const [currentPage, setCurrentPage] = useState(1)      //le paso el estado local con la primer página que se renderiza
+const [ usersPerPage ] = useState (15)                   //cuántos personajes quiero por página
+const indexOfLastUser = currentPage * usersPerPage       //cuando empieza será 8 
+const indexOffirstUser = indexOfLastUser - usersPerPage   // 0
+const currentUsers = filtrados.slice(indexOffirstUser, indexOfLastUser)     //slice toma una porción del arreglo dependiendo lo que le estoy pasando por parámetro
+
+const pagedTotal = (pageNumber) => {                      
+    setCurrentPage(pageNumber)                        //acá el paginado va a setear la pagina en el numero de pagina que se vaya clickeando
+}                                                     //cuando setea la página los índices cambian y el slide se va modificando
+
+// ------------------<pagedEnd>------------------
+
   useEffect(() => {
     dispatch(getAllUsers());
-  }, [data]); 
+  }, [currentUsers]); 
 
   useEffect((id) => {
     dispatch(getUserAdmin(id));
@@ -35,7 +49,7 @@ export default function UserList() {
 
   const handleDelete = (id) => {
     dispatch(deleteUser(id))
-    setData(data.filter((item) => item.id !== id))
+    setData(currentUsers.filter((item) => item.id !== id))
   }
   
   const handleId = (id) => {
@@ -43,8 +57,6 @@ export default function UserList() {
     dispatch(getUserAdmin(id)) 
     dispatch(getUserDetail(id))
   }
-  
- /*  <Pagination count={10} page={page} onChange={handleChange} /> */
 
   const columns = [
     { field: "id", headerName: "ID", width: 200 }, 
@@ -89,14 +101,24 @@ export default function UserList() {
   ];
 
   return (
+    <div>
     <div className="userList">
       <DataGrid
-        rows={data}
+        rows={currentUsers}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
         checkboxSelection
       />
     </div>
+    <div>
+        <Paged
+          usersPerPage= { usersPerPage }
+          filtrados= { filtrados.length }                     //le paso allDogs.length porque necesito un valor numérico
+          pagedTotal= { pagedTotal }
+        />
+      </div>
+    </div>
+    
   ); 
 }
