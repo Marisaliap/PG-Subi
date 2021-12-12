@@ -179,6 +179,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: [],
       };
+      case "DELETE_ROUTE_FROM_DB":
+      return {
+        ...state,
+        routeFromDb: [],
+      };
     case "ROUTE_POST_INFO":
       return {
         ...state,

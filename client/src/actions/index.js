@@ -230,7 +230,7 @@ export function getRouteFromDb(originName, destinyName, date, place) {
       const response = await axios.get(
         `http://localhost:3001/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}`
       );
-
+        console.log(response.data)
       return dispatch({
         type: "GET_ROUTE_FROM_DB",
         payload: response.data,
@@ -343,6 +343,12 @@ export function RoutePostInfo(info) {
 export function deleteRoute() {
   return {
     type: "DELETE_ROUTE",
+  };
+}
+export function deleteRouteFromDb(param) {
+  console.log(param)
+  return {
+    type: "DELETE_ROUTE_FROM_DB",
   };
 }
 export function deleteOrder(id) {

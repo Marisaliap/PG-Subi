@@ -182,7 +182,7 @@ export default function SearchBarHome() {
           disabled={checkInfo.length !== 2 && checkInputs.length !== 2}
         >
           <NavLink
-            to="/routes-found"
+            to="/route-list"
             style={{
               textDecoration: ' none',
               width: '60px',
