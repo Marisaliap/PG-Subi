@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from "./Sidebar"; 
 import Topbar from "./Topbar"; 
 // import User from "../admin/pages/User"
-import User2 from "./pages/Users2"
+import User2 from "./pages/Users2";
 import UserDetails from "../components/UserDetails";
 import Dashboard from "../admin/pages/Dashboard";
 import NewUser from "../admin/pages/NewUser";
