@@ -9,7 +9,7 @@
   text-align: left;
   background-color: $buttonColor;
   justify-items: center;
-  margin-top: 1rem;
+  margin-top: 5rem;
   padding-top: 5vh;
   padding-bottom: 1.5rem;
   transition: background-color 0.5s ease-in-out;
@@ -51,7 +51,7 @@
   .Info {
     align-self: center;
     h3 {
-      color: $background
+      color: $background;
     }
   }
 
@@ -79,8 +79,7 @@
     justify-content: center;
     display: flex;
     margin-top: 0.5rem;
-    color: $background
-    
+    color: $background;
   }
 
   .botonBandera {
