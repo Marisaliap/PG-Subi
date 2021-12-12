@@ -20,17 +20,17 @@ import "../../styles/User.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { editUser, getUserProfile, getAllUsers, getUserAdmin, getUserDetail } from "../../actions";
 
-export default function User2(props) {
+export default function User2() {
     const { id, userAdmin, carAdmin, usuariosRegistrados, car } = useSelector(state => state)
-    const users = useSelector(state => state.user)
+    const users = useSelector(state => state)
     const { user } = useAuth0();
     const dispatch = useDispatch()
     let booleanDNI;
     // -------------------------------------<useEffect>-------------------------------------
     useEffect(() => {
         dispatch(getUserAdmin(id));
-        dispatch(getAllUsers());  
-           
+        dispatch(getAllUsers());
+
         // window.location.reload(true)
     }, [dispatch, id]);
     //   -------------------------------------< estados> --------------------------------
@@ -38,26 +38,11 @@ export default function User2(props) {
     const [errorsUser, setErrorsUser] = useState({});
     const [image, setImage] = useState("")
     const [dni, setDni] = useState([])
-    var adminUser = {email: userAdmin.email,
-            name: userAdmin.name,
-            lastName: userAdmin.lastName,
-            genre: userAdmin.genre,
-            age: userAdmin.age,
-            dni: userAdmin.dni,
-            street: userAdmin.street,
-            city: userAdmin.city,
-            province: userAdmin.province,
-            telephone: userAdmin.telephone,
-            facebook: userAdmin.facebook,
-            instagram: userAdmin.instagram,
-            photo: userAdmin.photo,
-            photoDni: userAdmin.photoDni,
-            isAdmin: userAdmin.isAdmin,
-            car: userAdmin.cars}
-            console.log(adminUser, "adminUser")
-    const [input, setInput] = useState(adminUser)
+
+
+    // const [input, setInput] = useState(adminUser)
     // const [input, setInput] = useState({
-    //     email: props.email,
+    //     email: usuariosRegistrados.filter(e=>e.email===user.email),
     //     name: props.name,
     //     lastName: props.lastName,
     //     genre: props.genre,
@@ -75,7 +60,29 @@ export default function User2(props) {
     //     car: props.cars
     // });
 
-    // const [input, setInput] = useState({
+    const [input, setInput] = useState({
+        email: userAdmin.email,
+        name: userAdmin.name,
+        lastName: userAdmin.lastName,
+        genre: userAdmin.genre,
+        age: userAdmin.age,
+        dni: userAdmin.dni,
+        street: userAdmin.street,
+        city: userAdmin.city,
+        province: userAdmin.province,
+        telephone: userAdmin.telephone,
+        facebook: userAdmin.facebook,
+        instagram: userAdmin.instagram,
+        photo: userAdmin.photo,
+        photoDni: userAdmin.photoDni,
+        isAdmin: userAdmin.isAdmin,
+        car: userAdmin.cars
+    });
+
+    console.log("INPUT", input)
+    console.log("USERAMIN", userAdmin)
+
+    // usuariosRegistrados.map(e=>e.email).includes(id) === true && setInput({
     //     email: userAdmin.email,
     //     name: userAdmin.name,
     //     lastName: userAdmin.lastName,
@@ -92,12 +99,10 @@ export default function User2(props) {
     //     photoDni: userAdmin.photoDni,
     //     isAdmin: userAdmin.isAdmin,
     //     car: userAdmin.cars
-    // });
-    
-    console.log("USER ADMIN" , userAdmin)
-    console.log(input,"input input")
-   
-   
+
+    // })
+
+
     const [auto, setAuto] = useState(userAdmin?.cars?.length === 0 ? ({
         brand: "",
         model: "",
@@ -113,7 +118,7 @@ export default function User2(props) {
         cylinder: carAdmin.cylinder,
         greencard: carAdmin.greencard,
     }));
-    console.log(auto, "auto")
+
     // ------------------<handles>------------------
     const handleSubmitUser = (e) => {
         e.preventDefault();
@@ -123,11 +128,11 @@ export default function User2(props) {
         dispatch(getUserProfile(id));
         dispatch(getUserAdmin(id))
     }
-    const handleSubmitPhoto = (e) => {
-        e.preventDefault();
-        setImage('');
-        dispatch(editUser(id, input));
-    }
+    // const handleSubmitPhoto = (e) => {
+    //     e.preventDefault();
+    //     setImage('');
+    //     dispatch(editUser(id, input));
+    // }
 
     function handleChange(e) {
         setInput({
@@ -272,9 +277,6 @@ export default function User2(props) {
         <div className="userAdmin">
             <div className="userTitleContainer">
                 <h1 className="userTitle">Edit User</h1>
-                <Link to="/admin/newUser">
-                    <button className="userAddButton">Create</button>
-                </Link>
             </div>
             <div className="userContainerAdmin">
                 <div className="userShow">
@@ -387,7 +389,7 @@ export default function User2(props) {
 
                 {/* ----------------------------------------<FORM>------------------------------------------------- */}
                 {/* ------------------------<SI NO FUNCIONA ES CULPA DE MARI =)>------------------------------------------------- */}
-                {/* <div className="userUpdate">
+                <div className="userUpdate">
                     <span className="userUpdateTitle">Edit</span>
                     <div className="userUpdateForm">
                         <div className="userUpdateLeft">
@@ -397,7 +399,7 @@ export default function User2(props) {
                                     // onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="name"
-                                    placeholder={user.name}
+                                    placeholder="name"
                                     value={input.name}
                                     className="userUpdateInput"
                                 />
@@ -413,7 +415,7 @@ export default function User2(props) {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="lastName"
-                                    placeholder={userAdmin.lastName}
+                                    placeholder="lastName"
                                     value={input.lastName}
                                     className="userUpdateInput"
                                 />
@@ -429,7 +431,7 @@ export default function User2(props) {
                                     onChange={(e) => handleChange(e)}
                                     type="number"
                                     name="dni"
-                                    placeholder={userAdmin.dni}
+                                    placeholder="dni"
                                     value={input.dni}
                                     className="userUpdateInput"
                                 />
@@ -443,7 +445,7 @@ export default function User2(props) {
                                     onChange={(e) => handleChange(e)}
                                     type="number"
                                     name="age"
-                                    placeholder={userAdmin.age}
+                                    placeholder="age"
                                     value={input.age}
                                     className="userUpdateInput"
                                 />
@@ -457,7 +459,7 @@ export default function User2(props) {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="telephone"
-                                    placeholder={userAdmin.telephone}
+                                    placeholder="telephone"
                                     value={input.telephone}
                                     className="userUpdateInput"
                                 />
@@ -472,7 +474,7 @@ export default function User2(props) {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="street"
-                                    placeholder={userAdmin.street}
+                                    placeholder="street"
                                     value={input.street}
                                     className="userUpdateInput"
                                 />
@@ -487,7 +489,7 @@ export default function User2(props) {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="city"
-                                    placeholder={userAdmin.city}
+                                    placeholder="city"
                                     value={input.city}
                                     className="userUpdateInput"
                                 />
@@ -502,7 +504,7 @@ export default function User2(props) {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="province"
-                                    placeholder={userAdmin.province}
+                                    placeholder="province"
                                     value={input.province}
                                     className="userUpdateInput"
                                 />
@@ -517,7 +519,7 @@ export default function User2(props) {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="isAdmin"
-                                    placeholder={userAdmin.isAdmin === true ? "true" : "false"}
+                                    placeholder="isAdmin"
                                     value={input.isAdmin}
                                     className="userUpdateInput"
                                 />
@@ -529,7 +531,6 @@ export default function User2(props) {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="genre"
-                                    placeholder={userAdmin.genre}
                                     value={input.genre}
                                     className="userUpdateInput"
                                 />
@@ -541,7 +542,7 @@ export default function User2(props) {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="instagram"
-                                    placeholder={userAdmin.instagram}
+                                    placeholder="instagram"
                                     value={input.instagram}
                                     className="userUpdateInput"
                                 />
@@ -552,20 +553,20 @@ export default function User2(props) {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="facebook"
-                                    placeholder={userAdmin.facebook}
+                                    placeholder="facebook"
                                     value={input.facebook}
                                     className="userUpdateInput"
                                 />
                             </div>
-                        </div> */}
+                        </div>
 
 
-                {/* ___________________________________________________________________________ */}
+                        {/* ___________________________________________________________________________ */}
 
 
 
-                {/* ----------------------------<container center Car>------------------------ */}
-                {/* {carAdmin?.brand && (
+                        {/* ----------------------------<container center Car>------------------------ */}
+                        {/* {carAdmin?.brand && (
                             <div className="userUpdateCenter">
                                 <div className="userUpdateItem">
                                     <label>Brand</label>
@@ -629,12 +630,12 @@ export default function User2(props) {
                             </div>)
                         } */}
 
-                {/* ______________________________________________________________________ */}
+                        {/* ______________________________________________________________________ */}
 
-                {/* <div className="userUpdateRight">
+                        {/* <div className="userUpdateRight">
                             <div className="userUpdateUpload">
                                 <span className="userShowTitle">Photo User</span> */}
-                {/* <img
+                        {/* <img
                                     className="userUpdateImg"
                                     src={userAdmin.photo}
                                     alt=""
@@ -693,79 +694,18 @@ export default function User2(props) {
                                     <Publish className="userUpdateIcon" />
                                 </label> */}
 
-                {/* <input type="file" id="file" style={{ display: "none" }} />
-                            </div>
-                            <button onClick={(e) => handleSubmitUser(e)} className="userUpdateButton">Update</button>
-                        </div>
+                        {/* <input type="file" id="file" style={{ display: "none" }} /> */}
                     </div>
-                </div> */}
-
-                <div className="userUpdate">
-                    <span className="userUpdateTitle">Edit</span>
-                    <form className="userUpdateForm">
-                        <div className="userUpdateLeft">
-                            <div className="userUpdateItem">
-                                <label>Username</label>
-                                <input
-                                    type="text"
-                                   
-                                    placeholder="annabeck99"
-                                    value={input.name}
-                                    className="userUpdateInput"
-                                />
-                            </div>
-                            <div className="userUpdateItem">
-                                <label>Full Name</label>
-                                <input
-                                    type="text"
-                                    placeholder="Anna Becker"
-                                    className="userUpdateInput"
-                                />
-                            </div>
-                            <div className="userUpdateItem">
-                                <label>Email</label>
-                                <input
-                                    type="text"
-                                    placeholder="annabeck99@gmail.com"
-                                    className="userUpdateInput"
-                                />
-                            </div>
-                            <div className="userUpdateItem">
-                                <label>Phone</label>
-                                <input
-                                    type="text"
-                                    placeholder="+1 123 456 67"
-                                    className="userUpdateInput"
-                                />
-                            </div>
-                            <div className="userUpdateItem">
-                                <label>Address</label>
-                                <input
-                                    type="text"
-                                    placeholder="New York | USA"
-                                    className="userUpdateInput"
-                                />
-                            </div>
-                        </div>
-                        <div className="userUpdateRight">
-                            <div className="userUpdateUpload">
-                                <img
-                                    className="userUpdateImg"
-                                    src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                                    alt=""
-                                />
-                                <label htmlFor="file">
-                                    <Publish className="userUpdateIcon" />
-                                </label>
-                                <input type="file" id="file" style={{ display: "none" }} />
-                            </div>
-                            <button className="userUpdateButton">Update</button>
-                        </div>
-                    </form>
+                    <button onClick={(e) => handleSubmitUser(e)} className="userUpdateButton">Update</button>
                 </div>
+            </div>
+        </div>
 
 
-            </div >
-        </div >
+
+
+
+
+
     )
 }

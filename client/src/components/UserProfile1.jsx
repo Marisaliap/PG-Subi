@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import {
   editUser,
-  getUserProfile,
+  getUserAdmin,
   editCar,
   getUserByName,
   getUserById,
@@ -27,11 +27,9 @@ import "../Sass/Styles/UserProfile.scss";
 import RatingStar from "./RatingStar";
 
 export default function UserProfile() {
-  const userInfo = useSelector((state) => state.userpro);
-  const autoInfo = useSelector((state) => state.carpro);
-  let idAuto;
-  autoInfo === undefined ? (idAuto = '') : (idAuto = autoInfo.id);
-  console.log(idAuto);
+  const {id,userAdmin,carAdmin} = useSelector(state => state);
+  let idCar;
+  carAdmin === undefined ? (idCar = '') : (idCar = carAdmin.id);
   const [loanding, setLoanding] = useState(false);
   const [image, setImage] = useState('');
   const [booleanUser, setBooleanUser] = useState(false);
@@ -47,8 +45,8 @@ export default function UserProfile() {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getUserProfile(userInfo.email));
-  }, [booleanUser, booleanCar, booleanPhoto, dispatch, userInfo.email]);
+    dispatch(getUserAdmin(id));
+  }, [booleanUser, booleanCar, booleanPhoto, id]);
 
   const [input, setInput] = useState({});
 
@@ -57,9 +55,9 @@ export default function UserProfile() {
   function handleSubmitUser(e) {
     e.preventDefault();
     if (Object.keys(errorsUser).length === 0) {
-      dispatch(editUser(userInfo.email, input));
+      dispatch(editUser(userAdmin.email, input));
       setBooleanUser(false);
-      dispatch(getUserProfile(userInfo.email));
+      dispatch(getUserAdmin(userAdmin.email));
     } else {
       new swal({
         title: 'Sorry',
@@ -73,14 +71,14 @@ export default function UserProfile() {
   function handleSubmitCar(e) {
     e.preventDefault();
     if (Object.keys(errorsCars).length === 0) {
-      dispatch(editCar(idAuto, auto));
+      dispatch(editCar(carAdmin, auto));
       setBooleanCar(false);
       setAuto({
-        brand: userInfo.cars[0].brand,
-        model: userInfo.cars[0].model,
-        patent: userInfo.cars[0].patent,
-        color: userInfo.cars[0].color,
-        cylinder: userInfo.cars[0].cylinder,
+        brand: userAdmin.cars[0].brand,
+        model: userAdmin.cars[0].model,
+        patent: userAdmin.cars[0].patent,
+        color: userAdmin.cars[0].color,
+        cylinder: userAdmin.cars[0].cylinder,
       });
     } else {
       new swal({
@@ -95,7 +93,7 @@ export default function UserProfile() {
   function handleSubmitPhoto(e) {
     e.preventDefault();
     setImage('');
-    dispatch(editUser(userInfo.email, input));
+    dispatch(editUser(userAdmin.email, input));
     setBooleanPhoto(false);
     new swal({
       title: 'Good job!',
@@ -144,15 +142,15 @@ export default function UserProfile() {
     }
     setInput({
       ...input,
-      street: userInfo.street,
-      city: userInfo.city,
-      province: userInfo.province,
-      telephone: userInfo.telephone,
-      facebook: userInfo.facebook,
-      instagram: userInfo.instagram,
-      about: userInfo.about,
-      age: userInfo.age,
-      photo: userInfo.photo,
+      street: userAdmin.street,
+      city: userAdmin.city,
+      province: userAdmin.province,
+      telephone: userAdmin.telephone,
+      facebook: userAdmin.facebook,
+      instagram: userAdmin.instagram,
+      about: userAdmin.about,
+      age: userAdmin.age,
+      photo: userAdmin.photo,
     });
   }
 
@@ -163,11 +161,11 @@ export default function UserProfile() {
       setBooleanCar(false);
     }
     setAuto({
-      brand: userInfo.cars[0].brand,
-      model: userInfo.cars[0].model,
-      patent: userInfo.cars[0].patent,
-      color: userInfo.cars[0].color,
-      cylinder: userInfo.cars[0].cylinder,
+      brand: userAdmin.cars[0].brand,
+      model: userAdmin.cars[0].model,
+      patent: userAdmin.cars[0].patent,
+      color: userAdmin.cars[0].color,
+      cylinder: userAdmin.cars[0].cylinder,
     });
   }
 
@@ -275,16 +273,16 @@ export default function UserProfile() {
                   <button className="botonPhotoDisabled">Change Photo</button>
                 )}
               </div>
-              <img className="photousuario" src={userInfo.photo} alt="User" />
+              <img className="photousuario" src={userAdmin.photo} alt="User" />
               <div>
                 <h1 className="titulos">
-                  {userInfo.name} {userInfo.lastName}{' '}
-                  {genderIcon(userInfo.genre)}
+                  {userAdmin.name} {userAdmin.lastName}{' '}
+                  {genderIcon(userAdmin.genre)}
                 </h1>
-                <p className="labelArriba">{userInfo.dni}</p>
+                <p className="labelArriba">{userAdmin.dni}</p>
                 <div className="labelArriba">
                   <RatingStar
-                  Rating={userInfo.calification}
+                  Rating={userAdmin.calification}
 
                     /> 
                 </div>
@@ -330,9 +328,9 @@ export default function UserProfile() {
             <div className="datosUsuario">
               <div className="edadyemail">
                 <div className="labelArriba">
-                  <BsEnvelope className="iconArriba" /> {userInfo.email}
+                  <BsEnvelope className="iconArriba" /> {userAdmin.email}
                 </div>
-                <p className="labelArriba"> {userInfo.age} years old</p>
+                <p className="labelArriba"> {userAdmin.age} years old</p>
                 <div className="botonera">
                   {!booleanUser ? (
                     <button
@@ -353,21 +351,21 @@ export default function UserProfile() {
                   <div className="moreInfo">
                     <div className="cadaLinea">
                       <BsFillTelephoneFill className="icon" />{' '}
-                      {userInfo.telephone}
+                      {userAdmin.telephone}
                     </div>
                     <div className="cadaLinea">
-                      <BsFacebook className="icon" /> {userInfo.facebook}
+                      <BsFacebook className="icon" /> {userAdmin.facebook}
                     </div>
                     <div className="cadaLinea">
-                      <BsInstagram className="icon" /> {userInfo.instagram}
+                      <BsInstagram className="icon" /> {userAdmin.instagram}
                     </div>
                     <div className="cadaLinea">
-                      <BsMap className="icon" /> {userInfo.street},{' '}
-                      {userInfo.city},{userInfo.province}
+                      <BsMap className="icon" /> {userAdmin.street},{' '}
+                      {userAdmin.city},{userAdmin.province}
                     </div>
                     <div className="cadaLinea">
                       <BsInfoSquareFill className="icon" />
-                      {userInfo.about}
+                      {userAdmin.about}
                     </div>
                     <div className="cadaLinea">
                       <p className="label">
@@ -376,7 +374,7 @@ export default function UserProfile() {
                           defaultMessage="CBU:"
                         />
                       </p>
-                      <p className="label">{userInfo.cbu}</p>
+                      <p className="label">{userAdmin.cbu}</p>
                     </div>
                   </div>
                   <div className="paddingAbajo"></div>
@@ -456,7 +454,7 @@ export default function UserProfile() {
                         <textarea
                           type="text"
                           name="about"
-                          defaultValue={userInfo.about}
+                          defaultValue={userAdmin.about}
                           onChange={(e) => handleChange(e)}
                         />
                         {errorsUser.about && (
@@ -495,7 +493,7 @@ export default function UserProfile() {
             <h1 className="tituloUserProfile">Car Details</h1>
           </div>
           <div className="centralo">
-            {idAuto === '' ? (
+            {carAdmin === '' ? (
               <NavLink to="/car">
                 <button className="buttonBlue">Edit Car Information</button>
               </NavLink>
@@ -512,44 +510,44 @@ export default function UserProfile() {
               <div className="patents">
                 <div className="cadaLinea">
                   <p className="label">Brand:</p>
-                  {userInfo.cars && userInfo.cars.length === 0 ? (
+                  {userAdmin.cars && userAdmin.cars.length === 0 ? (
                     ''
                   ) : (
-                    <p className="label">{autoInfo.brand}</p>
+                    <p className="label">{userAdmin.brand}</p>
                   )}
                 </div>
                 <div className="cadaLinea">
                   <p className="label">Model:</p>
-                  {userInfo.cars && userInfo.cars.length === 0 ? (
+                  {userAdmin.cars && userAdmin.cars.length === 0 ? (
                     ''
                   ) : (
-                    <p className="label">{autoInfo.model}</p>
+                    <p className="label">{userAdmin.model}</p>
                   )}
                 </div>
                 <div className="cadaLinea">
                   <p className="label">Plate:</p>
-                  {userInfo.cars && userInfo.cars.length === 0 ? (
+                  {userAdmin.cars && userAdmin.cars.length === 0 ? (
                     ''
                   ) : (
-                    <p className="label">{autoInfo.patent}</p>
+                    <p className="label">{userAdmin.patent}</p>
                   )}
                 </div>
               </div>
               <div className="patents">
                 <div className="cadaLinea">
                   <p className="label">Color:</p>
-                  {userInfo.cars && userInfo.cars.length === 0 ? (
+                  {userAdmin.cars && userAdmin.cars.length === 0 ? (
                     ''
                   ) : (
-                    <p className="label">{autoInfo.color}</p>
+                    <p className="label">{userAdmin.color}</p>
                   )}
                 </div>
                 <div className="cadaLinea">
                   <p className="label">Cylinder:</p>
-                  {userInfo.cars && userInfo.cars.length === 0 ? (
+                  {userAdmin.cars && userAdmin.cars.length === 0 ? (
                     ''
                   ) : (
-                    <p className="label">{autoInfo.cylinder}</p>
+                    <p className="label">{userAdmin.cylinder}</p>
                   )}
                 </div>{' '}
               </div>
@@ -559,7 +557,7 @@ export default function UserProfile() {
               <div className="patents">
                 <div className="cadaLinea">
                   <p className="label">Brand:</p>
-                  {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  {userAdmin.cars & (userAdmin.cars.length === 0) ? (
                     ''
                   ) : (
                     <input
@@ -576,7 +574,7 @@ export default function UserProfile() {
                 </div>
                 <div className="cadaLinea">
                   <p className="label">Model:</p>
-                  {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  {userAdmin.cars & (userAdmin.cars.length === 0) ? (
                     ''
                   ) : (
                     <input
@@ -593,7 +591,7 @@ export default function UserProfile() {
                 </div>
                 <div className="cadaLinea">
                   <p className="label">Plate:</p>
-                  {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  {userAdmin.cars & (userAdmin.cars.length === 0) ? (
                     ''
                   ) : (
                     <input
@@ -612,7 +610,7 @@ export default function UserProfile() {
               <div className="patents">
                 <div className="cadaLinea">
                   <p className="label">Color:</p>
-                  {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  {userAdmin.cars & (userAdmin.cars.length === 0) ? (
                     ''
                   ) : (
                     <input
@@ -629,7 +627,7 @@ export default function UserProfile() {
                 </div>
                 <div className="cadaLinea">
                   <p className="label">Cylinder:</p>
-                  {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  {userAdmin.cars & (userAdmin.cars.length === 0) ? (
                     ''
                   ) : (
                     <input
