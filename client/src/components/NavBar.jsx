@@ -1,81 +1,163 @@
-import React from "react";
-import { useEffect } from "react";
-import Logo from "../img/logo.png";
-import { Profile } from "./Profile";
-import SearchUserByName from "./SearchUserByName";
-import { useSelector, useDispatch } from "react-redux";
-import Auth from "./Auth";
-import { useAuth0 } from "@auth0/auth0-react";
-import { Link, NavLink } from "react-router-dom";
-import { getUserDetail } from "../actions";
-import "../Sass/Styles/NavBar.scss";
+import React, { useContext } from 'react';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router';
+import autitos from '../img/autitos.png';
+import Logo from '../img/logo.png';
+import { Profile } from './Profile';
+import { useSelector, useDispatch } from 'react-redux';
+import Auth from './Auth';
+import { NavLink } from 'react-router-dom';
+import { getUserProfile, getAllUsers} from '../actions';
+import { BsPlusCircle } from 'react-icons/bs';
+import '../Sass/Styles/NavBar.scss';
+import { FormattedMessage } from 'react-intl';
+import { langContext } from './../context/langContext.js';
+import { useAuth0 } from '@auth0/auth0-react';
+import Swal from 'sweetalert2';
 
-function Nav() {
+export default function Nav() {
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.user);
-  const { user, isAuthenticated } = useAuth0();
-  const id = isAuthenticated ? user.email : "";
-
-  console.log("esto es users", users);
-  //console.log("esto es user",user);
-  // console.log("esto es id",id);
-  //console.log("esto es AUth",isAuthenticated);
+  const userpro = useSelector(state => state.userpro);
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  const id = isAuthenticated ? user.email : '';
+  const idioma = useContext(langContext);
+  const  usuariosRegistrados = useSelector(state => state.usuariosRegistrados);
+  const history = useHistory();
 
   useEffect(() => {
-    dispatch(getUserDetail(id));
-  }, [dispatch, id]);
+    dispatch(getUserProfile(id));
+  }, [userpro.photo, userpro.cars && userpro.cars.length]);
 
-  //console.log(" esto es cars/mail", users.cars.userEmail)
-  console.log(" esto es cars", users.cars);
-  console.log(" esto es dni", users.dni);
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
 
-  return (
-    <>
-      <nav className="NavBar">
-        <div className="giveMeARide">
-          <div className="izquierda">
-            <Link to="/home">
-              <img className="logoSubi" src={Logo} alt="" />
-            </Link>
-          </div>
-          <div>
-            <Link to="/home" className="nombreSubi">
-              <h2 className="nombreSubi">Give me a ride</h2>
-            </Link>
-          </div>
-        </div>
-        <div className="searchContainer">
-          {
-            <NavLink
-              className="searchContainerItem"
-              to={
-                !users.dni
-                  ? "/register"
-                  : users.name && users.cars.length === 0
-                  ? "/car"
-                  : users.name && users.cars[0].patent
-                  ? "/route"
-                  : ""
-              }
-            >
-              <button className="button">Post a Trip</button>
-            </NavLink>
+  function handleClick() {
+    if (!isAuthenticated) {
+      return new Swal({
+        icon: 'warning',
+        title: 'Sorry',
+        text: 'You need to be logged in to post a trip!',
+        confirmButtonText: 'Alright',
+      })
+
+    } else {
+      if (!userpro.dni) { 
+        return new Swal({
+          icon: 'warning',
+          title: 'Sorry',
+          text: 'You need to be registered to post a trip!',
+          confirmButtonText: 'Register',
+          denyButtonText: `Go Back`,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.push('/register');
           }
-        </div>
-        <div>
-          <SearchUserByName />
-        </div>
-        <div className="perfylog">
-          <div className="profile">
+        });
+ 
+      }
+      else if (userpro.name && userpro.cars.length === 0) {
+        return new Swal({
+          icon: 'warning',
+          title: 'Sorry',
+          text: 'Please give us your car information',
+          confirmButtonText: 'Okay',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.push('/car');
+          }
+        });
+      
+      }
+      else if (userpro.name && userpro.cars && userpro.cars[0].patent)
+        history.push('/route');
+    }
+
+    // (!users.dni ? history.push('/register') : users.name && users.cars.length === 0 ? history.push('/car') : users.name && users.cars[0].patent ? history.push('/route'))
+  }
+  return (
+    <header className="NavBar">
+      <NavLink to="/home">
+        <img className="autitos" src={autitos} alt="" />
+        <img className="logo" src={Logo} alt="" />
+      </NavLink>
+      <nav>
+        <ul>
+          <li>
+            <button className="postNavLink" onClick={handleClick}>
+              <BsPlusCircle className="BsPlusCircle" />
+              <h3>
+                <FormattedMessage
+                  id="navBar.post"
+                  defaultMessage="Post a Trip"
+                />
+              </h3>
+            </button>
+           {/*  {!isAuthenticated ? (
+              <>
+                <button
+                  className="emulaPost emulador"
+                  onClick={() => handleClick()}
+                >
+                  <BsPlusCircle className="BsPlusCircle" />
+                  <FormattedMessage
+                    id="navBar.post"
+                    defaultMessage="Post a Trip"
+                  />
+                </button>
+              </>
+            ) : (
+              <NavLink
+                className="postNavLink"
+                to={
+                  !userpro.dni
+                    ? "/register"
+                    : userpro.name && userpro.cars.length === 0
+                    ? "/car"
+                    : userpro.name && userpro.cars[0].patent
+                    ? "/route"
+                    : ""
+                }
+              >
+                <BsPlusCircle className="BsPlusCircle" />
+                <h3>
+                  <FormattedMessage
+                    id="navBar.post"
+                    defaultMessage="Post a Trip"
+                  />
+                </h3>
+              </NavLink>
+            )} */}
+          </li>
+
+          <li className="barrita">|</li>
+
+          <li className="profile">
             <Profile />
-          </div>
-          <div className="logs">
+          </li>
+          <li>
             <Auth />
-          </div>
-        </div>
+          </li>
+          <li>
+            {isAuthenticated &&
+        usuariosRegistrados
+          .map((e) => e.email)
+          .filter((e) => e === user.email)[0] === user.email &&
+        userpro.isAdmin === true ? (
+          <NavLink to="/Admin">Admin</NavLink>
+        ) : null}
+        </li>
+        </ul>
+
+        {/* <div className="banderas">
+            <button onClick={() => idioma.establecerLenguaje("es-AR")}>
+            <img src={es} alt=""></img>
+            </button>
+            <button onClick={() => idioma.establecerLenguaje("en-US")}>
+            <img src={en} alt=""></img>
+            </button>
+          </div> */}
       </nav>
-    </>
+    </header>
   );
 }
-
-export default Nav;

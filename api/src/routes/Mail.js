@@ -2,10 +2,9 @@ const { Router } = require('express');
 const router = Router();
 const express = require('express');
 router.use(express.json());
-const {setDb} = require('../Controllers/SetDb') //IMPORTO FUNCIONES
+const {postMail} = require('../Controllers/Mail.js');
 
 
-router.post('/', setDb)
-
+router.post('/add',postMail);
 
 module.exports = router

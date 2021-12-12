@@ -8,7 +8,8 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     calification:{
-      type: DataTypes.DECIMAL
+      //type: DataTypes.INTEGER,
+      type:DataTypes.FLOAT,
     },
     date: {
       type: DataTypes.STRING
@@ -17,9 +18,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       primaryKey: true,
     },
-    title: {
-      type: DataTypes.STRING
-    }
   },
   {
     timestamps: false,

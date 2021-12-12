@@ -2,14 +2,15 @@ const { Post, User } = require('../db.js');
 
 const getPost = async (req, res, next) => {
     try {
-        const { id } = req.query;
-        var posts
+        const { id } = req.params;
+        let posts
         if (id) {
-            posts = await Post.findByPk(id);
+            posts = await Post.findAll({where:{userEmail: id}});
             res.send(posts)
+        }else{
+            posts = await Post.findAll();
+            return res.send(posts);
         }
-        posts = await Post.findAll();
-        return res.send(posts);
 
     } catch (error) {
         next(error);
@@ -20,7 +21,6 @@ const getPost = async (req, res, next) => {
 const setPost = async (req, res, next) => {
     try {
         const {
-            title,
             date,
             author,
             description,
@@ -29,16 +29,15 @@ const setPost = async (req, res, next) => {
         } = req.body;
 
 
-        const posts = Post.findOrCreate({
-            where: {
-                title,
+        const posts = Post.create({
+           
                 date,
                 author,
                 description,
                 calification,
             },
-        })
-        const users = await User.findByPk(email)
+        )
+        const users = await User.findOne({ where: { email: email } })
         await users.addPost(author);
         res.send(posts);
 

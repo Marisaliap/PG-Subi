@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getRoute,
   getSuggestions,
   getSuggestions2,
   RoutePostInfo,
+  allRoutes,
 } from "../actions";
 import { NavLink } from "react-router-dom";
-import "../Sass/Styles/SearchBarPostRuta.scss";
 import "../Sass/Styles/App.scss";
+import "../Sass/Styles/SearchBarPostRuta.scss";
+import { FormattedMessage } from "react-intl";
 
 let inputs = { Origin: "", Destination: "" };
-let info = { pasajeros: 1, date: "", hours: "" };
+let info = { pasajeros: 1, date: "", hours: "", restrictions: [] };
 
 const validateInputs = (input) => {
   const errors = {};
@@ -23,6 +25,7 @@ const validateInputs = (input) => {
   }
   return errors;
 };
+
 const validateInfo = (routeInfo) => {
   const errors = {};
   let info = Object.keys(routeInfo);
@@ -38,21 +41,24 @@ const validateInfo = (routeInfo) => {
 export default function SearchBar() {
   const cities = useSelector((state) => state.suggestions1);
   const cities2 = useSelector((state) => state.suggestions2);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({ validations: {} });
+  const [restrictions, setRestrictions] = useState([]);
+
+  let dateTime = new Date().toJSON().slice(0, 10).replace(/-/g, "-");
 
   function inputHandleChange(e) {
     inputs[e.target.name] = e.target.value;
     dispatch(getSuggestions(inputs.Origin));
     dispatch(getSuggestions2(inputs.Destination));
     const validations = validateInputs(inputs);
-    console.log(validations, "soy input");
     setErrors(() => {
       const errorState = { ...errors, validations };
       return errorState;
     });
-    console.log(errors);
   }
+
 
   const { validations } = errors;
 
@@ -71,14 +77,18 @@ export default function SearchBar() {
   }
 
   const checkAllInfo =
-    inputs.Origin.length > 6 &&
-    inputs.Destination.length > 6 &&
+    cities &&
+    cities.length > 0 &&
+    inputs.Origin === cities[0].name &&
+    cities2 &&
+    cities2.length > 0 &&
+    inputs.Destination === cities2[0].name &&
     info.date.length > 1 &&
     info.hours.length > 1;
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    info.restrictions = restrictions;
     if (checkAllInfo) {
       dispatch(
         getRoute(
@@ -91,61 +101,87 @@ export default function SearchBar() {
 
       dispatch(RoutePostInfo(info));
       inputs = { Origin: "", Destination: "" };
-      info = { pasajeros: 1, date: "", hours: "" };
+      info = { pasajeros: 1, date: "", hours: "", restrictions: [] };
+      dispatch(allRoutes());
     }
+  }
+
+  function handleRestrictions(e) {
+    if (!restrictions.includes(e.target.value)) {
+      setRestrictions([...restrictions, e.target.value]);
+    }
+  }
+  function deleteRestrictions(e) {
+    let filter = restrictions.filter(
+      (restriction) => restriction !== e.target.value
+    );
+    setRestrictions(filter);
   }
 
   return (
     <div className="searchBarPostRuta">
-      <form className="postRouteForm">
-        <h1>Where do you want to go?</h1>
-        <input
-          type="text"
-          list="cities"
-          onChange={inputHandleChange}
-          name="Origin"
-          placeholder="Origin"
-          className="searchbar"
-        />
+      <div className="postRouteForm">
+        <h1>
+          {" "}
+          <FormattedMessage
+            id="searchBarPostRuta.searchTitle"
+            defaultMessage="Where do you want to go?"
+          />
+        </h1>
+        <FormattedMessage id="searchBarHome.origin" defaultMessage="Origin">
+          {(placeholder) => (
+            <input
+              type="text"
+              list="cities"
+              onChange={inputHandleChange}
+              name="Origin"
+              placeholder={placeholder}
+              className="searchbar"
+            />
+          )}
+        </FormattedMessage>
 
         <datalist id="cities">
-          {cities && cities.map((city) => <option>{city.name}</option>)}
+          {cities &&
+            cities.map(
+              (city) =>
+                city.name !== inputs.Origin && <option>{city.name}</option>
+            )}
         </datalist>
         <p>{validations && validations.Origin}</p>
 
-        <input
-          type="text"
-          list="cities2"
-          onChange={inputHandleChange}
-          name="Destination"
-          placeholder="Destination"
-          className="searchbar"
-        />
+        <FormattedMessage
+          id="searchBarHome.destination"
+          defaultMessage="Destination"
+        >
+          {(placeholder) => (
+            <input
+              type="text"
+              list="cities2"
+              onChange={inputHandleChange}
+              name="Destination"
+              placeholder={placeholder}
+              className="searchbar"
+            />
+          )}
+        </FormattedMessage>
 
         <datalist id="cities2">
-          {cities2 && cities2.map((city) => <option>{city.name}</option>)}
+          {cities2 &&
+            cities2.map(
+              (city) =>
+                city.name !== inputs.Destination && <option>{city.name}</option>
+            )}
         </datalist>
         <p>{validations && validations.Destination}</p>
         <div>
           <input
             type="date"
             name="date"
-            min="2021-11-28"
+            min={dateTime} 
             onChange={handleChange}
           />
           <p>{validations && validations.date}</p>
-        </div>
-
-        <div>
-          <label for="pasajeros">Seats Available: </label>
-          <select name="pasajeros" onChange={handleChange} id="pasajeros">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
         </div>
         <div>
           <input
@@ -159,38 +195,164 @@ export default function SearchBar() {
           />
           <p>{validations && validations.hours}</p>
         </div>
-        <pre>
-        <div>
-          {checkAllInfo ? (
-            <button
-              onClick={handleSubmit}
-              className="button"
-              disabled={checkInfo.length !== 3 && checkInputs.length !== 2}
+        <div className="restrictionsbox">
+          <div className="selectContainer">
+            <select
+              name="pasajeros"
+              onChange={handleChange}
+              className="restrictions"
+              id="pasajeros"
             >
-              <NavLink
-                to="/route/finish"
-                style={{
-                  textDecoration: " none",
-                  width: "60px",
-                  color: "white",
-                }}
+            <FormattedMessage id="searchBarPostRuta.select">
+              {(messege)=><option disabled selected value="1">
+                {messege}
+              </option>}
+              </FormattedMessage>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+
+            <select
+              name="restrictions"
+              onChange={handleRestrictions}
+              id="restrictions"
+              className="restrictions"
+            >
+            <FormattedMessage id="searchBarPostRuta.preferences">
+              {(messege)=><option disabled selected value="1">
+                {messege}
+              </option>}
+              </FormattedMessage>
+            <FormattedMessage id="searchBarPostRuta.petsaloowed">
+              {(messege)=><option value="petsAllowed">{messege}</option>}
+              </FormattedMessage>
+            <FormattedMessage id="searchBarPostRuta.smokingallowed">
+              {(messege)=><option value="smokersAllowed">{messege}</option>}
+              </FormattedMessage>
+            <FormattedMessage id="searchBarPostRuta.foodallowed">
+              {(messege)=><option value="foodAllowed">{messege}</option>}
+              </FormattedMessage>
+            <FormattedMessage id="searchBarPostRuta.2intheback">
+              {(messege)=><option value="twoMaxInTheBack">{messege}</option>}
+              </FormattedMessage>
+            <FormattedMessage id="searchBarPostRuta.kidsallowed">
+              {(messege)=><option value="kidsAllowed">{messege}</option>}
+              </FormattedMessage>
+              {user.genre === "Female"?
+            <FormattedMessage id="searchBarPostRuta.onlywomen">
+                {(messege)=><option value="onlyWomen">{messege}</option>}
+                </FormattedMessage>
+                :""}
+            </select>
+          </div>
+          <div style={{ marginTop: "1rem" }}>
+            {restrictions.includes("petsAllowed") && (
+              <button
+                className="buttonx"
+                value="petsAllowed"
+                onClick={(e) => deleteRestrictions(e)}
               >
-                Submit
-              </NavLink>
-            </button>
-          ) : (
-            <button className="button" disabled="true">
-              Submit
-            </button>
-          )}
+                <FormattedMessage id="searchBarPostRuta.petsaloowedX" defaultMessage="Pets Allowed X" />
+              </button>
+            )}
+            {restrictions.includes("smokersAllowed") && (
+              <button
+                className="buttonx"
+                value="smokersAllowed"
+                onClick={(e) => deleteRestrictions(e)}
+              >
+                <FormattedMessage id="searchBarPostRuta.smokingallowedX" defaultMessage="Smoking Allowed X" />
+              </button>
+            )}
+            {restrictions.includes("foodAllowed") && (
+              <button
+                className="buttonx"
+                value="foodAllowed"
+                onClick={(e) => deleteRestrictions(e)}
+              >
+                <FormattedMessage id="searchBarPostRuta.foodallowedX" defaultMessage="Food Allowed X" />
+              </button>
+            )}
+            {restrictions.includes("twoMaxInTheBack") && (
+              <button
+                className="buttonx"
+                value="twoMaxInTheBack"
+                onClick={(e) => deleteRestrictions(e)}
+              >
+                <FormattedMessage id="searchBarPostRuta.2inthebackX" defaultMessage="Max. 2 in the back X" />
+              </button>
+            )}
+            {restrictions.includes("kidsAllowed") && (
+              <button
+                className="buttonx"
+                value="kidsAllowed"
+                onClick={(e) => deleteRestrictions(e)}
+              >
+                <FormattedMessage id="searchBarPostRuta.kidsallowedX" defaultMessage="Kids Allowed X" />
+              </button>
+            )}
+            {restrictions.includes("onlyWomen") && (
+              <button
+                className="buttonx"
+                value="onlyWomen"
+                onClick={(e) => deleteRestrictions(e)}
+              >
+                <FormattedMessage id="searchBarPostRuta.onlywomenX" defaultMessage="Only Women X" />
+              </button>
+            )}
+          </div>
         </div>
-        <div>
-          <NavLink to="/">
-            <button className="buttonBlue">Back</button>
-          </NavLink>
-        </div>
+
+        <pre>
+          <div className="botonPostRuta">
+            <NavLink to="/">
+              <button className="buttonBlue">
+                <FormattedMessage id="userDetails.back" defaultMessage="Back" />
+              </button>
+            </NavLink>
+          </div>
+          {console.log(checkInfo.length)}
+          <div className="botonPostRuta">
+            {checkAllInfo ? (
+              <button
+                onClick={handleSubmit}
+                className="button"
+                disabled={checkInfo.length !== 3 && checkInputs.length !== 2}
+              >
+                <NavLink
+                  to="/route/finish"
+                  style={{
+                    textDecoration: " none",
+                    width: "60px",
+                    color: "white",
+                    padding:'60px'
+                  }}
+                >
+                  <FormattedMessage
+                    id="searchBarPostRuta.preview"
+                    defaultMessage="Preview Trip"
+                  />
+                </NavLink>
+              </button>
+            ) : (
+              <button
+                className="button"
+                style={{ backgroundColor: "grey" }}
+                disabled
+              >
+                <FormattedMessage
+                  id="searchBarPostRuta.preview"
+                  defaultMessage="Preview Trip"
+                />
+              </button>
+            )}
+          </div>
         </pre>
-      </form>
+      </div>
     </div>
   );
 }

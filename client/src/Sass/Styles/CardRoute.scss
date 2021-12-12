@@ -1,0 +1,22 @@
+@import "../Variables/Variables.scss";
+
+.CardRoute {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  h5 {
+    margin: 0.5rem;
+  }
+
+
+}
+.buttonx {
+  color:  $text;
+  border-radius: 9999px;
+  border-color: #EF4565;
+  background-color: white;
+  margin-left: 1rem;
+  font-family: inherit;
+      font-weight: bold;
+}

@@ -1,112 +1,147 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Post from './Post';
-import CardCar from './CardCar';
-import { getUserDetail } from '../actions';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { useEffect } from "react";
+import { getUserDetail, getUserByName, getUserById } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
+import SearchUserByName from "./SearchUserByName";
+import SearchUserById from "./SearchUserById";
+import { FormattedMessage } from "react-intl";
 import {
-  BsFillTelephoneFill,
   BsGenderFemale,
   BsGenderMale,
   BsInstagram,
   BsFacebook,
-  BsStarFill,
   BsMap,
   BsEnvelope,
-} from 'react-icons/bs';
-import '../Sass/Styles/UserDetails.scss';
-import img from '../img/photoDefault.jpg'
+  BsInfoSquareFill,
+} from "react-icons/bs";
+import "../Sass/Styles/UserDetails.scss";
+import Post from "./Post";
+import RatingStar from "./RatingStar.jsx";
 
-export default function UserDetails(props) {
+export default function UserDetails( props) {
+  const userInfo = useSelector((state) => state.user);
+  const autoInfo = useSelector((state) => state.car);
+  let idAuto;
+  autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
 
-  console.log("userdet",user);
+const id = props.match.params.id;
+
+  useEffect(() => {
+    userInfo.email === undefined
+      ? dispatch(getUserDetail(window.location.href.split("/user/")[1]))
+      : dispatch(getUserDetail(id));
+  }, [dispatch, id, userInfo.email]);
 
   function genderIcon(gender) {
-    if (gender === 'Male') {
+    if (gender === "Male") {
       return <BsGenderMale className="maleGender" />;
-    } else if (gender === 'Female') {
+    } else if (gender === "Female") {
       return <BsGenderFemale className="femaleGender" />;
     }
   }
 
-  useEffect(() => {
-    dispatch(getUserDetail(props.match.params.id));
-  }, [dispatch, props.match.params.id]);
-
-  // falta condicion de pago para mostrar toda la info o primeara parte
-
   return (
-    <>
-      <div>
-        {user ? (
-          <div className="UserDetails">
-            {/* <img
-              src={user.photo}
-              alt="User Image"
-            /> */}
-            <img
-              src={img}
-              alt="User Image"
-              style={{width:'250px'}}
-            />
-            <h2>
-              {user.name} {user.lastName} {genderIcon(user.genre)}
-            </h2>
-            <p className="age">{user.age} years old</p>
-
-            <p className="about">{user.about}</p>
-            <hr />
-            <div className="moreInfo">
-              <h4>
-                <BsStarFill className="icon" /> {user.calification} / 5
-              </h4>
-              <h4>
-                <BsFillTelephoneFill className="icon" /> {user.telephone}
-              </h4>
-              <h4>
-                {' '}
-                <BsEnvelope className="icon" /> {user.email}
-              </h4>
-              <h4>
-                <BsFacebook className="icon" /> {user.facebook}
-              </h4>
-              <h4>
-                {' '}
-                <BsInstagram className="icon" /> {user.instagram}
-              </h4>
-              <h4>
-                <BsMap className="icon" /> {user.street}, {user.city},{' '}
-                {user.province}
-              </h4>
-            </div>
-            {
-              <div>
-                <Post />
-              </div>
-            }
-            <hr />
-            {
-          <div>
-          {user.cars[0]?
-              <CardCar 
-               patent={user.cars[0].patent}
-               brand={user.cars[0].brand}
-               model={user.cars[0].model}
-               color={user.cars[0].color}
-              />: ""}
-          </div>
-            }
-          </div>
-        ) : (
-          <p> Loading...</p>
-        )}
-        <Link to="/home">
-          <button className="buttonBlue">Back</button>
-        </Link>
+    <div>
+      <div className="searchUsers">
+        <SearchUserByName />
+        <SearchUserById />
       </div>
-    </>
+      <div className="containerProfile">
+        <div className="ProfileReal">
+          <div className="centralo">
+            <h1 className="tituloUserProfile">User Details</h1>
+          </div>
+          <div className="ubicatop"></div>
+          <div className="seccionTopDetail">
+            <div className="containerPhoto">
+              <div className="ubicaBotonPhoto"></div>
+              <img className="photousuario" src={userInfo.photo} alt="User" />
+              <div>
+                <h1 className="titulos">
+                  {userInfo.name} {userInfo.lastName}{" "}
+                  {genderIcon(userInfo.genre)}
+                </h1>
+                <div className="labelArriba">
+                  <RatingStar Rating={userInfo.calification} />
+                </div>
+              </div>
+            </div>
+            <div className="datosUsuario">
+              <div className="edadyemail">
+                <div className="labelArriba">
+                  <BsEnvelope className="iconArriba" /> {userInfo.email}
+                </div>
+                <p className="labelArriba"> {userInfo.age} years old</p>
+              </div>
+              <div className="moreInfo">
+                <div className="cadaLinea">
+                  <BsFacebook className="icon" /> {userInfo.facebook}
+                </div>
+                <div className="cadaLinea">
+                  <BsInstagram className="icon" /> {userInfo.instagram}
+                </div>
+                <div className="cadaLinea">
+                  <BsInfoSquareFill className="icon" />
+                  {userInfo.about}
+                </div>
+              </div>
+              <div className="paddingAbajo"></div>
+            </div>
+          </div>
+          <div className="centralo">
+            <h1 className="tituloUserProfile">Car Details</h1>
+          </div>
+          <div className="patents">
+            <div className="cadaLinea">
+              <p className="label">Brand:</p>
+              {userInfo.cars && userInfo.cars.length === 0 ? (
+                ""
+              ) : (
+                <p className="label">{autoInfo.brand}</p>
+              )}
+            </div>
+            <div className="cadaLinea">
+              <p className="label">Model:</p>
+              {userInfo.cars && userInfo.cars.length === 0 ? (
+                ""
+              ) : (
+                <p className="label">{autoInfo.model}</p>
+              )}
+            </div>
+            <div className="cadaLinea">
+              <p className="label">Plate:</p>
+              {userInfo.cars && userInfo.cars.length === 0 ? (
+                ""
+              ) : (
+                <p className="label">{autoInfo.patent}</p>
+              )}
+            </div>
+          </div>
+          <div className="patents">
+            <div className="cadaLinea">
+              <p className="label">Color:</p>
+              {userInfo.cars && userInfo.cars.length === 0 ? (
+                ""
+              ) : (
+                <p className="label">{autoInfo.color}</p>
+              )}
+            </div>
+            <div className="cadaLinea">
+              <p className="label">Cylinder:</p>
+              {userInfo.cars && userInfo.cars.length === 0 ? (
+                ""
+              ) : (
+                <p className="label">{autoInfo.cylinder}</p>
+              )}
+            </div>{" "}
+          </div>
+          <div className="centralo">
+            <h1 className="tituloUserProfile">Rating</h1>
+          </div>
+          <Post id={id} />
+        </div>
+      </div>
+    </div>
   );
 }

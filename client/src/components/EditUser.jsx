@@ -1,7 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { postUser } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../Sass/Styles/RegisterForm.scss";
@@ -19,7 +19,7 @@ export default function Registro() {
     } else if (!input.lastName) {
       errors.lastName = "Last name is required";
       /* } else if ("^[^!@#$^&%*()+=[\]\/{}|:<>?,.\t]+$") {
-      errors.email = 'The last name cannot contain symbols'; */
+      errors.lastName = 'Last name cannot contain symbols'; */
     } else if (!input.dni) {
       errors.dni = "DNI is required";
     } else if (validateGender() === false) {
@@ -36,29 +36,35 @@ export default function Registro() {
       errors.city = "City is required";
     } else if (!input.province) {
       errors.province = "Province is required";
-    } else if (validateTerms() === false) {
-      errors.terms = "You must agree to our terms and conditions";
     }
     return errors;
   }
 
   function validateGender() {
-    if (document.getElementById("genre").value == "1") {
+    if (document.getElementById("genre").value === "1") {
       return false;
     }
     return true;
   }
 
-  function validateTerms() {
-    if (document.getElementById("terms").value == "1") {
+  function validateInputs() {
+    if (
+      !input.name ||
+      !input.lastName ||
+      !input.dni ||
+      !input.age ||
+      !input.telephone ||
+      !input.street ||
+      !input.city ||
+      !input.province
+    ) {
       return false;
+    } else {
+      return true;
     }
-    return true;
   }
 
-  const [errors, setErrors] = useState({
-    about: "",
-  });
+  const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
     name: isAuthenticated ? user.given_name : "",
@@ -74,7 +80,6 @@ export default function Registro() {
     facebook: "",
     instagram: "",
     about: "",
-    terms: "",
   });
 
   function handleChange(e) {
@@ -98,18 +103,9 @@ export default function Registro() {
     });
   }
 
-  function handleSelectTerms(e) {
-    e.preventDefault();
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-    setErrors({});
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === 0 && validateInputs() === true) {
       dispatch(postUser(input));
       setInput({
         name: "",
@@ -125,7 +121,6 @@ export default function Registro() {
         facebook: "",
         instagram: "",
         about: "",
-        terms: "",
       });
       swal({
         title: "Good job!",
@@ -143,6 +138,26 @@ export default function Registro() {
       });
     }
   }
+//   const uploadImage = async (e) => {
+//     const files = e.target.files;
+//     console.log(files)
+//     const data = new FormData();
+//     data.append("file", files[0]);
+//     data.append("upload_preset", "htnah6yo");
+//     setLoading(true);
+
+//     const res = await fetch(
+//         "https://api.cloudinary.com/v1_1/djrddcab5/image/upload",
+//         {
+//             method: "POST",
+//             body: data,
+//         }
+//     );
+
+//     const file = await res.json();
+
+// setImage(file.secure_url);
+// };
 
   return (
     <>
@@ -152,76 +167,47 @@ export default function Registro() {
       <div className="formContainer">
         <h1>Create your User</h1>
         <form
-          className="Form"
+          className="FormRegistro"
           onSubmit={(e) => {
             handleSubmit(e);
           }}
+          // agrego rami para la foto "action"
+          enctyon="multipart/form-data"
         >
-          {!isAuthenticated ? (
-            <div>
-              <div>
-                <p className="label">Name*:</p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="name"
-                  value={input.name}
-                  onChange={(e) => handleChange(e)}
-                />
-                {errors.name && <p className="error">{errors.name}</p>}
-              </div>
-              <div>
-                <p className="label">Last Name*:</p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="lastName"
-                  value={input.lastName}
-                  onChange={(e) => handleChange(e)}
-                />
-                {errors.lastName && <p className="error">{errors.lastName}</p>}
-              </div>
-              <div>
-                <p className="label">Email*:</p>
-                <input
-                  className="inputs"
-                  type="text"
-                  name="email"
-                  value={input.email}
-                  onChange={(e) => handleChange(e)}
-                />
-              </div>
+          <div>
+            <div className="cadaLinea">
+              <p className="label">Name*:</p>
+              <input
+                className="inputs"
+                type="text"
+                name="name"
+                value={input.name}
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.name && <p className="error">{errors.name}</p>}
             </div>
-          ) : (
-            user.name.includes("@") && (
-              <div>
-                <div>
-                  <p className="label">Name*:</p>
-                  <input
-                    className="inputs"
-                    type="text"
-                    name="name"
-                    value={input.name}
-                    onChange={(e) => handleChange(e)}
-                  />
-                  {errors.name && <p className="error">{errors.name}</p>}
-                </div>
-                <div>
-                  <p className="label">Last Name*:</p>
-                  <input
-                    className="inputs"
-                    type="text"
-                    name="lastName"
-                    value={input.lastName}
-                    onChange={(e) => handleChange(e)}
-                  />
-                  {errors.lastName && (
-                    <p className="error">{errors.lastName}</p>
-                  )}
-                </div>
-              </div>
-            )
-          )}
+            <div className="cadaLinea">
+              <p className="label">Last Name*:</p>
+              <input
+                className="inputs"
+                type="text"
+                name="lastName"
+                value={input.lastName}
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.lastName && <p className="error">{errors.lastName}</p>}
+            </div>
+            {/* <div className="cadaLinea">
+              <p className="label">Email*:</p>
+              <input
+                className="inputs"
+                type="text"
+                name="email"
+                value={input.email}
+                onChange={(e) => handleChange(e)}
+              />
+            </div> */}
+          </div>
           <div className="cadaLinea">
             <p className="label">DNI*:</p>
             <input
@@ -348,39 +334,36 @@ export default function Registro() {
           </div>
           <div className="terminosycond">
             <div className="terminos">
-              By continuing, you agree to our{" "}
+              By submitting, you agree to our{" "}
               <a target="_blank" href="/terms-and-conditions">
                 {" "}
-                Terms of Use{" "}
+                Terms of Use
               </a>{" "}
-              and
+              and{" "}
               <a target="_blank" href="/privacy-policy">
-                {" "}
                 Privacy Policy
               </a>
             </div>
-            <div>
-              <select
-                name="terms"
-                id="terms"
-                className="terms"
-                onChange={(e) => handleSelectTerms(e)}
-              >
-                <option disabled selected value="1">
-                  {" "}
-                  -- Select an option --{" "}
-                </option>
-                <option className="options" value="Yes">
-                  Yes
-                </option>
-              </select>
-            </div>
-            {errors.terms && <p className="error">{errors.terms}</p>}
           </div>
           <div>
-            <button className="button" type="submit">
-              Submit
-            </button>
+            {validateInputs() === false ? (
+              <button className="buttondisabled">Submit</button>
+            ) : (
+              <button className="button" type="submit">
+                Submit
+              </button>
+            )}
+          </div>
+          {/* agrego rami para la foto user */}
+          <div >
+            <input 
+            // onChange={(e) => handleChange(e)}
+             type="file" 
+            name="image"
+            required="required"
+            accept="image/png,image/jpeg"
+            />
+            <label>choose image</label>
           </div>
         </form>
       </div>

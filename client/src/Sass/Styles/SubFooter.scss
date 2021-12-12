@@ -1,28 +1,56 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 
 .SubFooter {
-  background-color: $subfooter;
+  width: 100vw;
+  background-color: $buttonColor;
+  padding-bottom: 4vh;
+  padding-top: 2vh;
+  .buttonSuggestion {
+    margin-top: 1.2rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 0.5rem 2rem;
+    background-color: $buttonColorHovered;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $buttonColorHovered;
+    }
+  }
 
   .info {
     display: grid;
-    grid-template-columns: 5% 70% 20% 5%;
+    grid-template-columns: 10% 50% 15% 15% 10%;
     justify-items: start;
+    color: $background;
   }
 
   .left {
     display: flex;
     align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
   }
 
   .redesSociales {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 100%;
+    width: 70%;
+    align-items: center;
 
     a {
       text-decoration: none;
-      color: $links;
+      color: $background;
+    }
+
+    .icon {
+      font-size: 2rem;
+      padding-left: 4rem;
     }
   }
 }

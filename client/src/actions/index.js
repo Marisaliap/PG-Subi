@@ -33,28 +33,22 @@ export function getRoute(long1, lat1, long2, lat2) {
         type: "GET_ROUTE",
         payload: response.data,
       });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) { }
   };
 }
-export function getRouteFromDb(originName, destinyName, date, place) {
+
+export function getUserProfile(id) {
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        `http://localhost:3001/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}`
-      );
-
+      const response = (await axios.get(`/user/${id}`))
+        .data;
       return dispatch({
-        type: "GET_ROUTE_FROM_DB",
-        payload: response.data,
+        type: "GET_USER_PROFILE",
+        payload: response,
       });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 }
-
 export function getUserDetail(id) {
    return async function (dispatch) {
      try {
@@ -63,34 +57,114 @@ export function getUserDetail(id) {
         type: "GET_USER_DETAIL",
         payload: response,
       });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) { }
   };
 }
+export function getAllUser() {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`/user`)).data;
+      return dispatch({
+        type: "GET_ALL_USER",
+        payload: response,
+      });
+    } catch (error) { }
+  };
+}
+
+export function getUserAdmin(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`/user/${id}`))
+        .data;
+      return dispatch({
+        type: "GET_USER_ADMIN",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
+export function getAlluserpro(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`/user/${id}`))
+        .data;
+      return dispatch({
+        type: "GET_USER_ADMIN",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
 export function getRouteById(id) {
   return async function (dispatch) {
     try {
-     const response = (await axios.get(`/maps/route/` + id)).data;
-     console.log(response)
-     return dispatch({
-         type: "GET_ROUTE_BY_ID",
-         payload: response,
+      const response = (
+        await axios.get(`/maps/route/` + id)
+      ).data;
+
+      return dispatch({
+        type: "GET_ROUTE_BY_ID",
+        payload: response,
       });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) { }
   };
 }
 
 export function getUserByName(name) {
   return async function (dispatch) {
     try {
-     const response = (await axios.get(`/user/?name=` + name)).data;
-     console.log(response)
-     return dispatch({
-         type: "GET_USER_BY_NAME",
-         payload: response,
+      const response = (
+        await axios.get(`/user/?name=` + name)
+      ).data;
+
+      return dispatch({
+        type: "GET_USER_BY_NAME",
+        payload: response,
+      });
+    } catch (error) { }
+  };
+}
+
+export function getUserById(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`/user/${id}`))
+        .data;
+      return dispatch({
+        type: "GET_USER_BY_ID",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
+export function getAllUsers() {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`/user/`)).data;
+
+      return dispatch({
+        type: "GET_ALL_USERS",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
+export function editUser(id, info) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(
+        `/user/` + id,
+        info
+      );
+
+      return dispatch({
+        type: "EDIT_USER",
+        payload: response.data,
       });
     } catch (error) {
       console.log(error);
@@ -98,17 +172,90 @@ export function getUserByName(name) {
   };
 }
 
-export function filterBySmoke(payload) {
+export function getId(id) {
   return {
-    type: "FILTER_BY_SMOKE",
-    payload,
+    type: "ID",
+    payload: id,
   };
 }
 
-export function filterByPets(payload) {
+export function deleteUser(id) {
+  return async function (dispatch) {
+    try {
+      const response = ( await axios.delete(
+        `/user/` + id
+      )).data;
+      return dispatch({
+        type: "DELETE_USER",
+        payload: response,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getAllCars() {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`/car/`)).data;
+
+      return dispatch({
+        type: "GET_CARS",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
+export function editCar(id, info) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(`/car/` + id, info);
+
+      return dispatch({
+        type: "EDIT_CAR",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getRouteFromDb(originName, destinyName, date, place) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(
+        `/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}`
+      );
+
+      return dispatch({
+        type: "GET_ROUTE_FROM_DB",
+        payload: response.data,
+      });
+    } catch (error) { }
+  };
+}
+// -----------------------------< filters >----------------------------------
+// export function filterBySmoke(payload) {
+//   return {
+//     type: "FILTER_BY_SMOKE",
+//     payload,
+//   };
+// }
+
+// export function filterByPets(payload) {
+//   return {
+//     type: "FILTER_BY_PETS",
+//     payload,
+//   };
+// }
+
+export function orderByRestriction(restriction) {
   return {
-    type: "FILTER_BY_PETS",
-    payload,
+    type: "FILTER",
+    payload: restriction,
   };
 }
 
@@ -118,27 +265,13 @@ export function filterByTwoPeopleBehind(payload) {
     payload,
   };
 }
-
-export function orderByTime(payload) {
-  return {
-    type: "ORDER_BY_TIME",
-    payload,
-  };
-}
-
-export function orderByPrice(payload) {
-  return {
-    type: "ORDER_BY_PRICE",
-    payload,
-  };
-}
-
 export function orderByDistance(payload) {
   return {
     type: "ORDER_BY_DISTANCE",
     payload,
   };
 }
+// ----------------------------------------------------------------------
 
 export function postUser(payload) {
   return async function (dispatch) {
@@ -151,9 +284,7 @@ export function postUser(payload) {
         type: "POST_USER",
         payload: response.data,
       });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) { }
   };
 }
 
@@ -168,14 +299,26 @@ export function postCar(payload) {
         type: "POST_CAR",
         payload: response.data,
       });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) { }
+  };
+}
+
+export function postMejorasYReclamos(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `/suggestionbox/add`,
+        payload
+      );
+      return dispatch({
+        type: "POST_RECLAMOSYMEJORAS",
+        payload: response.data,
+      });
+    } catch (error) { }
   };
 }
 
 export function postRoute(routeInfo) {
-  console.log(routeInfo)
   return async function (dispatch) {
     try {
       const response = await axios.post(`/maps/route/add`, routeInfo);
@@ -189,11 +332,11 @@ export function postRoute(routeInfo) {
     }
   }
 }
-export function RoutePostInfo (info) {
+export function RoutePostInfo(info) {
   return {
-    type: 'ROUTE_POST_INFO',
-    payload: info
-  }
+    type: "ROUTE_POST_INFO",
+    payload: info,
+  };
 }
 
 export function deleteRoute() {
@@ -201,17 +344,96 @@ export function deleteRoute() {
     type: "DELETE_ROUTE",
   };
 }
-export function allRoutes() {
+export function deleteOrder(id) {
   return async function (dispatch) {
     try {
-     const response = (await axios.get(`/maps/route`)).data;
-     return dispatch({
-         type: "GET_ALL_ROUTE_INFO",
-         payload: response,
+      const response = await axios.delete(
+        `/order/` + id,
+      );
+      return {
+        type: "DELETE_ORDER",
+      };
+    } catch (error) { }
+  };
+ 
+}
+
+
+export function getOrder(order) {
+  return {
+    type: "ORDER",
+    payload: order,
+  };
+}
+
+export function getOrderDetails () {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(
+        `/order/`,
+      );
+      return dispatch({
+        type: "GET_ORDER_DETAILS",
+        payload: response.data,
       });
-     }
-   catch (error) {
-    console.log(error)
+    } catch (error) {
+      console.log(error)
+    }
   }
-  }
+}
+export function allRoutes(order, restriction) {
+  return async function (dispatch) {
+    try {
+      const response = (
+        await axios.get(
+          `/maps/route?order=${order ? order : ""
+          }&restriction=${restriction ? restriction : ""}`
+        )
+      ).data;
+      return dispatch({
+        type: "GET_ALL_ROUTE_INFO",
+        payload: response,
+      });
+    } catch (error) { }
+  };
+}
+
+export function setPost(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        `/user/post`,
+        payload
+      );
+      return dispatch({
+        type: "SET_POST",
+        payload: response.data,
+      });
+    } catch (error) {}
+  };
+}
+
+export function userPost(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`/user/post/${id}`))
+        .data;
+      return dispatch({
+        type: "USER_POST",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
+export function putRatingUser(id){
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(`/user/rating/${id}`)
+      return dispatch({
+        type: "PUT_RATING_USER",
+        payload: response.data,
+      });
+    } catch (error) {}
+  };
 }

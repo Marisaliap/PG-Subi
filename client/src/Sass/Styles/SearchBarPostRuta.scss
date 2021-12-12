@@ -1,4 +1,24 @@
-@import '../Variables/Variables.scss';
+@import "../Variables/Variables.scss";
+
+.buttonx {
+  color: $text;
+  border-radius: 9999px;
+  border-color: #ef4565;
+  background-color: white;
+  margin-left: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+}
+.restrictionsbox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  span {
+    margin-left: 1rem;
+    font-family: "Inter", sans-serif;
+    line-height: 1.5;
+  }
+}
 
 .searchBarPostRuta {
   display: grid;
@@ -7,37 +27,82 @@
 
   .searchbar {
     width: 30vw;
+    height: 20px;
+    border: 2px solid $text;
+    padding: 0.8rem;
+    margin-left: 1rem;
+    border-radius: 9999px;
+    border-color: $buttonColor;
+    font-family: inherit;
+    font-weight: bold;
+    color: $text;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    transition: box-shadow 0.5s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
   }
 
-  pre{
+  .passengers {
+    height: 50px;
+    width: 70px;
+    border: 2px solid $text;
+    padding: 0.8rem;
+    border-radius: 30px;
+    border-color: $buttonColor;
+    font-family: inherit;
+    font-weight: bold;
+    color: $text;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    transition: box-shadow 0.5s ease-in-out;
+  }
+  .restrictions {
+    height: 50px;
+    width: 200px;
+    border: 2px solid $text;
+    padding: 0.8rem;
+    border-radius: 30px;
+    border-color: $buttonColor;
+    font-family: inherit;
+    font-weight: bold;
+    color: $text;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    transition: box-shadow 0.5s ease-in-out;
+  }
+
+  .selectContainer {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+  }
+  pre {
+    display: flex;
+    justify-content: center;
+  }
+
+  .botonPostRuta {
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 
   .postRouteForm {
-    padding: 1rem;
+    padding: 0.8rem;
 
-    input {
-      border: 1px solid $text;
-      padding: 1rem;
-      border-radius: 10px;
-      font-family: inherit;
+    
+    p {
+      color: #ef4565;
       font-weight: bold;
-      color: $text;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-      transition: box-shadow 0.5s ease-in-out;
-
-      &:hover {
-        cursor: pointer;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-          0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      }
     }
-
     select {
-      border-radius: 5px;
+      margin-left: 1rem;
     }
   }
 }

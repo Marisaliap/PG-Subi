@@ -1,14 +1,34 @@
 const initialState = {
-  suggestions1: [],
-  suggestions2: [],
-  routePostInfo: {},
-  route: [],
+  suggestions1: [], // resultados de la primera ciudad del searchbar
+  suggestions2: [], // resultados de la segunda ciudad del searchbar
+  routePostInfo: {}, // información del formulario para crear una ruta
+  route: [], //información de la ruta(coordenadas de todo el viaje)
   user: [],
   users: [],
   getRoutes: [],
-  car:[],
+  car: [],
+  userpro: [],
+  carpro: [],
   routeById: [],
-  routeFromDb: []
+  routeFromDb: [],
+  setPost:[],
+  userPost:[],
+  usuariosRegistrados: [],
+  userBuscado: [],
+  orderDetails: [],
+  carMatch: [],
+  //-------------------------< admin store >------------------------ 
+  userAdmin: [],
+  id: "",
+  carAdmin: [],
+  // ---------------< filters rami>----------------------------------
+
+  restriction: "",
+  order: "",
+  filtersRoute: [],
+  userDeleted: "",
+
+  reclamosymejoras: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -29,17 +49,45 @@ function rootReducer(state = initialState, action) {
         suggestions2: action.payload.cities,
       };
     case "GET_ROUTE":
-      console.log(action.payload, 'SOY PAYLOAD')
       return {
         ...state,
         route: action.payload,
       };
-    case "GET_USER_DETAIL":  
+    case "GET_USER_PROFILE":
+      return {
+        ...state,
+        userpro: action.payload,
+        carpro: action.payload.cars[0],
+      };
+    case "GET_USER_DETAIL":
       return {
         ...state,
         user: action.payload,
+        car: action.payload.cars[0],
       };
-    case "GET_ALL_ROUTE_INFO":  
+      //  --------------------------------------< admin reducer>----------------------
+
+    case "GET_ORDER_DETAILS":
+      return {
+        ...state,
+        orderDetails: action.payload
+      };
+    case "GET_USER_ADMIN":
+      return {
+        ...state,
+        userAdmin: action.payload,
+        carAdmin: action.payload.cars[0]
+        };
+  
+
+    case "ID" :
+      return {
+        ...state,
+        id: action.payload
+      }
+      // ______________________________________________________________________--________
+
+    case "GET_ALL_ROUTE_INFO":
       return {
         ...state,
         getRoutes: action.payload,
@@ -52,42 +100,79 @@ function rootReducer(state = initialState, action) {
     case "POST_USER":
       return {
         ...state,
-        user: action.payload,
+        userpro: action.payload[0],
+      };
+    case "POST_RECLAMOSYMEJORAS":
+      return {
+        ...state,
+        reclamosymejoras: action.payload,
       };
     case "GET_USER_BY_NAME":
       return {
         ...state,
         users: action.payload,
       };
-    case "FILTER_BY_SMOKE":
+    case "GET_USER_BY_ID":
       return {
         ...state,
-        route: action.payload,
+        userBuscado: action.payload,
       };
-    case "FILTER_BY_PETS":
+    case "GET_ALL_USERS":
       return {
         ...state,
-        route: action.payload,
+        usuariosRegistrados: action.payload,
       };
-    case "FILTER_BY_PEOPLE_BEHIND":
+    case "EDIT_USER":
       return {
         ...state,
-        route: action.payload,
+        user: [action.payload],
       };
-    case "ORDER_BY_TIME":
+    case "DELETE_USER":
       return {
         ...state,
-        route: action.payload,
-      };
-    case "ORDER_BY_PRICE":
+        userDeleted: [action.payload]
+      }
+    case "EDIT_CAR":
       return {
         ...state,
-        route: action.payload,
       };
+    case "GET_CARS":
+      return {
+        ...state,
+        carMatch: action.payload,
+      };
+    // -----------------------------< filters >----------------------------------
+
+    case "RESTRICTION":
+      return {
+        ...state,
+        restriction: action.payload,
+      };
+
+    case "ORDER":
+      return {
+        ...state,
+        order: action.payload,
+      };
+
     case "ORDER_BY_DISTANCE":
       return {
         ...state,
         route: action.payload,
+
+        // case "FILTER_BY_SMOKE":
+        //   return {
+        //     ...state,
+        //     route: action.payload,
+        //   };
+
+        // case "FILTER_BY_PETS":
+        //   return {
+        //     ...state,
+        //     route: action.payload,
+        //   };
+
+        // ----------------------------------------------------------------------------
       };
     case "DELETE_ROUTE":
       return {
@@ -99,16 +184,26 @@ function rootReducer(state = initialState, action) {
         ...state,
         routePostInfo: action.payload,
       };
-      case "GET_ROUTE_BY_ID":
+    case "GET_ROUTE_BY_ID":
       return {
         ...state,
         routeById: action.payload,
       };
-      case "GET_ROUTE_FROM_DB":
-        return {
-          ...state,
-          routeFromDb: action.payload,
-        };
+    case "GET_ROUTE_FROM_DB":
+      return {
+        ...state,
+        routeFromDb: action.payload,
+      };
+      case "SET_POST":
+      return {
+        ...state,
+        setPost: action.payload,
+      };
+      case "USER_POST":
+      return {
+        ...state,
+        userPost: action.payload,
+      };
     default:
       return state;
   }
