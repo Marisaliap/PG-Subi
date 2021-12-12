@@ -147,7 +147,7 @@ export default function Nav() {
           <li>
             <Auth />
           </li>
-          <li>
+          {/* <li>
             {isAuthenticated &&
         usuariosRegistrados
           .map((e) => e.email)
@@ -155,7 +155,7 @@ export default function Nav() {
         userpro.isAdmin === true ? (
           <NavLink to="/Admin">Admin</NavLink>
         ) : null}
-        </li>
+        </li> */}
         </ul>
 
         {/* <div className="banderas">
