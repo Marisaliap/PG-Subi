@@ -7,7 +7,7 @@ import { Profile } from './Profile';
 import { useSelector, useDispatch } from 'react-redux';
 import Auth from './Auth';
 import { NavLink } from 'react-router-dom';
-import { getUserProfile, getAllUsers} from '../actions';
+import { getUserProfile, getAllUsers } from '../actions';
 import { BsPlusCircle } from 'react-icons/bs';
 import '../Sass/Styles/NavBar.scss';
 import { FormattedMessage } from 'react-intl';
@@ -17,13 +17,12 @@ import Swal from 'sweetalert2';
 
 export default function Nav() {
   const dispatch = useDispatch();
-  const userpro = useSelector(state => state.userpro);
+  const userpro = useSelector((state) => state.userpro);
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const id = isAuthenticated ? user.email : '';
   const idioma = useContext(langContext);
-  const  usuariosRegistrados = useSelector(state => state.usuariosRegistrados);
+  const usuariosRegistrados = useSelector((state) => state.usuariosRegistrados);
   const history = useHistory();
-
 
   useEffect(() => {
     dispatch(getUserProfile(id));
@@ -40,10 +39,9 @@ export default function Nav() {
         title: 'Sorry',
         text: 'You need to be logged in to post a trip!',
         confirmButtonText: 'Alright',
-      })
-
+      });
     } else {
-      if (!userpro.dni) { 
+      if (!userpro.dni) {
         return new Swal({
           icon: 'warning',
           title: 'Sorry',
@@ -55,9 +53,7 @@ export default function Nav() {
             history.push('/register');
           }
         });
- 
-      }
-      else if (userpro.name && userpro.cars.length === 0) {
+      } else if (userpro.name && userpro.cars.length === 0) {
         return new Swal({
           icon: 'warning',
           title: 'Sorry',
@@ -68,9 +64,7 @@ export default function Nav() {
             history.push('/car');
           }
         });
-      
-      }
-      else if (userpro.name && userpro.cars && userpro.cars[0].patent)
+      } else if (userpro.name && userpro.cars && userpro.cars[0].patent)
         history.push('/route');
     }
 
@@ -94,7 +88,7 @@ export default function Nav() {
                 />
               </h3>
             </button>
-           {/*  {!isAuthenticated ? (
+            {/*  {!isAuthenticated ? (
               <>
                 <button
                   className="emulaPost emulador"
@@ -139,6 +133,15 @@ export default function Nav() {
           <li>
             <Auth />
           </li>
+          <li>
+            {isAuthenticated &&
+            usuariosRegistrados
+              .map((e) => e.email)
+              .filter((e) => e === user.email)[0] === user.email &&
+            userpro.isAdmin === true ? (
+              <NavLink to="/Admin">Admin</NavLink>
+            ) : null}
+          </li>
         </ul>
 
         {/* <div className="banderas">
@@ -149,13 +152,6 @@ export default function Nav() {
             <img src={en} alt=""></img>
             </button>
           </div> */}
-        {isAuthenticated &&
-        usuariosRegistrados
-          .map((e) => e.email)
-          .filter((e) => e === user.email)[0] === user.email &&
-        userpro.isAdmin === true ? (
-          <NavLink to="/Admin">Admin</NavLink>
-        ) : null}
       </nav>
     </header>
   );
