@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { allRoutes } from "../actions";
+import { allRoutes, deleteRouteFromDb } from "../actions";
 import CardRoute from "./CardRoute";
 import CardUser from "./CardUser";
 import NavBarFilter from "./NavBarFilter";
@@ -12,23 +12,31 @@ import { Link } from "react-router-dom";
 
 const RouteDetails = () => {
   const dispatch = useDispatch();
-
+  const { routeFromDb } = useSelector(state => state)
   const { getRoutes } = useSelector((state) => state);
   useEffect(() => {dispatch(allRoutes())}, []);
-  // useEffect(() =>  dispatch(getOrder()), [getRoutes.length]);
+  useEffect(() => {
+    return () => {
+     dispatch(deleteRouteFromDb('lala')) 
+    };
+  }, []);
 
   // ------------------<paged>------------------
 
-  const [currentPage, setCurrentPage] = useState(1)      //le paso el estado local con la primer página que se renderiza
-  const [ routesPerPage, setRoutesPerPage ] = useState (15)                   //cuántas rutas quiero por página
-  const indexOfLastRoute = currentPage * routesPerPage       //cuando empieza será 8 
-  const indexOffirstRoute = indexOfLastRoute - routesPerPage   // 0
-  const currentRoutes = getRoutes.slice(indexOffirstRoute, indexOfLastRoute)     //slice toma una porción del arreglo dependiendo lo que le estoy pasando por parámetro
+  const [currentPage, setCurrentPage] = useState(1)      
+  const [ routesPerPage, setRoutesPerPage ] = useState (15)                   
+  const indexOfLastRoute = currentPage * routesPerPage      
+  const indexOffirstRoute = indexOfLastRoute - routesPerPage   
+  const currentRoutes = routeFromDb.length > 0 ? (
+    routeFromDb.slice(indexOffirstRoute, indexOfLastRoute)
+     ):( 
+       getRoutes.slice(indexOffirstRoute, indexOfLastRoute) 
+       )   
 
   const pagedTotal = (pageNumber) => {                      
-    setCurrentPage(pageNumber)                        //acá el paginado va a setear la pagina en el numero de pagina que se vaya clickeando
-}                                                     //cuando setea la página los índices cambian y el slide se va modificando
-console.log(currentRoutes, "soy currentRoutes")
+    setCurrentPage(pageNumber)                        
+}                                                    
+
 // ------------------<pagedEnd>------------------
 
   return (
@@ -73,7 +81,7 @@ console.log(currentRoutes, "soy currentRoutes")
       <div>
         <Pagination
           routesPerPage= { routesPerPage }
-          getRoutes= { getRoutes.length }                     //le paso getRoutes.length porque necesito un valor numérico
+          getRoutes= { getRoutes.length }             
           pagedTotal= { pagedTotal }
         />
       </div>
