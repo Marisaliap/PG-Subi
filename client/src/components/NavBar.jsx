@@ -6,9 +6,9 @@ import Logo from '../img/logo.png';
 import { Profile } from './Profile';
 import { useSelector, useDispatch } from 'react-redux';
 import Auth from './Auth';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { getUserProfile, getAllUsers } from '../actions';
-import { BsPlusCircle } from 'react-icons/bs';
+import { BsPlusCircle, BsShieldLock } from 'react-icons/bs';
 import '../Sass/Styles/NavBar.scss';
 import { FormattedMessage } from 'react-intl';
 import { langContext } from './../context/langContext.js';
@@ -79,8 +79,22 @@ export default function Nav() {
       <nav>
         <ul>
           <li>
-            <button className="postNavLink" onClick={handleClick}>
-              <BsPlusCircle className="BsPlusCircle" />
+            {isAuthenticated &&
+            usuariosRegistrados
+              .map((e) => e.email)
+              .filter((e) => e === user.email)[0] === user.email &&
+            userpro.isAdmin === true ? (
+              <button className="NavLinks">
+                <NavLink to="/Admin" className="NavLinks">
+                  <BsShieldLock className="linkIcon" />
+                  <h3>Admin</h3>
+                </NavLink>
+              </button>
+            ) : null}
+          </li>
+          <li>
+            <button className="NavLinks" onClick={handleClick}>
+              <BsPlusCircle className="linkIcon" />
               <h3>
                 <FormattedMessage
                   id="navBar.post"
@@ -132,15 +146,6 @@ export default function Nav() {
           </li>
           <li>
             <Auth />
-          </li>
-          <li>
-            {isAuthenticated &&
-            usuariosRegistrados
-              .map((e) => e.email)
-              .filter((e) => e === user.email)[0] === user.email &&
-            userpro.isAdmin === true ? (
-              <NavLink to="/Admin">Admin</NavLink>
-            ) : null}
           </li>
         </ul>
 
