@@ -20,7 +20,7 @@ const RouteDetails = () => {
   // ------------------<paged>------------------
 
   const [currentPage, setCurrentPage] = useState(1)      //le paso el estado local con la primer página que se renderiza
-  const [ routesPerPage, setRoutesPerPage ] = useState (15)                   
+  const [ routesPerPage, setRoutesPerPage ] = useState (6)                   
   const indexOfLastRoute = currentPage * routesPerPage       
   const indexOffirstRoute = indexOfLastRoute - routesPerPage  
   const currentRoutes = getRoutes.slice(indexOffirstRoute, indexOfLastRoute)    
