@@ -5,6 +5,9 @@ import { postCar } from "../actions";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
+import { FormattedMessage } from "react-intl";
+
+
 
 export default function EditCar() {
     const history = useHistory();
@@ -21,6 +24,7 @@ export default function EditCar() {
     cylinder: "",
   });
 
+  <FormattedMessage id="editcar.errpatent" defaultMessage="Patent is required" />
 
   function validate(input) {
     let errors = {};

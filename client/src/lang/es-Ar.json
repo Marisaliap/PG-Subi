@@ -30,6 +30,8 @@
     "post.calification" : "Calificacion",
     "post.description" : "Cuéntenos su experiencia con este usuario ...",
 
+    "editcar.errpatent":"Patente es requerida",
+
     "map.home":"Inicio",
     "map.seats":"Asientos disponibles",
     "map.button":"¡Quiero cambiar algo!",
@@ -119,6 +121,17 @@
     "sugestionBox.suggestion" : "Sugerencias:",
     "sugestionBox.submit" : "Enviar Sugerencias",
 
+
+    "formcarerr.patent":"Patent is required",
+    "formcarerr.patentexist":"Patent already exists",
+    "formcarerr.patentinv":"Invalid Patent",
+    "formcarerr.color":"Color is required",
+    "formcarerr.colorinv":"Invalid Color: No Symbols Allowed",
+    "formcarerr.brand":"Brand is required",
+    "formcarerr.brandinv":"Invalid Brand: No Symbols Allowed",
+    "formcarerr.model":"Model is required",
+    "formcarerr.cylinder":"Cylinder is required",
+    "formcarerr.cylinderinv":"Invalid Cylinder: No Symbols Allowed",
     "formCar.title" : "Crea tu Coche",
     "formCar.patent" : "Patente*:",
     "formCar.color" : "Color*:",
@@ -141,6 +154,23 @@
 
     "landing.enter" : "Entrar",
     
+
+    "registererr.name": "Se requiere Nombre",
+    "registererr.symbols": "Nombre invalido: No se permiten símbolos",
+    "registererr.lastname": "Se requiere apellido",
+    "registererr.lastnamesym": "Apellido no válido: no se permiten símbolos",
+    "registererr.dni": "Se requiere DNI",
+    "registererr.dniexist": "El DNI ya existe",
+    "registererr.gender": "El género es obligatorio",
+    "registererr.age": "Edad requerida",
+    "registererr.age18": "Debes tener 18 años o más para registrarte",
+    "registererr.phone": "Se requiere teléfono",
+    "registererr.street": "La calle es obligatoria",
+    "registererr.city": "Ciudad es obligatoria",
+    "registererr.citysym": "Ciudad no válida: no se permiten símbolos",
+    "registererr.province": "La provincia es obligatoria",
+    "registererr.provincesym": "Provincia no válida: no se permiten símbolos",
+    "registererr.about": "Acerca de es obligatorio",
     "register.home" : "Inicio",
     "register.title" : "Crea tu Usuario",
     "register.checkbox" : "Si planea ser conductor/a por favor, check",

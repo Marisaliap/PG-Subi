@@ -17,7 +17,7 @@ export default function FormCar() {
   const [cedula, setCedula] = useState([]);
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
-    idUser: isAuthenticated ? user.email : "",
+    userEmail: isAuthenticated ? user.email : "",
     patent: "",
     color: "",
     brand: "",
@@ -52,25 +52,25 @@ export default function FormCar() {
     const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     const floatvalidate = /^[0-9]*\.?[0-9]+$/;
     if (!input.patent) {
-      errors.patent = "Plate is required";
+      errors.patent = <FormattedMessage id= "formcarerr.patent" defaultMessage="Patent is required" />;
     } else if (booleanPatent === false) {
-      errors.patent = "Patent already exists";
+      errors.patent = <FormattedMessage id= "formcarerr.patentexist" defaultMessage="Patent already exists" />;
     } else if (numberandlettervalidate.test(input.patent) === false) {
-      errors.patent = "Invalid Plate";
+      errors.patent = <FormattedMessage id= "formcarerr.patentinv" defaultMessage="Invalid Patent" />;
     } else if (!input.color) {
-      errors.color = "Color is required";
+      errors.color = <FormattedMessage id= "formcarerr.color" defaultMessage="Color is required" />;
     } else if (wordvalidate.test(input.color) === false) {
-      errors.color = "Invalid Color: No Symbols Allowed";
+      errors.color = <FormattedMessage id=  "formcarerr.colorinv" defaultMessage="Invalid Color: No Symbols Allowed" />;
     } else if (!input.brand) {
-      errors.brand = "Brand is required";
+      errors.brand = <FormattedMessage id= "formcarerr.brand" defaultMessage="Brand is required" />;
     } else if (wordvalidate.test(input.brand) === false) {
-      errors.brand = "Invalid Brand: No Symbols Allowed";
+      errors.brand = <FormattedMessage id= "formcarerr.brandinv" defaultMessage="formcarerr.brandinv" />;
     } else if (!input.model) {
-      errors.model = "Model is required";
+      errors.model = <FormattedMessage id= "formcarerr.model" defaultMessage="Model is required" />;
     } else if (!input.cylinder) {
-      errors.cylinder = "Cylinder is required";
+      errors.cylinder = <FormattedMessage id= "formcarerr.cylinder" defaultMessage="Cylinder is required" />;
     } else if (floatvalidate.test(input.cylinder) === false) {
-      errors.cylinder = "Invalid Cylinder: No Symbols Allowed";
+      errors.cylinder = <FormattedMessage id= "formcarerr.cylinderinv" defaultMessage="Invalid Cylinder: No Symbols Allowed" />;
     }
     return errors;
   }
@@ -168,7 +168,7 @@ export default function FormCar() {
   return (
     <div className="FormCar">
       <h1>
-        <FormattedMessage id="formCar.title" defaultMessage="Create your Car" />
+        <FormattedMessage id="register.errname" defaultMessage="Name is required" />
       </h1>
       <form
         className="FormAUTO"
