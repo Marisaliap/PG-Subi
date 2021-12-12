@@ -832,9 +832,6 @@ export default function UserProfile() {
 
         {
           nav === 4 && <div style={{ height: 300, width: '100%' }}>
-            <div className="centralo">
-              <h1 className="tituloUserProfile">Payments Details</h1>
-            </div>
             {
               userInfo.routes && userInfo.routes.length > 0 &&   <DataGrid rows={rowsOrders} columns={columnsOrders}/>
             } 

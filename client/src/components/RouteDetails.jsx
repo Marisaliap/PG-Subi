@@ -13,7 +13,13 @@ const RouteDetails = () => {
   const dispatch = useDispatch();
 
   const { getRoutes } = useSelector((state) => state);
-  useEffect(() => {dispatch(allRoutes())}, []);
+  useEffect(() => {
+    dispatch(allRoutes());
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  }, []);
   // useEffect(() =>  dispatch(getOrder()), [getRoutes.length]);
 
   return (
