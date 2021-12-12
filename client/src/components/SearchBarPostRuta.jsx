@@ -180,6 +180,7 @@ export default function SearchBar() {
         <p>{validations && validations.Destination}</p>
         <div>
           <input
+          className='searchbar'
             type="date"
             name="date"
             min={dateTime} 
@@ -189,6 +190,7 @@ export default function SearchBar() {
         </div>
         <div>
           <input
+          className='searchbar'
             type="time"
             id="hours"
             name="hours"
@@ -313,7 +315,7 @@ export default function SearchBar() {
 
         <pre>
           <div className="botonPostRuta">
-            <NavLink to="/">
+            <NavLink to="/home">
               <button className="buttonBlue">
                 <FormattedMessage id="userDetails.back" defaultMessage="Back" />
               </button>
