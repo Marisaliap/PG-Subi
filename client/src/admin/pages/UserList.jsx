@@ -4,68 +4,54 @@ import "../../styles/UserList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import User2 from "./Users2"
-import { deleteUser, getAllUsers, getId, getUserAdmin,getUserDetail } from "../../actions";
+import { deleteUser, getAllUsers, getId, getUserAdmin, getUserDetail } from "../../actions";
 
-export default function UserList(props) {
-  const { usuariosRegistrados,userAdmin } = useSelector(state => state)
-  var filtrados = usuariosRegistrados.map(e => 
-    ({ 
-      id: e.email,
-    name : e.name,
+export default function UserList() {
+  const { usuariosRegistrados } = useSelector(state => state)
+  var filtrados = usuariosRegistrados.map(e =>
+  ({
+    id: e.email,
+    name: e.name,
     lastname: e.lastName,
     genre: e.genre,
     admin: e.isAdmin,
     photo: e.photo
-   })
+  })
   )
 
- const [data, setData] = useState(filtrados); 
+  const [data, setData] = useState(filtrados);
   const dispatch = useDispatch();
-  // <User2
-  // email={userAdmin.email}
-  //       name={userAdmin.name}
-  //       lastName={userAdmin.lastName}
-  //       genre={userAdmin.genre}
-  //       age={userAdmin.age}
-  //       dni={userAdmin.dni}
-  //       street={userAdmin.street}
-  //       city={userAdmin.city}
-  //       province={userAdmin.province}
-  //       telephone={userAdmin.telephone}
-  //       facebook={userAdmin.facebook}
-  //       instagram={userAdmin.instagram}
-  //       photo={userAdmin.photo}
-  //       photoDni={userAdmin.photoDni}
-  //       isAdmin={userAdmin.isAdmin}
-  //       car={userAdmin.cars}
-  // />
-  
-// ---------------------------------<useEffect>---------------------------------
-  useEffect(() => {
+
+
+  // ---------------------------------<useEffect>---------------------------------
+  useEffect((id) => {
     dispatch(getAllUsers());
-  }, [data]); 
+  }, [dispatch]);
+
+
 
   useEffect((id) => {
     dispatch(getUserAdmin(id));
-    dispatch(getUserDetail(id));
-  }, [dispatch]); 
+    }, [dispatch]);
+
+  // ___________________________________________________________________________________________
 
 
+  // ---------------------------------<handles>---------------------------------
   const handleDelete = (id) => {
-  
     dispatch(deleteUser(id))
     setData(data.filter((item) => item.id !== id))
   }
-  
+
   const handleId = (id) => {
     dispatch(getId(id))
-    dispatch(getUserAdmin(id)) 
-    dispatch(getUserDetail(id))
+    dispatch(getUserAdmin(id))
   }
+  // _______________________________________________________________________________
 
+  // -------------------------------------------<material-ui>---------------------------------
   const columns = [
-    { field: "id", headerName: "ID", width: 200 }, 
+    { field: "id", headerName: "ID", width: 200 },
     {
       field: "user",
       headerName: "User",
@@ -93,7 +79,7 @@ export default function UserList(props) {
       renderCell: (params) => {
         return (
           <>
-             <Link to={"/admin/users/" + params.row.id}>
+            <Link to={"/admin/users/" + params.row.id}>
               <button className="userListEdit" onClick={() => handleId(params.row.id)}>Edit</button>
             </Link>
             <DeleteOutline
@@ -116,5 +102,5 @@ export default function UserList(props) {
         checkboxSelection
       />
     </div>
-  ); 
+  );
 }

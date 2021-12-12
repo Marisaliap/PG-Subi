@@ -39,7 +39,7 @@ export default function App() {
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
   const { userpro } = useSelector(state => state)
-  console.log(userpro, "user in app")
+  const admin = userpro.isAdmin
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -61,7 +61,7 @@ export default function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-         <Route exact path="/" component={LandingPage} />
+          <Route exact path="/" component={LandingPage} />
           <div>
             <NavBar />
             <Route path="/home" component={Home} />
@@ -88,11 +88,19 @@ export default function App() {
                         exact
                         path="/admin"
                         render={() =>
-                          userpro.isAdmin === true ? (
+                          userpro && admin === true ? (
                             <Admin />
                           ) : (
                             <Redirect to="/home" />
                           )
+                        // exact
+                        // path="/admin"
+                        // render={() =>
+                        //   userpro && userpro.isAdmin === true ? (
+                        //     <Admin />
+                        //   ) : (
+                        //     <Redirect to="/home" />
+                        //   )
                         }
                       />
                     </div>

@@ -1,11 +1,8 @@
 import React from 'react';
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
-// import User from "./pages/Users";
-import User3 from "./pages/Users3"
+import User from "./pages/Users";
 import Update from "./pages/Update"
-import UserProfile1 from "../components/UserProfile1";
-// import UserProfile from "../components/UserProfile";
 import Dashboard from "../admin/pages/Dashboard";
 import NewUser from "../admin/pages/NewUser";
 import UserList from "../admin/pages/UserList";
@@ -24,27 +21,20 @@ export default function Admin() {
           <Route exact path="/admin">
             <Dashboard />
           </Route>
-          {/* <Route path="/admin/user/:id">
-            <User />  */}
           <Route path="/admin/users/:id">
-            <User3 />
-          {/* <UserProfile1/> */}
-        </Route>
+            <User />
+          </Route>
           <Route path="/admin/Update">
             <Update />
-          {/* <UserProfile1/> */}
-        </Route>
-        <Route exact path="/admin/newUser">
-          <NewUser />
-        </Route>
-        <Route exact path="/admin/users">
-          <UserList />
-        </Route>
-        {/* <Route path="/admin/user/:id">
-            <UserDetails />
-          </Route>  */}
-      </Switch>
-    </div>
+          </Route>
+          <Route exact path="/admin/newUser">
+            <NewUser />
+          </Route>
+          <Route exact path="/admin/users">
+            <UserList />
+          </Route>
+        </Switch>
+      </div>
     </Router >
   );
 }

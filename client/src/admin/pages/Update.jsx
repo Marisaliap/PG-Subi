@@ -1,42 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {
-    MailOutline,
-    PermIdentity,
-    PhoneAndroid,
-    Publish,
-    AssignmentInd,
-    WcOutlined,
-    Event,
-    PhotoCamera,
-    DirectionsCar,
-    Facebook,
-    Instagram,
-    Home,
-    VpnKey,
-} from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../../styles/User.css";
-import { useAuth0 } from "@auth0/auth0-react";
-import { editUser, getUserProfile, getAllUsers, getUserAdmin, getUserDetail, editCar } from "../../actions";
+import { editUser, getUserProfile, getAllUsers, getUserAdmin, editCar } from "../../actions";
 
 
 export default function Update() {
-    const { id, userAdmin, carAdmin, usuariosRegistrados, car } = useSelector(state => state)
-    const users = useSelector(state => state)
-    const { user } = useAuth0();
+    const { id, userAdmin, carAdmin, usuariosRegistrados } = useSelector(state => state)
     const dispatch = useDispatch()
+    const history = useHistory();
     let booleanDNI;
+
     // -------------------------------------<useEffect>-------------------------------------
     useEffect(() => {
         dispatch(getUserAdmin(id));
         dispatch(getAllUsers());
+        dispatch(getUserProfile(id)); 
     }, [dispatch, id]);
+
+
     //   -------------------------------------< estados> --------------------------------
     const [errorsCars, setErrorsCars] = useState({});
     const [errorsUser, setErrorsUser] = useState({});
     const [image, setImage] = useState(userAdmin?.photo);
-    const [dni, setDni] = useState([]);
+    const [dniFront, setDniFront] = useState(userAdmin?.photoDni[0]);
+    const [dniBack, setDniBack] = useState(userAdmin?.photoDni[1]);
+    const [greencard, setGreencard] = useState(carAdmin?.greencard);
 
     const [input, setInput] = useState({
         email: userAdmin.email,
@@ -57,14 +46,6 @@ export default function Update() {
         car: userAdmin.cars
     });
 
-    console.log("INPUT", input)
-    console.log("USERAMIN2", userAdmin)
-    console.log("link ", image)
-    console.log("DNI ", dni)
-
-
-
-
     const [auto, setAuto] = useState(userAdmin?.cars?.length === 0 ? ({
         brand: "",
         model: "",
@@ -80,32 +61,37 @@ export default function Update() {
         cylinder: carAdmin.cylinder,
         greencard: carAdmin.greencard,
     }));
-    console.log("CAR", carAdmin)
+
 
     // ------------------<handles>------------------
+
     const handleSubmitUser = (e) => {
         e.preventDefault();
+        dispatch(getUserProfile(id))
         dispatch(editUser(id, input));
-        dispatch(getUserProfile(id));
         dispatch(getUserAdmin(id))
-        carAdmin?.id && dispatch(editCar(carAdmin.id, auto))
         handleSubmitPhoto(e)
         handleSubmitPhoto2(e)
-
+        dispatch(getAllUsers())
+        history.push("/admin/users")
     }
+
     const handleSubmitPhoto = (e) => {
         e.preventDefault();
         setImage('');
+        setDniFront("");
+        setDniBack("");
+        setGreencard('');
         dispatch(editUser(id, input));
-        dispatch(getUserAdmin(id))
-        dispatch(getUserProfile(id));
+        dispatch(getUserAdmin(id));
     }
     const handleSubmitPhoto2 = (e) => {
         e.preventDefault();
-        setDni([]);
+        setGreencard('');
         dispatch(editUser(id, input));
-        dispatch(getUserAdmin(id))
-        dispatch(getUserProfile(id));
+        dispatch(getUserAdmin(id));
+        carAdmin?.id && dispatch(editCar(carAdmin.id, auto))
+
     }
 
     function handleChange(e) {
@@ -151,7 +137,8 @@ export default function Update() {
         setImage(file.secure_url);
     };
 
-    const uploadImage2 = async (e) => {
+
+    const uploadImagefront = async (e) => {
         const files = e.target.files;
         const data = new FormData();
         data.append("file", files[0]);
@@ -167,7 +154,48 @@ export default function Update() {
         );
 
         const file = await res.json();
-        setDni([...dni, file.secure_url]);
+
+        setDniFront(file.secure_url);
+
+    };
+
+    const uploadImageback = async (e) => {
+        const files = e.target.files;
+        const data = new FormData();
+        data.append("file", files[0]);
+        data.append("upload_preset", "dniAdmin");
+
+
+        const res = await fetch(
+            "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+            {
+                method: "POST",
+                body: data,
+            }
+        );
+
+        const file = await res.json();
+        setDniBack(file.secure_url);
+
+    };
+
+    const uploadImage3 = async (e) => {
+        const files = e.target.files;
+        const data = new FormData();
+        data.append("file", files[0]);
+        data.append("upload_preset", "dniAdmin");
+
+
+        const res = await fetch(
+            "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+            {
+                method: "POST",
+                body: data,
+            }
+        );
+
+        const file = await res.json();
+        setGreencard(file.secure_url);
     };
     //   ___________________________________________________________________________________________
 
@@ -176,7 +204,6 @@ export default function Update() {
     function validateuser(input) {
         booleanDNI = true;
         for (let i = 0; i < usuariosRegistrados.length; i++) {
-            // if (usuariosRegistrados[i].dni.toString() === input.dni) {
             if (usuariosRegistrados[i].dni === input.dni) {
                 booleanDNI = false;
             }
@@ -510,22 +537,38 @@ export default function Update() {
                                     />
                                 </div>
                                 <div Style="display:none">{(input.photo = image)}</div>
-                                {/* <button onClick={(e) => handleSubmitPhoto(e)} className="userUpdateButton" >update</button> */}
                                 <br />
-                                <span className="userShowTitle">DNI</span>
+                                <span className="userShowTitle">DNI FRONT</span>
                                 <div className="userUpdateUpload">
-                                    {!userAdmin.photoDni ? "" : userAdmin.photoDni.map(e => <img src={e} alt="" className="userUpdateImg" />)}
+                                    {!userAdmin.photoDni ? "" : <img src={userAdmin.photoDni[0]} alt="" className="userUpdateImg" />}
 
-                                    {/* <div>
+                                    <div>
                                         <input
-                                            onChange={(e) => uploadImage2(e)}
+                                            onChange={(e) => uploadImagefront(e)}
                                             className="userUpdateInput"
                                             type="file"
-                                            name="dni"
+                                            name="dniFront"
                                             accept="image/png, image/jpeg"
                                         />
                                     </div>
-                                    <div Style="display:none">{(input.dni = dni)}</div> */}
+                                    <div Style="display:none">{(input.photoDni[0] = dniFront)}</div>
+
+                                </div>
+                                <br />
+                                <span className="userShowTitle">DNI BACK</span>
+                                <div className="userUpdateUpload">
+                                    {!userAdmin.photoDni ? "" : <img src={userAdmin.photoDni[1]} alt="" className="userUpdateImg" />}
+
+                                    <div>
+                                        <input
+                                            onChange={(e) => uploadImageback(e)}
+                                            className="userUpdateInput"
+                                            type="file"
+                                            name="dniFront"
+                                            accept="image/png, image/jpeg"
+                                        />
+                                    </div>
+                                    <div Style="display:none">{(input.photoDni[1] = dniBack)}</div>
 
                                 </div>
                                 <br />
@@ -536,20 +579,19 @@ export default function Update() {
                                         <div className="userUpdateUpload">
                                             <img
                                                 className="userUpdateImg"
-                                                src={auto?.greencard}
+                                                src={carAdmin?.greencard}
                                                 alt=""
                                             />
-                                            {/* <div>
+                                            <div>
                                                 <input
-                                                    onChange={(e) => uploadImage2(e)}
+                                                    onChange={(e) => uploadImage3(e)}
                                                     className="userUpdateInput"
                                                     type="file"
-                                                    name="photo"
-                                                    value={auto?.greencard}
+                                                    name="greencard"
                                                     accept="image/png, image/jpeg"
                                                 />
-                                            </div> */}
-
+                                            </div>
+                                            <div Style="display:none">{(auto.greencard = greencard)}</div>
 
                                         </div>
                                     </>
@@ -558,19 +600,10 @@ export default function Update() {
 
                             </div>
 
-                            {/* <input type="file" id="file" style={{ display: "none" }} /> */}
+            
                         </div>
-                        <Link to="/admin/users"> <button onClick={(e) => handleSubmitUser(e)} className="userUpdateButton">Update</button></Link>
+                        <button onClick={(e) => { handleSubmitUser(e) }} className="userUpdateButton">Update</button>
                     </div>
-
-
-
-
-
-
-
-
-
                 </div>
             </div>
         </div>)
