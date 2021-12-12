@@ -1,5 +1,9 @@
 @import "../Variables/Variables.scss";
-
+.custom-file-input{
+  &:focus {
+    outline: none;
+  }
+}
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 }
