@@ -28,7 +28,11 @@
     "post.calification": "Calification",
     "post.description": "Please tell us about your experience with this user...",
 
-    "editcar.errpatent":"Patent is required",
+    "editcarerr.patent":"Patent is required",
+    "editcarerr.color":"Color is required",
+    "editcarerr.brand":"Brand is required",
+    "editcarerr.model":"Model is required",
+    "editcarerr.cylinder":"Cylinder is required",
 
     "map.home":"Home",
     "map.seats":"Seats available",
