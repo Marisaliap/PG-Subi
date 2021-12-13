@@ -74,6 +74,10 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
+      isBanned: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       cbu: {
         type: DataTypes.STRING,
         defaultValue: " ",

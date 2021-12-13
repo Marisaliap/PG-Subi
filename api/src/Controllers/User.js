@@ -19,6 +19,7 @@ const postUser = async (req, res, next) => {
       photo,
       photoDni,
       cbu,
+      isBanned,
     } = req.body;
 
     let user = await User.findOrCreate({
@@ -41,6 +42,7 @@ const postUser = async (req, res, next) => {
         calification: 0,
         photoDni,
         cbu,
+        isBanned,
         // public_id:result.public_id,
       },
       include: [Post, Car, Order, Route],
@@ -185,6 +187,7 @@ const putUser = async (req, res, next) => {
       photoDni,
       isAdmin,
       cbu,
+      isBanned,
     } = req.body;
 
     const user = await User.findByPk(id);
@@ -207,6 +210,7 @@ const putUser = async (req, res, next) => {
       photoDni,
       isAdmin,
       cbu,
+      isBanned,
     });
 
     res.send(user);
