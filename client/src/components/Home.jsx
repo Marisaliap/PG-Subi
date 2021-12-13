@@ -25,7 +25,11 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    dispatch(getAllUsers());
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+   dispatch(getAllUsers());
   }, []);
 
   function handleClick() {

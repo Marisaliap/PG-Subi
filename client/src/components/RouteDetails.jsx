@@ -17,7 +17,13 @@ const RouteDetails = ({match}) => {
   const { getRoutes } = useSelector((state) => state);
   const { filteredRouteFromDb } = useSelector(state => state)
 
-  useEffect(() => {dispatch(allRoutes())}, []);
+  useEffect(() => {
+    dispatch(allRoutes());
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  }, []);
   useEffect(() => {
     return () => {
      dispatch(deleteRouteFromDb('lala')) 
