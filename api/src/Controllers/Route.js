@@ -216,7 +216,6 @@ const getRoute = async (req, res, next) => {
     } else if (order === "price") {
       routes = routes.sort((a, b) => a.price - b.price);
     }
-
     return res.send(routes);
   } catch (e) {
     next(e);

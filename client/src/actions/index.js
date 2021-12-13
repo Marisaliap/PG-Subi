@@ -224,13 +224,14 @@ export function editCar(id, info) {
   };
 }
 
-export function getRouteFromDb(originName, destinyName, date, place) {
+export function getRouteFromDb(originName, destinyName, date, place, order, restriction) {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}`
+        `http://localhost:3001/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}&order=${order ? order : ""
+      }&restriction=${restriction ? restriction : ""}`
       );
-
+        console.log(response.data, 'soy data')
       return dispatch({
         type: "GET_ROUTE_FROM_DB",
         payload: response.data,
@@ -343,6 +344,12 @@ export function RoutePostInfo(info) {
 export function deleteRoute() {
   return {
     type: "DELETE_ROUTE",
+  };
+}
+export function deleteRouteFromDb(param) {
+  console.log(param)
+  return {
+    type: "DELETE_ROUTE_FROM_DB",
   };
 }
 export function deleteOrder(id) {

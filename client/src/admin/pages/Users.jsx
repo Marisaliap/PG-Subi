@@ -90,12 +90,12 @@ return (
                     <span className="userShowTitle">Account Documents</span>
                     <div className="userShowInfo">
                         <PhotoCamera className="userShowIcon" />
-                        {!userAdmin.photoDni ? "" : userAdmin.photoDni.map(e => <img src={e} alt="" className="userShowImge" />)}
+                        {!userAdmin.photoDni ? "" : userAdmin.photoDni.map(e => <img src={e} alt="" className="userShowImg" />)}
 
                     </div>
                     <div className="userShowInfo">
                         <DirectionsCar className="userShowIcon" />
-                        <img className="userShowInfoTitle" src={carAdmin?.greencard} />
+                        <img className="userShowImg" src={carAdmin?.greencard} />
                     </div>
                     <span className="userShowTitle">Contact Details</span>
                     <div className="userShowInfo">

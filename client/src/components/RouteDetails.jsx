@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { allRoutes } from "../actions";
+import { allRoutes, deleteRouteFromDb } from "../actions";
 import CardRoute from "./CardRoute";
 import CardUser from "./CardUser";
 import NavBarFilter from "./NavBarFilter";
@@ -10,30 +10,41 @@ import Pagination from "./Pagination" ;
 // import {CardCar} from "./CardCar";
 import { Link } from "react-router-dom";
 
-const RouteDetails = () => {
+const RouteDetails = ({match}) => {
+
   const dispatch = useDispatch();
 
   const { getRoutes } = useSelector((state) => state);
+  const { filteredRouteFromDb } = useSelector(state => state)
+
   useEffect(() => {dispatch(allRoutes())}, []);
-  // useEffect(() =>  dispatch(getOrder()), [getRoutes.length]);
+  useEffect(() => {
+    return () => {
+     dispatch(deleteRouteFromDb('lala')) 
+    };
+  }, []);
 
   // ------------------<paged>------------------
 
-  const [currentPage, setCurrentPage] = useState(1)      //le paso el estado local con la primer página que se renderiza
-  const [ routesPerPage ] = useState (6)                   
-  const indexOfLastRoute = currentPage * routesPerPage       
-  const indexOffirstRoute = indexOfLastRoute - routesPerPage  
-  const currentRoutes = getRoutes.slice(indexOffirstRoute, indexOfLastRoute)    
+  const [currentPage, setCurrentPage] = useState(1)      
+  const [ routesPerPage, setRoutesPerPage ] = useState (6)                   
+  const indexOfLastRoute = currentPage * routesPerPage      
+  const indexOffirstRoute = indexOfLastRoute - routesPerPage   
+  const currentRoutes = ( filteredRouteFromDb.length > 0 || match.params.id ) ? (
+    filteredRouteFromDb.slice(indexOffirstRoute, indexOfLastRoute)
+     )  :( 
+       getRoutes.slice(indexOffirstRoute, indexOfLastRoute) 
+       )   
 
   const pagedTotal = (pageNumber) => {                      
-    setCurrentPage(pageNumber)                       
-  }                                                     
+    setCurrentPage(pageNumber)                        
+}                                                    
 
 // ------------------<pagedEnd>------------------
 
   return (
     <div className="RouteDetails">
-      <NavBarFilter />
+      <NavBarFilter places={match.params.id} currentRoutes={currentRoutes} />
 
       <div className="RouteCardContainer">
         {currentRoutes.map((route, i) => (
