@@ -42,6 +42,9 @@ export default function Admin() {
           <Route exact path="/admin/transactions">
             <Transactions/>
           </Route>
+          <Route path="/admin/message">
+            <Message />
+          </Route>
         </Switch>
       </div>
     </Router >

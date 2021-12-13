@@ -30,6 +30,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import PaymentIcon from '@material-ui/icons/Payment';
+import ChatIcon from '@material-ui/icons/Chat'
 
 export default function UserProfile() {
   const userInfo = useSelector((state) => state.userpro);

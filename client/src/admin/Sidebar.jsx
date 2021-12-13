@@ -58,24 +58,14 @@ export default function Sidebar() {
                 Create New User
               </li>
             </Link>
-            {/* <Link to="/products" className="link">
-              <li className="sidebarListItem">
-                <Storefront className="sidebarIcon" />
-                Products
-              </li>
-            </Link> */}
+           
             <Link to='/admin/transactions' className="link">
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
               Transactions
             </li>
            
-            </Link>
-            {/* <li className="sidebarListItem">
-              <BarChart className="sidebarIcon" />
-              Reports
-            </li>
-             */}
+ </Link>
           </ul>
         </div>
         <div className="sidebarMenu">
@@ -94,14 +84,15 @@ export default function Sidebar() {
             </li>
             </Link>
 
-            <Link to="/admin/message" className="link"> 
+            {/* <Link to="/admin/message" className="link"> 
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Messages
             </li>
-            </Link>
+            </Link> */}
           </ul>
         </div>
+       
         {/* <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
