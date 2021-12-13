@@ -182,7 +182,7 @@ export default function SearchBarHome() {
           disabled={checkInfo.length !== 2 && checkInputs.length !== 2}
         >
           <NavLink
-            to="/route-list"
+            to={`/route-list/${info.pasajeros}`}
             style={{
               textDecoration: ' none',
               width: '60px',

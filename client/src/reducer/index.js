@@ -17,6 +17,7 @@ const initialState = {
   userBuscado: [],
   orderDetails: [],
   carMatch: [],
+  filteredRouteFromDb: [],
   //-------------------------< admin store >------------------------ 
   userAdmin: [],
   id: "",
@@ -183,6 +184,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         routeFromDb: [],
+        filteredRouteFromDb: []
       };
     case "ROUTE_POST_INFO":
       return {
@@ -194,10 +196,24 @@ function rootReducer(state = initialState, action) {
         ...state,
         routeById: action.payload,
       };
-    case "GET_ROUTE_FROM_DB":
-      return {
-        ...state,
-        routeFromDb: action.payload,
+    case "GET_ROUTE_FROM_DB": {
+  
+      if (state.routeFromDb.length === 0 && action.payload.length > 0) {
+        return {
+          ...state,
+          routeFromDb: action.payload,
+          filteredRouteFromDb: action.payload
+        };
+      } if ( action.payload.length === 0) {
+        return {
+          ...state,
+          filteredRouteFromDb: [...state.routeFromDb]
+        }} 
+        return {
+          ...state,
+          filteredRouteFromDb: action.payload,
+            };
+           
       };
       case "SET_POST":
       return {
