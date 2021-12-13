@@ -21,11 +21,13 @@ import RatingStar from "./RatingStar.jsx";
 export default function UserDetails( props) {
   const userInfo = useSelector((state) => state.user);
   const autoInfo = useSelector((state) => state.car);
+  // const {id}=useSelector(state=>state);
   let idAuto;
   autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
   const dispatch = useDispatch();
-
+// console.log(id);
 const id = props.match.params.id;
+
 
   useEffect(() => {
     userInfo.email === undefined

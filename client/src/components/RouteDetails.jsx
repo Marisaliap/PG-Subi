@@ -9,10 +9,12 @@ import Pagination from './Pagination';
 // import {CardCar} from "./CardCar";
 import { Link } from 'react-router-dom';
 
-const RouteDetails = () => {
+const RouteDetails = ({ match }) => {
   const dispatch = useDispatch();
-  const { routeFromDb } = useSelector((state) => state);
+
   const { getRoutes } = useSelector((state) => state);
+  const { filteredRouteFromDb } = useSelector((state) => state);
+
   useEffect(() => {
     dispatch(allRoutes());
   }, []);
@@ -25,12 +27,12 @@ const RouteDetails = () => {
   // ------------------<paged>------------------
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [routesPerPage, setRoutesPerPage] = useState(15);
+  const [routesPerPage, setRoutesPerPage] = useState(6);
   const indexOfLastRoute = currentPage * routesPerPage;
   const indexOffirstRoute = indexOfLastRoute - routesPerPage;
   const currentRoutes =
-    routeFromDb.length > 0
-      ? routeFromDb.slice(indexOffirstRoute, indexOfLastRoute)
+    filteredRouteFromDb.length > 0 || match.params.id
+      ? filteredRouteFromDb.slice(indexOffirstRoute, indexOfLastRoute)
       : getRoutes.slice(indexOffirstRoute, indexOfLastRoute);
 
   const pagedTotal = (pageNumber) => {
@@ -41,7 +43,7 @@ const RouteDetails = () => {
 
   return (
     <div className="RouteDetails">
-      <NavBarFilter />
+      <NavBarFilter places={match.params.id} currentRoutes={currentRoutes} />
 
       <div className="RouteCardContainer">
         {

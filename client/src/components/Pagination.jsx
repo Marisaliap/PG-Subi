@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "../styles/Paged.css"; 
+/* import styles from "../styles/Paged.module.css";  */
+import "../Sass/Styles/Pagination.scss";
 
 export default function Pagination ({ routesPerPage, getRoutes, pagedTotal}) {
     const pageNumber = [];
@@ -10,11 +11,11 @@ export default function Pagination ({ routesPerPage, getRoutes, pagedTotal}) {
     }
     return (
         <nav>
-            <ul className={styles.paged}> 
+            <ul className="paged"> 
                 { pageNumber?.map(num => (
-                    <div className={styles.listContainer} key={num}>
-                        <li className={styles.number} key={num}> 
-                        <a onClick={ () => pagedTotal(num)} className={styles.link}>{num}</a>
+                    <div className="listContainer" key={num}>
+                        <li className="number" key={num}> 
+                        <a onClick={ () => pagedTotal(num)} className="linkPagination">{num}</a>
                         </li>
                     </div>
                 ))}
