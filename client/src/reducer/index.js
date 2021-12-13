@@ -25,8 +25,7 @@ const initialState = {
   order: "",
   filtersRoute: [],
   userDeleted: "",
-
-  reclamosymejoras: [],
+ reclamosymejoras: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -94,6 +93,16 @@ function rootReducer(state = initialState, action) {
         userpro: action.payload[0],
       };
     case "POST_RECLAMOSYMEJORAS":
+      return {
+        ...state,
+        reclamosymejoras: action.payload,
+      };
+      case "GET_RECLAMOSYMEJORAS":
+      return {
+        ...state,
+        reclamosymejoras: action.payload,
+      };
+      case "DELETE_RECLAMOSYMEJORAS":
       return {
         ...state,
         reclamosymejoras: action.payload,

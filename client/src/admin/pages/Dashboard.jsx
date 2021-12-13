@@ -1,3 +1,6 @@
+import React,{useEffect} from 'react'
+import { useSelector, useDispatch} from "react-redux"
+import{getMejorasYReclamos,}from "../../actions"
 import Chart from "../../admin/Chart";
 import FeaturedInfo from "../../admin/FeaturedInfo";
 import "../../styles/Dashboard.css";
@@ -6,6 +9,14 @@ import WidgetSm from "../WidgetSm";
 import WidgetLg from "../WidgetLg";
 
 export default function Dashboard() {
+  const dispatch = useDispatch()
+
+    useEffect(() => {
+       dispatch(getMejorasYReclamos())
+     }, [dispatch])
+
+     
+
   return (
     <div className="home">
       <FeaturedInfo />

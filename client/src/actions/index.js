@@ -86,19 +86,6 @@ export function getUserAdmin(id) {
   };
 }
 
-export function getAlluserpro(id) {
-  return async function (dispatch) {
-    try {
-      const response = (await axios.get(`http://localhost:3001/user/${id}`))
-        .data;
-      return dispatch({
-        type: "GET_USER_ADMIN",
-        payload: response,
-      });
-    } catch (error) {}
-  };
-}
-
 export function getRouteById(id) {
   return async function (dispatch) {
     try {
@@ -305,6 +292,37 @@ export function postMejorasYReclamos(payload) {
         payload: response.data,
       });
     } catch (error) { }
+  };
+}
+
+export function getMejorasYReclamos(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/suggestionbox/`,
+        payload
+      );
+      return dispatch({
+        type: "GET_RECLAMOSYMEJORAS",
+        payload: response.data,
+      });
+    } catch (error) { }
+  };
+}
+
+export function deleteReclamos(id) {
+  return async function (dispatch) {
+    try {
+      const response = ( await axios.delete(
+        `http://localhost:3001/suggestionbox/${id}`
+      )).data;
+      return dispatch({
+        type: "DELETE_RECLAMOSYMEJORAS",
+        payload: response,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 

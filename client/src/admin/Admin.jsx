@@ -7,6 +7,7 @@ import Dashboard from "../admin/pages/Dashboard";
 import NewUser from "../admin/pages/NewUser";
 import UserList from "../admin/pages/UserList";
 import Feedback from "../admin/pages/Feedback";
+import Message from "../admin/pages/Message";
 import "../Sass/Styles/App.scss";
 import "../styles/Admin.css";
 
@@ -34,7 +35,7 @@ export default function Admin() {
           <Route exact path="/admin/users">
             <UserList />
           </Route>
-          <Route exact path="/admin/feedback">
+          <Route exact path="/admin/feed">
             <Feedback />
           </Route>
         </Switch>

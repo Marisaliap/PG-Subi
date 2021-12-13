@@ -16,6 +16,9 @@ import {
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
+function redireccionar(){
+  window.location="http://www.cristalab.com";
+} 
 export default function Sidebar() {
   return (
     <div className="sidebar">
@@ -67,20 +70,25 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
+          
             <li className="sidebarListItem">
-              <MailOutline className="sidebarIcon" />
-              Mail
+              <MailOutline className="sidebarIcon"/>
+              <a href="https://mail.google.com/mail/u/?authuser=grupo10.soyhenry@gmail.com" target="_blank" rel="noopener noreferrer">Mail</a>
             </li>
-            <Link to="/admin/feedback" className="link">
+          
+            <Link to="/admin/feed" className="link"> 
             <li className="sidebarListItem">
               <DynamicFeed className="sidebarIcon" />
               Feedback
             </li>
             </Link>
+
+            <Link to="/admin/message" className="link"> 
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Messages
             </li>
+            </Link>
           </ul>
         </div>
         {/* <div className="sidebarMenu">

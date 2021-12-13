@@ -24,4 +24,16 @@ const postSuggestionBox = async (req, res, next) => {
   }
 };
 
-module.exports = { getSuggestionBox, postSuggestionBox };
+const deleteSuggestionBox = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const suggestion = await SuggestionBox.findByPk(id);
+    await suggestion.destroy();
+    res.send("Registro eliminado");
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { getSuggestionBox, postSuggestionBox, deleteSuggestionBox };
+
