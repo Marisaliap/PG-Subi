@@ -27,7 +27,7 @@ const RouteDetails = ({match}) => {
   // ------------------<paged>------------------
 
   const [currentPage, setCurrentPage] = useState(1)      
-  const [ routesPerPage, setRoutesPerPage ] = useState (15)                   
+  const [ routesPerPage, setRoutesPerPage ] = useState (6)                   
   const indexOfLastRoute = currentPage * routesPerPage      
   const indexOffirstRoute = indexOfLastRoute - routesPerPage   
   const currentRoutes = ( filteredRouteFromDb.length > 0 || match.params.id ) ? (
@@ -47,7 +47,7 @@ const RouteDetails = ({match}) => {
       <NavBarFilter places={match.params.id} currentRoutes={currentRoutes} />
 
       <div className="RouteCardContainer">
-        {/* getRoutes */currentRoutes.map((route, i) => (
+        {currentRoutes.map((route, i) => (
           <Link className="link" id="link" to={`/route/${route.id}`}>
             <div className="RouteCard">
               {console.log(route.users)}{route.users && (
@@ -84,7 +84,7 @@ const RouteDetails = ({match}) => {
       <div>
         <Pagination
           routesPerPage= { routesPerPage }
-          getRoutes= { getRoutes.length }             
+          getRoutes= { getRoutes.length }                    
           pagedTotal= { pagedTotal }
         />
       </div>

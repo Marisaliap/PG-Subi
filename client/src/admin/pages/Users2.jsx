@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
     MailOutline,
@@ -18,19 +18,48 @@ import {
 import { Link } from "react-router-dom";
 import "../../styles/User.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { editUser, getUserProfile, getAllUsers, getUserAdmin,getUserDetail} from "../../actions";
+import { editUser, getUserProfile, getAllUsers, getUserAdmin, getUserDetail } from "../../actions";
 
 export default function User2() {
-    const { id, userAdmin, carAdmin, usuariosRegistrados,car} = useSelector(state => state)
-    const users = useSelector(state => state.user)
+    const { id, userAdmin, carAdmin, usuariosRegistrados, car } = useSelector(state => state)
+    const users = useSelector(state => state)
     const { user } = useAuth0();
     const dispatch = useDispatch()
     let booleanDNI;
+    // -------------------------------------<useEffect>-------------------------------------
+    useEffect(() => {
+        dispatch(getUserAdmin(id));
+        dispatch(getAllUsers());
+
+        // window.location.reload(true)
+    }, [dispatch, id]);
     //   -------------------------------------< estados> --------------------------------
     const [errorsCars, setErrorsCars] = useState({});
     const [errorsUser, setErrorsUser] = useState({});
     const [image, setImage] = useState("")
     const [dni, setDni] = useState([])
+
+
+    // const [input, setInput] = useState(adminUser)
+    // const [input, setInput] = useState({
+    //     email: usuariosRegistrados.filter(e=>e.email===user.email),
+    //     name: props.name,
+    //     lastName: props.lastName,
+    //     genre: props.genre,
+    //     age: props.age,
+    //     dni: props.dni,
+    //     street: props.street,
+    //     city: props.city,
+    //     province: props.province,
+    //     telephone: props.telephone,
+    //     facebook: props.facebook,
+    //     instagram: props.instagram,
+    //     photo: props.photo,
+    //     photoDni: props.photoDni,
+    //     isAdmin: props.isAdmin,
+    //     car: props.cars
+    // });
+
     const [input, setInput] = useState({
         email: userAdmin.email,
         name: userAdmin.name,
@@ -49,21 +78,47 @@ export default function User2() {
         isAdmin: userAdmin.isAdmin,
         car: userAdmin.cars
     });
-    const [auto, setAuto] = useState( carAdmin.color?({
+
+    console.log("INPUT", input)
+    console.log("USERAMIN", userAdmin)
+
+    // usuariosRegistrados.map(e=>e.email).includes(id) === true && setInput({
+    //     email: userAdmin.email,
+    //     name: userAdmin.name,
+    //     lastName: userAdmin.lastName,
+    //     genre: userAdmin.genre,
+    //     age: userAdmin.age,
+    //     dni: userAdmin.dni,
+    //     street: userAdmin.street,
+    //     city: userAdmin.city,
+    //     province: userAdmin.province,
+    //     telephone: userAdmin.telephone,
+    //     facebook: userAdmin.facebook,
+    //     instagram: userAdmin.instagram,
+    //     photo: userAdmin.photo,
+    //     photoDni: userAdmin.photoDni,
+    //     isAdmin: userAdmin.isAdmin,
+    //     car: userAdmin.cars
+
+    // })
+
+
+    const [auto, setAuto] = useState(userAdmin?.cars?.length === 0 ? ({
         brand: "",
         model: "",
         patent: "",
         color: "",
         cylinder: "",
         greencard: "",
-      }) : ({
+    }) : ({
         brand: carAdmin.brand,
         model: carAdmin.model,
         patent: carAdmin.patent,
         color: carAdmin.color,
         cylinder: carAdmin.cylinder,
         greencard: carAdmin.greencard,
-      }));
+    }));
+
     // ------------------<handles>------------------
     const handleSubmitUser = (e) => {
         e.preventDefault();
@@ -73,11 +128,11 @@ export default function User2() {
         dispatch(getUserProfile(id));
         dispatch(getUserAdmin(id))
     }
-    const handleSubmitPhoto = (e) => {
-        e.preventDefault();
-        setImage('');
-        dispatch(editUser(id, input));
-    }
+    // const handleSubmitPhoto = (e) => {
+    //     e.preventDefault();
+    //     setImage('');
+    //     dispatch(editUser(id, input));
+    // }
 
     function handleChange(e) {
         setInput({
@@ -94,137 +149,134 @@ export default function User2() {
         //     [e.target.name]: e.target.value,
         //   })
         // );
-        setErrorsUser(
-            validateuser({
-                ...input,
-                [e.target.name]: e.target.value,
-            })
-        );
+        // setErrorsUser(
+        //     validateuser({
+        //         ...input,
+        //         [e.target.name]: e.target.value,
+        //     })
+        // );
     }
 
 
-    const uploadImage = async (e) => {
-        const files = e.target.files;
-        const data = new FormData();
-        data.append("file", files[0]);
-        data.append("upload_preset", "photoAdmin");
+    // const uploadImage = async (e) => {
+    //     const files = e.target.files;
+    //     const data = new FormData();
+    //     data.append("file", files[0]);
+    //     data.append("upload_preset", "photoAdmin");
 
 
-        const res = await fetch(
-            "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
-            {
-                method: "POST",
-                body: data,
-            }
-        );
+    //     const res = await fetch(
+    //         "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+    //         {
+    //             method: "POST",
+    //             body: data,
+    //         }
+    //     );
 
-        const file = await res.json();
-        setImage(file.secure_url);
-    };
-    const uploadImage2 = async (e) => {
-        const files = e.target.files;
-        const data = new FormData();
-        data.append("file", files[0]);
-        data.append("upload_preset", "dniAdmin");
+    //     const file = await res.json();
+    //     setImage(file.secure_url);
+    // };
+    // const uploadImage2 = async (e) => {
+    //     const files = e.target.files;
+    //     const data = new FormData();
+    //     data.append("file", files[0]);
+    //     data.append("upload_preset", "dniAdmin");
 
 
-        const res = await fetch(
-            "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
-            {
-                method: "POST",
-                body: data,
-            }
-        );
+    //     const res = await fetch(
+    //         "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+    //         {
+    //             method: "POST",
+    //             body: data,
+    //         }
+    //     );
 
-        const file = await res.json();
-        setDni([...dni, file.secure_url]);
-    };
+    //     const file = await res.json();
+    //     setDni([...dni, file.secure_url]);
+    // };
     //   ___________________________________________________________________________________________
 
 
     // -----------------------------------------< gestion de errores>-----------------------------------
-    function validateuser(input) {
-        booleanDNI = true;
-        for (let i = 0; i < usuariosRegistrados.length; i++) {
-            // if (usuariosRegistrados[i].dni.toString() === input.dni) {
-            if (usuariosRegistrados[i].dni === input.dni) {
-                booleanDNI = false;
-            }
-        }
-        let errors = {};
-        const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
-        const phonevalidate = /^[0-9]+$/;
-        if (!input.name) {
-            errors.name = 'Name is required';
-        } else if (wordvalidate.test(input.name) === false) {
-            errors.name = 'Invalid Name: No Symbols Allowed';
-        } else if (!input.lastName) {
-            errors.lastName = 'Last name is required';
-        } else if (wordvalidate.test(input.lastName) === false) {
-            errors.lastName = 'Invalid Last Name: No Symbols Allowed';
-        } else if (!input.dni) {
-            errors.dni = 'DNI is required';
-        } else if (booleanDNI === false) {
-            errors.dni = 'DNI already exists';
-        } else if (!input.age) {
-            errors.age = 'Age required';
-        } else if (input.age < 18) {
-            errors.age = 'You must be 18 years old or older to register';
-        } else if (!input.telephone) {
-            errorsUser.telephone = 'Telephone is required';
-        } else if (phonevalidate.test(input.telephone) === false) {
-            errorsUser.telephone = 'Invalid Phone: Only Numbers Allowed';
-        } else if (!input.street) {
-            errors.street = 'Street is required';
-        } else if (!input.city) {
-            errors.city = 'City is required';
-        } else if (wordvalidate.test(input.city) === false) {
-            errors.city = 'Invalid City: No Symbols Allowed';
-        } else if (!input.province) {
-            errors.province = 'Province is required';
-        } else if (wordvalidate.test(input.province) === false) {
-            errors.province = 'Invalid Province: No Symbols Allowed';
-        }
-        return errors;
-    }
+    // function validateuser(input) {
+    //     booleanDNI = true;
+    //     for (let i = 0; i < usuariosRegistrados.length; i++) {
+    //         // if (usuariosRegistrados[i].dni.toString() === input.dni) {
+    //         if (usuariosRegistrados[i].dni === input.dni) {
+    //             booleanDNI = false;
+    //         }
+    //     }
+    //     let errors = {};
+    //     const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
+    //     const phonevalidate = /^[0-9]+$/;
+    //     if (!input.name) {
+    //         errors.name = 'Name is required';
+    //     } else if (wordvalidate.test(input.name) === false) {
+    //         errors.name = 'Invalid Name: No Symbols Allowed';
+    //     } else if (!input.lastName) {
+    //         errors.lastName = 'Last name is required';
+    //     } else if (wordvalidate.test(input.lastName) === false) {
+    //         errors.lastName = 'Invalid Last Name: No Symbols Allowed';
+    //     } else if (!input.dni) {
+    //         errors.dni = 'DNI is required';
+    //     } else if (booleanDNI === false) {
+    //         errors.dni = 'DNI already exists';
+    //     } else if (!input.age) {
+    //         errors.age = 'Age required';
+    //     } else if (input.age < 18) {
+    //         errors.age = 'You must be 18 years old or older to register';
+    //     } else if (!input.telephone) {
+    //         errorsUser.telephone = 'Telephone is required';
+    //     } else if (phonevalidate.test(input.telephone) === false) {
+    //         errorsUser.telephone = 'Invalid Phone: Only Numbers Allowed';
+    //     } else if (!input.street) {
+    //         errors.street = 'Street is required';
+    //     } else if (!input.city) {
+    //         errors.city = 'City is required';
+    //     } else if (wordvalidate.test(input.city) === false) {
+    //         errors.city = 'Invalid City: No Symbols Allowed';
+    //     } else if (!input.province) {
+    //         errors.province = 'Province is required';
+    //     } else if (wordvalidate.test(input.province) === false) {
+    //         errors.province = 'Invalid Province: No Symbols Allowed';
+    //     }
+    //     return errors;
+    // }
     //   __________________________________________________________________________________________
 
 
     // -----------------------------------------< gestion car>-----------------------------------
-    function validatecars(input) {
-        const numberandlettervalidate = /^[0-9a-zA-Z ]+$/;
-        const wordvalidate = /^[a-zA-Z]+$/;
-        const floatvalidate = /^[0-9]*\.?[0-9]+$/;
-        let errorsCars = {};
-        if (!input.brand) {
-          errorsCars.brand = 'Brand is required';
-        } else if (wordvalidate.test(input.brand) === false) {
-          errorsCars.brand = 'Invalid Brand: No Symbols Allowed';
-        } else if (!input.model) {
-          errorsCars.model = 'Model is required';
-        } else if (!input.patent) {
-          errorsCars.patent = 'Plate is required';
-        } else if (numberandlettervalidate.test(input.patent) === false) {
-          errorsCars.patent = 'Invalid Plate';
-        } else if (!input.color) {
-          errorsCars.color = 'Color is required';
-        } else if (wordvalidate.test(input.color) === false) {
-          errorsCars.color = 'Invalid Color: No Symbols Allowed';
-        } else if (!input.cylinder) {
-          errorsCars.cylinder = 'Cylinder is required';
-        } else if (floatvalidate.test(input.cylinder) === false) {
-          errorsCars.cylinder = 'Invalid Cylinder: No Symbols Allowed';
-        }
-        return errorsCars;
-      }
+    // function validatecars(input) {
+    //     const numberandlettervalidate = /^[0-9a-zA-Z ]+$/;
+    //     const wordvalidate = /^[a-zA-Z]+$/;
+    //     const floatvalidate = /^[0-9]*\.?[0-9]+$/;
+    //     let errorsCars = {};
+    //     if (!input.brand) {
+    //       errorsCars.brand = 'Brand is required';
+    //     } else if (wordvalidate.test(input.brand) === false) {
+    //       errorsCars.brand = 'Invalid Brand: No Symbols Allowed';
+    //     } else if (!input.model) {
+    //       errorsCars.model = 'Model is required';
+    //     } else if (!input.patent) {
+    //       errorsCars.patent = 'Plate is required';
+    //     } else if (numberandlettervalidate.test(input.patent) === false) {
+    //       errorsCars.patent = 'Invalid Plate';
+    //     } else if (!input.color) {
+    //       errorsCars.color = 'Color is required';
+    //     } else if (wordvalidate.test(input.color) === false) {
+    //       errorsCars.color = 'Invalid Color: No Symbols Allowed';
+    //     } else if (!input.cylinder) {
+    //       errorsCars.cylinder = 'Cylinder is required';
+    //     } else if (floatvalidate.test(input.cylinder) === false) {
+    //       errorsCars.cylinder = 'Invalid Cylinder: No Symbols Allowed';
+    //     }
+    //     return errorsCars;
+    //   }
     //   __________________________________________________________________________________________
     return (
         <div className="userAdmin">
             <div className="userTitleContainer">
                 <h1 className="userTitle">Edit User</h1>
-                <Link to="/admin/newUser">
-                    <button className="userAddButton">Create</button>
-                </Link>
             </div>
             <div className="userContainerAdmin">
                 <div className="userShow">
@@ -344,10 +396,10 @@ export default function User2() {
                             <div className="userUpdateItem">
                                 <label>Name</label>
                                 <input
-                                    onChange={(e) => handleChange(e)}
+                                    // onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="name"
-                                    placeholder={user.name}
+                                    placeholder="name"
                                     value={input.name}
                                     className="userUpdateInput"
                                 />
@@ -363,7 +415,7 @@ export default function User2() {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="lastName"
-                                    placeholder={userAdmin.lastName}
+                                    placeholder="lastName"
                                     value={input.lastName}
                                     className="userUpdateInput"
                                 />
@@ -379,7 +431,7 @@ export default function User2() {
                                     onChange={(e) => handleChange(e)}
                                     type="number"
                                     name="dni"
-                                    placeholder={userAdmin.dni}
+                                    placeholder="dni"
                                     value={input.dni}
                                     className="userUpdateInput"
                                 />
@@ -393,7 +445,7 @@ export default function User2() {
                                     onChange={(e) => handleChange(e)}
                                     type="number"
                                     name="age"
-                                    placeholder={userAdmin.age}
+                                    placeholder="age"
                                     value={input.age}
                                     className="userUpdateInput"
                                 />
@@ -407,7 +459,7 @@ export default function User2() {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="telephone"
-                                    placeholder={userAdmin.telephone}
+                                    placeholder="telephone"
                                     value={input.telephone}
                                     className="userUpdateInput"
                                 />
@@ -422,7 +474,7 @@ export default function User2() {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="street"
-                                    placeholder={userAdmin.street}
+                                    placeholder="street"
                                     value={input.street}
                                     className="userUpdateInput"
                                 />
@@ -437,7 +489,7 @@ export default function User2() {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="city"
-                                    placeholder={userAdmin.city}
+                                    placeholder="city"
                                     value={input.city}
                                     className="userUpdateInput"
                                 />
@@ -452,7 +504,7 @@ export default function User2() {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="province"
-                                    placeholder={userAdmin.province}
+                                    placeholder="province"
                                     value={input.province}
                                     className="userUpdateInput"
                                 />
@@ -467,7 +519,7 @@ export default function User2() {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="isAdmin"
-                                    placeholder={userAdmin.isAdmin === true ? "true" : "false"}
+                                    placeholder="isAdmin"
                                     value={input.isAdmin}
                                     className="userUpdateInput"
                                 />
@@ -479,7 +531,6 @@ export default function User2() {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="genre"
-                                    placeholder={userAdmin.genre}
                                     value={input.genre}
                                     className="userUpdateInput"
                                 />
@@ -491,7 +542,7 @@ export default function User2() {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="instagram"
-                                    placeholder={userAdmin.instagram}
+                                    placeholder="instagram"
                                     value={input.instagram}
                                     className="userUpdateInput"
                                 />
@@ -502,7 +553,7 @@ export default function User2() {
                                     onChange={(e) => handleChange(e)}
                                     type="text"
                                     name="facebook"
-                                    placeholder={userAdmin.facebook}
+                                    placeholder="facebook"
                                     value={input.facebook}
                                     className="userUpdateInput"
                                 />
@@ -581,10 +632,10 @@ export default function User2() {
 
                         {/* ______________________________________________________________________ */}
 
-                        <div className="userUpdateRight">
+                        {/* <div className="userUpdateRight">
                             <div className="userUpdateUpload">
-                                <span className="userShowTitle">Photo User</span>
-                                {/* <img
+                                <span className="userShowTitle">Photo User</span> */}
+                        {/* <img
                                     className="userUpdateImg"
                                     src={userAdmin.photo}
                                     alt=""
@@ -643,16 +694,18 @@ export default function User2() {
                                     <Publish className="userUpdateIcon" />
                                 </label> */}
 
-                                <input type="file" id="file" style={{ display: "none" }} />
-                            </div>
-                            <button onClick={(e) => handleSubmitUser(e)} className="userUpdateButton">Update</button>
-                        </div>
+                        {/* <input type="file" id="file" style={{ display: "none" }} /> */}
                     </div>
+                    <button onClick={(e) => handleSubmitUser(e)} className="userUpdateButton">Update</button>
                 </div>
+            </div>
+        </div>
 
 
 
-            </div >
-        </div >
+
+
+
+
     )
 }
