@@ -14,6 +14,7 @@ import {
   ChatBubbleOutline,
   WorkOutline,
   Report,
+  Commute,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
@@ -66,7 +67,12 @@ export default function Sidebar() {
               <AttachMoney className="sidebarIcon" />
               Transactions
             </li>
-           
+            </Link>
+            <Link to="/admin/routes" className="link">
+              <li className="sidebarListItem">
+              <Commute className="sidebarIcon" />
+                Routes Info
+              </li>
             </Link>
             {/* <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
