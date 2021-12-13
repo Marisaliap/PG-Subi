@@ -28,7 +28,7 @@ export default function WidgetSm() {
                <span className="widgetSmUsername">{user.name + ' ' + user.lastName} </span>
 
              </div>
-             {<NavLink to={`/admin/user/${user.email}`}><button className="widgetSmButton">
+             {<NavLink to={`/admin/users/${user.email}`}><button className="widgetSmButton">
                <Visibility className="widgetSmIcon" />
                Display
              </button></NavLink>}
