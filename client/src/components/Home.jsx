@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import '../Sass/Styles/Home.scss';
 // import header from "../img/header.png";
 import navigator from '../img/navigator.svg';
@@ -10,7 +10,7 @@ import natureBenefits from '../img/natureBenefits.svg';
 import SearchBarHome from './SearchBarHome';
 import { useSelector, useDispatch } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { getUserProfile, getAllUsers } from '../actions';
+import { getUserProfile, getAllUsers, deleteRouteFromDb } from '../actions';
 import { useAuth0 } from '@auth0/auth0-react';
 // import Loggin from "./Loggin";
 import Swal from 'sweetalert2';
@@ -19,6 +19,7 @@ export default function Home() {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const userpro = useSelector((state) => state.userpro);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   useEffect(() => {
     dispatch(getUserProfile(userpro.email));
@@ -100,14 +101,17 @@ export default function Home() {
           } */}
           <div>
             {isAuthenticated ? (
-              <NavLink to="/route-list">
-                <button className="button">
+              
+                <button className="button" onClick={() => {
+                  dispatch(deleteRouteFromDb('lala'))
+                  history.push('/route-list')
+                  }}>
                   <FormattedMessage
                     id="home.routes"
                     defaultMessage="See all routes available!"
                   />
                 </button>
-              </NavLink>
+             
             ) : (
               <button onClick={handleClick} className="button">
                 <FormattedMessage

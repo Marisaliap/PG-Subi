@@ -31,10 +31,10 @@ export default function CardRoute({
         <BsPinMapFill className="icon" />
         {destiny}
       </h5>
-      {/* <h5>
+      <h5>
         <FormattedMessage id="cardroute.date" defaultMessage="Date:" />
         {date}
-      </h5> */}
+      </h5>
       <h5>
         {/* <FormattedMessage id="cardroute.time" defaultMessage="Time:" />  */}
         <BsWatch className="icon" /> {hours}

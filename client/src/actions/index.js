@@ -239,6 +239,19 @@ export function getRouteFromDb(originName, destinyName, date, place, order, rest
     } catch (error) { }
   };
 }
+
+export function getSearchParams(originName, destinyName, date, place) {
+      return ({
+        type: "GET_SEARCH_PARAMS",
+        payload: {
+          originName,
+          destinyName,
+          date,
+          place
+        },
+      });
+    
+}
 // -----------------------------< filters >----------------------------------
 // export function filterBySmoke(payload) {
 //   return {

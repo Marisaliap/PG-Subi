@@ -18,11 +18,11 @@ const RouteDetails = ({ match }) => {
   useEffect(() => {
     dispatch(allRoutes());
   }, []);
-  useEffect(() => {
-    return () => {
-      dispatch(deleteRouteFromDb('lala'));
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(deleteRouteFromDb('lala'));
+  //   };
+  // }, []);
 
   // ------------------<paged>------------------
 
