@@ -31,14 +31,14 @@ export const Profile = () => {
   return (
     isAuthenticated && (
       <div>
-      <Link to={!userInfo.dni ? '/register' : '/profile'}>
+      {/* <Link to={!userInfo.dni ? '/register' : '/profile'}> */}
         <img
           className="profilePicture"
           src={userInfo.photo ? userInfo.photo : user.picture}
           alt={user.name}
         />
        
-      </Link>
+      {/* </Link> */}
      
       </div>
     )
