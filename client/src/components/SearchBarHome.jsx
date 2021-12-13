@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRouteFromDb, getSuggestions, getSuggestions2 } from '../actions';
-import { NavLink } from 'react-router-dom';
+import { getRouteFromDb, getSearchParams, getSuggestions, getSuggestions2 } from '../actions';
+import { NavLink, useHistory } from 'react-router-dom';
 import '../Sass/Styles/SearchBarHome.scss';
 import '../Sass/Styles/App.scss';
 import { FormattedMessage } from 'react-intl';
@@ -50,7 +50,7 @@ export default function SearchBarHome() {
       return errorState;
     });
   }
-
+  const history = useHistory()
   const checkInputs = Object.values(inputs);
   const checkInfo = Object.values(info);
 
@@ -85,6 +85,15 @@ export default function SearchBarHome() {
           info.pasajeros
         )
       );
+      dispatch(
+        getSearchParams(
+          cities[0].name,
+          cities2[0].name,
+          info.date.split('-').reverse().join('-'),
+          info.pasajeros
+        )
+      )
+      history.push(`/route-list/${info.pasajeros}`)
     }
     inputs = { Origin: '', Destination: '' };
     info = { pasajeros: 1, date: '' };

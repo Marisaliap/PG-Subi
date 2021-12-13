@@ -9,17 +9,16 @@ export default function NavBarFilter({places, currentRoutes}) {
   const [order, setOrder] = useState('');
   const [restriction, setRestriction] = useState('');
   const user = useSelector(state => state.user)
+  const { searchParams } = useSelector(state => state)
 
-
-  console.log(currentRoutes)
   
   const handleSelect = (e) => {
     e.preventDefault();
-    if (currentRoutes.length > 0 && places) {
+    if (searchParams.originName && places) {
       dispatch(getRouteFromDb(
-        currentRoutes[0].originName,
-        currentRoutes[0].destinyName,
-        currentRoutes[0].date,
+        searchParams.originName,
+        searchParams.destinyName,
+        searchParams.date,
         places,
         e.target.value,
         restriction
@@ -34,11 +33,11 @@ export default function NavBarFilter({places, currentRoutes}) {
 
   const handleSelectFilters = (e) => {
     e.preventDefault();
-    if (currentRoutes.length > 0 && places) {
+    if (searchParams.originName && places) {
         dispatch(getRouteFromDb(
-          currentRoutes[0].originName,
-          currentRoutes[0].destinyName,
-          currentRoutes[0].date,
+          searchParams.originName,
+          searchParams.destinyName,
+          searchParams.date,
           places,
           order,
           e.target.value

@@ -18,6 +18,7 @@ const initialState = {
   orderDetails: [],
   carMatch: [],
   filteredRouteFromDb: [],
+  searchParams: {},
   //-------------------------< admin store >------------------------ 
   userAdmin: [],
   id: "",
@@ -204,16 +205,17 @@ function rootReducer(state = initialState, action) {
           routeFromDb: action.payload,
           filteredRouteFromDb: action.payload
         };
-      } if ( action.payload.length === 0) {
-        return {
-          ...state,
-          filteredRouteFromDb: [...state.routeFromDb]
-        }} 
+      }
         return {
           ...state,
           filteredRouteFromDb: action.payload,
             };
            
+      };
+      case "GET_SEARCH_PARAMS":
+      return {
+        ...state,
+        searchParams: action.payload,
       };
       case "SET_POST":
       return {

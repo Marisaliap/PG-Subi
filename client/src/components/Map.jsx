@@ -8,7 +8,7 @@ import ReactMapboxGl, {
 } from 'react-mapbox-gl';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import { postRoute } from '../actions';
+import { deleteRouteFromDb, postRoute } from '../actions';
 import {
   BsFillCalendarCheckFill,
   BsWatch,
@@ -75,6 +75,7 @@ export default function Map() {
       icon: 'success',
       button: 'Go to Trip!',
     });
+    dispatch(deleteRouteFromDb('lala'))
     history.push('/route-list');
     // window.location.reload(true)
   }
