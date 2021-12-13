@@ -24,14 +24,11 @@ const RouteDetails = () => {
 
   // ------------------<paged>------------------
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [routesPerPage, setRoutesPerPage] = useState(15);
+  const [currentPage, setCurrentPage] = useState(1); //le paso el estado local con la primer página que se renderiza
+  const [routesPerPage] = useState(6);
   const indexOfLastRoute = currentPage * routesPerPage;
   const indexOffirstRoute = indexOfLastRoute - routesPerPage;
-  const currentRoutes =
-    routeFromDb.length > 0
-      ? routeFromDb.slice(indexOffirstRoute, indexOfLastRoute)
-      : getRoutes.slice(indexOffirstRoute, indexOfLastRoute);
+  const currentRoutes = getRoutes.slice(indexOffirstRoute, indexOfLastRoute);
 
   const pagedTotal = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -44,45 +41,44 @@ const RouteDetails = () => {
       <NavBarFilter />
 
       <div className="RouteCardContainer">
-        {
-          /* getRoutes */ currentRoutes.map((route, i) => (
-            <Link className="link" id="link" to={`/route/${route.id}`}>
-              <div className="RouteCard">
-                {console.log(route.users)}
-                {route.users && (
-                  <CardUser
-                    photo={route.users.length > 0 && route.users[0].photo}
-                    name={route.users.length > 0 && route.users[0].name}
-                    lastName={route.users.length > 0 && route.users[0].lastName}
-                    genre={route.users.length > 0 && route.users[0].genre}
-                    age={route.users.length > 0 && route.users[0].age}
-                    email={
-                      route.users.length > 0 &&
-                      route.users[0].UserRoutes.userEmail
-                    }
-                    calification={
-                      route.users.length > 0 && route.users[0].calification
-                    }
-                    key={i}
-                  />
-                )}
-
-                <hr />
-
-                <CardRoute
-                  origin={route.originName}
-                  destiny={route.destinyName}
-                  infoRoute={route.infoRoute}
-                  date={route.date}
-                  hours={route.hours}
-                  place={route.place}
-                  key={i + 1}
-                  price={route.price}
+        {currentRoutes.map((route, i) => (
+          <Link className="link" id="link" to={`/route/${route.id}`}>
+            <div className="RouteCard">
+              {console.log(route.users)}
+              {route.users && (
+                <CardUser
+                  photo={route.users.length > 0 && route.users[0].photo}
+                  name={route.users.length > 0 && route.users[0].name}
+                  lastName={route.users.length > 0 && route.users[0].lastName}
+                  genre={route.users.length > 0 && route.users[0].genre}
+                  age={route.users.length > 0 && route.users[0].age}
+                  email={
+                    route.users.length > 0 &&
+                    route.users[0].UserRoutes.userEmail
+                  }
+                  calification={
+                    route.users.length > 0 && route.users[0].calification
+                  }
+                  key={i}
                 />
-              </div>
-            </Link>
-          ))
-        }
+              )}
+              <hr />
+
+              <hr />
+
+              <CardRoute
+                origin={route.originName}
+                destiny={route.destinyName}
+                infoRoute={route.infoRoute}
+                date={route.date}
+                hours={route.hours}
+                place={route.place}
+                key={i + 1}
+                price={route.price}
+              />
+            </div>
+          </Link>
+        ))}
       </div>
       <div>
         <Pagination
