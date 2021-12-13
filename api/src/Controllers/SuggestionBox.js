@@ -36,4 +36,3 @@ const deleteSuggestionBox = async (req, res, next) => {
 };
 
 module.exports = { getSuggestionBox, postSuggestionBox, deleteSuggestionBox };
-

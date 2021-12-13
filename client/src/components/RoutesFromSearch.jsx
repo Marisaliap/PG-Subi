@@ -4,7 +4,7 @@ import { allRoutes } from "../actions";
 import CardRoute from "./CardRoute";
 import CardUser from "./CardUser";
 import "../Sass/Styles/RouteCardContainer.scss";
-// import "../Sass/Styles/RouteCard.scss";
+import "../Sass/Styles/RouteCard.scss";
 // import {CardCar} from "./CardCar";
 import { Link } from "react-router-dom";
 import {FormattedMessage} from 'react-intl';

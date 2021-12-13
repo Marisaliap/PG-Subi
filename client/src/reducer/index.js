@@ -11,8 +11,8 @@ const initialState = {
   carpro: [],
   routeById: [],
   routeFromDb: [],
-  setPost:[],
-  userPost:[],
+  setPost: [],
+  userPost: [],
   usuariosRegistrados: [],
   userBuscado: [],
   orderDetails: [],
@@ -20,6 +20,9 @@ const initialState = {
   filteredRouteFromDb: [],
   searchParams: {},
   //-------------------------< admin store >------------------------ 
+  chatOtro: [],
+  chatPropio: [],
+  //-------------------------< admin store >------------------------
   userAdmin: [],
   id: "",
   carAdmin: [],
@@ -66,27 +69,41 @@ function rootReducer(state = initialState, action) {
         user: action.payload,
         car: action.payload.cars[0],
       };
-      //  --------------------------------------< admin reducer>----------------------
+    case "GET_CHAT_OTRO":
+      return {
+        ...state,
+        chatOtro: action.payload,
+      };
+    case "GET_CHAT_PROPIO":
+      return {
+        ...state,
+        chatPropio: action.payload,
+      };
+    case "POST_CHAT":
+      return {
+        ...state,
+        chatPropio: [...state.chatPropio, action.payload],
+      };
+    //  --------------------------------------< admin reducer>----------------------
 
     case "GET_ORDER_DETAILS":
       return {
         ...state,
-        orderDetails: action.payload
+        orderDetails: action.payload,
       };
     case "GET_USER_ADMIN":
       return {
         ...state,
         userAdmin: action.payload,
-        carAdmin: action.payload.cars[0]
-        };
-  
+        carAdmin: action.payload.cars[0],
+      };
 
-    case "ID" :
+    case "ID":
       return {
         ...state,
-        id: action.payload
-      }
-      // ______________________________________________________________________--________
+        id: action.payload,
+      };
+    // ______________________________________________________________________--________
 
     case "GET_ALL_ROUTE_INFO":
       return {
@@ -141,8 +158,8 @@ function rootReducer(state = initialState, action) {
     case "DELETE_USER":
       return {
         ...state,
-        userDeleted: [action.payload]
-      }
+        userDeleted: [action.payload],
+      };
     case "EDIT_CAR":
       return {
         ...state,
@@ -226,12 +243,13 @@ function rootReducer(state = initialState, action) {
         ...state,
         searchParams: action.payload,
       };
-      case "SET_POST":
+     
+    case "SET_POST":
       return {
         ...state,
         setPost: action.payload,
       };
-      case "USER_POST":
+    case "USER_POST":
       return {
         ...state,
         userPost: action.payload,
