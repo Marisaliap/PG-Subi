@@ -51,6 +51,12 @@
   border-radius: 50%;
   object-fit: cover;
 }
+.userShowImage {
+  width: 60px;
+  height: 40px;
+;
+  object-fit: cover;
+}
 
 .userShowTopTitle {
   display: flex;

@@ -26,12 +26,14 @@ export default function UserList() {
   // ---------------------------------<useEffect>---------------------------------
   useEffect((id) => {
     dispatch(getAllUsers());
+    // dispatch(getUserDetail(id));
   }, [dispatch]);
 
 
 
   useEffect((id) => {
     dispatch(getUserAdmin(id));
+    // dispatch(getUserDetail(id));
     }, [dispatch]);
 
   // ___________________________________________________________________________________________
