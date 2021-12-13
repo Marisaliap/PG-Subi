@@ -1,26 +1,56 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { allRoutes } from '../actions';
+import { allRoutes, getRouteFromDb } from '../actions';
 import '../Sass/Styles/NavBarFilter.scss';
 import { FormattedMessage } from 'react-intl';
 
-export default function NavBarFilter() {
+export default function NavBarFilter({places, currentRoutes}) {
   const dispatch = useDispatch();
   const [order, setOrder] = useState('');
   const [restriction, setRestriction] = useState('');
   const user = useSelector(state => state.user)
 
+
+  console.log(currentRoutes)
+  
   const handleSelect = (e) => {
     e.preventDefault();
-    dispatch(allRoutes(e.target.value, restriction));
-    setOrder(e.target.value);
+    if (currentRoutes.length > 0 && places) {
+      dispatch(getRouteFromDb(
+        currentRoutes[0].originName,
+        currentRoutes[0].destinyName,
+        currentRoutes[0].date,
+        places,
+        e.target.value,
+        restriction
+      ))
+      setOrder(e.target.value);
+    } else {
+      dispatch(getRouteFromDb('', '', '', '', e.target.value, restriction));
+      setOrder(e.target.value);
+    }
+    
   };
 
   const handleSelectFilters = (e) => {
     e.preventDefault();
-    dispatch(allRoutes(order, e.target.value));
-    setRestriction(e.target.value);
+    if (currentRoutes.length > 0 && places) {
+        dispatch(getRouteFromDb(
+          currentRoutes[0].originName,
+          currentRoutes[0].destinyName,
+          currentRoutes[0].date,
+          places,
+          order,
+          e.target.value
+        ))
+      setRestriction(e.target.value);
+    } else {
+      dispatch(getRouteFromDb('', '', '', '', order, e.target.value));
+      setRestriction(e.target.value);
+    }
+   
   };
+
 
   return (
     <div className="NavBarFilter">
