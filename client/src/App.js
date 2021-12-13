@@ -85,22 +85,22 @@ export default function App() {
                     <Route path="/404" component={Error404} />
                     <div>
                       <Route
-                        exact
-                        path="/admin"
-                        render={() =>
-                          userpro && admin === true ? (
-                            <Admin />
-                          ) : (
-                            <Redirect to="/home" />
-                          )
                         // exact
                         // path="/admin"
                         // render={() =>
-                        //   userpro && userpro.isAdmin === true ? (
+                        //   userpro && admin === true ? (
                         //     <Admin />
                         //   ) : (
                         //     <Redirect to="/home" />
                         //   )
+                        exact
+                        path="/admin"
+                        render={() =>
+                          userpro && userpro.isAdmin === true ? (
+                            <Admin />
+                          ) : (
+                            <Redirect to="/home" />
+                          )
                         }
                       />
                     </div>
