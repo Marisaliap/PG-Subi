@@ -46,7 +46,7 @@ export default function App() {
       }
     });
   }, []);
-
+  console.log(userpro);
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -59,71 +59,78 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <div>
-            <NavBar />
-            <Route path="/home" component={Home} />
-
-            {isAuthenticated ? (
+            {isAuthenticated &&
+            (userpro.isBanned === false || userpro.length === 0) ? (
               <>
-                {
-                  <Switch>
-                    <Route exact path="/route" component={CreateRoute} />
-                    <Route path="/route/finish" component={Map} />
-                    <Route path="/register" component={Register} />
-                    <Route exact path="/profile" component={UserProfile} />
-                    <Route path="/user/:id" component={UserDetails} />
-                    <Route path="/route-list/:id" component={RouteDetails} />
-                    <Route path="/route-list/" component={RouteDetails} />
-                    <Route path="/maps/route" component={RouteDetails} />
-                    <Route path="/routes-found" component={RoutesFromSearch} />
-                    <Route path="/route/:id" component={AllInfoRoute} />
-                    <Route path="/car" component={FormCar} />
-                    <Route path="/users" component={Users} />
-                    <Route path="/post/:id" component={Post} />
-                    <Route path="/404" component={Error404} />
-                    <Route path="/chat/:email" component={Chat} />
-                    <div>
+                <NavBar />
+                <Route path="/home" component={Home} />
+                {isAuthenticated ? (
+                  <>
+                    <Switch>
+                      <Route exact path="/route" component={CreateRoute} />
+                      <Route path="/route/finish" component={Map} />
+                      <Route path="/register" component={Register} />
+                      <Route exact path="/profile" component={UserProfile} />
+                      <Route path="/user/:id" component={UserDetails} />
+                      <Route path="/route-list/:id" component={RouteDetails} />
+                      <Route path="/route-list/" component={RouteDetails} />
+                      <Route path="/maps/route" component={RouteDetails} />
                       <Route
-                        exact
-                        // path="/admin"
-                        // render={() =>
-                        //   userpro && admin === true ? (
-                        //     <Admin />
-                        //   ) : (
-                        //     <Redirect to="/home" />
-                        //   )
-                        // exact
-                        path="/admin"
-                        render={() =>
-                          userpro && userpro.isAdmin === true ? (
-                            <Admin />
-                          ) : (
-                            <Redirect to="/home" />
-                          )
-                        }
+                        path="/routes-found"
+                        component={RoutesFromSearch}
                       />
-                    </div>
-                  </Switch>
-                }
+                      <Route path="/route/:id" component={AllInfoRoute} />
+                      <Route path="/car" component={FormCar} />
+                      <Route path="/users" component={Users} />
+                      <Route path="/post/:id" component={Post} />
+                      <Route path="/404" component={Error404} />
+                      <Route path="/chat/:email" component={Chat} />
+                      <div>
+                        <Route
+                          exact
+                          // path="/admin"
+                          // render={() =>
+                          //   userpro && admin === true ? (
+                          //     <Admin />
+                          //   ) : (
+                          //     <Redirect to="/home" />
+                          //   )
+                          // exact
+                          path="/admin"
+                          render={() =>
+                            userpro && userpro.isAdmin === true ? (
+                              <Admin />
+                            ) : (
+                              <Redirect to="/home" />
+                            )
+                          }
+                        />
+                      </div>
+                    </Switch>
+                  </>
+                ) : (
+                  ""
+                )}
+                <Route path="/faq" component={Faq} />
+                <Route
+                  path="/terms-and-conditions"
+                  component={TermsAndConditions}
+                />
+                <Route path="/recommendations" component={Recommendations} />
+                <Route path="/aboutus" component={Aboutus} />
+                <Route path="/privacy-policy" component={PrivacyPolicy} />
+                <Route path="/cookies-policy" component={CookiesPolicy} />
+                <Route path="/suggestion-box" component={SuggestionBox} />
+                {showButton && (
+                  <button onClick={scrollToTop} className="back-to-top">
+                    &#8679;
+                  </button>
+                )}
+                <Footer />
               </>
             ) : (
-              ""
+              <Error404 />
             )}
-            <Route path="/faq" component={Faq} />
-            <Route
-              path="/terms-and-conditions"
-              component={TermsAndConditions}
-            />
-            <Route path="/recommendations" component={Recommendations} />
-            <Route path="/aboutus" component={Aboutus} />
-            <Route path="/privacy-policy" component={PrivacyPolicy} />
-            <Route path="/cookies-policy" component={CookiesPolicy} />
-            <Route path="/suggestion-box" component={SuggestionBox} />
-            {showButton && (
-              <button onClick={scrollToTop} className="back-to-top">
-                &#8679;
-              </button>
-            )}
-            <Footer />
           </div>
         </Switch>
       </div>
