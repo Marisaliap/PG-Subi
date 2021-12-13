@@ -22,7 +22,6 @@ import Error404 from "./components/Error404";
 import NavBar from "./components/NavBar";
 import Post from "./components/Post";
 import Admin from "./admin/Admin";
-/* import Dashboard from "./admin/pages/Dashboard"; */
 import RouteDetails from "./components/RouteDetails";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiesPolicy from "./components/CookiesPolicy";
@@ -30,8 +29,6 @@ import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
-/* import Topbar from "./admin/Topbar"; */
-/* import Sidebar from "./admin/Sidebar"; */
 import { Redirect } from "react-router";
 
 

@@ -6,13 +6,17 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 
 export default function Feedback() {
+    const dispatch = useDispatch()
     const { reclamosymejoras } = useSelector(state => state)
     const [reclamos, setReclamos] = useState(reclamosymejoras)
-
-    const dispatch = useDispatch()
+    // ------------------------------<useEffect> ------------------------------
     useEffect(() => {
         dispatch(getAllUsers());
         dispatch(getMejorasYReclamos())
+        return () => {
+            dispatch(getAllUsers());
+            dispatch(getMejorasYReclamos())
+        };
     }, [dispatch, reclamos])
 
     // --------------------------<handles>--------------------------
@@ -21,12 +25,7 @@ export default function Feedback() {
         setReclamos(reclamos.filter(reclamo => reclamo.id !== id))
         dispatch(deleteReclamos(id))
     }
-
-
-
-
-
-
+// ______________________________________________________________________________________
     return (
         <div className="userAdmin">
             <div className="userTitleContainer">
@@ -56,4 +55,4 @@ export default function Feedback() {
         </div>
     )
 }
-//
+

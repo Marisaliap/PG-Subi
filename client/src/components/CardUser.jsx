@@ -28,6 +28,7 @@ export default function CardUser({
 
   return (
     <div className="CardUser" {...props}>
+      <Link to={`/user/${email}`}>
       <img src={photo} alt="" />
       <h5>
         {name} {lastName}
@@ -37,6 +38,7 @@ export default function CardUser({
       <h5>
         <RatingStar Rating={calification} />
       </h5>
+      </Link>
     </div>
   );
 }

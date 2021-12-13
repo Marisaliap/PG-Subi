@@ -7,9 +7,6 @@ import "../../styles/Dashboard.css";
 import { userData } from "../salesData";
 import WidgetSm from "../WidgetSm"; 
 import WidgetLg from "../WidgetLg";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { getOrderDetails } from "../../actions";
 
 export default function Dashboard() {

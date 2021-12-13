@@ -18,6 +18,11 @@ export default function Update() {
         dispatch(getUserAdmin(id));
         dispatch(getAllUsers());
         // dispatch(getUserProfile(id)); //sin esto funciona
+       
+        return () => {
+            dispatch(getUserAdmin(id));
+            dispatch(getAllUsers());
+        };
     }, [dispatch, id]);
 
 
