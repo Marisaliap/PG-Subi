@@ -1,9 +1,8 @@
 import React from 'react';
-import Sidebar from "./Sidebar"; 
-import Topbar from "./Topbar"; 
-// import User from "../admin/pages/User"
-import User2 from "./pages/Users2";
-import UserDetails from "../components/UserDetails";
+import Sidebar from "./Sidebar";
+import Topbar from "./Topbar";
+import User from "./pages/Users";
+import Update from "./pages/Update"
 import Dashboard from "../admin/pages/Dashboard";
 import NewUser from "../admin/pages/NewUser";
 import UserList from "../admin/pages/UserList";
@@ -16,17 +15,18 @@ import Transactions from './pages/Transactions';
 export default function Admin() {
   return (
     <Router>
-      <Topbar/>
+      <Topbar />
       <div className="containAll">
-       <Sidebar />
+        <Sidebar />
         <Switch>
           <Route exact path="/admin">
-            <Dashboard/>
-            </Route>
-          {/* <Route path="/admin/user/:id">
-            <User /> */}
+            <Dashboard />
+          </Route>
           <Route path="/admin/users/:id">
-            <User2 />
+            <User />
+          </Route>
+          <Route path="/admin/Update">
+            <Update />
           </Route>
           <Route exact path="/admin/newUser">
             <NewUser />
@@ -34,14 +34,11 @@ export default function Admin() {
           <Route exact path="/admin/users">
             <UserList />
           </Route>
-          {/* <Route path="/admin/user/:id">
-            <UserDetails />
-          </Route>  */}
           <Route exact path="/admin/transactions">
             <Transactions/>
           </Route>
         </Switch>
       </div>
-    </Router>
+    </Router >
   );
 }

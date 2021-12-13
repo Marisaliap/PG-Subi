@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import {
   editUser,
-  getUserProfile,
+  getUserAdmin,
   editCar,
   getUserByName,
   getUserById,
@@ -25,23 +25,11 @@ import {
 } from "react-icons/bs";
 import "../Sass/Styles/UserProfile.scss";
 import RatingStar from "./RatingStar";
-import { DataGrid, GridRowsProp, GridColDef,  } from "@material-ui/data-grid";
- import { Link } from 'react-router-dom';
-import { Tabs, Tab } from "@material-ui/core"
-import Post from "./Post";
-import Person from '@material-ui/icons/Person';
-import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
-import CommentIcon from '@material-ui/icons/Comment';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-
-import PaymentIcon from '@material-ui/icons/Payment';
 
 export default function UserProfile() {
-  const userInfo = useSelector((state) => state.userpro);
-  const autoInfo = useSelector((state) => state.carpro);
-  let idAuto;
-  autoInfo === undefined ? (idAuto = '') : (idAuto = autoInfo.id);
-  console.log(idAuto);
+  const {id,userAdmin,carAdmin} = useSelector(state => state);
+  let idCar;
+  carAdmin === undefined ? (idCar = '') : (idCar = carAdmin.id);
   const [loanding, setLoanding] = useState(false);
   const [image, setImage] = useState('');
   const [booleanUser, setBooleanUser] = useState(false);
@@ -50,29 +38,26 @@ export default function UserProfile() {
   const dispatch = useDispatch();
   const [errorsCars, setErrorsCars] = useState({});
   const [errorsUser, setErrorsUser] = useState({});
-  const [nav, setNav] = useState(0)
-
-
-  // useEffect(() => {
-  //   dispatch(getUserById(""));
-  //   dispatch(getUserByName("1010"));
-  // }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getUserProfile(userInfo.email));
-  }, [booleanUser, booleanCar, booleanPhoto, dispatch, userInfo.email]);
+    dispatch(getUserById(""));
+    dispatch(getUserByName("1010"));
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getUserAdmin(id));
+  }, [booleanUser, booleanCar, booleanPhoto, id]);
 
   const [input, setInput] = useState({});
 
   const [auto, setAuto] = useState({});
 
-  console.log(userInfo)
   function handleSubmitUser(e) {
     e.preventDefault();
     if (Object.keys(errorsUser).length === 0) {
-      dispatch(editUser(userInfo.email, input));
+      dispatch(editUser(userAdmin.email, input));
       setBooleanUser(false);
-      dispatch(getUserProfile(userInfo.email));
+      dispatch(getUserAdmin(userAdmin.email));
     } else {
       new swal({
         title: 'Sorry',
@@ -86,14 +71,14 @@ export default function UserProfile() {
   function handleSubmitCar(e) {
     e.preventDefault();
     if (Object.keys(errorsCars).length === 0) {
-      dispatch(editCar(idAuto, auto));
+      dispatch(editCar(carAdmin, auto));
       setBooleanCar(false);
       setAuto({
-        brand: userInfo.cars[0].brand,
-        model: userInfo.cars[0].model,
-        patent: userInfo.cars[0].patent,
-        color: userInfo.cars[0].color,
-        cylinder: userInfo.cars[0].cylinder,
+        brand: userAdmin.cars[0].brand,
+        model: userAdmin.cars[0].model,
+        patent: userAdmin.cars[0].patent,
+        color: userAdmin.cars[0].color,
+        cylinder: userAdmin.cars[0].cylinder,
       });
     } else {
       new swal({
@@ -108,7 +93,7 @@ export default function UserProfile() {
   function handleSubmitPhoto(e) {
     e.preventDefault();
     setImage('');
-    dispatch(editUser(userInfo.email, input));
+    dispatch(editUser(userAdmin.email, input));
     setBooleanPhoto(false);
     new swal({
       title: 'Good job!',
@@ -157,15 +142,15 @@ export default function UserProfile() {
     }
     setInput({
       ...input,
-      street: userInfo.street,
-      city: userInfo.city,
-      province: userInfo.province,
-      telephone: userInfo.telephone,
-      facebook: userInfo.facebook,
-      instagram: userInfo.instagram,
-      about: userInfo.about,
-      age: userInfo.age,
-      photo: userInfo.photo,
+      street: userAdmin.street,
+      city: userAdmin.city,
+      province: userAdmin.province,
+      telephone: userAdmin.telephone,
+      facebook: userAdmin.facebook,
+      instagram: userAdmin.instagram,
+      about: userAdmin.about,
+      age: userAdmin.age,
+      photo: userAdmin.photo,
     });
   }
 
@@ -176,11 +161,11 @@ export default function UserProfile() {
       setBooleanCar(false);
     }
     setAuto({
-      brand: userInfo.cars[0].brand,
-      model: userInfo.cars[0].model,
-      patent: userInfo.cars[0].patent,
-      color: userInfo.cars[0].color,
-      cylinder: userInfo.cars[0].cylinder,
+      brand: userAdmin.cars[0].brand,
+      model: userAdmin.cars[0].model,
+      patent: userAdmin.cars[0].patent,
+      color: userAdmin.cars[0].color,
+      cylinder: userAdmin.cars[0].cylinder,
     });
   }
 
@@ -211,9 +196,6 @@ export default function UserProfile() {
     setImage(file.secure_url);
   };
 
-  function handleNav(e, value) {
-    setNav(value)
-  }
   function validateuser(input) {
     const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     const phonevalidate = /^[0-9]+$/;
@@ -265,90 +247,19 @@ export default function UserProfile() {
     return errorsCars;
   }
 
- 
-  const rowsRoutes = userInfo?.routes && userInfo.routes.map(route => {
-    return { 
-      id: route.id, 
-      Origin: route.originName, 
-      Destiny: route.destinyName,
-      Date: route.date,
-      Time: route.hours,
-      RouteId: route.id,
-      Driver: route.manejante === userInfo.email ? 'yes' : 'no'
-     }
-  })
-  
-  const columnsRoutes  = [
-    { field: 'Origin', headerName: 'Origin', width: 250 },
-    { field: 'Destiny', headerName: 'Destiny', width: 250 },
-    { field: 'Date', headerName: 'Date', width: 125 },
-    { field: 'Time', headerName: 'Time', width: 125 },
-    { field: 'RouteId', headerName: 'Route Id', width: 150, renderCell: (params) => (
-        <Link to={`/route/${params.value}`}>{params.value}</Link>
-      )
-    },
-    { field: 'Driver', headerName: 'Driver', width: 125 },
-  ];
-
-  {/*----------------------------------------ORDERS-------------------------------------------------------*/}
-
-  const routesManejante = userInfo?.routes && userInfo.routes.filter(r => r.manejante === userInfo.email ? true : false)
-
-  const rowsOrders = userInfo?.routes && routesManejante.map(route => {
-    return { 
-      id: route.id, 
-      Origin: route.originName, 
-      Destiny: route.destinyName,
-      Date: route.date,
-      Time: route.hours,
-      RouteId: route.id,
-      Payment: route.orders && "$ " + (route.orders.length * route.price)
-     }
-  })
-  
-  const columnsOrders  = [
-    { field: 'Origin', headerName: 'Origin', width: 250 },
-    { field: 'Destiny', headerName: 'Destiny', width: 250 },
-    { field: 'Date', headerName: 'Date', width: 125 },
-    { field: 'Time', headerName: 'Time', width: 125 },
-    { field: 'RouteId', headerName: 'Route Id', width: 150, renderCell: (params) => (
-      <Link to={`/route/${params.value}`}>{params.value}</Link>
-    )
-  },
-    { field: 'Payment', headerName: 'Payment', width: 200 },
-  ];
-
-
   return (
     <div>
-      
       <div className="searchUsers">
         <SearchUserByName />
         <SearchUserById />
-        
       </div>
       <div className="containerProfile">
-      <div className="centralo">
-        <Tabs  onChange={handleNav} aria-label="nav tabs example">
-        <Tab  label="User Details" icon={<Person />} />
-          <Tab label="Car Details" icon={<DirectionsCarIcon />}/>
-          <Tab label="Trips Details" icon={<LocationOnIcon />} />
-          <Tab label="Posts" icon={<CommentIcon />} />
-          <Tab label="Payments" icon ={<PaymentIcon />}/>
-        </Tabs>
-      </div>
         <div className="ProfileReal">
-        
-         {nav === 0 && 
-           <div>
-           <div className="centralo">
-           <h1 className="tituloUserProfile"><FormattedMessage
-                        id="userProfile.title"
-                        defaultMessage="User Details"
-                      /></h1>
-           </div>
-           <div className="ubicatop"></div>
-           <div className="seccionTop">
+          <div className="centralo">
+            <h1 className="tituloUserProfile">User Details</h1>
+          </div>
+          <div className="ubicatop"></div>
+          <div className="seccionTop">
             <div className="containerPhoto">
               <div className="ubicaBotonPhoto">
                 {!booleanPhoto ? (
@@ -356,28 +267,22 @@ export default function UserProfile() {
                     className="botonPhoto"
                     onClick={() => handleClickPhoto()}
                   >
-                    <FormattedMessage
-                        id="userProfile.changephoto"
-                        defaultMessage="Change Photo"
-                      />
+                    Change Photo
                   </button>
                 ) : (
-                  <button className="botonPhotoDisabled"><FormattedMessage
-                        id="userProfile.changephoto"
-                        defaultMessage="Change Photo"
-                      /></button>
+                  <button className="botonPhotoDisabled">Change Photo</button>
                 )}
               </div>
-              <img className="photousuario" src={userInfo.photo} alt="User" />
+              <img className="photousuario" src={userAdmin.photo} alt="User" />
               <div>
                 <h1 className="titulos">
-                  {userInfo.name} {userInfo.lastName}{' '}
-                  {genderIcon(userInfo.genre)}
+                  {userAdmin.name} {userAdmin.lastName}{' '}
+                  {genderIcon(userAdmin.genre)}
                 </h1>
-                <p className="labelArriba">{userInfo.dni}</p>
+                <p className="labelArriba">{userAdmin.dni}</p>
                 <div className="labelArriba">
                   <RatingStar
-                  Rating={userInfo.calification}
+                  Rating={userAdmin.calification}
 
                     /> 
                 </div>
@@ -415,10 +320,7 @@ export default function UserProfile() {
                     type="submit"
                     onClick={(e) => handleSubmitPhoto(e)}
                   >
-                   <FormattedMessage
-                        id="userProfile.changephoto"
-                        defaultMessage="Change Photo"
-                      />
+                    Change Photo
                   </button>
                 </>
               )}
@@ -426,29 +328,20 @@ export default function UserProfile() {
             <div className="datosUsuario">
               <div className="edadyemail">
                 <div className="labelArriba">
-                  <BsEnvelope className="iconArriba" /> {userInfo.email}
+                  <BsEnvelope className="iconArriba" /> {userAdmin.email}
                 </div>
-                <p className="labelArriba"> {userInfo.age} <FormattedMessage
-                        id="userProfile.yearsold"
-                        defaultMessage="years old"
-                      /></p>
+                <p className="labelArriba"> {userAdmin.age} years old</p>
                 <div className="botonera">
                   {!booleanUser ? (
                     <button
                       className="buttonBlue"
                       onClick={() => handleClickUser()}
                     >
-                      <FormattedMessage
-                        id="userProfile.edituserinfo"
-                        defaultMessage="Edit User Information"
-                      />
+                      Edit User Information
                     </button>
                   ) : (
                     <button className="buttonDisabled">
-                    <FormattedMessage
-                        id="userProfile.edituserinfo"
-                        defaultMessage="Edit User Information"
-                      />
+                      Edit User Information
                     </button>
                   )}
                 </div>
@@ -458,23 +351,22 @@ export default function UserProfile() {
                   <div className="moreInfo">
                     <div className="cadaLinea">
                       <BsFillTelephoneFill className="icon" />{' '}
-                      {userInfo.telephone}
+                      {userAdmin.telephone}
                     </div>
                     <div className="cadaLinea">
-                      <BsFacebook className="icon" /> {userInfo.facebook}
+                      <BsFacebook className="icon" /> {userAdmin.facebook}
                     </div>
                     <div className="cadaLinea">
-                      <BsInstagram className="icon" /> {userInfo.instagram}
+                      <BsInstagram className="icon" /> {userAdmin.instagram}
                     </div>
                     <div className="cadaLinea">
-                      <BsMap className="icon" /> {userInfo.street},{' '}
-                      {userInfo.city},{userInfo.province}
+                      <BsMap className="icon" /> {userAdmin.street},{' '}
+                      {userAdmin.city},{userAdmin.province}
                     </div>
                     <div className="cadaLinea">
                       <BsInfoSquareFill className="icon" />
-                      {userInfo.about}
+                      {userAdmin.about}
                     </div>
-                    {!userInfo.cbu ?  
                     <div className="cadaLinea">
                       <p className="label">
                         <FormattedMessage
@@ -482,9 +374,8 @@ export default function UserProfile() {
                           defaultMessage="CBU:"
                         />
                       </p>
-                      <p className="label">{userInfo.cbu}</p>
+                      <p className="label">{userAdmin.cbu}</p>
                     </div>
-                    :""}
                   </div>
                   <div className="paddingAbajo"></div>
                 </>
@@ -563,14 +454,13 @@ export default function UserProfile() {
                         <textarea
                           type="text"
                           name="about"
-                          defaultValue={userInfo.about}
+                          defaultValue={userAdmin.about}
                           onChange={(e) => handleChange(e)}
                         />
                         {errorsUser.about && (
                           <p className="errorcar">{errorsUser.about}</p>
                         )}
                       </div>
-                      {!userInfo.cars.length===0?"":
                       <div className="cadaLinea">
                         <p className="label">
                           <FormattedMessage
@@ -586,123 +476,88 @@ export default function UserProfile() {
                           onChange={(e) => handleChange(e)}
                         />
                       </div>
-                      }
                     </div>
                     <button
                       className="buttonBlue"
                       type="submit"
                       onClick={(e) => handleSubmitUser(e)}
                     >
-                      <FormattedMessage
-                        id="userProfile.save"
-                        defaultMessage="Save"
-                      />
+                      Save
                     </button>
                   </div>
                 </>
               )}
             </div>
-            </div></div>} {/*------------------------------------------------------ACA EMPIEZA CARS-----------------------------------------------*/}
-        { nav === 1 && <div>
-         <div className="centralo">
-         <h1 className="tituloUserProfile"><FormattedMessage
-                        id="userProfile.editcarinfo"
-                        defaultMessage="Edit Car Information"
-                      /></h1>
-            </div>
-            <div className="centralo">
-            {idAuto === '' ? (
+          </div>
+          <div className="centralo">
+            <h1 className="tituloUserProfile">Car Details</h1>
+          </div>
+          <div className="centralo">
+            {carAdmin === '' ? (
               <NavLink to="/car">
-                <button className="buttonBlue"><FormattedMessage
-                        id="userProfile.editcarinfo"
-                        defaultMessage="Edit Car Information"
-                      /></button>
+                <button className="buttonBlue">Edit Car Information</button>
               </NavLink>
             ) : !booleanCar ? (
               <button className="buttonBlue" onClick={() => handleClickCar()}>
-              <FormattedMessage
-                        id="userProfile.editcarinfo"
-                        defaultMessage="Edit Car Information"
-                      />
+                Edit Car Information
               </button>
             ) : (
-              <button className="buttonDisabled"><FormattedMessage
-                        id="userProfile.editcarinfo"
-                        defaultMessage="Edit Car Information"
-                      /></button>
+              <button className="buttonDisabled">Edit Car Information</button>
             )}
-            </div>
-            {booleanCar === false ? (
+          </div>
+          {booleanCar === false ? (
             <>
               <div className="patents">
                 <div className="cadaLinea">
-                  <p className="label"><FormattedMessage
-                        id="userProfile.brand"
-                        defaultMessage="Brand:"
-                      /></p>
-                  {userInfo.cars && userInfo.cars.length === 0 ? (
+                  <p className="label">Brand:</p>
+                  {userAdmin.cars && userAdmin.cars.length === 0 ? (
                     ''
                   ) : (
-                    <p className="label">{autoInfo.brand}</p>
+                    <p className="label">{userAdmin.brand}</p>
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label"><FormattedMessage
-                        id="userProfile.model"
-                        defaultMessage="Model:"
-                      /></p>
-                  {userInfo.cars && userInfo.cars.length === 0 ? (
+                  <p className="label">Model:</p>
+                  {userAdmin.cars && userAdmin.cars.length === 0 ? (
                     ''
                   ) : (
-                    <p className="label">{autoInfo.model}</p>
+                    <p className="label">{userAdmin.model}</p>
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label"><FormattedMessage
-                        id="userProfile.patent"
-                        defaultMessage="Patent:"
-                      /></p>
-                  {userInfo.cars && userInfo.cars.length === 0 ? (
+                  <p className="label">Plate:</p>
+                  {userAdmin.cars && userAdmin.cars.length === 0 ? (
                     ''
                   ) : (
-                    <p className="label">{autoInfo.patent}</p>
+                    <p className="label">{userAdmin.patent}</p>
                   )}
                 </div>
               </div>
               <div className="patents">
                 <div className="cadaLinea">
-                  <p className="label"><FormattedMessage
-                        id="userProfile.color"
-                        defaultMessage="Color:"
-                      /></p>
-                  {userInfo.cars && userInfo.cars.length === 0 ? (
+                  <p className="label">Color:</p>
+                  {userAdmin.cars && userAdmin.cars.length === 0 ? (
                     ''
                   ) : (
-                    <p className="label">{autoInfo.color}</p>
+                    <p className="label">{userAdmin.color}</p>
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label"><FormattedMessage
-                        id="userProfile.cylinder"
-                        defaultMessage="Cylinder:"
-                      /></p>
-                  {userInfo.cars && userInfo.cars.length === 0 ? (
+                  <p className="label">Cylinder:</p>
+                  {userAdmin.cars && userAdmin.cars.length === 0 ? (
                     ''
                   ) : (
-                    <p className="label">{autoInfo.cylinder}</p>
+                    <p className="label">{userAdmin.cylinder}</p>
                   )}
                 </div>{' '}
               </div>
             </>
-            ) : (
+          ) : (
             <>
               <div className="patents">
                 <div className="cadaLinea">
-                  <p className="label"><FormattedMessage
-                        id="userProfile.brand"
-                        defaultMessage="Brand:"
-                      /></p>
-                  {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  <p className="label">Brand:</p>
+                  {userAdmin.cars & (userAdmin.cars.length === 0) ? (
                     ''
                   ) : (
                     <input
@@ -718,11 +573,8 @@ export default function UserProfile() {
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label"><FormattedMessage
-                        id="userProfile.model"
-                        defaultMessage="Model:"
-                      /></p>
-                  {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  <p className="label">Model:</p>
+                  {userAdmin.cars & (userAdmin.cars.length === 0) ? (
                     ''
                   ) : (
                     <input
@@ -738,11 +590,8 @@ export default function UserProfile() {
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label"><FormattedMessage
-                        id="userProfile.patent"
-                        defaultMessage="Patent:"
-                      /></p>
-                  {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  <p className="label">Plate:</p>
+                  {userAdmin.cars & (userAdmin.cars.length === 0) ? (
                     ''
                   ) : (
                     <input
@@ -760,11 +609,8 @@ export default function UserProfile() {
               </div>
               <div className="patents">
                 <div className="cadaLinea">
-                  <p className="label"><FormattedMessage
-                        id="userProfile.color"
-                        defaultMessage="Color:"
-                      /></p>
-                  {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  <p className="label">Color:</p>
+                  {userAdmin.cars & (userAdmin.cars.length === 0) ? (
                     ''
                   ) : (
                     <input
@@ -780,11 +626,8 @@ export default function UserProfile() {
                   )}
                 </div>
                 <div className="cadaLinea">
-                  <p className="label"><FormattedMessage
-                        id="userProfile.cylinder"
-                        defaultMessage="Cylinder:"
-                      /></p>
-                  {userInfo.cars & (userInfo.cars.length === 0) ? (
+                  <p className="label">Cylinder:</p>
+                  {userAdmin.cars & (userAdmin.cars.length === 0) ? (
                     ''
                   ) : (
                     <input
@@ -806,41 +649,13 @@ export default function UserProfile() {
                   type="submit"
                   onClick={(e) => handleSubmitCar(e)}
                 >
-                  <FormattedMessage
-                        id="userProfile.save"
-                        defaultMessage="Save"
-                      />
+                  Save
                 </button>
               </div>
             </>
-           )}
-        </div>}
-          </div>
-
-        {
-          nav === 2 && <div style={{ height: 300, width: '100%' }}>
-            {
-              userInfo.routes && userInfo.routes.length > 0 &&   <DataGrid rows={rowsRoutes} columns={columnsRoutes}/>
-            } 
-          </div>
-        }
-
-        {
-          nav === 3 && <div className='centralo'>
-            <Post id={userInfo.email} />
-          </div>
-        }
-
-        {
-          nav === 4 && <div style={{ height: 300, width: '100%' }}>
-            <div className="centralo">
-              <h1 className="tituloUserProfile">Payments Details</h1>
-            </div>
-            {
-              userInfo.routes && userInfo.routes.length > 0 &&   <DataGrid rows={rowsOrders} columns={columnsOrders}/>
-            } 
-          </div>
-        }
+          )}
+          <div></div>
+        </div>
       </div>
     </div>
   );

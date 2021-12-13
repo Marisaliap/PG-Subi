@@ -60,7 +60,7 @@ export default function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-         <Route exact path="/" component={LandingPage} />
+          <Route exact path="/" component={LandingPage} />
           <div>
             <NavBar />
             <Route path="/home" component={Home} />
@@ -84,14 +84,12 @@ export default function App() {
                     <Route path="/404" component={Error404} />
                     <div>
                       <Route
-                        exact
-                        path="/admin"
-                        render={() =>
-                          userpro.isAdmin === true ? (
-                            <Admin />
-                          ) : (
-                            <Redirect to="/home" />
-                          )
+                        exact path="/admin" render={() =>
+                        userpro && userpro.isAdmin === true ? (
+                        <Admin />
+                        ) : (
+                        <Redirect to="/home" />
+                        )
                         }
                       />
                     </div>
