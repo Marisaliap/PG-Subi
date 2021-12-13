@@ -4,49 +4,57 @@ import "../../styles/UserList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { deleteUser, getAllUsers, getId, getUserAdmin } from "../../actions";
+import { deleteUser, getAllUsers, getId, getUserAdmin,getUserDetail } from "../../actions";
 
 export default function UserList() {
   const { usuariosRegistrados } = useSelector(state => state)
-  var filtrados = usuariosRegistrados.map(e => 
-    ({ 
-      id: e.email,
-    name : e.name,
+  var filtrados = usuariosRegistrados.map(e =>
+  ({
+    id: e.email,
+    name: e.name,
     lastname: e.lastName,
     genre: e.genre,
     admin: e.isAdmin,
     photo: e.photo
-   })
+  })
   )
 
- const [data, setData] = useState(filtrados); 
+  const [data, setData] = useState(filtrados);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+
+  // ---------------------------------<useEffect>---------------------------------
+  useEffect((id) => {
     dispatch(getAllUsers());
-  }, [data]); 
+  }, [dispatch]);
+
+
 
   useEffect((id) => {
     dispatch(getUserAdmin(id));
-  }, []); 
+    }, [dispatch]);
+
+  // ___________________________________________________________________________________________
 
 
+  // ---------------------------------<handles>---------------------------------
   const handleDelete = (id) => {
-    console.log(id, "soy id")
     dispatch(deleteUser(id))
     setData(data.filter((item) => item.id !== id))
   }
-  
+
   const handleId = (id) => {
     dispatch(getId(id))
-    dispatch(getUserAdmin(id)) 
+    dispatch(getUserAdmin(id))
   }
+  // _______________________________________________________________________________
 
+  // -------------------------------------------<material-ui>---------------------------------
   const columns = [
-    { field: "id", headerName: "ID", width: 200 }, 
+    { field: "id", headerName: "ID", width: 200 },
     {
       field: "user",
-      headerName: "User",
+      headerName: "User Full Name",
       width: 200,
       renderCell: (params) => {
         return (
@@ -66,13 +74,13 @@ export default function UserList() {
     },
     {
       field: "action",
-      headerName: "Action",
-      width: 150,
+      headerName: "Actions",
+      width: 280,
       renderCell: (params) => {
         return (
           <>
-             <Link to={"/admin/user/" + params.row.id}>
-              <button className="userListEdit" onClick={() => handleId(params.row.id)}>Edit</button>
+             <Link to={"/admin/users/" + params.row.id}>
+              <button className="userListEdit" onClick={() => handleId(params.row.id)}>Edit User</button>
             </Link>
             <DeleteOutline
               className="userListDelete"
@@ -94,5 +102,5 @@ export default function UserList() {
         checkboxSelection
       />
     </div>
-  ); 
+  );
 }

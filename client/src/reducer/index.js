@@ -15,9 +15,13 @@ const initialState = {
   userPost:[],
   usuariosRegistrados: [],
   userBuscado: [],
+  orderDetails: [],
+  carMatch: [],
+  filteredRouteFromDb: [],
   //-------------------------< admin store >------------------------ 
   userAdmin: [],
   id: "",
+  carAdmin: [],
   // ---------------< filters rami>----------------------------------
 
   restriction: "",
@@ -63,11 +67,19 @@ function rootReducer(state = initialState, action) {
         car: action.payload.cars[0],
       };
       //  --------------------------------------< admin reducer>----------------------
+
+    case "GET_ORDER_DETAILS":
+      return {
+        ...state,
+        orderDetails: action.payload
+      };
     case "GET_USER_ADMIN":
       return {
         ...state,
         userAdmin: action.payload,
-      };
+        carAdmin: action.payload.cars[0]
+        };
+  
 
     case "ID" :
       return {
@@ -125,6 +137,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+    case "GET_CARS":
+      return {
+        ...state,
+        carMatch: action.payload,
+      };
     // -----------------------------< filters >----------------------------------
 
     case "RESTRICTION":
@@ -163,6 +180,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: [],
       };
+      case "DELETE_ROUTE_FROM_DB":
+      return {
+        ...state,
+        routeFromDb: [],
+        filteredRouteFromDb: []
+      };
     case "ROUTE_POST_INFO":
       return {
         ...state,
@@ -173,10 +196,24 @@ function rootReducer(state = initialState, action) {
         ...state,
         routeById: action.payload,
       };
-    case "GET_ROUTE_FROM_DB":
-      return {
-        ...state,
-        routeFromDb: action.payload,
+    case "GET_ROUTE_FROM_DB": {
+  
+      if (state.routeFromDb.length === 0 && action.payload.length > 0) {
+        return {
+          ...state,
+          routeFromDb: action.payload,
+          filteredRouteFromDb: action.payload
+        };
+      } if ( action.payload.length === 0) {
+        return {
+          ...state,
+          filteredRouteFromDb: [...state.routeFromDb]
+        }} 
+        return {
+          ...state,
+          filteredRouteFromDb: action.payload,
+            };
+           
       };
       case "SET_POST":
       return {

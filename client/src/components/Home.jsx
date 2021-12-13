@@ -1,45 +1,61 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import "../Sass/Styles/Home.scss";
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import '../Sass/Styles/Home.scss';
 // import header from "../img/header.png";
-import navigator from "../img/navigator.svg";
-import ecoConscious from "../img/ecoConscious.svg";
-import saveMoney from "../img/saveMoney.svg";
-import electricCar from "../img/electricCar.svg";
-import SearchBarHome from "./SearchBarHome";
-import { useSelector, useDispatch } from "react-redux";
-import { FormattedMessage } from "react-intl";
-import { getUserProfile,getAllUsers} from "../actions";
-import { useAuth0 } from "@auth0/auth0-react";
+import navigator from '../img/navigator.svg';
+import ecoConscious from '../img/ecoConscious.svg';
+import saveMoney from '../img/saveMoney.svg';
+import electricCar from '../img/electricCar.svg';
+import natureBenefits from '../img/natureBenefits.svg';
+import SearchBarHome from './SearchBarHome';
+import { useSelector, useDispatch } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
+import { getUserProfile, getAllUsers } from '../actions';
+import { useAuth0 } from '@auth0/auth0-react';
 // import Loggin from "./Loggin";
-
+import Swal from 'sweetalert2';
 
 export default function Home() {
-  const { user } = useAuth0();
-  const userpro = useSelector(state => state.userpro);
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  const userpro = useSelector((state) => state.userpro);
   const dispatch = useDispatch();
 
   useEffect(() => {
-   dispatch(getUserProfile(userpro.email));
+    dispatch(getUserProfile(userpro.email));
   }, []);
 
   useEffect(() => {
-   dispatch(getAllUsers());
+    dispatch(getAllUsers());
   }, []);
 
-
+  function handleClick() {
+    if (!isAuthenticated) {
+      return new Swal({
+        icon: 'warning',
+        title: 'Sorry',
+        text: 'You need to be logged in to post a trip!',
+        confirmButtonText: 'Alright',
+      });
+    }
+  }
   return (
     <div className="Homepage">
       {/* <div>
         <img className="fotoHeader" src={header} alt="header" />
       </div> */}
-      <div>
+      <section className="searchBarSection">
+        <h1>
+          <FormattedMessage
+            id="searchBarHome.searchTitle"
+            defaultMessage="Where do you want to go?"
+          />
+        </h1>
         <SearchBarHome />
-        {/* <>
+      </section>
+      {/* <>
           <h1>{id}</h1>
           <Loggin onIdSubmit={setId} />
         </> */}
-      </div>
       <section>
         <img className="homepageImage" src={navigator} alt="Home" />
         <article>
@@ -83,7 +99,7 @@ export default function Home() {
             </NavLink>
           } */}
           <div>
-            {
+            {isAuthenticated ? (
               <NavLink to="/route-list">
                 <button className="button">
                   <FormattedMessage
@@ -92,7 +108,14 @@ export default function Home() {
                   />
                 </button>
               </NavLink>
-            }
+            ) : (
+              <button onClick={handleClick} className="button">
+                <FormattedMessage
+                  id="home.routes"
+                  defaultMessage="See all routes available!"
+                />
+              </button>
+            )}
           </div>
         </article>
       </section>
@@ -106,7 +129,7 @@ export default function Home() {
         </h1>
         <div className="belowContainer">
           <div>
-            <img src={ecoConscious} alt="Eco-Consciousness" />
+            <img src={natureBenefits} alt="Eco-Consciousness" />
             <h3>
               <FormattedMessage
                 id="home.subtitle1"

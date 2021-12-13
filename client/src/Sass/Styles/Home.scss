@@ -1,4 +1,4 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 
 .Homepage {
   padding: 1.25rem;
@@ -9,6 +9,27 @@
     margin-top: 0;
   }
 
+  .searchBarSection {
+    // display: grid;
+    // place-items: center;
+    padding: 2rem 0;
+    background-color: $buttonColor;
+    border-radius: 1.5rem;
+    margin-bottom: 2rem;
+
+    @media only screen and (min-width: 768px) {
+      padding: 2rem;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      padding: 5rem;
+    }
+
+    h1 {
+      color: $background;
+    }
+  }
+
   .homepageImage {
     width: 100%;
     margin-bottom: 1.25rem;
@@ -17,7 +38,8 @@
     @media only screen and (min-width: 1024px) {
       float: left;
       width: 40%;
-      margin-right: 10%;
+      margin-left: 5%;
+      margin-right: 5%;
     }
   }
 
@@ -105,8 +127,8 @@
         }
 
         img {
-          height: 10rem;
-          width: 10rem;
+          height: 12rem;
+          width: 12rem;
           object-fit: fill;
         }
       }

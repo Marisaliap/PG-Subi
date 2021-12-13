@@ -53,7 +53,7 @@ export default function User() {
   }, [dispatch,input]);
 
   // ------------------<handles>------------------
-  const handleSubmitUser = (e) => {
+  const handleSubmitUser  = (e) => {
     e.preventDefault();
 
     dispatch(editUser(id, input));
@@ -62,14 +62,12 @@ export default function User() {
 
   }
 
-  console.log(userAdmin)
   const handleChange = (e) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
   }
-  console.log(input,"input hola")
 
   const uploadImage = async (e) => {
     const files = e.target.files;
@@ -175,7 +173,7 @@ export default function User() {
         </div>
 
 
-        {/*-----------------------------< From>-------------------------  */}
+        {/*-----------------------------< Form>-------------------------  */}
         <div className="userUpdate">
           <span className="userUpdateTitle">Edit</span>
           <div className="userUpdateForm">
@@ -236,7 +234,7 @@ export default function User() {
                 />
               </div>
               <div className="userUpdateItem">
-                <label>street</label>
+                <label>Street</label>
                 <input
                  onChange={(e) => handleChange(e)}
                  type="text"

@@ -39,7 +39,6 @@ export default function App() {
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
   const { userpro } = useSelector(state => state)
-  console.log(userpro, "user in app")
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -61,7 +60,7 @@ export default function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-         <Route exact path="/" component={LandingPage} />
+          <Route exact path="/" component={LandingPage} />
           <div>
             <NavBar />
             <Route path="/home" component={Home} />
@@ -75,7 +74,8 @@ export default function App() {
                     <Route path="/register" component={Register} />
                     <Route exact path="/profile" component={UserProfile} />
                     <Route path="/user/:id" component={UserDetails} />
-                    <Route path="/route-list" component={RouteDetails} />
+                    <Route path="/route-list/:id" component={RouteDetails} />
+                    <Route path="/route-list/" component={RouteDetails} />
                     <Route path="/maps/route" component={RouteDetails} />
                     <Route path="/routes-found" component={RoutesFromSearch} />
                     <Route path="/route/:id" component={AllInfoRoute} />
@@ -85,14 +85,12 @@ export default function App() {
                     <Route path="/404" component={Error404} />
                     <div>
                       <Route
-                        exact
-                        path="/admin"
-                        render={() =>
-                          userpro.isAdmin === true ? (
-                            <Admin />
-                          ) : (
-                            <Redirect to="/home" />
-                          )
+                        exact path="/admin" render={() =>
+                        userpro && userpro.isAdmin === true ? (
+                        <Admin />
+                        ) : (
+                        <Redirect to="/home" />
+                        )
                         }
                       />
                     </div>

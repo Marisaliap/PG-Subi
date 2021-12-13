@@ -11,7 +11,6 @@ import {useSelector} from 'react-redux';
 export default function Footer() {
   const idioma = useContext(langContext);
   const{user}=useSelector(state => state)
-  console.log("soy el user",user)
   return (
     <div className="los2footers">
       <div className="Footer">

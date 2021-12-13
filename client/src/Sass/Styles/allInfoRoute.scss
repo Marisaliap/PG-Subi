@@ -12,7 +12,7 @@
     border: 2px solid $headline;
     border-radius: 10px;
   }
-  .userContainer{
+  .userContainerallroute{
       width: 20vw;
       text-decoration: none;
 
@@ -30,9 +30,10 @@
     margin-left: 1rem;
     align-items: baseline
     
+    
   }
 
-  .Container {
+  .Containerallroute {
     display: flex;
     width: 50vw;
    
@@ -40,6 +41,7 @@
 
 
     p {
+      text-align:left;
       margin-top: 0;
       font-weight: bold;
     }

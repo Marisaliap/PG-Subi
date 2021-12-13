@@ -196,7 +196,18 @@ export function deleteUser(id) {
   };
 }
 
+export function getAllCars() {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/car/`)).data;
 
+      return dispatch({
+        type: "GET_CARS",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
 
 export function editCar(id, info) {
   return async function (dispatch) {
@@ -213,13 +224,14 @@ export function editCar(id, info) {
   };
 }
 
-export function getRouteFromDb(originName, destinyName, date, place) {
+export function getRouteFromDb(originName, destinyName, date, place, order, restriction) {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}`
+        `http://localhost:3001/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}&order=${order ? order : ""
+      }&restriction=${restriction ? restriction : ""}`
       );
-
+        console.log(response.data, 'soy data')
       return dispatch({
         type: "GET_ROUTE_FROM_DB",
         payload: response.data,
@@ -334,6 +346,26 @@ export function deleteRoute() {
     type: "DELETE_ROUTE",
   };
 }
+export function deleteRouteFromDb(param) {
+  console.log(param)
+  return {
+    type: "DELETE_ROUTE_FROM_DB",
+  };
+}
+export function deleteOrder(id) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3001/order/` + id,
+      );
+      return {
+        type: "DELETE_ORDER",
+      };
+    } catch (error) { }
+  };
+ 
+}
+
 
 export function getOrder(order) {
   return {
@@ -342,6 +374,21 @@ export function getOrder(order) {
   };
 }
 
+export function getOrderDetails () {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/order/`,
+      );
+      return dispatch({
+        type: "GET_ORDER_DETAILS",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 export function allRoutes(order, restriction) {
   return async function (dispatch) {
     try {
