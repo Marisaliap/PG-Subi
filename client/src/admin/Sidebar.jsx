@@ -8,6 +8,7 @@ import {
   Storefront,
   AttachMoney,
   BarChart,
+  PersonAdd,
   MailOutline,
   DynamicFeed,
   ChatBubbleOutline,
@@ -48,23 +49,33 @@ export default function Sidebar() {
             <Link to="/admin/users" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
-                Users
+                All Users
               </li>
             </Link>
-            <Link to="/products" className="link">
+            <Link to="/admin/newUser" className="link">
+              <li className="sidebarListItem">
+                <PersonAdd className="sidebarIcon" />
+                Create New User
+              </li>
+            </Link>
+            {/* <Link to="/products" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
                 Products
               </li>
-            </Link>
+            </Link> */}
+            <Link to='/admin/transactions' className="link">
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
               Transactions
             </li>
-            <li className="sidebarListItem">
+           
+            </Link>
+            {/* <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Reports
             </li>
+             */}
           </ul>
         </div>
         <div className="sidebarMenu">

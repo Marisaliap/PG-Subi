@@ -15,6 +15,10 @@ const initialState = {
   userPost:[],
   usuariosRegistrados: [],
   userBuscado: [],
+  orderDetails: [],
+  carMatch: [],
+  filteredRouteFromDb: [],
+  searchParams: {},
   //-------------------------< admin store >------------------------ 
   userAdmin: [],
   id: "",
@@ -63,12 +67,19 @@ function rootReducer(state = initialState, action) {
         car: action.payload.cars[0],
       };
       //  --------------------------------------< admin reducer>----------------------
+
+    case "GET_ORDER_DETAILS":
+      return {
+        ...state,
+        orderDetails: action.payload
+      };
     case "GET_USER_ADMIN":
       return {
         ...state,
         userAdmin: action.payload,
         carAdmin: action.payload.cars[0]
-      };
+        };
+  
 
     case "ID" :
       return {
@@ -136,6 +147,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+    case "GET_CARS":
+      return {
+        ...state,
+        carMatch: action.payload,
+      };
     // -----------------------------< filters >----------------------------------
 
     case "RESTRICTION":
@@ -174,6 +190,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: [],
       };
+      case "DELETE_ROUTE_FROM_DB":
+      return {
+        ...state,
+        routeFromDb: [],
+        filteredRouteFromDb: []
+      };
     case "ROUTE_POST_INFO":
       return {
         ...state,
@@ -184,10 +206,25 @@ function rootReducer(state = initialState, action) {
         ...state,
         routeById: action.payload,
       };
-    case "GET_ROUTE_FROM_DB":
+    case "GET_ROUTE_FROM_DB": {
+  
+      if (state.routeFromDb.length === 0 && action.payload.length > 0) {
+        return {
+          ...state,
+          routeFromDb: action.payload,
+          filteredRouteFromDb: action.payload
+        };
+      }
+        return {
+          ...state,
+          filteredRouteFromDb: action.payload,
+            };
+           
+      };
+      case "GET_SEARCH_PARAMS":
       return {
         ...state,
-        routeFromDb: action.payload,
+        searchParams: action.payload,
       };
       case "SET_POST":
       return {

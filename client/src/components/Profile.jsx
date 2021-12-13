@@ -20,21 +20,27 @@ export const Profile = () => {
   }, [dispatch, umail]);
 
   if (isLoading) {
-    return <div><FormattedMessage
+    return <div>
+      <FormattedMessage
     id="profile.loading"
     defaultMessage="Loading..."
-  /></div>;
+  />
+  </div>;
   }
 
   return (
     isAuthenticated && (
+      <div>
       <Link to={!userInfo.dni ? '/register' : '/profile'}>
         <img
           className="profilePicture"
           src={userInfo.photo ? userInfo.photo : user.picture}
           alt={user.name}
         />
+       
       </Link>
+     
+      </div>
     )
   );
 };

@@ -20,11 +20,14 @@ module.exports = (sequelize) => {
     merchant_order_id: {
       type: DataTypes.BIGINT,
       defaultValue: 0
-      
+    },
+    price: {
+      type: DataTypes.STRING,
+      defaultValue: ''
     }
   },
   {
-    timestamps: false,
+    timestamps: true,
   }
   );
 };

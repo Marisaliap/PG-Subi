@@ -2,6 +2,7 @@ const { Route, User, Car, Order } = require("../db.js");
 const axios = require("axios");
 const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
 const { TOKEN } = process.env;
+const { postMail } = require('./Mail.js')
 
 const getRouteInfo = async (req, res, next) => {
   try {
@@ -70,7 +71,6 @@ const postRoute = async (req, res, next) => {
       hours,
       place,
       restriction,
-      infoRoute,
       points,
       center,
     } = req.body;
@@ -93,7 +93,7 @@ const postRoute = async (req, res, next) => {
       hours,
       place,
       restriction,
-      infoRoute,
+      manejante:idUser,
       points,
       center,
     });
@@ -216,7 +216,6 @@ const getRoute = async (req, res, next) => {
     } else if (order === "price") {
       routes = routes.sort((a, b) => a.price - b.price);
     }
-
     return res.send(routes);
   } catch (e) {
     next(e);
@@ -227,7 +226,7 @@ const putRoute = async (req, res) => {
   try {
     const { id } = req.params;
     const { date, hours, restriction, place, idUser } = req.body;
-    console.log(idUser)
+  
     const route = await Route.findByPk(id);
     route.update({
       date,
@@ -235,7 +234,17 @@ const putRoute = async (req, res) => {
       restriction,
       place,
     });
-    idUser && (await route.addUser(idUser));
+    if (idUser){
+      const manejante = await User.findByPk(idUser) 
+      await route.addUser(idUser);
+      let mail = await axios.post('http://localhost:3001/mail/add',{
+        manejanteEmail: route.manejante,
+        manejadoName: manejante.name,
+        originName: route.originName,
+        destinyName: route.destinyName
+      });
+      console.log(mail)
+    }
     res.send(route);
   } catch (error) {
     res.send(error);

@@ -1,0 +1,45 @@
+@import "../Variables/Variables.scss";
+
+.Post {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  .desContainer {
+    padding: 1rem;
+    border: 1px solid $buttonColor;
+    background-color: $background;
+    border-radius: 5px;
+    height: 20rem;
+    width: 35rem;
+    overflow-y: scroll;
+
+    .description {
+      border: 1px solid $buttonColor;
+      border-radius: 5px;
+      background-color: #ededed;
+      width: 10rem;
+      text-align: left;
+      margin-left: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      width: 30rem;
+
+      .infodate {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        border-bottom: 1px solid black;
+        border-radius: 5px 5px 0px 0px;
+        margin: 0;
+        padding: 0;
+        width: auto;
+        height: 1.5rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+      }
+    }
+  }
+}

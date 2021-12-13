@@ -7,6 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 import "../Sass/Styles/Post.scss";
 import RatingStar from "./RatingStar.jsx";
+import { FormattedMessage } from "react-intl";
 
 
 export default function Post(id) {
@@ -22,8 +23,8 @@ export default function Post(id) {
     dispatch(userPost(ids));
   }, [dispatch, ids]);
 
-  console.log("ids", ids);
-  console.log("post", userpost);
+ // console.log("ids", ids);
+  //console.log("post", userpost);
 
   const [input, setInput] = useState({
     email: ids,
@@ -42,7 +43,7 @@ export default function Post(id) {
     }
     return errors;
   }
-  console.log("id", id);
+ // console.log("id", id);
   //console.log("userinfo", userInfo);
   //console.log("input", input);
 
@@ -124,7 +125,10 @@ export default function Post(id) {
               className="star"
             >
               <option value="0" disabled selected className="person">
-                Calification
+              <FormattedMessage
+                        id="post.calification"
+                        defaultMessage="Calification"
+                      />
               </option>
               <option value="0">0</option>
               <option value="0.5">0.5</option>
@@ -144,20 +148,23 @@ export default function Post(id) {
           </div>
           <br />
           <div className="textarea">
+            <FormattedMessage id="post.description" key={'op-5'}>
+            {(message) => 
             <textarea
-              placeholder="Please tell us about your experience with this user..."
+            placeholder={message}
               type="text"
               name="description"
               value={input.description}
               onChange={(e) => handleChange(e)}
-            />
+            />}
+            </FormattedMessage>
             {errors.description && (
               <p className="error">{errors.description}</p>
             )}
           </div>
           <div className="divbutton">
             <button className="button" type="submit">
-              Submit
+            <FormattedMessage id="formCar.title" defaultMessage="Send" />
             </button>
           </div>
         </form>

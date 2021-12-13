@@ -19,8 +19,11 @@ import "../Sass/Styles/allInfoRoute.scss";
 import { BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { Modal } from "./ModalMP.jsx";
+import RatingStar from "./RatingStar.jsx";
+import { FormattedMessage } from 'react-intl';
 
 export default function AllInfoRoute({ match }) {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -29,8 +32,8 @@ export default function AllInfoRoute({ match }) {
 
   useEffect(() => {
     dispatch(getRouteById(match.params.id));
-  }, []);
-  const dispatch = useDispatch();
+  }, [dispatch, match.params.id]);
+
   const user = useSelector((state) => state.userpro);
   const route = useSelector((state) => state.routeById);
   const history = useHistory();
@@ -55,14 +58,15 @@ export default function AllInfoRoute({ match }) {
     history.push("/route-list");
   }
 
-  console.log(route)
 
   let restricciones =route.restriction && route.restriction.split(", ");
+
+console.log(route.restriction)
 
   return (
     <div className="Map">
       {route.length > 0 && route.originName}
-      <div className="Container">
+      <div className="Containerallroute">
         <div className="infoContainer">
           <p>
             <BsPinMap /> {route.originName}
@@ -81,11 +85,11 @@ export default function AllInfoRoute({ match }) {
           </p>
           {route.place === 0 ? (
             <p>
-              <BsFillPersonFill /> Trip Full
+              <BsFillPersonFill /> <FormattedMessage id="allinforoute.placefull" defaultMessage="Trip Full" />
             </p>
           ) : (
             <p>
-              <BsFillPersonFill /> {route.place} Seats available.
+              <BsFillPersonFill /> {route.place} <FormattedMessage id="allinforoute.place" defaultMessage="Seats available."/>
             </p>
           )}
         </div>
@@ -101,14 +105,15 @@ export default function AllInfoRoute({ match }) {
           })}
         </div>
         {route.users && (
-          <Link to={`/user/${route.users[0].email}`} className="userContainer">
-            <div className="userContainer">
+          <Link to={`/user/${route.users[0].email}`} className="userContainerallroute">
+            <div className="userContainerallroute">
               <img src={route.users.length > 0 && route.users[0].photo} />
               <h5>{route.users.length > 0 && route.users[0].name}</h5>
 
               <div>
-                <BsStarFill className="icon" />
-                {route.users.length > 0 && route.users[0].calification}/5
+              <RatingStar
+                Rating={route.users[0].calification}
+              />
               </div>
             </div>
           </Link>
@@ -179,11 +184,10 @@ export default function AllInfoRoute({ match }) {
 
       <div>
         {route.place === 0 || !route.users || user.email === route.users[0].email  ? (
-          <button className="buttonDisabled">Join this trip!</button>
+          <button className="buttonDisabled"><FormattedMessage id="allinforoute.jointhistrip" defaultMessage="Join this trip!" /></button>
         ) : (
           <button onClick={openModal} className="button">
-            {" "}
-            Join this trip!
+          <FormattedMessage id="allinforoute.jointhistrip" defaultMessage="Join this trip!" />
           </button>
         )}
         {showModal ? (
@@ -192,7 +196,7 @@ export default function AllInfoRoute({ match }) {
 
 
         <button className="buttonBlue" onClick={handleClick}>
-          Go Back
+        <FormattedMessage id="allinforoute.goback" defaultMessage="Go Back" />
         </button>
       </div>
     </div>

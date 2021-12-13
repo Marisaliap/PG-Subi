@@ -33,44 +33,44 @@ export default function Registro() {
     let errors = {};
     const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     if (!input.name) {
-      errors.name = 'Name is required';
+      errors.name =<FormattedMessage id="registererr.name" defaultMessage="Name is required" />;
     } else if (wordvalidate.test(input.name) === false) {
-      errors.name = 'Invalid Name: No Symbols Allowed';
+      errors.name = <FormattedMessage id= "registererr.symbols" defaultMessage="Invalid Name: No Symbols Allowed" />
     } else if (!input.lastName) {
-      errors.lastName = 'Last name is required';
+      errors.lastName = <FormattedMessage id= "registererr.lastname" defaultMessage="Last name is required" />;
     } else if (wordvalidate.test(input.lastName) === false) {
-      errors.lastName = 'Invalid Last Name: No Symbols Allowed';
+      errors.lastName = <FormattedMessage id= "registererr.lastnamesym" defaultMessage="Invalid Last Name: No Symbols Allowed" />;
     } else if (!input.dni) {
-      errors.dni = 'DNI is required';
+      errors.dni = <FormattedMessage id= "registererr.dni" defaultMessage="DNI is required" />;
     } else if (booleanDNI === false) {
-      errors.dni = 'DNI already exists';
+      errors.dni = <FormattedMessage id= "registererr.dniexist" defaultMessage="DNI already exists" />;
     } else if (validateGender() === false) {
-      errors.genre = 'Gender is required';
+      errors.genre = <FormattedMessage id= "registererr.gender" defaultMessage="Gender is required" />;
     } else if (!input.age) {
-      errors.age = 'Age required';
+      errors.age = <FormattedMessage id="registererr.age" defaultMessage="Age required" />;
     } else if (input.age < 18) {
-      errors.age = 'You must be 18 years old or older to register';
+      errors.age = <FormattedMessage id= "registererr.age18" defaultMessage="You must be 18 years old or older to register" />;
     } else if (!input.telephone) {
-      errors.telephone = 'Telephone is required';
+      errors.telephone = <FormattedMessage id= "registererr.phone" defaultMessage="Telephone is required" />;
     } else if (!input.street) {
-      errors.street = 'Street is required';
+      errors.street = <FormattedMessage id= "registererr.street" defaultMessage="Street is required" />;
     } else if (!input.city) {
-      errors.city = 'City is required';
+      errors.city = <FormattedMessage id= "registererr.city" defaultMessage="City is required" />;
     } else if (wordvalidate.test(input.city) === false) {
-      errors.city = 'Invalid City: No Symbols Allowed';
+      errors.city = <FormattedMessage id= "registererr.citysym" defaultMessage="Invalid City: No Symbols Allowed" />;
     } else if (!input.province) {
-      errors.province = 'Province is required';
+      errors.province = <FormattedMessage id=  "registererr.province" defaultMessage="Province is required" />;
     } else if (wordvalidate.test(input.province) === false) {
-      errors.province = 'Invalid Province: No Symbols Allowed';
+      errors.province = <FormattedMessage id= "registererr.provincesym" defaultMessage="Invalid Province: No Symbols Allowed" />;
     } else if (!input.about) {
-      errors.about = 'About is required';
+      errors.about = <FormattedMessage id= "registererr.about" defaultMessage="About is required" />;
     }
     return errors;
   }
   // __________________________________________________________________________________
 
   function validateGender() {
-    if (document.getElementById('genre').value == '1') {
+    if (document.getElementById('genre').value === '1') {
       return false;
     }
     return true;
@@ -189,9 +189,6 @@ export default function Registro() {
     if (Object.keys(errors).length === 0 && validateInputs() === true) {
       dispatch(postUser(input));
       let emailUsuario = input.email;
-
-    
-
       setInput({
         name: '',
         lastName: '',
@@ -251,7 +248,9 @@ export default function Registro() {
           <div>
             <div className="terminosycond">
               <div className="cadaLinea">
-                <p className="">If you plan to be a Driver please check</p>
+                <p className="">
+                <FormattedMessage id="register.checkbox" defaultMessage="If you plan to be a Driver please check" />
+                </p>
                 <input
                   type="checkbox"
                   name="checkboxManejante"
@@ -407,16 +406,16 @@ export default function Registro() {
               onChange={(e) => handleSelect(e)}
               required
             >
-              <option disabled selected value="1">
-                -- Select an option --
-              </option>
-              <FormattedMessage id="register.gender.1" key={'op' + '-' + '1'}>
+            <FormattedMessage id="register.genderOptions">
+            {(message) => <option disabled selected value="1">{message}</option>}
+              </FormattedMessage>
+              <FormattedMessage id="register.gender.1">
                 {(message) => <option value="Male">{message}</option>}
               </FormattedMessage>
-              <FormattedMessage id="register.gender.2" key={'op' + '-' + '2'}>
+              <FormattedMessage id="register.gender.2">
                 {(message) => <option value="Female">{message}</option>}
               </FormattedMessage>
-              <FormattedMessage id="register.gender.3" key={'op' + '-' + '3'}>
+              <FormattedMessage id="register.gender.3">
                 {(message) => <option value="Rather not say">{message}</option>}
               </FormattedMessage>
             </select>
