@@ -24,10 +24,10 @@ export default function Sidebar() {
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
             <Link to="/admin/" className="link">
-            <li className="sidebarListItem active">
-              <LineStyle className="sidebarIcon" />
-              Dashboard
-            </li>
+              <li className="sidebarListItem active">
+                <LineStyle className="sidebarIcon" />
+                Dashboard
+              </li>
             </Link>
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
@@ -64,23 +64,25 @@ export default function Sidebar() {
             </li>
           </ul>
         </div>
-        {/* <div className="sidebarMenu">
+        <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem">
               <MailOutline className="sidebarIcon" />
               Mail
             </li>
+            <Link to="/admin/feedback" className="link">
             <li className="sidebarListItem">
               <DynamicFeed className="sidebarIcon" />
               Feedback
             </li>
+            </Link>
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Messages
             </li>
           </ul>
-        </div> */}
+        </div>
         {/* <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
