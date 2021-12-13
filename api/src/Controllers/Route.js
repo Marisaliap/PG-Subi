@@ -74,7 +74,7 @@ const postRoute = async (req, res, next) => {
       points,
       center,
     } = req.body;
-
+    console.log(req.body)
     let kmNumber = km.split("k")[0];
 
     let price = ((kmNumber / 10) * 97) / 5;
@@ -216,7 +216,6 @@ const getRoute = async (req, res, next) => {
     } else if (order === "price") {
       routes = routes.sort((a, b) => a.price - b.price);
     }
-
     return res.send(routes);
   } catch (e) {
     next(e);
