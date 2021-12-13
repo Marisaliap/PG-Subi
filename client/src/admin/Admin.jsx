@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
-import User from "./pages/Users";
+import Users from "./pages/Users";
 import Update from "./pages/Update"
 import Dashboard from "../admin/pages/Dashboard";
 import NewUser from "../admin/pages/NewUser";
@@ -23,7 +23,7 @@ export default function Admin() {
             <Dashboard />
           </Route>
           <Route path="/admin/users/:id">
-            <User />
+            <Users />
           </Route>
           <Route path="/admin/Update">
             <Update />
