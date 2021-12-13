@@ -14,12 +14,13 @@ import {
   ChatBubbleOutline,
   WorkOutline,
   Report,
+  Commute,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
-function redireccionar(){
-  window.location="http://www.cristalab.com";
-} 
+function redireccionar() {
+  window.location = "http://www.cristalab.com";
+}
 export default function Sidebar() {
   return (
     <div className="sidebar">
@@ -58,30 +59,40 @@ export default function Sidebar() {
                 Create New User
               </li>
             </Link>
-           
-            <Link to='/admin/transactions' className="link">
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Transactions
-            </li>
-           
- </Link>
+
+            <Link to="/admin/transactions" className="link">
+              <li className="sidebarListItem">
+                <AttachMoney className="sidebarIcon" />
+                Transactions
+              </li>
+            </Link>
+            <Link to="/admin/routes" className="link">
+              <li className="sidebarListItem">
+                <Commute className="sidebarIcon" />
+                Routes Info
+              </li>
+            </Link>
           </ul>
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
-          
             <li className="sidebarListItem">
-              <MailOutline className="sidebarIcon"/>
-              <a href="https://mail.google.com/mail/u/?authuser=grupo10.soyhenry@gmail.com" target="_blank" rel="noopener noreferrer">Mail</a>
+              <MailOutline className="sidebarIcon" />
+              <a
+                href="https://mail.google.com/mail/u/?authuser=grupo10.soyhenry@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Mail
+              </a>
             </li>
-          
-            <Link to="/admin/feed" className="link"> 
-            <li className="sidebarListItem">
-              <DynamicFeed className="sidebarIcon" />
-              Feedback
-            </li>
+
+            <Link to="/admin/feed" className="link">
+              <li className="sidebarListItem">
+                <DynamicFeed className="sidebarIcon" />
+                Feedback
+              </li>
             </Link>
 
             {/* <Link to="/admin/message" className="link"> 
@@ -92,7 +103,7 @@ export default function Sidebar() {
             </Link> */}
           </ul>
         </div>
-       
+
         {/* <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">

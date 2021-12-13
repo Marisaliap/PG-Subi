@@ -31,7 +31,7 @@ export default function Dashboard() {
   return (
     <div className="home">
       <FeaturedInfo info={info} />
-      <Chart info={info} title="User Analytics" grid dataKey="Sales"/>
+      <Chart info={info} title="Sales Analytics" grid dataKey="Sales"/>
       <div className="homeWidgets">
        <WidgetSm />
        <WidgetLg/>
