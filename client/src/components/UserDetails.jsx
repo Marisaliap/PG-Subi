@@ -1,16 +1,15 @@
 import React from "react";
 import { useEffect } from "react";
-import { getUserDetail, getUserByName, getUserById } from "../actions";
+import { getUserDetail } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 import SearchUserByName from "./SearchUserByName";
 import SearchUserById from "./SearchUserById";
-import { FormattedMessage } from "react-intl";
+import { Link } from "react-router-dom";
 import {
   BsGenderFemale,
   BsGenderMale,
   BsInstagram,
   BsFacebook,
-  BsMap,
   BsEnvelope,
   BsInfoSquareFill,
 } from "react-icons/bs";
@@ -18,22 +17,22 @@ import "../Sass/Styles/UserDetails.scss";
 import Post from "./Post";
 import RatingStar from "./RatingStar.jsx";
 
-export default function UserDetails( props) {
+export default function UserDetails(props) {
   const userInfo = useSelector((state) => state.user);
   const autoInfo = useSelector((state) => state.car);
   // const {id}=useSelector(state=>state);
   let idAuto;
   autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
   const dispatch = useDispatch();
-// console.log(id);
-const id = props.match.params.id;
+
+  const id = props.match.params.id;
 
 
   useEffect(() => {
     userInfo.email === undefined
       ? dispatch(getUserDetail(window.location.href.split("/user/")[1]))
       : dispatch(getUserDetail(id));
-  }, [dispatch, id, userInfo.email]);
+  }, []);
 
   function genderIcon(gender) {
     if (gender === "Male") {
@@ -142,6 +141,16 @@ const id = props.match.params.id;
             <h1 className="tituloUserProfile">Rating</h1>
           </div>
           <Post id={id} />
+          <div style={{ height: 300, width: "100%" }}>
+            <div className="centralo">
+              <h1 className="tituloUserProfile">Chats</h1>
+            </div>
+            {userInfo && userInfo.chats && userInfo.chats.length > 0 && (
+              <>
+                <Link to={`/chat/${userInfo.email}`}>{userInfo.email}</Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>

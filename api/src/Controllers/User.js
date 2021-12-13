@@ -1,4 +1,4 @@
-const { User, Post, Car, Route, Op, Order } = require("../db.js");
+const { User, Post, Car, Route, Op, Order, Chat } = require("../db.js");
 
 const postUser = async (req, res, next) => {
   try {
@@ -43,7 +43,7 @@ const postUser = async (req, res, next) => {
         cbu,
         // public_id:result.public_id,
       },
-      include: [Post, Car, Order, Route],
+      include: [Post, Car, Order, Route, Chat],
       // include: [Post, Car, Route]
     });
     res.send(user);
@@ -66,6 +66,7 @@ const getUser = async (req, res, next) => {
           },
         },
         include: Post,
+        Chat,
       });
       data = data.map((user) => {
         return {
@@ -99,10 +100,11 @@ const getUser = async (req, res, next) => {
         include: [
           Post,
           Car,
+          Chat,
           {
             model: Route,
             include: {
-              model: Order
+              model: Order,
             },
           },
         ],
@@ -129,7 +131,6 @@ const getUser = async (req, res, next) => {
 
 const putUserCal = async (req, res, next) => {
   try {
-
     const { id } = req.params;
 
     data = await User.findByPk(id, {
@@ -146,19 +147,18 @@ const putUserCal = async (req, res, next) => {
     array.forEach(function (e) {
       suma += e;
     });
-    
+
     calUser = suma / array.length;
 
     const user = await User.findByPk(id);
     user.update({
-      calification:calUser,
+      calification: calUser,
     });
     res.send(user);
   } catch (error) {
     next(error);
   }
-}
-
+};
 
 const putUser = async (req, res, next) => {
   try {
@@ -220,6 +220,5 @@ const deleteUser = async (req, res, next) => {
     next(error);
   }
 };
-
 
 module.exports = { postUser, getUser, putUser, deleteUser, putUserCal };

@@ -30,15 +30,15 @@ import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
+import Chat from "./components/Chat";
 /* import Topbar from "./admin/Topbar"; */
 /* import Sidebar from "./admin/Sidebar"; */
 import { Redirect } from "react-router";
 
-
 export default function App() {
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
-  const { userpro } = useSelector(state => state)
+  const { userpro } = useSelector((state) => state);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -83,6 +83,7 @@ export default function App() {
                     <Route path="/users" component={Users} />
                     <Route path="/post/:id" component={Post} />
                     <Route path="/404" component={Error404} />
+                    <Route path="/chat/:email" component={Chat} />
                     <div>
                       <Route
                         exact path="/admin" render={() =>
