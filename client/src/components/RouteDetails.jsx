@@ -13,7 +13,9 @@ const RouteDetails = () => {
   const dispatch = useDispatch();
 
   const { getRoutes } = useSelector((state) => state);
-  useEffect(() => {dispatch(allRoutes())}, []);
+  useEffect(() => {
+    dispatch(allRoutes());
+  }, [dispatch]);
   // useEffect(() =>  dispatch(getOrder()), [getRoutes.length]);
 
   return (
@@ -24,20 +26,23 @@ const RouteDetails = () => {
         {getRoutes.map((route, i) => (
           <Link className="link" id="link" to={`/route/${route.id}`}>
             <div className="RouteCard">
-              {console.log(route.users)}{route.users && (
+              {console.log(route.users)}
+              {route.users && (
                 <CardUser
                   photo={route.users.length > 0 && route.users[0].photo}
                   name={route.users.length > 0 && route.users[0].name}
                   lastName={route.users.length > 0 && route.users[0].lastName}
                   genre={route.users.length > 0 && route.users[0].genre}
                   age={route.users.length > 0 && route.users[0].age}
-                  email={route.users.length > 0 && route.users[0].UserRoutes.userEmail}
+                  email={
+                    route.users.length > 0 &&
+                    route.users[0].UserRoutes.userEmail
+                  }
                   calification={
                     route.users.length > 0 && route.users[0].calification
                   }
                   key={i}
                 />
-              
               )}
               <hr />
 

@@ -1,22 +1,23 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-
-  sequelize.define('chat', {
-    author: {
-      type: DataTypes.STRING,
-      allowNull: false,
+  sequelize.define(
+    "chat",
+    {
+      author: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      message: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      date: {
+        type: DataTypes.BIGINT,
+      },
     },
-    messages: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
-    },
-    date: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
-  },
-  {
-    timestamps: false,
-  },
+    {
+      timestamps: false,
+    }
   );
 };

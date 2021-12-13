@@ -9,7 +9,6 @@ import "../Sass/Styles/Post.scss";
 import RatingStar from "./RatingStar.jsx";
 import { FormattedMessage } from "react-intl";
 
-
 export default function Post(id) {
   const dispatch = useDispatch();
   const userpost = useSelector((state) => state.userPost);
@@ -18,13 +17,9 @@ export default function Post(id) {
   let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
   let ids = id.id;
 
-
   useEffect(() => {
     dispatch(userPost(ids));
   }, [dispatch, ids]);
-
- // console.log("ids", ids);
-  //console.log("post", userpost);
 
   const [input, setInput] = useState({
     email: ids,
@@ -43,9 +38,6 @@ export default function Post(id) {
     }
     return errors;
   }
- // console.log("id", id);
-  //console.log("userinfo", userInfo);
-  //console.log("input", input);
 
   function handleChange(e) {
     setInput({
@@ -71,7 +63,8 @@ export default function Post(id) {
         description: "",
         calification: "",
       });
-      dispatch(putRatingUser(ids))
+      dispatch(putRatingUser(ids));
+      dispatch(userPost(ids));
       swal({
         title: "Good job!",
         text: "Post created correctly",
@@ -88,10 +81,6 @@ export default function Post(id) {
     }
   }
 
-  // console.log("date", userpost[0].date);
-  // console.log("author", userpost[0].author);
-  // console.log("cal", userpost[0].calification);
-  //console.log("des", userpost[0].description);
   return (
     <div className="Post">
       <div>
@@ -124,11 +113,8 @@ export default function Post(id) {
               id="star"
               className="star"
             >
-              <option value="0" disabled selected className="person">
-              <FormattedMessage
-                        id="post.calification"
-                        defaultMessage="Calification"
-                      />
+              <option value="99999" disabled selected className="person">
+                --Cal--
               </option>
               <option value="0">0</option>
               <option value="0.5">0.5</option>
@@ -148,15 +134,16 @@ export default function Post(id) {
           </div>
           <br />
           <div className="textarea">
-            <FormattedMessage id="post.description" key={'op-5'}>
-            {(message) => 
-            <textarea
-            placeholder={message}
-              type="text"
-              name="description"
-              value={input.description}
-              onChange={(e) => handleChange(e)}
-            />}
+            <FormattedMessage id="post.description" key={"op-5"}>
+              {(message) => (
+                <textarea
+                  placeholder={message}
+                  type="text"
+                  name="description"
+                  value={input.description}
+                  onChange={(e) => handleChange(e)}
+                />
+              )}
             </FormattedMessage>
             {errors.description && (
               <p className="error">{errors.description}</p>
@@ -164,7 +151,7 @@ export default function Post(id) {
           </div>
           <div className="divbutton">
             <button className="button" type="submit">
-            <FormattedMessage id="formCar.title" defaultMessage="Send" />
+              <FormattedMessage id="formCar.title" defaultMessage="Send" />
             </button>
           </div>
         </form>
