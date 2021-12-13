@@ -10,12 +10,14 @@ export default function Update() {
     const dispatch = useDispatch()
     const history = useHistory();
     let booleanDNI;
+    console.log(userAdmin.photoDni)
+    console.log(carAdmin)
 
     // -------------------------------------<useEffect>-------------------------------------
     useEffect(() => {
         dispatch(getUserAdmin(id));
         dispatch(getAllUsers());
-        dispatch(getUserProfile(id)); 
+        // dispatch(getUserProfile(id)); //sin esto funciona
     }, [dispatch, id]);
 
 
@@ -25,7 +27,8 @@ export default function Update() {
     const [image, setImage] = useState(userAdmin?.photo);
     const [dniFront, setDniFront] = useState(userAdmin?.photoDni[0]);
     const [dniBack, setDniBack] = useState(userAdmin?.photoDni[1]);
-    const [greencard, setGreencard] = useState(carAdmin?.greencard);
+    const [greencard, setGreencard] = useState(carAdmin?.greencard === undefined?carAdmin?.greencard:carAdmin?.greencard);
+    // const [greencard, setGreencard] = useState(carAdmin?.greencard);
 
     const [input, setInput] = useState({
         email: userAdmin.email,
