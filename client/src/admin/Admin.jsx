@@ -40,8 +40,6 @@ export default function Admin() {
             <Route exact path="/admin/routes">
             <AllRoutesData/>
             </Route>
-          <Route exact path="/admin/feedback">
-            <Feedback />
           <Route exact path="/admin/feed">
             <Feedback />
           </Route>
