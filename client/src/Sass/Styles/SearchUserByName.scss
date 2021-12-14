@@ -30,7 +30,7 @@
     font-family: inherit;
     border-radius: 9999px;
     font-weight: bolder;
-    padding: 1rem 3rem;
+    padding: 1rem 0;
     background-color: $buttonColor;
     color: $background;
     transition: background-color 0.5s ease-in-out;
@@ -42,7 +42,8 @@
   }
 }
 
-.Navlink {
+.NavlinkUserProfile {
   text-decoration: none;
   color: $background;
+  padding: 1rem 3rem;
 }

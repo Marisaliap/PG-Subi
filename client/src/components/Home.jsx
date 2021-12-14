@@ -53,7 +53,7 @@ export default function Home() {
       </section>
 
       <section className="lowerSection">
-        <div>
+        <div className="centrateee">
           <img className="homepageImage" src={navigator} alt="Home" />
           <article>
             <h1>
@@ -108,23 +108,14 @@ export default function Home() {
           <div>
             <img className="SVGs" src={cityDriver} alt="Are you a passenger?" />
             <p>
-              Book a place in other person's car, have fun alongside other
-              people and go wherever you want, by paying less than you would by
-              using other travelling methods.
+              <FormattedMessage id="home.imagenAbajo1" defaultMessage="" />
             </p>
-            <Link to="/home">
-              <button className="button">Let's go</button>
-            </Link>
           </div>
           <div>
             <img className="SVGs" src={carDriver} alt="Are you a passenger?" />
             <p>
-              With Gimme A Ride, allow other people with common destinations to
-              get into your car and have fun together while spending less!
+              <FormattedMessage id="home.imagenAbajo2" defaultMessage="" />
             </p>
-            <Link to="/home">
-              <button className="button">Let's go</button>
-            </Link>
           </div>
         </div>
       </section>

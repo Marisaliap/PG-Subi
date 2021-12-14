@@ -55,13 +55,15 @@ export default function AllInfoRoute({ match }) {
 
   function handleClick() {
     dispatch(deleteRoute());
-    history.goBack();
+    history.push("/route-list");
   }
 
   let restricciones = route.restriction && route.restriction.split(", ");
 
   return (
     <div className="Map">
+      {route.length > 0 && route.originName}
+
       <Map
         style={"mapbox://styles/mapbox/streets-v11"}
         containerStyle={{
@@ -169,56 +171,56 @@ export default function AllInfoRoute({ match }) {
               );
             })}
         </div>
-        <div className="infoUserAndButtons">
-          {route.users && (
-            <Link
-              to={`/user/${route.users[0].email}`}
-              className="userContainerallroute"
-            >
-              <div className="userContainerallroute">
-                <img
-                  src={route.users.length > 0 && route.users[0].photo}
-                  alt=" "
-                />
-                <h3>{route.users.length > 0 && route.users[0].name}</h3>
-                <div>
-                  <RatingStar Rating={route.users[0].calification} />
-                </div>
+      </div>
+      <div className="infoUserAndButtons">
+        {route.users && (
+          <Link
+            to={`/user/${route.users[0].email}`}
+            className="userContainerallroute"
+          >
+            <div className="userContainerallroute">
+              <img
+                src={route.users.length > 0 && route.users[0].photo}
+                alt=" "
+              />
+              <h3>{route.users.length > 0 && route.users[0].name}</h3>
+              <div>
+                <RatingStar Rating={route.users[0].calification} />
               </div>
-            </Link>
-          )}
+            </div>
+          </Link>
+        )}
 
-          <h1 className="priceH2">$ {route.price}</h1>
+        <h1 className="priceH2">$ {route.price}</h1>
 
-          <div className="buttons">
-            {route.place === 0 ||
-            !route.users ||
-            user.email === route.users[0].email ? (
-              <button className="buttonDisabled">
-                <FormattedMessage
-                  id="allinforoute.jointhistrip"
-                  defaultMessage="Join this trip!"
-                />
-              </button>
-            ) : (
-              <button onClick={openModal} className="button">
-                <FormattedMessage
-                  id="allinforoute.jointhistrip"
-                  defaultMessage="Join this trip!"
-                />
-              </button>
-            )}
-            {showModal ? (
-              <Modal setShowModal={setShowModal} route={route} user={user} />
-            ) : null}
-
-            <button className="buttonBlue" onClick={handleClick}>
+        <div className="buttons">
+          {route.place === 0 ||
+          !route.users ||
+          user.email === route.users[0].email ? (
+            <button className="buttonDisabled">
               <FormattedMessage
-                id="allinforoute.goback"
-                defaultMessage="Go Back"
+                id="allinforoute.jointhistrip"
+                defaultMessage="Join this trip!"
               />
             </button>
-          </div>
+          ) : (
+            <button onClick={openModal} className="button">
+              <FormattedMessage
+                id="allinforoute.jointhistrip"
+                defaultMessage="Join this trip!"
+              />
+            </button>
+          )}
+          {showModal ? (
+            <Modal setShowModal={setShowModal} route={route} user={user} />
+          ) : null}
+
+          <button className="buttonBlue" onClick={handleClick}>
+            <FormattedMessage
+              id="allinforoute.goback"
+              defaultMessage="Go Back"
+            />
+          </button>
         </div>
       </div>
     </div>

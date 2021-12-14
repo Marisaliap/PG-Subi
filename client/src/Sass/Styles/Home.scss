@@ -94,12 +94,15 @@
   .lowerSection {
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
+
     .centrateee {
       display: flex;
+      width: 100%;
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      margin: 0;
     }
 
     div {
