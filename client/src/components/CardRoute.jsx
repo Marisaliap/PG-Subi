@@ -1,6 +1,13 @@
 import React from 'react';
+import {
+  BsWatch,
+  BsPinMap,
+  BsPinMapFill,
+  BsFillPersonFill,
+  BsCashCoin,
+} from 'react-icons/bs';
 import '../Sass/Styles/CardRoute.scss';
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage } from 'react-intl';
 
 export default function CardRoute({
   origin,

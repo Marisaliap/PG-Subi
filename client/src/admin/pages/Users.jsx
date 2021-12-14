@@ -15,7 +15,8 @@ import {
     VpnKey,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import "../../styles/User.css";
+import "../../Sass/Styles/UserAdmin.scss";
+/* import "../../styles/User.css"; */
 import { useAuth0 } from "@auth0/auth0-react";
 import { editUser, getUserProfile, getAllUsers, getUserAdmin, getUserDetail } from "../../actions";
 
