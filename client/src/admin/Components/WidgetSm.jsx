@@ -1,4 +1,4 @@
-import "../styles/WidgetSm.css";
+import "../../styles/WidgetSm.css";
 import { Visibility } from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";

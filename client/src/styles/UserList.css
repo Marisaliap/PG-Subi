@@ -24,6 +24,15 @@
       cursor: pointer;
       margin-right: 20px;
   }
+  .userListBanner{
+      border: none;
+      border-radius: 10px;
+      padding: 5px 10px;
+      background-color: #b03b3b;
+      color: white;
+      cursor: pointer;
+      margin-right: 20px;
+  }
   
   .userListDelete{
       color: red;

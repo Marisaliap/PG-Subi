@@ -44,6 +44,7 @@ export default function User() {
     photoDni: userAdmin.photoDni,
     isAdmin: userAdmin.isAdmin,
     car: userAdmin.cars
+    
   });
   const [image, setImage] = useState("");
   ;
