@@ -5,6 +5,7 @@ import {
   BsPinMapFill,
   BsFillPersonFill,
   BsCashCoin,
+  BsCalendarCheckFill,
 } from "react-icons/bs";
 import "../Sass/Styles/CardRoute.scss";
 import { FormattedMessage } from "react-intl";
@@ -16,28 +17,20 @@ export default function CardRoute({
   hours,
   place,
   price,
-  //infoRoute,
   ...props
 }) {
   return (
     <div className="CardRoute" {...props}>
       <h5>
-        {/* <FormattedMessage id="cardroute.from" defaultMessage="From:" /> */}
         <BsPinMap className="icon" />
         {origin}
       </h5>
       <h5>
-        {/* <FormattedMessage id="cardroute.to" defaultMessage="To:" /> */}
         <BsPinMapFill className="icon" />
         {destiny}
       </h5>
-      {/* <h5>
-        <FormattedMessage id="cardroute.date" defaultMessage="Date:" />
-        {date}
-      </h5> */}
       <h5>
-        {/* <FormattedMessage id="cardroute.time" defaultMessage="Time:" />  */}
-        <BsWatch className="icon" /> {hours}
+        <BsCalendarCheckFill className="icon" /> {date} | {hours}
       </h5>
       {place === 0 ? (
         <div className="buttonx">

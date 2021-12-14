@@ -1,10 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../Sass/Styles/LandingPage.scss';
-import img from '../img/logo.png';
-import cityDriver from '../img/cityDriver.svg';
-import carDriver from '../img/carDriver.svg';
-import { FormattedMessage } from 'react-intl';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../Sass/Styles/LandingPage.scss";
+import img from "../img/logo.png";
+import ecoConscious from "../img/ecoConscious.svg";
+import saveMoney from "../img/saveMoney.svg";
+import electricCar from "../img/electricCar.svg";
+import natureBenefits from "../img/natureBenefits.svg";
+import { FormattedMessage } from "react-intl";
 
 export default function LandingPage() {
   return (
@@ -26,27 +28,61 @@ export default function LandingPage() {
 
       <br />
 
-      <section className="lowerSection">
-        <div>
-          <img className="SVGs" src={cityDriver} alt="Are you a passenger?" />
-          <p>
-            Book a place in other person's car, have fun alongside other people
-            and go wherever you want, by paying less than you would by using
-            other travelling methods.
-          </p>
-          <Link to="/home">
-            <button className="button">Let's go</button>
-          </Link>
-        </div>
-        <div>
-          <img className="SVGs" src={carDriver} alt="Are you a passenger?" />
-          <p>
-            With Gimme A Ride, allow other people with common destinations to
-            get into your car and have fun together while spending less!
-          </p>
-          <Link to="/home">
-            <button className="button">Let's go</button>
-          </Link>
+      <section className="sectionBelow">
+        <h1>
+          <FormattedMessage
+            id="home.title2"
+            defaultMessage="Why use GimmeARide?"
+          />
+        </h1>
+        <div className="belowContainer">
+          <div>
+            <img src={natureBenefits} alt="Eco-Consciousness" />
+            <h3>
+              <FormattedMessage
+                id="home.subtitle1"
+                defaultMessage="It's Eco-Conscious"
+              />
+            </h3>
+            <p>
+              <FormattedMessage
+                id="home.p4"
+                defaultMessage="By reducing the number of vehicles on the road, the environment is
+                greatly benefited."
+              />
+            </p>
+          </div>
+
+          <div>
+            <img src={electricCar} alt="It's hella fun" />
+            <h3>
+              <FormattedMessage id="home.subtitle2" defaultMessage="Have fun" />
+            </h3>
+            <p>
+              <FormattedMessage
+                id="home.p5"
+                defaultMessage="Meet new people with whom to share excellent experiences.
+                Traveling alone is boooring."
+              />
+            </p>
+          </div>
+
+          <div>
+            <img src={saveMoney} alt="Lets you save money" />
+            <h3>
+              <FormattedMessage
+                id="home.subtitle3"
+                defaultMessage="Lets you save money"
+              />
+            </h3>
+            <p>
+              <FormattedMessage
+                id="home.p6"
+                defaultMessage="Share your travel expenses with select passengers, you will end up
+                spending less on each trip!"
+              />
+            </p>
+          </div>
         </div>
       </section>
     </div>

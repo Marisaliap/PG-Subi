@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserById, getUserByName } from "../actions";
-import CardUser from "./CardUser";
+import { getUserByName } from "../actions";
+import UserCardPerfil from "./UserCardPerfil";
 import "../Sass/Styles/Users.scss";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
 export default function Users() {
@@ -16,7 +16,7 @@ export default function Users() {
       {users.length === 0 && userBuscado.email ? (
         <div className="usercard">
           <NavLink to={`/user/${userBuscado.email}`}>
-            <CardUser
+            <UserCardPerfil
               name={userBuscado.name}
               lastName={userBuscado.lastName}
               email={userBuscado.email}
@@ -31,7 +31,7 @@ export default function Users() {
         users.map((user) => {
           return (
             <div className="usercard">
-              <CardUser
+              <UserCardPerfil
                 name={user.name}
                 lastName={user.lastName}
                 email={user.email}
@@ -62,22 +62,7 @@ export default function Users() {
           </button>
         </>
       )}
-      <div>
-        {/* { users.map(user => {
-        return(
-          <NavLink to={"/profile/"+ user.email}>
-          <CardUser  
-          name = { user.name }
-          lastName = { user.lastName }
-          genre = { user.genre } 
-          age = { user.age } 
-          photo = { user.photo }
-          calification = { user.calification }
-          />
-          </NavLink>
-        )
-      }) } */}
-      </div>
+      <div></div>
     </div>
   );
 }

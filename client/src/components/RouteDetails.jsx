@@ -16,15 +16,11 @@ const RouteDetails = ({ match }) => {
 
   useEffect(() => {
     dispatch(allRoutes());
-    window.scrollTo({
-      top: 0,
-      behavior: "instant",
-    });
   }, []);
   // ------------------<paged>------------------
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [routesPerPage, setRoutesPerPage] = useState(3);
+  const [routesPerPage, setRoutesPerPage] = useState(6);
   const indexOfLastRoute = currentPage * routesPerPage;
   const indexOffirstRoute = indexOfLastRoute - routesPerPage;
   const currentRoutes =

@@ -1,7 +1,7 @@
-@import '../Variables/Variables.scss';
+@import "../Variables/Variables.scss";
 
 .LandingPage {
-  padding: 5rem;
+  padding: 3rem;
 
   .upperSection {
     padding-left: 20rem;
@@ -30,22 +30,45 @@
     font-weight: 600;
   }
 
-  .lowerSection {
-    display: flex;
-    vertical-align: center;
-    align-items: center;
-    justify-content: center;
-
-    div {
-      width: 30%;
-      margin-left: 5rem;
-      margin-right: 5rem;
+  .sectionBelow {
+    @media only screen and (min-width: 768px) {
+      padding: 1.5rem;
     }
 
-    .SVGs {
-      height: 15rem;
-      width: 15rem;
-      object-fit: fill;
+    @media only screen and (min-width: 1024px) {
+      margin-top: 0rem;
+    }
+
+    h1 {
+      font-weight: 600;
+    }
+
+    .belowContainer {
+      @media only screen and (min-width: 1024px) {
+        display: flex;
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      div {
+        @media only screen and (min-width: 1024px) {
+          margin: 0 5rem;
+        }
+
+        h3 {
+          margin-bottom: 0;
+        }
+
+        p {
+          margin-top: 0;
+        }
+
+        img {
+          height: 12rem;
+          width: 12rem;
+          object-fit: fill;
+        }
+      }
     }
   }
 }

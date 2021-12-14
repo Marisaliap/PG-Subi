@@ -5,13 +5,10 @@
     display: grid;
     margin: 1rem;
     place-items: center;
-    // background-color: red;
 
     @media only screen and (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
       grid-auto-rows: auto;
-      // grid-row-gap: auto;
-      // grid-column-gap: auto;
     }
 
     @media only screen and (min-width: 1024px) {

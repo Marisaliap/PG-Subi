@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
-import '../Sass/Styles/Home.scss';
-// import header from "../img/header.png";
-import navigator from '../img/navigator.svg';
-import ecoConscious from '../img/ecoConscious.svg';
-import saveMoney from '../img/saveMoney.svg';
-import electricCar from '../img/electricCar.svg';
-import natureBenefits from '../img/natureBenefits.svg';
-import SearchBarHome from './SearchBarHome';
-import { useSelector, useDispatch } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
-import { getUserProfile, getAllUsers, deleteRouteFromDb } from '../actions';
-import { useAuth0 } from '@auth0/auth0-react';
-// import Loggin from "./Loggin";
-import Swal from 'sweetalert2';
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import "../Sass/Styles/Home.scss";
+import navigator from "../img/navigator.svg";
+import cityDriver from "../img/cityDriver.svg";
+import carDriver from "../img/carDriver.svg";
+import SearchBarHome from "./SearchBarHome";
+import { useSelector, useDispatch } from "react-redux";
+import { FormattedMessage } from "react-intl";
+import { getUserProfile, getAllUsers, deleteRouteFromDb } from "../actions";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Home() {
-  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   const userpro = useSelector((state) => state.userpro);
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getUserProfile(userpro.email));
@@ -30,24 +27,21 @@ export default function Home() {
       top: 0,
       behavior: "instant",
     });
-   dispatch(getAllUsers());
+    dispatch(getAllUsers());
   }, []);
 
   function handleClick() {
     if (!isAuthenticated) {
       return new Swal({
-        icon: 'warning',
-        title: 'Sorry',
-        text: 'You need to be logged in to post a trip!',
-        confirmButtonText: 'Alright',
+        icon: "warning",
+        title: "Sorry",
+        text: "You need to be logged in to post a trip!",
+        confirmButtonText: "Alright",
       });
     }
   }
   return (
     <div className="Homepage">
-      {/* <div>
-        <img className="fotoHeader" src={header} alt="header" />
-      </div> */}
       <section className="searchBarSection">
         <h1>
           <FormattedMessage
@@ -57,10 +51,7 @@ export default function Home() {
         </h1>
         <SearchBarHome />
       </section>
-      {/* <>
-          <h1>{id}</h1>
-          <Loggin onIdSubmit={setId} />
-        </> */}
+
       <section>
         <img className="homepageImage" src={navigator} alt="Home" />
         <article>
@@ -85,37 +76,21 @@ export default function Home() {
               defaultMessage="* Average amount received by drivers in 2021."
             />
           </p>
-          {/* 
-          {
-            <NavLink
-              to={
-                !users.dni
-                  ? '/register'
-                  : users.name && users.cars.length === 0
-                    ? '/car'
-                    : users.name && users.cars[0].patent
-                      ? '/route'
-                      : ''
-              }
-            >
-              <button className="button">
-                <FormattedMessage id="menu.post" defaultMessage="Post a Trip" />
-              </button>
-            </NavLink>
-          } */}
+
           <div>
             {isAuthenticated ? (
-              
-                <button className="button" onClick={() => {
-                  dispatch(deleteRouteFromDb('lala'))
-                  history.push('/route-list')
-                  }}>
-                  <FormattedMessage
-                    id="home.routes"
-                    defaultMessage="See all routes available!"
-                  />
-                </button>
-             
+              <button
+                className="button"
+                onClick={() => {
+                  dispatch(deleteRouteFromDb("lala"));
+                  history.push("/route-list");
+                }}
+              >
+                <FormattedMessage
+                  id="home.routes"
+                  defaultMessage="See all routes available!"
+                />
+              </button>
             ) : (
               <button onClick={handleClick} className="button">
                 <FormattedMessage
@@ -128,60 +103,28 @@ export default function Home() {
         </article>
       </section>
 
-      <section className="sectionBelow">
-        <h1>
-          <FormattedMessage
-            id="home.title2"
-            defaultMessage="Why use GimmeARide?"
-          />
-        </h1>
-        <div className="belowContainer">
+      <section className="lowerSection">
+        <div className="centrateee">
           <div>
-            <img src={natureBenefits} alt="Eco-Consciousness" />
-            <h3>
-              <FormattedMessage
-                id="home.subtitle1"
-                defaultMessage="It's Eco-Conscious"
-              />
-            </h3>
+            <img className="SVGs" src={cityDriver} alt="Are you a passenger?" />
             <p>
-              <FormattedMessage
-                id="home.p4"
-                defaultMessage="By reducing the number of vehicles on the road, the environment is
-                greatly benefited."
-              />
+              Book a place in other person's car, have fun alongside other
+              people and go wherever you want, by paying less than you would by
+              using other travelling methods.
             </p>
+            <Link to="/home">
+              <button className="button">Let's go</button>
+            </Link>
           </div>
-
           <div>
-            <img src={electricCar} alt="It's hella fun" />
-            <h3>
-              <FormattedMessage id="home.subtitle2" defaultMessage="Have fun" />
-            </h3>
+            <img className="SVGs" src={carDriver} alt="Are you a passenger?" />
             <p>
-              <FormattedMessage
-                id="home.p5"
-                defaultMessage="Meet new people with whom to share excellent experiences.
-                Traveling alone is boooring."
-              />
+              With Gimme A Ride, allow other people with common destinations to
+              get into your car and have fun together while spending less!
             </p>
-          </div>
-
-          <div>
-            <img src={saveMoney} alt="Lets you save money" />
-            <h3>
-              <FormattedMessage
-                id="home.subtitle3"
-                defaultMessage="Lets you save money"
-              />
-            </h3>
-            <p>
-              <FormattedMessage
-                id="home.p6"
-                defaultMessage="Share your travel expenses with select passengers, you will end up
-                spending less on each trip!"
-              />
-            </p>
+            <Link to="/home">
+              <button className="button">Let's go</button>
+            </Link>
           </div>
         </div>
       </section>

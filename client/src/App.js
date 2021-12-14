@@ -59,11 +59,11 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <div>
+            <NavBar />
+            <Route path="/home" component={Home} />
             {isAuthenticated &&
             (userpro.isBanned === false || userpro.length === 0) ? (
               <>
-                <NavBar />
-                <Route path="/home" component={Home} />
                 {isAuthenticated ? (
                   <>
                     <Switch>
@@ -88,14 +88,6 @@ export default function App() {
                       <div>
                         <Route
                           exact
-                          // path="/admin"
-                          // render={() =>
-                          //   userpro && admin === true ? (
-                          //     <Admin />
-                          //   ) : (
-                          //     <Redirect to="/home" />
-                          //   )
-                          // exact
                           path="/admin"
                           render={() =>
                             userpro && userpro.isAdmin === true ? (
@@ -126,11 +118,11 @@ export default function App() {
                     &#8679;
                   </button>
                 )}
-                <Footer />
               </>
             ) : (
-              <Error404 />
+              <div>You don't have access here</div>
             )}
+            <Footer />
           </div>
         </Switch>
       </div>
