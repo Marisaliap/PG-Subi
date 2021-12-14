@@ -1,12 +1,18 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 .custom-file-input {
-  input {
-    width: 100%;
-  }
+  width: 100%;
+
   &:focus {
     outline: none;
   }
+
   @media only screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    max-width: 60vw;
     display: flex;
     flex-direction: column;
   }
@@ -15,7 +21,7 @@
   visibility: hidden;
 }
 .custom-file-input::before {
-  content: "Select an image";
+  content: 'Select an image';
 
   background: linear-gradient(top, #f9f9f9, #e3e3e3);
   border: 1px solid $buttonColor;
@@ -47,7 +53,7 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.5s ease-in-out;
-  width: 90vw;
+  width: 80vw;
 
   &:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
@@ -129,16 +135,16 @@
     }
 
     .label {
-      width: 10rem;
+      width: 12rem;
       display: flex;
       margin-left: 15rem;
       color: $labelForms;
 
       @media only screen and (max-width: 768px) {
         display: flex;
-        width: 0;
+        // width: 0;
         display: flex;
-        margin-left: -4rem;
+        margin-left: 0;
         color: black;
       }
     }
@@ -190,6 +196,7 @@
       border-radius: 5px;
       margin-top: 1rem;
       font-size: 1.2em;
+      width: 100%;
 
       &:hover {
         background-color: $buttonColor-33;
@@ -209,7 +216,7 @@
     }
 
     .select {
-      width: 60vw;
+      width: 100%;
       height: 2.5rem;
       text-align: center;
       border: none;

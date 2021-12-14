@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { postUser, getUserDetail, getAllUsers } from "../actions";
-import { useAuth0 } from "@auth0/auth0-react";
-import "../Sass/Styles/RegisterForm.scss";
-import swal from "sweetalert2";
-import { FormattedMessage } from "react-intl";
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { postUser, getUserDetail, getAllUsers } from '../actions';
+import { useAuth0 } from '@auth0/auth0-react';
+import '../Sass/Styles/RegisterForm.scss';
+import swal from 'sweetalert2';
+import { FormattedMessage } from 'react-intl';
 
 export default function Registro() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { user, isAuthenticated } = useAuth0();
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState('');
   const [loanding, setLoanding] = useState(false);
   const [dni, setDni] = useState([]);
   let booleanDNI;
-  const placeHolderAbout = "Please tell us a little about yourself";
+  const placeHolderAbout = 'Please tell us a little about yourself';
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -147,7 +147,7 @@ export default function Registro() {
   // __________________________________________________________________________________
 
   function validateGender() {
-    if (document.getElementById("genre").value === "1") {
+    if (document.getElementById('genre').value === '1') {
       return false;
     }
     return true;
@@ -175,20 +175,20 @@ export default function Registro() {
   const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
-    name: "",
-    lastName: "",
-    email: isAuthenticated ? user.email : "",
-    photo: "",
-    dni: "",
-    genre: "",
-    age: "",
-    telephone: "",
-    street: "",
-    city: "",
-    province: "",
-    facebook: "",
-    instagram: "",
-    about: "",
+    name: '',
+    lastName: '',
+    email: isAuthenticated ? user.email : '',
+    photo: '',
+    dni: '',
+    genre: '',
+    age: '',
+    telephone: '',
+    street: '',
+    city: '',
+    province: '',
+    facebook: '',
+    instagram: '',
+    about: '',
     photoDni: [],
     checkbox: false,
     checkboxManejante: false,
@@ -225,14 +225,14 @@ export default function Registro() {
   const uploadImage = async (e) => {
     const files = e.target.files;
     const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "PhotoUser");
+    data.append('file', files[0]);
+    data.append('upload_preset', 'PhotoUser');
     setLoanding(true);
 
     const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+      'https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload',
       {
-        method: "POST",
+        method: 'POST',
         body: data,
       }
     );
@@ -244,14 +244,14 @@ export default function Registro() {
   const uploadImage2 = async (e) => {
     const files = e.target.files;
     const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "PhotoDni");
+    data.append('file', files[0]);
+    data.append('upload_preset', 'PhotoDni');
     setLoanding(true);
 
     const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
+      'https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload',
       {
-        method: "POST",
+        method: 'POST',
         body: data,
       }
     );
@@ -267,37 +267,37 @@ export default function Registro() {
       dispatch(postUser(input));
       let emailUsuario = input.email;
       setInput({
-        name: "",
-        lastName: "",
-        email: "",
-        dni: "",
-        genre: "",
-        age: "",
-        telephone: "",
-        street: "",
-        city: "",
-        province: "",
-        facebook: "",
-        instagram: "",
-        about: "",
-        photo: "",
+        name: '',
+        lastName: '',
+        email: '',
+        dni: '',
+        genre: '',
+        age: '',
+        telephone: '',
+        street: '',
+        city: '',
+        province: '',
+        facebook: '',
+        instagram: '',
+        about: '',
+        photo: '',
         photoDni: [],
       });
 
       dispatch(getUserDetail(emailUsuario));
-      history.push("/home");
+      history.push('/home');
       return new swal({
-        title: "Good job!",
-        text: "User created correctly",
-        icon: "success",
-        button: "Aww yiss!",
+        title: 'Good job!',
+        text: 'User created correctly',
+        icon: 'success',
+        button: 'Aww yiss!',
       });
     } else {
       return new swal({
-        title: "Sorry",
-        text: "All mandatory fields must be filled to continue",
-        icon: "warning",
-        button: "Ok",
+        title: 'Sorry',
+        text: 'All mandatory fields must be filled to continue',
+        icon: 'warning',
+        button: 'Ok',
       });
     }
   }
@@ -347,10 +347,10 @@ export default function Registro() {
                 name="name"
                 value={input.name}
                 placeholder={
-                  "Please type your real name! " +
+                  'Please type your real name! ' +
                   (user.given_name === undefined
-                    ? ""
-                    : "-> Rec: " + user.given_name)
+                    ? ''
+                    : '-> Rec: ' + user.given_name)
                 }
                 onChange={(e) => handleChange(e)}
               />
@@ -367,10 +367,10 @@ export default function Registro() {
                 className="inputs"
                 type="text"
                 placeholder={
-                  "Please type your real last name! " +
+                  'Please type your real last name! ' +
                   (user.family_name === undefined
-                    ? ""
-                    : "-> Rec: " + user.family_name)
+                    ? ''
+                    : '-> Rec: ' + user.family_name)
                 }
                 name="lastName"
                 value={input.lastName}
@@ -396,18 +396,20 @@ export default function Registro() {
                   defaultMessage="Photo User*:"
                 />
               </p>
-              <input
-                onChange={(e) => uploadImage(e)}
-                className="custom-file-input"
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
+              <div className="cargaImagen">
+                <input
+                  onChange={(e) => uploadImage(e)}
+                  className="custom-file-input"
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
             </div>
             <div Style="display:none">{(input.photo = image)}</div>
             <p>
-              {loanding ? <img src={image} Style="height:150px" alt="" /> : ""}
+              {loanding ? <img src={image} Style="height:150px" alt="" /> : ''}
             </p>
             <div className="cadaLinea">
               <p className="label">
@@ -446,7 +448,7 @@ export default function Registro() {
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>
             <p>
-              {loanding ? <img src={dni[0]} Style="height:150px" alt="" /> : ""}
+              {loanding ? <img src={dni[0]} Style="height:150px" alt="" /> : ''}
             </p>
             <div className="cadaLinea">
               <p className="label">
@@ -455,7 +457,7 @@ export default function Registro() {
                   defaultMessage="ID or passport Back*:"
                 />
               </p>
-              <label className="cargaImagen">
+              <div className="cargaImagen">
                 <input
                   onChange={(e) => uploadImage2(e)}
                   className="custom-file-input"
@@ -464,11 +466,11 @@ export default function Registro() {
                   required="required"
                   accept="image/png, image/jpeg"
                 />
-              </label>
+              </div>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>
             <p>
-              {loanding ? <img src={dni[1]} Style="height:150px" alt="" /> : ""}
+              {loanding ? <img src={dni[1]} Style="height:150px" alt="" /> : ''}
             </p>
           </div>
           <div className="cadaLinea">
@@ -476,7 +478,7 @@ export default function Registro() {
               <FormattedMessage
                 id="register.gender"
                 defaultMessage="Gender*:"
-              />{" "}
+              />{' '}
             </p>
             <select
               className="select"
@@ -579,7 +581,7 @@ export default function Registro() {
             {errors.province && <p className="error">{errors.province}</p>}
           </div>
           {input.checkboxManejante === false ? (
-            ""
+            ''
           ) : (
             <div className="cadaLinea">
               <p className="label">
@@ -645,17 +647,17 @@ export default function Registro() {
               <FormattedMessage
                 id="register.agree"
                 defaultMessage="By continuing, you agree to our"
-              />{" "}
+              />{' '}
               <a target="_blank" href="/terms-and-conditions">
-                {" "}
+                {' '}
                 <FormattedMessage
                   id="register.terms"
                   defaultMessage="Terms of Use"
-                />{" "}
-              </a>{" "}
+                />{' '}
+              </a>{' '}
               <FormattedMessage id="register.and" defaultMessage="and" />
               <a target="_blank" href="/privacy-policy">
-                {" "}
+                {' '}
                 <FormattedMessage
                   id="register.privacy"
                   defaultMessage="Privacy Policy"
