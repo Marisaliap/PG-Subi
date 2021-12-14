@@ -9,7 +9,6 @@ import { getOrderDetails, deleteOrder, getAllUsers } from "../../actions";
 export default function Transactions() {
   const orders = useSelector(state => state.orderDetails)
   const registeredUser = useSelector(state => state.usuariosRegistrados)
-  console.log(orders)
   var filtrados = orders.map(e => {
     let date = e.updatedAt.split('T')
     date = date[0].split('-').reverse().join('-')
@@ -42,7 +41,7 @@ export default function Transactions() {
 
 
   const handleDelete = (id) => {
-      console.log(id)
+    
     dispatch(deleteOrder(id))
     setData(data.filter((item) => item.id !== id))
   }

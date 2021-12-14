@@ -7,7 +7,7 @@ import "../Sass/Styles/allInfoRoute.scss";
 export const Modal = ({ setShowModal, route, user }) => {
   // close the modal when clicking outside the modal.
   const [datos, setDatos] = useState("")
-  console.log(user)
+  
   useEffect(() => {
     axios.post("http://localhost:3001/mercadopago",{
       idRoute:route.id,

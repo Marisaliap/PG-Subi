@@ -2,13 +2,12 @@ import "../../styles/Sidebar.css";
 
 import {
   LineStyle,
-  Timeline,
-  TrendingUp,
   PermIdentity,
   AttachMoney,
   PersonAdd,
   MailOutline,
   DynamicFeed,
+  Commute,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
@@ -25,14 +24,20 @@ export default function Sidebar() {
                 Dashboard
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
-            </li>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" />
-              Sales
-            </li>
+
+            <Link to="/admin/transactions" className="link">
+              <li className="sidebarListItem">
+                <AttachMoney className="sidebarIcon" />
+                Sales
+              </li>
+            </Link>
+
+            <Link to="/admin/routes" className="link">
+              <li className="sidebarListItem">
+                <Commute className="sidebarIcon" />
+                Routes Info
+              </li>
+            </Link>
           </ul>
         </div>
         <div className="sidebarMenu">
@@ -44,17 +49,11 @@ export default function Sidebar() {
                 All Users
               </li>
             </Link>
+
             <Link to="/admin/newUser" className="link">
               <li className="sidebarListItem">
                 <PersonAdd className="sidebarIcon" />
                 Create New User
-              </li>
-            </Link>
-
-            <Link to="/admin/transactions" className="link">
-              <li className="sidebarListItem">
-                <AttachMoney className="sidebarIcon" />
-                Transactions
               </li>
             </Link>
           </ul>
@@ -73,7 +72,7 @@ export default function Sidebar() {
               </a>
             </li>
 
-            <Link to="/admin/feed" className="link">
+            <Link to="/admin/feedback" className="link">
               <li className="sidebarListItem">
                 <DynamicFeed className="sidebarIcon" />
                 Feedback

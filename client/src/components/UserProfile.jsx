@@ -49,8 +49,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     dispatch(getUserProfile(userInfo.email));
-  }, [booleanUser, booleanCar, booleanPhoto, userInfo.email]);
-  console.log(userInfo);
+  }, [booleanUser, booleanCar, booleanPhoto, userInfo.email])
   const [input, setInput] = useState({});
 
   const [auto, setAuto] = useState({});

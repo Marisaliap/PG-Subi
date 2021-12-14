@@ -86,8 +86,8 @@ export default function Post(id) {
       <div>
         <div className="desContainer">
           {userpost.length > 0
-            ? userpost.map((post) => (
-                <div className="description">
+            ? userpost.map((post,i) => (
+                <div key={i} className="description">
                   <div className="infodate">
                     <h6>{post.date}</h6>
                     <h6>{post.author}</h6>

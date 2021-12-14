@@ -81,7 +81,7 @@ const getMPPayment = async (req,res) => {
 
   Order.findByPk(external_reference)
   .then((order) => {
-    console.log(external_reference, 'soy reference')
+    // console.log(external_reference, 'soy reference')
     order.payment_id= payment_id
     order.payment_status= payment_status
     order.merchant_order_id = merchant_order_id

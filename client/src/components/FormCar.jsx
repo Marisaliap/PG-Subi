@@ -28,10 +28,7 @@ export default function FormCar() {
     checkboxBlueCard: false,
   });
 
-  //console.log("inputlength=>", input.bluecard.length);
-  //console.log("input=>", input);
-  //console.log("green=>", image);
-  //console.log("blue=>", cedula);
+
   let booleanPatent;
 
   useEffect(() => {
@@ -163,7 +160,7 @@ export default function FormCar() {
     }
   }
 
-  console.log("input=>", input);
+  
 
   return (
     <div className="FormCar">
@@ -359,7 +356,6 @@ export default function FormCar() {
                 )}
               </p>
             </div>}
-          {console.log(input.bluecard)}
         </div>
         <button className="button" type="submit">
           <FormattedMessage id="formCar.add" defaultMessage=" Add Car" />

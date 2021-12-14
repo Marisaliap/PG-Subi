@@ -6,7 +6,7 @@ export default function WidgetSm() {
   
   const registeredUser = useSelector(state => state.usuariosRegistrados)
   let slicedUsers;
-  console.log(registeredUser, 'soy dash')
+
  
   if (registeredUser.length < 5) {
     slicedUsers = registeredUser

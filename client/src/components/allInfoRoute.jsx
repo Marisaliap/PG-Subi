@@ -60,8 +60,6 @@ export default function AllInfoRoute({ match }) {
 
   let restricciones = route.restriction && route.restriction.split(", ");
 
-  console.log(route.restriction);
-
   return (
     <div className="Map">
       {route.length > 0 && route.originName}
@@ -136,9 +134,6 @@ export default function AllInfoRoute({ match }) {
           width: "50vw",
         }}
         className="mapbox"
-        // center={route.origin}
-        // fitBounds={route.origin && [route.origin, route.destiny]}
-        // center={route.origin}
         center={route.center}
         zoom={
           route.km

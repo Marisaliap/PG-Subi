@@ -55,11 +55,7 @@ export default function Chat() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log({
-      author: userInfo.email,
-      message: mensaje,
-      email: window.location.href.split("/chat/")[1],
-    });
+  
     dispatch(
       postChat({
         author: userInfo.email,
