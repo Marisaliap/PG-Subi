@@ -54,20 +54,37 @@
       font-weight: 600;
       font-size: 1.5rem;
       line-height: 2rem;
+      @media only screen and (max-width: 768px) {
+        margin-left: 0;
+      }
     }
 
     .description {
       margin-left: 1.25rem;
       font-weight: 600;
+      @media only screen and (max-width: 768px) {
+        padding: 1rem;
+        margin: 0;
+        text-align: left;
+      }
     }
 
     .detail {
       font-weight: 300;
       margin-left: 1.25rem;
+      @media only screen and (max-width: 768px) {
+        padding: 1rem;
+        margin: 0;
+        text-align: left;
+      }
     }
 
     .button {
       margin-left: 1.25rem;
+      @media only screen and (max-width: 768px) {
+        margin-left: 0;
+        width: 200%;
+      }
     }
   }
 
@@ -92,9 +109,15 @@
   }
 
   .lowerSection {
-    display: flex;
-    flex-direction: column;
+    display: inline;
     width: 100%;
+
+    @media only screen and (max-width: 768px) {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 1rem;
+    }
 
     .centrateee {
       display: flex;
@@ -103,6 +126,10 @@
       justify-content: center;
       align-items: center;
       margin: 0;
+      @media only screen and (max-width: 768px) {
+        flex-direction: column;
+        margin-top: 3rem;
+      }
     }
 
     div {
