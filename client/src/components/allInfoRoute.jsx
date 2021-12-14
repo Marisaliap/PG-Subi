@@ -61,7 +61,6 @@ export default function AllInfoRoute({ match }) {
 
   let restricciones =route.restriction && route.restriction.split(", ");
 
-console.log(route.restriction)
 
   return (
     <div className="Map">

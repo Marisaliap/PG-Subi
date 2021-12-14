@@ -145,7 +145,7 @@ export default function User() {
             <span className="userShowTitle">Account Documents</span>
             <div className="userShowInfo">
               <PhotoCamera className="userShowIcon" />
-              {!userAdmin.photoDni ? "" : userAdmin.photoDni.map(e => <img src={e} alt="" className="userShowImge" />)}
+              {!userAdmin.photoDni ? "" : userAdmin.photoDni.map((e,i) => <img  key={i} src={e} alt="" className="userShowImge" />)}
               {/* <img src ={!userAdmin.photoDni? "" : userAdmin.photoDni[0]}className="userShowImge" />
               <img src ={!userAdmin.photoDni? "" : userAdmin.photoDni[1]} className="userShowImge" /> */}
             </div>

@@ -1,6 +1,5 @@
 
 export const userData = (orders) => {
-  console.log(orders, 'soy dummy')
 
   const january = orders.map(order => order.month === '1' && order.price || 0 ).reduce((previousValue, currentValue) => previousValue + currentValue, 0)
   const february = orders.map(order => order.month === '2' && order.price || 0 ).reduce((previousValue, currentValue) => parseInt(previousValue) + parseInt(currentValue), 0)

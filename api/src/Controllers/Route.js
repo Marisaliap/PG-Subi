@@ -73,7 +73,7 @@ const postRoute = async (req, res, next) => {
       points,
       center,
     } = req.body;
-    console.log("SOY EL BODY",req.body)
+    
 
     let kmNumber = km.split("k")[0];
 

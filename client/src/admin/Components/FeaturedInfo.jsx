@@ -6,7 +6,6 @@ export default function FeaturedInfo({info}) {
   const costs = sales * 2/100
   const revenue = (sales * 10/100) - costs
   
-  console.log(info, 'soy info')
   return (
     <div className="featured">
       <div className="featuredItem">

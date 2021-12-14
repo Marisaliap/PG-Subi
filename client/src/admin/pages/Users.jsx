@@ -23,7 +23,7 @@ export default function User2() {
     const { id, userAdmin, carAdmin } = useSelector(state => state)
     const { user } = useAuth0();
     const dispatch = useDispatch()
-    console.log(userAdmin)
+    
     // -------------------------------------<useEffect>-------------------------------------
     useEffect((id) => {
         // dispatch(getUserAdmin(id));// sin esto funciona

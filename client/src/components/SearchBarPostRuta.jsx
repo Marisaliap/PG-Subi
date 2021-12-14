@@ -328,7 +328,6 @@ export default function SearchBar() {
               </button>
             </NavLink>
           </div>
-          {console.log(checkInfo.length)}
           <div className="botonPostRuta">
             {checkAllInfo ? (
               // <NavLink

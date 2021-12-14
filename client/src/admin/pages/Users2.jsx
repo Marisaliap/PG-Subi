@@ -79,8 +79,6 @@ export default function User2() {
         car: userAdmin.cars
     });
 
-    console.log("INPUT", input)
-    console.log("USERAMIN", userAdmin)
 
     // usuariosRegistrados.map(e=>e.email).includes(id) === true && setInput({
     //     email: userAdmin.email,
@@ -323,7 +321,7 @@ export default function User2() {
                         <span className="userShowTitle">Account Documents</span>
                         <div className="userShowInfo">
                             <PhotoCamera className="userShowIcon" />
-                            {!userAdmin.photoDni ? "" : userAdmin.photoDni.map(e => <img src={e} alt="" className="userShowImge" />)}
+                            {!userAdmin.photoDni ? "" : userAdmin.photoDni.map((e,i) => <img key={i} src={e} alt="" className="userShowImge" />)}
 
                         </div>
                         <div className="userShowInfo">

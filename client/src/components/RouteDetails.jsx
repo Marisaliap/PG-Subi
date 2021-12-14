@@ -60,8 +60,7 @@ const RouteDetails = ({match}) => {
       <div className="RouteCardContainer">
         {currentRoutes.map((route, i) => (
           <Link className="link" id="link" to={`/route/${route.id}`}>
-            <div className="RouteCard">
-              {console.log(route.users)}
+            <div key={i} className="RouteCard">
               {route.users && (
                 <CardUser
                   photo={route.users.length > 0 && route.users[0].photo}
