@@ -132,11 +132,9 @@ const getUser = async (req, res, next) => {
 const putUserCal = async (req, res, next) => {
   try {
     const { id } = req.params;
-console.log("id=>",id)
 data = await User.findByPk(id, {
   include: [Post],
 });
-console.log("data=>",data)
 
 const calification = data.posts;
 let array = [];
@@ -150,7 +148,7 @@ array.forEach(function (e) {
 });
 
 calUser = suma / array.length;
-console.log("calU=>",calUser)
+
 
     const user = await User.findByPk(id);
     user.update({

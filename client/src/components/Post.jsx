@@ -74,7 +74,6 @@ export default function Post(id) {
       });
       dispatch(putRatingUser(ids));
       dispatch(userPost(ids));
-      dispatch(getUserDetail(id))
       swal({
         title: "Good job!",
         text: "Post created correctly",
@@ -90,8 +89,6 @@ export default function Post(id) {
       });
     }
   }
-  console.log("input=>", input);
-  console.log("id=>", ids);
   
   return (
     <div className="Post">

@@ -431,7 +431,6 @@ export function userPost(id) {
 }
 
 export function putRatingUser(id) {
-  console.log("idput=>", id);
   return async function (dispatch) {
     try {
       const response = await axios.put(
