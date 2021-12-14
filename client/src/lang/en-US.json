@@ -252,7 +252,21 @@
   "privacyPolicy.p25": "",
   "privacyPolicy.p26": "",
   "privacyPolicy.p70": "If you have any questions about this Privacy Policy or if you have any requests relating to your Personal Data, you can contact us via email to our Data Protection Officer under <a>dataprotection@GiveMeaRide.com</a>",
-  "final": "",
 
-  "app.banned": "You don't have access here, for more information please contact us at grupo10.soyhenry@gmail.com"
+  "app.banned": "You don't have access here, for more information please contact us at grupo10.soyhenry@gmail.com",
+  
+  "landingPage.p1": "Wherever you like, whenever you like.",
+  "landingPage.p2": "Gimme A Ride allows you to connect both drivers and passengers willing to travel together between cities, sharing the cost of the adventure",
+  "landingPage.p3": "Wanna know more?",
+  "landingPage.p4": "By reducing the number of vehicles on the road, the environment is greatly benefited.",
+  "landingPage.t1": "Why use GimmeARide?",
+  "landingPage.t2": "It's Eco-Conscious",
+  "landingPage.t3" : "Have fun",
+  "landingPage.p5" : "Meet new people with whom to share excellent experiences.Traveling alone is boooring.",
+  "landingPage.t4" : "Lets you save money",
+  "landingPage.p6" : "Share your travel expenses with select passengers, you will end up spending less on each trip!",
+  
+  
+  
+  "final": ""
 }

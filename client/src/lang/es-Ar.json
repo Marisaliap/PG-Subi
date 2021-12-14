@@ -266,7 +266,20 @@
   "adminNewUser.title": "Crear Nuevo Usuario",
   "adminNewUser.about": "Sobre mi:",
 
-  "final": "",
+  "app.banned": "No tienes acceso a esta pagina, para mas informacion contactese a grupo10.soyhenry@gmail.com",
 
-  "app.banned": "No tienes acceso a esta pagina, para mas informacion contactese a grupo10.soyhenry@gmail.com"
+  "landingPage.p1": "Donde quieras, cuando quieras.",
+  "landingPage.p2": "Gimme A Ride te permite conectar tanto a los conductores como a los pasajeros que deseen viajar juntos entre ciudades, compartiendo el costo de la aventura.",
+  "landingPage.p3": "¿Quieres saber más?",
+  "landingPage.p4": "Al reducir el número de vehículos en la carretera, el medio ambiente se beneficia enormemente. ",
+  "landingPage.t1": "¿Por qué usar GimmeARide?",
+  "landingPage.t2": "Eco Consciente",
+  "landingPage.t3" : "Es divertido",
+  "landingPage.p5" : "Conoce gente nueva con la que compartir experiencias excelentes. Viajar solo es aburrido",  
+  "landingPage.t4" : "Te permite ahorrar dinero",
+  "landingPage.p6" : "¡Comparte tus gastos de viaje con pasajeros selectos, terminarás gastando menos en cada viaje!",
+  
+
+
+  "final": ""
 }
