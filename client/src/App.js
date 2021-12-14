@@ -31,6 +31,7 @@ import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
 import Chat from "./components/Chat";
 import { Redirect } from "react-router";
+import { FormattedMessage } from "react-intl";
 
 export default function App() {
   const { isAuthenticated } = useAuth0();
