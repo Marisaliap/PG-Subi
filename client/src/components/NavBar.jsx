@@ -1,30 +1,32 @@
-import React, { useContext } from "react";
-import { useEffect } from "react";
-import { useHistory } from "react-router";
-import autitos from "../img/autitos.png";
-import Logo from "../img/logo.png";
-import { Profile } from "./Profile";
-import { useSelector, useDispatch } from "react-redux";
-import Auth from "./Auth";
-import { NavLink, Link } from "react-router-dom";
-import { getUserProfile, getAllUsers } from "../actions";
+import React, { useContext } from 'react';
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
+import autitos from '../img/autitos.png';
+import Logo from '../img/logo.png';
+import { Profile } from './Profile';
+import { useSelector, useDispatch } from 'react-redux';
+import Auth from './Auth';
+import { NavLink, Link } from 'react-router-dom';
+import { getUserProfile, getAllUsers } from '../actions';
 import {
   BsPlusCircle,
   BsShieldLock,
   BsCaretDownFill,
-  BsCaretUpFill,
-} from "react-icons/bs";
-import "../Sass/Styles/NavBar.scss";
-import { FormattedMessage } from "react-intl";
-import { langContext } from "./../context/langContext.js";
-import { useAuth0 } from "@auth0/auth0-react";
-import Swal from "sweetalert2";
+  BsPersonCircle,
+  BsChevronRight,
+} from 'react-icons/bs';
+import '../Sass/Styles/NavBar.scss';
+import { FormattedMessage } from 'react-intl';
+import { langContext } from './../context/langContext.js';
+import { useAuth0 } from '@auth0/auth0-react';
+import Swal from 'sweetalert2';
 
 export default function Nav() {
   const dispatch = useDispatch();
   const userpro = useSelector((state) => state.userpro);
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
-  const id = isAuthenticated ? user.email : "";
+  const [dropdown, setDropdown] = useState(false);
+  const id = isAuthenticated ? user.email : '';
   const idioma = useContext(langContext);
   const usuariosRegistrados = useSelector((state) => state.usuariosRegistrados);
   const history = useHistory();
@@ -39,44 +41,50 @@ export default function Nav() {
     dispatch(getAllUsers());
   }, [dispatch]);
 
+  function handleDropdown() {
+    !dropdown ? setDropdown(true) : setDropdown(false);
+    console.log(dropdown);
+  }
+
   function handleClick() {
     if (!isAuthenticated) {
       return new Swal({
-        icon: "warning",
-        title: "Sorry",
-        text: "You need to be logged in to post a trip!",
-        confirmButtonText: "Alright",
+        icon: 'warning',
+        title: 'Sorry',
+        text: 'You need to be logged in to post a trip!',
+        confirmButtonText: 'Alright',
       });
     } else {
       if (!userpro.dni) {
         return new Swal({
-          icon: "warning",
-          title: "Sorry",
-          text: "You need to be registered to post a trip!",
-          confirmButtonText: "Register",
+          icon: 'warning',
+          title: 'Sorry',
+          text: 'You need to be registered to post a trip!',
+          confirmButtonText: 'Register',
           denyButtonText: `Go Back`,
         }).then((result) => {
           if (result.isConfirmed) {
-            history.push("/register");
+            history.push('/register');
           }
         });
       } else if (userpro.name && userpro.cars.length === 0) {
         return new Swal({
-          icon: "warning",
-          title: "Sorry",
-          text: "Please give us your car information",
-          confirmButtonText: "Okay",
+          icon: 'warning',
+          title: 'Sorry',
+          text: 'Please give us your car information',
+          confirmButtonText: 'Okay',
         }).then((result) => {
           if (result.isConfirmed) {
-            history.push("/car");
+            history.push('/car');
           }
         });
       } else if (userpro.name && userpro.cars && userpro.cars[0].patent)
-        history.push("/route");
+        history.push('/route');
     }
 
     // (!users.dni ? history.push('/register') : users.name && users.cars.length === 0 ? history.push('/car') : users.name && users.cars[0].patent ? history.push('/route'))
   }
+
   return (
     <header className="NavBar">
       <NavLink to="/home">
@@ -148,18 +156,30 @@ export default function Nav() {
 
           <li className="barrita">|</li>
 
-          <li className="profile" tabIndex="0">
-            <Profile />
-            <BsCaretDownFill />
+          <li className="profile" tabIndex="0" onClick={handleDropdown}>
+            {isAuthenticated ? (
+              <Profile />
+            ) : (
+              <BsPersonCircle className="linkIcon" />
+            )}
+            <BsCaretDownFill className={!dropdown ? 'caret' : 'caretOpen'} />
 
-            <div class="dropdown-content">
-              <li>
-                <Link to="/profile">Profile</Link>{" "}
-              </li>
-              <li>
-                <Auth />
-              </li>
-            </div>
+            {dropdown && (
+              <div class="dropdown-content">
+                {isAuthenticated ? (
+                  <Link classname="Link" to="/profile">
+                    <div className="dropdown-menu">
+                      <h3>Profile</h3>
+                      <BsChevronRight />
+                    </div>
+                  </Link>
+                ) : null}
+                <div className="dropdown-menu">
+                  <Auth />
+                  <BsChevronRight />
+                </div>
+              </div>
+            )}
           </li>
           {/* <li>
             <Auth />
