@@ -89,7 +89,7 @@ export default function Map() {
         style={"mapbox://styles/mapbox/streets-v11"}
         containerStyle={{
           height: "50vh",
-          width: "50vw",
+          width: "90%",
         }}
         className="mapbox"
         center={middlePointLolo}
