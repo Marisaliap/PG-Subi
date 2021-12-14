@@ -266,5 +266,7 @@
   "adminNewUser.title": "Crear Nuevo Usuario",
   "adminNewUser.about": "Sobre mi:",
 
-  "final": ""
+  "final": "",
+
+  "app.banned": "No tienes acceso a esta pagina, para mas informacion contactese a grupo10.soyhenry@gmail.com"
 }

@@ -120,7 +120,12 @@ export default function App() {
                 )}
               </>
             ) : (
-              <div>You don't have access here</div>
+              <div>
+                <FormattedMessage
+                  id="app.banned"
+                  defaultMessage="You dont have access here"
+                />
+              </div>
             )}
             <Footer />
           </div>
