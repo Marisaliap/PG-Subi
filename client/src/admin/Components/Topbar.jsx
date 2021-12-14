@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Topbar.css";
+import "../../styles/Topbar.css";
 import { NotificationsNone, Settings } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import { useAuth0 } from '@auth0/auth0-react';

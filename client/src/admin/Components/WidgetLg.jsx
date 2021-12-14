@@ -1,7 +1,7 @@
-import "../styles/WidgetLg.css";
+import "../../styles/WidgetLg.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getOrderDetails } from "../actions";
+import { getOrderDetails } from "../../actions";
 
 export default function WidgetLg() {
 

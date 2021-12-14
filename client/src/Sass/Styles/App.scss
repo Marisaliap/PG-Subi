@@ -33,6 +33,7 @@
   .back-to-top:hover {
     background-color: $buttonColorHovered;
   }
+
 }
 
 h1,
@@ -42,10 +43,31 @@ h4,
 h5,
 h6 {
   color: $headline;
+  &:focus{
+    outline: none
+  }
 }
 
 p {
   color: $text;
+}
+
+a {
+  &:focus{
+    outline: none
+  }
+}
+
+button{
+  &:focus{
+    outline: none
+  }
+}
+
+li{
+  &:focus{
+    outline: none
+  }
 }
 
 .cadaLinea {
@@ -104,6 +126,9 @@ p {
   border: 0;
   border-radius: 1.5rem;
 }
+
+
+
 /* 
 .containAll{
   display: flex;

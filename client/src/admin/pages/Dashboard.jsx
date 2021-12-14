@@ -1,17 +1,21 @@
-import Chart from "../../admin/Chart";
-import FeaturedInfo from "../../admin/FeaturedInfo";
+import React,{useEffect} from 'react'
+import { useSelector, useDispatch} from "react-redux"
+import{getMejorasYReclamos,}from "../../actions"
+import Chart from "../Components/Chart";
+import FeaturedInfo from "../Components/FeaturedInfo";
 import "../../styles/Dashboard.css";
-import { userData } from "../salesData";
-import WidgetSm from "../WidgetSm"; 
-import WidgetLg from "../WidgetLg";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { userData } from "../Components/salesData";
+import WidgetSm from "../Components/WidgetSm"; 
+import WidgetLg from "../Components/WidgetLg";
 import { getOrderDetails } from "../../actions";
 
 export default function Dashboard() {
- 
   const dispatch = useDispatch()
+
+    useEffect(() => {
+       dispatch(getMejorasYReclamos())
+     }, [dispatch])
+
 
   useEffect(() => dispatch(getOrderDetails()), [dispatch])
 

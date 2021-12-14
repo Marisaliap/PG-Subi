@@ -16,12 +16,9 @@ export default function CardUser({
   email,
   ...props
 }) {
-
   const dispatch = useDispatch();
-  useEffect(() => dispatch(getUserDetail(email)), [dispatch])
+  useEffect(() => dispatch(getUserDetail(email)), [dispatch]);
   function genderIcon(gender) {
-   
-
     if (gender === "Male") {
       return <BsGenderMale className="maleGender" />;
     } else if (gender === "Female") {
@@ -32,7 +29,7 @@ export default function CardUser({
   return (
     <>
       <div className="CardUser" {...props}>
-      
+        <Link to={`/user/${email}`}>
           <img src={photo} alt="" />
           <h5>
             {name} {lastName}
@@ -40,11 +37,9 @@ export default function CardUser({
           <h5>{age}</h5>
           <h5>{genderIcon(genre)}</h5>
           <h5>
-            <RatingStar
-            Rating={calification}
-            />
+            <RatingStar Rating={calification} />
           </h5>
-      
+        </Link>
       </div>
     </>
   );

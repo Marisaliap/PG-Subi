@@ -22,7 +22,6 @@ import Error404 from "./components/Error404";
 import NavBar from "./components/NavBar";
 import Post from "./components/Post";
 import Admin from "./admin/Admin";
-/* import Dashboard from "./admin/pages/Dashboard"; */
 import RouteDetails from "./components/RouteDetails";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiesPolicy from "./components/CookiesPolicy";
@@ -30,15 +29,13 @@ import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
-/* import Topbar from "./admin/Topbar"; */
-/* import Sidebar from "./admin/Sidebar"; */
+import Chat from "./components/Chat";
 import { Redirect } from "react-router";
-
 
 export default function App() {
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
-  const { userpro } = useSelector(state => state)
+  const { userpro } = useSelector((state) => state);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -83,14 +80,25 @@ export default function App() {
                     <Route path="/users" component={Users} />
                     <Route path="/post/:id" component={Post} />
                     <Route path="/404" component={Error404} />
+                    <Route path="/chat/:email" component={Chat} />
                     <div>
                       <Route
-                        exact path="/admin" render={() =>
-                        userpro && userpro.isAdmin === true ? (
-                        <Admin />
-                        ) : (
-                        <Redirect to="/home" />
-                        )
+                        exact
+                        // path="/admin"
+                        // render={() =>
+                        //   userpro && admin === true ? (
+                        //     <Admin />
+                        //   ) : (
+                        //     <Redirect to="/home" />
+                        //   )
+                        // exact
+                        path="/admin"
+                        render={() =>
+                          userpro && userpro.isAdmin === true ? (
+                            <Admin />
+                          ) : (
+                            <Redirect to="/home" />
+                          )
                         }
                       />
                     </div>
