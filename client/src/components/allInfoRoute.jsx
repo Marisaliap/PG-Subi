@@ -13,10 +13,10 @@ import {
   BsPinMap,
   BsPinMapFill,
   BsFillPersonFill,
+  BsFillExclamationOctagonFill,
 } from "react-icons/bs";
 import { RiPinDistanceFill } from "react-icons/ri";
 import "../Sass/Styles/allInfoRoute.scss";
-import { BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { Modal } from "./ModalMP.jsx";
 import RatingStar from "./RatingStar.jsx";
@@ -62,73 +62,8 @@ export default function AllInfoRoute({ match }) {
 
   return (
     <div className="Map">
-      {route.length > 0 && route.originName}
-      <div className="Containerallroute">
-        <div className="infoContainer">
-          <p>
-            <BsPinMap /> {route.originName}
-          </p>
-          <p>
-            <BsPinMapFill /> {route.destinyName}
-          </p>
-          <p>
-            <BsFillCalendarCheckFill /> {route.date}
-          </p>
-          <p>
-            <RiPinDistanceFill /> {route.km}.
-          </p>
-          <p>
-            <BsWatch /> {route.time}
-          </p>
-          {route.place === 0 ? (
-            <p>
-              <BsFillPersonFill />{" "}
-              <FormattedMessage
-                id="allinforoute.placefull"
-                defaultMessage="Trip Full"
-              />
-            </p>
-          ) : (
-            <p>
-              <BsFillPersonFill /> {route.place}{" "}
-              <FormattedMessage
-                id="allinforoute.place"
-                defaultMessage="Seats available."
-              />
-            </p>
-          )}
-        </div>
-        <div className="restrictionContainer">
-          {restricciones &&
-            restricciones.map((restriction) => {
-              return (
-                <p>
-                  {restriction
-                    .capitalizeFirstLetter()
-                    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")}
-                </p>
-              );
-            })}
-        </div>
-        {route.users && route.users.length && (
-          <Link
-            to={`/user/${route.users[0].email}`}
-            className="userContainerallroute"
-          >
-            <div className="userContainerallroute">
-              <img src={route.users.length > 0 && route.users[0].photo} />
-              <h5>{route.users.length > 0 && route.users[0].name}</h5>
-
-              <div>
-                <RatingStar Rating={route.users[0].calification} />
-              </div>
-            </div>
-          </Link>
-        )}
-      </div>
-
       <Map
-        style="mapbox://styles/mapbox/streets-v11"
+        style={"mapbox://styles/mapbox/streets-v11"}
         containerStyle={{
           height: "50vh",
           width: "50vw",
@@ -185,31 +120,106 @@ export default function AllInfoRoute({ match }) {
         <ZoomControl />
       </Map>
 
-      <div>
-        {route.place === 0 ||
-        !route.users ||
-        user.email === route.users[0].email ? (
-          <button className="buttonDisabled">
+      <div className="infoContainer">
+        <p>
+          <BsPinMap /> {route.originName}
+        </p>
+        <p>
+          <BsPinMapFill /> {route.destinyName}
+        </p>
+        <p>
+          <BsFillCalendarCheckFill /> {route.date}
+        </p>
+        <p>
+          <RiPinDistanceFill /> {route.km}.
+        </p>
+        <p>
+          <BsWatch /> {route.time}
+        </p>
+        {route.place === 0 ? (
+          <p>
+            <BsFillPersonFill />{" "}
             <FormattedMessage
-              id="allinforoute.jointhistrip"
-              defaultMessage="Join this trip!"
+              id="allinforoute.placefull"
+              defaultMessage="Trip Full"
             />
-          </button>
+          </p>
         ) : (
-          <button onClick={openModal} className="button">
+          <p>
+            <BsFillPersonFill /> {route.place}{" "}
             <FormattedMessage
-              id="allinforoute.jointhistrip"
-              defaultMessage="Join this trip!"
+              id="allinforoute.place"
+              defaultMessage="Seats available."
             />
-          </button>
+          </p>
         )}
-        {showModal ? (
-          <Modal setShowModal={setShowModal} route={route} user={user} />
-        ) : null}
+        <div className="restrictionContainer">
+          <p>
+            {" "}
+            <BsFillExclamationOctagonFill /> Restrictions:{" "}
+          </p>
+          {restricciones &&
+            restricciones.map((restriction, i) => {
+              return (
+                <p className="restrictionsP" key={i}>
+                  {restriction
+                    .capitalizeFirstLetter()
+                    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")}
+                </p>
+              );
+            })}
+        </div>
+        <div className="infoUserAndButtons">
+          {route.users && (
+            <Link
+              to={`/user/${route.users[0].email}`}
+              className="userContainerallroute"
+            >
+              <div className="userContainerallroute">
+                <img
+                  src={route.users.length > 0 && route.users[0].photo}
+                  alt=" "
+                />
+                <h3>{route.users.length > 0 && route.users[0].name}</h3>
+                <div>
+                  <RatingStar Rating={route.users[0].calification} />
+                </div>
+              </div>
+            </Link>
+          )}
 
-        <button className="buttonBlue" onClick={handleClick}>
-          <FormattedMessage id="allinforoute.goback" defaultMessage="Go Back" />
-        </button>
+          <h1 className="priceH2">$ {route.price}</h1>
+
+          <div className="buttons">
+            {route.place === 0 ||
+            !route.users ||
+            user.email === route.users[0].email ? (
+              <button className="buttonDisabled">
+                <FormattedMessage
+                  id="allinforoute.jointhistrip"
+                  defaultMessage="Join this trip!"
+                />
+              </button>
+            ) : (
+              <button onClick={openModal} className="button">
+                <FormattedMessage
+                  id="allinforoute.jointhistrip"
+                  defaultMessage="Join this trip!"
+                />
+              </button>
+            )}
+            {showModal ? (
+              <Modal setShowModal={setShowModal} route={route} user={user} />
+            ) : null}
+
+            <button className="buttonBlue" onClick={handleClick}>
+              <FormattedMessage
+                id="allinforoute.goback"
+                defaultMessage="Go Back"
+              />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
