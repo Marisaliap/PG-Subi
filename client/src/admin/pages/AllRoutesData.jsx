@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../styles/UserList.css";
 import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline, DvrSharp } from "@material-ui/icons";
 import { allRoutes } from "../../actions";
 
 export default function AllRoutesData() {
@@ -13,15 +12,17 @@ export default function AllRoutesData() {
   var infoRoutes = getRoutes.map((route, i) => {
    return ({ 
     id : route.id,
+    users : route.users[0].UserRoutes.userEmail,
     origin : route.originName,
     destiny : route.destinyName,
-    infoRoute : route.infoRoute,
     date : route.date,
     hours : route.hours,
     place : route.place,
+    restrictions : route.restriction,
+    price : route.price,
     key: i,
     /* key : i + 1, */
-    price : route.price,
+   
    })}
   )
 
@@ -33,14 +34,14 @@ export default function AllRoutesData() {
   }, [data]); 
 
   const columns = [
-    { field: "id", headerName: "ID", width: 100 }, 
-    { field: "originName", headerName: "Origin", width: 150 },
-    { field: "destinyName", headerName: "Destiny", width: 150 },
-    { field: "infoRoute", headerName: "info Route", width: 150 },
-    { field: "date", headerName: "Date", width: 150 },
-    { field: "hours", headerName: "Time", width: 150 },
-    { field: "place", headerName: "Seats", width: 150 },
-    { field: "price", headerName: "Price", width: 150},
+    { field: "users", headerName: "Users", width: 180},
+    { field: "origin", headerName: "Origin", width: 180 },
+    { field: "destiny", headerName: "Destiny", width: 180 },
+    { field: "date", headerName: "Date", width: 120 },
+    { field: "hours", headerName: "Time", width: 120 },
+    { field: "place", headerName: "Seats", width: 120 },
+    { field: "price", headerName: "Price", width: 120},
+    { field: "restrictions", headerName: "Preferences", width: 250},
   ];
 
   return (

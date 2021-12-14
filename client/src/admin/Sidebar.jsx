@@ -34,14 +34,26 @@ export default function Sidebar() {
                 Dashboard
               </li>
             </Link>
-            <li className="sidebarListItem">
+            <Link to="/admin/transactions" className="link">
+              <li className="sidebarListItem">
+                <AttachMoney className="sidebarIcon" />
+                Sales
+              </li>
+            </Link>
+            <Link to="/admin/routes" className="link">
+              <li className="sidebarListItem">
+                <Commute className="sidebarIcon" />
+                Routes Info
+              </li>
+            </Link>
+            {/* <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
               Analytics
             </li>
             <li className="sidebarListItem">
               <TrendingUp className="sidebarIcon" />
               Sales
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="sidebarMenu">
@@ -59,7 +71,6 @@ export default function Sidebar() {
                 Create New User
               </li>
             </Link>
-
             <Link to="/admin/transactions" className="link">
               <li className="sidebarListItem">
                 <AttachMoney className="sidebarIcon" />
@@ -72,6 +83,12 @@ export default function Sidebar() {
                 Routes Info
               </li>
             </Link>
+            {/* </Link> */} */}
+            {/* <li className="sidebarListItem">
+              <BarChart className="sidebarIcon" />
+              Reports
+            </li>
+             */}
           </ul>
         </div>
         <div className="sidebarMenu">
