@@ -20,6 +20,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getUserProfile(userpro.email));
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {

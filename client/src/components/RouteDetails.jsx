@@ -16,6 +16,7 @@ const RouteDetails = ({ match }) => {
 
   useEffect(() => {
     dispatch(allRoutes());
+    window.scrollTo(0, 0);
   }, []);
   // ------------------<paged>------------------
 

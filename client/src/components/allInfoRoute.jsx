@@ -13,7 +13,7 @@ import {
   BsPinMap,
   BsPinMapFill,
   BsFillPersonFill,
-  BsFillExclamationOctagonFill,
+  BsHeartFill,
 } from "react-icons/bs";
 import { RiPinDistanceFill } from "react-icons/ri";
 import "../Sass/Styles/allInfoRoute.scss";
@@ -55,7 +55,7 @@ export default function AllInfoRoute({ match }) {
 
   function handleClick() {
     dispatch(deleteRoute());
-    history.push("/route-list");
+    history.goBack();
   }
 
   let restricciones = route.restriction && route.restriction.split(", ");
@@ -158,7 +158,7 @@ export default function AllInfoRoute({ match }) {
         <div className="restrictionContainer">
           <p>
             {" "}
-            <BsFillExclamationOctagonFill /> Restrictions:{" "}
+            <BsHeartFill /> Preferences:{" "}
           </p>
           {restricciones &&
             restricciones.map((restriction, i) => {
