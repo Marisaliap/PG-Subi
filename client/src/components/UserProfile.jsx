@@ -22,15 +22,15 @@ import RatingStar from "./RatingStar";
 import { DataGrid } from "@material-ui/data-grid";
 import { Link } from "react-router-dom";
 import { Tabs, Tab } from "@material-ui/core";
-import Post from "./Post";
-import Person from '@material-ui/icons/Person';
-import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
-import CommentIcon from '@material-ui/icons/Comment';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import PaymentIcon from '@material-ui/icons/Payment';
-import ChatIcon from '@material-ui/icons/Chat'
+import PostUserProfile from "./PostUserProfile";
+import Person from "@material-ui/icons/Person";
+import DirectionsCarIcon from "@material-ui/icons/DirectionsCar";
+import CommentIcon from "@material-ui/icons/Comment";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import PaymentIcon from "@material-ui/icons/Payment";
+import ChatIcon from "@material-ui/icons/Chat";
 
 export default function UserProfile() {
   const userInfo = useSelector((state) => state.userpro);
@@ -49,7 +49,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     dispatch(getUserProfile(userInfo.email));
-  }, [booleanUser, booleanCar, booleanPhoto, userInfo.email])
+  }, [booleanUser, booleanCar, booleanPhoto, userInfo.email]);
   const [input, setInput] = useState({});
 
   const [auto, setAuto] = useState({});
@@ -875,7 +875,7 @@ export default function UserProfile() {
 
         {nav === 3 && (
           <div className="centralo">
-            <Post id={userInfo.email} />
+            <PostUserProfile id={userInfo.email} />
           </div>
         )}
 
