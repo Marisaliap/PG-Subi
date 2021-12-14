@@ -18,9 +18,6 @@ import {
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
-function redireccionar() {
-  window.location = "http://www.cristalab.com";
-}
 export default function Sidebar() {
   return (
     <div className="sidebar">
@@ -46,14 +43,6 @@ export default function Sidebar() {
                 Routes Info
               </li>
             </Link>
-            {/* <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
-            </li>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" />
-              Sales
-            </li> */}
           </ul>
         </div>
         <div className="sidebarMenu">
@@ -83,12 +72,6 @@ export default function Sidebar() {
                 Routes Info
               </li>
             </Link>
-            {/* </Link> */} */}
-            {/* <li className="sidebarListItem">
-              <BarChart className="sidebarIcon" />
-              Reports
-            </li>
-             */}
           </ul>
         </div>
         <div className="sidebarMenu">
@@ -105,39 +88,18 @@ export default function Sidebar() {
               </a>
             </li>
 
-            <Link to="/admin/feed" className="link">
+            <Link to="/admin/feedback" className="link">
               <li className="sidebarListItem">
                 <DynamicFeed className="sidebarIcon" />
                 Feedback
               </li>
             </Link>
-
-            {/* <Link to="/admin/message" className="link"> 
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Messages
             </li>
-            </Link> */}
           </ul>
         </div>
-
-        {/* <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Staff</h3>
-          <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <WorkOutline className="sidebarIcon" />
-              Manage
-            </li>
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
-            </li>
-            <li className="sidebarListItem">
-              <Report className="sidebarIcon" />
-              Reports
-            </li>
-          </ul>
-        </div> */}
       </div>
     </div>
   );

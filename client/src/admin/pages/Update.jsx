@@ -10,8 +10,7 @@ export default function Update() {
     const dispatch = useDispatch()
     const history = useHistory();
     let booleanDNI;
-    console.log(userAdmin.photoDni)
-    console.log(carAdmin)
+
 
     // -------------------------------------<useEffect>-------------------------------------
     useEffect(() => {
@@ -51,7 +50,8 @@ export default function Update() {
         photo: userAdmin.photo,
         photoDni: userAdmin.photoDni,
         isAdmin: userAdmin.isAdmin,
-        car: userAdmin.cars
+        car: userAdmin.cars,
+        isBanned:userAdmin.isBanned
     });
 
     const [auto, setAuto] = useState(userAdmin?.cars?.length === 0 ? ({
@@ -418,6 +418,17 @@ export default function Update() {
                                     name="isAdmin"
                                     placeholder={userAdmin.isAdmin}
                                     value={input.isAdmin}
+                                    className="userUpdateInput"
+                                />
+                            </div>
+                            <div className="userUpdateItem">
+                                <label>Banned</label>
+                                <input
+                                    onChange={(e) => handleChange(e)}
+                                    type="text"
+                                    name="isBanned"
+                                    placeholder={userAdmin.isBanned}
+                                    value={input.isBanned}
                                     className="userUpdateInput"
                                 />
                             </div>

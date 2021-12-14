@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, {useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
     MailOutline,
@@ -15,7 +15,8 @@ import {
     VpnKey,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import "../../styles/User.css";
+import "../../Sass/Styles/UserAdmin.scss";
+/* import "../../styles/User.css"; */
 import { useAuth0 } from "@auth0/auth0-react";
 import { editUser, getUserProfile, getAllUsers, getUserAdmin, getUserDetail } from "../../actions";
 
@@ -44,9 +45,6 @@ export default function User2() {
         <div className="userAdmin">
             <div className="userTitleContainer">
                 <h1 className="userTitle">Edit User</h1>
-                <Link to="/admin/newUser">
-                    <button className="userAddButton">Create</button>
-                </Link>
             </div>
             <div className="userContainerAdmin">
                 <div className="userShow">
@@ -90,10 +88,14 @@ export default function User2() {
                             <VpnKey className="userShowIcon" />
                             <span className="userShowInfoTitle">{userAdmin.isAdmin === true ? "Admin" : "Not Admin"}</span>
                         </div>
+                        <div className="userShowInfo">
+                            <VpnKey className="userShowIcon" />
+                            <span className="userShowInfoTitle">{userAdmin.isBanned === false ? "no banner" : "banner"}</span>
+                        </div>
                         <span className="userShowTitle">Account Documents</span>
                         <div className="userShowInfo">
                             <PhotoCamera className="userShowIcon" />
-                            {!userAdmin.photoDni ? "" : userAdmin.photoDni.map(e => <img src={e} alt="" className="userShowImage" />)}
+                            {!userAdmin.photoDni ? "" : userAdmin.photoDni.map((e,i) => <  img src={e} alt="" className="userShowImage" />)}
 
                         </div>
                         <div className="userShowInfo">

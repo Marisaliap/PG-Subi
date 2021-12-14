@@ -1,4 +1,4 @@
-import "../styles/FeaturedInfo.css";
+import "../../styles/FeaturedInfo.css";
 import { ArrowDownward, ArrowUpward, DesktopAccessDisabledSharp } from "@material-ui/icons";
 
 export default function FeaturedInfo({info}) {

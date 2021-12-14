@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { allRoutes, deleteRouteFromDb } from '../actions';
-import CardRoute from './CardRoute';
-import CardUser from './CardUser';
-import NavBarFilter from './NavBarFilter';
-import '../Sass/Styles/RouteDetails.scss';
-import Pagination from './Pagination';
-// import {CardCar} from "./CardCar";
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { allRoutes, deleteRouteFromDb } from "../actions";
+import CardRoute from "./CardRoute";
+import CardUser from "./CardUser";
+import NavBarFilter from "./NavBarFilter";
+import "../Sass/Styles/RouteDetails.scss";
+import Pagination from "./Pagination";
+import { Link } from "react-router-dom";
 
 const RouteDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -22,17 +21,6 @@ const RouteDetails = ({ match }) => {
       behavior: "instant",
     });
   }, []);
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(deleteRouteFromDb('lala'));
-  //   };
-  // }, []);
-  useEffect(() => {
-    return () => {
-      dispatch(deleteRouteFromDb('lala'));
-    };
-  }, []);
-
   // ------------------<paged>------------------
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -78,20 +66,19 @@ const RouteDetails = ({ match }) => {
               )}
               <hr />
 
-                <CardRoute
-                  origin={route.originName}
-                  destiny={route.destinyName}
-                  infoRoute={route.infoRoute}
-                  date={route.date}
-                  hours={route.hours}
-                  place={route.place}
-                  key={i + 1}
-                  price={route.price}
-                />
-              </div>
-            </Link>
-          ))
-        }
+              <CardRoute
+                origin={route.originName}
+                destiny={route.destinyName}
+                infoRoute={route.infoRoute}
+                date={route.date}
+                hours={route.hours}
+                place={route.place}
+                key={i + 1}
+                price={route.price}
+              />
+            </div>
+          </Link>
+        ))}
       </div>
       <div>
         <Pagination

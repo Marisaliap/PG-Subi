@@ -5,7 +5,7 @@ import { postUser, getAllUsers } from "../../actions";
 import { useAuth0 } from '@auth0/auth0-react';
 import swal from 'sweetalert2';
 import "../../Sass/Styles/NewUser.scss";
-import "../../styles/NewUser.css";
+/* import "../../styles/NewUser.css"; */
 import { FormattedMessage } from 'react-intl';
 
 export default function Registro() {
