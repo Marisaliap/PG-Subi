@@ -25,22 +25,23 @@ const setPost = async (req, res, next) => {
             author,
             description,
             calification,
-            email
+            userEmail
         } = req.body;
 
-
-        const posts = Post.create({
-           
-                date,
-                author,
-                description,
-                calification,
-            },
+        
+        let posts = await Post.create({
+            
+            date,
+            author,
+            description,
+            calification,
+        },
         )
-        const users = await User.findOne({ where: { email: email } })
-        await users.addPost(author);
+        const users = await User.findByPk(userEmail);
+        posts = await users.addPost(posts.id);
+        
+    
         res.send(posts);
-
     } catch (error) {
         next(error);
     }

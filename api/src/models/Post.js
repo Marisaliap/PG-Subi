@@ -16,12 +16,10 @@ module.exports = (sequelize) => {
     },
     author: {
       type: DataTypes.STRING,
-      primaryKey: true,
     },
   },
   {
     timestamps: false,
-
   },
   );
 };

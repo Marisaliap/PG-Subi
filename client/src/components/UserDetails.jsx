@@ -134,7 +134,7 @@ export default function UserDetails(props) {
               ) : (
                 <p className="label">{autoInfo.cylinder}</p>
               )}
-            </div>{" "}
+            </div>
           </div>
           <div className="centralo">
             <h1 className="tituloUserProfile">Rating</h1>

@@ -1,7 +1,12 @@
 import { React, useState } from "react";
 //import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { userPost, setPost, putRatingUser } from "../actions/index";
+import {
+  userPost,
+  setPost,
+  putRatingUser,
+  getUserDetail,
+} from "../actions/index";
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
@@ -22,7 +27,7 @@ export default function Post(id) {
   }, [dispatch, ids]);
 
   const [input, setInput] = useState({
-    email: ids,
+    userEmail: ids,
     date: time,
     author: isAuthenticated ? user.name : "",
     description: "",
@@ -37,6 +42,14 @@ export default function Post(id) {
       errors.calification = "Calification is required";
     }
     return errors;
+  }
+
+  function validateInputs() {
+    if (!input.description || !input.calification) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   function handleChange(e) {
@@ -57,7 +70,7 @@ export default function Post(id) {
     if (Object.keys(errors).length === 0) {
       dispatch(setPost(input));
       setInput({
-        email: "",
+        userEmail: "",
         date: "",
         author: "",
         description: "",
@@ -113,7 +126,7 @@ export default function Post(id) {
               id="star"
               className="star"
             >
-              <option value="99999" disabled selected className="person">
+              <option value="" disabled selected className="person">
                 --Cal--
               </option>
               <option value="0">0</option>
@@ -134,7 +147,7 @@ export default function Post(id) {
           </div>
           <br />
           <div className="textarea">
-            <FormattedMessage id="post.description" key={"op-5"}>
+            <FormattedMessage id="post.description">
               {(message) => (
                 <textarea
                   placeholder={message}
@@ -150,12 +163,21 @@ export default function Post(id) {
             )}
           </div>
           <div className="divbutton">
-            <button className="button" type="submit">
-              <FormattedMessage
-                id="Post.title"
-                defaultMessage="Rate this user"
-              />
-            </button>
+            {validateInputs() === false ? (
+              <button className="buttondisabled">
+                <FormattedMessage
+                  id="Post.title"
+                  defaultMessage="Rate this user"
+                />
+              </button>
+            ) : (
+              <button className="button" type="submit">
+                <FormattedMessage
+                  id="Post.title"
+                  defaultMessage="Rate this user"
+                />
+              </button>
+            )}
           </div>
         </form>
       </div>

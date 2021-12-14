@@ -43,6 +43,23 @@
     }
   }
 
+  .buttondisabled {
+    margin-top: 2.5rem;
+    margin: 0.5rem;
+    border: none;
+    font-family: inherit;
+    border-radius: 9999px;
+    font-weight: bolder;
+    padding: 0.9rem 1.4rem;
+    background-color: $buttonDisabled;
+    color: $background;
+    transition: background-color 0.5s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   .formPost {
     display: flex;
     flex-direction: column;
