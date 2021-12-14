@@ -1,4 +1,4 @@
-@import "../Variables/Variables.scss";
+@import '../Variables/Variables.scss';
 
 .Homepage {
   padding: 1.25rem;
@@ -10,7 +10,7 @@
   }
 
   .searchBarSection {
-    padding: 2rem 0;
+    padding: 2rem 0.5rem;
     background-color: $buttonColor;
     border-radius: 1.5rem;
     margin-bottom: 2rem;
@@ -78,23 +78,9 @@
         text-align: left;
       }
     }
-
-    .button {
-      margin-left: 1.25rem;
-      @media only screen and (max-width: 768px) {
-        margin-left: 0;
-        width: 200%;
-      }
-    }
   }
 
-  .secciones {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-
-  .sectionAbove {
+  .upperSection {
     @media only screen and (min-width: 768px) {
       padding: 1.5rem;
     }
@@ -111,37 +97,44 @@
   .lowerSection {
     display: inline;
     width: 100%;
+    // padding: 5rem;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (min-width: 1024px) {
       display: flex;
       align-items: center;
-      flex-direction: column;
-      margin-top: 1rem;
-    }
-
-    .centrateee {
-      display: flex;
-      width: 100%;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      @media only screen and (max-width: 768px) {
-        flex-direction: column;
-        margin-top: 3rem;
-      }
+      margin: auto;
     }
 
     div {
-      width: 30%;
-      margin-left: 5rem;
-      margin-right: 5rem;
-    }
+      margin: auto 1rem;
 
-    .SVGs {
-      height: 15rem;
-      width: 15rem;
-      object-fit: fill;
+      @media only screen and (min-width: 768px) {
+        margin: auto 5rem;
+      }
+
+      @media only screen and (min-width: 1024px) {
+        margin: auto 8rem;
+      }
+
+      h3 {
+        margin-bottom: 0;
+      }
+
+      p {
+        margin-top: 0;
+        font-weight: 600;
+      }
+
+      .SVGs {
+        height: 15rem;
+        width: 15rem;
+        object-fit: fill;
+
+        @media only screen and (min-width: 768px) {
+          height: 20rem;
+          width: 20rem;
+        }
+      }
     }
   }
 }
