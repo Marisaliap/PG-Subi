@@ -1,12 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../Sass/Styles/Chat.scss";
-import {
-  getChatPropio,
-  getChatOtro,
-  postChat,
-  getUserDetail,
-} from "../actions";
+import { getChatPropio, getChatOtro, postChat } from "../actions";
 
 export default function Chat() {
   const dispatch = useDispatch();
@@ -21,7 +16,7 @@ export default function Chat() {
       dispatch(getChatPropio(SOYELPUTOAMO));
       dispatch(getChatOtro(miraArriba));
     }, 3000);
-  }, []);
+  }, []); // eslint-disable-line
   const [mensaje, setMensaje] = useState("");
 
   setInterval(() => {
@@ -55,7 +50,7 @@ export default function Chat() {
 
   function handleSubmit(e) {
     e.preventDefault();
-  
+
     dispatch(
       postChat({
         author: userInfo.email,

@@ -10,7 +10,6 @@ import { NavLink, useHistory } from "react-router-dom";
 import "../Sass/Styles/SearchBarHome.scss";
 import "../Sass/Styles/App.scss";
 import { FormattedMessage } from "react-intl";
-import { BsPersonFill } from "react-icons/bs";
 
 let inputs = { Origin: "", Destination: "" };
 let info = { pasajeros: 1, date: "" };

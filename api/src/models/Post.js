@@ -17,10 +17,6 @@ module.exports = (sequelize) => {
       author: {
         type: DataTypes.STRING,
       },
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-      },
     },
     {
       timestamps: false,

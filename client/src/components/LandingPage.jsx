@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../Sass/Styles/LandingPage.scss";
 import img from "../img/logo.png";
-import ecoConscious from "../img/ecoConscious.svg";
 import saveMoney from "../img/saveMoney.svg";
 import electricCar from "../img/electricCar.svg";
 import natureBenefits from "../img/natureBenefits.svg";

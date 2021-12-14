@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../Sass/Styles/TermsAndConditions.scss";
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 export default function TermsAndConditions() {
   return (
@@ -9,40 +8,50 @@ export default function TermsAndConditions() {
       <article>
         <div></div>
         <div>
-        <p>
-        <FormattedMessage
-							id="privacyPolicy.terms"
-							defaultMessage="Terms and Conditions"
-						/> | <a href="/privacy-policy"><FormattedMessage
-            id="privacyPolicy.privacy"
-            defaultMessage="Privacy Policy"
-          /></a> | <a href="/cookies-policy"> 
-          <FormattedMessage
-            id="privacyPolicy.cookies"
-            defaultMessage="Cookies Policy"
-          /></a> </p>
-          <p><strong><FormattedMessage
-							id="termsAndCond.review"
-							defaultMessage="Last review: "
-						/></strong>
+          <p>
             <FormattedMessage
-							id="termsAndCond.date"
-							defaultMessage="November 28, 2021"
-						/></p>
-          <p><FormattedMessage
-							id="termsAndCond.p1"
-							defaultMessage="This document describes the General Terms and Conditions
-              applicable to the use of the services offered by Gimme A Ride®"
-						/>
-              <a href="http://www.givemearide.com/">www.givemearide.com/app</a>
+              id="privacyPolicy.terms"
+              defaultMessage="Terms and Conditions"
+            />{" "}
+            |{" "}
+            <a href="/privacy-policy">
               <FormattedMessage
-							id="termsAndCond.p1"
-							defaultMessage=""
-						/>
-              &nbsp; and the Gimme A Ride® application (hereinafter “Give me a
-              ride®”). Any person (hereinafter "User") who wishes to use Give me
-              a ride® can do so subject to the Terms and Conditions respective,
-              along with all other policies and principles.
+                id="privacyPolicy.privacy"
+                defaultMessage="Privacy Policy"
+              />
+            </a>{" "}
+            |{" "}
+            <a href="/cookies-policy">
+              <FormattedMessage
+                id="privacyPolicy.cookies"
+                defaultMessage="Cookies Policy"
+              />
+            </a>{" "}
+          </p>
+          <p>
+            <strong>
+              <FormattedMessage
+                id="termsAndCond.review"
+                defaultMessage="Last review: "
+              />
+            </strong>
+            <FormattedMessage
+              id="termsAndCond.date"
+              defaultMessage="November 28, 2021"
+            />
+          </p>
+          <p>
+            <FormattedMessage
+              id="termsAndCond.p1"
+              defaultMessage="This document describes the General Terms and Conditions
+              applicable to the use of the services offered by Gimme A Ride®"
+            />
+            <a href="http://www.givemearide.com/">www.givemearide.com/app</a>
+            <FormattedMessage id="termsAndCond.p1" defaultMessage="" />
+            &nbsp; and the Gimme A Ride® application (hereinafter “Give me a
+            ride®”). Any person (hereinafter "User") who wishes to use Give me a
+            ride® can do so subject to the Terms and Conditions respective,
+            along with all other policies and principles.
           </p>
           <p>
             <span>

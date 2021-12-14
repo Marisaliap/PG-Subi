@@ -21,6 +21,7 @@ import "../Sass/Styles/Map.scss";
 import swal from "sweetalert2";
 import { FormattedMessage } from "react-intl";
 
+// eslint-disable-next-line
 String.prototype.capitalizeFirstLetter = function () {
   if (this) {
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -86,7 +87,7 @@ export default function Map() {
       </Link>
 
       <Map
-        style={"mapbox://styles/mapbox/streets-v11"}
+        style={"mapbox://styles/mapbox/streets-v11"} // eslint-disable-line
         containerStyle={{
           height: "50vh",
           width: "50vw",

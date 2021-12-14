@@ -27,8 +27,6 @@ import Person from "@material-ui/icons/Person";
 import DirectionsCarIcon from "@material-ui/icons/DirectionsCar";
 import CommentIcon from "@material-ui/icons/Comment";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
 import PaymentIcon from "@material-ui/icons/Payment";
 import ChatIcon from "@material-ui/icons/Chat";
 
@@ -47,9 +45,13 @@ export default function UserProfile() {
   const [errorsUser, setErrorsUser] = useState({});
   const [nav, setNav] = useState(0);
 
-  useEffect(() => {
-    dispatch(getUserProfile(userInfo.email));
-  }, [booleanUser, booleanCar, booleanPhoto, userInfo.email]);
+  useEffect(
+    () => {
+      dispatch(getUserProfile(userInfo.email));
+    },
+    // eslint-disable-next-line
+    [booleanUser, booleanCar, booleanPhoto, userInfo.email]
+  ); // eslint-disable-line
   const [input, setInput] = useState({});
 
   const [auto, setAuto] = useState({});
@@ -282,9 +284,7 @@ export default function UserProfile() {
     { field: "Driver", headerName: "Driver", width: 125 },
   ];
 
-  {
-    /*----------------------------------------ORDERS-------------------------------------------------------*/
-  }
+  /*----------------------------------------ORDERS-------------------------------------------------------*/
 
   const routesManejante =
     userInfo?.routes &&

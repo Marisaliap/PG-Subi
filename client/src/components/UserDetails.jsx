@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { getUserDetail } from "../actions";
+import { getUserDetail, userPost } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 import SearchUserByName from "./SearchUserByName";
 import SearchUserById from "./SearchUserById";
@@ -20,9 +20,6 @@ import RatingStar from "./RatingStar.jsx";
 export default function UserDetails(props) {
   const userInfo = useSelector((state) => state.user);
   const autoInfo = useSelector((state) => state.car);
-  // const {id}=useSelector(state=>state);
-  let idAuto;
-  autoInfo === undefined ? (idAuto = "") : (idAuto = autoInfo.id);
   const dispatch = useDispatch();
 
   const id = props.match.params.id;
@@ -31,7 +28,8 @@ export default function UserDetails(props) {
     userInfo.email === undefined
       ? dispatch(getUserDetail(window.location.href.split("/user/")[1]))
       : dispatch(getUserDetail(id));
-  }, []);
+    dispatch(userPost(userInfo.email));
+  }, [userInfo.email, dispatch, userInfo.calification]); // eslint-disable-line
 
   function genderIcon(gender) {
     if (gender === "Male") {

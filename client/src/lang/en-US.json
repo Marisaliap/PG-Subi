@@ -254,5 +254,20 @@
   "privacyPolicy.p70": "If you have any questions about this Privacy Policy or if you have any requests relating to your Personal Data, you can contact us via email to our Data Protection Officer under <a>dataprotection@GiveMeaRide.com</a>",
   "final": "",
 
-  "app.banned": "You don't have access here, for more information please contact us at grupo10.soyhenry@gmail.com"
+  "app.banned": "You don't have access here, for more information please contact us at grupo10.soyhenry@gmail.com",
+
+  "Recommendations.title": "Recommendations",
+  "Recommendations.p1": "Sharing a trip is a great experience but we must take into account some considerations in order to avoid drawbacks.",
+  "Recommendations.h31": "Origin and destination",
+  "Recommendations.p2": "When creating a trip that has an origin and destination with precise directions, you never have to load addresses of your house or similar. Always use a City or a street junction.",
+  "Recommendations.h32": "Gimme A Ride® with strangers",
+  "Recommendations.p3": "Before Gimme A Ride® with users you don't have references we recommend that you take a few minutes to review the profile of Give me a ride® of that person and their profile in different social networks. We also suggest talking to them before you travel. It is important to always share with someone you trust.",
+  "Recommendations.h33": "Before getting into a car or someone getting into your car",
+  "Recommendations.li1": "Check the DNI to verify if the identity of the people correspond with the one who told you.",
+  "Recommendations.li2": "At the time of the meeting, check that the car model and plate match the data provided by the driver.",
+  "Recommendations.li3": "Ask the driver to show you his driving license, the vehicle's green card and the vehicle insurance updated to date. The car must also have mandatory technical inspection done.",  "Recommendations.li4": "Visually verify that the car you are traveling in is in good condition.",
+  "Recommendations.li5": "Check that there is a seat belt for each passenger",
+  "Recommendations.li6": "Remember that you are not obliged to get into any car or get anyone in your car. If the people you agreed to trip generate distrust at the time of the meeting, if you consider any attitude as suspicious, or if the documentation or the status of the car is not in condition, you can express it in the best terms and not make the trip. If you think that your mistrust or suspicion is based on prejudice, you can express that an unforeseen event arose or that you do not feel well physically to travel. You can also get out of the car if at any moment, if it seems to you that the driver is driving recklessly or that it doesn't make you feel comfortable. When you get in the car, you are responsible for exercising your own security. After the date of the trip you can leave a negative rating.",  
+  "Recommendations.p4": "We emphasize that the driver should not obtain economic profit in travel from him. For more information, check the",
+  "Recommendations.a1": "Gimme A Ride® General Terms and Conditions."
 }
