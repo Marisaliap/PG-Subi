@@ -52,58 +52,58 @@ export default function Home() {
         <SearchBarHome />
       </section>
 
-      <section>
-        <img className="homepageImage" src={navigator} alt="Home" />
-        <article>
-          <h1>
-            <FormattedMessage
-              id="home.title1"
-              defaultMessage="Save money while driving"
-            />
-          </h1>
+      <section className="lowerSection">
+        <div>
+          <img className="homepageImage" src={navigator} alt="Home" />
+          <article>
+            <h1>
+              <FormattedMessage
+                id="home.title1"
+                defaultMessage="Save money while driving"
+              />
+            </h1>
 
-          <p className="description">
-            <FormattedMessage
-              id="home.p1"
-              defaultMessage="Publish your next round trip on Gimme a Ride and get, on average, 80
+            <p className="description">
+              <FormattedMessage
+                id="home.p1"
+                defaultMessage="Publish your next round trip on Gimme a Ride and get, on average, 80
               dollars * of your passengers. You will only need a couple of minutes
               to publish your route. Do we share a trip?"
-            />
-          </p>
-          <p className="detail">
-            <FormattedMessage
-              id="home.p2"
-              defaultMessage="* Average amount received by drivers in 2021."
-            />
-          </p>
+              />
+            </p>
+            <p className="detail">
+              <FormattedMessage
+                id="home.p2"
+                defaultMessage="* Average amount received by drivers in 2021."
+              />
+            </p>
 
-          <div>
-            {isAuthenticated ? (
-              <button
-                className="button"
-                onClick={() => {
-                  dispatch(deleteRouteFromDb("lala"));
-                  history.push("/route-list");
-                }}
-              >
-                <FormattedMessage
-                  id="home.routes"
-                  defaultMessage="See all routes available!"
-                />
-              </button>
-            ) : (
-              <button onClick={handleClick} className="button">
-                <FormattedMessage
-                  id="home.routes"
-                  defaultMessage="See all routes available!"
-                />
-              </button>
-            )}
-          </div>
-        </article>
-      </section>
+            <div>
+              {isAuthenticated ? (
+                <button
+                  className="button"
+                  onClick={() => {
+                    dispatch(deleteRouteFromDb("lala"));
+                    history.push("/route-list");
+                  }}
+                >
+                  <FormattedMessage
+                    id="home.routes"
+                    defaultMessage="See all routes available!"
+                  />
+                </button>
+              ) : (
+                <button onClick={handleClick} className="button">
+                  <FormattedMessage
+                    id="home.routes"
+                    defaultMessage="See all routes available!"
+                  />
+                </button>
+              )}
+            </div>
+          </article>
+        </div>
 
-      <section className="lowerSection">
         <div className="centrateee">
           <div>
             <img className="SVGs" src={cityDriver} alt="Are you a passenger?" />

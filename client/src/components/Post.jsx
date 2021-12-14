@@ -86,7 +86,7 @@ export default function Post(id) {
       <div>
         <div className="desContainer">
           {userpost.length > 0
-            ? userpost.map((post,i) => (
+            ? userpost.map((post, i) => (
                 <div key={i} className="description">
                   <div className="infodate">
                     <h6>{post.date}</h6>
@@ -151,7 +151,10 @@ export default function Post(id) {
           </div>
           <div className="divbutton">
             <button className="button" type="submit">
-              <FormattedMessage id="formCar.title" defaultMessage="Send" />
+              <FormattedMessage
+                id="Post.title"
+                defaultMessage="Rate this user"
+              />
             </button>
           </div>
         </form>

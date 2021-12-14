@@ -10,8 +10,6 @@
   }
 
   .searchBarSection {
-    // display: grid;
-    // place-items: center;
     padding: 2rem 0;
     background-color: $buttonColor;
     border-radius: 1.5rem;
@@ -94,6 +92,9 @@
   }
 
   .lowerSection {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
     .centrateee {
       display: flex;
       flex-direction: row;

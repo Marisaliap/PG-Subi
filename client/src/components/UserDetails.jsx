@@ -27,7 +27,6 @@ export default function UserDetails(props) {
 
   const id = props.match.params.id;
 
-
   useEffect(() => {
     userInfo.email === undefined
       ? dispatch(getUserDetail(window.location.href.split("/user/")[1]))
@@ -145,10 +144,12 @@ export default function UserDetails(props) {
             <div className="centralo">
               <h1 className="tituloUserProfile">Chats</h1>
             </div>
-            {userInfo && userInfo.chats && userInfo.chats.length > 0 && (
+            {userInfo && userInfo.chats ? (
               <>
                 <Link to={`/chat/${userInfo.email}`}>{userInfo.email}</Link>
               </>
+            ) : (
+              ""
             )}
           </div>
         </div>
