@@ -3,9 +3,9 @@
 
 .Map {
   display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-end;
-  margin: 1rem 3rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 4rem 3rem;
 
   .mapbox {
     margin-top: 1rem;
@@ -13,8 +13,8 @@
     border-radius: 10px;
   }
   .userContainerallroute{
-      width: 20vw;
-      text-decoration: none;
+    width: 20vw;
+    text-decoration: none;
 
     img {
       height: 30rem;
@@ -28,22 +28,38 @@
     flex-direction: column;
     justify-content: center;
     margin-left: 1rem;
+    margin-top: 1rem;
     align-items: baseline
     
-    
+  }
+  
+  .restrictionContainer {
+    .restrictionsP {
+      text-align:left;
+      font-weight: bold;
+      padding-left: 2rem;
+    }
   }
 
-  .Containerallroute {
-    display: flex;
-    width: 50vw;
-   
-   
+  p {
+    text-align:left;
+    margin-top: 0;
+    font-weight: bold;
+  }
 
 
-    p {
-      text-align:left;
-      margin-top: 0;
-      font-weight: bold;
-    }
+  .buttons{
+    display:flex;
+    justify-content: center;
+    align-self: flex-end;
+  }
+
+  .infoUserAndButtons{
+    display:grid;
+    margin-left: 1rem;
+  }
+
+  .priceH2 {
+    margin-bottom: 0;
   }
 }
