@@ -74,7 +74,7 @@ const postRoute = async (req, res, next) => {
       points,
       center,
     } = req.body;
-
+    console.log(req.body)
     let kmNumber = km.split("k")[0];
 
     let price = ((kmNumber / 10) * 97) / 5;
