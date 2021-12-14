@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 import {
   BsWatch,
   BsPinMap,
   BsPinMapFill,
   BsFillPersonFill,
   BsCashCoin,
-} from 'react-icons/bs';
-import '../Sass/Styles/CardRoute.scss';
-import { FormattedMessage } from 'react-intl';
+} from "react-icons/bs";
+import "../Sass/Styles/CardRoute.scss";
+import { FormattedMessage } from "react-intl";
 
 export default function CardRoute({
   origin,
@@ -31,10 +31,10 @@ export default function CardRoute({
         <BsPinMapFill className="icon" />
         {destiny}
       </h5>
-      <h5>
+      {/* <h5>
         <FormattedMessage id="cardroute.date" defaultMessage="Date:" />
         {date}
-      </h5>
+      </h5> */}
       <h5>
         {/* <FormattedMessage id="cardroute.time" defaultMessage="Time:" />  */}
         <BsWatch className="icon" /> {hours}
@@ -51,7 +51,7 @@ export default function CardRoute({
       ) : (
         <h5>
           <BsFillPersonFill className="icon" />
-          {place}{' '}
+          {place}{" "}
           <FormattedMessage
             id="cardroute.place"
             defaultMessage="Seats available:"
