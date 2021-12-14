@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { getUserProfile, getAllUsers, deleteRouteFromDb } from "../actions";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export default function Home() {
@@ -20,7 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getUserProfile(userpro.email));
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     window.scrollTo({
@@ -28,7 +27,7 @@ export default function Home() {
       behavior: "instant",
     });
     dispatch(getAllUsers());
-  }, []);
+  }, []); // eslint-disable-line
 
   function handleClick() {
     if (!isAuthenticated) {

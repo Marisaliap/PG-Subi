@@ -210,14 +210,22 @@ export function editCar(id, info) {
   };
 }
 
-export function getRouteFromDb(originName, destinyName, date, place, order, restriction) {
+export function getRouteFromDb(
+  originName,
+  destinyName,
+  date,
+  place,
+  order,
+  restriction
+) {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}&order=${order ? order : ""
-      }&restriction=${restriction ? restriction : ""}`
+        `http://localhost:3001/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}&order=${
+          order ? order : ""
+        }&restriction=${restriction ? restriction : ""}`
       );
-        console.log(response.data, 'soy data')
+      console.log(response.data, "soy data");
       return dispatch({
         type: "GET_ROUTE_FROM_DB",
         payload: response.data,
@@ -227,16 +235,15 @@ export function getRouteFromDb(originName, destinyName, date, place, order, rest
 }
 
 export function getSearchParams(originName, destinyName, date, place) {
-      return ({
-        type: "GET_SEARCH_PARAMS",
-        payload: {
-          originName,
-          destinyName,
-          date,
-          place
-        },
-      });
-    
+  return {
+    type: "GET_SEARCH_PARAMS",
+    payload: {
+      originName,
+      destinyName,
+      date,
+      place,
+    },
+  };
 }
 // -----------------------------< filters >----------------------------------
 // export function filterBySmoke(payload) {
@@ -330,16 +337,16 @@ export function getMejorasYReclamos(payload) {
         type: "GET_RECLAMOSYMEJORAS",
         payload: response.data,
       });
-    } catch (error) { }
+    } catch (error) {}
   };
 }
 
 export function deleteReclamos(id) {
   return async function (dispatch) {
     try {
-      const response = ( await axios.delete(
-        `http://localhost:3001/suggestionbox/${id}`
-      )).data;
+      const response = (
+        await axios.delete(`http://localhost:3001/suggestionbox/${id}`)
+      ).data;
       return dispatch({
         type: "DELETE_RECLAMOSYMEJORAS",
         payload: response,
@@ -377,7 +384,7 @@ export function deleteRoute() {
   };
 }
 export function deleteRouteFromDb(param) {
-  console.log(param)
+  console.log(param);
   return {
     type: "DELETE_ROUTE_FROM_DB",
   };
@@ -385,7 +392,7 @@ export function deleteRouteFromDb(param) {
 export function deleteOrder(id) {
   return async function (dispatch) {
     try {
-      const response = await axios.delete(`http://localhost:3001/order/` + id);
+      await axios.delete(`http://localhost:3001/order/` + id);
       return {
         type: "DELETE_ORDER",
       };

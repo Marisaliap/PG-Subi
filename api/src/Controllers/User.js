@@ -38,13 +38,11 @@ const postUser = async (req, res, next) => {
         age,
         about,
         genre,
-        calification: 0,
+        calification,
         photoDni,
         cbu,
-        // public_id:result.public_id,
       },
       include: [Post, Car, Order, Route, Chat],
-      // include: [Post, Car, Route]
     });
     res.send(user);
   } catch (error) {
@@ -82,19 +80,6 @@ const getUser = async (req, res, next) => {
           email: user.email,
         };
       });
-      //--------------------------------------------------------------
-      // const calification = data.posts;
-      // let array = [];
-      // calification.map((d) => {
-      //   array.push(d.calification);
-      // });
-      // let calUser = 0;
-      // let suma = 0;
-      // array.forEach(function (e) {
-      //   suma += e;
-      // });
-      // calUser = suma / array.length;
-      //---------------------------------------------------------------
     } else if (id) {
       data = await User.findByPk(id, {
         include: [
@@ -109,17 +94,6 @@ const getUser = async (req, res, next) => {
           },
         ],
       });
-      /*const calification = data.posts;
-      let array = [];
-      calification.map((d) => {
-        array.push(d.calification);
-      });
-      let calUser = 0;
-      let suma = 0;
-      array.forEach(function (e) {
-        suma += e;
-      });
-      calUser = suma / array.length;*/
     } else {
       data = await User.findAll();
     }
@@ -132,23 +106,24 @@ const getUser = async (req, res, next) => {
 const putUserCal = async (req, res, next) => {
   try {
     const { id } = req.params;
-data = await User.findByPk(id, {
-  include: [Post],
-});
+    data = await User.findByPk(id, {
+      include: [Post],
+    });
 
-const calification = data.posts;
-let array = [];
-calification.map((d) => {
-  array.push(d.calification);
-});
-let calUser = 0;
-let suma = 0;
-array.forEach(function (e) {
-  suma += e;
-});
+    const calification = data.posts;
+    let array = [];
+    calification.map((d) => {
+      array.push(d.calification);
+    });
+    let calUser = 0;
+    let suma = 0;
+    if (array.length > 0) {
+      array.forEach(function (e) {
+        suma += e;
+      });
 
-calUser = suma / array.length;
-
+      calUser = suma / array.length;
+    }
 
     const user = await User.findByPk(id);
     user.update({

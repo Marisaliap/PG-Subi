@@ -16,11 +16,11 @@ const RouteDetails = ({ match }) => {
 
   useEffect(() => {
     dispatch(allRoutes());
-  }, []);
+  }, []); // eslint-disable-line
   // ------------------<paged>------------------
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [routesPerPage, setRoutesPerPage] = useState(6);
+  const [routesPerPage, setRoutesPerPage] = useState(6); // eslint-disable-line
   const indexOfLastRoute = currentPage * routesPerPage;
   const indexOffirstRoute = indexOfLastRoute - routesPerPage;
   const currentRoutes =

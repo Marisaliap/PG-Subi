@@ -1,20 +1,17 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import '../Sass/Styles/Footer.scss';
-import { FormattedMessage } from 'react-intl';
-import { langContext } from './../context/langContext.js';
-import es from './../img/spain.png';
-import en from './../img/united-kingdom.png';
-import SubFooter from './SubFooter.jsx';
-import {useSelector} from 'react-redux';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import "../Sass/Styles/Footer.scss";
+import { FormattedMessage } from "react-intl";
+import { langContext } from "./../context/langContext.js";
+import es from "./../img/spain.png";
+import en from "./../img/united-kingdom.png";
+import SubFooter from "./SubFooter.jsx";
 
 export default function Footer() {
   const idioma = useContext(langContext);
-  const{user}=useSelector(state => state)
   return (
     <div className="los2footers">
       <div className="Footer">
-        {/* <hr classname="lineahr" /> */}
         <div></div>
         <div>
           <h4 className="titulo">
@@ -103,17 +100,17 @@ export default function Footer() {
             <FormattedMessage
               id="footer.group10"
               defaultMessage="Group 10 © |"
-            />{' '}
+            />{" "}
             <a
               href="https://www.soyhenry.com/"
               className="Link"
               target="_blank"
               rel="noreferrer"
             >
-              {' '}
+              {" "}
               Soy Henry ©
             </a>{" "}
-             2021{" "}
+            2021{" "}
           </h3>
         </div>
         <hr classname="lineahr" />
@@ -124,13 +121,13 @@ export default function Footer() {
           <div className="cosasAbajo">
             <button
               className="botonBandera"
-              onClick={() => idioma.establecerLenguaje('es-AR')}
+              onClick={() => idioma.establecerLenguaje("es-AR")}
             >
               <img className="banderas" src={es} alt="" />
             </button>
             <button
               className="botonBandera"
-              onClick={() => idioma.establecerLenguaje('en-US')}
+              onClick={() => idioma.establecerLenguaje("en-US")}
             >
               <img className="banderas" src={en} alt="" />
             </button>

@@ -24,12 +24,12 @@ export default function AllRoutesData() {
     };
   });
 
-  const [data, setData] = useState(infoRoutes);
+  const [data, setData] = useState(infoRoutes); // eslint-disable-line
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(allRoutes());
-  }, [data]);
+  }, [data]); // eslint-disable-line
 
   const columns = [
     { field: "users", headerName: "Users", width: 180 },

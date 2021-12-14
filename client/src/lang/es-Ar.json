@@ -268,5 +268,20 @@
 
   "final": "",
 
-  "app.banned": "No tienes acceso a esta pagina, para mas informacion contactese a grupo10.soyhenry@gmail.com"
+  "app.banned": "No tienes acceso a esta pagina, para mas informacion contactese a grupo10.soyhenry@gmail.com",
+
+  "Recommendations.title": "Recomendaciones",
+  "Recommendations.p1": "Compartir es una gran experiencia pero debemos tener en cuenta algunas consideraciones para poder Gimme A Ride® sin inconvenientes.",
+  "Recommendations.h31": "Origen y destino",
+  "Recommendations.p2": "Al crear un viaje que tenga origen y destino con direcciones precisas, nunca tenés que cargar direcciones de tu casa o similar. Siempre usar una Ciudad o un cruce de calles.",
+  "Recommendations.h32": "Gimme A Ride® con desconocidos", 
+  "Recommendations.p3": "Previo a Gimme A Ride® con usuarios de los que no tengas referencias (o sea, que no sean “amigos” o “amigos de tus amigos”), te recomendamos que te tomes unos minutos para revisar el perfil de Gimme A Ride® de esa persona y su perfil en distintas redes sociales. De esa forma podrás contar con información acerca de la persona. También sugerimos conversar antes de viajar. Siempre es importante compartir con alguien que te genere confianza.", 
+  "Recommendations.li1": "Chequeá los DNI para verificar si la identidad de las personas se corresponde con la que te habían dicho.",
+  "Recommendations.li2": "En el momento del encuentro, chequeá que el modelo de auto y patente coincidan con el dato suministrado por el conductor.", 
+  "Recommendations.li3": "Pedile al conductor que te muestre su carnet de conducir, la cédula verde del vehículo y el seguro del vehículo actualizado a la fecha. El auto también debe tener la inspección técnica obligatoria hecha.", 
+  "Recommendations.li4": "Verificá visualmente que el auto en el que vas a viajar esté en buenas condiciones.", 
+  "Recommendations.li5": "Verificá que haya un cinturón de seguridad para cada pasajero", 
+  "Recommendations.li6": "Recordá que no estás obligado a subirte a ningún auto ni a subir a nadie a tu auto. Si las personas con las que acordaste el viaje te generan desconfianza en el momento del encuentro, si considerás alguna actitud como sospechosa, o si la documentación o el estado del auto no están en condiciones, podés manifestarlo en los mejores términos y no realizar el viaje. Si te parece que tu desconfianza o sospecha se basa en un prejuicio, podés manifestar que te surgió un imprevisto o que no te sentís bien físicamente como para viajar. También podés bajarte del auto si en algún momento te parece que el conductor maneja de forma imprudente o que no te hace sentir cómodo. Al momento de subirte al auto y durante el viaje, vos sos responsable de ejercer tu propia seguridad. Luego de pasada la fecha del viaje podés dejar una calificación negativa.",
+  "Recommendations.p4": "Remarcamos que el conductor no debe obtener ganancia económica en sus viajes. Para más información, revisá los",
+  "Recommendations.a1": "Términos y Condiciones Generales de Gimme A Ride®."
 }
