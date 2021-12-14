@@ -37,7 +37,7 @@ export default function Admin() {
           <Route exact path="/admin/users">
             <UserList />
           </Route>
-          <Route exact path="/admin/routes">
+            <Route exact path="/admin/routes">
             <AllRoutesData/>
             </Route>
           <Route exact path="/admin/feed">
@@ -54,3 +54,4 @@ export default function Admin() {
     </Router >
   );
 }
+

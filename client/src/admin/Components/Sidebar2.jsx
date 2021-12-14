@@ -1,4 +1,4 @@
-import "../../styles/Sidebar.css";
+import "../styles/Sidebar.css";
 
 import {
   LineStyle,
@@ -18,7 +18,6 @@ import {
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
-
 export default function Sidebar() {
   return (
     <div className="sidebar">
@@ -32,21 +31,18 @@ export default function Sidebar() {
                 Dashboard
               </li>
             </Link>
-
             <Link to='/admin/transactions' className="link">
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
               Sales
             </li>
             </Link>
-
             <Link to="/admin/routes" className="link">
               <li className="sidebarListItem">
               <Commute className="sidebarIcon" />
                 Routes Info
               </li>
             </Link>
-
             {/* <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
               Analytics
@@ -56,7 +52,6 @@ export default function Sidebar() {
               Sales
             </li> */}
           </ul>
-          
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
@@ -67,47 +62,44 @@ export default function Sidebar() {
                 All Users
               </li>
             </Link>
-
             <Link to="/admin/newUser" className="link">
               <li className="sidebarListItem">
                 <PersonAdd className="sidebarIcon" />
                 Create New User
               </li>
             </Link>
-
-            <Link to='/admin/transactions' className="link">
+            {/* <Link to="/products" className="link">
               <li className="sidebarListItem">
-                <AttachMoney className="sidebarIcon" />
-                Transactions
+                <Storefront className="sidebarIcon" />
+                Products
               </li>
-            </Link>
+            </Link> */}
+            {/* <li className="sidebarListItem">
+              <BarChart className="sidebarIcon" />
+              Reports
+            </li>
+             */}
           </ul>
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
-
             <li className="sidebarListItem">
               <MailOutline className="sidebarIcon" />
-              <a href="https://mail.google.com/mail/u/?authuser=grupo10.soyhenry@gmail.com" target="_blank" rel="noopener noreferrer">Mail</a>
+              Mail
             </li>
-
-            <Link to="/admin/feed" className="link">
-              <li className="sidebarListItem">
-                <DynamicFeed className="sidebarIcon" />
-                Feedback
-              </li>
+            <Link to="/admin/feedback" className="link">
+            <li className="sidebarListItem">
+              <DynamicFeed className="sidebarIcon" />
+              Feedback
+            </li>
             </Link>
-
-            {/* <Link to="/admin/message" className="link"> 
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Messages
             </li>
-            </Link> */}
           </ul>
         </div>
-
         {/* <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
@@ -129,3 +121,4 @@ export default function Sidebar() {
     </div>
   );
 }
+
