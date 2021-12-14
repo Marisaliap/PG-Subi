@@ -416,6 +416,7 @@ export function setPost(payload) {
 }
 
 export function userPost(id) {
+  console.log("id=>", id);
   return async function (dispatch) {
     try {
       const response = (
@@ -430,6 +431,7 @@ export function userPost(id) {
 }
 
 export function putRatingUser(id) {
+  console.log("idput=>", id);
   return async function (dispatch) {
     try {
       const response = await axios.put(

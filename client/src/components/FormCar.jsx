@@ -168,7 +168,7 @@ export default function FormCar() {
   return (
     <div className="FormCar">
       <h1>
-        <FormattedMessage id="register.errname" defaultMessage="Name is required" />
+        <FormattedMessage id="formCar.title" defaultMessage="Name is required" />
       </h1>
       <form
         className="FormAUTO"

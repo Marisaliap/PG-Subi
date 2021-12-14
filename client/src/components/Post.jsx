@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 //import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { userPost, setPost, putRatingUser } from "../actions/index";
+import { userPost, setPost, putRatingUser, getUserDetail } from "../actions/index";
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
@@ -17,18 +17,19 @@ export default function Post(id) {
   let time = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
   let ids = id.id;
 
+  
   useEffect(() => {
     dispatch(userPost(ids));
   }, [dispatch, ids]);
-
+  
   const [input, setInput] = useState({
-    email: ids,
+    userEmail: ids,
     date: time,
     author: isAuthenticated ? user.name : "",
     description: "",
     calification: "",
   });
-
+  
   function validate(input) {
     let errors = {};
     if (!input.description) {
@@ -38,7 +39,15 @@ export default function Post(id) {
     }
     return errors;
   }
-
+  
+  function validateInputs() {
+    if (!input.description || !input.calification) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  
   function handleChange(e) {
     setInput({
       ...input,
@@ -49,22 +58,23 @@ export default function Post(id) {
         ...input,
         [e.target.name]: e.target.value,
       })
-    );
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (Object.keys(errors).length === 0) {
-      dispatch(setPost(input));
-      setInput({
-        email: "",
-        date: "",
-        author: "",
-        description: "",
+      );
+    }
+    
+    function handleSubmit(e) {
+      e.preventDefault();
+      if (Object.keys(errors).length === 0) {
+        dispatch(setPost(input));
+        setInput({
+          userEmail: "",
+          date: "",
+          author: "",
+          description: "",
         calification: "",
       });
       dispatch(putRatingUser(ids));
       dispatch(userPost(ids));
+      dispatch(getUserDetail(id))
       swal({
         title: "Good job!",
         text: "Post created correctly",
@@ -80,7 +90,9 @@ export default function Post(id) {
       });
     }
   }
-
+  console.log("input=>", input);
+  console.log("id=>", ids);
+  
   return (
     <div className="Post">
       <div>
@@ -113,7 +125,7 @@ export default function Post(id) {
               id="star"
               className="star"
             >
-              <option value="99999" disabled selected className="person">
+              <option value="" disabled selected className="person">
                 --Cal--
               </option>
               <option value="0">0</option>
@@ -134,7 +146,7 @@ export default function Post(id) {
           </div>
           <br />
           <div className="textarea">
-            <FormattedMessage id="post.description" key={"op-5"}>
+            <FormattedMessage id="post.description">
               {(message) => (
                 <textarea
                   placeholder={message}
@@ -149,11 +161,17 @@ export default function Post(id) {
               <p className="error">{errors.description}</p>
             )}
           </div>
-          <div className="divbutton">
-            <button className="button" type="submit">
-              <FormattedMessage id="formCar.title" defaultMessage="Send" />
-            </button>
-          </div>
+            <div className="divbutton">
+          {validateInputs() === false ? (
+              <button className="buttondisabled">
+                <FormattedMessage id="post.send" defaultMessage="Send" />
+              </button>
+          ) : (
+              <button className="button" type="submit">
+                <FormattedMessage id="post.send" defaultMessage="Send" />
+              </button>
+          )}
+            </div>
         </form>
       </div>
     </div>
