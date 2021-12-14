@@ -20,7 +20,7 @@ import { BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { Modal } from "./ModalMP.jsx";
 import RatingStar from "./RatingStar.jsx";
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 export default function AllInfoRoute({ match }) {
   const dispatch = useDispatch();
@@ -55,13 +55,12 @@ export default function AllInfoRoute({ match }) {
 
   function handleClick() {
     dispatch(deleteRoute());
-    history.push("/route-list");
+    history.goBack();
   }
 
+  let restricciones = route.restriction && route.restriction.split(", ");
 
-  let restricciones =route.restriction && route.restriction.split(", ");
-
-console.log(route.restriction)
+  console.log(route.restriction);
 
   return (
     <div className="Map">
@@ -85,35 +84,45 @@ console.log(route.restriction)
           </p>
           {route.place === 0 ? (
             <p>
-              <BsFillPersonFill /> <FormattedMessage id="allinforoute.placefull" defaultMessage="Trip Full" />
+              <BsFillPersonFill />{" "}
+              <FormattedMessage
+                id="allinforoute.placefull"
+                defaultMessage="Trip Full"
+              />
             </p>
           ) : (
             <p>
-              <BsFillPersonFill /> {route.place} <FormattedMessage id="allinforoute.place" defaultMessage="Seats available."/>
+              <BsFillPersonFill /> {route.place}{" "}
+              <FormattedMessage
+                id="allinforoute.place"
+                defaultMessage="Seats available."
+              />
             </p>
           )}
         </div>
         <div className="restrictionContainer">
-          {restricciones&&restricciones.map((restriction) => {
-            return (
-              <p>
-                {restriction
-                  .capitalizeFirstLetter()
-                  .replace(/([a-z0-9])([A-Z])/g, "$1 $2")}
-              </p>
-            );
-          })}
+          {restricciones &&
+            restricciones.map((restriction) => {
+              return (
+                <p>
+                  {restriction
+                    .capitalizeFirstLetter()
+                    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")}
+                </p>
+              );
+            })}
         </div>
         {route.users && (
-          <Link to={`/user/${route.users[0].email}`} className="userContainerallroute">
+          <Link
+            to={`/user/${route.users[0].email}`}
+            className="userContainerallroute"
+          >
             <div className="userContainerallroute">
               <img src={route.users.length > 0 && route.users[0].photo} />
               <h5>{route.users.length > 0 && route.users[0].name}</h5>
 
               <div>
-              <RatingStar
-                Rating={route.users[0].calification}
-              />
+                <RatingStar Rating={route.users[0].calification} />
               </div>
             </div>
           </Link>
@@ -181,22 +190,30 @@ console.log(route.restriction)
         <ZoomControl />
       </Map>
 
-
       <div>
-        {route.place === 0 || !route.users || user.email === route.users[0].email  ? (
-          <button className="buttonDisabled"><FormattedMessage id="allinforoute.jointhistrip" defaultMessage="Join this trip!" /></button>
+        {route.place === 0 ||
+        !route.users ||
+        user.email === route.users[0].email ? (
+          <button className="buttonDisabled">
+            <FormattedMessage
+              id="allinforoute.jointhistrip"
+              defaultMessage="Join this trip!"
+            />
+          </button>
         ) : (
           <button onClick={openModal} className="button">
-          <FormattedMessage id="allinforoute.jointhistrip" defaultMessage="Join this trip!" />
+            <FormattedMessage
+              id="allinforoute.jointhistrip"
+              defaultMessage="Join this trip!"
+            />
           </button>
         )}
         {showModal ? (
           <Modal setShowModal={setShowModal} route={route} user={user} />
         ) : null}
 
-
         <button className="buttonBlue" onClick={handleClick}>
-        <FormattedMessage id="allinforoute.goback" defaultMessage="Go Back" />
+          <FormattedMessage id="allinforoute.goback" defaultMessage="Go Back" />
         </button>
       </div>
     </div>

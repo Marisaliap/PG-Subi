@@ -54,7 +54,7 @@ export default function CardRoute({
           {place}{" "}
           <FormattedMessage
             id="cardroute.place"
-            defaultMessage="Seats available:"
+            defaultMessage="Seats available"
           />
         </h5>
       )}

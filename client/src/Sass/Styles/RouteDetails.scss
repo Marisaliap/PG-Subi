@@ -1,9 +1,10 @@
-@import '../Variables/Variables.scss';
+@import "../Variables/Variables.scss";
 
 .RouteDetails {
   .RouteCardContainer {
     display: grid;
     margin: 1rem;
+    place-items: center;
     // background-color: red;
 
     @media only screen and (min-width: 768px) {
@@ -31,7 +32,7 @@
       rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 
     @media only screen and (min-width: 1024px) {
-      width: 30rem;
+      width: 25rem;
       height: 15rem;
     }
 

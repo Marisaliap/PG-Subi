@@ -1,44 +1,44 @@
 @import "../Variables/Variables.scss";
 
 .paged {
- text-decoration: none;
-} 
- 
+  text-decoration: none;
+}
+
 .listContainer {
- display: inline-flex;
- flex-direction: row;
- color: $buttonColor;
+  display: inline-flex;
+  flex-direction: row;
+  color: $buttonColor;
 }
 
 .number {
- color: #fff;
- list-style: none;
- padding: 1px;
- font-size: 16px;
- font-family: "Inter", sans-serif;
- text-align: center;
-} 
-   
+  color: #fff;
+  list-style: none;
+  padding: 1px;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
+
 .linkPagination {
- color: #fff;
- display:inline-flex;
- padding: 10px;
- margin: 2px;
- border: none;
- cursor: pointer;
- background-color: #c485ba83;
- border-radius: 10%;
- list-style:none;
- width: 10px;
- height: 10px;
- font-size: 12px;
- align-items: center;
-}    
-  
+  color: #fff;
+  display: inline-flex;
+  padding: 10px;
+  margin: 2px;
+  border: none;
+  cursor: pointer;
+  background-color: $buttonColor;
+  border-radius: 10%;
+  list-style: none;
+  width: 10px;
+  height: 10px;
+  font-size: 12px;
+  align-items: center;
+}
+
 .linkPagination:hover {
- background-color: #fff;
- border: none;
- color: #220F00;
- transition-delay: 0.2s;
- transition: 0.8s;
-}     
+  background-color: #fff;
+  border: none;
+  color: #220f00;
+  transition-delay: 0.2s;
+  transition: 0.8s;
+}

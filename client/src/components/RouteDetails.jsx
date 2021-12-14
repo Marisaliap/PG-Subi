@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { allRoutes, deleteRouteFromDb } from '../actions';
-import CardRoute from './CardRoute';
-import CardUser from './CardUser';
-import NavBarFilter from './NavBarFilter';
-import '../Sass/Styles/RouteDetails.scss';
-import Pagination from './Pagination';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { allRoutes, deleteRouteFromDb } from "../actions";
+import CardRoute from "./CardRoute";
+import CardUser from "./CardUser";
+import NavBarFilter from "./NavBarFilter";
+import "../Sass/Styles/RouteDetails.scss";
+import Pagination from "./Pagination";
 // import {CardCar} from "./CardCar";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const RouteDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -46,11 +46,12 @@ const RouteDetails = ({ match }) => {
       <NavBarFilter places={match.params.id} currentRoutes={currentRoutes} />
 
       <div className="RouteCardContainer">
-        {
-          /* getRoutes */ currentRoutes.map((route, i) => (
+        {currentRoutes.length === 0 ? (
+          <h1>No hay rutas pa</h1>
+        ) : (
+          currentRoutes.map((route, i) => (
             <Link className="link" id="link" to={`/route/${route.id}`}>
               <div className="RouteCard">
-                {console.log(route.users)}
                 {route.users && (
                   <CardUser
                     photo={route.users.length > 0 && route.users[0].photo}
@@ -84,12 +85,16 @@ const RouteDetails = ({ match }) => {
               </div>
             </Link>
           ))
-        }
+        )}
       </div>
       <div>
         <Pagination
           routesPerPage={routesPerPage}
-          getRoutes={getRoutes.length}
+          getRoutes={
+            filteredRouteFromDb.length > 0 || match.params.id
+              ? filteredRouteFromDb.length
+              : getRoutes.length
+          }
           pagedTotal={pagedTotal}
         />
       </div>
