@@ -110,7 +110,7 @@ export default function AllInfoRoute({ match }) {
               );
             })}
         </div>
-        {route.users && (
+        {route.users && route.users.length && (
           <Link
             to={`/user/${route.users[0].email}`}
             className="userContainerallroute"

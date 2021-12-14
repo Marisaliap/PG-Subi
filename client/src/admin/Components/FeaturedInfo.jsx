@@ -1,4 +1,5 @@
 import { ArrowUpward } from "@material-ui/icons";
+import "../../styles/FeaturedInfo.css";
 
 export default function FeaturedInfo({ info }) {
   const sales = info[0].Sales;

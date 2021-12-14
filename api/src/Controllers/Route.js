@@ -133,6 +133,7 @@ const getRoute = async (req, res, next) => {
         "restriction",
         "points",
         "center",
+        "manejante",
       ],
       include: [
         { model: Order },

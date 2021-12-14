@@ -1,14 +1,14 @@
-@import '../Variables/Variables.scss';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@150;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap');
+@import "../Variables/Variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@150;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap");
 
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .App {
   background-color: $background;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5;
   text-align: center;
   position: sticky;
@@ -33,7 +33,6 @@
   .back-to-top:hover {
     background-color: $buttonColorHovered;
   }
-
 }
 
 h1,
@@ -43,8 +42,8 @@ h4,
 h5,
 h6 {
   color: $headline;
-  &:focus{
-    outline: none
+  &:focus {
+    outline: none;
   }
 }
 
@@ -53,20 +52,21 @@ p {
 }
 
 a {
-  &:focus{
-    outline: none
+  text-decoration: none;
+  &:focus {
+    outline: none;
   }
 }
 
-button{
-  &:focus{
-    outline: none
+button {
+  &:focus {
+    outline: none;
   }
 }
 
-li{
-  &:focus{
-    outline: none
+li {
+  &:focus {
+    outline: none;
   }
 }
 
@@ -81,7 +81,7 @@ li{
 
 .button {
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   color: $background;
   background-color: $buttonColor;
@@ -99,7 +99,7 @@ li{
 
 .buttonBlue {
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   color: $background;
   background-color: $buttonBlue;
@@ -117,7 +117,7 @@ li{
 
 .buttonDisabled {
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   color: $background;
   background-color: $buttonDisabled;
@@ -126,8 +126,6 @@ li{
   border: 0;
   border-radius: 1.5rem;
 }
-
-
 
 /* 
 .containAll{

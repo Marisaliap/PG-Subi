@@ -12,7 +12,7 @@ export default function AllRoutesData() {
   var infoRoutes = getRoutes.map((route, i) => {
     return {
       id: route.id,
-      users: route.users[0].UserRoutes.userEmail,
+      users: route.manejante,
       origin: route.originName,
       destiny: route.destinyName,
       date: route.date,
