@@ -8,7 +8,6 @@ import NewUser from "../admin/pages/NewUser";
 import UserList from "../admin/pages/UserList";
 import Feedback from "../admin/pages/Feedback";
 import AllRoutesData from "../admin/pages/AllRoutesData";
-import Message from "../admin/pages/Message";
 import "../Sass/Styles/App.scss";
 import "../styles/Admin.css";
 
