@@ -58,10 +58,11 @@ export default function Aboutus() {
                       alt="Foto 1"
                     />
                   </pre>
-                  <p>
+                  <p className="p">
                     <strong>Marisa Lia Pascal:</strong> <FormattedMessage id= "about.marisa" />
                   </p>
                 </li>
+                <br></br>
                 <li>
                   <div></div>
                   <pre>
@@ -72,10 +73,11 @@ export default function Aboutus() {
                       alt="Foto 2"
                     />
                   </pre>
-                  <p>
+                  <p className="p">
                     <strong>Lorenzo Blanda:</strong><FormattedMessage id= "about.lolo" />
                   </p>
                 </li>
+                <br></br>
                 <li>
                   <div></div>
                   <pre>
@@ -86,10 +88,11 @@ export default function Aboutus() {
                       alt="Foto 3"
                     />
                   </pre>
-                  <p>
+                  <p className="p">
                     <strong>Ramiro Villamizar:</strong><FormattedMessage id= "about.rami" />
                   </p>
                 </li>
+                <br></br>
                 <li>
                   <div></div>
                   <pre>
@@ -100,10 +103,11 @@ export default function Aboutus() {
                       alt="Foto 4"
                     />
                   </pre>
-                  <p>
+                  <p className="p">
                     <strong>Juan Ignacio Moldes:</strong><FormattedMessage id= "about.juan" />
                   </p>
                 </li>
+                <br></br>
                 <li>
                   <div></div>
                   <pre>
@@ -114,10 +118,11 @@ export default function Aboutus() {
                       alt="Foto 5"
                     />
                   </pre>
-                  <p>
+                  <p className="p">
                     <strong>Fabrizio Santandrea:</strong><FormattedMessage id= "about.fabri" />
                   </p>
                 </li>
+                <br></br>
                 <li>
                   <div></div>
                   <pre>
@@ -128,10 +133,11 @@ export default function Aboutus() {
                       alt="Foto 6"
                     />
                   </pre>
-                  <p>
+                  <p className="p">
                     <strong>Mateo Filip:</strong><FormattedMessage id= "about.mateo" />
                   </p>
                 </li>
+                <br></br>
                 <li>
                   <div></div>
                   <pre>
@@ -142,10 +148,11 @@ export default function Aboutus() {
                       alt="Foto 7"
                     />
                   </pre>
-                  <p>
+                  <p className="p">
                     <strong>Juan Pablo Benavente:</strong><FormattedMessage id= "about.jotape" />
                   </p>
                 </li>
+                <br></br>
                 <li>
                   <div></div>
                   <pre>
@@ -156,10 +163,11 @@ export default function Aboutus() {
                       alt="Foto 8"
                     />
                   </pre>
-                  <p>
+                  <p className="p">
                     <strong>Nelson Albera:</strong><FormattedMessage id= "about.nelson" />
                   </p>
                 </li>
+                <br></br>
                 <li>
                   <div></div>
                   <pre>
@@ -170,10 +178,11 @@ export default function Aboutus() {
                       alt="Foto TL"
                     />
                   </pre>
-                  <p>
+                  <p className="p">
                     <strong>Daniel Maers:</strong><FormattedMessage id= "about.daniel" />
                   </p>
                 </li>
+                <br></br>
                 <li>
                   <div></div>
                   <pre>
@@ -184,7 +193,7 @@ export default function Aboutus() {
                       alt="Foto PO"
                     />
                   </pre>
-                  <p>
+                  <p className="p">
                     <strong>Bryan Camilo Pineda:</strong><FormattedMessage id= "about.camilo" />
                   </p>
                 </li>
