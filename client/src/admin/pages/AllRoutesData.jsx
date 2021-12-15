@@ -7,8 +7,6 @@ import { allRoutes } from "../../actions";
 export default function AllRoutesData() {
   const { getRoutes } = useSelector((state) => state);
 
-  console.log(getRoutes, "soy routes del admin");
-
   var infoRoutes = getRoutes.map((route, i) => {
     return {
       id: route.id,
@@ -24,12 +22,12 @@ export default function AllRoutesData() {
     };
   });
 
-  const [data, setData] = useState(infoRoutes);
+  const [data, setData] = useState(infoRoutes); // eslint-disable-line
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(allRoutes());
-  }, [data]);
+  }, [data]); // eslint-disable-line
 
   const columns = [
     { field: "users", headerName: "Users", width: 180 },
@@ -49,6 +47,7 @@ export default function AllRoutesData() {
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
+        rowsPerPageOptions={[8]}
         checkboxSelection
       />
     </div>

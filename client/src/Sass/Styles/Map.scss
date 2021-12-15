@@ -1,22 +1,33 @@
-@import '../Variables/Variables.scss';
+@import "../Variables/Variables.scss";
 
 .Mapping {
   display: grid;
   place-items: center;
-  margin: 1rem 1rem;
+  margin: 0;
+  padding: auto;
 
+  @media only screen and (min-width: 1024px) {
+    padding: 0rem 20rem;
+    margin-right: 1rem;
+  }
   .mapbox {
     margin-top: 1rem;
     border: 2px solid $headline;
     border-radius: 10px;
   }
-
+  .buttonContainer {
+    @media only screen and (max-width: 1024px) {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
   .infoContainer {
-    width: 50vw;
     padding: 1rem;
     column-count: 2;
     text-align: center;
 
+    @media only screen and (min-width: 1024px) {
+    }
     p {
       margin-top: 0;
       font-weight: bold;

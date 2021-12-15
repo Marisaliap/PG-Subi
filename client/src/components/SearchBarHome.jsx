@@ -10,7 +10,6 @@ import { NavLink, useHistory } from "react-router-dom";
 import "../Sass/Styles/SearchBarHome.scss";
 import "../Sass/Styles/App.scss";
 import { FormattedMessage } from "react-intl";
-import { BsPersonFill } from "react-icons/bs";
 
 let inputs = { Origin: "", Destination: "" };
 let info = { pasajeros: 1, date: "" };
@@ -129,7 +128,6 @@ export default function SearchBarHome() {
               city.name !== inputs.Origin && <option>{city.name}</option>
           )}
       </datalist>
-      {/* <p>{validations && validations.Origin}</p> */}
       <FormattedMessage
         id="searchBarHome.destination"
         defaultMessage="Destination"
@@ -155,7 +153,6 @@ export default function SearchBarHome() {
               city.name !== inputs.Destination && <option>{city.name}</option>
           )}
       </datalist>
-      {/* <p>{validations && validations.Destination}</p> */}
       <div className="dateAndSeatsContainer">
         <input
           type="date"
@@ -164,7 +161,6 @@ export default function SearchBarHome() {
           onChange={handleChange}
           className="dateAndSeatsSelectors"
         />
-        {/* <p>{validations && validations.date}</p> */}
 
         <hr className="dateSeatsDivider" />
 
@@ -182,9 +178,6 @@ export default function SearchBarHome() {
           <option value="5">5 Passengers</option>
           <option value="6">6 Passengers</option>
         </select>
-        {/* <label for="pasajeros">
-          <BsPersonFill />
-        </label> */}
       </div>
 
       <hr />
@@ -207,7 +200,7 @@ export default function SearchBarHome() {
           </NavLink>
         </button>
       ) : (
-        <button className="button" disabled="true">
+        <button className="buttonDisabled" disabled>
           <FormattedMessage
             id="searchBarHome.searchButton"
             defaultMessage=" Search"

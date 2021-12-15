@@ -1,11 +1,10 @@
-import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import { getUserProfile } from '../actions';
-import { useDispatch, useSelector } from 'react-redux';
-import '../Sass/Styles/Profile.scss';
-import {FormattedMessage} from 'react-intl';
+import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
+import { getUserProfile } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
+import "../Sass/Styles/Profile.scss";
+import { FormattedMessage } from "react-intl";
 
 export const Profile = () => {
   const dispatch = useDispatch();
@@ -13,33 +12,31 @@ export const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   let umail;
-  isAuthenticated ? (umail = user.email) : (umail = '');
+  isAuthenticated ? (umail = user.email) : (umail = "");
 
   useEffect(() => {
     dispatch(getUserProfile(umail));
   }, [dispatch, umail]);
 
   if (isLoading) {
-    return <div>
-      <FormattedMessage
-    id="profile.loading"
-    defaultMessage="Loading..."
-  />
-  </div>;
+    return (
+      <div>
+        <FormattedMessage id="profile.loading" defaultMessage="Loading..." />
+      </div>
+    );
   }
 
   return (
     isAuthenticated && (
       <div>
-      {/* <Link to={!userInfo.dni ? '/register' : '/profile'}> */}
+        {/* <Link to={!userInfo.dni ? '/register' : '/profile'}> */}
         <img
           className="profilePicture"
           src={userInfo.photo ? userInfo.photo : user.picture}
           alt={user.name}
         />
-       
-      {/* </Link> */}
-     
+
+        {/* </Link> */}
       </div>
     )
   );

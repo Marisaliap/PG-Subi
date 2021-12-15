@@ -1,18 +1,79 @@
 @import "../Variables/Variables.scss";
 
 .LandingPage {
-  padding: 3rem;
+  padding: 2rem;
+  padding-bottom: 0;
+
+  .pelodeces {
+    height: 8vh;
+  }
+
+  .centralosporfa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .losPorque {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+  }
+
+  .button {
+    outline: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: $background;
+    background-color: $buttonColor;
+    margin: 0.5rem;
+    padding: 0.9rem 1.5rem;
+    border: 0;
+    border-radius: 1.5rem;
+    transition: background-color 500ms ease-in-out;
+    width: 8rem;
+    border: 0.5px solid #ededed;
+
+    &:hover {
+      background-color: $buttonColorHovered;
+      cursor: pointer;
+    }
+  }
 
   .upperSection {
     padding-left: 20rem;
     padding-right: 20rem;
+
+    .unpoquitoMas {
+      width: 120%;
+      margin-left: -10%;
+    }
+
+    .botonBandera {
+      border: none;
+      cursor: pointer;
+      background: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: inline-block;
+    }
+
+    .banderas {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
   }
 
   .logo {
-    width: 80%;
+    width: 25%;
     margin-left: 2.5rem;
     margin-right: 2.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 
     @media only screen and (min-width: 768px) {
       margin-left: 5rem;
@@ -47,7 +108,10 @@
       @media only screen and (min-width: 1024px) {
         display: flex;
         align-items: center;
-        margin-top: 1rem;
+        padding-top: 1rem;
+        background-color: #ededed;
+        border-radius: 30px;
+        border: 1px solid #e0e0e0;
       }
 
       div {

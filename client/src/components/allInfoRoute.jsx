@@ -13,7 +13,7 @@ import {
   BsPinMap,
   BsPinMapFill,
   BsFillPersonFill,
-  BsFillExclamationOctagonFill,
+  BsHeartFill,
 } from "react-icons/bs";
 import { RiPinDistanceFill } from "react-icons/ri";
 import "../Sass/Styles/allInfoRoute.scss";
@@ -55,7 +55,7 @@ export default function AllInfoRoute({ match }) {
 
   function handleClick() {
     dispatch(deleteRoute());
-    history.push("/route-list");
+    history.goBack();
   }
 
   let restricciones = route.restriction && route.restriction.split(", ");
@@ -65,7 +65,7 @@ export default function AllInfoRoute({ match }) {
       {route.length > 0 && route.originName}
 
       <Map
-        style={"mapbox://styles/mapbox/streets-v11"}
+        style="mapbox://styles/mapbox/streets-v11" // eslint-disable-line
         containerStyle={{
           height: "50vh",
           width: "50vw",
@@ -158,7 +158,7 @@ export default function AllInfoRoute({ match }) {
         <div className="restrictionContainer">
           <p>
             {" "}
-            <BsFillExclamationOctagonFill /> Restrictions:{" "}
+            <BsHeartFill /> Preferences:{" "}
           </p>
           {restricciones &&
             restricciones.map((restriction, i) => {
@@ -173,7 +173,7 @@ export default function AllInfoRoute({ match }) {
         </div>
       </div>
       <div className="infoUserAndButtons">
-        {route.users && (
+        {route.users && route.users.length && (
           <Link
             to={`/user/${route.users[0].email}`}
             className="userContainerallroute"
@@ -196,7 +196,9 @@ export default function AllInfoRoute({ match }) {
         <div className="buttons">
           {route.place === 0 ||
           !route.users ||
-          user.email === route.users[0].email ? (
+          (route.users &&
+            route.users.length &&
+            user.email === route.users[0].email) ? (
             <button className="buttonDisabled">
               <FormattedMessage
                 id="allinforoute.jointhistrip"

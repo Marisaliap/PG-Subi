@@ -8,18 +8,14 @@ export default function CardUser({
   photo,
   name,
   lastName,
-  genre,
-  age,
   calification,
   email,
-  ...props
 }) {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(getUserDetail(email)), [dispatch]);
-
+  useEffect(() => dispatch(getUserDetail(email)), [dispatch]); // eslint-disable-line
   return (
-    <div className="CardUser" {...props}>
-      <img src={photo} alt="" />
+    <div className="CardUser">
+      <img src={photo ? photo : ""} alt="" />
       <h5>
         {name} {lastName}
       </h5>

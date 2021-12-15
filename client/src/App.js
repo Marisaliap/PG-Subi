@@ -47,7 +47,6 @@ export default function App() {
       }
     });
   }, []);
-  console.log(userpro);
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -58,9 +57,12 @@ export default function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
+          {/* eslint-disable-next-line */}
           <Route exact path="/" component={LandingPage} />
-          <div>
+          <>
+            {/* eslint-disable-next-line */}
             <NavBar />
+            {/* eslint-disable-next-line */}
             <Route path="/home" component={Home} />
             {isAuthenticated &&
             (userpro.isBanned === false || userpro.length === 0) ? (
@@ -68,51 +70,66 @@ export default function App() {
                 {isAuthenticated ? (
                   <>
                     <Switch>
+                      {/* eslint-disable-next-line */}
                       <Route exact path="/route" component={CreateRoute} />
+                      {/* eslint-disable-next-line */}
                       <Route path="/route/finish" component={Map} />
+                      {/* eslint-disable-next-line */}
                       <Route path="/register" component={Register} />
+                      {/* eslint-disable-next-line */}
                       <Route exact path="/profile" component={UserProfile} />
+                      {/* eslint-disable-next-line */}
                       <Route path="/user/:id" component={UserDetails} />
+                      {/* eslint-disable-next-line */}
                       <Route path="/route-list/:id" component={RouteDetails} />
+                      {/* eslint-disable-next-line */}
                       <Route path="/route-list/" component={RouteDetails} />
+                      {/* eslint-disable-next-line */}
                       <Route path="/maps/route" component={RouteDetails} />
+                      {/* eslint-disable-next-line */}
                       <Route
                         path="/routes-found"
                         component={RoutesFromSearch}
                       />
+                      {/* eslint-disable-next-line */}
                       <Route path="/route/:id" component={AllInfoRoute} />
+                      {/* eslint-disable-next-line */}
                       <Route path="/car" component={FormCar} />
+                      {/* eslint-disable-next-line */}
                       <Route path="/users" component={Users} />
+                      {/* eslint-disable-next-line */}
                       <Route path="/post/:id" component={Post} />
+                      {/* eslint-disable-next-line */}
                       <Route path="/404" component={Error404} />
+                      {/* eslint-disable-next-line */}
                       <Route path="/chat/:email" component={Chat} />
-                      <div>
-                        <Route
-                          exact
-                          path="/admin"
-                          render={() =>
-                            userpro && userpro.isAdmin === true ? (
-                              <Admin />
-                            ) : (
-                              <Redirect to="/home" />
-                            )
-                          }
-                        />
-                      </div>
+                      {/* eslint-disable-next-line */}
+                      {userpro && userpro.isAdmin === true ? (
+                        <Route exact path="/admin" component={Admin} />
+                      ) : (
+                        <Redirect to="/home" />
+                      )}
                     </Switch>
                   </>
                 ) : (
                   ""
                 )}
+                {/* eslint-disable-next-line */}
                 <Route path="/faq" component={Faq} />
+                {/* eslint-disable-next-line */}
                 <Route
                   path="/terms-and-conditions"
                   component={TermsAndConditions}
                 />
+                {/* eslint-disable-next-line */}
                 <Route path="/recommendations" component={Recommendations} />
+                {/* eslint-disable-next-line */}
                 <Route path="/aboutus" component={Aboutus} />
+                {/* eslint-disable-next-line */}
                 <Route path="/privacy-policy" component={PrivacyPolicy} />
+                {/* eslint-disable-next-line */}
                 <Route path="/cookies-policy" component={CookiesPolicy} />
+                {/* eslint-disable-next-line */}
                 <Route path="/suggestion-box" component={SuggestionBox} />
                 {showButton && (
                   <button onClick={scrollToTop} className="back-to-top">
@@ -121,15 +138,17 @@ export default function App() {
                 )}
               </>
             ) : (
-              <div>
+              <>
                 <FormattedMessage
                   id="app.banned"
                   defaultMessage="You dont have access here"
                 />
-              </div>
+              </>
             )}
-            <Footer />
-          </div>
+            <Route>
+              <Footer />
+            </Route>
+          </>
         </Switch>
       </div>
     </BrowserRouter>

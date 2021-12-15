@@ -1,12 +1,6 @@
 import { React, useState } from "react";
-//import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  userPost,
-  setPost,
-  putRatingUser,
-  getUserDetail,
-} from "../actions/index";
+import { userPost, setPost, putRatingUser } from "../actions/index";
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
@@ -24,12 +18,13 @@ export default function Post(id) {
 
   useEffect(() => {
     dispatch(userPost(ids));
+    dispatch(putRatingUser(ids));
   }, [dispatch, ids]);
 
   const [input, setInput] = useState({
     userEmail: ids,
     date: time,
-    author: isAuthenticated ? user.name : "",
+    author: isAuthenticated ? user.email : "",
     description: "",
     calification: "",
   });
@@ -69,6 +64,14 @@ export default function Post(id) {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
       dispatch(setPost(input));
+      swal({
+        title: "Good job!",
+        text: "Post created correctly",
+        icon: "success",
+        button: "Aww yiss!",
+      });
+      dispatch(putRatingUser(ids));
+      dispatch(userPost(ids));
       setInput({
         userEmail: "",
         date: "",
@@ -76,14 +79,7 @@ export default function Post(id) {
         description: "",
         calification: "",
       });
-      dispatch(putRatingUser(ids));
-      dispatch(userPost(ids));
-      swal({
-        title: "Good job!",
-        text: "Post created correctly",
-        icon: "success",
-        button: "Aww yiss!",
-      });
+      window.location.reload();
     } else {
       swal({
         title: "Sorry",
@@ -121,12 +117,13 @@ export default function Post(id) {
         >
           <div className="select">
             <select
+              defaultValue="--Cal--"
               name="calification"
               onChange={(e) => handleChange(e)}
               id="star"
               className="star"
             >
-              <option value="" disabled selected className="person">
+              <option value="--Cal--" disabled>
                 --Cal--
               </option>
               <option value="0">0</option>

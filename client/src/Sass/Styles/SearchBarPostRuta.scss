@@ -24,6 +24,13 @@
   display: grid;
   place-items: center;
   height: 100vh;
+  @media only screen and (max-width: 768px) {
+    justify-content: center;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    justify-content: center;
+  }
 
   .searchbar {
     width: 30vw;
@@ -40,6 +47,9 @@
       0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
     transition: box-shadow 0.5s ease-in-out;
+    @media only screen and (max-width: 768px) {
+      width: 60%;
+    }
 
     &:hover {
       cursor: pointer;
@@ -97,13 +107,16 @@
   .postRouteForm {
     padding: 0.8rem;
 
-    
     p {
       color: #ef4565;
       font-weight: bold;
     }
     select {
       margin-left: 1rem;
+      @media only screen and (max-width: 768px) {
+        width: 40%;
+        margin-right: 1rem;
+      }
     }
   }
 }
