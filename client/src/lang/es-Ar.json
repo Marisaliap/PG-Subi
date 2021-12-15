@@ -33,6 +33,17 @@
   "post.description": "Cuéntenos su experiencia con este usuario ...",
   "Post.title": "Califica a este usuario",
 
+  "userdetails.title": "Detalle de Usario",
+  "userdetails.yearsold": "años",
+  "userdetails.cardetails":"Detalles del Coche",
+  "userdetails.brand":"Marca:",
+  "userdetails.model":"Modelo:",
+  "userdetails.patent":"Patente:",
+  "userdetails.color":"Color:",
+  "userdetails.cylinder":"Cilindro:",
+  "userdetails.rating":"Clasificación:",
+  "userdetails.chats":"Chats",
+
   "editcarerr.patent": "Se requiere patente",
   "editcarerr.color": "Se requiere color",
   "editcarerr.brand": "Se requiere marca",
@@ -82,6 +93,21 @@
   "userProfile.patent": "Patente:",
   "userProfile.color": "Color:",
   "userProfile.cylinder": "Cilindrada:",
+  "userProfile.origin": "Origen:",
+  "userProfile.destiny": "Destino",
+  "userProfile.date": "Fecha",
+  "userProfile.time": "Hora",
+  "userProfile.routeid": "ID de ruta",
+  "userProfile.driver": "Conductor",
+  "userProfile.payment": "Pago",
+  "userProfile.userdetails": "Detalles de usuario",
+  "userProfile.tripsdetails": "Detalles del viaje",
+  "userProfile.posts": "Publicaciones",
+  "userProfile.payments": "Pagos",
+  "userProfile.chat": "Chat",
+
+
+
 
   "searchBarHome.searchTitle": "¿Adónde quieres ir?",
   "searchBarHome.searchButton": "Buscar",
@@ -158,6 +184,23 @@
   "profile.loading": "Cargando...",
 
   "landing.enter": "Entrar",
+  "landing.titleh4":"Donde quieras, cuando quieras",
+  "landing.p1":"Gimme A Ride te permite conectar a conductores y pasajeros que deseen viajar juntos entre ciudades, compartiendo el costo de la aventura",
+  "landing.p2":"¿Quieres saber más?",
+
+  "admsidebar.dashboard": "Panel de control",
+  "admsidebar.sales": "Ventas",
+  "admsidebar.routesinfo": "Información de ruta",
+  "admsidebar.quickmenu": "Menú rápido",
+  "admsidebar.allusers": "Todos los usuarios",
+  "admsidebar.create":"Crear nuevo usuario",
+  "admsidebar.transactions": "Transancciones",
+  "admsidebar.notifications": "Notificaciones",
+  "admsidebar.mail": "Correo",
+  "admsidebar.feedback": "Feedback",
+  "admsidebar.messages": "Mensajes",
+
+
 
   "registererr.name": "Se requiere Nombre",
   "registererr.symbols": "Nombre invalido: No se permiten símbolos",
@@ -207,6 +250,14 @@
   "register.termsOptions": "-- Selecciona una Opción --",
   "register.yes": "Sí",
   "register.submit": "Registrar",
+  "register.placeholder": "Cuéntanos un poco sobre ti.",
+
+
+  "modalmp.button":"Únete a este viaje!",
+
+  "chat.sent":"enviado:",
+  "chat.ago":"",
+  "chat.send": "Enviar",
 
   "termsAndCond.review": "Última revisión: ",
   "termsAndCond.date": "28 de noviembre de 2021",

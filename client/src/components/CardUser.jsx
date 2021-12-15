@@ -16,7 +16,6 @@ export default function CardUser({
 }) {
   const dispatch = useDispatch();
   useEffect(() => dispatch(getUserDetail(email)), [dispatch]); // eslint-disable-line
-
   return (
     <div className="CardUser" {...props}>
       <img src={photo} alt="" />
