@@ -56,6 +56,10 @@
     .porqueUsarLaApp {
       font-size: 3rem;
       margin-top: -2rem;
+      @media only screen and (max-width: 768px) {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+      }
     }
 
     .centralosporfa {
@@ -73,9 +77,9 @@
       justify-content: space-around;
       align-content: center;
       font-size: inherit;
+      margin-left: 1.5rem;
       @media only screen and (max-width: 768px) {
         flex-direction: column;
-        margin-top: 3rem;
       }
     }
 
@@ -90,6 +94,10 @@
       margin-bottom: 0.5rem;
       font-weight: bold;
       font-size: 1.5rem;
+      @media only screen and (max-width: 768px) {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+      }
     }
 
     .button {
