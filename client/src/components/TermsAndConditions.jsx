@@ -8,6 +8,19 @@ export default function TermsAndConditions() {
       <article>
         <div></div>
         <div>
+           <p >
+        <FormattedMessage
+							id="privacyPolicy.terms"
+							defaultMessage="Terms and Conditions"
+						/> | <a href="/privacy-policy">
+            <FormattedMessage
+            id="privacyPolicy.privacy"
+            defaultMessage=" | Privacy Policy | "
+          /></a> | <a href="/cookies-policy">
+          <FormattedMessage
+            id="privacyPolicy.cookies"
+            defaultMessage="Cookies Policy"
+          /></a></p>
           <p>
             <FormattedMessage
               id="termsAndCond.date"
