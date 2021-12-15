@@ -473,7 +473,7 @@ export default function Registro() {
             </p>
           </div>
           <div className="cadaLinea">
-            <p className="label" for="genre">
+            <p className="label">
               <FormattedMessage
                 id="register.gender"
                 defaultMessage="Gender*:"
@@ -485,14 +485,8 @@ export default function Registro() {
               id="genre"
               onChange={(e) => handleSelect(e)}
               required
+              defaultValut="1"
             >
-              <FormattedMessage id="register.genderOptions">
-                {(message) => (
-                  <option disabled selected value="1">
-                    {message}
-                  </option>
-                )}
-              </FormattedMessage>
               <FormattedMessage id="register.gender.1">
                 {(message) => <option value="Male">{message}</option>}
               </FormattedMessage>

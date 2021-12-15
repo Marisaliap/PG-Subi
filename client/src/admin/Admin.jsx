@@ -25,7 +25,7 @@ export default function Admin() {
           <Route path="/admin/users/:id">
             <Users />
           </Route>
-          <Route path="/admin/Update">
+          <Route path="/admin/update">
             <Update />
           </Route>
           <Route exact path="/admin/newUser">
