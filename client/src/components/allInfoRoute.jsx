@@ -39,7 +39,7 @@ export default function AllInfoRoute({ match }) {
   const history = useHistory();
 
   const data = useSelector((state) => state.route);
-
+  console.log(route);
   const coordinates = {
     geometry: {
       coordinates: route.points,
@@ -198,7 +198,9 @@ export default function AllInfoRoute({ match }) {
           !route.users ||
           (route.users &&
             route.users.length &&
-            user.email === route.users[0].email) ? (
+            user.email === route.users[0].email) ||
+          (route.restriction.includes("onlyWomen") &&
+            user.genre !== "Female") ? (
             <button className="buttonDisabled">
               <FormattedMessage
                 id="allinforoute.jointhistrip"
