@@ -15,7 +15,12 @@
     border: 2px solid $headline;
     border-radius: 10px;
   }
-
+  .buttonContainer {
+    @media only screen and (max-width: 1024px) {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
   .infoContainer {
     padding: 1rem;
     column-count: 2;
