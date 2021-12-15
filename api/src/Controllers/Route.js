@@ -116,7 +116,7 @@ const getRoute = async (req, res, next) => {
           include: Car,
         },
       });
-      routes =  routes.users[0].isBanned === false ? routes : "Banned user";
+      routes = routes.users[0].isBanned === false ? routes : "Banned user";
       return res.send(routes);
     }
 
@@ -147,7 +147,7 @@ const getRoute = async (req, res, next) => {
             "genre",
             "age",
             "calification",
-            "isBanned"
+            "isBanned",
           ],
           include: {
             model: Car,
@@ -157,7 +157,8 @@ const getRoute = async (req, res, next) => {
       ],
     });
 
-    if(!admin) routes = routes.filter(route => route.users[0].isBanned === false)
+    if (admin)
+      routes = routes.filter((route) => route.users[0].isBanned === false);
 
     if (from) {
       routes = routes.filter((route) => {
@@ -235,7 +236,7 @@ const putRoute = async (req, res) => {
       await route.addUser(idUser);
       await axios.post("http://localhost:3001/mail/add", {
         manejanteName: manejante.name,
-        manejanteEmail: manejante.email, 
+        manejanteEmail: manejante.email,
         manejadoName: manejado.name,
         manejadoEmail: manejado.email,
         originName: route.originName,

@@ -1,33 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../styles/UserList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { allRoutes } from "../../actions";
 
 export default function AllRoutesData() {
-  const { getRoutes } = useSelector((state) => state);
-
-  var infoRoutes = getRoutes.map((route, i) => {
-    return {
-      id: route.id,
-      users: route.manejante,
-      origin: route.originName,
-      destiny: route.destinyName,
-      date: route.date,
-      hours: route.hours,
-      place: route.place,
-      restrictions: route.restriction,
-      price: route.price,
-      key: i,
-    };
-  });
-
-  const [data, setData] = useState(infoRoutes); // eslint-disable-line
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(allRoutes());
-  }, [data]); // eslint-disable-line
+    setTimeout(() => {
+      dispatch(allRoutes());
+    }, 150);
+  }, [dispatch]); // eslint-disable-line
+  const { getRoutes } = useSelector((state) => state);
+  let infoRoutes =
+    getRoutes && getRoutes.length > 0
+      ? getRoutes.map((route, i) => {
+          return {
+            id: route.id,
+            users: route.manejante,
+            origin: route.originName,
+            destiny: route.destinyName,
+            date: route.date,
+            hours: route.hours,
+            place: route.place,
+            restrictions: route.restriction,
+            price: route.price,
+            key: i,
+          };
+        })
+      : [];
 
   const columns = [
     { field: "users", headerName: "Users", width: 180 },
@@ -43,7 +44,7 @@ export default function AllRoutesData() {
   return (
     <div className="userList">
       <DataGrid
-        rows={data}
+        rows={infoRoutes}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
