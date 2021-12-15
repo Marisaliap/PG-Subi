@@ -1,26 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../Sass/Styles/SubFooter.scss";
-import { SiTwitter, SiInstagram, SiFacebook } from "react-icons/si";
-import {FormattedMessage} from 'react-intl';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../Sass/Styles/SubFooter.scss';
+import { SiTwitter, SiInstagram, SiFacebook } from 'react-icons/si';
+import { FormattedMessage } from 'react-intl';
 
 export default function SubFooter() {
   return (
     <div className="SubFooter">
       <div className="info">
-        <br />
+        <div></div>
         <div className="left">
-        <FormattedMessage
-							id="subFooter.app"
-							defaultMessage="Gimme a Ride is an app to share trips between people. Wherever you
+          <FormattedMessage
+            id="subFooter.app"
+            defaultMessage="Gimme a Ride is an app to share trips between people. Wherever you
               go, find your ideal trip."
-						/>
+          />
         </div>
-        <div>
+        <div className="suggestionBoxContainer">
           <Link to="/suggestion-box" target="_blank" rel="noreferrer">
-            <button className="buttonSuggestion"><FormattedMessage
-							id="subFooter.sbox"
-							defaultMessage="Suggestion Box"/></button>
+            <button className="buttonSuggestion">
+              <FormattedMessage
+                id="subFooter.sbox"
+                defaultMessage="Suggestion Box"
+              />
+            </button>
           </Link>
         </div>
         <div className="redesSociales">
@@ -52,6 +55,7 @@ export default function SubFooter() {
             </a>
           </p>
         </div>
+        <div></div>
       </div>
     </div>
   );
