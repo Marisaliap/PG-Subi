@@ -338,11 +338,11 @@ export default function Aboutus() {
                     siempre al equipo hacia la mejor propuesta de trabajo
                   </p>
                 </li>
-                <li>
+                {/* <li>
                   <div></div>
                   <pre>
                     <img
-                      src="https://avatars.githubusercontent.com/u/58148471?v=4"
+                      src="https://avatars.githubusercontent.com/u/18233937?v=4"
                       width="150"
                       height="150"
                       alt="Foto POF"
@@ -358,7 +358,7 @@ export default function Aboutus() {
                     S3 y SES, Google cloud / Firebase. Además de manejar
                     herramientas de diseño como Adobe Illustrator y Corel Draw.
                   </p>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
