@@ -384,7 +384,6 @@ export function deleteRoute() {
   };
 }
 export function deleteRouteFromDb(param) {
-  console.log(param);
   return {
     type: "DELETE_ROUTE_FROM_DB",
   };

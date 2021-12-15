@@ -30,6 +30,18 @@
   "post.calification": "Calification",
   "post.description": "Please tell us about your experience with this user...",
   "Post.title": "Rate this user",
+  
+
+  "userdetails.title": "User Details",
+  "userdetails.yearsold": "years old",
+  "userdetails.cardetails":"Car Details",
+  "userdetails.brand":"Brand:",
+  "userdetails.model":"Model:",
+  "userdetails.patent":"Patent:",
+  "userdetails.color":"Color:",
+  "userdetails.cylinder":"Cylinder:",
+  "userdetails.rating":"Rating",
+  "userdetails.chats":"Chats",
 
   "editcarerr.patent": "Patent is required",
   "editcarerr.color": "Color is required",
@@ -77,6 +89,20 @@
   "userProfile.patent": "Patent:",
   "userProfile.color": "Color:",
   "userProfile.cylinder": "Cylinder:",
+  "userProfile.origin": "Origin:",
+  "userProfile.destiny": "Destiny",
+  "userProfile.date": "Date",
+  "userProfile.time": "Time",
+  "userProfile.routeid": "Route ID:",
+  "userProfile.driver": "Driver",
+  "userProfile.payment": "Payment",
+  "userProfile.userdetails": "User Details",
+  "userProfile.tripsdetails": "Trips Details",
+  "userProfile.posts": "Posts",
+  "userProfile.payments": "Payments",
+  "userProfile.chat": "Chat",
+
+
 
   "user.result": "No user matches those descriptions",
   "user.button": "Load All Users",
@@ -149,7 +175,27 @@
   "routesFromSearch.noRoute": "No route match your search",
   "userDetails.back": "Back",
   "profile.loading": "Loading...",
+
   "landing.enter": "Enter",
+  "landing.titleh4":"Wherever you like, whenever you like.",
+  "landing.p1":"Gimme A Ride allows you to connect both drivers and passengers willing to travel together between cities, sharing the cost of the adventure",
+  "landing.p2":"Wanna know more?",
+
+
+  
+  "admsidebar.dashboard": "Dashboard",
+  "admsidebar.sales": "Sales",
+  "admsidebar.routesinfo": "Route info",
+  "admsidebar.quickmenu": "Quick Menu",
+  "admsidebar.allusers": "All Users",
+  "admsidebar.create":"Create New User",
+  "admsidebar.transactions": "Transactions",
+  "admsidebar.notifications": "Notifications",
+  "admsidebar.mail": "Mail",
+  "admsidebar.feedback": "Feedback",
+  "admsidebar.messages": "Messages",
+
+  
 
   "registererr.name": "Name is required",
   "registererr.symbols": "Invalid Name: No Symbols Allowed",
@@ -200,6 +246,13 @@
   "register.termsOptions": "-- Select an option --",
   "register.yes": "Yes",
   "register.submit": "Register",
+  "register.placeholder": "Please tell us a little about yourself",
+
+  "modalmp.button":"Join this trip!",
+
+  "chat.sent":"sent:",
+  "chat.ago":"ago",
+  "chat.send": "Send",
 
   "privacyPolicy.terms": "Terms and Conditions",
   "privacyPolicy.effdate": "Effective date: ",

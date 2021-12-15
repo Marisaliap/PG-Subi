@@ -15,7 +15,7 @@ export default function Registro() {
   const [loanding, setLoanding] = useState(false);
   const [dni, setDni] = useState([]);
   let booleanDNI;
-  const placeHolderAbout = 'Please tell us a little about yourself';
+  
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -633,13 +633,17 @@ export default function Registro() {
             <p className="label">
               <FormattedMessage id="register.about" defaultMessage="About:" />
             </p>
+            <FormattedMessage id="register.placeholder">
+              {(message) => (
             <textarea
               type="text"
               name="about"
               value={input.about}
-              placeholder={placeHolderAbout}
+              placeholder={message}
               onChange={(e) => handleChange(e)}
             />
+              )}
+            </FormattedMessage>
             {errors.about && <p className="error">{errors.about}</p>}
           </div>
           <div className="terminosycond">

@@ -3,6 +3,7 @@ import ReactDom from "react-dom";
 import "../Sass/Styles/ModalMP.scss";
 import axios from "axios";
 import "../Sass/Styles/allInfoRoute.scss";
+import { FormattedMessage } from 'react-intl';
 
 export const Modal = ({ setShowModal, route, user }) => {
   // close the modal when clicking outside the modal.
@@ -40,7 +41,7 @@ export const Modal = ({ setShowModal, route, user }) => {
           Back
         </button>
         <a href={datos.init_point}>
-          <button className="button">Join this trip!</button>
+          <button className="button"><FormattedMessage id= "modalmp.button" defaultMessage="Join this trip!" /></button>
         </a>
       </div>
     </div>,
