@@ -71,16 +71,12 @@
 
   .losMensajesDeClarita {
     height: 50vh;
-    overflow-y: scroll;
     display: flex;
     flex-direction: column;
 
     .teRevelas {
       width: 90%;
       margin-left: 5%;
-      // @media only screen and (max-width: 1024px) {
-      //   display: flex;
-      // }
 
       .paLaIzquierda {
         margin: 1rem;

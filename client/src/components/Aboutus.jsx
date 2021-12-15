@@ -5,7 +5,6 @@ import {
   SiSequelize,
   SiReact,
   SiRedux,
-  SiJavascript,
   SiNodedotjs,
   SiHtml5,
   SiCss3,

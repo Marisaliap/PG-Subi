@@ -46,7 +46,7 @@ export default function App() {
         setShowButton(false);
       }
     });
-  }, []);
+  }, []); //eslint-disable-line
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
