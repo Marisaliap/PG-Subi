@@ -116,6 +116,7 @@ const getRoute = async (req, res, next) => {
           include: Car,
         },
       });
+      routes =  routes.users[0].isBanned === false ? routes : "Banned user";
       return res.send(routes);
     }
 
@@ -146,6 +147,7 @@ const getRoute = async (req, res, next) => {
             "genre",
             "age",
             "calification",
+            "isBanned"
           ],
           include: {
             model: Car,
@@ -154,6 +156,8 @@ const getRoute = async (req, res, next) => {
         },
       ],
     });
+
+    routes = routes.filter(route => route.users[0].isBanned === false)
 
     if (from) {
       routes = routes.filter((route) => {
@@ -206,8 +210,6 @@ const getRoute = async (req, res, next) => {
     } else if (order === "price") {
       routes = routes.sort((a, b) => a.price - b.price);
     }
-
-    console.log(routes, "soy routes");
 
     return res.send(routes);
   } catch (e) {
