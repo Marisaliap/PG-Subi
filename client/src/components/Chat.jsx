@@ -1,12 +1,8 @@
 import { React, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../Sass/Styles/Chat.scss";
-import {
-  getChatPropio,
-  getChatOtro,
-  postChat,
-  getUserDetail,
-} from "../actions";
+import { getChatPropio, getChatOtro, postChat } from "../actions";
+import { FormattedMessage } from 'react-intl';
 
 export default function Chat() {
   const dispatch = useDispatch();
@@ -21,7 +17,7 @@ export default function Chat() {
       dispatch(getChatPropio(SOYELPUTOAMO));
       dispatch(getChatOtro(miraArriba));
     }, 3000);
-  }, []);
+  }, []); // eslint-disable-line
   const [mensaje, setMensaje] = useState("");
 
   setInterval(() => {
@@ -55,7 +51,7 @@ export default function Chat() {
 
   function handleSubmit(e) {
     e.preventDefault();
-  
+
     dispatch(
       postChat({
         author: userInfo.email,
@@ -92,7 +88,7 @@ export default function Chat() {
                 }
                 key={i + "d"}
               >
-                sent: {hours(chat.date)} ago
+                <FormattedMessage id= "chat.sent" defaultMessage="sent:" /> {hours(chat.date)} <FormattedMessage id= "chat.ago" defaultMessage="ago" />
               </p>
             </div>
           ))}
@@ -112,7 +108,7 @@ export default function Chat() {
             onChange={(e) => handleChange(e)}
           />
           <button className="button" type="submit">
-            Send
+          <FormattedMessage id= "chat.send" defaultMessage="Send" />
           </button>
         </form>
       </div>

@@ -10,7 +10,7 @@ import { FormattedMessage } from "react-intl";
 
 const RoutesFromSearch = () => {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(allRoutes()), []);
+  useEffect(() => dispatch(allRoutes()), []); // eslint-disable-line
   const { routeFromDb } = useSelector((state) => state);
 
   return (

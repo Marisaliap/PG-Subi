@@ -22,15 +22,13 @@ import RatingStar from "./RatingStar";
 import { DataGrid } from "@material-ui/data-grid";
 import { Link } from "react-router-dom";
 import { Tabs, Tab } from "@material-ui/core";
-import Post from "./Post";
-import Person from '@material-ui/icons/Person';
-import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
-import CommentIcon from '@material-ui/icons/Comment';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import PaymentIcon from '@material-ui/icons/Payment';
-import ChatIcon from '@material-ui/icons/Chat'
+import PostUserProfile from "./PostUserProfile";
+import Person from "@material-ui/icons/Person";
+import DirectionsCarIcon from "@material-ui/icons/DirectionsCar";
+import CommentIcon from "@material-ui/icons/Comment";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import PaymentIcon from "@material-ui/icons/Payment";
+import ChatIcon from "@material-ui/icons/Chat";
 
 export default function UserProfile() {
   const userInfo = useSelector((state) => state.userpro);
@@ -47,9 +45,13 @@ export default function UserProfile() {
   const [errorsUser, setErrorsUser] = useState({});
   const [nav, setNav] = useState(0);
 
-  useEffect(() => {
-    dispatch(getUserProfile(userInfo.email));
-  }, [booleanUser, booleanCar, booleanPhoto, userInfo.email])
+  useEffect(
+    () => {
+      dispatch(getUserProfile(userInfo.email));
+    },
+    // eslint-disable-next-line
+    [booleanUser, booleanCar, booleanPhoto, userInfo.email]
+  ); // eslint-disable-line
   const [input, setInput] = useState({});
 
   const [auto, setAuto] = useState({});
@@ -267,24 +269,54 @@ export default function UserProfile() {
     });
 
   const columnsRoutes = [
-    { field: "Origin", headerName: "Origin", width: 250 },
-    { field: "Destiny", headerName: "Destiny", width: 250 },
-    { field: "Date", headerName: "Date", width: 125 },
-    { field: "Time", headerName: "Time", width: 125 },
+    {
+      field: "Origin",
+      headerName: (
+        <FormattedMessage id="userProfile.origin" defaultMessage="Origin" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Destiny",
+      headerName: (
+        <FormattedMessage id="userProfile.destiny" defaultMessage="Destiny" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Date",
+      headerName: (
+        <FormattedMessage id="userProfile.date" defaultMessage="Date" />
+      ),
+      width: 125,
+    },
+    {
+      field: "Time",
+      headerName: (
+        <FormattedMessage id="userProfile.time" defaultMessage="Time" />
+      ),
+      width: 125,
+    },
     {
       field: "RouteId",
-      headerName: "Route Id",
+      headerName: (
+        <FormattedMessage id="userProfile.routeid" defaultMessage="Route ID" />
+      ),
       width: 150,
       renderCell: (params) => (
         <Link to={`/route/${params.value}`}>{params.value}</Link>
       ),
     },
-    { field: "Driver", headerName: "Driver", width: 125 },
+    {
+      field: "Driver",
+      headerName: (
+        <FormattedMessage id="userProfile.driver" defaultMessage="Driver" />
+      ),
+      width: 125,
+    },
   ];
 
-  {
-    /*----------------------------------------ORDERS-------------------------------------------------------*/
-  }
+  /*----------------------------------------ORDERS-------------------------------------------------------*/
 
   const routesManejante =
     userInfo?.routes &&
@@ -307,19 +339,51 @@ export default function UserProfile() {
     });
 
   const columnsOrders = [
-    { field: "Origin", headerName: "Origin", width: 250 },
-    { field: "Destiny", headerName: "Destiny", width: 250 },
-    { field: "Date", headerName: "Date", width: 125 },
-    { field: "Time", headerName: "Time", width: 125 },
+    {
+      field: "Origin",
+      headerName: (
+        <FormattedMessage id="userProfile.origin" defaultMessage="Origin" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Destiny",
+      headerName: (
+        <FormattedMessage id="userProfile.destiny" defaultMessage="Destiny" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Date",
+      headerName: (
+        <FormattedMessage id="userProfile.date" defaultMessage="Date" />
+      ),
+      width: 125,
+    },
+    {
+      field: "Time",
+      headerName: (
+        <FormattedMessage id="userProfile.time" defaultMessage="Time" />
+      ),
+      width: 125,
+    },
     {
       field: "RouteId",
-      headerName: "Route Id",
+      headerName: (
+        <FormattedMessage id="userProfile.routeid" defaultMessage="Route ID" />
+      ),
       width: 150,
       renderCell: (params) => (
         <Link to={`/route/${params.value}`}>{params.value}</Link>
       ),
     },
-    { field: "Payment", headerName: "Payment", width: 200 },
+    {
+      field: "Payment",
+      headerName: (
+        <FormattedMessage id="userProfile.payment" defaultMessage="Payment" />
+      ),
+      width: 200,
+    },
   ];
 
   return (
@@ -875,7 +939,7 @@ export default function UserProfile() {
 
         {nav === 3 && (
           <div className="centralo">
-            <Post id={userInfo.email} />
+            <PostUserProfile id={userInfo.email} />
           </div>
         )}
 

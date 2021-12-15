@@ -19,7 +19,7 @@ const initialState = {
   carMatch: [],
   filteredRouteFromDb: [],
   searchParams: {},
-  //-------------------------< admin store >------------------------ 
+  //-------------------------< admin store >------------------------
   chatOtro: [],
   chatPropio: [],
   //-------------------------< admin store >------------------------
@@ -32,7 +32,7 @@ const initialState = {
   order: "",
   filtersRoute: [],
   userDeleted: "",
- reclamosymejoras: [],
+  reclamosymejoras: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -125,12 +125,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         reclamosymejoras: action.payload,
       };
-      case "GET_RECLAMOSYMEJORAS":
+    case "GET_RECLAMOSYMEJORAS":
       return {
         ...state,
         reclamosymejoras: action.payload,
       };
-      case "DELETE_RECLAMOSYMEJORAS":
+    case "DELETE_RECLAMOSYMEJORAS":
       return {
         ...state,
         reclamosymejoras: action.payload,
@@ -207,11 +207,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         route: [],
       };
-      case "DELETE_ROUTE_FROM_DB":
+    case "DELETE_ROUTE_FROM_DB":
       return {
         ...state,
         routeFromDb: [],
-        filteredRouteFromDb: []
+        filteredRouteFromDb: [],
       };
     case "ROUTE_POST_INFO":
       return {
@@ -223,27 +223,24 @@ function rootReducer(state = initialState, action) {
         ...state,
         routeById: action.payload,
       };
-    case "GET_ROUTE_FROM_DB": {
-  
+    case "GET_ROUTE_FROM_DB":
       if (state.routeFromDb.length === 0 && action.payload.length > 0) {
         return {
           ...state,
           routeFromDb: action.payload,
-          filteredRouteFromDb: action.payload
+          filteredRouteFromDb: action.payload,
         };
       }
-        return {
-          ...state,
-          filteredRouteFromDb: action.payload,
-            };
-           
+      return {
+        ...state,
+        filteredRouteFromDb: action.payload,
       };
-      case "GET_SEARCH_PARAMS":
+    case "GET_SEARCH_PARAMS":
       return {
         ...state,
         searchParams: action.payload,
       };
-     
+
     case "SET_POST":
       return {
         ...state,

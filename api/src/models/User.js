@@ -48,7 +48,6 @@ module.exports = (sequelize) => {
       },
       telephone: {
         type: DataTypes.STRING,
-        
       },
       facebook: {
         type: DataTypes.STRING,
@@ -64,7 +63,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
         defaultValue:
-          "https://raw.githubusercontent.com/Yooololo/imagenesquemesirven/586e35f5a0f1fa7db361bb7db372d06fc8155e61/avatar.svg",
+          "https://res.cloudinary.com/dlwobuyjb/image/upload/v1639085329/logo/Sin_t%C3%ADtulo-1_bp01wb.png",
       },
       photoDni: {
         type: DataTypes.ARRAY(DataTypes.STRING),
@@ -81,10 +80,6 @@ module.exports = (sequelize) => {
       cbu: {
         type: DataTypes.STRING,
         defaultValue: " ",
-      },
-      isBanned: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
       },
     },
     {

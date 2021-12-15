@@ -15,7 +15,7 @@ export default function Registro() {
   const [loanding, setLoanding] = useState(false);
   const [dni, setDni] = useState([]);
   let booleanDNI;
-  const placeHolderAbout = 'Please tell us a little about yourself';
+  
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -33,37 +33,114 @@ export default function Registro() {
     let errors = {};
     const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     if (!input.name) {
-      errors.name =<FormattedMessage id="registererr.name" defaultMessage="Name is required" />;
+      errors.name = (
+        <FormattedMessage
+          id="registererr.name"
+          defaultMessage="Name is required"
+        />
+      );
     } else if (wordvalidate.test(input.name) === false) {
-      errors.name = <FormattedMessage id= "registererr.symbols" defaultMessage="Invalid Name: No Symbols Allowed" />
+      errors.name = (
+        <FormattedMessage
+          id="registererr.symbols"
+          defaultMessage="Invalid Name: No Symbols Allowed"
+        />
+      );
     } else if (!input.lastName) {
-      errors.lastName = <FormattedMessage id= "registererr.lastname" defaultMessage="Last name is required" />;
+      errors.lastName = (
+        <FormattedMessage
+          id="registererr.lastname"
+          defaultMessage="Last name is required"
+        />
+      );
     } else if (wordvalidate.test(input.lastName) === false) {
-      errors.lastName = <FormattedMessage id= "registererr.lastnamesym" defaultMessage="Invalid Last Name: No Symbols Allowed" />;
+      errors.lastName = (
+        <FormattedMessage
+          id="registererr.lastnamesym"
+          defaultMessage="Invalid Last Name: No Symbols Allowed"
+        />
+      );
     } else if (!input.dni) {
-      errors.dni = <FormattedMessage id= "registererr.dni" defaultMessage="DNI is required" />;
+      errors.dni = (
+        <FormattedMessage
+          id="registererr.dni"
+          defaultMessage="DNI is required"
+        />
+      );
     } else if (booleanDNI === false) {
-      errors.dni = <FormattedMessage id= "registererr.dniexist" defaultMessage="DNI already exists" />;
+      errors.dni = (
+        <FormattedMessage
+          id="registererr.dniexist"
+          defaultMessage="DNI already exists"
+        />
+      );
     } else if (validateGender() === false) {
-      errors.genre = <FormattedMessage id= "registererr.gender" defaultMessage="Gender is required" />;
+      errors.genre = (
+        <FormattedMessage
+          id="registererr.gender"
+          defaultMessage="Gender is required"
+        />
+      );
     } else if (!input.age) {
-      errors.age = <FormattedMessage id="registererr.age" defaultMessage="Age required" />;
+      errors.age = (
+        <FormattedMessage id="registererr.age" defaultMessage="Age required" />
+      );
     } else if (input.age < 18) {
-      errors.age = <FormattedMessage id= "registererr.age18" defaultMessage="You must be 18 years old or older to register" />;
+      errors.age = (
+        <FormattedMessage
+          id="registererr.age18"
+          defaultMessage="You must be 18 years old or older to register"
+        />
+      );
     } else if (!input.telephone) {
-      errors.telephone = <FormattedMessage id= "registererr.phone" defaultMessage="Telephone is required" />;
+      errors.telephone = (
+        <FormattedMessage
+          id="registererr.phone"
+          defaultMessage="Telephone is required"
+        />
+      );
     } else if (!input.street) {
-      errors.street = <FormattedMessage id= "registererr.street" defaultMessage="Street is required" />;
+      errors.street = (
+        <FormattedMessage
+          id="registererr.street"
+          defaultMessage="Street is required"
+        />
+      );
     } else if (!input.city) {
-      errors.city = <FormattedMessage id= "registererr.city" defaultMessage="City is required" />;
+      errors.city = (
+        <FormattedMessage
+          id="registererr.city"
+          defaultMessage="City is required"
+        />
+      );
     } else if (wordvalidate.test(input.city) === false) {
-      errors.city = <FormattedMessage id= "registererr.citysym" defaultMessage="Invalid City: No Symbols Allowed" />;
+      errors.city = (
+        <FormattedMessage
+          id="registererr.citysym"
+          defaultMessage="Invalid City: No Symbols Allowed"
+        />
+      );
     } else if (!input.province) {
-      errors.province = <FormattedMessage id=  "registererr.province" defaultMessage="Province is required" />;
+      errors.province = (
+        <FormattedMessage
+          id="registererr.province"
+          defaultMessage="Province is required"
+        />
+      );
     } else if (wordvalidate.test(input.province) === false) {
-      errors.province = <FormattedMessage id= "registererr.provincesym" defaultMessage="Invalid Province: No Symbols Allowed" />;
+      errors.province = (
+        <FormattedMessage
+          id="registererr.provincesym"
+          defaultMessage="Invalid Province: No Symbols Allowed"
+        />
+      );
     } else if (!input.about) {
-      errors.about = <FormattedMessage id= "registererr.about" defaultMessage="About is required" />;
+      errors.about = (
+        <FormattedMessage
+          id="registererr.about"
+          defaultMessage="About is required"
+        />
+      );
     }
     return errors;
   }
@@ -207,17 +284,16 @@ export default function Registro() {
         photoDni: [],
       });
 
-      
       dispatch(getUserDetail(emailUsuario));
       history.push('/home');
-     return new swal({
+      return new swal({
         title: 'Good job!',
         text: 'User created correctly',
         icon: 'success',
         button: 'Aww yiss!',
       });
     } else {
-     return new swal({
+      return new swal({
         title: 'Sorry',
         text: 'All mandatory fields must be filled to continue',
         icon: 'warning',
@@ -249,7 +325,10 @@ export default function Registro() {
             <div className="terminosycond">
               <div className="cadaLinea">
                 <p className="">
-                <FormattedMessage id="register.checkbox" defaultMessage="If you plan to be a Driver please check" />
+                  <FormattedMessage
+                    id="register.checkbox"
+                    defaultMessage="If you plan to be a Driver please check"
+                  />
                 </p>
                 <input
                   type="checkbox"
@@ -317,14 +396,16 @@ export default function Registro() {
                   defaultMessage="Photo User*:"
                 />
               </p>
-              <input
-                onChange={(e) => uploadImage(e)}
-                className="custom-file-input"
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
+              <div className="cargaImagen">
+                <input
+                  onChange={(e) => uploadImage(e)}
+                  className="custom-file-input"
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
             </div>
             <div Style="display:none">{(input.photo = image)}</div>
             <p>
@@ -376,7 +457,7 @@ export default function Registro() {
                   defaultMessage="ID or passport Back*:"
                 />
               </p>
-              <label className="cargaImagen">
+              <div className="cargaImagen">
                 <input
                   onChange={(e) => uploadImage2(e)}
                   className="custom-file-input"
@@ -385,7 +466,7 @@ export default function Registro() {
                   required="required"
                   accept="image/png, image/jpeg"
                 />
-              </label>
+              </div>
             </div>
             <div Style="display:none">{(input.photoDni = dni)}</div>
             <p>
@@ -406,8 +487,12 @@ export default function Registro() {
               onChange={(e) => handleSelect(e)}
               required
             >
-            <FormattedMessage id="register.genderOptions">
-            {(message) => <option disabled selected value="1">{message}</option>}
+              <FormattedMessage id="register.genderOptions">
+                {(message) => (
+                  <option disabled selected value="1">
+                    {message}
+                  </option>
+                )}
               </FormattedMessage>
               <FormattedMessage id="register.gender.1">
                 {(message) => <option value="Male">{message}</option>}
@@ -548,13 +633,17 @@ export default function Registro() {
             <p className="label">
               <FormattedMessage id="register.about" defaultMessage="About:" />
             </p>
+            <FormattedMessage id="register.placeholder">
+              {(message) => (
             <textarea
               type="text"
               name="about"
               value={input.about}
-              placeholder={placeHolderAbout}
+              placeholder={message}
               onChange={(e) => handleChange(e)}
             />
+              )}
+            </FormattedMessage>
             {errors.about && <p className="error">{errors.about}</p>}
           </div>
           <div className="terminosycond">

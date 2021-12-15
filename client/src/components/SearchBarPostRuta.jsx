@@ -42,7 +42,7 @@ const validateInfo = (routeInfo) => {
 export default function SearchBar() {
   const cities = useSelector((state) => state.suggestions1);
   const cities2 = useSelector((state) => state.suggestions2);
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.userpro);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({ validations: {} });
   const [restrictions, setRestrictions] = useState([]);

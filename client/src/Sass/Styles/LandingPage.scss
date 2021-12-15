@@ -1,11 +1,16 @@
 @import "../Variables/Variables.scss";
 
 .LandingPage {
-  padding: 3rem;
+  padding: 2.5rem;
 
   .upperSection {
     padding-left: 20rem;
     padding-right: 20rem;
+
+    .unpoquitoMas {
+      width: 120%;
+      margin-left: -10%;
+    }
   }
 
   .logo {
@@ -31,6 +36,21 @@
   }
 
   .sectionBelow {
+    .botonBandera {
+      border: none;
+      cursor: pointer;
+      background: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: inline-block;
+    }
+
+    .banderas {
+      width: 3rem;
+      height: 3rem;
+    }
+
     @media only screen and (min-width: 768px) {
       padding: 1.5rem;
     }
