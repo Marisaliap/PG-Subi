@@ -173,7 +173,7 @@ const getRoute = async (req, res, next) => {
       restriction = restriction.split(",");
 
       routes = routes.filter((route) => {
-        let restricRoute = route.restriction.split(",");
+        let restricRoute = route.restriction.split(", ");
         restricRoute = restriction.map((r) => restricRoute.includes(r));
 
         if (restricRoute.includes(false)) return false;
@@ -206,6 +206,9 @@ const getRoute = async (req, res, next) => {
     } else if (order === "price") {
       routes = routes.sort((a, b) => a.price - b.price);
     }
+
+    console.log(routes, "soy routes");
+
     return res.send(routes);
   } catch (e) {
     next(e);

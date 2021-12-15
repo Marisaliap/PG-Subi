@@ -2,58 +2,54 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../styles/UserList.css";
 import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline, DvrSharp } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { DeleteOutline } from "@material-ui/icons";
 import { getOrderDetails, deleteOrder, getAllUsers } from "../../actions";
 
 export default function Transactions() {
-  const orders = useSelector(state => state.orderDetails)
-  const registeredUser = useSelector(state => state.usuariosRegistrados)
-  var filtrados = orders.map(e => {
-    let date = e.updatedAt.split('T')
-    date = date[0].split('-').reverse().join('-')
-     let user = registeredUser.find(user => user.email === e.userEmail)
-   return ({ 
-    id: e.id,
-    user : e.userEmail,
-    paymentId: e.payment_id,
-    price: e.price,
-    date: date,
-    name: user && user.name + ' ' + user.lastName,
-    photo: user && user.photo,
-    status: e.status === 'created' ? 'Approved' : 'Pending'
-   })}
-  )
+  const orders = useSelector((state) => state.orderDetails);
+  const registeredUser = useSelector((state) => state.usuariosRegistrados);
+  var filtrados = orders.map((e) => {
+    let date = e.updatedAt.split("T");
+    date = date[0].split("-").reverse().join("-");
+    let user = registeredUser.find((user) => user.email === e.userEmail);
+    return {
+      id: e.id,
+      user: e.userEmail,
+      paymentId: e.payment_id,
+      price: e.price,
+      date: date,
+      name: user && user.name + " " + user.lastName,
+      photo: user && user.photo,
+      status: e.status === "created" ? "Approved" : "Pending",
+    };
+  });
 
-
- const [data, setData] = useState(filtrados); 
+  const [data, setData] = useState(filtrados);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getOrderDetails());
-    dispatch(getAllUsers())
-  }, [data]); 
+    dispatch(getAllUsers());
+  }, [data]); // eslint-disable-line
 
-//   useEffect((id) => {
-//     dispatch(getUserAdmin(id));
-//     dispatch(getUserDetail(id));
-//   }, []); 
-
+  //   useEffect((id) => {
+  //     dispatch(getUserAdmin(id));
+  //     dispatch(getUserDetail(id));
+  //   }, []);
 
   const handleDelete = (id) => {
-    
-    dispatch(deleteOrder(id))
-    setData(data.filter((item) => item.id !== id))
-  }
-  
-//   const handleId = (id) => {
-//     dispatch(getId(id))
-//     dispatch(getUserAdmin(id)) 
-//     dispatch(getUserDetail(id))
-//   }
+    dispatch(deleteOrder(id));
+    setData(data.filter((item) => item.id !== id));
+  };
+
+  //   const handleId = (id) => {
+  //     dispatch(getId(id))
+  //     dispatch(getUserAdmin(id))
+  //     dispatch(getUserDetail(id))
+  //   }
 
   const columns = [
-    { field: "id", headerName: "ID", width: 100 }, 
+    { field: "id", headerName: "ID", width: 100 },
     {
       field: "name",
       headerName: "User",
@@ -76,9 +72,9 @@ export default function Transactions() {
       width: 150,
     },
     {
-        field: "date",
-        headerName: "Date",
-        width: 150,
+      field: "date",
+      headerName: "Date",
+      width: 150,
     },
     {
       field: "action",
@@ -107,5 +103,5 @@ export default function Transactions() {
         checkboxSelection
       />
     </div>
-  ); 
+  );
 }

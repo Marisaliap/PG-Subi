@@ -47,7 +47,6 @@ export default function App() {
       }
     });
   }, []);
-  console.log(userpro);
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
