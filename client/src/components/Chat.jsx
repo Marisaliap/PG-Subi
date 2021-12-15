@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../Sass/Styles/Chat.scss";
 import { getChatPropio, getChatOtro, postChat } from "../actions";
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 export default function Chat() {
   const dispatch = useDispatch();
@@ -88,7 +88,9 @@ export default function Chat() {
                 }
                 key={i + "d"}
               >
-                <FormattedMessage id= "chat.sent" defaultMessage="sent:" /> {hours(chat.date)} <FormattedMessage id= "chat.ago" defaultMessage="ago" />
+                <FormattedMessage id="chat.sent" defaultMessage="sent:" />{" "}
+                {hours(chat.date)}{" "}
+                <FormattedMessage id="chat.ago" defaultMessage="ago" />
               </p>
             </div>
           ))}
@@ -108,7 +110,7 @@ export default function Chat() {
             onChange={(e) => handleChange(e)}
           />
           <button className="button" type="submit">
-          <FormattedMessage id= "chat.send" defaultMessage="Send" />
+            <FormattedMessage id="chat.send" defaultMessage="Send" />
           </button>
         </form>
       </div>

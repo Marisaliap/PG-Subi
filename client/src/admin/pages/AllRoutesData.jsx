@@ -7,8 +7,6 @@ import { allRoutes } from "../../actions";
 export default function AllRoutesData() {
   const { getRoutes } = useSelector((state) => state);
 
-  console.log(getRoutes, "soy routes del admin");
-
   var infoRoutes = getRoutes.map((route, i) => {
     return {
       id: route.id,
@@ -49,6 +47,7 @@ export default function AllRoutesData() {
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
+        rowsPerPageOptions={[8]}
         checkboxSelection
       />
     </div>
