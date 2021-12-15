@@ -105,7 +105,7 @@ const postRoute = async (req, res, next) => {
 
 const getRoute = async (req, res, next) => {
   try {
-    let { restriction, order, date, from, to, place } = req.query;
+    let { restriction, order, date, from, to, place, admin } = req.query;
     const { id } = req.params;
     let routes;
 
@@ -157,7 +157,7 @@ const getRoute = async (req, res, next) => {
       ],
     });
 
-    routes = routes.filter(route => route.users[0].isBanned === false)
+    if(!admin) routes = routes.filter(route => route.users[0].isBanned === false)
 
     if (from) {
       routes = routes.filter((route) => {

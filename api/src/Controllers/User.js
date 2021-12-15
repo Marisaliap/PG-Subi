@@ -58,7 +58,7 @@ const postUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
   try {
-    const { name } = req.query;
+    const { name, admin } = req.query;
     const { id } = req.params;
     var data;
 
@@ -105,7 +105,7 @@ const getUser = async (req, res, next) => {
       data = data.isBanned === false ? data : "Banned user";
     } else {
       data = await User.findAll();
-      data = data.filter(user => user.isBanned === false)
+      if(!admin) data = data.filter(user => user.isBanned === false);
     }
     res.send(data);
   } catch (error) {
