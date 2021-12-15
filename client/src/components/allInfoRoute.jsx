@@ -13,7 +13,7 @@ import {
   BsPinMap,
   BsPinMapFill,
   BsFillPersonFill,
-  BsFillExclamationOctagonFill,
+  BsHeartFill,
 } from "react-icons/bs";
 import { RiPinDistanceFill } from "react-icons/ri";
 import "../Sass/Styles/allInfoRoute.scss";
@@ -55,7 +55,7 @@ export default function AllInfoRoute({ match }) {
 
   function handleClick() {
     dispatch(deleteRoute());
-    history.push("/route-list");
+    history.goBack();
   }
 
   let restricciones = route.restriction && route.restriction.split(", ");
@@ -65,7 +65,7 @@ export default function AllInfoRoute({ match }) {
       {route.length > 0 && route.originName}
 
       <Map
-        style={"mapbox://styles/mapbox/streets-v11"} // eslint-disable-line
+        style="mapbox://styles/mapbox/streets-v11" // eslint-disable-line
         containerStyle={{
           height: "50vh",
           width: "50vw",
@@ -158,7 +158,7 @@ export default function AllInfoRoute({ match }) {
         <div className="restrictionContainer">
           <p>
             {" "}
-            <BsFillExclamationOctagonFill /> Restrictions:{" "}
+            <BsHeartFill /> Preferences:{" "}
           </p>
           {restricciones &&
             restricciones.map((restriction, i) => {

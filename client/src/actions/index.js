@@ -72,6 +72,17 @@ export function getAllUser() {
     } catch (error) {}
   };
 }
+export function getAllUserAdmin() {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user?admin=${true}`)).data;
+      return dispatch({
+        type: "GET_ALL_USER",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
 
 export function getUserAdmin(id) {
   return async function (dispatch) {
@@ -225,7 +236,6 @@ export function getRouteFromDb(
           order ? order : ""
         }&restriction=${restriction ? restriction : ""}`
       );
-      console.log(response.data, "soy data");
       return dispatch({
         type: "GET_ROUTE_FROM_DB",
         payload: response.data,
@@ -246,19 +256,6 @@ export function getSearchParams(originName, destinyName, date, place) {
   };
 }
 // -----------------------------< filters >----------------------------------
-// export function filterBySmoke(payload) {
-//   return {
-//     type: "FILTER_BY_SMOKE",
-//     payload,
-//   };
-// }
-
-// export function filterByPets(payload) {
-//   return {
-//     type: "FILTER_BY_PETS",
-//     payload,
-//   };
-// }
 
 export function orderByRestriction(restriction) {
   return {
@@ -453,7 +450,6 @@ export function setPost(payload) {
 }
 
 export function userPost(id) {
-  console.log("id=>", id);
   return async function (dispatch) {
     try {
       const response = (

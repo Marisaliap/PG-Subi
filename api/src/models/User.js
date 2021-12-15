@@ -48,7 +48,6 @@ module.exports = (sequelize) => {
       },
       telephone: {
         type: DataTypes.STRING,
-        
       },
       facebook: {
         type: DataTypes.STRING,
@@ -81,10 +80,6 @@ module.exports = (sequelize) => {
       cbu: {
         type: DataTypes.STRING,
         defaultValue: " ",
-      },
-      isBanned: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
       },
     },
     {

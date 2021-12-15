@@ -123,15 +123,24 @@ export default function Nav() {
             <BsCaretDownFill className={!dropdown ? "caret" : "caretOpen"} />
 
             {dropdown && (
-              <div class="dropdown-content">
-                {isAuthenticated ? (
-                  <Link classname="Link" to="/profile">
+              <div className="dropdown-content">
+                {isAuthenticated && userpro.dni ? (
+                  <Link className="Link" to="/profile">
                     <div className="dropdown-menu">
                       <h3>Profile</h3>
                       <BsChevronRight />
                     </div>
                   </Link>
-                ) : null}
+                ) : (
+                  isAuthenticated && (
+                    <Link className="Link" to="/register">
+                      <div className="dropdown-menu">
+                        <h3>Register</h3>
+                        <BsChevronRight />
+                      </div>
+                    </Link>
+                  )
+                )}
                 <div className="dropdown-menu">
                   <Auth />
                   <BsChevronRight />

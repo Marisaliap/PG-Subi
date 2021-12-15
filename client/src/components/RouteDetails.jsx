@@ -16,6 +16,7 @@ const RouteDetails = ({ match }) => {
 
   useEffect(() => {
     dispatch(allRoutes());
+    window.scrollTo(0, 0);
   }, []); // eslint-disable-line
   // ------------------<paged>------------------
 
@@ -43,25 +44,32 @@ const RouteDetails = ({ match }) => {
           <h1>No rutes match those filters</h1>
         ) : (
           currentRoutes.map((route, i) => (
-            <Link className="link" id="link" to={`/route/${route.id}`}>
+            <Link
+              className="link"
+              id="link"
+              to={`/route/${route.id}`}
+              key={i + "L"}
+            >
               <div className="RouteCard">
                 {route.users && (
                   <div>
-                  <CardUser
-                    photo={route.users.length > 0 && route.users[0].photo}
-                    name={route.users.length > 0 && route.users[0].name}
-                    lastName={route.users.length > 0 && route.users[0].lastName}
-                    genre={route.users.length > 0 && route.users[0].genre}
-                    age={route.users.length > 0 && route.users[0].age}
-                    email={
-                      route.users.length > 0 &&
-                      route.users[0].UserRoutes.userEmail
-                    }
-                    calification={
-                      route.users.length > 0 && route.users[0].calification
-                    }
-                    key={i}
-                  />
+                    <CardUser
+                      photo={route.users.length > 0 && route.users[0].photo}
+                      name={route.users.length > 0 && route.users[0].name}
+                      lastName={
+                        route.users.length > 0 && route.users[0].lastName
+                      }
+                      genre={route.users.length > 0 && route.users[0].genre}
+                      age={route.users.length > 0 && route.users[0].age}
+                      email={
+                        route.users.length > 0 &&
+                        route.users[0].UserRoutes.userEmail
+                      }
+                      calification={
+                        route.users.length > 0 && route.users[0].calification
+                      }
+                      key={i + "CU"}
+                    />
                   </div>
                 )}
 
@@ -74,7 +82,7 @@ const RouteDetails = ({ match }) => {
                   date={route.date}
                   hours={route.hours}
                   place={route.place}
-                  key={i + 1}
+                  key={i + "CR"}
                   price={route.price}
                 />
               </div>

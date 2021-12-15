@@ -1,4 +1,5 @@
 const { User, Post, Car, Route, Op, Order, Chat } = require("../db.js");
+const axios = require("axios");
 
 const postUser = async (req, res, next) => {
   try {
@@ -38,12 +39,17 @@ const postUser = async (req, res, next) => {
         age,
         about,
         genre,
-        calification,
         photoDni,
         cbu,
       },
       include: [Post, Car, Order, Route, Chat],
     });
+
+    await axios.post("http://localhost:3001/mail/add", {
+        userName: name,
+        userEmail: email, 
+      });
+
     res.send(user);
   } catch (error) {
     next(error);
@@ -52,7 +58,7 @@ const postUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
   try {
-    const { name } = req.query;
+    const { name, admin } = req.query;
     const { id } = req.params;
     var data;
 
@@ -66,6 +72,8 @@ const getUser = async (req, res, next) => {
         include: Post,
         Chat,
       });
+      data = data.filter(user => user.isBanned === false)
+
       data = data.map((user) => {
         return {
           name: user.name,
@@ -94,8 +102,11 @@ const getUser = async (req, res, next) => {
           },
         ],
       });
+      if(admin==="false") data = data.isBanned === false ? data : "Banned user"
     } else {
       data = await User.findAll();
+      admin
+      if(admin==="false") data = data.filter(user => user.isBanned === false);
     }
     res.send(data);
   } catch (error) {

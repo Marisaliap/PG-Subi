@@ -11,10 +11,15 @@
     0 4px 6px -2px rgba(204, 181, 181, 0.05);
   transition: box-shadow 0.5s ease-in-out;
   width: 60vw;
-  margin-left: 20vw;
+  margin-left: 15vw;
   display: flex;
   flex-direction: column;
-
+  @media only screen and (max-width: 1024px) {
+    width: auto;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
   &:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
       0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -57,6 +62,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        @media only screen and (max-width: 1024px) {
+          width: 30%;
+        }
       }
     }
   }
@@ -70,6 +78,9 @@
     .teRevelas {
       width: 90%;
       margin-left: 5%;
+      // @media only screen and (max-width: 1024px) {
+      //   display: flex;
+      // }
 
       .paLaIzquierda {
         margin: 1rem;

@@ -117,12 +117,13 @@ export default function Post(id) {
         >
           <div className="select">
             <select
+              defaultValue="--Cal--"
               name="calification"
               onChange={(e) => handleChange(e)}
               id="star"
               className="star"
             >
-              <option value="" disabled selected className="person">
+              <option value="--Cal--" disabled>
                 --Cal--
               </option>
               <option value="0">0</option>

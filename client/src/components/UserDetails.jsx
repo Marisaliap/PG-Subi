@@ -16,10 +16,7 @@ import {
 import "../Sass/Styles/UserDetails.scss";
 import Post from "./Post";
 import RatingStar from "./RatingStar.jsx";
-import { FormattedMessage } from 'react-intl';
-
-
-
+import { FormattedMessage } from "react-intl";
 
 export default function UserDetails(props) {
   const userInfo = useSelector((state) => state.user);
@@ -52,7 +49,12 @@ export default function UserDetails(props) {
       <div className="containerProfile">
         <div className="ProfileReal">
           <div className="centralo">
-            <h1 className="tituloUserProfile"><FormattedMessage id= "userdetails.title" defaultMessage="User Details" /></h1>
+            <h1 className="tituloUserProfile">
+              <FormattedMessage
+                id="userdetails.title"
+                defaultMessage="User Details"
+              />
+            </h1>
           </div>
           <div className="ubicatop"></div>
           <div className="seccionTopDetail">
@@ -74,7 +76,14 @@ export default function UserDetails(props) {
                 <div className="labelArriba">
                   <BsEnvelope className="iconArriba" /> {userInfo.email}
                 </div>
-                <p className="labelArriba"> {userInfo.age} <FormattedMessage id= "userdetails.yearsold" defaultMessage="years old" /></p>
+                <p className="labelArriba">
+                  {" "}
+                  {userInfo.age}{" "}
+                  <FormattedMessage
+                    id="userdetails.yearsold"
+                    defaultMessage="years old"
+                  />
+                </p>
               </div>
               <div className="moreInfo">
                 <div className="cadaLinea">
@@ -92,11 +101,21 @@ export default function UserDetails(props) {
             </div>
           </div>
           <div className="centralo">
-            <h1 className="tituloUserProfile"><FormattedMessage id= "userdetails.cardetails" defaultMessage="Car Details" /></h1>
+            <h1 className="tituloUserProfile">
+              <FormattedMessage
+                id="userdetails.cardetails"
+                defaultMessage="Car Details"
+              />
+            </h1>
           </div>
           <div className="patents">
             <div className="cadaLinea">
-              <p className="label"><FormattedMessage id= "userdetails.brand" defaultMessage="Brand:" /></p>
+              <p className="label">
+                <FormattedMessage
+                  id="userdetails.brand"
+                  defaultMessage="Brand:"
+                />
+              </p>
               {userInfo.cars && userInfo.cars.length === 0 ? (
                 ""
               ) : (
@@ -104,7 +123,12 @@ export default function UserDetails(props) {
               )}
             </div>
             <div className="cadaLinea">
-              <p className="label"><FormattedMessage id= "userdetails.model" defaultMessage="Model:" /></p>
+              <p className="label">
+                <FormattedMessage
+                  id="userdetails.model"
+                  defaultMessage="Model:"
+                />
+              </p>
               {userInfo.cars && userInfo.cars.length === 0 ? (
                 ""
               ) : (
@@ -112,7 +136,12 @@ export default function UserDetails(props) {
               )}
             </div>
             <div className="cadaLinea">
-              <p className="label"><FormattedMessage id= "userdetails.patent" defaultMessage="Patent:" /></p>
+              <p className="label">
+                <FormattedMessage
+                  id="userdetails.patent"
+                  defaultMessage="Patent:"
+                />
+              </p>
               {userInfo.cars && userInfo.cars.length === 0 ? (
                 ""
               ) : (
@@ -122,7 +151,12 @@ export default function UserDetails(props) {
           </div>
           <div className="patents">
             <div className="cadaLinea">
-              <p className="label"><FormattedMessage id= "userdetails.color" defaultMessage="Color:" /></p>
+              <p className="label">
+                <FormattedMessage
+                  id="userdetails.color"
+                  defaultMessage="Color:"
+                />
+              </p>
               {userInfo.cars && userInfo.cars.length === 0 ? (
                 ""
               ) : (
@@ -130,7 +164,12 @@ export default function UserDetails(props) {
               )}
             </div>
             <div className="cadaLinea">
-              <p className="label"><FormattedMessage id= "userdetails.cylinder" defaultMessage="Cylinder:" /></p>
+              <p className="label">
+                <FormattedMessage
+                  id="userdetails.cylinder"
+                  defaultMessage="Cylinder:"
+                />
+              </p>
               {userInfo.cars && userInfo.cars.length === 0 ? (
                 ""
               ) : (
@@ -139,12 +178,22 @@ export default function UserDetails(props) {
             </div>
           </div>
           <div className="centralo">
-            <h1 className="tituloUserProfile"><FormattedMessage id= "userdetails.rating" defaultMessage="Rating" /></h1>
+            <h1 className="tituloUserProfile">
+              <FormattedMessage
+                id="userdetails.rating"
+                defaultMessage="Rating"
+              />
+            </h1>
           </div>
           <Post id={id} />
           <div style={{ height: 300, width: "100%" }}>
             <div className="centralo">
-              <h1 className="tituloUserProfile"><FormattedMessage id= "userdetails.chats" defaultMessage="Chats" /></h1>
+              <h1 className="tituloUserProfile">
+                <FormattedMessage
+                  id="userdetails.chats"
+                  defaultMessage="Chats"
+                />
+              </h1>
             </div>
             {userInfo && userInfo.chats ? (
               <>

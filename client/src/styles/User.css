@@ -76,7 +76,6 @@
 .userShowImage {
   width: 60px;
   height: 40px;
-  ;
   object-fit: cover;
 }
 
@@ -111,7 +110,6 @@
   color: #444;
 }
 
-
 .userShowIcon {
   font-size: 16px !important;
 }
@@ -137,7 +135,7 @@
   margin-top: 10px;
 }
 
-.userUpdateItem>label {
+.userUpdateItem > label {
   margin-bottom: 5px;
   font-size: 14px;
 }
