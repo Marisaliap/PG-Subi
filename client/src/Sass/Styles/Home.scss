@@ -15,7 +15,7 @@
     margin-left: -5rem;
     background-color: $buttonColor;
     margin-bottom: 2rem;
-    background-image: url("../../img/Ridesharing.jpg");
+    background-image:  linear-gradient(90deg, rgb(63, 61, 86) 25%, rgba(63, 61, 86, 0.996) 28%, rgba(63, 61, 86, 0.9) 40%, rgba(63, 61, 86, 0) 90%), url("../../img/Ridesharing.jpg");
     background-position: center; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -33,8 +33,11 @@
 
     h1 {
       color: $background;
+      font-size: 2rem;
     }
+
   }
+
 
   .homepageImage {
     width: 100%;
