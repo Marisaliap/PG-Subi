@@ -1,6 +1,5 @@
 @import '../Variables/Variables.scss';
 
-
 .Map {
   display: flex;
   flex-direction: row;
@@ -11,55 +10,57 @@
     margin-top: 1rem;
     border: 2px solid $headline;
     border-radius: 10px;
+
+    @media only screen and (max-width: 1024px) {
+      padding-right: 100%;
+      margin-bottom: 2rem;
+    }
   }
-  .userContainerallroute{
-    width: 20vw;
-    text-decoration: none;
+  .userContainerallroute {
+    width: 100%;
+    margin-top: 1rem;
 
     img {
       height: 30rem;
-      max-height: 15rem; 
+      max-height: 15rem;
       border-radius: 50%;
     }
   }
 
   .infoContainer {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 1rem;
-    margin-top: 1rem;
-    align-items: baseline
-    
+    margin: auto;
+    align-items: baseline;
   }
-  
+
   .restrictionContainer {
     .restrictionsP {
-      text-align:left;
+      text-align: left;
       font-weight: bold;
-      padding-left: 2rem;
+      padding-left: 1rem;
     }
   }
 
   p {
-    text-align:left;
+    text-align: left;
     margin-top: 0;
     font-weight: bold;
   }
 
-
-  .buttons{
-    display:flex;
+  .buttons {
+    display: flex;
     justify-content: center;
     align-self: flex-end;
   }
 
-  .infoUserAndButtons{
-    display:grid;
-    margin-left: 1rem;
-  }
-
   .priceH2 {
     margin-bottom: 0;
+  }
+
+  .infoUserAndButtons {
+    display: grid;
+    margin: auto;
   }
 }

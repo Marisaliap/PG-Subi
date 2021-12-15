@@ -107,6 +107,12 @@ export default function UserProfile() {
     });
   }
 
+  function handleSubmitNoPhoto(e) {
+    e.preventDefault();
+    setImage("");
+    setBooleanPhoto(false);
+  }
+
   function handleChange(e) {
     setInput({
       ...input,
@@ -463,40 +469,58 @@ export default function UserProfile() {
                     ""
                   ) : (
                     <>
-                      <div className="cadaLinea">
-                        <p className="label">
-                          <FormattedMessage
-                            id="register.photoUser"
-                            defaultMessage="Photo User*:"
-                          />
-                        </p>
-                        <input
-                          onChange={(e) => uploadImage(e)}
-                          className="cargaImagen"
-                          type="file"
-                          name="image"
-                          required="required"
-                          accept="image/png, image/jpeg"
-                        />
+                      <div className="enFila">
+                        <div>
+                          <div className="cadaLinea">
+                            <p className="label">
+                              <FormattedMessage
+                                id="register.photoUser"
+                                defaultMessage="Photo User*:"
+                              />
+                            </p>
+                            <input
+                              onChange={(e) => uploadImage(e)}
+                              className="cargaImagen"
+                              type="file"
+                              name="image"
+                              required="required"
+                              accept="image/png, image/jpeg"
+                            />
+                          </div>
+                          {/* eslint-disable-next-line */}
+                          <div style={{ display: "none" }}>
+                            {image === "" ? "" : (input.photo = image)}
+                          </div>
+                        </div>
+                        <div className="porfissss">
+                          <button
+                            className="botonEdit"
+                            type="submit"
+                            onClick={(e) =>
+                              image === ""
+                                ? handleSubmitNoPhoto(e)
+                                : handleSubmitPhoto(e)
+                            }
+                          >
+                            <FormattedMessage
+                              id="userProfile.changephoto"
+                              defaultMessage="Change Photo"
+                            />
+                          </button>
+                          <p className="imagenCargada">
+                            {/* eslint-disable-next-line */}
+                            {loanding ? (
+                              <img
+                                src={image}
+                                style={{ height: "150px" }}
+                                alt=""
+                              />
+                            ) : (
+                              ""
+                            )}
+                          </p>
+                        </div>
                       </div>
-                      <div Style="display:none">{(input.photo = image)}</div>
-                      <p>
-                        {loanding ? (
-                          <img src={image} Style="height:150px" alt="" />
-                        ) : (
-                          ""
-                        )}
-                      </p>
-                      <button
-                        className="botonEdit"
-                        type="submit"
-                        onClick={(e) => handleSubmitPhoto(e)}
-                      >
-                        <FormattedMessage
-                          id="userProfile.changephoto"
-                          defaultMessage="Change Photo"
-                        />
-                      </button>
                     </>
                   )}
                 </div>

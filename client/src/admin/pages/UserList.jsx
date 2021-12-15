@@ -4,7 +4,7 @@ import "../../styles/UserList.css";
 import { DataGrid } from "@material-ui/data-grid";
 // import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { deleteUser, getAllUserAdmin, getId, getUserAdmin } from "../../actions";
+import { getAllUserAdmin, getId, getUserAdmin } from "../../actions";
 
 export default function UserList() {
   const { usuariosRegistrados } = useSelector((state) => state);
@@ -15,18 +15,18 @@ export default function UserList() {
     genre: e.genre,
     admin: e.isAdmin,
     photo: e.photo,
-    banned:e.isBanned
+    banned: e.isBanned,
   }));
 
-  const [data, setData] = useState(filtrados);
+  const [data, setData] = useState(filtrados); // eslint-disable-line
   const dispatch = useDispatch();
-console.log(filtrados);
+  console.log(filtrados);
   // ---------------------------------<useEffect>---------------------------------
   useEffect(() => {
     dispatch(getAllUserAdmin());
     return () => {
       dispatch(getAllUserAdmin());
-    }
+    };
   }, [dispatch]);
 
   useEffect(
@@ -39,10 +39,6 @@ console.log(filtrados);
   // ___________________________________________________________________________________________
 
   // ---------------------------------<handles>---------------------------------
-  // const handleDelete = (id) => {
-  //   dispatch(deleteUser(id));
-  //   setData(data.filter((item) => item.id !== id));
-  // };
 
   const handleId = (id) => {
     dispatch(getId(id));
@@ -93,10 +89,6 @@ console.log(filtrados);
                 Edit User
               </button>
             </Link>
-            {/* <DeleteOutline
-              className="userListDelete"
-              onClick={() => handleDelete(params.row.id)}
-            /> */}
           </>
         );
       },

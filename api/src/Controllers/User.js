@@ -48,7 +48,7 @@ const postUser = async (req, res, next) => {
     await axios.post("http://localhost:3001/mail/add", {
         userName: name,
         userEmail: email, 
-      });
+    });
 
     res.send(user);
   } catch (error) {
