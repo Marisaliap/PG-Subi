@@ -38,7 +38,6 @@ const postUser = async (req, res, next) => {
         age,
         about,
         genre,
-        calification,
         photoDni,
         cbu,
       },
@@ -66,6 +65,8 @@ const getUser = async (req, res, next) => {
         include: Post,
         Chat,
       });
+      data = data.filter(user => user.isBanned === false)
+
       data = data.map((user) => {
         return {
           name: user.name,
@@ -94,8 +95,10 @@ const getUser = async (req, res, next) => {
           },
         ],
       });
+      data = data.isBanned === false ? data : "Banned user";
     } else {
       data = await User.findAll();
+      data = data.filter(user => user.isBanned === false)
     }
     res.send(data);
   } catch (error) {
