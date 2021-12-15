@@ -395,6 +395,9 @@ export default function UserProfile() {
 
   return (
     <div>
+<Link to="/home">
+        <button className="buttonBlue"><FormattedMessage id= "userdetails.home"/></button>
+      </Link>
       <div className="searchUsers">
         <SearchUserByName />
         <SearchUserById />

@@ -29,8 +29,11 @@
 
   "post.calification": "Calification",
   "post.description": "Please tell us about your experience with this user...",
-  "Post.title": "Rate this user",
+  "post.title": "Rate this user",
 
+  "routedetails.home": "Home",
+  
+  "userdetails.home": "Home",
   "userdetails.title": "User Details",
   "userdetails.yearsold": "years old",
   "userdetails.cardetails":"Car Details",

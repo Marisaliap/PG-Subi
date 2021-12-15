@@ -31,8 +31,11 @@
 
   "post.calification": "Calificacion",
   "post.description": "Cuéntenos su experiencia con este usuario ...",
-  "Post.title": "Califica a este usuario",
+  "post.title": "Califica a este usuario",
 
+  "routedetails.home": "Inicio",
+  
+  "userdetails.home": "Inicio",
   "userdetails.title": "Detalle de Usario",
   "userdetails.yearsold": "años",
   "userdetails.cardetails":"Detalles del Coche",
