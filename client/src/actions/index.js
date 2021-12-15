@@ -72,6 +72,17 @@ export function getAllUser() {
     } catch (error) {}
   };
 }
+export function getAllUserAdmin() {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`http://localhost:3001/user?admin=${true}`)).data;
+      return dispatch({
+        type: "GET_ALL_USER",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
 
 export function getUserAdmin(id) {
   return async function (dispatch) {

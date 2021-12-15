@@ -5,7 +5,7 @@ import "../../styles/User.css";
 import {
   editUser,
   getUserProfile,
-  getAllUsers,
+  getAllUserAdmin,
   getUserAdmin,
   editCar,
 } from "../../actions";
@@ -21,12 +21,12 @@ export default function Update() {
   // -------------------------------------<useEffect>-------------------------------------
   useEffect(() => {
     dispatch(getUserAdmin(id));
-    dispatch(getAllUsers());
+    dispatch(getAllUserAdmin());
     // dispatch(getUserProfile(id)); //sin esto funciona
 
     return () => {
       dispatch(getUserAdmin(id));
-      dispatch(getAllUsers());
+      dispatch(getAllUserAdmin());
     };
   }, [dispatch, id]);
 
@@ -66,34 +66,34 @@ export default function Update() {
   const [auto, setAuto] = useState(
     userAdmin?.cars?.length === 0
       ? {
-          brand: "",
-          model: "",
-          patent: "",
-          color: "",
-          cylinder: "",
-          greencard: "",
-        }
+        brand: "",
+        model: "",
+        patent: "",
+        color: "",
+        cylinder: "",
+        greencard: "",
+      }
       : {
-          brand: carAdmin.brand,
-          model: carAdmin.model,
-          patent: carAdmin.patent,
-          color: carAdmin.color,
-          cylinder: carAdmin.cylinder,
-          greencard: carAdmin.greencard,
-        }
+        brand: carAdmin.brand,
+        model: carAdmin.model,
+        patent: carAdmin.patent,
+        color: carAdmin.color,
+        cylinder: carAdmin.cylinder,
+        greencard: carAdmin.greencard,
+      }
   );
 
   // ------------------<handles>------------------
 
   const handleSubmitUser = (e) => {
     e.preventDefault();
+    history.push("/admin/users");
     dispatch(getUserProfile(id));
     dispatch(editUser(id, input));
     dispatch(getUserAdmin(id));
     handleSubmitPhoto(e);
     handleSubmitPhoto2(e);
-    dispatch(getAllUsers());
-    history.push("/admin/users");
+    dispatch(getAllUserAdmin());
   };
 
   const handleSubmitPhoto = (e) => {
