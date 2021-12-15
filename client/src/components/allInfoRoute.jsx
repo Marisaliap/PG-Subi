@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteRoute, getRouteById } from "../actions/index.js";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteRoute, getRouteById } from '../actions/index.js';
 import ReactMapboxGl, {
   Marker,
   GeoJSONLayer,
   ZoomControl,
-} from "react-mapbox-gl";
-import { useHistory } from "react-router";
+} from 'react-mapbox-gl';
+import { useHistory } from 'react-router';
 import {
   BsFillCalendarCheckFill,
   BsWatch,
@@ -14,13 +14,14 @@ import {
   BsPinMapFill,
   BsFillPersonFill,
   BsHeartFill,
-} from "react-icons/bs";
-import { RiPinDistanceFill } from "react-icons/ri";
-import "../Sass/Styles/allInfoRoute.scss";
-import { Link } from "react-router-dom";
-import { Modal } from "./ModalMP.jsx";
-import RatingStar from "./RatingStar.jsx";
-import { FormattedMessage } from "react-intl";
+  BsCheckCircle,
+} from 'react-icons/bs';
+import { RiPinDistanceFill } from 'react-icons/ri';
+import '../Sass/Styles/allInfoRoute.scss';
+import { Link } from 'react-router-dom';
+import { Modal } from './ModalMP.jsx';
+import RatingStar from './RatingStar.jsx';
+import { FormattedMessage } from 'react-intl';
 
 export default function AllInfoRoute({ match }) {
   const dispatch = useDispatch();
@@ -43,14 +44,14 @@ export default function AllInfoRoute({ match }) {
   const coordinates = {
     geometry: {
       coordinates: route.points,
-      type: "LineString",
+      type: 'LineString',
     },
-    type: "Feature",
+    type: 'Feature',
   };
 
   const Map = ReactMapboxGl({
     accessToken:
-      "pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg",
+      'pk.eyJ1IjoiZmFic2FudGFuZHJlYSIsImEiOiJja3czbGFzNmw1MDVwMzJtb3F2ajBobzlqIn0.HtizxCUDY-hUg5ZxLPArDg',
   });
 
   function handleClick() {
@@ -58,7 +59,7 @@ export default function AllInfoRoute({ match }) {
     history.goBack();
   }
 
-  let restricciones = route.restriction && route.restriction.split(", ");
+  let restricciones = route.restriction && route.restriction.split(', ');
 
   return (
     <div className="Map">
@@ -67,8 +68,8 @@ export default function AllInfoRoute({ match }) {
       <Map
         style="mapbox://styles/mapbox/streets-v11" // eslint-disable-line
         containerStyle={{
-          height: "50vh",
-          width: "50vw",
+          height: '50vh',
+          width: '50vw',
         }}
         className="mapbox"
         center={route.center}
@@ -76,7 +77,7 @@ export default function AllInfoRoute({ match }) {
           route.km
             ? [
                 parseFloat(
-                  Math.log10(route.km.slice(0, route.km.indexOf(" ")))
+                  Math.log10(route.km.slice(0, route.km.indexOf(' ')))
                 ) *
                   -3.65 +
                   15,
@@ -88,11 +89,11 @@ export default function AllInfoRoute({ match }) {
           <Marker
             coordinates={route.origin}
             anchor="bottom"
-            style={{ color: "red" }}
+            style={{ color: 'red' }}
           >
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
-              style={{ height: "30px" }}
+              style={{ height: '30px' }}
               alt=""
             ></img>
           </Marker>
@@ -102,7 +103,7 @@ export default function AllInfoRoute({ match }) {
           <Marker coordinates={route.destiny} anchor="bottom">
             <img
               src="https://www.agroavisos.net/wp-content/uploads/2017/04/map-marker-icon.png"
-              style={{ height: "30px" }}
+              style={{ height: '30px' }}
               alt=""
             ></img>
           </Marker>
@@ -111,12 +112,12 @@ export default function AllInfoRoute({ match }) {
         <GeoJSONLayer
           data={route.points && coordinates}
           linePaint={{
-            "line-color": "#2CB67D",
-            "line-width": 5,
+            'line-color': '#2CB67D',
+            'line-width': 5,
           }}
           lineLayout={{
-            "line-join": "miter",
-            "line-cap": "round",
+            'line-join': 'miter',
+            'line-cap': 'round',
           }}
         />
         <ZoomControl />
@@ -140,7 +141,7 @@ export default function AllInfoRoute({ match }) {
         </p>
         {route.place === 0 ? (
           <p>
-            <BsFillPersonFill />{" "}
+            <BsFillPersonFill />{' '}
             <FormattedMessage
               id="allinforoute.placefull"
               defaultMessage="Trip Full"
@@ -148,7 +149,7 @@ export default function AllInfoRoute({ match }) {
           </p>
         ) : (
           <p>
-            <BsFillPersonFill /> {route.place}{" "}
+            <BsFillPersonFill /> {route.place}{' '}
             <FormattedMessage
               id="allinforoute.place"
               defaultMessage="Seats available."
@@ -157,16 +158,17 @@ export default function AllInfoRoute({ match }) {
         )}
         <div className="restrictionContainer">
           <p>
-            {" "}
-            <BsHeartFill /> Preferences:{" "}
+            {' '}
+            <BsHeartFill /> Preferences:{' '}
           </p>
           {restricciones &&
             restricciones.map((restriction, i) => {
               return (
                 <p className="restrictionsP" key={i}>
+                  <BsCheckCircle />{' '}
                   {restriction
                     .capitalizeFirstLetter()
-                    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")}
+                    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')}
                 </p>
               );
             })}
@@ -194,6 +196,13 @@ export default function AllInfoRoute({ match }) {
         <h1 className="priceH2">$ {route.price}</h1>
 
         <div className="buttons">
+          <button className="buttonBlue" onClick={handleClick}>
+            <FormattedMessage
+              id="allinforoute.goback"
+              defaultMessage="Go Back"
+            />
+          </button>
+
           {route.place === 0 ||
           !route.users ||
           (route.users &&
@@ -216,13 +225,6 @@ export default function AllInfoRoute({ match }) {
           {showModal ? (
             <Modal setShowModal={setShowModal} route={route} user={user} />
           ) : null}
-
-          <button className="buttonBlue" onClick={handleClick}>
-            <FormattedMessage
-              id="allinforoute.goback"
-              defaultMessage="Go Back"
-            />
-          </button>
         </div>
       </div>
     </div>
