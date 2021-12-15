@@ -269,19 +269,51 @@ export default function UserProfile() {
     });
 
   const columnsRoutes = [
-    { field: "Origin", headerName: <FormattedMessage id= "userProfile.origin" defaultMessage="Origin" />, width: 250 },
-    { field: "Destiny", headerName: <FormattedMessage id= "userProfile.destiny" defaultMessage="Destiny" />, width: 250 },
-    { field: "Date", headerName: <FormattedMessage id= "userProfile.date" defaultMessage="Date" />, width: 125 },
-    { field: "Time", headerName: <FormattedMessage id= "userProfile.time" defaultMessage="Time" />, width: 125 },
+    {
+      field: "Origin",
+      headerName: (
+        <FormattedMessage id="userProfile.origin" defaultMessage="Origin" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Destiny",
+      headerName: (
+        <FormattedMessage id="userProfile.destiny" defaultMessage="Destiny" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Date",
+      headerName: (
+        <FormattedMessage id="userProfile.date" defaultMessage="Date" />
+      ),
+      width: 125,
+    },
+    {
+      field: "Time",
+      headerName: (
+        <FormattedMessage id="userProfile.time" defaultMessage="Time" />
+      ),
+      width: 125,
+    },
     {
       field: "RouteId",
-      headerName: <FormattedMessage id= "userProfile.routeid" defaultMessage="Route ID" />,
+      headerName: (
+        <FormattedMessage id="userProfile.routeid" defaultMessage="Route ID" />
+      ),
       width: 150,
       renderCell: (params) => (
         <Link to={`/route/${params.value}`}>{params.value}</Link>
       ),
     },
-    { field: "Driver", headerName: <FormattedMessage id= "userProfile.driver" defaultMessage="Driver" />, width: 125 },
+    {
+      field: "Driver",
+      headerName: (
+        <FormattedMessage id="userProfile.driver" defaultMessage="Driver" />
+      ),
+      width: 125,
+    },
   ];
 
   /*----------------------------------------ORDERS-------------------------------------------------------*/
@@ -307,19 +339,51 @@ export default function UserProfile() {
     });
 
   const columnsOrders = [
-    { field: "Origin", headerName: <FormattedMessage id= "userProfile.origin" defaultMessage="Origin" />, width: 250 },
-    { field: "Destiny", headerName: <FormattedMessage id= "userProfile.destiny" defaultMessage="Destiny" />, width: 250 },
-    { field: "Date", headerName:  <FormattedMessage id= "userProfile.date" defaultMessage="Date" />, width: 125 },
-    { field: "Time", headerName: <FormattedMessage id= "userProfile.time" defaultMessage="Time" />, width: 125 },
+    {
+      field: "Origin",
+      headerName: (
+        <FormattedMessage id="userProfile.origin" defaultMessage="Origin" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Destiny",
+      headerName: (
+        <FormattedMessage id="userProfile.destiny" defaultMessage="Destiny" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Date",
+      headerName: (
+        <FormattedMessage id="userProfile.date" defaultMessage="Date" />
+      ),
+      width: 125,
+    },
+    {
+      field: "Time",
+      headerName: (
+        <FormattedMessage id="userProfile.time" defaultMessage="Time" />
+      ),
+      width: 125,
+    },
     {
       field: "RouteId",
-      headerName: <FormattedMessage id= "userProfile.routeid" defaultMessage="Route ID" />,
+      headerName: (
+        <FormattedMessage id="userProfile.routeid" defaultMessage="Route ID" />
+      ),
       width: 150,
       renderCell: (params) => (
         <Link to={`/route/${params.value}`}>{params.value}</Link>
       ),
     },
-    { field: "Payment", headerName: <FormattedMessage id= "userProfile.payment" defaultMessage="Payment" />, width: 200 },
+    {
+      field: "Payment",
+      headerName: (
+        <FormattedMessage id="userProfile.payment" defaultMessage="Payment" />
+      ),
+      width: 200,
+    },
   ];
 
   return (
@@ -330,7 +394,13 @@ export default function UserProfile() {
       </div>
       <div className="containerProfile">
         <div className="centralo">
-          <Tabs onChange={handleNav} aria-label="nav tabs example">
+          <Tabs
+            onChange={handleNav}
+            value={nav}
+            variant="scrollable"
+            scrollButtons="auto"
+            aria-label="nav tabs example"
+          >
             <Tab label="User Details" icon={<Person />} />
             <Tab label="Car Details" icon={<DirectionsCarIcon />} />
             <Tab label="Trips Details" icon={<LocationOnIcon />} />
@@ -537,38 +607,47 @@ export default function UserProfile() {
                               value={input.instagram}
                             />
                           </div>
-                          <div className="cadaLinea">
-                            <BsMap className="icon" />
-                            <input
-                              onChange={(e) => handleChange(e)}
-                              type="text"
-                              name="street"
-                              className="inputProfile"
-                              value={input.street}
-                            />
-                            {errorsUser.street && (
-                              <p className="errorcar">{errorsUser.street}</p>
-                            )}
-                            <input
-                              onChange={(e) => handleChange(e)}
-                              type="text"
-                              name="city"
-                              className="inputProfile"
-                              value={input.city}
-                            />
-                            {errorsUser.city && (
-                              <p className="errorcar">{errorsUser.city}</p>
-                            )}
-                            <input
-                              onChange={(e) => handleChange(e)}
-                              name="province"
-                              type="text"
-                              className="inputProfile"
-                              value={input.province}
-                            />
-                            {errorsUser.province && (
-                              <p className="errorcar">{errorsUser.province}</p>
-                            )}
+                          <div className="inputsContainer">
+                            <div className="cadaLinea">
+                              <BsMap className="icon" />
+                              <input
+                                onChange={(e) => handleChange(e)}
+                                type="text"
+                                name="street"
+                                className="inputProfile"
+                                value={input.street}
+                              />
+                              {errorsUser.street && (
+                                <p className="errorcar">{errorsUser.street}</p>
+                              )}
+                            </div>
+
+                            <div className="cadaLinea2">
+                              <input
+                                onChange={(e) => handleChange(e)}
+                                type="text"
+                                name="city"
+                                className="inputProfile"
+                                value={input.city}
+                              />
+                              {errorsUser.city && (
+                                <p className="errorcar">{errorsUser.city}</p>
+                              )}
+                            </div>
+                            <div className="cadaLinea2">
+                              <input
+                                onChange={(e) => handleChange(e)}
+                                name="province"
+                                type="text"
+                                className="inputProfile"
+                                value={input.province}
+                              />
+                              {errorsUser.province && (
+                                <p className="errorcar">
+                                  {errorsUser.province}
+                                </p>
+                              )}
+                            </div>
                           </div>
                           <div className="cadaLinea">
                             <BsInfoSquareFill className="icon" />
@@ -660,7 +739,7 @@ export default function UserProfile() {
                 )}
               </div>
               {booleanCar === false ? (
-                <>
+                <div>
                   <div className="patents">
                     <div className="cadaLinea">
                       <p className="label">
@@ -730,7 +809,7 @@ export default function UserProfile() {
                       )}
                     </div>{" "}
                   </div>
-                </>
+                </div>
               ) : (
                 <>
                   <div className="patents">
@@ -917,8 +996,8 @@ export default function UserProfile() {
   );
 }
 
-
-{/* <Tabs onChange={handleNav} aria-label="nav tabs example">
+{
+  /* <Tabs onChange={handleNav} aria-label="nav tabs example">
 <FormattedMessage id="userProfile.userdetails">
   {(message) => <Tab label={message} icon={<Person />} />}
 </FormattedMessage>
@@ -938,4 +1017,5 @@ export default function UserProfile() {
 <FormattedMessage id="userProfile.chat">
   {(message) => <Tab label={message} icon={<ChatIcon />} />}
 </FormattedMessage>
-</Tabs> */} 
+</Tabs> */
+}

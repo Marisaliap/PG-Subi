@@ -14,7 +14,10 @@
     transition: background-color 0.5s ease-in-out;
     margin-top: 1rem;
     border-radius: 5px;
-
+    @media only screen and (max-width: 1024px) {
+      margin-left: 0;
+      width: 80%;
+    }
     &:hover {
       background-color: $buttonColor-33;
     }
