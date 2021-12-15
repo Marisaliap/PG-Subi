@@ -85,7 +85,7 @@ export default function Footer() {
                 defaultMessage="Privacy Policy"
               />
             </Link>
-            <Link
+            {/* <Link
               to="/cookies-policy"
               className="Link"
               target="_blank"
@@ -95,7 +95,7 @@ export default function Footer() {
                 id="footer.cookies"
                 defaultMessage="Cookies Policy"
               />
-            </Link>
+            </Link> */}
           </div>
         </div>
         <hr className="lineahr" />
