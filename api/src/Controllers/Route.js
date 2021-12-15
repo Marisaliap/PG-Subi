@@ -105,7 +105,7 @@ const postRoute = async (req, res, next) => {
 
 const getRoute = async (req, res, next) => {
   try {
-    let { restriction, order, date, from, to, place } = req.query;
+    let { restriction, order, date, from, to, place, admin } = req.query;
     const { id } = req.params;
     let routes;
 
@@ -157,7 +157,7 @@ const getRoute = async (req, res, next) => {
       ],
     });
 
-    routes = routes.filter(route => route.users[0].isBanned === false)
+    if(!admin) routes = routes.filter(route => route.users[0].isBanned === false)
 
     if (from) {
       routes = routes.filter((route) => {
@@ -223,24 +223,26 @@ const putRoute = async (req, res) => {
     const { date, hours, restriction, place, idUser } = req.body;
 
     const route = await Route.findByPk(id);
-    route.update({
+    const result = await route.update({
       date,
       hours,
       restriction,
       place,
     });
     if (idUser) {
-      const manejante = await User.findByPk(idUser);
+      const manejado = await User.findByPk(idUser);
+      const manejante = await User.findByPk(route.manejante);
       await route.addUser(idUser);
-      let mail = await axios.post("http://localhost:3001/mail/add", {
-        manejanteEmail: route.manejante,
-        manejadoName: manejante.name,
+      await axios.post("http://localhost:3001/mail/add", {
+        manejanteName: manejante.name,
+        manejanteEmail: manejante.email, 
+        manejadoName: manejado.name,
+        manejadoEmail: manejado.email,
         originName: route.originName,
         destinyName: route.destinyName,
       });
-      console.log(mail);
     }
-    res.send(route);
+    res.send(result);
   } catch (error) {
     res.send(error);
   }
