@@ -124,14 +124,23 @@ export default function Nav() {
 
             {dropdown && (
               <div class="dropdown-content">
-                {isAuthenticated ? (
+                {isAuthenticated && userpro.dni ? (
                   <Link classname="Link" to="/profile">
                     <div className="dropdown-menu">
                       <h3>Profile</h3>
                       <BsChevronRight />
                     </div>
                   </Link>
-                ) : null}
+                ) : (
+                  isAuthenticated && (
+                    <Link classname="Link" to="/register">
+                      <div className="dropdown-menu">
+                        <h3>Register</h3>
+                        <BsChevronRight />
+                      </div>
+                    </Link>
+                  )
+                )}
                 <div className="dropdown-menu">
                   <Auth />
                   <BsChevronRight />

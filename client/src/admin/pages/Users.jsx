@@ -16,7 +16,6 @@ import {
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import "../../Sass/Styles/UserAdmin.scss";
-/* import "../../styles/User.css"; */
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllUsers, getUserAdmin, getUserDetail } from "../../actions";
 
@@ -28,10 +27,8 @@ export default function User2() {
   // -------------------------------------<useEffect>-------------------------------------
   useEffect(
     (id) => {
-      // dispatch(getUserAdmin(id));// sin esto funciona
       dispatch(getAllUsers());
-      // dispatch(getUserProfile(id)); // sin esto funciona
-      dispatch(getUserDetail(id)); // sin esto funciona
+      dispatch(getUserDetail(id));
     },
     [dispatch, id]
   );
@@ -39,8 +36,6 @@ export default function User2() {
   // ------------------<handles>------------------
   function Click() {
     dispatch(getUserAdmin(id));
-    // dispatch(getUserProfile(id)) // sin esto funciona
-    // dispatch(getUserDetail(id)) // sin esto funciona
   }
 
   //   __________________________________________________________________________________________

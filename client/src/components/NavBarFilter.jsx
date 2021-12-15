@@ -8,7 +8,7 @@ export default function NavBarFilter({ places, currentRoutes }) {
   const dispatch = useDispatch();
   const [order, setOrder] = useState("");
   const [restriction, setRestriction] = useState("");
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.userpro);
   const { searchParams } = useSelector((state) => state);
 
   const handleSelect = (e) => {

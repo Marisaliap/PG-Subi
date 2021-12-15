@@ -5,8 +5,9 @@
   background-color: $buttonColor;
   padding-bottom: 4vh;
   padding-top: 2vh;
+
   .buttonSuggestion {
-    margin-top: 1.2rem;
+    // margin-top: 1.2rem;
     border: none;
     font-family: inherit;
     border-radius: 9999px;
@@ -24,24 +25,29 @@
 
   .info {
     display: grid;
-    grid-template-columns: 10% 50% 15% 15% 10%;
-    justify-items: start;
+    place-items: center;
     color: $background;
+
+    @media only screen and (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: 20% 30% 15% 15% 20%;
+    }
   }
 
   .left {
     display: flex;
     align-items: center;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin: auto;
+  }
+
+  .suggestionBoxContainer {
+    margin: 2rem auto;
   }
 
   .redesSociales {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
-    width: 70%;
-    align-items: center;
+    width: 100%;
 
     a {
       text-decoration: none;
@@ -50,7 +56,6 @@
 
     .icon {
       font-size: 2rem;
-      padding-left: 4rem;
     }
   }
 }
