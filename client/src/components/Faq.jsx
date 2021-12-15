@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import "../Sass/Styles/Faq.scss";
 
 export default function Faq() {
-
-
   return (
     <div className="Faq">
       <Link to="/home">
@@ -20,7 +18,7 @@ export default function Faq() {
             <a
               href="https://www.facebook.com/people/Give-me-a-ride/100075632223946/?sk=about"
               target="_blank"
-            rel="noreferrer"
+              rel="noreferrer"
             >
               Facebook
             </a>

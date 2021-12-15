@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import '../../styles/User.css';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import "../../styles/User.css";
 import {
   editUser,
   getUserProfile,
   getAllUsers,
   getUserAdmin,
   editCar,
-} from '../../actions';
+} from "../../actions";
 
 export default function Update() {
   const { id, userAdmin, carAdmin, usuariosRegistrados } = useSelector(
@@ -66,12 +66,12 @@ export default function Update() {
   const [auto, setAuto] = useState(
     userAdmin?.cars?.length === 0
       ? {
-          brand: '',
-          model: '',
-          patent: '',
-          color: '',
-          cylinder: '',
-          greencard: '',
+          brand: "",
+          model: "",
+          patent: "",
+          color: "",
+          cylinder: "",
+          greencard: "",
         }
       : {
           brand: carAdmin.brand,
@@ -93,21 +93,21 @@ export default function Update() {
     handleSubmitPhoto(e);
     handleSubmitPhoto2(e);
     dispatch(getAllUsers());
-    history.push('/admin/users');
+    history.push("/admin/users");
   };
 
   const handleSubmitPhoto = (e) => {
     e.preventDefault();
-    setImage('');
-    setDniFront('');
-    setDniBack('');
-    setGreencard('');
+    setImage("");
+    setDniFront("");
+    setDniBack("");
+    setGreencard("");
     dispatch(editUser(id, input));
     dispatch(getUserAdmin(id));
   };
   const handleSubmitPhoto2 = (e) => {
     e.preventDefault();
-    setGreencard('');
+    setGreencard("");
     dispatch(editUser(id, input));
     dispatch(getUserAdmin(id));
     carAdmin?.id && dispatch(editCar(carAdmin.id, auto));
@@ -139,13 +139,13 @@ export default function Update() {
   const uploadImage = async (e) => {
     const files = e.target.files;
     const data = new FormData();
-    data.append('file', files[0]);
-    data.append('upload_preset', 'photoAdmin');
+    data.append("file", files[0]);
+    data.append("upload_preset", "photoAdmin");
 
     const res = await fetch(
-      'https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload',
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
       {
-        method: 'POST',
+        method: "POST",
         body: data,
       }
     );
@@ -157,13 +157,13 @@ export default function Update() {
   const uploadImagefront = async (e) => {
     const files = e.target.files;
     const data = new FormData();
-    data.append('file', files[0]);
-    data.append('upload_preset', 'dniAdmin');
+    data.append("file", files[0]);
+    data.append("upload_preset", "dniAdmin");
 
     const res = await fetch(
-      'https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload',
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
       {
-        method: 'POST',
+        method: "POST",
         body: data,
       }
     );
@@ -176,13 +176,13 @@ export default function Update() {
   const uploadImageback = async (e) => {
     const files = e.target.files;
     const data = new FormData();
-    data.append('file', files[0]);
-    data.append('upload_preset', 'dniAdmin');
+    data.append("file", files[0]);
+    data.append("upload_preset", "dniAdmin");
 
     const res = await fetch(
-      'https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload',
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
       {
-        method: 'POST',
+        method: "POST",
         body: data,
       }
     );
@@ -194,13 +194,13 @@ export default function Update() {
   const uploadImage3 = async (e) => {
     const files = e.target.files;
     const data = new FormData();
-    data.append('file', files[0]);
-    data.append('upload_preset', 'dniAdmin');
+    data.append("file", files[0]);
+    data.append("upload_preset", "dniAdmin");
 
     const res = await fetch(
-      'https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload',
+      "https://api.cloudinary.com/v1_1/dlwobuyjb/image/upload",
       {
-        method: 'POST',
+        method: "POST",
         body: data,
       }
     );
@@ -222,35 +222,35 @@ export default function Update() {
     const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     const phonevalidate = /^[0-9]+$/;
     if (!input.name) {
-      errors.name = 'Name is required';
+      errors.name = "Name is required";
     } else if (wordvalidate.test(input.name) === false) {
-      errors.name = 'Invalid Name: No Symbols Allowed';
+      errors.name = "Invalid Name: No Symbols Allowed";
     } else if (!input.lastName) {
-      errors.lastName = 'Last name is required';
+      errors.lastName = "Last name is required";
     } else if (wordvalidate.test(input.lastName) === false) {
-      errors.lastName = 'Invalid Last Name: No Symbols Allowed';
+      errors.lastName = "Invalid Last Name: No Symbols Allowed";
     } else if (!input.dni) {
-      errors.dni = 'DNI is required';
+      errors.dni = "DNI is required";
     } else if (booleanDNI === false) {
-      errors.dni = 'DNI already exists';
+      errors.dni = "DNI already exists";
     } else if (!input.age) {
-      errors.age = 'Age required';
+      errors.age = "Age required";
     } else if (input.age < 18) {
-      errors.age = 'You must be 18 years old or older to register';
+      errors.age = "You must be 18 years old or older to register";
     } else if (!input.telephone) {
-      errorsUser.telephone = 'Telephone is required';
+      errorsUser.telephone = "Telephone is required";
     } else if (phonevalidate.test(input.telephone) === false) {
-      errorsUser.telephone = 'Invalid Phone: Only Numbers Allowed';
+      errorsUser.telephone = "Invalid Phone: Only Numbers Allowed";
     } else if (!input.street) {
-      errors.street = 'Street is required';
+      errors.street = "Street is required";
     } else if (!input.city) {
-      errors.city = 'City is required';
+      errors.city = "City is required";
     } else if (wordvalidate.test(input.city) === false) {
-      errors.city = 'Invalid City: No Symbols Allowed';
+      errors.city = "Invalid City: No Symbols Allowed";
     } else if (!input.province) {
-      errors.province = 'Province is required';
+      errors.province = "Province is required";
     } else if (wordvalidate.test(input.province) === false) {
-      errors.province = 'Invalid Province: No Symbols Allowed';
+      errors.province = "Invalid Province: No Symbols Allowed";
     }
     return errors;
   }
@@ -261,23 +261,23 @@ export default function Update() {
     const floatvalidate = /^[0-9]*\.?[0-9]+$/;
     let errorsCars = {};
     if (!input.brand) {
-      errorsCars.brand = 'Brand is required';
+      errorsCars.brand = "Brand is required";
     } else if (wordvalidate.test(input.brand) === false) {
-      errorsCars.brand = 'Invalid Brand: No Symbols Allowed';
+      errorsCars.brand = "Invalid Brand: No Symbols Allowed";
     } else if (!input.model) {
-      errorsCars.model = 'Model is required';
+      errorsCars.model = "Model is required";
     } else if (!input.patent) {
-      errorsCars.patent = 'Plate is required';
+      errorsCars.patent = "Plate is required";
     } else if (numberandlettervalidate.test(input.patent) === false) {
-      errorsCars.patent = 'Invalid Plate';
+      errorsCars.patent = "Invalid Plate";
     } else if (!input.color) {
-      errorsCars.color = 'Color is required';
+      errorsCars.color = "Color is required";
     } else if (wordvalidate.test(input.color) === false) {
-      errorsCars.color = 'Invalid Color: No Symbols Allowed';
+      errorsCars.color = "Invalid Color: No Symbols Allowed";
     } else if (!input.cylinder) {
-      errorsCars.cylinder = 'Cylinder is required';
+      errorsCars.cylinder = "Cylinder is required";
     } else if (floatvalidate.test(input.cylinder) === false) {
-      errorsCars.cylinder = 'Invalid Cylinder: No Symbols Allowed';
+      errorsCars.cylinder = "Invalid Cylinder: No Symbols Allowed";
     }
     return errorsCars;
   }
@@ -545,7 +545,7 @@ export default function Update() {
                 <span className="userShowTitle">DNI FRONT</span>
                 <div className="userUpdateUpload">
                   {!userAdmin.photoDni ? (
-                    ''
+                    ""
                   ) : (
                     <img
                       src={userAdmin.photoDni[0]}
@@ -571,7 +571,7 @@ export default function Update() {
                 <span className="userShowTitle">DNI BACK</span>
                 <div className="userUpdateUpload">
                   {!userAdmin.photoDni ? (
-                    ''
+                    ""
                   ) : (
                     <img
                       src={userAdmin.photoDni[1]}

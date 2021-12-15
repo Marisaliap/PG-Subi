@@ -28,7 +28,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <hr classname="lineahr" />
+        <hr className="lineahr" />
         <div className="helpcita">
           <h4 className="titulo">
             <FormattedMessage id="footer.help" defaultMessage="Help" />
@@ -50,7 +50,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <hr classname="lineahr" />
+        <hr className="lineahr" />
         <div className="legal">
           <h4 className="titulo">
             <FormattedMessage
@@ -94,7 +94,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <hr classname="lineahr" />
+        <hr className="lineahr" />
         <div className="Info">
           <h3>
             <FormattedMessage
@@ -113,7 +113,7 @@ export default function Footer() {
             2021{" "}
           </h3>
         </div>
-        <hr classname="lineahr" />
+        <hr className="lineahr" />
         <div className="languages">
           <h4 className="titulo">
             <FormattedMessage id="footer.lang" defaultMessage="Language" />

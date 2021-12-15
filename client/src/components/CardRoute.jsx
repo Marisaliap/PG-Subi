@@ -19,7 +19,7 @@ export default function CardRoute({
   ...props
 }) {
   return (
-    <div className="CardRoute" {...props}>
+    <div className="CardRoute">
       <h5>
         <BsPinMap className="icon" />
         {origin}

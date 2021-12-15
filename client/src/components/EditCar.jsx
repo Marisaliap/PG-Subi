@@ -7,10 +7,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
 import { FormattedMessage } from "react-intl";
 
-
-
 export default function EditCar() {
-    const history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
 
@@ -24,26 +22,53 @@ export default function EditCar() {
     cylinder: "",
   });
 
-  <FormattedMessage id="editcarerr.patent" defaultMessage="Patent is required" />
+  <FormattedMessage
+    id="editcarerr.patent"
+    defaultMessage="Patent is required"
+  />;
 
   function validate(input) {
     let errors = {};
     if (!input.patent) {
-      errors.patent =  <FormattedMessage id="editcarerr.patent" defaultMessage="Patent is required" />;
+      errors.patent = (
+        <FormattedMessage
+          id="editcarerr.patent"
+          defaultMessage="Patent is required"
+        />
+      );
     } else if (!input.color) {
-      errors.color = <FormattedMessage id= "editcarerr.color" defaultMessage="Color is required" />;
+      errors.color = (
+        <FormattedMessage
+          id="editcarerr.color"
+          defaultMessage="Color is required"
+        />
+      );
     } else if (!input.brand) {
-      errors.brand = <FormattedMessage id= "editcarerr.brand" defaultMessage="Brand is required" />;
+      errors.brand = (
+        <FormattedMessage
+          id="editcarerr.brand"
+          defaultMessage="Brand is required"
+        />
+      );
     } else if (!input.model) {
-      errors.model = <FormattedMessage id= "editcarerr.model" defaultMessage="Model is required" />;
+      errors.model = (
+        <FormattedMessage
+          id="editcarerr.model"
+          defaultMessage="Model is required"
+        />
+      );
     } else if (!input.cylinder) {
-      errors.cylinder = <FormattedMessage id= "editcarerr.cylinder" defaultMessage="Cylinder is required" />;
+      errors.cylinder = (
+        <FormattedMessage
+          id="editcarerr.cylinder"
+          defaultMessage="Cylinder is required"
+        />
+      );
     }
     return errors;
   }
 
   function handleChange(e) {
-
     setInput({
       ...input,
       [e.target.name]: e.target.value,

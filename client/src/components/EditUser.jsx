@@ -138,26 +138,26 @@ export default function Registro() {
       });
     }
   }
-//   const uploadImage = async (e) => {
-//     const files = e.target.files;
-//     console.log(files)
-//     const data = new FormData();
-//     data.append("file", files[0]);
-//     data.append("upload_preset", "htnah6yo");
-//     setLoading(true);
+  //   const uploadImage = async (e) => {
+  //     const files = e.target.files;
+  //     console.log(files)
+  //     const data = new FormData();
+  //     data.append("file", files[0]);
+  //     data.append("upload_preset", "htnah6yo");
+  //     setLoading(true);
 
-//     const res = await fetch(
-//         "https://api.cloudinary.com/v1_1/djrddcab5/image/upload",
-//         {
-//             method: "POST",
-//             body: data,
-//         }
-//     );
+  //     const res = await fetch(
+  //         "https://api.cloudinary.com/v1_1/djrddcab5/image/upload",
+  //         {
+  //             method: "POST",
+  //             body: data,
+  //         }
+  //     );
 
-//     const file = await res.json();
+  //     const file = await res.json();
 
-// setImage(file.secure_url);
-// };
+  // setImage(file.secure_url);
+  // };
 
   return (
     <>
@@ -355,13 +355,13 @@ export default function Registro() {
             )}
           </div>
           {/* agrego rami para la foto user */}
-          <div >
-            <input 
-            // onChange={(e) => handleChange(e)}
-             type="file" 
-            name="image"
-            required="required"
-            accept="image/png,image/jpeg"
+          <div>
+            <input
+              // onChange={(e) => handleChange(e)}
+              type="file"
+              name="image"
+              required="required"
+              accept="image/png,image/jpeg"
             />
             <label>choose image</label>
           </div>

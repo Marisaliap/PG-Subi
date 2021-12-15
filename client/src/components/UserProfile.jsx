@@ -203,6 +203,7 @@ export default function UserProfile() {
   function handleNav(e, value) {
     setNav(value);
   }
+
   function validateuser(input) {
     const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     const phonevalidate = /^[0-9]+$/;
@@ -395,12 +396,12 @@ export default function UserProfile() {
       <div className="containerProfile">
         <div className="centralo">
           <Tabs onChange={handleNav} aria-label="nav tabs example">
-            <Tab label="User Details" icon={<Person />} />
-            <Tab label="Car Details" icon={<DirectionsCarIcon />} />
-            <Tab label="Trips Details" icon={<LocationOnIcon />} />
-            <Tab label="Posts" icon={<CommentIcon />} />
-            <Tab label="Payments" icon={<PaymentIcon />} />
-            <Tab label="Chat" icon={<ChatIcon />} />
+            <Tab label="User Details" value={0} icon={<Person />} />
+            <Tab label="Car Details" value={1} icon={<DirectionsCarIcon />} />
+            <Tab label="Trips Details" value={2} icon={<LocationOnIcon />} />
+            <Tab label="Posts" value={3} icon={<CommentIcon />} />
+            <Tab label="Payments" value={4} icon={<PaymentIcon />} />
+            <Tab label="Chat" value={5} icon={<ChatIcon />} />
           </Tabs>
         </div>
         <div className="ProfileReal">

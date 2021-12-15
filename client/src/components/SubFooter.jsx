@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../Sass/Styles/SubFooter.scss';
-import { SiTwitter, SiInstagram, SiFacebook } from 'react-icons/si';
-import { FormattedMessage } from 'react-intl';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../Sass/Styles/SubFooter.scss";
+import { SiTwitter, SiInstagram, SiFacebook } from "react-icons/si";
+import { FormattedMessage } from "react-intl";
 
 export default function SubFooter() {
   return (

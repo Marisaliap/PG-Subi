@@ -30,7 +30,6 @@
   "post.calification": "Calification",
   "post.description": "Please tell us about your experience with this user...",
   "Post.title": "Rate this user",
-  
 
   "userdetails.title": "User Details",
   "userdetails.yearsold": "years old",
@@ -75,7 +74,8 @@
   "allinforoute.placefull": "Trip Full",
   "allinforoute.place": "Seats available.",
   "allinforoute.goback": "Go Back",
-  "Trip Full": "Join this trip!",
+  "allinforoute.jointhistrip": "¡Join this trip!",
+  "Trip Full": "Trip Full!",
 
   "userProfile.title": "User Details",
   "userProfile.changephoto": "Change Photo",
@@ -101,8 +101,6 @@
   "userProfile.posts": "Posts",
   "userProfile.payments": "Payments",
   "userProfile.chat": "Chat",
-
-
 
   "user.result": "No user matches those descriptions",
   "user.button": "Load All Users",
@@ -180,8 +178,6 @@
   "landing.titleh4":"Wherever you like, whenever you like.",
   "landing.p1":"Gimme A Ride allows you to connect both drivers and passengers willing to travel together between cities, sharing the cost of the adventure",
   "landing.p2":"Wanna know more?",
-
-
   
   "admsidebar.dashboard": "Dashboard",
   "admsidebar.sales": "Sales",
@@ -194,8 +190,6 @@
   "admsidebar.mail": "Mail",
   "admsidebar.feedback": "Feedback",
   "admsidebar.messages": "Messages",
-
-  
 
   "registererr.name": "Name is required",
   "registererr.symbols": "Invalid Name: No Symbols Allowed",
@@ -247,6 +241,7 @@
   "register.yes": "Yes",
   "register.submit": "Register",
   "register.placeholder": "Please tell us a little about yourself",
+  "register.cbu": "CBU",
 
   "modalmp.button":"Join this trip!",
 

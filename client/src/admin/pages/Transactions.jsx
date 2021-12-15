@@ -32,21 +32,10 @@ export default function Transactions() {
     dispatch(getAllUsers());
   }, [data]); // eslint-disable-line
 
-  //   useEffect((id) => {
-  //     dispatch(getUserAdmin(id));
-  //     dispatch(getUserDetail(id));
-  //   }, []);
-
   const handleDelete = (id) => {
     dispatch(deleteOrder(id));
     setData(data.filter((item) => item.id !== id));
   };
-
-  //   const handleId = (id) => {
-  //     dispatch(getId(id))
-  //     dispatch(getUserAdmin(id))
-  //     dispatch(getUserDetail(id))
-  //   }
 
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
@@ -95,11 +84,13 @@ export default function Transactions() {
 
   return (
     <div className="userList">
+      {/* eslint-disable-next-line */}
       <DataGrid
         rows={data}
         disableSelectionOnClick
         columns={columns}
-        pageSize={8}
+        pageSize={[8]}
+        rowsPerPageOptions={[8]}
         checkboxSelection
       />
     </div>
