@@ -102,10 +102,11 @@ const getUser = async (req, res, next) => {
           },
         ],
       });
-      data = data.isBanned === false ? data : "Banned user";
+      if(admin==="false") data = data.isBanned === false ? data : "Banned user"
     } else {
       data = await User.findAll();
-      if(!admin) data = data.filter(user => user.isBanned === false);
+      admin
+      if(admin==="false") data = data.filter(user => user.isBanned === false);
     }
     res.send(data);
   } catch (error) {

@@ -17,17 +17,18 @@ import {
 import { Link } from "react-router-dom";
 import "../../Sass/Styles/UserAdmin.scss";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllUsers, getUserAdmin, getUserDetail } from "../../actions";
+import { getAllUserAdmin, getUserAdmin, getUserDetail } from "../../actions";
 
 export default function User2() {
   const { id, userAdmin, carAdmin } = useSelector((state) => state);
   const { user } = useAuth0();
   const dispatch = useDispatch();
 
+
   // -------------------------------------<useEffect>-------------------------------------
   useEffect(
     (id) => {
-      dispatch(getAllUsers());
+      dispatch(getAllUserAdmin());
       dispatch(getUserDetail(id));
     },
     [dispatch, id]
@@ -104,13 +105,16 @@ export default function User2() {
               {!userAdmin.photoDni
                 ? ""
                 : userAdmin.photoDni.map((e, i) => (
-                    <img src={e} alt="" className="userShowImage" />
-                  ))}
+                  <img src={e} alt="" className="userShowImage" />
+                ))}
             </div>
-            <div className="userShowInfo">
+
+           {carAdmin?.greencard && <div className="userShowInfo">
               <DirectionsCar className="userShowIcon" />
               <img className="userShowImage" src={carAdmin?.greencard} alt="" />
             </div>
+            }
+
             <span className="userShowTitle">Contact Details</span>
             <div className="userShowInfo">
               <PhoneAndroid className="userShowIcon" />

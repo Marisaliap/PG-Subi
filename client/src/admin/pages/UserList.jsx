@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../styles/UserList.css";
 import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
+// import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { deleteUser, getAllUsers, getId, getUserAdmin } from "../../actions";
+import { deleteUser, getAllUserAdmin, getId, getUserAdmin } from "../../actions";
 
 export default function UserList() {
   const { usuariosRegistrados } = useSelector((state) => state);
@@ -15,14 +15,18 @@ export default function UserList() {
     genre: e.genre,
     admin: e.isAdmin,
     photo: e.photo,
+    banned:e.isBanned
   }));
 
   const [data, setData] = useState(filtrados);
   const dispatch = useDispatch();
-
+console.log(filtrados);
   // ---------------------------------<useEffect>---------------------------------
   useEffect(() => {
-    dispatch(getAllUsers());
+    dispatch(getAllUserAdmin());
+    return () => {
+      dispatch(getAllUserAdmin());
+    }
   }, [dispatch]);
 
   useEffect(
@@ -35,10 +39,10 @@ export default function UserList() {
   // ___________________________________________________________________________________________
 
   // ---------------------------------<handles>---------------------------------
-  const handleDelete = (id) => {
-    dispatch(deleteUser(id));
-    setData(data.filter((item) => item.id !== id));
-  };
+  // const handleDelete = (id) => {
+  //   dispatch(deleteUser(id));
+  //   setData(data.filter((item) => item.id !== id));
+  // };
 
   const handleId = (id) => {
     dispatch(getId(id));
@@ -70,6 +74,11 @@ export default function UserList() {
       width: 120,
     },
     {
+      field: "banned",
+      headerName: "Banned",
+      width: 120,
+    },
+    {
       field: "action",
       headerName: "Actions",
       width: 280,
@@ -84,10 +93,10 @@ export default function UserList() {
                 Edit User
               </button>
             </Link>
-            <DeleteOutline
+            {/* <DeleteOutline
               className="userListDelete"
               onClick={() => handleDelete(params.row.id)}
-            />
+            /> */}
           </>
         );
       },
