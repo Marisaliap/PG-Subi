@@ -1,36 +1,105 @@
 @import "../Variables/Variables.scss";
 
-.aboutus{
+.aboutus {
+    display: flex;
 
-    .text{
-        display:grid;
+    .text {
+        display: grid;
         grid-template-columns: 10% 80% 10%;
         font-family: "inter", sans-serif;
 
-        .icon{
+        .icon {
             width: 15px;
         }
+
+
     }
-    
-    img{
+
+    img {
         border-radius: 50%;
         bottom: 1rem;
-        -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+        -webkit-box-shadow: 5px 5px 15px 5px #000000;
         box-shadow: 5px 5px 15px 5px #000000;
         float: none;
+        
     }
 
-    li{
-        display:grid;
-        grid-template-columns: 20% 10% 40% 30%;
+    ul{
+        
+
+        @media only screen and (min-width: 375px) {
+            
+            padding: 0rem 1.5rem 0rem 1.5rem;
+        }
+        
+        
+        @media only screen and (min-width: 768px) {
+            padding: 0rem 1.5rem 0rem 1.5rem;
+        }
+        
+        @media only screen and (min-width: 1024px) {
+            padding: 0rem 5rem 0rem 5rem;
+        }
+        
+        li {
+            display: grid;
+            grid-template-columns: 20% 10% 40% 30%;
+            border: 1px solid $buttonColor;
+            border-radius:2rem;
+            padding: 1rem;
+            background-color: $buttonColor;
+            -webkit-box-shadow: 0px 10px 13px -7px #000000, inset 9px 8px 16px 6px rgba(0,0,0,0.15); 
+            box-shadow: 0px 10px 13px -7px #000000, inset 9px 8px 16px 6px rgba(0,0,0,0.15);
+            
+            @media only screen and (min-width: 375px) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding: 0rem 1rem 0rem 1rem;
+            }
+            
+            
+            @media only screen and (min-width: 768px) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0rem 1rem 0rem 1rem;
+            }
+            
+            @media only screen and (min-width: 1024px) {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                justify-content: space-between;
+                flex-wrap: nowrap;
+            }
+        }
     }
 
-    p{
-        text-align:left;
+    p {
+        text-align: left;
+    }
+    .p {
+        text-align: left;
+        color: white;
     }
 
-    pre{
-        margin-top: 1.5rem;
+    pre {
+        margin-top: 1rem;
         margin-right: 1rem;
+        padding: 0rem 2rem 0rem 2rem;
+
+        //@media only screen and (min-width: 375px){}
+
+       // @media only screen and (min-width: 768px){}
+
+       // @media only screen and (min-width: 1024px) {}
     }
+
+   
+
 }
