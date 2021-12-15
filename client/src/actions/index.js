@@ -225,7 +225,6 @@ export function getRouteFromDb(
           order ? order : ""
         }&restriction=${restriction ? restriction : ""}`
       );
-      console.log(response.data, "soy data");
       return dispatch({
         type: "GET_ROUTE_FROM_DB",
         payload: response.data,
@@ -246,19 +245,6 @@ export function getSearchParams(originName, destinyName, date, place) {
   };
 }
 // -----------------------------< filters >----------------------------------
-// export function filterBySmoke(payload) {
-//   return {
-//     type: "FILTER_BY_SMOKE",
-//     payload,
-//   };
-// }
-
-// export function filterByPets(payload) {
-//   return {
-//     type: "FILTER_BY_PETS",
-//     payload,
-//   };
-// }
 
 export function orderByRestriction(restriction) {
   return {

@@ -97,9 +97,16 @@ export default function Aboutus() {
                   </pre>
                   <p>
                     <strong>Lorenzo Blanda:</strong> Passionate about learning.
-                    Studies: #Full Stack Developer at @soyHenry #Music
-                    Production at @Arjaus #Food Science at @UADE #Chemical
-                    Engineering at @ITBA #Chef at @IAG.
+                    Full Stack Developer with Engineering background. I can
+                    communicate in 7 languages including English, Spanish and
+                    Chinese. I have a strong desire to learn new technologies
+                    and improve my skills. I am passionate about creating
+                    solutions for people. Currently handling:
+                    JavaScript,Node.js, Express.js, React.js, Redux.js, HTML,
+                    CSS, Sequelize, Git y PostgreSQL. Studies: #Full Stack
+                    Developer at @soyHenry #Music Production at @Arjaus #Food
+                    Science at @UADE #Chemical Engineering at @ITBA #Chef at
+                    @IAG.
                   </p>
                 </li>
                 <li>
