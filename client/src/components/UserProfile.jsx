@@ -396,9 +396,10 @@ export default function UserProfile() {
       <div className="containerProfile">
         <div className="centralo">
           <Tabs
+            onChange={handleNav}
             value={nav}
             variant="scrollable"
-            onChange={handleNav}
+            scrollButtons="auto"
             aria-label="nav tabs example"
           >
             <Tab label="User Details" icon={<Person />} />
@@ -607,38 +608,47 @@ export default function UserProfile() {
                               value={input.instagram}
                             />
                           </div>
-                          <div className="cadaLinea">
-                            <BsMap className="icon" />
-                            <input
-                              onChange={(e) => handleChange(e)}
-                              type="text"
-                              name="street"
-                              className="inputProfile"
-                              value={input.street}
-                            />
-                            {errorsUser.street && (
-                              <p className="errorcar">{errorsUser.street}</p>
-                            )}
-                            <input
-                              onChange={(e) => handleChange(e)}
-                              type="text"
-                              name="city"
-                              className="inputProfile"
-                              value={input.city}
-                            />
-                            {errorsUser.city && (
-                              <p className="errorcar">{errorsUser.city}</p>
-                            )}
-                            <input
-                              onChange={(e) => handleChange(e)}
-                              name="province"
-                              type="text"
-                              className="inputProfile"
-                              value={input.province}
-                            />
-                            {errorsUser.province && (
-                              <p className="errorcar">{errorsUser.province}</p>
-                            )}
+                          <div className="inputsContainer">
+                            <div className="cadaLinea">
+                              <BsMap className="icon" />
+                              <input
+                                onChange={(e) => handleChange(e)}
+                                type="text"
+                                name="street"
+                                className="inputProfile"
+                                value={input.street}
+                              />
+                              {errorsUser.street && (
+                                <p className="errorcar">{errorsUser.street}</p>
+                              )}
+                            </div>
+
+                            <div className="cadaLinea2">
+                              <input
+                                onChange={(e) => handleChange(e)}
+                                type="text"
+                                name="city"
+                                className="inputProfile"
+                                value={input.city}
+                              />
+                              {errorsUser.city && (
+                                <p className="errorcar">{errorsUser.city}</p>
+                              )}
+                            </div>
+                            <div className="cadaLinea2">
+                              <input
+                                onChange={(e) => handleChange(e)}
+                                name="province"
+                                type="text"
+                                className="inputProfile"
+                                value={input.province}
+                              />
+                              {errorsUser.province && (
+                                <p className="errorcar">
+                                  {errorsUser.province}
+                                </p>
+                              )}
+                            </div>
                           </div>
                           <div className="cadaLinea">
                             <BsInfoSquareFill className="icon" />
@@ -730,7 +740,7 @@ export default function UserProfile() {
                 )}
               </div>
               {booleanCar === false ? (
-                <>
+                <div>
                   <div className="patents">
                     <div className="cadaLinea">
                       <p className="label">
@@ -800,7 +810,7 @@ export default function UserProfile() {
                       )}
                     </div>{" "}
                   </div>
-                </>
+                </div>
               ) : (
                 <>
                   <div className="patents">
