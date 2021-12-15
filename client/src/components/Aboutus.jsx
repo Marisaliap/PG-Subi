@@ -14,7 +14,6 @@ import {
 } from "react-icons/si";
 
 export default function Aboutus() {
-
   return (
     <div>
       <Link to="/home">

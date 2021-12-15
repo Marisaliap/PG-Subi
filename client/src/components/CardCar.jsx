@@ -1,6 +1,5 @@
 import React from "react";
-import '../Sass/Styles/CardCar.scss';
-
+import "../Sass/Styles/CardCar.scss";
 
 export default function CardCar({ patent, brand, model, color, ...props }) {
   return (
@@ -13,5 +12,3 @@ export default function CardCar({ patent, brand, model, color, ...props }) {
     </div>
   );
 }
-
-

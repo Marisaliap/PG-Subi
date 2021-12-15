@@ -186,7 +186,7 @@ export default function SearchBarHome() {
         <button
           onClick={handleSubmit}
           className="button"
-          disabled={checkInfo.length !== 2 && checkInputs.length !== 2} // eslint-disable-line
+          disabled={checkInfo.length !== 2 && checkInputs.length !== 2}
         >
           <NavLink
             to={`/route-list/${info.pasajeros}`}
@@ -200,7 +200,7 @@ export default function SearchBarHome() {
           </NavLink>
         </button>
       ) : (
-        <button className="button" disabled="true">
+        <button className="buttonDisabled" disabled>
           <FormattedMessage
             id="searchBarHome.searchButton"
             defaultMessage=" Search"

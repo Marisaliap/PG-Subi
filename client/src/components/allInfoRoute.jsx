@@ -65,7 +65,7 @@ export default function AllInfoRoute({ match }) {
       {route.length > 0 && route.originName}
 
       <Map
-        style={"mapbox://styles/mapbox/streets-v11"} // eslint-disable-line
+        style="mapbox://styles/mapbox/streets-v11" // eslint-disable-line
         containerStyle={{
           height: "50vh",
           width: "50vw",

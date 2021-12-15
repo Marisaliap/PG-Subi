@@ -31,15 +31,15 @@ export default function Sidebar() {
                 Dashboard
               </li>
             </Link>
-            <Link to='/admin/transactions' className="link">
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Sales
-            </li>
+            <Link to="/admin/transactions" className="link">
+              <li className="sidebarListItem">
+                <AttachMoney className="sidebarIcon" />
+                Sales
+              </li>
             </Link>
             <Link to="/admin/routes" className="link">
               <li className="sidebarListItem">
-              <Commute className="sidebarIcon" />
+                <Commute className="sidebarIcon" />
                 Routes Info
               </li>
             </Link>
@@ -89,10 +89,10 @@ export default function Sidebar() {
               Mail
             </li>
             <Link to="/admin/feedback" className="link">
-            <li className="sidebarListItem">
-              <DynamicFeed className="sidebarIcon" />
-              Feedback
-            </li>
+              <li className="sidebarListItem">
+                <DynamicFeed className="sidebarIcon" />
+                Feedback
+              </li>
             </Link>
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
@@ -121,4 +121,3 @@ export default function Sidebar() {
     </div>
   );
 }
-
