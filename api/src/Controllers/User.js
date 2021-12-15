@@ -1,4 +1,5 @@
 const { User, Post, Car, Route, Op, Order, Chat } = require("../db.js");
+const axios = require("axios");
 
 const postUser = async (req, res, next) => {
   try {
@@ -43,6 +44,12 @@ const postUser = async (req, res, next) => {
       },
       include: [Post, Car, Order, Route, Chat],
     });
+
+    await axios.post("http://localhost:3001/mail/add", {
+        userName: name,
+        userEmail: email, 
+      });
+
     res.send(user);
   } catch (error) {
     next(error);
