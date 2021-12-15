@@ -1,4 +1,4 @@
-@import '../Variables/Variables.scss';
+@import "../Variables/Variables.scss";
 
 .Homepage {
   padding: 1.25rem;
@@ -97,7 +97,6 @@
   .lowerSection {
     display: inline;
     width: 100%;
-    // padding: 5rem;
 
     @media only screen and (min-width: 1024px) {
       display: flex;

@@ -4,7 +4,7 @@ import { allRoutes, getRouteFromDb } from "../actions";
 import "../Sass/Styles/NavBarFilter.scss";
 import { FormattedMessage } from "react-intl";
 
-export default function NavBarFilter({ places, currentRoutes }) {
+export default function NavBarFilter({ places }) {
   const dispatch = useDispatch();
   const [order, setOrder] = useState("");
   const [restriction, setRestriction] = useState("");
@@ -26,7 +26,6 @@ export default function NavBarFilter({ places, currentRoutes }) {
       );
       setOrder(e.target.value);
     } else {
-      // dispatch(getRouteFromDb('', '', '', '', e.target.value, restriction));
       dispatch(allRoutes(e.target.value, restriction));
       setOrder(e.target.value);
     }
@@ -47,7 +46,6 @@ export default function NavBarFilter({ places, currentRoutes }) {
       );
       setRestriction(e.target.value);
     } else {
-      // dispatch(getRouteFromDb('', '', '', '', order, e.target.value));
       dispatch(allRoutes(order, e.target.value));
       setRestriction(e.target.value);
     }

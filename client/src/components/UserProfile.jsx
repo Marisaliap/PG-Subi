@@ -269,19 +269,51 @@ export default function UserProfile() {
     });
 
   const columnsRoutes = [
-    { field: "Origin", headerName: <FormattedMessage id= "userProfile.origin" defaultMessage="Origin" />, width: 250 },
-    { field: "Destiny", headerName: <FormattedMessage id= "userProfile.destiny" defaultMessage="Destiny" />, width: 250 },
-    { field: "Date", headerName: <FormattedMessage id= "userProfile.date" defaultMessage="Date" />, width: 125 },
-    { field: "Time", headerName: <FormattedMessage id= "userProfile.time" defaultMessage="Time" />, width: 125 },
+    {
+      field: "Origin",
+      headerName: (
+        <FormattedMessage id="userProfile.origin" defaultMessage="Origin" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Destiny",
+      headerName: (
+        <FormattedMessage id="userProfile.destiny" defaultMessage="Destiny" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Date",
+      headerName: (
+        <FormattedMessage id="userProfile.date" defaultMessage="Date" />
+      ),
+      width: 125,
+    },
+    {
+      field: "Time",
+      headerName: (
+        <FormattedMessage id="userProfile.time" defaultMessage="Time" />
+      ),
+      width: 125,
+    },
     {
       field: "RouteId",
-      headerName: <FormattedMessage id= "userProfile.routeid" defaultMessage="Route ID" />,
+      headerName: (
+        <FormattedMessage id="userProfile.routeid" defaultMessage="Route ID" />
+      ),
       width: 150,
       renderCell: (params) => (
         <Link to={`/route/${params.value}`}>{params.value}</Link>
       ),
     },
-    { field: "Driver", headerName: <FormattedMessage id= "userProfile.driver" defaultMessage="Driver" />, width: 125 },
+    {
+      field: "Driver",
+      headerName: (
+        <FormattedMessage id="userProfile.driver" defaultMessage="Driver" />
+      ),
+      width: 125,
+    },
   ];
 
   /*----------------------------------------ORDERS-------------------------------------------------------*/
@@ -307,19 +339,51 @@ export default function UserProfile() {
     });
 
   const columnsOrders = [
-    { field: "Origin", headerName: <FormattedMessage id= "userProfile.origin" defaultMessage="Origin" />, width: 250 },
-    { field: "Destiny", headerName: <FormattedMessage id= "userProfile.destiny" defaultMessage="Destiny" />, width: 250 },
-    { field: "Date", headerName:  <FormattedMessage id= "userProfile.date" defaultMessage="Date" />, width: 125 },
-    { field: "Time", headerName: <FormattedMessage id= "userProfile.time" defaultMessage="Time" />, width: 125 },
+    {
+      field: "Origin",
+      headerName: (
+        <FormattedMessage id="userProfile.origin" defaultMessage="Origin" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Destiny",
+      headerName: (
+        <FormattedMessage id="userProfile.destiny" defaultMessage="Destiny" />
+      ),
+      width: 250,
+    },
+    {
+      field: "Date",
+      headerName: (
+        <FormattedMessage id="userProfile.date" defaultMessage="Date" />
+      ),
+      width: 125,
+    },
+    {
+      field: "Time",
+      headerName: (
+        <FormattedMessage id="userProfile.time" defaultMessage="Time" />
+      ),
+      width: 125,
+    },
     {
       field: "RouteId",
-      headerName: <FormattedMessage id= "userProfile.routeid" defaultMessage="Route ID" />,
+      headerName: (
+        <FormattedMessage id="userProfile.routeid" defaultMessage="Route ID" />
+      ),
       width: 150,
       renderCell: (params) => (
         <Link to={`/route/${params.value}`}>{params.value}</Link>
       ),
     },
-    { field: "Payment", headerName: <FormattedMessage id= "userProfile.payment" defaultMessage="Payment" />, width: 200 },
+    {
+      field: "Payment",
+      headerName: (
+        <FormattedMessage id="userProfile.payment" defaultMessage="Payment" />
+      ),
+      width: 200,
+    },
   ];
 
   return (
@@ -916,26 +980,3 @@ export default function UserProfile() {
     </div>
   );
 }
-
-
-{/* <Tabs onChange={handleNav} aria-label="nav tabs example">
-<FormattedMessage id="userProfile.userdetails">
-  {(message) => <Tab label={message} icon={<Person />} />}
-</FormattedMessage>
-<FormattedMessage id="userProfile.cardetails">
-  {(message) => (
-    <Tab label={message} icon={<DirectionsCarIcon />} />)}
-</FormattedMessage>
-<FormattedMessage id="userProfile.tripsdetails">
-  {(message) => <Tab label={message} icon={<LocationOnIcon />} />}
-</FormattedMessage>
-<FormattedMessage id="userProfile.posts">
-  {(message) => <Tab label={message} icon={<CommentIcon />} />}
-</FormattedMessage>
-<FormattedMessage id="userProfile.payments">
-  {(message) => <Tab label={message} icon={<PaymentIcon />} />}
-</FormattedMessage>
-<FormattedMessage id="userProfile.chat">
-  {(message) => <Tab label={message} icon={<ChatIcon />} />}
-</FormattedMessage>
-</Tabs> */} 
