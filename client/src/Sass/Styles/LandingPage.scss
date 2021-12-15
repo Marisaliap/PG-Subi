@@ -9,7 +9,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  .cosasAbajo {
+    @media only screen and (max-width: 768px) {
+      margin-left: 1rem;
+    }
+  }
   .LandingPage__container {
     background-color: #edededda;
     border-radius: 30px;
@@ -23,6 +27,10 @@
       flex-direction: row;
       justify-content: space-between;
       width: 95%;
+      @media only screen and (max-width: 768px) {
+        flex-direction: column;
+        margin-bottom: 3rem;
+      }
 
       .botonBandera {
         margin-top: 1.5rem;
@@ -48,6 +56,10 @@
     .porqueUsarLaApp {
       font-size: 3rem;
       margin-top: -2rem;
+      @media only screen and (max-width: 768px) {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+      }
     }
 
     .centralosporfa {
@@ -65,16 +77,27 @@
       justify-content: space-around;
       align-content: center;
       font-size: inherit;
+      margin-left: 1.5rem;
+      @media only screen and (max-width: 768px) {
+        flex-direction: column;
+      }
     }
 
     .cadaGilada {
       height: 28vh;
+      @media only screen and (max-width: 768px) {
+        margin-top: 6rem;
+      }
     }
     .unpoquitoMas {
       height: 7rem;
-      margin-bottom: 2rem;
+      margin-bottom: 0.5rem;
       font-weight: bold;
       font-size: 1.5rem;
+      @media only screen and (max-width: 768px) {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+      }
     }
 
     .button {
@@ -102,6 +125,12 @@
     .upperSection {
       padding-left: 20rem;
       padding-right: 20rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      @media only screen and (max-width: 768px) {
+        margin-top: 4rem;
+        padding: 0;
+      }
     }
 
     .logo {
@@ -112,9 +141,10 @@
       padding-top: 2rem;
       display: flex;
 
-      @media only screen and (min-width: 768px) {
-        margin-left: 5rem;
-        margin-right: 5rem;
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+        margin: 0;
+        margin-left: 0.5rem;
       }
     }
 

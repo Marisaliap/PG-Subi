@@ -11,17 +11,24 @@
   }
 
   .searchBarSection {
-    padding: 2rem 0.5rem;
-    margin-left: -5rem;
     background-color: $buttonColor;
     margin-bottom: 2rem;
-    background-image:  linear-gradient(90deg, rgb(63, 61, 86) 25%, rgba(63, 61, 86, 0.996) 28%, rgba(63, 61, 86, 0.9) 40%, rgba(63, 61, 86, 0) 90%), url("../../img/Ridesharing.jpg");
-    background-position: center; 
+    background-image: linear-gradient(
+        90deg,
+        rgb(63, 61, 86) 25%,
+        rgba(63, 61, 86, 0.996) 28%,
+        rgba(63, 61, 86, 0.9) 40%,
+        rgba(63, 61, 86, 0) 90%
+      ),
+      url("../../img/Ridesharing.jpg");
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
-    width: 100%; 
-    float: left; 
+    width: 100%;
+    float: left;
+    padding: 2rem;
+    margin-left: -2rem;
 
     @media only screen and (min-width: 768px) {
       padding: 2rem;
@@ -29,15 +36,14 @@
 
     @media only screen and (min-width: 1024px) {
       padding: 5rem;
+      margin-left: -5rem;
     }
 
     h1 {
       color: $background;
       font-size: 2rem;
     }
-
   }
-
 
   .homepageImage {
     width: 100%;
@@ -76,7 +82,7 @@
       @media only screen and (max-width: 768px) {
         padding: 1rem;
         margin: 0;
-        text-align: left;
+        text-align: center;
       }
     }
 
@@ -131,7 +137,6 @@
         margin-bottom: 0;
         font-weight: 600;
         font-size: 1.5rem;
-      
       }
 
       p {
