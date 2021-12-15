@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userPost } from "../actions/index";
 import { useEffect } from "react";
-import "../Sass/Styles/Post.scss";
+import "../Sass/Styles/PostUserProfile.scss";
 import RatingStar from "./RatingStar.jsx";
 
 export default function PostUserProfile(id) {
@@ -15,16 +15,16 @@ export default function PostUserProfile(id) {
   }, [dispatch, ids]);
 
   return (
-    <div className="Post">
+    <div className="Postuser">
       <div>
-        <div className="desContainer">
+        <div className="desContaineruser">
           {userpost.length > 0
             ? userpost.map((post, i) => (
-                <div key={i} className="description">
-                  <div className="infodate">
+                <div key={i} className="descriptionuser">
+                  <div className="infodateuser">
                     <h6>{post.date}</h6>
                     <h6>{post.author}</h6>
-                    <RatingStar Rating={post.calification} />
+                    <RatingStar  Rating={post.calification} />
                   </div>
                   <h5>{post.description}</h5>
                 </div>
