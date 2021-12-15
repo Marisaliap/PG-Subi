@@ -35,10 +35,10 @@ export default function UserList() {
   // ___________________________________________________________________________________________
 
   // ---------------------------------<handles>---------------------------------
-  const handleDelete = (id) => {
-    dispatch(deleteUser(id));
-    setData(data.filter((item) => item.id !== id));
-  };
+  // const handleDelete = (id) => {
+  //   dispatch(deleteUser(id));
+  //   setData(data.filter((item) => item.id !== id));
+  // };
 
   const handleId = (id) => {
     dispatch(getId(id));
@@ -84,10 +84,10 @@ export default function UserList() {
                 Edit User
               </button>
             </Link>
-            <DeleteOutline
+            {/* <DeleteOutline
               className="userListDelete"
               onClick={() => handleDelete(params.row.id)}
-            />
+            /> */}
           </>
         );
       },
