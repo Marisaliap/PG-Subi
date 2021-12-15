@@ -26,6 +26,8 @@ export default function Footer() {
             >
               <FormattedMessage id="footer.aboutUs" defaultMessage="About Us" />
             </Link>
+            <FormattedMessage id="footer.contactUs" defaultMessage="Contact Us" />
+            support@gimmearide.com
           </div>
         </div>
         <hr className="lineahr" />
