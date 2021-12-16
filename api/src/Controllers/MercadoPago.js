@@ -70,7 +70,7 @@ const getMPPayment = async (req, res) => {
   const route = await Route.findByPk(idRoute);
 
   const editRoute = await axios.put(
-    "http://localhost:3001/maps/route/" + route.id,
+    "https://pg-subi-deployed.herokuapp.com/maps/route/" + route.id,
     {
       place: route.place - 1,
       idUser: idUser,
@@ -87,14 +87,18 @@ const getMPPayment = async (req, res) => {
       order.price = route.price;
       order
         .save()
-        .then(() => res.redirect("http://localhost:3000/home"))
+        .then(() => res.redirect("https://gimmearide.vercel.app/home"))
         .catch((err) =>
-          res.redirect(`http://localhost:3000/?error=${err}&where=al+salvar`)
+          res.redirect(
+            `https://gimmearide.vercel.app/?error=${err}&where=al+salvar`
+          )
         );
     })
 
     .catch((err) =>
-      res.redirect(`http://localhost:3000/?error=${err}&where=al+buscar`)
+      res.redirect(
+        `https://gimmearide.vercel.app/?error=${err}&where=al+buscar`
+      )
     );
 };
 
