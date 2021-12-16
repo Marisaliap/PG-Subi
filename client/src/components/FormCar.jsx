@@ -299,6 +299,7 @@ export default function FormCar() {
                 defaultMessage="Green Card*:"
               />
             </p>
+            <div className="cargaImagen">
             <input
               onChange={(e) => uploadImage(e)}
               className="custom-file-input"
@@ -307,6 +308,7 @@ export default function FormCar() {
               required="required"
               accept="image/png, image/jpeg"
             />
+            </div>
             <div Style="display:none">{(input.greencard = image)}</div>
             <p>
               {loanding ? <img src={image} Style="height:150px" alt="" /> : ""}
@@ -364,7 +366,7 @@ export default function FormCar() {
                   defaultMessage="Blue Card #2:"
                 />
               </p>
-              <label className="cargaImagen">
+              <div className="cargaImagen">
                 <input
                   onChange={(e) => uploadImage2(e)}
                   className="custom-file-input"
@@ -372,7 +374,7 @@ export default function FormCar() {
                   name="image"
                   accept="image/png, image/jpeg"
                 />
-              </label>
+              </div>
               <div Style="display:none">{(input.bluecard = cedula)}</div>
               <p>
                 {loanding ? (
@@ -393,7 +395,7 @@ export default function FormCar() {
                   defaultMessage="Blue Card #3:"
                 />
               </p>
-              <label className="cargaImagen">
+              <div className="cargaImagen">
                 <input
                   onChange={(e) => uploadImage2(e)}
                   className="custom-file-input"
@@ -401,7 +403,7 @@ export default function FormCar() {
                   name="image"
                   accept="image/png, image/jpeg"
                 />
-              </label>
+              </div>
               <div Style="display:none">{(input.bluecard = cedula)}</div>
               <p>
                 {loanding ? (
