@@ -22,7 +22,7 @@ export default function SuggestionBox() {
 
   function validate(input) {
     let errors = {};
-    const emailvalidate = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
+    const emailvalidate = /^\w+([-.]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
     const namevalidate = /^[a-zA-Z]+$/;
     if (!input.author) {
       errors.author = "Name is required";

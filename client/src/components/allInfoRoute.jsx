@@ -203,12 +203,8 @@ export default function AllInfoRoute({ match }) {
             />
           </button>
 
-          {route.place === 0 ||
-          !route.users ||
-          (route.users &&
-            route.users.length &&
-            user.email === route.users[0].email) ||
-          (route.restriction.includes("onlyWomen") &&
+          {route.place === 0 || !route.users ||
+          (route.users && route.users.length && (route.users.filter(usuario => usuario.email === user.email)).length > 0 ) || (route.restriction.includes("onlyWomen") &&
             user.genre !== "Female") ? (
             <button className="buttonDisabled">
               <FormattedMessage

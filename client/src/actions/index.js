@@ -498,10 +498,10 @@ export function putRatingUser(id) {
   };
 }
 
-export function getChatOtro(id) {
+export function getChatOtro(id,id2) {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`http://localhost:3001/chat/${id}`))
+      const response = (await axios.get(`http://localhost:3001/chat/${id}/?id2=${id2}`))
         .data;
       return dispatch({
         type: "GET_CHAT_OTRO",
@@ -511,10 +511,10 @@ export function getChatOtro(id) {
   };
 }
 
-export function getChatPropio(id) {
+export function getChatPropio(id,id2) {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`http://localhost:3001/chat/${id}`))
+      const response = (await axios.get(`http://localhost:3001/chat/${id}/?id2=${id2}`))
         .data;
       return dispatch({
         type: "GET_CHAT_PROPIO",

@@ -2,6 +2,9 @@
 
 .CardUser {
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   img {
     height: 5rem;

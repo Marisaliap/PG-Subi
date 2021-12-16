@@ -26,11 +26,9 @@ export default function UserDetails(props) {
   const id = props.match.params.id;
 
   useEffect(() => {
-    userInfo.email === undefined
-      ? dispatch(getUserDetail(window.location.href.split("/user/")[1]))
-      : dispatch(getUserDetail(id));
-    dispatch(userPost(userInfo.email));
-  }, [userInfo.email, dispatch, userInfo.calification]); // eslint-disable-line
+    dispatch(getUserDetail(id));
+    // dispatch(userPost(userInfo.email));
+  }, []); // eslint-disable-line
 
   function genderIcon(gender) {
     if (gender === "Male") {
@@ -44,7 +42,7 @@ export default function UserDetails(props) {
     <div>
       <div className="searchUsers">
         <SearchUserByName />
-        <SearchUserById />
+        {/* <SearchUserById /> */}
       </div>
       <div className="containerProfile">
         <div className="ProfileReal">

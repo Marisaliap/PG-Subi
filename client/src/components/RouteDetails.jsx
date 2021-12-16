@@ -60,7 +60,7 @@ const RouteDetails = ({ match }) => {
             >
               <div className="RouteCard">
                 {route.users && (
-                  <div>
+                  <>
                     <CardUser
                       photo={route.users.length > 0 && route.users[0].photo}
                       name={route.users.length > 0 && route.users[0].name}
@@ -78,7 +78,7 @@ const RouteDetails = ({ match }) => {
                       }
                       key={i + "CU"}
                     />
-                  </div>
+                  </>
                 )}
 
                 <hr />
