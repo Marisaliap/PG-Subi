@@ -19,8 +19,17 @@ export default function Dashboard() {
   useEffect(() => dispatch(getOrderDetails()), [dispatch]);
 
   const orders = useSelector((state) => state.orderDetails);
-
+  //eslint-disable-next-line
+  const newOrders =
+    orders &&
+    orders.forEach((order) => {
+      let date = order.createdAt.split("T");
+      date = date[0];
+      let dateSplit = date.split("-");
+      order.month = dateSplit[1];
+    });
   const info = userData(orders);
+
   return (
     <div className="home">
       <FeaturedInfo info={info} />
