@@ -75,7 +75,9 @@ export function getAllUser() {
 export function getAllUserAdmin() {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`http://localhost:3001/user?admin=${true}`)).data;
+      const response = (
+        await axios.get(`http://localhost:3001/user?admin=${true}`)
+      ).data;
       return dispatch({
         type: "GET_ALL_USER",
         payload: response,
@@ -416,6 +418,7 @@ export function getOrderDetails() {
     }
   };
 }
+
 export function allRoutes(order, restriction) {
   return async function (dispatch) {
     try {
@@ -424,6 +427,24 @@ export function allRoutes(order, restriction) {
           `http://localhost:3001/maps/route?order=${
             order ? order : ""
           }&restriction=${restriction ? restriction : ""}`
+        )
+      ).data;
+      return dispatch({
+        type: "GET_ALL_ROUTE_INFO",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
+export function allRoutesAdmin(order, restriction) {
+  return async function (dispatch) {
+    try {
+      const response = (
+        await axios.get(
+          `http://localhost:3001/maps/route?order=${
+            order ? order : ""
+          }&restriction=${restriction ? restriction : ""}&admin=${true}`
         )
       ).data;
       return dispatch({

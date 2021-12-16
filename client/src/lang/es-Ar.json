@@ -31,8 +31,11 @@
 
   "post.calification": "Calificacion",
   "post.description": "Cuéntenos su experiencia con este usuario ...",
-  "Post.title": "Califica a este usuario",
+  "post.title": "Califica a este usuario",
 
+  "routedetails.home": "Inicio",
+  
+  "userdetails.home": "Inicio",
   "userdetails.title": "Detalle de Usario",
   "userdetails.yearsold": "años",
   "userdetails.cardetails":"Detalles del Coche",
@@ -294,6 +297,7 @@
   "registererr.province": "La provincia es obligatoria",
   "registererr.provincesym": "Provincia no válida: no se permiten símbolos",
   "registererr.about": "Acerca de es obligatorio",
+  "register.email": "Email*:",
   "register.home": "Inicio",
   "register.title": "Crea tu Usuario",
   "register.checkbox": "Si planea ser conductor/a por favor, check",

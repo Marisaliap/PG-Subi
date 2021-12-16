@@ -163,14 +163,14 @@ export default function Post(id) {
             {validateInputs() === false ? (
               <button className="buttondisabled">
                 <FormattedMessage
-                  id="Post.title"
+                  id="post.title"
                   defaultMessage="Rate this user"
                 />
               </button>
             ) : (
               <button className="button" type="submit">
                 <FormattedMessage
-                  id="Post.title"
+                  id="post.title"
                   defaultMessage="Rate this user"
                 />
               </button>

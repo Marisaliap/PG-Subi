@@ -11,7 +11,11 @@
   transition: box-shadow 0.5s ease-in-out;
   width: 60vw;
   margin-left: 20vw;
-
+  @media only screen and (max-width: 1024px) {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    width: auto;
+  }
   &:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
       0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -26,18 +30,37 @@
   align-items: center;
   margin: 0;
   width: 40rem;
+  @media only screen and (max-width: 1024px) {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: auto;
+    flex-direction: column;
+  }
+  @media only screen and (max-width: 768px) {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: auto;
+    flex-direction: column;
+  }
 }
 
 .datosUsuario {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  @media only screen and (max-width: 1024px) {
+    align-items: center;
+  }
 }
 
 .seccionTopDetail {
   display: flex;
   flex-direction: row;
   height: 18rem;
+  @media only screen and (max-width: 1024px) {
+    height: auto;
+    flex-direction: column;
+  }
 }
 
 .containerPhoto {
@@ -47,6 +70,9 @@
   justify-content: flex-start;
   width: min-content;
   margin: 0 2rem;
+  @media only screen and (max-width: 1024px) {
+    width: auto;
+  }
 }
 
 .containerUser {
@@ -71,8 +97,15 @@
   align-items: center;
   justify-content: space-evenly;
   align-content: center;
+  @media only screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
 }
-
+.moreInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .centralo {
   display: flex;
   justify-content: center;

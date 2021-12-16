@@ -20,7 +20,7 @@ export default function UserList() {
 
   const [data, setData] = useState(filtrados); // eslint-disable-line
   const dispatch = useDispatch();
-  console.log(filtrados);
+
   // ---------------------------------<useEffect>---------------------------------
   useEffect(() => {
     dispatch(getAllUserAdmin());

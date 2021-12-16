@@ -1,4 +1,4 @@
-@import '../Variables/Variables.scss';
+@import "../Variables/Variables.scss";
 
 .Map {
   display: flex;
@@ -21,8 +21,8 @@
     margin-top: 1rem;
 
     img {
-      height: 30rem;
-      max-height: 15rem;
+      height: 15rem;
+      width: 15rem;
       border-radius: 50%;
     }
   }

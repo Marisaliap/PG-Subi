@@ -89,7 +89,7 @@ export default function Transactions() {
         rows={data}
         disableSelectionOnClick
         columns={columns}
-        pageSize={[8]}
+        pageSize={8}
         rowsPerPageOptions={[8]}
         checkboxSelection
       />
