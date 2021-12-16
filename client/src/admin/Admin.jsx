@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import Sidebar from "./Components/Sidebar";
 import Users from "./pages/Users";
 import Update from "./pages/Update";
@@ -8,19 +7,12 @@ import NewUser from "../admin/pages/NewUser";
 import UserList from "../admin/pages/UserList";
 import Feedback from "../admin/pages/Feedback";
 import AllRoutesData from "../admin/pages/AllRoutesData";
-import {
-  getAllUserAdmin,
-} from "../actions"
 import "../Sass/Styles/App.scss";
 import "../styles/Admin.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Transactions from "./pages/Transactions";
 
 export default function Admin() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllUserAdmin());
-  }, []);//eslint-disable-line
   return (
     <Router>
       <div className="containAll">

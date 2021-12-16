@@ -28,7 +28,7 @@ export default function Update() {
       dispatch(getUserAdmin(id));
       dispatch(getAllUserAdmin());
     };
-  }, []); //eslint-disable-line
+  }, [dispatch, id]); //eslint-disable-line
 
   //   -------------------------------------< estados> --------------------------------
   const [errorsCars, setErrorsCars] = useState({});
@@ -622,10 +622,11 @@ export default function Update() {
               </div>
             </div>
             <button
+            
               onClick={(e) => {
                 handleSubmitUser(e);
               }}
-              className="userUpdateButton"
+              className="buttonUpdateAdmin"
             >
               Update
             </button>
