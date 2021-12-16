@@ -296,7 +296,7 @@ Detallar la relación entre las distintas entidades de muchos a muchos
 #### Backend
 
 Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
-
+VIAJES:
 - [ ] __GET /routes__:
   - Obtiene un listado de viajes por coordenadas ofreciendo distancia entre dos puntos y tiempo del recorrido
   - Debe devolver solo los datos necesarios para la ruta principal
@@ -312,4 +312,59 @@ Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
   - Crea una nuevo viaje en la base de datos
  - [ ] __DELETE /route__:
   - Permite eliminar un viaje creado 
+  
+USUARIOS:  
+- [ ] __GET /user__:
+  - Obtiene un listado de usuarios registrados
+  - Debe devolver solo los datos necesarios para la ruta principal
+- [ ] __GET /user/?name="..."__:
+  - Obtener un listado de los usuarios que contengan la palabra ingresada como query parameter
+- [ ] __GET /user/{id}__:
+  - Obtener el detalle de un usuario en particular
+  - Debe traer solo los datos pedidos en la ruta de detalle del usuario
+- [ ] __PUT /user__:
+  - Permite modificar campos de un usuario creado 
+- [ ] __PUT /userCal__:
+  - Permite modificar la calificación de un usuario  
+- [ ] __POST /user__:
+  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo usuario por body
+  - Crea una nuevo usuario en la base de datos
+ - [ ] __DELETE /user__:
+  - Permite eliminar un usuario creado 
+
+COCHES:
+- [ ] __GET /car__:
+  - Obtiene un listado de coches registrados
+  - Debe devolver solo los datos necesarios para la ruta principal
+- [ ] __PUT /car__:
+  - Permite modificar campos de un coche creado 
+- [ ] __POST /car__:
+  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo coche por body
+  - Crea una nuevo coche en la base de datos
+ - [ ] __DELETE /car__:
+  - Permite eliminar un coche creado 
+
+CHAT:
+- [ ] __GET /chat__:
+  - Obtiene un listado de chats existentes
+  - Debe devolver solo los datos necesarios para la ruta principal
+- [ ] __POST /chat__:
+  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo chat por body
+  - Crea una nuevo chat en la base de datos
+ - [ ] __DELETE /chat__:
+  - Permite eliminar un chat creado 
+
+EMAIL:
+- [ ] __POST /mail__:
+  - Envía un email a la casilla de Email de un nuevo usuario cuando se registra
+
+MERCADO PAGO:  
+- [ ] __POST /MP__:
+  - Crea una nueva orden de pago de Mercado pago
+- [ ] __GET /MP__:
+  - Obtiene un listado de órdenes de pago creadas
+- [ ] __GET /MP/{id}__:
+  - Obtiene el detalle de una orden de pago de Mercado Pago en particular
+  
+
 
