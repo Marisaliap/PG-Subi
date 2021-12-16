@@ -1,4 +1,5 @@
-const { User, Post, Car, Route, Op, Order } = require("../db.js");
+const { User, Post, Car, Route, Op, Order, Chat } = require("../db.js");
+const axios = require("axios");
 
 const postUser = async (req, res, next) => {
   try {
@@ -38,14 +39,17 @@ const postUser = async (req, res, next) => {
         age,
         about,
         genre,
-        calification: 0,
         photoDni,
         cbu,
-        // public_id:result.public_id,
       },
-      include: [Post, Car, Order, Route],
-      // include: [Post, Car, Route]
+      include: [Post, Car, Order, Route, Chat],
     });
+
+    await axios.post("http://localhost:3001/mail/add", {
+        userName: name,
+        userEmail: email, 
+    });
+
     res.send(user);
   } catch (error) {
     next(error);
@@ -54,7 +58,7 @@ const postUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
   try {
-    const { name } = req.query;
+    const { name, admin } = req.query;
     const { id } = req.params;
     var data;
 
@@ -66,7 +70,10 @@ const getUser = async (req, res, next) => {
           },
         },
         include: Post,
+        Chat,
       });
+      data = data.filter(user => user.isBanned === false)
+
       data = data.map((user) => {
         return {
           name: user.name,
@@ -81,45 +88,25 @@ const getUser = async (req, res, next) => {
           email: user.email,
         };
       });
-      //--------------------------------------------------------------
-      // const calification = data.posts;
-      // let array = [];
-      // calification.map((d) => {
-      //   array.push(d.calification);
-      // });
-      // let calUser = 0;
-      // let suma = 0;
-      // array.forEach(function (e) {
-      //   suma += e;
-      // });
-      // calUser = suma / array.length;
-      //---------------------------------------------------------------
     } else if (id) {
       data = await User.findByPk(id, {
         include: [
           Post,
           Car,
+          Chat,
           {
             model: Route,
             include: {
-              model: Order
+              model: Order,
             },
           },
         ],
       });
-      /*const calification = data.posts;
-      let array = [];
-      calification.map((d) => {
-        array.push(d.calification);
-      });
-      let calUser = 0;
-      let suma = 0;
-      array.forEach(function (e) {
-        suma += e;
-      });
-      calUser = suma / array.length;*/
+      if(admin==="false") data = data.isBanned === false ? data : "Banned user"
     } else {
       data = await User.findAll();
+      admin
+      if(admin==="false") data = data.filter(user => user.isBanned === false);
     }
     res.send(data);
   } catch (error) {
@@ -129,9 +116,7 @@ const getUser = async (req, res, next) => {
 
 const putUserCal = async (req, res, next) => {
   try {
-
     const { id } = req.params;
-
     data = await User.findByPk(id, {
       include: [Post],
     });
@@ -143,22 +128,23 @@ const putUserCal = async (req, res, next) => {
     });
     let calUser = 0;
     let suma = 0;
-    array.forEach(function (e) {
-      suma += e;
-    });
-    
-    calUser = suma / array.length;
+    if (array.length > 0) {
+      array.forEach(function (e) {
+        suma += e;
+      });
+
+      calUser = suma / array.length;
+    }
 
     const user = await User.findByPk(id);
     user.update({
-      calification:calUser,
+      calification: calUser,
     });
     res.send(user);
   } catch (error) {
     next(error);
   }
-}
-
+};
 
 const putUser = async (req, res, next) => {
   try {
@@ -181,6 +167,7 @@ const putUser = async (req, res, next) => {
       photoDni,
       isAdmin,
       cbu,
+      isBanned,
     } = req.body;
 
     const user = await User.findByPk(id);
@@ -202,6 +189,7 @@ const putUser = async (req, res, next) => {
       photoDni,
       isAdmin,
       cbu,
+      isBanned,
     });
 
     res.send(user);
@@ -220,6 +208,5 @@ const deleteUser = async (req, res, next) => {
     next(error);
   }
 };
-
 
 module.exports = { postUser, getUser, putUser, deleteUser, putUserCal };

@@ -5,17 +5,15 @@ import CardRoute from "./CardRoute";
 import CardUser from "./CardUser";
 import "../Sass/Styles/RouteCardContainer.scss";
 import "../Sass/Styles/RouteCard.scss";
-// import {CardCar} from "./CardCar";
 import { Link } from "react-router-dom";
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 const RoutesFromSearch = () => {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(allRoutes()),[]);
+  useEffect(() => dispatch(allRoutes()), []); // eslint-disable-line
   const { routeFromDb } = useSelector((state) => state);
 
   return (
-    
     <div className="RouteCardContainer">
       {routeFromDb.length > 0 ? (
         routeFromDb.map((route, i) => (
@@ -39,17 +37,16 @@ const RoutesFromSearch = () => {
               />
             </div>
           </Link>
-          
         ))
       ) : (
         <div className="mensajeRutas">
           <FormattedMessage
             id="routesFromSearch.noRoute"
             defaultMessage="No route match your search"
-          /></div>
+          />
+        </div>
       )}
     </div>
-    
   );
 };
 export default RoutesFromSearch;

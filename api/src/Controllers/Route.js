@@ -2,7 +2,6 @@ const { Route, User, Car, Order } = require("../db.js");
 const axios = require("axios");
 const { kilometers, hours } = require("./Function"); // ME TRAIGO LAS FUNCTIONS
 const { TOKEN } = process.env;
-const { postMail } = require('./Mail.js')
 
 const getRouteInfo = async (req, res, next) => {
   try {
@@ -60,7 +59,6 @@ const postRoute = async (req, res, next) => {
   try {
     const {
       idUser,
-      //patentCar,
       originName,
       destinyName,
       origin,
@@ -79,7 +77,7 @@ const postRoute = async (req, res, next) => {
 
     let price = ((kmNumber / 10) * 97) / 5;
 
-    price =  Math.ceil(price + price * (10 / 100));
+    price = Math.ceil(price + price * (10 / 100));
 
     const route = await Route.create({
       originName,
@@ -93,15 +91,12 @@ const postRoute = async (req, res, next) => {
       hours,
       place,
       restriction,
-      manejante:idUser,
+      manejante: idUser,
       points,
       center,
     });
 
     await route.addUser(idUser);
-    //const car = await Car.findByPk(patentCar)
-    //await car.addRoute(route);
-
     res.send(route);
   } catch (error) {
     next(error);
@@ -110,7 +105,7 @@ const postRoute = async (req, res, next) => {
 
 const getRoute = async (req, res, next) => {
   try {
-    let { restriction, order, date, from, to, place } = req.query;
+    let { restriction, order, date, from, to, place, admin } = req.query;
     const { id } = req.params;
     let routes;
 
@@ -121,6 +116,7 @@ const getRoute = async (req, res, next) => {
           include: Car,
         },
       });
+      routes = routes.users[0].isBanned === false ? routes : "Banned user";
       return res.send(routes);
     }
 
@@ -138,9 +134,10 @@ const getRoute = async (req, res, next) => {
         "restriction",
         "points",
         "center",
+        "manejante",
       ],
       include: [
-          {model: Order},
+        { model: Order },
         {
           model: User,
           attributes: [
@@ -150,15 +147,18 @@ const getRoute = async (req, res, next) => {
             "genre",
             "age",
             "calification",
+            "isBanned",
           ],
           include: {
             model: Car,
             attributes: ["patent", "color", "brand", "model"],
           },
-
-        }
-    ],
+        },
+      ],
     });
+
+    if (admin)
+      routes = routes.filter((route) => route.users[0].isBanned === false);
 
     if (from) {
       routes = routes.filter((route) => {
@@ -178,13 +178,8 @@ const getRoute = async (req, res, next) => {
       restriction = restriction.split(",");
 
       routes = routes.filter((route) => {
-        let restricRoute = route.restriction.split(",");
+        let restricRoute = route.restriction.split(", ");
         restricRoute = restriction.map((r) => restricRoute.includes(r));
-
-        // if (!restriction ||restriction === '') {
-        //   routes = routes
-        // } else if (restricRoute.includes(false)) return false
-        // else return true }
 
         if (restricRoute.includes(false)) return false;
         else return true;
@@ -227,26 +222,28 @@ const putRoute = async (req, res) => {
   try {
     const { id } = req.params;
     const { date, hours, restriction, place, idUser } = req.body;
-  
+
     const route = await Route.findByPk(id);
-    route.update({
+    const result = await route.update({
       date,
       hours,
       restriction,
       place,
     });
-    if (idUser){
-      const manejante = await User.findByPk(idUser) 
+    if (idUser) {
+      const manejado = await User.findByPk(idUser);
+      const manejante = await User.findByPk(route.manejante);
       await route.addUser(idUser);
-      let mail = await axios.post('http://localhost:3001/mail/add',{
-        manejanteEmail: route.manejante,
-        manejadoName: manejante.name,
+      await axios.post("http://localhost:3001/mail/add", {
+        manejanteName: manejante.name,
+        manejanteEmail: manejante.email,
+        manejadoName: manejado.name,
+        manejadoEmail: manejado.email,
         originName: route.originName,
-        destinyName: route.destinyName
+        destinyName: route.destinyName,
       });
-      console.log(mail)
     }
-    res.send(route);
+    res.send(result);
   } catch (error) {
     res.send(error);
   }

@@ -33,15 +33,14 @@ export function getRoute(long1, lat1, long2, lat2) {
         type: "GET_ROUTE",
         payload: response.data,
       });
-    } catch (error) { }
+    } catch (error) {}
   };
 }
 
 export function getUserProfile(id) {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`/user/${id}`))
-        .data;
+      const response = (await axios.get(`/user/${id}`)).data;
       return dispatch({
         type: "GET_USER_PROFILE",
         payload: response,
@@ -50,14 +49,14 @@ export function getUserProfile(id) {
   };
 }
 export function getUserDetail(id) {
-   return async function (dispatch) {
-     try {
+  return async function (dispatch) {
+    try {
       const response = (await axios.get(`/user/${id}`)).data;
       return dispatch({
         type: "GET_USER_DETAIL",
         payload: response,
       });
-    } catch (error) { }
+    } catch (error) {}
   };
 }
 export function getAllUser() {
@@ -68,28 +67,25 @@ export function getAllUser() {
         type: "GET_ALL_USER",
         payload: response,
       });
-    } catch (error) { }
+    } catch (error) {}
   };
 }
-
-export function getUserAdmin(id) {
+export function getAllUserAdmin() {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`/user/${id}`))
-        .data;
+      const response = (await axios.get(`/user?admin=${true}`)).data;
       return dispatch({
-        type: "GET_USER_ADMIN",
+        type: "GET_ALL_USER",
         payload: response,
       });
     } catch (error) {}
   };
 }
 
-export function getAlluserpro(id) {
+export function getUserAdmin(id) {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`/user/${id}`))
-        .data;
+      const response = (await axios.get(`/user/${id}`)).data;
       return dispatch({
         type: "GET_USER_ADMIN",
         payload: response,
@@ -101,38 +97,33 @@ export function getAlluserpro(id) {
 export function getRouteById(id) {
   return async function (dispatch) {
     try {
-      const response = (
-        await axios.get(`/maps/route/` + id)
-      ).data;
+      const response = (await axios.get(`/maps/route/` + id)).data;
 
       return dispatch({
         type: "GET_ROUTE_BY_ID",
         payload: response,
       });
-    } catch (error) { }
+    } catch (error) {}
   };
 }
 
 export function getUserByName(name) {
   return async function (dispatch) {
     try {
-      const response = (
-        await axios.get(`/user/?name=` + name)
-      ).data;
+      const response = (await axios.get(`/user/?name=` + name)).data;
 
       return dispatch({
         type: "GET_USER_BY_NAME",
         payload: response,
       });
-    } catch (error) { }
+    } catch (error) {}
   };
 }
 
 export function getUserById(id) {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`/user/${id}`))
-        .data;
+      const response = (await axios.get(`/user/${id}`)).data;
       return dispatch({
         type: "GET_USER_BY_ID",
         payload: response,
@@ -157,10 +148,7 @@ export function getAllUsers() {
 export function editUser(id, info) {
   return async function (dispatch) {
     try {
-      const response = await axios.put(
-        `/user/` + id,
-        info
-      );
+      const response = await axios.put(`/user/` + id, info);
 
       return dispatch({
         type: "EDIT_USER",
@@ -182,9 +170,7 @@ export function getId(id) {
 export function deleteUser(id) {
   return async function (dispatch) {
     try {
-      const response = ( await axios.delete(
-        `/user/` + id
-      )).data;
+      const response = (await axios.delete(`/user/` + id)).data;
       return dispatch({
         type: "DELETE_USER",
         payload: response,
@@ -223,34 +209,41 @@ export function editCar(id, info) {
   };
 }
 
-export function getRouteFromDb(originName, destinyName, date, place) {
+export function getRouteFromDb(
+  originName,
+  destinyName,
+  date,
+  place,
+  order,
+  restriction
+) {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}`
+        `/maps/route?from=${originName}&to=${destinyName}&date=${date}&place=${place}&order=${
+          order ? order : ""
+        }&restriction=${restriction ? restriction : ""}`
       );
-
       return dispatch({
         type: "GET_ROUTE_FROM_DB",
         payload: response.data,
       });
-    } catch (error) { }
+    } catch (error) {}
+  };
+}
+
+export function getSearchParams(originName, destinyName, date, place) {
+  return {
+    type: "GET_SEARCH_PARAMS",
+    payload: {
+      originName,
+      destinyName,
+      date,
+      place,
+    },
   };
 }
 // -----------------------------< filters >----------------------------------
-// export function filterBySmoke(payload) {
-//   return {
-//     type: "FILTER_BY_SMOKE",
-//     payload,
-//   };
-// }
-
-// export function filterByPets(payload) {
-//   return {
-//     type: "FILTER_BY_PETS",
-//     payload,
-//   };
-// }
 
 export function orderByRestriction(restriction) {
   return {
@@ -276,45 +269,62 @@ export function orderByDistance(payload) {
 export function postUser(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
-        `/user/add`,
-        payload
-      );
+      const response = await axios.post(`/user/add`, payload);
       return dispatch({
         type: "POST_USER",
         payload: response.data,
       });
-    } catch (error) { }
+    } catch (error) {}
   };
 }
 
 export function postCar(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
-        `/car/add`,
-        payload
-      );
+      const response = await axios.post(`/car/add`, payload);
       return dispatch({
         type: "POST_CAR",
         payload: response.data,
       });
-    } catch (error) { }
+    } catch (error) {}
   };
 }
 
 export function postMejorasYReclamos(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
-        `/suggestionbox/add`,
-        payload
-      );
+      const response = await axios.post(`/suggestionbox/add`, payload);
       return dispatch({
         type: "POST_RECLAMOSYMEJORAS",
         payload: response.data,
       });
-    } catch (error) { }
+    } catch (error) {}
+  };
+}
+
+export function getMejorasYReclamos(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`/suggestionbox/`, payload);
+      return dispatch({
+        type: "GET_RECLAMOSYMEJORAS",
+        payload: response.data,
+      });
+    } catch (error) {}
+  };
+}
+
+export function deleteReclamos(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.delete(`/suggestionbox/${id}`)).data;
+      return dispatch({
+        type: "DELETE_RECLAMOSYMEJORAS",
+        payload: response,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
@@ -323,14 +333,13 @@ export function postRoute(routeInfo) {
     try {
       const response = await axios.post(`/maps/route/add`, routeInfo);
       return dispatch({
-          type: "POST_ROUTE",
-          payload: response.data,
-        });
-      }
-    catch (error) {
-      console.log(error)
+        type: "POST_ROUTE",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 }
 export function RoutePostInfo(info) {
   return {
@@ -344,20 +353,21 @@ export function deleteRoute() {
     type: "DELETE_ROUTE",
   };
 }
+export function deleteRouteFromDb(param) {
+  return {
+    type: "DELETE_ROUTE_FROM_DB",
+  };
+}
 export function deleteOrder(id) {
   return async function (dispatch) {
     try {
-      const response = await axios.delete(
-        `/order/` + id,
-      );
+      await axios.delete(`/order/` + id);
       return {
         type: "DELETE_ORDER",
       };
-    } catch (error) { }
+    } catch (error) {}
   };
- 
 }
-
 
 export function getOrder(order) {
   return {
@@ -366,45 +376,60 @@ export function getOrder(order) {
   };
 }
 
-export function getOrderDetails () {
+export function getOrderDetails() {
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        `/order/`,
-      );
+      const response = await axios.get(`/order/`);
       return dispatch({
         type: "GET_ORDER_DETAILS",
         payload: response.data,
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 }
+
 export function allRoutes(order, restriction) {
   return async function (dispatch) {
     try {
       const response = (
         await axios.get(
-          `/maps/route?order=${order ? order : ""
-          }&restriction=${restriction ? restriction : ""}`
+          `/maps/route?order=${order ? order : ""}&restriction=${
+            restriction ? restriction : ""
+          }`
         )
       ).data;
       return dispatch({
         type: "GET_ALL_ROUTE_INFO",
         payload: response,
       });
-    } catch (error) { }
+    } catch (error) {}
+  };
+}
+
+export function allRoutesAdmin(order, restriction) {
+  return async function (dispatch) {
+    try {
+      const response = (
+        await axios.get(
+          `/maps/route?order=${order ? order : ""}&restriction=${
+            restriction ? restriction : ""
+          }&admin=${true}`
+        )
+      ).data;
+      return dispatch({
+        type: "GET_ALL_ROUTE_INFO",
+        payload: response,
+      });
+    } catch (error) {}
   };
 }
 
 export function setPost(payload) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
-        `/user/post`,
-        payload
-      );
+      const response = await axios.post(`/user/post`, payload);
       return dispatch({
         type: "SET_POST",
         payload: response.data,
@@ -416,8 +441,7 @@ export function setPost(payload) {
 export function userPost(id) {
   return async function (dispatch) {
     try {
-      const response = (await axios.get(`/user/post/${id}`))
-        .data;
+      const response = (await axios.get(`/user/post/${id}`)).data;
       return dispatch({
         type: "USER_POST",
         payload: response,
@@ -426,12 +450,48 @@ export function userPost(id) {
   };
 }
 
-export function putRatingUser(id){
+export function putRatingUser(id) {
   return async function (dispatch) {
     try {
-      const response = await axios.put(`/user/rating/${id}`)
+      const response = await axios.put(`/user/rating/${id}`);
       return dispatch({
         type: "PUT_RATING_USER",
+        payload: response.data,
+      });
+    } catch (error) {}
+  };
+}
+
+export function getChatOtro(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`/chat/${id}`)).data;
+      return dispatch({
+        type: "GET_CHAT_OTRO",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
+export function getChatPropio(id) {
+  return async function (dispatch) {
+    try {
+      const response = (await axios.get(`/chat/${id}`)).data;
+      return dispatch({
+        type: "GET_CHAT_PROPIO",
+        payload: response,
+      });
+    } catch (error) {}
+  };
+}
+
+export function postChat(payload) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`/chat/add`, payload);
+      return dispatch({
+        type: "POST_CHAT",
         payload: response.data,
       });
     } catch (error) {}

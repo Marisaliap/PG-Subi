@@ -38,7 +38,7 @@ export default function SearchUserByName() {
         )}
       </FormattedMessage>
       <button type="submit" onClick={(e) => handleSubmit(e)}>
-        <NavLink className="Navlink" to="/users">
+        <NavLink className="NavlinkUserProfile" to="/users">
           <FormattedMessage
             id="searchUserByName.search"
             defaultMessage="Search"

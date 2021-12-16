@@ -1,49 +1,66 @@
-@import '../Variables/Variables.scss';
-
+@import "../Variables/Variables.scss";
 
 .Map {
   display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-end;
-  margin: 1rem 3rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 4rem 3rem;
 
   .mapbox {
     margin-top: 1rem;
     border: 2px solid $headline;
     border-radius: 10px;
+
+    @media only screen and (max-width: 1024px) {
+      padding-right: 100%;
+      margin-bottom: 2rem;
+    }
   }
-  .userContainerallroute{
-      width: 20vw;
-      text-decoration: none;
+  .userContainerallroute {
+    width: 100%;
+    margin-top: 1rem;
 
     img {
-      height: 30rem;
-      max-height: 15rem; 
+      height: 15rem;
+      width: 15rem;
       border-radius: 50%;
     }
   }
 
   .infoContainer {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 1rem;
-    align-items: baseline
-    
-    
+    margin: auto;
+    align-items: baseline;
   }
 
-  .Containerallroute {
-    display: flex;
-    width: 50vw;
-   
-   
-
-
-    p {
-      text-align:left;
-      margin-top: 0;
+  .restrictionContainer {
+    .restrictionsP {
+      text-align: left;
       font-weight: bold;
+      padding-left: 1rem;
     }
+  }
+
+  p {
+    text-align: left;
+    margin-top: 0;
+    font-weight: bold;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+  }
+
+  .priceH2 {
+    margin-bottom: 0;
+  }
+
+  .infoUserAndButtons {
+    display: grid;
+    margin: auto;
   }
 }

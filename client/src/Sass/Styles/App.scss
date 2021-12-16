@@ -1,14 +1,14 @@
-@import '../Variables/Variables.scss';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@150;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap');
+@import "../Variables/Variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@150;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap");
 
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .App {
   background-color: $background;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5;
   text-align: center;
   position: sticky;
@@ -17,7 +17,7 @@
 
   .back-to-top {
     position: fixed;
-    bottom: 35vh;
+    bottom: 50vh;
     right: 1vw;
     z-index: 99999;
     border: none;
@@ -42,10 +42,32 @@ h4,
 h5,
 h6 {
   color: $headline;
+  &:focus {
+    outline: none;
+  }
 }
 
 p {
   color: $text;
+}
+
+a {
+  text-decoration: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+li {
+  &:focus {
+    outline: none;
+  }
 }
 
 .cadaLinea {
@@ -59,7 +81,7 @@ p {
 
 .button {
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   color: $background;
   background-color: $buttonColor;
@@ -77,7 +99,7 @@ p {
 
 .buttonBlue {
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   color: $background;
   background-color: $buttonBlue;
@@ -95,7 +117,7 @@ p {
 
 .buttonDisabled {
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   color: $background;
   background-color: $buttonDisabled;
@@ -104,6 +126,7 @@ p {
   border: 0;
   border-radius: 1.5rem;
 }
+
 /* 
 .containAll{
   display: flex;

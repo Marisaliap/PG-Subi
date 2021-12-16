@@ -22,7 +22,6 @@ import Error404 from "./components/Error404";
 import NavBar from "./components/NavBar";
 import Post from "./components/Post";
 import Admin from "./admin/Admin";
-/* import Dashboard from "./admin/pages/Dashboard"; */
 import RouteDetails from "./components/RouteDetails";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CookiesPolicy from "./components/CookiesPolicy";
@@ -30,15 +29,13 @@ import AllInfoRoute from "./components/allInfoRoute";
 import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
-/* import Topbar from "./admin/Topbar"; */
-/* import Sidebar from "./admin/Sidebar"; */
-import { Redirect } from "react-router";
-
+import Chat from "./components/Chat";
+import { FormattedMessage } from "react-intl";
 
 export default function App() {
   const { isAuthenticated } = useAuth0();
   const [showButton, setShowButton] = useState(false);
-  const { userpro } = useSelector(state => state)
+  const { userpro } = useSelector((state) => state);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -49,7 +46,6 @@ export default function App() {
       }
     });
   }, []);
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -60,64 +56,98 @@ export default function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-         <Route exact path="/" component={LandingPage} />
-          <div>
+          {/* eslint-disable-next-line */}
+          <Route exact path="/" component={LandingPage} />
+          <>
+            {/* eslint-disable-next-line */}
             <NavBar />
+            {/* eslint-disable-next-line */}
             <Route path="/home" component={Home} />
-
-            {isAuthenticated ? (
+            {isAuthenticated &&
+            (userpro.isBanned === false || userpro.length === 0) ? (
               <>
-                {
-                  <Switch>
-                    <Route exact path="/route" component={CreateRoute} />
-                    <Route path="/route/finish" component={Map} />
-                    <Route path="/register" component={Register} />
-                    <Route exact path="/profile" component={UserProfile} />
-                    <Route path="/user/:id" component={UserDetails} />
-                    <Route path="/route-list" component={RouteDetails} />
-                    <Route path="/maps/route" component={RouteDetails} />
-                    <Route path="/routes-found" component={RoutesFromSearch} />
-                    <Route path="/route/:id" component={AllInfoRoute} />
-                    <Route path="/car" component={FormCar} />
-                    <Route path="/users" component={Users} />
-                    <Route path="/post/:id" component={Post} />
-                    <Route path="/404" component={Error404} />
-                    <div>
+                {isAuthenticated ? (
+                  <>
+                    <Switch>
+                      {/* eslint-disable-next-line */}
+                      <Route exact path="/route" component={CreateRoute} />
+                      {/* eslint-disable-next-line */}
+                      <Route path="/route/finish" component={Map} />
+                      {/* eslint-disable-next-line */}
+                      <Route path="/register" component={Register} />
+                      {/* eslint-disable-next-line */}
+                      <Route exact path="/profile" component={UserProfile} />
+                      {/* eslint-disable-next-line */}
+                      <Route path="/user/:id" component={UserDetails} />
+                      {/* eslint-disable-next-line */}
+                      <Route path="/route-list/:id" component={RouteDetails} />
+                      {/* eslint-disable-next-line */}
+                      <Route path="/route-list/" component={RouteDetails} />
+                      {/* eslint-disable-next-line */}
+                      <Route path="/maps/route" component={RouteDetails} />
+                      {/* eslint-disable-next-line */}
                       <Route
-                        exact
-                        path="/admin"
-                        render={() =>
-                          userpro.isAdmin === true ? (
-                            <Admin />
-                          ) : (
-                            <Redirect to="/home" />
-                          )
-                        }
+                        path="/routes-found"
+                        component={RoutesFromSearch}
                       />
-                    </div>
-                  </Switch>
-                }
+                      {/* eslint-disable-next-line */}
+                      <Route path="/route/:id" component={AllInfoRoute} />
+                      {/* eslint-disable-next-line */}
+                      <Route path="/car" component={FormCar} />
+                      {/* eslint-disable-next-line */}
+                      <Route path="/users" component={Users} />
+                      {/* eslint-disable-next-line */}
+                      <Route path="/post/:id" component={Post} />
+                      {/* eslint-disable-next-line */}
+                      <Route path="/404" component={Error404} />
+                      {/* eslint-disable-next-line */}
+                      <Route path="/chat/:email" component={Chat} />
+                      {/* eslint-disable-next-line */}
+                      {userpro && userpro.isAdmin === true ? (
+                        <Route exact path="/admin" component={Admin} />
+                      ) : (
+                        ""
+                      )}
+                    </Switch>
+                  </>
+                ) : (
+                  ""
+                )}
+                {/* eslint-disable-next-line */}
+                <Route path="/faq" component={Faq} />
+                {/* eslint-disable-next-line */}
+                <Route
+                  path="/terms-and-conditions"
+                  component={TermsAndConditions}
+                />
+                {/* eslint-disable-next-line */}
+                <Route path="/recommendations" component={Recommendations} />
+                {/* eslint-disable-next-line */}
+                <Route path="/aboutus" component={Aboutus} />
+                {/* eslint-disable-next-line */}
+                <Route path="/privacy-policy" component={PrivacyPolicy} />
+                {/* eslint-disable-next-line */}
+                <Route path="/cookies-policy" component={CookiesPolicy} />
+                {/* eslint-disable-next-line */}
+                <Route path="/suggestion-box" component={SuggestionBox} />
+                {showButton && (
+                  <button onClick={scrollToTop} className="back-to-top">
+                    &#8679;
+                  </button>
+                )}
               </>
             ) : (
-              ""
+              <>
+                <FormattedMessage
+                  id="app.banned"
+                  defaultMessage="You dont have access here"
+                />
+              </>
             )}
-            <Route path="/faq" component={Faq} />
-            <Route
-              path="/terms-and-conditions"
-              component={TermsAndConditions}
-            />
-            <Route path="/recommendations" component={Recommendations} />
-            <Route path="/aboutus" component={Aboutus} />
-            <Route path="/privacy-policy" component={PrivacyPolicy} />
-            <Route path="/cookies-policy" component={CookiesPolicy} />
-            <Route path="/suggestion-box" component={SuggestionBox} />
-            {showButton && (
-              <button onClick={scrollToTop} className="back-to-top">
-                &#8679;
-              </button>
-            )}
-            <Footer />
-          </div>
+            <Route>
+              <Footer />
+            </Route>
+          </>
         </Switch>
       </div>
     </BrowserRouter>

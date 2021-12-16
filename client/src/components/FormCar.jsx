@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { postCar, getAllCars } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -28,10 +28,6 @@ export default function FormCar() {
     checkboxBlueCard: false,
   });
 
-  //console.log("inputlength=>", input.bluecard.length);
-  //console.log("input=>", input);
-  //console.log("green=>", image);
-  //console.log("blue=>", cedula);
   let booleanPatent;
 
   useEffect(() => {
@@ -52,25 +48,75 @@ export default function FormCar() {
     const wordvalidate = /^[a-zA-ZüéáíóúñÑ ]+$/;
     const floatvalidate = /^[0-9]*\.?[0-9]+$/;
     if (!input.patent) {
-      errors.patent = <FormattedMessage id= "formcarerr.patent" defaultMessage="Patent is required" />;
+      errors.patent = (
+        <FormattedMessage
+          id="formcarerr.patent"
+          defaultMessage="Patent is required"
+        />
+      );
     } else if (booleanPatent === false) {
-      errors.patent = <FormattedMessage id= "formcarerr.patentexist" defaultMessage="Patent already exists" />;
+      errors.patent = (
+        <FormattedMessage
+          id="formcarerr.patentexist"
+          defaultMessage="Patent already exists"
+        />
+      );
     } else if (numberandlettervalidate.test(input.patent) === false) {
-      errors.patent = <FormattedMessage id= "formcarerr.patentinv" defaultMessage="Invalid Patent" />;
+      errors.patent = (
+        <FormattedMessage
+          id="formcarerr.patentinv"
+          defaultMessage="Invalid Patent"
+        />
+      );
     } else if (!input.color) {
-      errors.color = <FormattedMessage id= "formcarerr.color" defaultMessage="Color is required" />;
+      errors.color = (
+        <FormattedMessage
+          id="formcarerr.color"
+          defaultMessage="Color is required"
+        />
+      );
     } else if (wordvalidate.test(input.color) === false) {
-      errors.color = <FormattedMessage id=  "formcarerr.colorinv" defaultMessage="Invalid Color: No Symbols Allowed" />;
+      errors.color = (
+        <FormattedMessage
+          id="formcarerr.colorinv"
+          defaultMessage="Invalid Color: No Symbols Allowed"
+        />
+      );
     } else if (!input.brand) {
-      errors.brand = <FormattedMessage id= "formcarerr.brand" defaultMessage="Brand is required" />;
+      errors.brand = (
+        <FormattedMessage
+          id="formcarerr.brand"
+          defaultMessage="Brand is required"
+        />
+      );
     } else if (wordvalidate.test(input.brand) === false) {
-      errors.brand = <FormattedMessage id= "formcarerr.brandinv" defaultMessage="formcarerr.brandinv" />;
+      errors.brand = (
+        <FormattedMessage
+          id="formcarerr.brandinv"
+          defaultMessage="formcarerr.brandinv"
+        />
+      );
     } else if (!input.model) {
-      errors.model = <FormattedMessage id= "formcarerr.model" defaultMessage="Model is required" />;
+      errors.model = (
+        <FormattedMessage
+          id="formcarerr.model"
+          defaultMessage="Model is required"
+        />
+      );
     } else if (!input.cylinder) {
-      errors.cylinder = <FormattedMessage id= "formcarerr.cylinder" defaultMessage="Cylinder is required" />;
+      errors.cylinder = (
+        <FormattedMessage
+          id="formcarerr.cylinder"
+          defaultMessage="Cylinder is required"
+        />
+      );
     } else if (floatvalidate.test(input.cylinder) === false) {
-      errors.cylinder = <FormattedMessage id= "formcarerr.cylinderinv" defaultMessage="Invalid Cylinder: No Symbols Allowed" />;
+      errors.cylinder = (
+        <FormattedMessage
+          id="formcarerr.cylinderinv"
+          defaultMessage="Invalid Cylinder: No Symbols Allowed"
+        />
+      );
     }
     return errors;
   }
@@ -163,12 +209,13 @@ export default function FormCar() {
     }
   }
 
-  console.log("input=>", input);
-
   return (
     <div className="FormCar">
       <h1>
-        <FormattedMessage id="register.errname" defaultMessage="Name is required" />
+        <FormattedMessage
+          id="formCar.title"
+          defaultMessage="Name is required"
+        />
       </h1>
       <form
         className="FormAUTO"
@@ -246,7 +293,7 @@ export default function FormCar() {
         </div>
         <div>
           <div className="cadaLinea">
-            <p className="label">  
+            <p className="label">
               <FormattedMessage
                 id="formCar.greencard"
                 defaultMessage="Green Card*:"
@@ -267,7 +314,7 @@ export default function FormCar() {
           </div>
           <div className="cadaLinea">
             <p className="">
-            <FormattedMessage
+              <FormattedMessage
                 id="formCar.checkbox"
                 defaultMessage="If the car will be used by someone other than you or you are not the owner of the car, please attach the correspondent blue card"
               />
@@ -278,14 +325,15 @@ export default function FormCar() {
               onChange={(e) => handleCheck(e)}
             />
           </div>
-          {input.checkboxBlueCard === false?
-            "":
+          {input.checkboxBlueCard === false ? (
+            ""
+          ) : (
             <div className="cadaLinea">
               <p className="label">
-                 <FormattedMessage
-                id="formCar.bluecard1"
-                defaultMessage="Blue Card #1:"
-              /> 
+                <FormattedMessage
+                  id="formCar.bluecard1"
+                  defaultMessage="Blue Card #1:"
+                />
               </p>
               <div className="cargaImagen">
                 <input
@@ -304,15 +352,17 @@ export default function FormCar() {
                   ""
                 )}
               </p>
-            </div> }
-             { input.bluecard.length === 0?
-             "":
-          <div className="cadaLinea">
+            </div>
+          )}
+          {input.bluecard.length === 0 ? (
+            ""
+          ) : (
+            <div className="cadaLinea">
               <p className="label">
                 <FormattedMessage
-                id="formCar.bluecard2"
-                defaultMessage="Blue Card #2:"
-              />
+                  id="formCar.bluecard2"
+                  defaultMessage="Blue Card #2:"
+                />
               </p>
               <label className="cargaImagen">
                 <input
@@ -331,15 +381,17 @@ export default function FormCar() {
                   ""
                 )}
               </p>
-            </div>}
-            {input.bluecard.length <= 1?
-            "":
+            </div>
+          )}
+          {input.bluecard.length <= 1 ? (
+            ""
+          ) : (
             <div className="cadaLinea">
               <p className="label">
-               <FormattedMessage
-                id="formCar.bluecard3"
-                defaultMessage="Blue Card #3:"
-              />
+                <FormattedMessage
+                  id="formCar.bluecard3"
+                  defaultMessage="Blue Card #3:"
+                />
               </p>
               <label className="cargaImagen">
                 <input
@@ -358,8 +410,8 @@ export default function FormCar() {
                   ""
                 )}
               </p>
-            </div>}
-          {console.log(input.bluecard)}
+            </div>
+          )}
         </div>
         <button className="button" type="submit">
           <FormattedMessage id="formCar.add" defaultMessage=" Add Car" />

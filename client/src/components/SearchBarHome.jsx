@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getRouteFromDb, getSuggestions, getSuggestions2 } from '../actions';
-import { NavLink } from 'react-router-dom';
-import '../Sass/Styles/SearchBarHome.scss';
-import '../Sass/Styles/App.scss';
-import { FormattedMessage } from 'react-intl';
-import { BsPersonFill } from 'react-icons/bs';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getRouteFromDb,
+  getSearchParams,
+  getSuggestions,
+  getSuggestions2,
+} from "../actions";
+import { NavLink, useHistory } from "react-router-dom";
+import "../Sass/Styles/SearchBarHome.scss";
+import "../Sass/Styles/App.scss";
+import { FormattedMessage } from "react-intl";
 
-let inputs = { Origin: '', Destination: '' };
-let info = { pasajeros: 1, date: '' };
+let inputs = { Origin: "", Destination: "" };
+let info = { pasajeros: 1, date: "" };
 
 let dateTime = new Date().toJSON().slice(0, 10).replace(/-/g, "-");
 
@@ -17,7 +21,7 @@ const validateInputs = (input) => {
   let inputs = Object.keys(input);
   for (let i = 0; i < inputs.length; i++) {
     if (!input[inputs[i]]) {
-      errors[inputs[i]] = inputs[i] + ' is required.';
+      errors[inputs[i]] = inputs[i] + " is required.";
     }
   }
   return errors;
@@ -28,7 +32,7 @@ const validateInfo = (routeInfo) => {
 
   for (let i = 0; i < info.length; i++) {
     if (!routeInfo[info[i]]) {
-      errors[info[i]] = info[i] + ' is required.';
+      errors[info[i]] = info[i] + " is required.";
     }
   }
   return errors;
@@ -50,7 +54,7 @@ export default function SearchBarHome() {
       return errorState;
     });
   }
-
+  const history = useHistory();
   const checkInputs = Object.values(inputs);
   const checkInfo = Object.values(info);
 
@@ -81,13 +85,22 @@ export default function SearchBarHome() {
         getRouteFromDb(
           cities[0].name,
           cities2[0].name,
-          info.date.split('-').reverse().join('-'),
+          info.date.split("-").reverse().join("-"),
           info.pasajeros
         )
       );
+      dispatch(
+        getSearchParams(
+          cities[0].name,
+          cities2[0].name,
+          info.date.split("-").reverse().join("-"),
+          info.pasajeros
+        )
+      );
+      history.push(`/route-list/${info.pasajeros}`);
     }
-    inputs = { Origin: '', Destination: '' };
-    info = { pasajeros: 1, date: '' };
+    inputs = { Origin: "", Destination: "" };
+    info = { pasajeros: 1, date: "" };
   }
 
   return (
@@ -115,7 +128,6 @@ export default function SearchBarHome() {
               city.name !== inputs.Origin && <option>{city.name}</option>
           )}
       </datalist>
-      {/* <p>{validations && validations.Origin}</p> */}
       <FormattedMessage
         id="searchBarHome.destination"
         defaultMessage="Destination"
@@ -141,16 +153,14 @@ export default function SearchBarHome() {
               city.name !== inputs.Destination && <option>{city.name}</option>
           )}
       </datalist>
-      {/* <p>{validations && validations.Destination}</p> */}
       <div className="dateAndSeatsContainer">
         <input
           type="date"
           name="date"
-          min="2021-11-28"
+          min={dateTime}
           onChange={handleChange}
           className="dateAndSeatsSelectors"
         />
-        {/* <p>{validations && validations.date}</p> */}
 
         <hr className="dateSeatsDivider" />
 
@@ -168,9 +178,6 @@ export default function SearchBarHome() {
           <option value="5">5 Passengers</option>
           <option value="6">6 Passengers</option>
         </select>
-        {/* <label for="pasajeros">
-          <BsPersonFill />
-        </label> */}
       </div>
 
       <hr />
@@ -182,18 +189,18 @@ export default function SearchBarHome() {
           disabled={checkInfo.length !== 2 && checkInputs.length !== 2}
         >
           <NavLink
-            to="/routes-found"
+            to={`/route-list/${info.pasajeros}`}
             style={{
-              textDecoration: ' none',
-              width: '60px',
-              color: 'white',
+              textDecoration: " none",
+              width: "60px",
+              color: "white",
             }}
           >
             Search
           </NavLink>
         </button>
       ) : (
-        <button className="button" disabled="true">
+        <button className="buttonDisabled" disabled>
           <FormattedMessage
             id="searchBarHome.searchButton"
             defaultMessage=" Search"
