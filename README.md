@@ -93,7 +93,7 @@ La seguridad es una necesidad vital para todos nosotros, sin importar adónde va
 - Boton de emergencia. Es el siguiente nivel de soporte 24/7, ya que estas son acciones en caso de necesidad imperiosa. Debemos considerar con quién va a conectar a los usuarios este botón: si con personal de la api o con una estación de policía de inmediato. Por ejemplo, se puede ofrece alertar al 911 en silencio.
 - Conductores femeninos. Viajar con una mujer parece más seguro, especialmente para las mujeres viajeras, por lo que puede ofrecer a los usuarios esta función como filtro de búsqueda. De manera que se puede incluír la opción "Sólo para mujeres" ya sean propietarias de automóviles o pasajeras.
 
-### Modelos de monetización
+## Modelos de monetización
 
 Se puede ganar dinero con una aplicación de viaje compartido. Hay tres modelos que se van a evaluar:
 
@@ -101,7 +101,7 @@ Se puede ganar dinero con una aplicación de viaje compartido. Hay tres modelos 
 - Publicidad. Poner algunos anuncios en distintos lugares en la aplicación puede ser una fuente de ingresos adicional. Pero por encima de todo debe estar la experiencia del usuario y ser cuidadoso y discreto con cada banner publicitario.
 - Asociaciones. Una plataforma con prestigio puede elegir algunas empresas de transporte con las que asociarse para ampliar la oferta y brindar a los usuarios una alternativa de transporte durante los tiempos de COVID. Pero se pueden crear más asociaciones, con determinadas Estaciones de Servicio o incluso hoteles o hosterías cuando se realizan viajes de media y larga distancia.
 
-### Funciones avanzadas de las aplicaciones de viaje compartido que se podrían evaluar y añadir a futuro
+## Funciones avanzadas de las aplicaciones de viaje compartido que se podrían evaluar y añadir a futuro
 
 Implementar una o dos de las siguientes características pueden ser una ventaja para atraer nuevos clientes.
 
@@ -112,13 +112,9 @@ Implementar una o dos de las siguientes características pueden ser una ventaja 
 - Propinas. Cualquier pago adicional es una motivación para hacer mejor el trabajo. Dejar propinas es una opción para que los pasajeros agradezcan a los conductores por un gran servicio y un incentivo para que los propietarios de automóviles mejoren sus habilidades (tanto de conducción como de comunicación).
 - Interfaz multilingüe. Cuantos más idiomas incorporados tenga la aplicación, más usuarios obtendrá. Incluso dentro de una ciudad, se pueden encontrar personas de diversos grupos étnicos, por lo que agregar varios idiomas a la aplicación es algo sumamente valioso. 
 
-### Los endpoints utilizados son:
+## Desarrollo        
 
-  - GET https://api.mapbox.com/geocoding/v5/mapbox.places/${name}.json?country=ar&types=place&access_token=${TOKEN}
-  - GET https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${long1}%2C${lat1}%3B${long2}%2C${lat2}?alternatives=false&geometries=geojson&overview=full&steps=false&access_token=${TOKEN}`
-        
-
-#### Tecnologías utilizadas:
+#### Las tecnologías utilizadas fueron:
 - [ ] React
 - [ ] Redux
 - [ ] Express
@@ -131,7 +127,7 @@ Implementar una o dos de las siguientes características pueden ser una ventaja 
 - [ ] Sweetalert
 
 
-#### Frontend
+## Frontend
 
 Se desarrolla una aplicación de React/Redux que contiene las siguientes pantallas/rutas.
 
@@ -183,7 +179,6 @@ __Ruta de detalle de la ruta__: contiene
 - [ ] Botón para poder unirse a un viaje
 - [ ] Borón para regresar a la pàgina anterior
 
-
 __Ruta de creación de un viaje__: contiene
 - [ ] Un formulario __controlado__ con los siguientes campos
   - Ciudad de Origen
@@ -194,17 +189,21 @@ __Ruta de creación de un viaje__: contiene
 - [ ] Posibilidad de seleccionar preferencias del conductor
 - [ ] Botón/Opción para la vista previa de un nuevo viaje
 
-
 __Ruta de confirmación para crear un viaje__: contiene
 - [ ] Mapa ampliado de la ruta definida previamente
 - [ ] Información detallada con los campos enumerados en el formulario anterior
 - [ ] Botón/Opción para crear un nuevo viaje
 - [ ] Botón/Opción para realizar alguna modificación
 
+## Base de datos
 
-#### Base de datos
+### Los endpoints utilizados son:
 
-El modelo de la base de datos contiene las siguientes entidades:
+  - GET https://api.mapbox.com/geocoding/v5/mapbox.places/${name}.json?country=ar&types=place&access_token=${TOKEN}
+  - GET https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${long1}%2C${lat1}%3B${long2}%2C${lat2}?alternatives=false&geometries=geojson&overview=full&steps=false&access_token=${TOKEN}`
+
+
+#### El modelo de la base de datos contiene las siguientes entidades:
 
 - [ ] Usuario con las siguientes propiedades:
   - Email *
@@ -280,12 +279,12 @@ El modelo de la base de datos contiene las siguientes entidades:
   - Email del autor *
   - Sugerencias *
 
-
 Detallamos la relación entre las distintas entidades de muchos a muchos 
 
-#### Backend
+## Backend
 
-Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
+Se desarrolla un servidor en Node/Express con las siguientes rutas:
+
 ##### Viajes:
 - [ ] __GET /routes__:
   - Obtiene un listado de viajes por coordenadas ofreciendo distancia entre dos puntos y tiempo del recorrido
