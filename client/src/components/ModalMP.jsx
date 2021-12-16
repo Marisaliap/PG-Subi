@@ -11,7 +11,7 @@ export const Modal = ({ setShowModal, route, user }) => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3001/mercadopago", {
+      .post("/mercadopago", {
         idRoute: route.id,
         title: "Viaje",
         price: route.price,
@@ -25,12 +25,12 @@ export const Modal = ({ setShowModal, route, user }) => {
   const closeModal = (e) => {
     if (e.target === modalRef.current) {
       setShowModal(false);
-      axios.delete("http://localhost:3001/order/" + datos.id);
+      axios.delete("/order/" + datos.id);
     }
   };
   const handledClose = (e) => {
     e.preventDefault();
-    axios.delete("http://localhost:3001/order/" + datos.id);
+    axios.delete("/order/" + datos.id);
     setShowModal(false);
   };
   //render the modal JSX in the portal div.
