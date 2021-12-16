@@ -5,7 +5,7 @@
 # Group Project - Gimme a Ride (Subi Que Te Llevo)
 
 <p align="left">
-  <img height="200" src="./car_8.jpg" />
+  <img height="200" src="./logo.png" />
 </p>
 
 ## Objetivos del Proyecto
