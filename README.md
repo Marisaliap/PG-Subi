@@ -122,7 +122,7 @@ Implementar una o dos de las siguientes características pueden ser una ventaja 
 - Propinas. Cualquier pago adicional es una motivación para hacer mejor el trabajo. Dejar propinas es una opción para que los pasajeros agradezcan a los conductores por un gran servicio y un incentivo para que los propietarios de automóviles mejoren sus habilidades (tanto de conducción como de comunicación).
 - Interfaz multilingüe. Cuantos más idiomas incorporados tenga la aplicación, más usuarios obtendrá. Incluso dentro de una ciudad, se pueden encontrar personas de diversos grupos étnicos, por lo que agregar varios idiomas a la aplicación es algo sumamente valioso. 
 
-### Endpoints utilizados serán:
+### Los endpoints utilizados son:
 
   - GET https://api.mapbox.com/geocoding/v5/mapbox.places/${name}.json?country=ar&types=place&access_token=${TOKEN}
   - GET https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${long1}%2C${lat1}%3B${long2}%2C${lat2}?alternatives=false&geometries=geojson&overview=full&steps=false&access_token=${TOKEN}`
@@ -231,8 +231,8 @@ El modelo de la base de datos contiene las siguientes entidades:
   - Facebook
   - Instagram
   - Calificación
-  - Foto de perfil
-  - Foto del DNI
+  - Foto de perfil*
+  - Foto del DNI*
   - Es administrador
   - Está baneado
   - CBU (datos bancarios)
@@ -291,7 +291,7 @@ El modelo de la base de datos contiene las siguientes entidades:
   - Sugerencias *
 
 
-Detallar la relación entre las distintas entidades de muchos a muchos 
+Detallamos la relación entre las distintas entidades de muchos a muchos 
 
 #### Backend
 
