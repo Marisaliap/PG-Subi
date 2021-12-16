@@ -297,22 +297,19 @@ Detallar la relación entre las distintas entidades de muchos a muchos
 
 Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 
-- [ ] __GET /maps__:
-  - Obtiene un listado de una ruta por coordenadas ofreciendo distancia entre dos puntos y tiempo del recorrido
+- [ ] __GET /routes__:
+  - Obtiene un listado de viajes por coordenadas ofreciendo distancia entre dos puntos y tiempo del recorrido
   - Debe devolver solo los datos necesarios para la ruta principal
-- [ ] __GET /maps/location/?name="..."__:
-  - Obtener un listado de las ciudades que contengan la palabra ingresada como query parameter
-  - Si no existe ninguna ciudad con ese nombre mostrar un mensaje adecuado
-- [ ] __GET /maps/{id}__:
-  - Obtener el detalle de una ciudad en particular
-  - Debe traer solo los datos pedidos en la ruta de detalle de la ciudad
-- [ ] __GET /__:
-  - Obtener ...
+- [ ] __GET /route/?name="..."__:
+  - Obtener un listado de los viajes que contengan la palabra ingresada como query parameter
+- [ ] __GET /route/{id}__:
+  - Obtener el detalle de un viaje en particular
+  - Debe traer solo los datos pedidos en la ruta de detalle del viaje
+- [ ] __PUT /route__:
+  - Permite modificar un viaje creado 
 - [ ] __POST /route__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo viaje por body
   - Crea una nuevo viaje en la base de datos
+ - [ ] __DELETE /route__:
+  - Permite eliminar un viaje creado 
 
-#### Testing
-- [ ] frontend con sus tests respectivos
-- [ ] backend con sus tests respectivos
-- [ ] base de datos con sus tests respectivos
