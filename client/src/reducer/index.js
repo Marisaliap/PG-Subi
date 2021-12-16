@@ -187,20 +187,6 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         route: action.payload,
-
-        // case "FILTER_BY_SMOKE":
-        //   return {
-        //     ...state,
-        //     route: action.payload,
-        //   };
-
-        // case "FILTER_BY_PETS":
-        //   return {
-        //     ...state,
-        //     route: action.payload,
-        //   };
-
-        // ----------------------------------------------------------------------------
       };
     case "DELETE_ROUTE":
       return {

@@ -7,6 +7,7 @@ import NavBarFilter from "./NavBarFilter";
 import "../Sass/Styles/RouteDetails.scss";
 import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from 'react-intl';
 
 const RouteDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -37,6 +38,11 @@ const RouteDetails = ({ match }) => {
 
   return (
     <div className="RouteDetails">
+
+      <Link to="/home">
+        <button className="buttonBlue"><FormattedMessage id= "routedetails.home"/></button>
+      </Link>
+      
       <NavBarFilter places={match.params.id} currentRoutes={currentRoutes} />
 
       <div className="RouteCardContainer">

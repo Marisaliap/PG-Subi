@@ -30,7 +30,6 @@ import RoutesFromSearch from "./components/RoutesFromSearch";
 import SuggestionBox from "./components/SuggestionBox";
 import UserProfile from "./components/UserProfile";
 import Chat from "./components/Chat";
-import { Redirect } from "react-router";
 import { FormattedMessage } from "react-intl";
 
 export default function App() {
@@ -107,7 +106,7 @@ export default function App() {
                       {userpro && userpro.isAdmin === true ? (
                         <Route exact path="/admin" component={Admin} />
                       ) : (
-                        <Redirect to="/home" />
+                        ""
                       )}
                     </Switch>
                   </>

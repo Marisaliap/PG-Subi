@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "./Components/Sidebar";
-import Topbar from "./Components/Topbar";
 import Users from "./pages/Users";
 import Update from "./pages/Update";
 import Dashboard from "../admin/pages/Dashboard";
@@ -17,7 +16,6 @@ import Transactions from "./pages/Transactions";
 export default function Admin() {
   return (
     <Router>
-      <Topbar />
       <div className="containAll">
         <Sidebar />
         <Switch>
@@ -27,7 +25,7 @@ export default function Admin() {
           <Route path="/admin/users/:id">
             <Users />
           </Route>
-          <Route path="/admin/Update">
+          <Route path="/admin/update">
             <Update />
           </Route>
           <Route exact path="/admin/newUser">
@@ -36,6 +34,7 @@ export default function Admin() {
           <Route exact path="/admin/users">
             <UserList />
           </Route>
+
           <Route exact path="/admin/routes">
             <AllRoutesData />
           </Route>

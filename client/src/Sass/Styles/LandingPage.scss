@@ -1,169 +1,211 @@
 @import "../Variables/Variables.scss";
 
-.LandingPage {
-  height: 100%;
-  width: 100%;
-  background: url("../../img/backgroundlanding1.jpg") no-repeat center center
-    fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.Landing {
+  @media only screen and (min-width: 1024px) {
+    width: 100vw;
+    height: 100vh;
+  }
 
-  .LandingPage__container {
-    background-color: #edededda;
-    border-radius: 30px;
-    border: 1px solid #e0e0e0;
-    width: 95%;
-    margin: 2.5% 2.5%;
-    height: 95%;
-
-    .poneteBien {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+  .LandingPage {
+    height: 100%;
+    width: 100%;
+    background: url("../../img/backgroundlanding1.jpg") no-repeat center center
+      fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .cosasAbajo {
+      @media only screen and (max-width: 768px) {
+        margin-left: 1rem;
+      }
+    }
+    .LandingPage__container {
+      background-color: #edededda;
+      border-radius: 30px;
+      border: 1px solid #e0e0e0;
       width: 95%;
+      margin: 2.5% 2.5%;
+      height: 95%;
 
-      .botonBandera {
-        margin-top: 1.5rem;
-        border: none;
-        cursor: pointer;
-        background: none;
+      .poneteBien {
         display: flex;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 97.5%;
+        margin-bottom: 0rem;
+        @media only screen and (max-width: 768px) {
+          flex-direction: column;
+          margin-bottom: 3rem;
+        }
+
+        .cosasAbajo {
+          margin-top: 1.5rem;
+        }
+        .botonBandera {
+          border: none;
+          cursor: pointer;
+          background: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          display: inline-block;
+        }
+
+        .banderas {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+      }
+
+      .pelodeces {
+        height: 8vh;
+      }
+
+      .porqueUsarLaApp {
+        font-size: 2.25rem;
+        margin-top: -2rem;
+        @media only screen and (max-width: 768px) {
+          margin-right: 0.5rem;
+          margin-left: 0.5rem;
+        }
+        @media only screen and (min-width: 1800px) {
+          font-size: 2.5rem;
+        }
+      }
+
+      .centralosporfa {
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        display: inline-block;
-      }
-
-      .banderas {
-        width: 2.5rem;
-        height: 2.5rem;
-      }
-    }
-
-    .pelodeces {
-      height: 8vh;
-    }
-
-    .porqueUsarLaApp {
-      font-size: 3rem;
-      margin-top: -2rem;
-    }
-
-    .centralosporfa {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .losPorque {
-      display: flex;
-      width: 100%;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-around;
-      align-content: center;
-      font-size: inherit;
-    }
-
-    .cadaGilada {
-      height: 28vh;
-    }
-    .unpoquitoMas {
-      height: 7rem;
-      margin-bottom: 2rem;
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
-
-    .button {
-      outline: none;
-      font-family: "Inter", sans-serif;
-      font-weight: 600;
-      font-size: 1.25rem;
-      color: $background;
-      background-color: $buttonColor;
-      margin: 0.5rem;
-      padding: 1rem 1.5rem;
-      border: 0;
-      border-radius: 5rem;
-      transition: background-color 500ms ease-in-out;
-      width: 10rem;
-      border: 0.5px solid #ededed;
-      margin-top: 4rem;
-
-      &:hover {
-        background-color: $buttonColorHovered;
-        cursor: pointer;
-      }
-    }
-
-    .upperSection {
-      padding-left: 20rem;
-      padding-right: 20rem;
-    }
-
-    .logo {
-      width: 15%;
-      margin-left: 2.5rem;
-      margin-right: 2.5rem;
-      margin-bottom: 2rem;
-      padding-top: 2rem;
-      display: flex;
-
-      @media only screen and (min-width: 768px) {
-        margin-left: 5rem;
-        margin-right: 5rem;
-      }
-    }
-
-    h4 {
-      margin-top: 0;
-      font-weight: 600;
-    }
-
-    p {
-      margin-top: 0;
-      font-weight: 600;
-    }
-
-    .sectionBelow {
-      @media only screen and (min-width: 768px) {
-        padding: 1.5rem;
-      }
-
-      @media only screen and (min-width: 1024px) {
+        justify-content: center;
         margin-top: 0rem;
       }
 
-      h1 {
+      .losPorque {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        align-content: center;
+        font-size: inherit;
+        margin-left: 1.5rem;
+        @media only screen and (max-width: 768px) {
+          flex-direction: column;
+        }
+
+        @media only screen and (min-width: 1800px) {
+          margin-top: 5rem;
+          margin-bottom: 3rem;
+        }
+      }
+
+      .cadaGilada {
+        font-size: 1rem;
+        @media only screen and (max-width: 768px) {
+          margin-top: 6rem;
+          width: 80%;
+        }
+      }
+      .unpoquitoMas {
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin: 0;
+        @media only screen and (max-width: 768px) {
+          margin-right: 0.5rem;
+          margin-left: 0.5rem;
+        }
+        @media only screen and (min-width: 1800px) {
+          margin-top: 2rem;
+        }
+      }
+
+      .button {
+        outline: none;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 1.25rem;
+        color: $background;
+        background-color: $buttonColor;
+        margin: 0.5rem;
+        padding: 1rem 1.5rem;
+        border: 0;
+        border-radius: 5rem;
+        transition: background-color 500ms ease-in-out;
+        width: 10rem;
+        border: 0.5px solid #ededed;
+        z-index: 1988889489489498;
+
+        &:hover {
+          background-color: $buttonColorHovered;
+          cursor: pointer;
+        }
+      }
+
+      .logo {
+        width: 15%;
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+        margin-bottom: 2rem;
+        padding-top: 2rem;
+        display: flex;
+
+        @media only screen and (max-width: 768px) {
+          width: 100%;
+          margin: 0;
+          margin-left: 0.5rem;
+        }
+      }
+
+      h4 {
+        margin-top: 0;
         font-weight: 600;
       }
 
-      .belowContainer {
-        @media only screen and (min-width: 1024px) {
-          display: flex;
-          align-items: center;
+      p {
+        margin-top: 0;
+        font-weight: 600;
+      }
+
+      .sectionBelow {
+        @media only screen and (min-width: 768px) {
+          padding: 0rem;
         }
 
-        div {
+        @media only screen and (min-width: 1024px) {
+          margin-top: 0rem;
+        }
+
+        h1 {
+          font-weight: 600;
+        }
+
+        .belowContainer {
           @media only screen and (min-width: 1024px) {
-            margin: 0 5rem;
+            display: flex;
+            align-items: center;
           }
 
-          h3 {
-            margin-bottom: 0;
-          }
+          div {
+            @media only screen and (min-width: 1024px) {
+              margin: 0 3rem;
+              margin-top: 1rem;
+            }
 
-          p {
-            margin-top: 0;
-          }
+            h3 {
+              margin-bottom: 0;
+            }
 
-          img {
-            height: 12rem;
-            width: 12rem;
-            object-fit: fill;
+            p {
+              margin-top: 0;
+            }
+
+            img {
+              height: 10rem;
+              width: 10rem;
+              object-fit: fill;
+            }
           }
         }
       }

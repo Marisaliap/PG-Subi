@@ -14,6 +14,7 @@ export default function Footer() {
       <div className="Footer">
         <div></div>
         <div>
+
           <h4 className="titulo">
             <FormattedMessage id="footer.about" defaultMessage="About" />
           </h4>
@@ -26,8 +27,9 @@ export default function Footer() {
             >
               <FormattedMessage id="footer.aboutUs" defaultMessage="About Us" />
             </Link>
-            <FormattedMessage id="footer.contactUs" defaultMessage="Contact Us" />
-            support@gimmearide.com
+            <a className="Link" href="mailto:grupo10.soyhenry@gmail.com">
+              <FormattedMessage id="footer.contactUs" defaultMessage="Contact Us" />
+            </a>
           </div>
         </div>
         <hr className="lineahr" />
@@ -83,7 +85,7 @@ export default function Footer() {
                 defaultMessage="Privacy Policy"
               />
             </Link>
-            <Link
+            {/* <Link
               to="/cookies-policy"
               className="Link"
               target="_blank"
@@ -93,7 +95,7 @@ export default function Footer() {
                 id="footer.cookies"
                 defaultMessage="Cookies Policy"
               />
-            </Link>
+            </Link> */}
           </div>
         </div>
         <hr className="lineahr" />

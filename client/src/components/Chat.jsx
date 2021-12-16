@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "../Sass/Styles/Chat.scss";
 import { getChatPropio, getChatOtro, postChat } from "../actions";
 import { FormattedMessage } from "react-intl";
+import ReactScrollableFeed from "react-scrollable-feed";
 
 export default function Chat() {
   const dispatch = useDispatch();
@@ -11,18 +12,15 @@ export default function Chat() {
   const userInfo = useSelector((state) => state.userpro);
   const miraArriba = window.location.href.split("/chat/")[1];
   const SOYELPUTOAMO = userInfo.email;
-  let a = true;
+
   useEffect(() => {
-    setInterval(() => {
+    setTimeout(() => {
       dispatch(getChatPropio(SOYELPUTOAMO));
       dispatch(getChatOtro(miraArriba));
-    }, 3000);
-  }, []); // eslint-disable-line
-  const [mensaje, setMensaje] = useState("");
+    }, 2000);
+  }, [getChatPropio(SOYELPUTOAMO), getChatOtro(miraArriba)]); // eslint-disable-line
 
-  setInterval(() => {
-    a = !a;
-  }, 8000);
+  const [mensaje, setMensaje] = useState("");
 
   let allChats = chatsOtro.concat(chatsPropio);
   allChats = allChats.sort((a, b) => a.date - b.date);
@@ -37,7 +35,7 @@ export default function Chat() {
     if (timeArray[0] > 0 && minutes > 0) {
       return parseInt(timeArray[0]) + " hrs " + parseInt(minutes) + " mins.";
     }
-    if (timeArray[0] <= 0 && minutes > 0) {
+    if (timeArray[0] <= 0 && minutes >= 0) {
       return parseInt(minutes) + " mins";
     }
 
@@ -67,33 +65,35 @@ export default function Chat() {
   return (
     <div className="Chat">
       <div className="losMensajesDeClarita">
-        {allChats &&
-          allChats.map((chat, i) => (
-            <div className="teRevelas" key={i}>
-              <p
-                className={
-                  chat.author === userInfo.email
-                    ? "paLaDerecha"
-                    : "paLaIzquierda"
-                }
-                key={i + "m"}
-              >
-                {chat.message}
-              </p>
-              <p
-                className={
-                  chat.author === userInfo.email
-                    ? "paLaDerechaHora"
-                    : "paLaIzquierdaHora"
-                }
-                key={i + "d"}
-              >
-                <FormattedMessage id="chat.sent" defaultMessage="sent:" />{" "}
-                {hours(chat.date)}{" "}
-                <FormattedMessage id="chat.ago" defaultMessage="ago" />
-              </p>
-            </div>
-          ))}
+        <ReactScrollableFeed>
+          {allChats &&
+            allChats.map((chat, i) => (
+              <div className="teRevelas" key={i}>
+                <p
+                  className={
+                    chat.author === userInfo.email
+                      ? "paLaDerecha"
+                      : "paLaIzquierda"
+                  }
+                  key={i + "m"}
+                >
+                  {chat.message}
+                </p>
+                <p
+                  className={
+                    chat.author === userInfo.email
+                      ? "paLaDerechaHora"
+                      : "paLaIzquierdaHora"
+                  }
+                  key={i + "d"}
+                >
+                  <FormattedMessage id="chat.sent" defaultMessage="sent:" />{" "}
+                  {hours(chat.date)}{" "}
+                  <FormattedMessage id="chat.ago" defaultMessage="ago" />
+                </p>
+              </div>
+            ))}
+        </ReactScrollableFeed>
       </div>
       <div className="clarita">
         <form

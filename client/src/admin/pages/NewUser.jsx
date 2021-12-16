@@ -302,9 +302,15 @@ export default function Registro() {
                 accept="image/png, image/jpeg"
               />
             </div>
-            <div Style="display:none">{(input.photo = image)}</div>
+            <div style={{ display: "none" }}>{(input.photo = image)}</div>{" "}
+            {/*eslint-disable-line */}
             <p>
-              {loanding ? <img src={image} Style="height:150px" alt="" /> : ""}
+              {loanding ? (
+                <img src={image} style={{ height: "150px" }} alt="" />
+              ) : (
+                ""
+              )}
+              {/*eslint-disable-line */}
             </p>
             <div className="newUserDiv">
               <p className="label">
@@ -341,9 +347,15 @@ export default function Registro() {
                 />
               </div>
             </div>
-            <div Style="display:none">{(input.photoDni = dni)}</div>
+            <div style={{ display: "none" }}>{(input.photo = image)}</div>{" "}
+            {/*eslint-disable-line */}
             <p>
-              {loanding ? <img src={dni[0]} Style="height:150px" alt="" /> : ""}
+              {loanding ? (
+                <img src={image} style={{ height: "150px" }} alt="" />
+              ) : (
+                ""
+              )}
+              {/*eslint-disable-line */}
             </p>
             <div className="newUserDiv">
               <p className="label">
@@ -363,13 +375,19 @@ export default function Registro() {
                 />
               </label>
             </div>
-            <div Style="display:none">{(input.photoDni = dni)}</div>
+            <div style={{ display: "none" }}>{(input.photo = image)}</div>{" "}
+            {/*eslint-disable-line */}
             <p>
-              {loanding ? <img src={dni[1]} Style="height:150px" alt="" /> : ""}
+              {loanding ? (
+                <img src={image} style={{ height: "150px" }} alt="" />
+              ) : (
+                ""
+              )}
+              {/*eslint-disable-line */}
             </p>
           </div>
           <div className="newUserDiv">
-            <p className="label" for="genre">
+            <p className="label">
               <FormattedMessage
                 id="register.gender"
                 defaultMessage="Gender*:"
@@ -381,10 +399,8 @@ export default function Registro() {
               id="genre"
               onChange={(e) => handleSelect(e)}
               required
+              defaultValut="1"
             >
-              <option disabled selected value="1">
-                -- Select an option --
-              </option>
               <FormattedMessage id="register.gender.1">
                 {(message) => <option value="Male">{message}</option>}
               </FormattedMessage>
