@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../Sass/Styles/Chat.scss";
+import { Link } from "react-router-dom";
 import { getChatPropio, getChatOtro, postChat } from "../actions";
 import { FormattedMessage } from "react-intl";
 import ReactScrollableFeed from "react-scrollable-feed";
@@ -64,6 +65,9 @@ export default function Chat() {
 
   return (
     <div className="Chat">
+    <Link to="/home">
+        <button className="buttonBlue"><FormattedMessage id= "about.button"/></button>
+      </Link>
       <div className="losMensajesDeClarita">
         <ReactScrollableFeed>
           {allChats &&
