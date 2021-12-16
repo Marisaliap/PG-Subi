@@ -212,14 +212,8 @@ export default function SearchBar() {
               onChange={handleChange}
               className="restrictions"
               id="pasajeros"
+              defaultValue="1"
             >
-              <FormattedMessage id="searchBarPostRuta.select">
-                {(messege) => (
-                  <option disabled selected value="1">
-                    {messege}
-                  </option>
-                )}
-              </FormattedMessage>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

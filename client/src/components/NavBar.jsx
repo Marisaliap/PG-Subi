@@ -93,7 +93,7 @@ export default function Nav() {
               .filter((e) => e === user.email)[0] === user.email &&
             userpro.isAdmin === true ? (
               <button className="NavLinks">
-                <NavLink to="/Admin" className="NavLinks">
+                <NavLink to="/admin" className="NavLinks">
                   <BsShieldLock className="linkIcon" />
                   <h3>Admin</h3>
                 </NavLink>

@@ -157,7 +157,8 @@ const getRoute = async (req, res, next) => {
       ],
     });
 
-    if(admin) routes = routes.filter(route => route.users[0].isBanned === false)
+    if (admin)
+      routes = routes.filter((route) => route.users[0].isBanned === false);
 
     if (from) {
       routes = routes.filter((route) => {
