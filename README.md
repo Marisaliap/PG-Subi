@@ -184,32 +184,112 @@ __Ruta principal__: contiene
     
 - [ ] Paginado.
 
-__Ruta de detalle de la ruta__: debe contener
+__Ruta de detalle de la ruta__: contiene
 - [ ] Los campos mostrados en la ruta principal para cada ruta
-- [ ] Puntos destacados del viaje
-- [ ] Duración del recorrido
+- [ ] Mapa mostrando la ruta seleccionada
+- [ ] Distancia en kilómetros entre origen y destino
+- [ ] Duración del viaje
+- [ ] Preferencias
+- [ ] Botón para poder unirse a un viaje
+- [ ] Borón para regresar a la pàgina anterior
 
 
-__Ruta de creación de un viaje__: debe contener
+__Ruta de creación de un viaje__: contiene
 - [ ] Un formulario __controlado__ con los siguientes campos
   - Ciudad de Origen
   - Ciudad de Destino
   - Día del viaje
   - Hora del viaje
-- [ ] Posibilidad de seleccionar/agregar ...
+  - Lugares disponibles
+- [ ] Posibilidad de seleccionar preferencias del conductor
+- [ ] Botón/Opción para la vista previa de un nuevo viaje
+
+
+__Ruta de confirmación para crear un viaje__: contiene
+- [ ] Mapa ampliado de la ruta definida previamente
+- [ ] Información detallada con los campos enumerados en el formulario anterior
 - [ ] Botón/Opción para crear un nuevo viaje
+- [ ] Botón/Opción para realizar alguna modificación
+
 
 #### Base de datos
 
-El modelo de la base de datos deberá tener las siguientes entidades:
+El modelo de la base de datos contiene las siguientes entidades:
+
+- [ ] Usuario con las siguientes propiedades:
+  - Email *
+  - Nombre *
+  - Apellido *
+  - Género *
+  - Sobre *
+  - Edad *
+  - DNI *
+  - Calle *
+  - Ciudad *
+  - Provincia *
+  - Teléfono *
+  - Facebook
+  - Instagram
+  - Calificación
+  - Foto de perfil
+  - Foto del DNI
+  - Es administrador
+  - Está baneado
+  - CBU (datos bancarios)
 
 - [ ] Rutas con las siguientes propiedades:
   - ID *
-  - Nombre *
+  - Nombre de Origen *
+  - Nombre de Destino *
+  - Origen *
+  - Destino *
+  - Puntos *
+  - Precio *
+  - Fecha de salida *
+  - Hora de salida *
+  - Lugares disponibles *
+  - Preferencias *
+  - Conductor *
+  - Distancia en Kilómetros *
+  - Duración *
   
-- [ ] (Completar) con las siguientes propiedades:
-  - ID
-  - Nombre
+- [ ] Coche con las siguientes propiedades:
+  - ID *
+  - Patente *
+  - Marca *
+  - Modelo *
+  - Cilindrada *
+  - Color *
+  - Tarjeta verde *
+  - Tarjeta azul
+
+- [ ] Post con las siguientes propiedades:
+  - Descripciòn *
+  - Calificaciòn
+  - Fecha
+  - Autor
+
+- [ ] Orden con las siguientes propiedades:
+  - Estado de la orden 
+  - Id del pago 
+  - Estado del pago
+  - Id de la orden del vendedor
+  - Precio
+
+- [ ] Chat con las siguientes propiedades:
+  - Autor *
+  - Mensaje *
+  - Fecha
+
+- [ ] Buzón de Sugerencias con las siguientes propiedades:
+  - ID *
+  - Nombre *
+
+- [ ] Preferencias con las siguientes propiedades:
+  - Autor *
+  - Email del autor *
+  - Sugerencias *
+
 
 Detallar la relación entre las distintas entidades de muchos a muchos 
 
