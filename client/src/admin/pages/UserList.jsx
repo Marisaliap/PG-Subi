@@ -29,9 +29,8 @@ export default function UserList() {
     };
   }, [dispatch]);
 
-  useEffect(
-    (id) => {
-      dispatch(getUserAdmin(id));
+  useEffect((id) => {
+    dispatch(getUserAdmin(id));
     },
     [dispatch]
   );

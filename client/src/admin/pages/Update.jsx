@@ -87,7 +87,7 @@ export default function Update() {
 
   const handleSubmitUser = (e) => {
     e.preventDefault();
-    history.push("/admin/users");
+    history.push("/admin/");
     dispatch(getUserProfile(id));
     dispatch(editUser(id, input));
     dispatch(getUserAdmin(id));
