@@ -47,7 +47,9 @@ const RouteDetails = ({ match }) => {
 
       <div className="RouteCardContainer">
         {currentRoutes.length === 0 ? (
-          <h1>No rutes match those filters</h1>
+          <h1>
+            <FormattedMessage id="routedetails.p1" defaultMessage="No routes match those filters" />
+            </h1>
         ) : (
           currentRoutes.map((route, i) => (
             <Link
