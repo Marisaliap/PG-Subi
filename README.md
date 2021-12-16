@@ -310,7 +310,7 @@ VIAJES:
 - [ ] __POST /route__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo viaje por body
   - Crea una nuevo viaje en la base de datos
- - [ ] __DELETE /route__:
+- [ ] __DELETE /route__:
   - Permite eliminar un viaje creado 
   
 USUARIOS:  
@@ -329,7 +329,7 @@ USUARIOS:
 - [ ] __POST /user__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo usuario por body
   - Crea una nuevo usuario en la base de datos
- - [ ] __DELETE /user__:
+- [ ] __DELETE /user__:
   - Permite eliminar un usuario creado 
 
 COCHES:
@@ -341,7 +341,7 @@ COCHES:
 - [ ] __POST /car__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo coche por body
   - Crea una nuevo coche en la base de datos
- - [ ] __DELETE /car__:
+- [ ] __DELETE /car__:
   - Permite eliminar un coche creado 
 
 CHAT:
@@ -351,7 +351,7 @@ CHAT:
 - [ ] __POST /chat__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo chat por body
   - Crea una nuevo chat en la base de datos
- - [ ] __DELETE /chat__:
+- [ ] __DELETE /chat__:
   - Permite eliminar un chat creado 
 
 EMAIL:
