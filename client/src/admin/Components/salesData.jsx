@@ -1,58 +1,62 @@
 export const userData = (orders) => {
   const january = orders
-    .map((order) => (order.month === "1" && order.price) || 0)
-    .reduce((previousValue, currentValue) => previousValue + currentValue, 0); // eslint-disable-line
+    .map((order) => (order.month === "01" && order.price) || 0)
+    .reduce(
+      (previousValue, currentValue) =>
+        parseInt(previousValue) + parseInt(currentValue),
+      0
+    ); // eslint-disable-line
   const february = orders
-    .map((order) => (order.month === "2" && order.price) || 0)
+    .map((order) => (order.month === "02" && order.price) || 0)
     .reduce(
       (previousValue, currentValue) =>
         parseInt(previousValue) + parseInt(currentValue),
       0
     ); // eslint-disable-line
   const march = orders
-    .map((order) => (order.month === "3" && order.price) || 0)
+    .map((order) => (order.month === "03" && order.price) || 0)
     .reduce(
       (previousValue, currentValue) =>
         parseInt(previousValue) + parseInt(currentValue),
       0
     ); // eslint-disable-line
   const april = orders
-    .map((order) => (order.month === "4" && order.price) || 0)
+    .map((order) => (order.month === "04" && order.price) || 0)
     .reduce(
       (previousValue, currentValue) =>
         parseInt(previousValue) + parseInt(currentValue),
       0
     ); // eslint-disable-line
   const may = orders
-    .map((order) => (order.month === "5" && order.price) || 0)
+    .map((order) => (order.month === "05" && order.price) || 0)
     .reduce(
       (previousValue, currentValue) =>
         parseInt(previousValue) + parseInt(currentValue),
       0
     ); // eslint-disable-line
   const june = orders
-    .map((order) => (order.month === "6" && order.price) || 0)
+    .map((order) => (order.month === "06" && order.price) || 0)
     .reduce(
       (previousValue, currentValue) =>
         parseInt(previousValue) + parseInt(currentValue),
       0
     ); // eslint-disable-line
   const july = orders
-    .map((order) => (order.month === "7" && order.price) || 0)
+    .map((order) => (order.month === "07" && order.price) || 0)
     .reduce(
       (previousValue, currentValue) =>
         parseInt(previousValue) + parseInt(currentValue),
       0
     ); // eslint-disable-line
   const august = orders
-    .map((order) => (order.month === "8" && order.price) || 0)
+    .map((order) => (order.month === "08" && order.price) || 0)
     .reduce(
       (previousValue, currentValue) =>
         parseInt(previousValue) + parseInt(currentValue),
       0
     ); // eslint-disable-line
   const september = orders
-    .map((order) => (order.month === "9" && order.price) || 0)
+    .map((order) => (order.month === "09" && order.price) || 0)
     .reduce(
       (previousValue, currentValue) =>
         parseInt(previousValue) + parseInt(currentValue),
@@ -81,10 +85,6 @@ export const userData = (orders) => {
     ); // eslint-disable-line
 
   return [
-    {
-      name: "Dec",
-      Sales: december,
-    },
     {
       name: "Jan",
       Sales: january,
@@ -125,10 +125,13 @@ export const userData = (orders) => {
       name: "Oct",
       Sales: october,
     },
-
     {
       name: "Nov",
       Sales: november,
+    },
+    {
+      name: "Dec",
+      Sales: december,
     },
   ];
 };
