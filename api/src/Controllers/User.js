@@ -45,9 +45,9 @@ const postUser = async (req, res, next) => {
       include: [Post, Car, Order, Route, Chat],
     });
 
-    await axios.post("http://localhost:3001/mail/add", {
-        userName: name,
-        userEmail: email, 
+    await axios.post("https://pg-subi-deployed.herokuapp.com/mail/add", {
+      userName: name,
+      userEmail: email,
     });
 
     res.send(user);
@@ -72,7 +72,7 @@ const getUser = async (req, res, next) => {
         include: Post,
         Chat,
       });
-      data = data.filter(user => user.isBanned === false)
+      data = data.filter((user) => user.isBanned === false);
 
       data = data.map((user) => {
         return {
@@ -102,11 +102,13 @@ const getUser = async (req, res, next) => {
           },
         ],
       });
-      if(admin==="false") data = data.isBanned === false ? data : "Banned user"
+      if (admin === "false")
+        data = data.isBanned === false ? data : "Banned user";
     } else {
       data = await User.findAll();
-      admin
-      if(admin==="false") data = data.filter(user => user.isBanned === false);
+      admin;
+      if (admin === "false")
+        data = data.filter((user) => user.isBanned === false);
     }
     res.send(data);
   } catch (error) {
