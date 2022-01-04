@@ -64,9 +64,7 @@ export default function Registro() {
       errors.province = "Province is required";
     } else if (wordvalidate.test(input.province) === false) {
       errors.province = "Invalid Province: No Symbols Allowed";
-    } /* else if (!input.about) {
-      errors.about = 'About is required';
-    } */
+    }
     return errors;
   }
 
@@ -293,14 +291,16 @@ export default function Registro() {
                   defaultMessage="Photo User*:"
                 />
               </p>
-              <input
-                onChange={(e) => uploadImage(e)}
-                className="custom-file-input"
-                type="file"
-                name="image"
-                required="required"
-                accept="image/png, image/jpeg"
-              />
+              <div className="cargaImagen">
+                <input
+                  onChange={(e) => uploadImage(e)}
+                  className="custom-file-input"
+                  type="file"
+                  name="image"
+                  required="required"
+                  accept="image/png, image/jpeg"
+                />
+              </div>
             </div>
             <div style={{ display: "none" }}>{(input.photo = image)}</div>{" "}
             {/*eslint-disable-line */}
@@ -347,7 +347,7 @@ export default function Registro() {
                 />
               </div>
             </div>
-            <div style={{ display: "none" }}>{(input.photo = image)}</div>{" "}
+            <div style={{ display: "none" }}>{(input.photoDni = image)}</div>{" "}
             {/*eslint-disable-line */}
             <p>
               {loanding ? (
@@ -375,7 +375,7 @@ export default function Registro() {
                 />
               </label>
             </div>
-            <div style={{ display: "none" }}>{(input.photo = image)}</div>{" "}
+            <div style={{ display: "none" }}>{(input.photoDni = image)}</div>{" "}
             {/*eslint-disable-line */}
             <p>
               {loanding ? (

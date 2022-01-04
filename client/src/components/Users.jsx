@@ -1,33 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserByName } from "../actions";
+import { getUserByName, getUserDetail } from "../actions";
 import UserCardPerfil from "./UserCardPerfil";
 import "../Sass/Styles/Users.scss";
 import { NavLink } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
 export default function Users() {
-  const { users } = useSelector((state) => state);
-  const { userBuscado } = useSelector((state) => state);
+  const users = useSelector((state) => state.users);
+  // const userBuscado = useSelector((state) => state.userBuscado);
   const dispatch = useDispatch();
 
+
   return (
+    <>
     <div className="userContainer">
-      {users.length === 0 && userBuscado.email ? (
-        <div className="usercard">
-          <NavLink to={`/user/${userBuscado.email}`}>
-            <UserCardPerfil
-              name={userBuscado.name}
-              lastName={userBuscado.lastName}
-              email={userBuscado.email}
-              genre={userBuscado.genre}
-              age={userBuscado.age}
-              photo={userBuscado.photo}
-              calification={userBuscado.calification}
-            />
-          </NavLink>
-        </div>
-      ) : users.length > 0 ? (
+      {users.length > 0 ? (
         users.map((user) => {
           return (
             <div className="usercard">
@@ -51,6 +39,10 @@ export default function Users() {
               defaultMessage="No user matches those descriptions"
             />
           </p>
+          </>
+          )}
+          </div>
+          <div>
           <button
             className="button"
             onClick={() => dispatch(getUserByName(""))}
@@ -59,10 +51,8 @@ export default function Users() {
               id="user.button"
               defaultMessage="Load All Users"
             />
-          </button>
-        </>
-      )}
-      <div></div>
-    </div>
+          </button>      
+      </div>
+    </>
   );
 }

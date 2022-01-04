@@ -395,12 +395,14 @@ export default function UserProfile() {
 
   return (
     <div>
-<Link to="/home">
-        <button className="buttonBlue"><FormattedMessage id= "userdetails.home"/></button>
+      <Link to="/home">
+        <button className="buttonBlue">
+          <FormattedMessage id="userdetails.home" />
+        </button>
       </Link>
       <div className="searchUsers">
         <SearchUserByName />
-        <SearchUserById />
+        {/* <SearchUserById /> */}
       </div>
       <div className="containerProfile">
         <div className="centralo">
@@ -582,7 +584,7 @@ export default function UserProfile() {
                           <BsInfoSquareFill className="icon" />
                           {userInfo.about}
                         </div>
-                        {!userInfo.cbu ? (
+                        {userInfo.cbu ? (
                           <div className="cadaLinea">
                             <p className="label">
                               <FormattedMessage

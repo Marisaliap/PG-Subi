@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../Sass/Styles/Chat.scss";
+import { Link } from "react-router-dom";
 import { getChatPropio, getChatOtro, postChat } from "../actions";
 import { FormattedMessage } from "react-intl";
 import ReactScrollableFeed from "react-scrollable-feed";
@@ -14,11 +15,9 @@ export default function Chat() {
   const SOYELPUTOAMO = userInfo.email;
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(getChatPropio(SOYELPUTOAMO));
-      dispatch(getChatOtro(miraArriba));
-    }, 2000);
-  }, [getChatPropio(SOYELPUTOAMO), getChatOtro(miraArriba)]); // eslint-disable-line
+      dispatch(getChatPropio(SOYELPUTOAMO,miraArriba));
+      dispatch(getChatOtro(miraArriba,SOYELPUTOAMO));
+  }, [dispatch]); // eslint-disable-line
 
   const [mensaje, setMensaje] = useState("");
 
@@ -58,12 +57,15 @@ export default function Chat() {
       })
     );
     setMensaje("");
-    dispatch(getChatOtro(miraArriba));
-    dispatch(getChatPropio(userInfo.email));
+    //dispatch(getChatPropio(SOYELPUTOAMO,miraArriba));
+    //dispatch(getChatOtro(miraArriba,SOYELPUTOAMO));
   }
 
   return (
     <div className="Chat">
+    <Link to="/home">
+        <button className="buttonBlue"><FormattedMessage id= "about.button"/></button>
+      </Link>
       <div className="losMensajesDeClarita">
         <ReactScrollableFeed>
           {allChats &&

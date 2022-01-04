@@ -3,8 +3,9 @@ const { Chat, User } = require("../db.js");
 const getChat = async (req, res, next) => {
   try {
     const { id } = req.params;
+    const { id2 } = req.query;
     let chats;
-    chats = await Chat.findAll({ where: { author: id } });
+    chats = await Chat.findAll({ where: { author: id, userEmail: id2 } });
     res.send(chats);
   } catch (error) {
     next(error);

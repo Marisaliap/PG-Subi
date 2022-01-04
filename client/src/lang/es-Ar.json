@@ -30,12 +30,15 @@
   "home.imagensub2": "¿Es usted un conductor?",
   "home.imagenAbajo1": "Reserva tu plaza en el auto de otra persona, divertite y viaja a donde quieras, pagando menos que con otros medios de transporte",
   "home.imagenAbajo2": "Con Gimme A Ride, permite que otras personas suban a tu auto y te acompañen en tu viaje diviendo gastos",
+  "home.subtitle4": "¿Eres un pasajero?",
+  "home.subtitle5": "¿Eres un conductor?",
 
   "post.calification": "Calificacion",
   "post.description": "Cuéntenos su experiencia con este usuario ...",
   "post.title": "Califica a este usuario",
 
   "routedetails.home": "Inicio",
+  "routedetails.p1" : "Ninguna ruta coincide con esos filtros",
   
   "userdetails.home": "Inicio",
   "userdetails.title": "Detalle de Usario",
@@ -57,7 +60,7 @@
 
   "map.home": "Inicio",
   "map.seats": "Asientos disponibles",
-  "map.button": "¡Quiero cambiar algo!",
+  "map.button": "Volver",
   "map.button1": "Crear viaje",
 
   "navbarfilter.orderby": "Ordenar por ...",

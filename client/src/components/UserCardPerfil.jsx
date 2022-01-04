@@ -17,7 +17,7 @@ export default function CardUser({
   ...props
 }) {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(getUserDetail(email)), [dispatch]); // eslint-disable-line
+  // useEffect(() => dispatch(getUserDetail(email)), []); // eslint-disable-line
 
   function genderIcon(gender) {
     if (gender === "Male") {
