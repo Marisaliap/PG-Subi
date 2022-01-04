@@ -26,8 +26,8 @@ const postMail = async (req,res,next) => {
           html: `<body>
             <img src="https://res.cloudinary.com/dlwobuyjb/image/upload/v1639598355/logo/logo_eymkyo.png" alt="logo" width=300/>
             <hr></hr>
-            <p>Hola <strong> ${userName}!</strong>, te registraste exitosamente en nuestra aplicacion, ¡Disfruta nuestra pagina!</p>
-            <p> Sauldos de todo el Equipo de <a href="https://givemearide.vercel.app/"><strong>GIMME A RIDE ®</strong></a> </p>
+            <p>Hola <strong> ${userName}!</strong>, te registraste exitosamente en nuestra aplicación, ¡Disfruta nuestra página!</p>
+            <p> Saludos de todo el Equipo de <a href="https://givemearide.vercel.app/"><strong>GIMME A RIDE ®</strong></a> </p>
             <hr></hr>
             <p>Hello <strong> ${userName}!</strong>, you have successfully registered on our application, enjoy our site!</p>
             <p> Greetings from all the <a href="https://givemearide.vercel.app/"><strong>GIMME A RIDE ®</strong></a> </p>
