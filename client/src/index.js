@@ -6,7 +6,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import dotenv from "dotenv";
+import axios from "axios";
 import { LangProvider } from "./context/langContext";
+dotenv.config();
+
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -17,7 +22,7 @@ ReactDOM.render(
           cacheLocation="localstorage"
           domain="dev-ldy8yn3a.us.auth0.com"
           clientId="UeNorZxq5mET0n5RaFSKS4E6Y6SCm2i6"
-          redirectUri={"http://localhost:3000/home"}
+          redirectUri={"https://gimmearide.vercel.app/home"}
         >
           <App />
         </Auth0Provider>

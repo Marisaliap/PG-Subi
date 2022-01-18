@@ -47,7 +47,9 @@ const RouteDetails = ({ match }) => {
 
       <div className="RouteCardContainer">
         {currentRoutes.length === 0 ? (
-          <h1>No rutes match those filters</h1>
+          <h1>
+            <FormattedMessage id="routedetails.p1" defaultMessage="No routes match those filters" />
+            </h1>
         ) : (
           currentRoutes.map((route, i) => (
             <Link
@@ -58,7 +60,7 @@ const RouteDetails = ({ match }) => {
             >
               <div className="RouteCard">
                 {route.users && (
-                  <div>
+                  <>
                     <CardUser
                       photo={route.users.length > 0 && route.users[0].photo}
                       name={route.users.length > 0 && route.users[0].name}
@@ -76,7 +78,7 @@ const RouteDetails = ({ match }) => {
                       }
                       key={i + "CU"}
                     />
-                  </div>
+                  </>
                 )}
 
                 <hr />

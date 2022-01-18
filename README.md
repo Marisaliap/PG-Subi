@@ -1,11 +1,11 @@
 <p align='left'>
     <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
-</p>
+</p> 
 
 # Group Project - Gimme a Ride (Subi Que Te Llevo)
 
 <p align="left">
-  <img height="200" src="./car_8.jpg" />
+  <img height="30" src="./logo_peq.png" />
 </p>
 
 ## Objetivos del Proyecto
@@ -21,17 +21,7 @@
 
 El boilerplate cuenta con dos carpetas: `api` y `client`. En estas carpetas estará el código del back-end y el front-end respectivamente.
 
-En `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
-
-```
-DB_USER=usuariodepostgres
-DB_PASSWORD=passwordDePostgres
-DB_HOST=localhost
-```
-
-Reemplazar `usuariodepostgres` y `passwordDePostgres` con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
-
-Adicionalmente creamos desde psql una base de datos llamada `subi`
+Creamos desde psql una base de datos llamada `subi`
 
 El contenido de `client` fue creado usando: Create React App.
 
@@ -103,7 +93,7 @@ La seguridad es una necesidad vital para todos nosotros, sin importar adónde va
 - Boton de emergencia. Es el siguiente nivel de soporte 24/7, ya que estas son acciones en caso de necesidad imperiosa. Debemos considerar con quién va a conectar a los usuarios este botón: si con personal de la api o con una estación de policía de inmediato. Por ejemplo, se puede ofrece alertar al 911 en silencio.
 - Conductores femeninos. Viajar con una mujer parece más seguro, especialmente para las mujeres viajeras, por lo que puede ofrecer a los usuarios esta función como filtro de búsqueda. De manera que se puede incluír la opción "Sólo para mujeres" ya sean propietarias de automóviles o pasajeras.
 
-### Modelos de monetización
+## Modelos de monetización
 
 Se puede ganar dinero con una aplicación de viaje compartido. Hay tres modelos que se van a evaluar:
 
@@ -111,7 +101,7 @@ Se puede ganar dinero con una aplicación de viaje compartido. Hay tres modelos 
 - Publicidad. Poner algunos anuncios en distintos lugares en la aplicación puede ser una fuente de ingresos adicional. Pero por encima de todo debe estar la experiencia del usuario y ser cuidadoso y discreto con cada banner publicitario.
 - Asociaciones. Una plataforma con prestigio puede elegir algunas empresas de transporte con las que asociarse para ampliar la oferta y brindar a los usuarios una alternativa de transporte durante los tiempos de COVID. Pero se pueden crear más asociaciones, con determinadas Estaciones de Servicio o incluso hoteles o hosterías cuando se realizan viajes de media y larga distancia.
 
-### Funciones avanzadas de las aplicaciones de viaje compartido que se podrían evaluar y añadir a futuro
+## Funciones avanzadas de las aplicaciones de viaje compartido que se podrían evaluar y añadir a futuro
 
 Implementar una o dos de las siguientes características pueden ser una ventaja para atraer nuevos clientes.
 
@@ -122,13 +112,9 @@ Implementar una o dos de las siguientes características pueden ser una ventaja 
 - Propinas. Cualquier pago adicional es una motivación para hacer mejor el trabajo. Dejar propinas es una opción para que los pasajeros agradezcan a los conductores por un gran servicio y un incentivo para que los propietarios de automóviles mejoren sus habilidades (tanto de conducción como de comunicación).
 - Interfaz multilingüe. Cuantos más idiomas incorporados tenga la aplicación, más usuarios obtendrá. Incluso dentro de una ciudad, se pueden encontrar personas de diversos grupos étnicos, por lo que agregar varios idiomas a la aplicación es algo sumamente valioso. 
 
-### Endpoints utilizados serán:
+## Desarrollo        
 
-  - GET https://api.mapbox.com/geocoding/v5/mapbox.places/${name}.json?country=ar&types=place&access_token=${TOKEN}
-  - GET https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${long1}%2C${lat1}%3B${long2}%2C${lat2}?alternatives=false&geometries=geojson&overview=full&steps=false&access_token=${TOKEN}`
-        
-
-#### Tecnologías utilizadas:
+#### Las tecnologías utilizadas fueron:
 - [ ] React
 - [ ] Redux
 - [ ] Express
@@ -141,7 +127,7 @@ Implementar una o dos de las siguientes características pueden ser una ventaja 
 - [ ] Sweetalert
 
 
-#### Frontend
+## Frontend
 
 Se desarrolla una aplicación de React/Redux que contiene las siguientes pantallas/rutas.
 
@@ -193,7 +179,6 @@ __Ruta de detalle de la ruta__: contiene
 - [ ] Botón para poder unirse a un viaje
 - [ ] Borón para regresar a la pàgina anterior
 
-
 __Ruta de creación de un viaje__: contiene
 - [ ] Un formulario __controlado__ con los siguientes campos
   - Ciudad de Origen
@@ -204,17 +189,21 @@ __Ruta de creación de un viaje__: contiene
 - [ ] Posibilidad de seleccionar preferencias del conductor
 - [ ] Botón/Opción para la vista previa de un nuevo viaje
 
-
 __Ruta de confirmación para crear un viaje__: contiene
 - [ ] Mapa ampliado de la ruta definida previamente
 - [ ] Información detallada con los campos enumerados en el formulario anterior
 - [ ] Botón/Opción para crear un nuevo viaje
 - [ ] Botón/Opción para realizar alguna modificación
 
+## Base de datos
 
-#### Base de datos
+### Los endpoints utilizados son:
 
-El modelo de la base de datos contiene las siguientes entidades:
+  - GET https://api.mapbox.com/geocoding/v5/mapbox.places/${name}.json?country=ar&types=place&access_token=${TOKEN}
+  - GET https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${long1}%2C${lat1}%3B${long2}%2C${lat2}?alternatives=false&geometries=geojson&overview=full&steps=false&access_token=${TOKEN}`
+
+
+#### El modelo de la base de datos contiene las siguientes entidades:
 
 - [ ] Usuario con las siguientes propiedades:
   - Email *
@@ -231,8 +220,8 @@ El modelo de la base de datos contiene las siguientes entidades:
   - Facebook
   - Instagram
   - Calificación
-  - Foto de perfil
-  - Foto del DNI
+  - Foto de perfil*
+  - Foto del DNI*
   - Es administrador
   - Está baneado
   - CBU (datos bancarios)
@@ -290,13 +279,13 @@ El modelo de la base de datos contiene las siguientes entidades:
   - Email del autor *
   - Sugerencias *
 
+Detallamos la relación entre las distintas entidades de muchos a muchos 
 
-Detallar la relación entre las distintas entidades de muchos a muchos 
+## Backend
 
-#### Backend
+Se desarrolla un servidor en Node/Express con las siguientes rutas:
 
-Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
-VIAJES:
+##### Viajes:
 - [ ] __GET /routes__:
   - Obtiene un listado de viajes por coordenadas ofreciendo distancia entre dos puntos y tiempo del recorrido
   - Debe devolver solo los datos necesarios para la ruta principal
@@ -310,10 +299,10 @@ VIAJES:
 - [ ] __POST /route__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo viaje por body
   - Crea una nuevo viaje en la base de datos
- - [ ] __DELETE /route__:
+- [ ] __DELETE /route__:
   - Permite eliminar un viaje creado 
   
-USUARIOS:  
+##### Usuarios:  
 - [ ] __GET /user__:
   - Obtiene un listado de usuarios registrados
   - Debe devolver solo los datos necesarios para la ruta principal
@@ -329,10 +318,10 @@ USUARIOS:
 - [ ] __POST /user__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo usuario por body
   - Crea una nuevo usuario en la base de datos
- - [ ] __DELETE /user__:
+- [ ] __DELETE /user__:
   - Permite eliminar un usuario creado 
 
-COCHES:
+##### Vehículos:
 - [ ] __GET /car__:
   - Obtiene un listado de coches registrados
   - Debe devolver solo los datos necesarios para la ruta principal
@@ -341,24 +330,24 @@ COCHES:
 - [ ] __POST /car__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo coche por body
   - Crea una nuevo coche en la base de datos
- - [ ] __DELETE /car__:
+- [ ] __DELETE /car__:
   - Permite eliminar un coche creado 
 
-CHAT:
+##### Chat:
 - [ ] __GET /chat__:
   - Obtiene un listado de chats existentes
   - Debe devolver solo los datos necesarios para la ruta principal
 - [ ] __POST /chat__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de un nuevo chat por body
   - Crea una nuevo chat en la base de datos
- - [ ] __DELETE /chat__:
+- [ ] __DELETE /chat__:
   - Permite eliminar un chat creado 
 
-EMAIL:
+##### Email:
 - [ ] __POST /mail__:
   - Envía un email a la casilla de Email de un nuevo usuario cuando se registra
 
-MERCADO PAGO:  
+##### Mercado Pago:  
 - [ ] __POST /MP__:
   - Crea una nueva orden de pago de Mercado pago
 - [ ] __GET /MP__:

@@ -23,7 +23,9 @@ export default function UserList() {
 
   // ---------------------------------<useEffect>---------------------------------
   useEffect(() => {
-    dispatch(getAllUserAdmin());
+    setInterval(() => {
+      dispatch(getAllUserAdmin());
+    }, 1000);
     return () => {
       dispatch(getAllUserAdmin());
     };

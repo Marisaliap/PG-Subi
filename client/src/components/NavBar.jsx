@@ -35,7 +35,7 @@ export default function Nav() {
 
   useEffect(() => {
     dispatch(getAllUsers());
-  }, [dispatch]);
+  }, []); // eslint-disable-line
 
   function handleDropdown() {
     !dropdown ? setDropdown(true) : setDropdown(false);

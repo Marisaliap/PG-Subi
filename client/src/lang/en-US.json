@@ -24,14 +24,19 @@
   "home.subtitle1": "It's Eco-Conscious",
   "home.subtitle2": "Have fun",
   "home.subtitle3": "Lets you save money",
+  "home.imgensub1": "Are you a passenger?",
+  "home.imgensub2": "Are you a driver?",
   "home.imagenAbajo1": "Book a place in other person's car, have fun alongside other people and go wherever you want, by paying less than you would by using other travelling methods.",
   "home.imagenAbajo2": "With Gimme A Ride, allow other people with common destinations to get into your car and have fun together while spending less!",
+  "home.subtitle4": "Are you a passenger?",
+  "home.subtitle5": "Are you a driver?",
 
   "post.calification": "Calification",
   "post.description": "Please tell us about your experience with this user...",
   "post.title": "Rate this user",
 
   "routedetails.home": "Home",
+  "routedetails.p1" : "No routes match those filters",
   
   "userdetails.home": "Home",
   "userdetails.title": "User Details",
@@ -53,7 +58,7 @@
 
   "map.home": "Home",
   "map.seats": "Seats available",
-  "map.button": "I want to change something!",
+  "map.button": "Go Back!",
   "map.button1": "Create Trip",
 
   "navbarfilter.orderby": "Order by...",
@@ -464,7 +469,6 @@
   "Recommendations.li6": "Remember that you are not obliged to get into any car or get anyone in your car. If the people you agreed to trip generate distrust at the time of the meeting, if you consider any attitude as suspicious, or if the documentation or the status of the car is not in condition, you can express it in the best terms and not make the trip. If you think that your mistrust or suspicion is based on prejudice, you can express that an unforeseen event arose or that you do not feel well physically to travel. You can also get out of the car if at any moment, if it seems to you that the driver is driving recklessly or that it doesn't make you feel comfortable. When you get in the car, you are responsible for exercising your own security. After the date of the trip you can leave a negative rating.",  
   "Recommendations.p4": "We emphasize that the driver should not obtain economic profit in travel from him. For more information, check the",
   "Recommendations.a1": "Gimme A Ride® General Terms and Conditions.",
-
 
   "about.button": "Home",
   "about.title": "About us",

@@ -176,7 +176,7 @@ export default function User2() {
         </div>
 
         <Link to="/admin/Update">
-          <button className="userUpdateButton" onClick={() => Click()}>
+          <button className="buttonUpdateAdmin" onClick={() => Click()}>
             Update
           </button>
         </Link>

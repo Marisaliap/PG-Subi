@@ -104,14 +104,14 @@ export default function Home() {
       <section className="lowerSection">
         <div>
           <img className="SVGs" src={cityDriver} alt="Are you a passenger?" />
-          <h3>Are you a passenger?</h3>
+          <h3><FormattedMessage id="home.imagensub1" defaultMessage="Are you a passenger?" /></h3>
           <p>
             <FormattedMessage id="home.imagenAbajo1" defaultMessage="" />
           </p>
         </div>
         <div>
           <img className="SVGs" src={carDriver} alt="Are you a driver?" />
-          <h3>Are you a driver?</h3>
+          <h3><FormattedMessage id="home.imagensub2" defaultMessage="Are you a driver?" /></h3>
           <p>
             <FormattedMessage id="home.imagenAbajo2" defaultMessage="" />
           </p>

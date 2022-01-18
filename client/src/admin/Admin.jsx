@@ -9,7 +9,6 @@ import Feedback from "../admin/pages/Feedback";
 import AllRoutesData from "../admin/pages/AllRoutesData";
 import "../Sass/Styles/App.scss";
 import "../styles/Admin.css";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Transactions from "./pages/Transactions";
 

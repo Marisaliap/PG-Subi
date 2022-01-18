@@ -28,7 +28,7 @@ export default function Update() {
       dispatch(getUserAdmin(id));
       dispatch(getAllUserAdmin());
     };
-  }, [dispatch, id]);
+  }, [dispatch, id]); //eslint-disable-line
 
   //   -------------------------------------< estados> --------------------------------
   const [errorsCars, setErrorsCars] = useState({});
@@ -87,13 +87,13 @@ export default function Update() {
 
   const handleSubmitUser = (e) => {
     e.preventDefault();
-    history.push("/admin/");
     dispatch(getUserProfile(id));
     dispatch(editUser(id, input));
     dispatch(getUserAdmin(id));
     handleSubmitPhoto(e);
     handleSubmitPhoto2(e);
     dispatch(getAllUserAdmin());
+    history.push("/admin");
   };
 
   const handleSubmitPhoto = (e) => {
@@ -622,10 +622,11 @@ export default function Update() {
               </div>
             </div>
             <button
+            
               onClick={(e) => {
                 handleSubmitUser(e);
               }}
-              className="userUpdateButton"
+              className="buttonUpdateAdmin"
             >
               Update
             </button>
